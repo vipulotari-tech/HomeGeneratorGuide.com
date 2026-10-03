@@ -1,1 +1,3 @@
-https://www.homegeneratorguide.com/* https://homegeneratorguide.com/:splat 301
+# NOTE: www -> apex canonical redirect is configured as a Cloudflare
+# dashboard Redirect Rule (Bulk Redirects), because Static Assets
+# _redirects only allows relative URLs. Do not add absolute URLs here.

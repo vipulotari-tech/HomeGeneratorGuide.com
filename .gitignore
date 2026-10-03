@@ -12,3 +12,10 @@ claude-seo/
 
 # Shell/transient output
 *.out
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
