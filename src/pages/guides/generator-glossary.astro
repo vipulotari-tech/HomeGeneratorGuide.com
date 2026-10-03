@@ -1,0 +1,90 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import FAQSection from '../../components/ui/FAQSection.astro';
+
+const toc = [
+  { id: 'electrical', label: 'Electrical terms' },
+  { id: 'equipment', label: 'Equipment terms' },
+  { id: 'fuel', label: 'Fuel terms' },
+  { id: 'codes', label: 'Codes & standards' },
+  { id: 'metrics', label: 'Ratings & metrics' },
+  { id: 'faq', label: 'FAQ' },
+];
+
+const groups: { id: string; terms: [string, string][] }[] = [
+  { id: 'electrical', terms: [
+    ['Automatic transfer switch (ATS)', 'A listed device that senses utility loss, starts the generator, and swaps your home to backup power — then swaps back when utility stabilizes.'],
+    ['Manual transfer switch (MTS)', 'A hand-operated double-throw switch serving 6–10 pre-chosen circuits. Break-before-make contacts prevent utility and generator ever connecting together.'],
+    ['Interlock kit', 'A listed sliding plate on your main panel that physically blocks the main breaker and a generator breaker from being ON at the same time.'],
+    ['Backfeed', 'Generator power flowing backward onto utility lines — lethal to line workers. Listed transfer equipment exists to make it impossible.'],
+    ['Suicide cord', 'A double-male extension cord used to backfeed through dryer outlets. Never acceptable — causes backfeed, fire, and equipment destruction.'],
+    ['Total harmonic distortion (THD)', 'How far generator output deviates from a pure sine wave, in percent. Standby units run under 5%; cheap portables reach 8–25%.'],
+    ['Locked-rotor amps (LRA)', 'A motor nameplate figure: worst-case startup current. Multiply by voltage for startup volt-amps — the number that sizes generators.'],
+    ['Power factor', 'The fraction of apparent power (kVA) that does real work (kW). Residential math typically assumes ~0.8 for motor loads.'],
+  ]},
+  { id: 'equipment', terms: [
+    ['Air-cooled standby', 'Fan-cooled 3,600 RPM engine, 7–26 kW. Simpler and cheaper; the default for most homes.'],
+    ['Liquid-cooled standby', 'Radiator-cooled 1,800 RPM engine, 22 kW and up. Longer-lived and steadier; heavier, pricier, needs coolant service.'],
+    ['Exercise cycle', 'The automatic weekly 5–20 minute self-test: circulates oil, charges the battery, works switch contacts, and reveals faults early.'],
+    ['Load shedding / load management', 'Automatically dropping deferrable circuits (water heater, dryer, second AC) during surges so a smaller generator covers a larger home.'],
+    ['Soft starter', 'A device that ramps compressor voltage to cut startup surge roughly 30–60%. Evaluated per compressor by an HVAC tech.'],
+    ['PowerBoost (Kohler)', 'Kohler-exclusive starting technology that handles large motor surges without dropping other loads.'],
+    ['Quiet-Test', 'Low-speed weekly exercise mode that cuts test noise and wear versus full-speed exercise.'],
+  ]},
+  { id: 'fuel', terms: [
+    ['Therm', '100,000 BTU — about 100 cubic feet of natural gas. The unit behind most gas bills and run-cost math.'],
+    ['Inches water column (in WC)', 'Gas-pressure unit. Homes run ~5–7 in WC for natural gas, ~11 in WC after a propane second-stage regulator.'],
+    ['Second-stage regulator', 'The propane regulator at the house end that steps tank pressure down to the 11 in WC appliances expect.'],
+    ['80% fill rule', 'Propane tanks fill to 80% only, leaving vapor space for expansion. A "500-gallon" tank holds ~400 usable gallons.'],
+    ['Dual-fuel / tri-fuel', 'Portables that burn gasoline + propane (+ natural gas for tri-fuel), with derated output on gaseous fuels. Standby units are NG/LP field-configurable instead.'],
+  ]},
+  { id: 'codes', terms: [
+    ['NEC (NFPA 70)', 'The National Electrical Code: wiring, grounding, overcurrent, and transfer-equipment rules (Article 702 covers optional standby systems). Adopted with local amendments.'],
+    ['NFPA 37', 'Stationary combustion-engine standard behind the familiar minimums: 18 in from combustibles, 5 ft from openings and vents.'],
+    ['NFPA 54 / 58', 'Fuel-gas code (54, natural gas) and LP-gas code (58): pipe sizing, regulators, tank placement.'],
+    ['AHJ', 'Authority Having Jurisdiction — your local inspector/office whose adopted edition and amendments actually govern your install.'],
+    ['SwRI listing', 'Southwest Research Institute listing some manufacturers use to certify reduced-clearance installs. Model-specific — check the manual, not folklore.'],
+  ]},
+  { id: 'metrics', terms: [
+    ['kW vs kVA', 'Kilowatts do work; kilovolt-amps include reactive power. Motors billed in kVA need roughly 20% more headroom than their kW suggests.'],
+    ['Standby rating (ESP)', 'Emergency-backup power, capped around 200 hours/year with no overload allowance. Every residential standby unit carries this rating.'],
+    ['Prime / continuous ratings', 'Unlimited-hours ratings for off-grid primary (PRP) or constant-load (COP) duty. Buying these for a home buys capability you will never use.'],
+    ['SAIDI / SAIFI', 'Utility reliability indices: average outage hours (SAIDI) and outage count (SAIFI) per customer per year. EIA publishes both.'],
+    ['Derating', 'Capacity lost to altitude (~3.5% per 1,000 ft above 500 ft) and heat (~1% per 10°F above 77°F). A mountain 22 kW is an 18 kW.'],
+  ]},
+];
+---
+<ArticleLayout
+  title="Generator Glossary: 30 Terms Explained in Plain Language"
+  description="Generator glossary: ATS, THD, LRA, SAIDI, ESP ratings, therms, NFPA codes, and 20+ more standby terms defined for US homeowners."
+  category="Buying Guides" categoryHref="/guides/" updated="2026-10-04" readingTime="8 min read" toc={toc}
+  related={[
+    { href: '/sizing/what-size-generator-do-i-need/', title: 'What Size Generator Do I Need?', description: 'Put the terms to work.', category: 'Sizing' },
+    { href: '/cost/transfer-switch-cost/', title: 'Transfer Switch Guide', description: 'ATS, MTS, and interlocks in depth.', category: 'Cost' },
+  ]}
+  prev={{ href: '/guides/how-long-can-generator-run/', label: 'How Long Can It Run?' }}
+  next={{ href: '/sizing/what-size-generator-do-i-need/', label: 'Sizing Guide' }}
+>
+  <section id="how-to-use"><h2>How to use this glossary</h2>
+  <p>Standard industry definitions in homeowner language. Where a term drives a buying decision, we link the deep guide. Nothing here replaces your equipment manual or local inspector.</p></section>
+  {groups.map((g) => (
+    <section id={g.id}>
+      <h2>{g.id === 'electrical' ? 'Electrical terms' : g.id === 'equipment' ? 'Equipment terms' : g.id === 'fuel' ? 'Fuel terms' : g.id === 'codes' ? 'Codes & standards' : 'Ratings & metrics'}</h2>
+      <dl>
+        {g.terms.map(([t, d]) => (
+          <div class="mt-4 rounded-lg border border-[#e5e7eb] bg-white p-4">
+            <dt class="font-semibold text-[#1e3a5f]">{t}</dt>
+            <dd class="mt-1 text-[15px] text-gray-600">{d}</dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+  ))}
+  <section id="faq"><span class="sr-only">FAQ anchor</span></section>
+  <FAQSection items={[
+    { q: 'What is the single most important term to understand?', a: 'Starting watts (LRA surge). The gap between running and starting power decides generator size more than any other concept on this page.' },
+    { q: 'What does ATS stand for?', a: 'Automatic transfer switch — the device that moves your home between utility and generator power without you touching anything.' },
+    { q: 'Do I need to memorize codes?', a: 'No. Know that NEC Article 702 governs standby wiring, NFPA 37 governs placement minimums, and your AHJ plus equipment manual have the final word — then hire licensed pros who live in those documents.' },
+  ]} />
+  <section id="conclusion"><h2>Conclusion</h2><p>Fluent in the vocabulary? Spend it in the <a href="/sizing/calculator/">sizing calculator</a>.</p></section>
+</ArticleLayout>
