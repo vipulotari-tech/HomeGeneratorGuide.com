@@ -1,0 +1,70 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import AlertBox from '../../components/ui/AlertBox.astro';
+import ComparisonTable from '../../components/ui/ComparisonTable.astro';
+import FAQSection from '../../components/ui/FAQSection.astro';
+
+const toc = [
+  { id: 'thd', label: 'THD in one minute' },
+  { id: 'sensitivity', label: 'What needs clean power' },
+  { id: 'brands', label: 'Brand THD ratings' },
+  { id: 'surge', label: 'Surge strategy (3 layers)' },
+  { id: 'models', label: 'Which surge devices' },
+  { id: 'ups', label: 'UPS: bridging the 10 seconds' },
+  { id: 'faq', label: 'FAQ' },
+];
+---
+<ArticleLayout
+  title="Power Quality, THD & Surge Protection for Generator Homes"
+  description="THD explained: which electronics need clean power, standby vs portable THD ratings, 3-layer surge strategy with device specs, and why computers still need a UPS."
+  category="Buying Guides" categoryHref="/guides/" updated="2026-10-03" readingTime="9 min read" toc={toc}
+  related={[
+    { href: '/sizing/understanding-generator-ratings/', title: 'Generator Ratings Explained', description: 'Standby vs prime, derating.', category: 'Sizing' },
+    { href: '/guides/generator-safety-carbon-monoxide/', title: 'CO Safety Guide', description: 'The other safety essential.', category: 'Buying Guides' },
+  ]}
+  prev={{ href: '/guides/generator-safety-carbon-monoxide/', label: 'CO Safety Guide' }}
+  next={{ href: '/guides/how-long-can-generator-run/', label: 'How Long Can It Run?' }}
+>
+  <section id="thd"><h2>THD in one minute</h2>
+  <p>Total Harmonic Distortion measures how far a generator's AC wave deviates from a perfect sine — 0% is ideal, and every generator adds some distortion. High THD overheats transformers, motors, and power supplies; corrupts data; and shortens electronics. The thresholds below are commonly cited industry guidance, not manufacturer guarantees — treat them as planning bands.</p></section>
+
+  <section id="sensitivity"><h2>What needs clean power</h2>
+  <ComparisonTable caption="Equipment THD sensitivity" headers={['Tier', 'Equipment', 'Planning limit']} rows={[
+    ['Highly sensitive', 'Computers, phones/tablets, TVs, audio, consoles, furnace boards, inverter HVAC, medical devices, network gear', '<3–5%'],
+    ['Moderately sensitive', 'Fridges/freezers, washers/dryers, dishwashers, LED lighting, microwaves, VFD well pumps', '<10%'],
+    ['Tolerant', 'Incandescent/halogen, resistance heat, electric water heaters, basic single-speed motors', '>10% OK'],
+  ]} /></section>
+
+  <section id="brands"><h2>Brand THD ratings (the good news)</h2>
+  <ComparisonTable caption="THD by generator type" headers={['Type', 'Typical THD', 'Electronics-safe?']} rows={[
+    ['Standby (Generac Guardian, Kohler RES/RCA, Cummins QuietConnect)', '<5%', 'Yes — most home electronics'],
+    ['Inverter (Honda EU, Generac iQ, Champion inverter)', '<3%', 'Yes — excellent'],
+    ['Conventional portable', '8–15%', 'No — risk to sensitive gear'],
+    ['Budget portable', '15–25%+', 'No — high damage risk'],
+  ]} />
+  <p class="mt-3">This is a genuine standby advantage worth stating: a standby's &lt;5% THD covers everything short of the most delicate lab gear, while a cheap portable can eat furnace boards and TVs over time. Verify your exact model's spec sheet — ratings vary by SKU.</p></section>
+
+  <section id="surge"><h2>Surge strategy: 3 layers, in order</h2>
+  <p>THD is about wave <em>shape</em>; surges are about voltage <em>spikes</em> — transfer events, compressor switching, utility restoration, and lightning all transient-spike a generator home. Layer the defense:</p>
+  <ComparisonTable caption="Surge protection layers" headers={['Layer', 'Device', 'Location', 'Cost', 'Priority']} rows={[
+    ['1 — Whole house', 'Panel SPD', 'Main panel, line side of transfer switch', '$150–$300 installed', 'Essential'],
+    ['2 — Generator feed', 'Generator-output SPD', 'Between generator and transfer switch', '$200–$400', 'Recommended'],
+    ['3 — Point of use', 'Surge strips', 'At computers, TVs, audio', '$30–$100 each', 'Recommended'],
+  ]} />
+  <p class="mt-3">Whole-house SPD spec targets: clamping ≤400 V, ≥1,000 joules/leg, sub-nanosecond response, UL 1449 listed. Installed by a licensed electrician — panel work, same rule as everything else here.</p></section>
+
+  <section id="models"><h2>Which surge devices (examples, not endorsements)</h2>
+  <p>Commonly specified panel SPDs: Eaton CHSPT2SURGE (~$150–$200 installed), Siemens QSA220150 (~$150–$200), Square D HOM2175SB (~$120–$180), Leviton 51120-1 (~$180–$250). Match the SPD to your panel brand and have the installer confirm coordination with the transfer switch — examples for shopping orientation, verified at purchase time.</p></section>
+
+  <section id="ups"><h2>UPS: bridging the 10 seconds (and the flicker)</h2>
+  <p>Residential ATS is open-transition: a sub-second break plus the 10–20-second start sequence. Computers, routers, and CPAPs should sit on a UPS ($100–$500) regardless of THD — it bridges the gap, filters the transfer, and outlives the argument about whether the reboot "counts." Critical for WFH and medical loads; cheap insurance everywhere else.</p>
+  <AlertBox type="info" title="The complete electronics recipe">Standby with &lt;5% THD + whole-house SPD + point-of-use strips + UPS on computers/network/medical = a home office that survives transfers without noticing them.</AlertBox></section>
+
+  <section id="faq"><span class="sr-only">FAQ anchor</span></section>
+  <FAQSection items={[
+    { q: 'Will a standby generator damage my electronics?', a: 'Major-brand standby units publish <5% THD — safe for essentially all home electronics. Damage stories overwhelmingly involve high-THD portables or surge events, which is why the SPD + UPS layers matter even with clean standby power.' },
+    { q: 'Do I need a whole-house surge protector with a generator?', a: 'Yes — treat it as essential, not optional. Transfer events, motor switching, utility restoration, and lightning all spike; $150–$300 installed protects every circuit including the generator feed path.' },
+    { q: 'Why did my computer reboot when the generator kicked in?', a: 'Open-transition transfer includes a brief break plus the 10–20-second start sequence. A UPS bridges it. This is normal ATS physics, not a generator defect.' },
+  ]} />
+  <section id="conclusion"><h2>Conclusion</h2><p>Clean sine (&lt;5% standby), layered surge defense, UPS on anything with unsaved work. Electronics protection costs ~$500 total against thousands in boards and data — spec it with the install, not after the first casualty. Next: <a href="/sizing/understanding-generator-ratings/">ratings & derating</a>.</p></section>
+</ArticleLayout>

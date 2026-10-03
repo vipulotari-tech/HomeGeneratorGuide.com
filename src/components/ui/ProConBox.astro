@@ -1,0 +1,14 @@
+---
+interface Props { pros: string[]; cons: string[]; prosTitle?: string; consTitle?: string; }
+const { pros, cons, prosTitle = 'Pros', consTitle = 'Limitations' } = Astro.props;
+---
+<div class="grid gap-4 sm:grid-cols-2">
+  <div class="rounded-lg border border-green-200 bg-[#f0fdf4] p-4">
+    <p class="font-semibold text-[#14532d]">{prosTitle}</p>
+    <ul class="mt-2 list-disc space-y-1 pl-5 text-sm text-[#14532d]">{pros.map((p) => (<li>{p}</li>))}</ul>
+  </div>
+  <div class="rounded-lg border border-amber-200 bg-[#fffbeb] p-4">
+    <p class="font-semibold text-[#78350f]">{consTitle}</p>
+    <ul class="mt-2 list-disc space-y-1 pl-5 text-sm text-[#78350f]">{cons.map((c) => (<li>{c}</li>))}</ul>
+  </div>
+</div>

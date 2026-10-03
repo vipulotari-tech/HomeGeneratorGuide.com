@@ -1,0 +1,255 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import AlertBox from '../../components/ui/AlertBox.astro';
+import ComparisonTable from '../../components/ui/ComparisonTable.astro';
+import FAQSection from '../../components/ui/FAQSection.astro';
+import { nationalInstalledRange2026, costFactors } from '../../data/state-costs';
+
+const toc = [
+  { id: 'snapshot', label: '2026 cost snapshot' },
+  { id: 'units', label: 'Unit prices by model' },
+  { id: 'installed', label: 'Installed cost by size' },
+  { id: 'regional', label: 'Regional install costs' },
+  { id: 'breakdown22', label: 'Anatomy of a 22 kW install' },
+  { id: 'equipment', label: 'Equipment notes' },
+  { id: 'transfer-switch', label: 'Transfer switch' },
+  { id: 'electrical', label: 'Electrical work' },
+  { id: 'gas', label: 'Gas work & fuel' },
+  { id: 'site', label: 'Pad, site & permits' },
+  { id: 'drivers', label: 'What moves your price' },
+  { id: 'operating', label: 'Fuel, maintenance & operating' },
+  { id: 'quotes', label: 'Comparing quotes' },
+  { id: 'hidden', label: 'Hidden-cost traps' },
+  { id: 'faq', label: 'FAQ' },
+];
+
+const faqs = [
+  { q: 'How much does a standby generator cost installed in 2026?', a: 'Nationally, most single-family standby installs land $9,000–$16,000 all-in, with 7–10 kW essentials from ~$5,000 and complex 22–26 kW sites to $17,000. These are planning estimates — get 3+ written local quotes on identical scope.' },
+  { q: 'What is the cheapest way to get backup power?', a: 'A portable + manual transfer inlet ($1,500–$4,000 installed) is far cheaper but manual. Standby costs more because it is automatic, permanent, and permitted.' },
+  { q: 'Does the generator price include installation?', a: 'Almost never. Retail and MSRP figures exclude labor, gas, pad, and permits. Compare all-in quotes, not box prices.' },
+  { q: 'How much does a transfer switch add?', a: 'Parts $50–$2,500+ by type plus labor; service-entrance ATS with load management can let a smaller generator cover a larger home. Full breakdown in our switch guide.' },
+  { q: 'What does yearly maintenance cost?', a: 'Pro service $150–$400/year by brand plus exercise fuel (~$12–$45/year); all-in upkeep typically $300–$600/year. Service plans run $199–$349 (Generac basic) to $420–$1,680 (Kohler GenWatch tiers).' },
+  { q: 'Why do quotes for the same kW differ by $5,000?', a: 'Site conditions: gas-line distance and trenching, electrical run length, panel upgrades, pad/grading, permit fees, and load-management scope. Identical boxes, very different installs.' },
+  { q: 'Is there a federal tax credit for generators?', a: 'No — standard standby units do not qualify. Limited state/co-op rebates exist. Details in our ROI guide.' },
+];
+---
+<ArticleLayout
+  title="Whole-House Standby Generator Cost in 2026: Installed Prices & Line Items"
+  description="Standby generator installed costs for 2026: unit prices by model, installed cost by size and region, 22 kW anatomy, operating costs, quotes, and ROI."
+  category="Cost"
+  categoryHref="/cost/"
+  updated="2026-10-03"
+  readingTime="15 min read"
+  toc={toc}
+  related={[
+    { href: '/cost/generator-roi-outage-costs/', title: 'Generator ROI & Outage Costs', description: 'Payback, financing, tax facts.', category: 'Cost' },
+    { href: '/cost/installation-cost-breakdown/', title: 'Installation Cost Breakdown', description: 'Trade-by-trade install spend.', category: 'Cost' },
+    { href: '/sizing/what-size-generator-do-i-need/', title: 'What Size Generator Do I Need?', description: 'Capacity is the biggest cost driver.', category: 'Sizing' },
+  ]}
+  prev={{ href: '/sizing/what-size-for-2000-sq-ft/', label: 'Size for 2,000 Sq Ft' }}
+  next={{ href: '/cost/generator-roi-outage-costs/', label: 'Generator ROI & Outage Costs' }}
+  takeaways={[
+    'Most single-family standby installs land $9,000–$16,000 all-in; box prices exclude installation.',
+    'Transfer switch, gas-line distance, panel work, and permits drive quotes more than brand choice.',
+    'Get 3–5 bids on identical scope — dealer pricing swings 15–30% on the same kilowatts.',
+    'Yearly upkeep runs $300–$600; exercise fuel costs single dollars per month.',
+    'No federal tax credit exists for standard standby generators.',
+  ]}
+  sources={[
+    { label: 'U.S. EIA — Natural Gas Monthly Prices', href: 'https://www.eia.gov/naturalgas/monthly/' },
+    { label: 'DSIRE — State Incentive Database', href: 'https://www.dsireusa.org/' },
+    { label: 'Generac — Residential Standby Lineup', href: 'https://www.generac.com/residential-products/standby-generators/' },
+  ]}
+>
+  <AlertBox type="warning" title="Prices are estimates">{nationalInstalledRange2026.disclaimer}</AlertBox>
+
+  <section id="snapshot">
+    <h2>2026 cost snapshot (national planning ranges)</h2>
+    <ComparisonTable
+      caption="National standby cost ranges 2026"
+      headers={['Bucket', 'Typical range', 'Notes']}
+      rows={[
+        ['All-in installed', nationalInstalledRange2026.typicalRange, 'Most single-family standby jobs'],
+        ['Equipment only', nationalInstalledRange2026.equipmentOnly, 'Generator + included ATS bundle varies'],
+        ['Install labor & materials', nationalInstalledRange2026.installLaborAndMaterials, 'Electrical + gas + pad + startup'],
+        ['Annual upkeep', nationalInstalledRange2026.annualMaintenance, 'Service + consumables + battery reserve'],
+      ]}
+    />
+    <p class="mt-3">Methodology: 2024–2026 installer-published ranges plus retail/MSRP equipment pricing. Metro Northeast/West Coast and remote sites trend above range; Southeast/Midwest often below. No per-state table exists from any credible dataset — see <a href="/cost/installation-cost-breakdown/">why quotes vary</a>.</p>
+  </section>
+
+  <section id="units">
+    <h2>Unit prices by model (equipment + ATS bundles)</h2>
+    <p>MSRP and dealer ranges, unit-only vs with-ATS. Installation is never included.</p>
+    <ComparisonTable
+      caption="Generac Next Gen unit prices"
+      headers={['Model', 'kW', 'Unit MSRP', 'With ATS']}
+      rows={[
+        ['PowerPact 6998', '7.5', '$2,049', '$2,699–$2,899'],
+        ['7257 Next Gen', '10', '$3,769', '$4,419–$4,619'],
+        ['7258 Next Gen', '14', '$4,889', '$5,709–$5,949'],
+        ['7259 Next Gen', '18', '$5,709', '$6,529–$6,769'],
+        ['7260 Next Gen', '22', '$6,289–$6,309', '$7,129–$7,369'],
+        ['7326 Next Gen', '24', '$6,729', '$7,569–$7,789'],
+        ['7327 Next Gen', '26', '$7,159', '$7,999–$8,219'],
+        ['7328 Next Gen', '28', '$8,159', '$9,349–$9,509'],
+      ]}
+    />
+    <ComparisonTable
+      caption="Kohler, Briggs, Cummins, Champion unit prices"
+      headers={['Model', 'kW', 'Unit', 'With ATS']}
+      rows={[
+        ['Kohler 10RESV', '10', '$3,869–$3,946', '$4,500–$4,800'],
+        ['Kohler 12RESV', '12', '~$4,283', '$5,000–$5,300'],
+        ['Kohler 14RCA', '14', '$4,997–$5,199', '$5,800–$6,200'],
+        ['Kohler 20RCA', '20', '$6,016', '$6,900–$7,300'],
+        ['Kohler 26RCA', '26', '$7,546–$7,699', '$8,500–$9,000'],
+        ['Kohler 24RCL (liquid)', '24', '$17,900', '$19,500–$20,500'],
+        ['Kohler 38RCL (liquid)', '38', '$22,949', '$25,000–$26,500'],
+        ['Briggs PowerProtect', '13–26', '$4,200–$7,900', 'dealer bundle'],
+        ['Cummins RS13A/17A/20A', '13–20', '$4,282–$6,100', 'RS20AC bundles ATS'],
+        ['Champion aXis', '8.5–22', '$3,200–$6,300', 'select SKUs bundle switch'],
+      ]}
+    />
+  </section>
+
+  <section id="installed">
+    <h2>Installed cost by generator size</h2>
+    <ComparisonTable
+      caption="Installed cost by size"
+      headers={['Size', 'Equipment', 'Installation', 'All-in']}
+      rows={[
+        ['7–10 kW', '$3,000–$4,500', '$2,000–$4,500', '$5,000–$9,000'],
+        ['11–16 kW', '$4,500–$6,000', '$3,000–$5,500', '$7,500–$11,500'],
+        ['17–22 kW', '$6,000–$7,500', '$4,000–$7,000', '$10,000–$14,500'],
+        ['22–26 kW+', '$7,000–$9,000', '$5,000–$8,000', '$12,000–$17,000'],
+      ]}
+    />
+  </section>
+
+  <section id="regional">
+    <h2>Install cost by region (labor-driven)</h2>
+    <ComparisonTable
+      caption="Regional installation costs"
+      headers={['Region', 'Electrician rate', 'Typical install']}
+      rows={[
+        ['Northeast', '$90–$150/hr', '$6,000–$9,000 (strict permitting)'],
+        ['Southeast', '$65–$110/hr', '$4,500–$7,500 (hurricane demand)'],
+        ['Midwest', '$60–$100/hr', '$4,000–$7,000'],
+        ['Southwest', '$65–$110/hr', '$4,500–$7,500'],
+        ['West Coast', '$95–$160/hr', '$6,500–$10,000 (CA codes)'],
+        ['Pacific NW', '$75–$125/hr', '$5,000–$8,000 (seismic)'],
+      ]}
+    />
+    <p class="mt-3">Regional labor bands are planning context — your bids govern. We publish no per-state equipment table because no credible dataset supports one.</p>
+  </section>
+
+  <section id="breakdown22">
+    <h2>Anatomy of a typical 22 kW install</h2>
+    <ComparisonTable
+      caption="22 kW install line items"
+      headers={['Line item', 'Range', 'Notes']}
+      rows={[
+        ['Transfer switch (parts + labor)', '$500–$2,500', 'ATS parts $600–$1,500 + labor $400–$1,000'],
+        ['Concrete pad', '$300–$1,000', 'Pre-cast $300–$600; poured $600–$1,000'],
+        ['Gas line extension', '$150–$1,800', '<20 ft $150–$400; 20–50 ft $400–$900; 50+ ft $800–$1,800'],
+        ['Electrical work', '$1,000–$3,000', 'Runs + panel work as needed'],
+        ['Permits & inspections', '$100–$500', 'Electrical $75–$350; gas $50–$200'],
+        ['Crane (if needed)', '$300–$800', 'Large units / tight access only'],
+        ['Total install labor', '$2,000–$5,000', 'Complexity + region dependent'],
+      ]}
+    />
+  </section>
+
+  <section id="equipment">
+    <h2>Equipment notes</h2>
+    <p>Liquid-cooled 30 kW+ starts far higher and needs engineered quotes. Capacity, enclosure, and monitoring bundles move the needle — never compare across brands without matching fuel, kW, and switch inclusion.</p>
+  </section>
+
+  <section id="transfer-switch">
+    <h2>Transfer switch: the underestimated line item</h2>
+    <p>Budget $50–$3,500+ for parts plus labor by type: interlock ($50–$150), manual ($200–$800), residential ATS ($600–$2,500), service-entrance ATS ($1,500–$3,500+). Load management can let a smaller generator cover a larger home. Full guide: <a href="/cost/transfer-switch-cost/">transfer switch costs</a>.</p>
+  </section>
+
+  <section id="electrical">
+    <h2>Electrical work</h2>
+    <ul>
+      <li>Wire runs from generator to switch to panel — long runs through finished spaces cost more.</li>
+      <li>Panel work: breaker space, subpanel additions, grounding/bonding corrections ($500–$3,000+ when upgrades are needed).</li>
+      <li>Load-management modules and smart-breaker programming.</li>
+      <li>Startup, ATS programming, and homeowner walkthrough (insist this is itemized).</li>
+    </ul>
+  </section>
+
+  <section id="gas">
+    <h2>Gas work & fuel setup</h2>
+    <ul>
+      <li><strong>Natural gas:</strong> pipe sizing and run length dominate; pressure test + inspection in good bids. Meter upgrades ($500–$1,500) are common at 20 kW+.</li>
+      <li><strong>Propane:</strong> above-ground tank installs $2,000–$4,000, underground $4,000–$6,000, plus first fill and regulator setup.</li>
+    </ul>
+  </section>
+
+  <section id="site">
+    <h2>Pad, site preparation & permits</h2>
+    <ul>
+      <li>Pad: precast, poured, or approved composite ($200–$1,500+); must meet manual clearance and inspector.</li>
+      <li>Grading, drainage, snow/flood elevation, shrub clearance for airflow and service access.</li>
+      <li>Permits/inspections: $100–$600+ by jurisdiction; HOA approvals add calendar time. Confirm who pulls permits.</li>
+    </ul>
+  </section>
+
+  <section id="drivers">
+    <h2>What moves your price most</h2>
+    <div class="overflow-x-auto rounded-lg border border-[#e5e7eb] not-prose">
+      <table class="w-full min-w-[560px] border-collapse text-left text-sm">
+        <caption class="sr-only">Cost factors and impact</caption>
+        <thead><tr class="bg-[#1e3a5f] text-white"><th scope="col" class="px-4 py-3">Factor</th><th scope="col" class="px-4 py-3">Impact</th><th scope="col" class="px-4 py-3">Guidance</th></tr></thead>
+        <tbody>
+          {costFactors.map((f) => (
+            <tr class="border-t border-[#e5e7eb] odd:bg-white even:bg-[#f9fafb]">
+              <th scope="row" class="px-4 py-2.5 font-medium text-[#1e3a5f]">{f.factor}</th>
+              <td class="px-4 py-2.5 capitalize">{f.impact}</td>
+              <td class="px-4 py-2.5 text-gray-600">{f.guidance}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="operating">
+    <h2>Operating costs: fuel + maintenance</h2>
+    <ul>
+      <li><strong>Exercise fuel:</strong> weekly runs cost roughly $12–$45/year (NG $12–$28, propane $18–$45 by size) — single dollars per month.</li>
+      <li><strong>Outage fuel (50% load):</strong> 22 kW runs ~$2.65–$3.19/hr on NG vs ~$7.80–$9.30/hr on propane; a 24-hour outage ≈ $64–$77 (NG) or $187–$223 (LP). Full tables: <a href="/guides/natural-gas-vs-propane/">fuel guide</a>.</li>
+      <li><strong>Maintenance:</strong> pro annual service $150–$400 by brand; service plans $199–$349/yr (Generac basic) to $420–$1,680/yr (Kohler GenWatch tiers). All-in upkeep typically $300–$600/year. Skipping service voids warranties — see <a href="/maintenance/generator-maintenance-checklist/">the checklist</a>.</li>
+    </ul>
+  </section>
+
+  <section id="quotes">
+    <h2>Comparing quotes fairly</h2>
+    <p>Get 3–5 written quotes on identical scope (prices swing 15–30% between dealers — a $500–$2,000 spread). Every bid must state: generator model + kW + fuel, switch type + module count, gas scope (length/trench/test), electrical scope (runs/panel/grounding), pad + restoration, permit handling, startup + walkthrough, warranty registration, first service date. Normalize on all-in price and scope completeness.</p>
+    <AlertBox type="info" title="Red flags">Square-footage sizing with no load list, "permits not needed" claims, no gas-pressure verification, cash-only/no-license, or refusal to itemize the switch.</AlertBox>
+  </section>
+
+  <section id="hidden">
+    <h2>Hidden-cost traps</h2>
+    <ul>
+      <li>Panel upgrade discovered day-of (demand pre-bid panel photos + capacity check).</li>
+      <li>Trenching through rock, driveways, or mature landscaping.</li>
+      <li>Propane tank upsizing after first winter.</li>
+      <li>Crane access for tight lots.</li>
+      <li>Landscaping/electrical restoration excluded from scope.</li>
+      <li>Extended warranty or service-plan auto-enrollment you did not request.</li>
+    </ul>
+    <p>Whether the investment pays: <a href="/cost/generator-roi-outage-costs/">ROI & outage-cost guide</a> (spoiler: no federal tax credit exists for standby units).</p>
+  </section>
+
+  <section id="faq"><span class="sr-only">FAQ anchor</span></section>
+  <FAQSection items={faqs} />
+
+  <section id="conclusion">
+    <h2>Conclusion</h2>
+    <p>Plan $9,000–$16,000 installed for most single-family standby systems, size first via <a href="/sizing/what-size-generator-do-i-need/">the sizing guide</a>, then force bids to compete on identical scope. The best value is rarely the cheapest box — it is the most complete install from the most responsive local dealer. Next: <a href="/cost/generator-roi-outage-costs/">does it pay back?</a></p>
+  </section>
+</ArticleLayout>

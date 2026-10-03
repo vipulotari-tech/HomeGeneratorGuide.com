@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/layout/Breadcrumbs.astro';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'HomeGeneratorGuide',
+  url: 'https://homegeneratorguide.com/',
+  description: 'Independent educational resource helping US homeowners understand standby generators.',
+};
+---
+<BaseLayout title="About" description="HomeGeneratorGuide is an independent educational resource helping US homeowners understand standby generators. Learn our mission, method, and independence." schema={schema}>
+  <div class="mx-auto max-w-3xl px-4 py-10 sm:px-6">
+    <Breadcrumbs items={[{ href: '/', label: 'Home' }, { label: 'About' }]} />
+    <h1 class="mt-4 text-4xl font-bold text-[#1e3a5f]">About HomeGeneratorGuide</h1>
+    <div class="prose-hgg mt-6">
+      <p><strong>Mission:</strong> help US homeowners make confident, safe backup-power decisions — without sales pressure. A standby generator is a $9,000–$16,000 installed commitment that touches your electrical panel, gas supply, and local permits. You deserve plain-language education before a salesperson visits.</p>
+      <h2>What we do</h2>
+      <ul>
+        <li>Explain <a href="/sizing/what-size-generator-do-i-need/">sizing</a> in running vs starting watts, with worked examples.</li>
+        <li>Break down <a href="/cost/standby-generator-cost/">costs</a> into equipment, labor, fuel, permits, and maintenance.</li>
+        <li>Compare <a href="/comparisons/generac-vs-kohler/">brands</a> neutrally — situation-based conclusions, never a preordained winner.</li>
+        <li>Describe <a href="/installation/what-to-expect/">installation</a> and <a href="/maintenance/generator-maintenance-checklist/">maintenance</a> so you can hire and supervise pros effectively.</li>
+      </ul>
+      <h2>Independence</h2>
+      <p>HomeGeneratorGuide is an independent educational resource and is not affiliated with any generator manufacturer. We take no payment for brand placement or rankings. If affiliate links are ever activated, they will be clearly disclosed per our <a href="/affiliate-disclosure/">affiliate disclosure</a> — and recommendations will never be made purely for commission.</p>
+      <h2>Research method</h2>
+      <ul>
+        <li>Manufacturer documentation and spec sheets first; government and code-related sources next; reputable installer/retail sources for pricing context.</li>
+        <li>Estimates are labeled as estimates. Capacities are series-level ranges — always confirm the exact SKU spec sheet.</li>
+        <li>Installation content encourages licensed professionals; we never instruct DIY electrical or gas work.</li>
+      </ul>
+      <h2>Updating</h2>
+      <p>Guides carry an "Updated" date. We revisit pricing context, model lineups, and warranty terms periodically and correct errors promptly per our <a href="/editorial-policy/">editorial policy</a>.</p>
+      <h2>Contact</h2>
+      <p>Questions or corrections? Reach us via the <a href="/contact/">contact page</a>.</p>
+    </div>
+  </div>
+</BaseLayout>

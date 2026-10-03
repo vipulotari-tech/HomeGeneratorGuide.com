@@ -1,0 +1,16 @@
+---
+import CategoryLayout from '../../layouts/CategoryLayout.astro';
+---
+<CategoryLayout
+  title="Generator Maintenance Guides"
+  description="Keep your standby ready: owner checks, exercise cycles, battery care, service intervals, and storm preparation."
+  intro="Most standby failures are maintenance failures — dead batteries, stale oil, blocked airflow. These checklists separate safe homeowner checks from pro-only service."
+  cards={[
+    { href: '/maintenance/generator-maintenance-checklist/', title: 'Maintenance Checklist', description: 'Monthly, seasonal, and annual tasks with a printable-style log.', category: 'Maintenance', readingTime: '9 min read' },
+  ]}
+>
+  <div class="prose-hgg mt-10">
+    <h2>Owner vs pro line</h2>
+    <p>Look, listen, and clear debris yourself; leave oil, filters, valves, and electrical diagnostics to qualified service. Details in the <a href="/maintenance/generator-maintenance-checklist/">checklist</a>.</p>
+  </div>
+</CategoryLayout>

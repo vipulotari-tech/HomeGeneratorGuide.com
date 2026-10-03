@@ -1,0 +1,40 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ComparisonTable from '../../components/ui/ComparisonTable.astro';
+import FAQSection from '../../components/ui/FAQSection.astro';
+
+const toc = [
+  { id: 'two-ways', label: 'Two backup philosophies' },
+  { id: 'compare', label: 'Side-by-side' },
+  { id: 'managed', label: 'The managed middle' },
+  { id: 'decide', label: 'How to decide' },
+  { id: 'faq', label: 'FAQ' },
+];
+---
+<ArticleLayout
+  title="Whole-Home vs Essential-Load Backup: Which Fits You?"
+  description="Whole-home vs essential-load generator backup compared: cost, comfort, sizing, and who each approach suits — plus the managed middle most buyers choose."
+  category="Sizing" categoryHref="/sizing/" updated="2026-10-03" readingTime="8 min read" toc={toc}
+  related={[
+    { href: '/sizing/what-size-generator-do-i-need/', title: 'What Size Generator Do I Need?', description: 'Full sizing method.', category: 'Sizing' },
+    { href: '/cost/standby-generator-cost/', title: 'Standby Generator Cost (2026)', description: 'Price both philosophies.', category: 'Cost' },
+  ]}
+  prev={{ href: '/sizing/whole-home-vs-essential-loads/', label: 'Whole-Home vs Essential Loads' }}
+  next={{ href: '/sizing/understanding-generator-ratings/', label: 'Ratings & Sizing Method' }}
+>
+  <section id="two-ways"><h2>Two backup philosophies</h2>
+  <p><strong>Essential-load backup</strong> powers a chosen circuit list — fridge, freezer, lights, internet, furnace blower, sump, one small AC or the well pump — typically on a 10–14 kW standby with a subpanel switch. <strong>Whole-home backup</strong> powers near-normal life through a service-entrance ATS, typically 20–26+ kW, with optional load-shed modules deferring the 2–3 largest giants during surges. Neither is morally superior; they are budget-vs-comfort positions on the same engineering curve.</p></section>
+  <section id="compare"><h2>Side-by-side</h2>
+  <ComparisonTable caption="Backup philosophies compared" headers={['', 'Essential loads', 'Whole home']} rows={[['Typical standby', '10–14 kW', '20–26+ kW'], ['Switch', 'Subpanel / essential circuits', 'Service-entrance ATS + management'], ['Installed signal', 'Lower; simpler gas/panel scope', 'Higher; larger gas/panel scope'], ['Outage life', 'Camping-plus: comfortable, deliberate', 'Near-normal: AC, laundry, cooking'], ['Failure mode', 'Must respect the circuit list', 'Must respect shed programming'], ['Best for', 'Budget-first, gas heat, short outages', 'Medical needs, home office, long outages, all-electric']]} /></section>
+  <section id="managed"><h2>The managed middle (what most buyers actually choose)</h2>
+  <p>A 20–22 kW unit with 2–4 load-shed modules: everything backed except deferred giants (dryer, second AC zone, water heater, EV charger). Daily life feels whole-home; the system sheds gracefully for 30-second surges. It costs less than brute-force whole-home (no 26 kW + massive gas upsizing) and comforts far more than strict essentials. Ask bidders to quote both strict-essential and managed options — the delta is often smaller than expected.</p></section>
+  <section id="decide"><h2>How to decide in 15 minutes</h2>
+  <ul><li>List non-negotiables (medical, sump, well, work-from-home) — these are backed in every scenario.</li><li>Circle comfort loads (AC zones, dryer, range) — these decide the philosophy.</li><li>Price both: if managed whole-home is &lt;20% more installed, most families take it.</li><li>Check fuel: propane-tank capacity for 5-day outages often decides before the panel does.</li><li>Confirm with the load calculation — philosophy first, kilowatts second.</li></ul></section>
+  <section id="faq"><span class="sr-only">FAQ anchor</span></section>
+  <FAQSection items={[
+    { q: 'Can I start essential and upgrade later?', a: 'Partially — the pad, gas, and panel work can be sized for growth, but the generator and switch themselves are not incrementally upgradeable. Tell bidders about upgrade intent so infrastructure is not undersized.' },
+    { q: 'Does whole-home mean every breaker at once?', a: 'No — even whole-home systems use load management and breaker discipline. It means every circuit is available, not that every appliance runs simultaneously.' },
+    { q: 'Which is better for resale?', a: 'Managed whole-home photographs and appraises better, but a documented essential system with permits and service records still adds credible value. Unpermitted work adds nothing — permit either path.' },
+  ]} />
+  <section id="conclusion"><h2>Conclusion</h2><p>Default to the managed middle unless budget or fuel forces essentials-only. Either way, size from the <a href="/sizing/what-size-generator-do-i-need/">load list</a> and price in <a href="/cost/standby-generator-cost/">installed dollars</a>.</p></section>
+</ArticleLayout>

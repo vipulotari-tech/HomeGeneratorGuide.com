@@ -1,0 +1,18 @@
+---
+interface Props {
+  placement: string;
+  minHeight?: number;
+  className?: string;
+}
+const { placement, minHeight = 280, className = '' } = Astro.props;
+---
+<div
+  class={`ad-unit flex flex-col items-center justify-center rounded-lg border border-dashed border-gray-300 bg-gray-50 px-4 py-6 text-center ${className}`}
+  style={`min-height:${minHeight}px`}
+  role="complementary"
+  aria-label={`Advertisement placeholder: ${placement}`}
+>
+  <!-- ADSENSE: {placement} -->
+  <span class="text-[11px] font-semibold uppercase tracking-[0.14em] text-gray-400">Advertisement</span>
+  <span class="mt-1 text-xs text-gray-400">Ad slot: {placement} · reserved space prevents layout shift</span>
+</div>

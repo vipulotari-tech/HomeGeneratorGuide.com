@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/layout/Breadcrumbs.astro';
+import DataDisclaimer from '../../components/ui/DataDisclaimer.astro';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Generator Sizing Calculator',
+  description: 'Interactive standby generator sizing calculator: check your appliances, add running watts plus the largest surge, get a recommended kW range.',
+};
+---
+<BaseLayout
+  title="Generator Sizing Calculator: Find Your kW in 60 Seconds"
+  description="Free generator sizing calculator: select your appliances, get running watts, surge peak, and a recommended standby size range — then verify with an electrician."
+  schema={schema}
+>
+  <div class="mx-auto max-w-4xl px-4 py-8 sm:px-6">
+    <Breadcrumbs items={[{ href: '/', label: 'Home' }, { href: '/sizing/', label: 'Sizing' }, { label: 'Sizing Calculator' }]} />
+    <p class="mt-4 text-xs font-semibold uppercase tracking-[0.12em] text-orange-600">Sizing</p>
+    <h1 class="mt-2 text-3xl font-bold text-[#1e3a5f] sm:text-4xl">Generator Sizing Calculator</h1>
+    <p class="mt-3 text-lg text-gray-600">Check what runs simultaneously on backup. We add running watts, layer the largest motor surge, and recommend a size band — the same method in our <a href="/sizing/what-size-generator-do-i-need/" class="underline decoration-orange-400 underline-offset-4">sizing guide</a>.</p>
+
+    <noscript><p class="mt-4 rounded-lg border border-amber-300 bg-[#fffbeb] p-4 text-sm">This calculator needs JavaScript. Without it, use the <a href="/sizing/appliance-wattage-chart/" class="underline">wattage chart</a> manually: sum running watts, add the largest surge, add 10–25%.</p></noscript>
+
+    <form id="calc" class="mt-6 space-y-6" aria-describedby="calc-help">
+      <p id="calc-help" class="text-sm text-gray-600">Tip: count only loads running at the same time. Uncheck the dryer, oven, and EV charger unless they are truly simultaneous.</p>
+      <div id="groups" class="space-y-6"></div>
+      <div class="flex flex-wrap gap-3">
+        <button type="button" id="reset" class="inline-flex min-h-[44px] items-center rounded-lg border border-[#e5e7eb] px-5 font-semibold text-gray-700 hover:bg-slate-50">Reset all</button>
+        <a href="/sizing/appliance-wattage-chart/" class="inline-flex min-h-[44px] items-center rounded-lg border border-[#1e3a5f] px-5 font-semibold text-[#1e3a5f] hover:bg-slate-50">Full wattage chart →</a>
+      </div>
+    </form>
+
+    <section aria-live="polite" aria-label="Sizing result" class="mt-8 rounded-xl border border-[#e5e7eb] bg-[#f9fafb] p-6">
+      <h2 class="text-xl font-semibold text-[#1e3a5f]">Your result</h2>
+      <div class="mt-3 grid gap-4 sm:grid-cols-3">
+        <div class="rounded-lg bg-white p-4 text-center"><p class="text-2xl font-bold text-[#1e3a5f]" id="r-running">0 W</p><p class="text-sm text-gray-600">Running load</p></div>
+        <div class="rounded-lg bg-white p-4 text-center"><p class="text-2xl font-bold text-[#1e3a5f]" id="r-peak">0 W</p><p class="text-sm text-gray-600">Peak with surge</p></div>
+        <div class="rounded-lg bg-orange-600 p-4 text-center"><p class="text-2xl font-bold text-white" id="r-size">—</p><p class="text-sm text-orange-100">Recommended size</p></div>
+      </div>
+      <p id="r-note" class="mt-4 text-sm leading-relaxed text-gray-600">Select appliances above to calculate.</p>
+    </section>
+
+    <DataDisclaimer />
+    <p class="mt-4 text-sm text-gray-600">Methodology: NEC-style load thinking simplified — coincident running watts plus the single largest motor start, matched to standard standby sizes with headroom. A licensed electrician's load calculation is the purchase document; this is the planning document. Details: <a href="/sizing/understanding-generator-ratings/" class="underline decoration-orange-400 underline-offset-4">ratings & derating</a>.</p>
+  </div>
+
+<script>
+  const items = [
+    ['HVAC', [['Central AC 2-ton (2500/7500)', 2500, 7500], ['Central AC 3-ton (3500/11000)', 3500, 11000], ['Central AC 4-ton (5000/15000)', 5000, 15000], ['Furnace blower (800/2300)', 800, 2300], ['Window AC (1200/3600)', 1200, 3600]]],
+    ['Kitchen', [['Refrigerator (700/2200)', 700, 2200], ['Freezer (500/1500)', 500, 1500], ['Microwave (1200/1200)', 1200, 1200], ['Dishwasher (1500/1500)', 1500, 1500], ['Range element (2500/2500)', 2500, 2500]]],
+    ['Water & laundry', [['Well pump 1/2 HP (1000/3000)', 1000, 3000], ['Well pump 1 HP (2000/6000)', 2000, 6000], ['Sump pump (800/2400)', 800, 2400], ['Electric water heater (4500/4500)', 4500, 4500], ['Washer (500/1500)', 500, 1500], ['Electric dryer (5400/5400)', 5400, 5400]]],
+    ['Home & other', [['LED lights, generous (300/300)', 300, 300], ['Internet + TV + computer (400/400)', 400, 400], ['Garage door (600/1800)', 600, 1800], ['EV charger L2 (7700/7700)', 7700, 7700], ['CPAP (60/60)', 60, 60]]],
+  ];
+  const groups = document.getElementById('groups');
+  const boxes = [];
+  items.forEach(([gname, list]) => {
+    const fs = document.createElement('fieldset');
+    fs.className = 'rounded-xl border border-[#e5e7eb] bg-white p-4';
+    const lg = document.createElement('legend');
+    lg.className = 'px-2 text-sm font-semibold uppercase tracking-wider text-[#1e3a5f]';
+    lg.textContent = gname;
+    fs.appendChild(lg);
+    list.forEach(([label, run, start]) => {
+      const id = 'a-' + boxes.length;
+      const wrap = document.createElement('div');
+      wrap.className = 'flex items-center gap-3 border-b border-slate-100 py-2 last:border-0';
+      const cb = document.createElement('input');
+      cb.type = 'checkbox'; cb.id = id; cb.dataset.run = run; cb.dataset.start = start;
+      cb.className = 'h-5 w-5 accent-orange-600';
+      const lb = document.createElement('label');
+      lb.htmlFor = id; lb.className = 'flex-1 cursor-pointer py-1.5 text-[15px]';
+      lb.textContent = label;
+      wrap.appendChild(cb); wrap.appendChild(lb); fs.appendChild(wrap);
+      boxes.push(cb);
+      cb.addEventListener('change', update);
+    });
+    groups.appendChild(fs);
+  });
+  function band(peak) {
+    if (peak <= 0) return '—';
+    const need = peak * 1.15;
+    if (need <= 12000) return '10–14 kW';
+    if (need <= 16000) return '14–18 kW';
+    if (need <= 22000) return '20–24 kW';
+    if (need <= 26000) return '24–28 kW';
+    return '26 kW+ / liquid-cooled — get engineered quotes';
+  }
+  function update() {
+    let run = 0, surge = 0;
+    boxes.forEach((cb) => {
+      if (cb.checked) {
+        const r = +cb.dataset.run, s = +cb.dataset.start;
+        run += r; surge = Math.max(surge, s - r);
+      }
+    });
+    const peak = run + surge;
+    document.getElementById('r-running').textContent = run.toLocaleString() + ' W';
+    document.getElementById('r-peak').textContent = peak.toLocaleString() + ' W';
+    document.getElementById('r-size').textContent = band(peak);
+    document.getElementById('r-note').textContent = peak <= 0
+      ? 'Select appliances above to calculate.'
+      : 'Peak = running load + largest single surge, with ~15% headroom folded into the band. Confirm with a licensed load calculation before purchase.';
+  }
+  document.getElementById('reset').addEventListener('click', () => { boxes.forEach((b) => { b.checked = false; }); update(); });
+</script>
+</BaseLayout>

@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/layout/Breadcrumbs.astro';
+---
+<BaseLayout title="Disclaimer" description="Informational-use, price-estimate, electrical and gas safety disclaimer for HomeGeneratorGuide. Hire licensed professionals.">
+  <div class="mx-auto max-w-3xl px-4 py-10 sm:px-6">
+    <Breadcrumbs items={[{ href: '/', label: 'Home' }, { label: 'Disclaimer' }]} />
+    <h1 class="mt-4 text-4xl font-bold text-[#1e3a5f]">Disclaimer</h1>
+    <div class="prose-hgg mt-6">
+      <h2>Informational use only</h2>
+      <p>All content is general educational information for US homeowners — not professional electrical, gas, engineering, building-code, or safety advice. Your home, panel, fuel supply, and local codes are unique. Confirm everything with properly licensed professionals and your authority having jurisdiction.</p>
+      <h2>Electrical & gas safety</h2>
+      <p>Standby generators involve line-voltage wiring, automatic transfer equipment, and combustible fuel. Do not attempt DIY installation, panel work, gas piping, or transfer-switch wiring. Hire licensed electricians and gas professionals, pull required permits, and follow manufacturer manuals plus local codes.</p>
+      <h2>Price estimates</h2>
+      <p>Any prices are estimates based on available market information and national-level ranges. Actual costs vary significantly by location, labor rates, generator size, permitting, fuel setup, and site conditions. Get multiple written quotes from qualified local installers — our figures are planning context, not bids.</p>
+      <h2>Specifications & availability</h2>
+      <p>Capacities, warranties, features, and availability change. Verify the exact model spec sheet and current warranty terms on the manufacturer's site before purchase.</p>
+      <h2>Affiliate & advertising context</h2>
+      <p>Display ads (AdSense placeholders today) and any future affiliate links do not constitute endorsements. See <a href="/affiliate-disclosure/">affiliate disclosure</a> and <a href="/privacy-policy/">privacy policy</a>.</p>
+    </div>
+  </div>
+</BaseLayout>

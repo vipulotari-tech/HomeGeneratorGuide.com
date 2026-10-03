@@ -1,0 +1,52 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import AlertBox from '../../components/ui/AlertBox.astro';
+import ComparisonTable from '../../components/ui/ComparisonTable.astro';
+import FAQSection from '../../components/ui/FAQSection.astro';
+
+const toc = [
+  { id: 'answer', label: 'The short answer' },
+  { id: 'gas-vs-electric', label: 'Gas vs all-electric' },
+  { id: 'scenarios', label: '3 scenarios' },
+  { id: 'verify', label: 'Verify in 10 minutes' },
+  { id: 'faq', label: 'FAQ' },
+];
+---
+<ArticleLayout
+  title="What Size Generator for a 2,000 Sq Ft House? (Answered)"
+  description="What size generator for a 2,000 sq ft house: typically 20–24 kW with AC, 12–16 kW essentials — why loads decide, three scenarios, and a 10-minute verification."
+  category="Sizing" categoryHref="/sizing/" updated="2026-10-03" readingTime="7 min read" toc={toc}
+  related={[
+    { href: '/sizing/calculator/', title: 'Generator Sizing Calculator', description: '60-second interactive tool.', category: 'Sizing' },
+    { href: '/sizing/what-size-generator-do-i-need/', title: 'What Size Generator Do I Need?', description: 'Full method.', category: 'Sizing' },
+    { href: '/cost/standby-generator-cost/', title: 'Standby Generator Cost (2026)', description: 'Price your answer.', category: 'Cost' },
+  ]}
+  prev={{ href: '/sizing/understanding-generator-ratings/', label: 'Ratings & Sizing Method' }}
+  next={{ href: '/cost/standby-generator-cost/', label: 'Standby Generator Cost' }}
+>
+  <section id="answer"><h2>The short answer (with the required caveat)</h2>
+  <p>A 2,000 sq ft home with gas heat and a 3-ton AC typically lands on a <strong>20–24 kW</strong> standby; essentials-only backup lands <strong>12–16 kW</strong>. Equipment-only context runs roughly $4,000–$6,000 before installation. But square footage never sizes a generator — two identical floor plans can differ by 10+ kW on HVAC, water heating, and well pumps alone. Use the answer as a starting bid, then verify by loads.</p>
+  <AlertBox type="warning" title="Sq ft is a hint, loads are the answer">Any chart mapping floor area straight to kilowatts without asking about your AC tonnage, heat strips, and pump HP is a marketing shortcut. This page gives you the honest version.</AlertBox></section>
+
+  <section id="gas-vs-electric"><h2>Gas-heat vs all-electric: the fork</h2>
+  <ComparisonTable caption="2000 sq ft scenarios" headers={['Home type', 'Typical standby', 'Why']} rows={[
+    ['Gas heat + gas water + 2–3 ton AC', '18–22 kW', 'AC surge dominates; everything else modest'],
+    ['Gas heat + 3–4 ton AC', '20–24 kW', 'Larger compressor surge + headroom'],
+    ['All-electric + heat strips', '24–26 kW+ (or lock out strips)', '5–10 kW of strip heat dwarfs the compressor'],
+    ['Essentials only (any fuel)', '12–16 kW', 'Fridge, lights, blower/pump, one small motor'],
+  ]} /></section>
+
+  <section id="scenarios"><h2>Three 2,000 sq ft scenarios, worked</h2>
+  <ul><li><strong>Suburban gas home, 3-ton AC:</strong> ~8,200 W continuous + ~11,000 W AC surge → peak ~15–17 kW → <strong>20 kW</strong> comfortable.</li><li><strong>Rural well-water home, 2-ton AC:</strong> base ~5,700 W + pump surge 3,000 + AC surge 7,500 (staggered) → <strong>18–20 kW</strong> with pump priority.</li><li><strong>All-electric, heat-pump + strips:</strong> strips locked out on backup → behaves like scenario one (<strong>20–22 kW</strong>); strips included → <strong>26 kW+</strong> and a much bigger bill.</li></ul></section>
+
+  <section id="verify"><h2>Verify in 10 minutes</h2>
+  <ol><li>Run the <a href="/sizing/calculator/">60-second calculator</a> with your actual appliances.</li><li>Photograph your AC condenser LRA plate and well-pump HP plate.</li><li>Check the <a href="/sizing/appliance-wattage-chart/">wattage chart</a> for anything unusual (tankless electric, EV charger, shop tools).</li><li>Hand all three to the electrician — the quote visit collapses to one trip.</li></ol></section>
+
+  <section id="faq"><span class="sr-only">FAQ anchor</span></section>
+  <FAQSection items={[
+    { q: 'Will a 20 kW generator run a 2,000 sq ft house?', a: 'Usually yes for gas-heat homes with up to a 3-ton AC and managed loads. All-electric homes with strip heat or 4-ton+ AC often need 22–26 kW or strip lockout. Verify by load list, not floor plan.' },
+    { q: '20 kW vs 22 kW for 2,000 sq ft?', a: 'The ~$500–$1,000 equipment step buys surge headroom and growth margin. If the load calc lands within 15% of 20 kW capacity, take the 22. If comfortably below, pocket the difference.' },
+    { q: 'How many watts does a 2,000 sq ft house use?', a: 'Continuous draw varies 4,000–9,000 W by fuel and season; momentary peaks with AC starting reach 12,000–17,000 W. The peak — not the average — sizes the generator.' },
+  ]} />
+  <section id="conclusion"><h2>Conclusion</h2><p>20–24 kW is the honest center of gravity for a 2,000 sq ft home with cooling — now prove it with <a href="/sizing/calculator/">the calculator</a> and <a href="/cost/standby-generator-cost/">price it installed</a>.</p></section>
+</ArticleLayout>

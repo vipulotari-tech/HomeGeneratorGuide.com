@@ -1,0 +1,22 @@
+# llms.txt — HomeGeneratorGuide.com
+# Independent standby-generator education for US homeowners. Not affiliated with any manufacturer.
+
+## Core guides
+- [Generator Sizing Guide](https://homegeneratorguide.com/sizing/what-size-generator-do-i-need/): Running vs starting watts, worked example, 10–26 kW ranges. Size by loads, never square footage alone.
+- [Appliance Wattage Chart](https://homegeneratorguide.com/sizing/appliance-wattage-chart/): Running and starting watts for 28 common appliances.
+- [Standby Generator Cost (2026)](https://homegeneratorguide.com/cost/standby-generator-cost/): $9,000–$16,000 installed typical; unit prices by model; line-item anatomy.
+- [Generac vs Kohler](https://homegeneratorguide.com/comparisons/generac-vs-kohler/): Neutral criteria comparison with situation-based verdicts.
+- [Generac Brand Review](https://homegeneratorguide.com/brands/generac/): Next Generation MSRP, tiered warranty, noise ratings, maintenance intervals.
+- [Maintenance Checklist](https://homegeneratorguide.com/maintenance/generator-maintenance-checklist/): Owner vs pro tasks, brand intervals, battery testing, storm prep.
+
+## Trust and method
+- [About](https://homegeneratorguide.com/about/): Mission, independence, research method.
+- [Editorial Policy](https://homegeneratorguide.com/editorial-policy/): Sourcing hierarchy, verification, corrections.
+- [Disclaimer](https://homegeneratorguide.com/disclaimer/): Informational use, price estimates, electrical/gas safety.
+
+## Key facts (planning estimates — verify nameplates and get licensed quotes)
+- Most single-family homes: 18–26 kW standby; essentials-only: 10–14 kW.
+- Installed: $9,000–$16,000 typical single-family; 22 kW install labor $2,000–$5,000.
+- Standby THD <5% (safe for home electronics); portables run 8–25%+.
+- Standby CO risk is far lower than portable but nonzero — detectors on every level.
+- No federal tax credit for standard standby generators.

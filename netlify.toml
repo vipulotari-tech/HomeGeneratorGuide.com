@@ -1,0 +1,24 @@
+# Netlify deploy configuration for HomeGeneratorGuide.com (static Astro output)
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Canonical host: apex. Redirect www -> apex for SEO consolidation.
+[[redirects]]
+  from = "https://www.homegeneratorguide.com/*"
+  to = "https://homegeneratorguide.com/:splat"
+  status = 301
+  force = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+[[headers]]
+  for = "/_astro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

@@ -1,0 +1,53 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import AlertBox from '../../components/ui/AlertBox.astro';
+import ComparisonTable from '../../components/ui/ComparisonTable.astro';
+import FAQSection from '../../components/ui/FAQSection.astro';
+
+const toc = [
+  { id: 'mechanics', label: 'How each works' },
+  { id: 'compare', label: 'Head-to-head' },
+  { id: 'code', label: 'Code & AHJ acceptance' },
+  { id: 'decide', label: 'Decision framework' },
+  { id: 'faq', label: 'FAQ' },
+];
+---
+<ArticleLayout
+  title="Transfer Switch vs Interlock Kit: Which Manual Option Wins?"
+  description="Transfer switch vs interlock kit: mechanics, cost, panel compatibility, code acceptance, and a decision framework for portable-generator owners."
+  category="Comparisons" categoryHref="/comparisons/" updated="2026-10-03" readingTime="8 min read" toc={toc}
+  related={[
+    { href: '/cost/transfer-switch-cost/', title: 'Transfer Switch Guide', description: 'Full MTS/ATS/interlock costs.', category: 'Cost' },
+    { href: '/comparisons/standby-vs-portable/', title: 'Standby vs Portable', description: 'The bigger decision.', category: 'Comparisons' },
+  ]}
+  prev={{ href: '/comparisons/standby-vs-portable/', label: 'Standby vs Portable' }}
+  next={{ href: '/installation/what-to-expect/', label: 'Installation: What to Expect' }}
+>
+  <section id="mechanics"><h2>How each works (30 seconds)</h2>
+  <p><strong>Manual transfer switch:</strong> a separate double-throw panel (typically 6–10 toggled circuits) wired beside your main panel — LINE/OFF/GEN positions with break-before-make contacts. <strong>Interlock kit:</strong> a listed sliding plate on your existing main panel that physically blocks the main and a backfed generator breaker from ever being ON together. Both are pro-installed, permitted devices; neither is automatic.</p>
+  <AlertBox type="warning" title="The third option that kills">A double-male "suicide cord" into a dryer outlet is not a transfer method — it energizes utility lines and can kill line workers and destroy equipment on restoration. If that was under consideration, stop: a $50–$150 listed interlock plus an electrician is the cheapest legal path.</AlertBox></section>
+
+  <section id="compare"><h2>Head-to-head</h2>
+  <ComparisonTable caption="Manual switch versus interlock" headers={['', 'Manual transfer switch', 'Interlock kit']} rows={[
+    ['Parts', '$200–$800 (6–10 ckt)', '$50–$150'],
+    ['Installed', '$400–$1,300', '$200–$600'],
+    ['Circuits', 'Pre-chosen 6–10', 'Whole panel (you manage)'],
+    ['Install time', '3–5 hours + circuit moves', '2–4 hours'],
+    ['Example models', 'Reliance 31406CWK / 510C', 'Square D QOCGK2C, Siemens kits'],
+    ['Failure mode', 'Worn switch, loose lugs', 'User sequence error, incompatible panel'],
+  ]} /></section>
+
+  <section id="code"><h2>Code & AHJ acceptance</h2>
+  <p>NEC Article 702 requires listed transfer equipment — both qualify <em>when listed for your exact panel</em>. The interlock's catch: panel compatibility (brand/model-specific kits only — no universal plates on listed panels) and AHJ acceptance (most allow, some do not — ask the inspector before buying). Manual switches dodge both issues at higher cost and narrower coverage.</p></section>
+
+  <section id="decide"><h2>Decision framework</h2>
+  <ul><li><strong>Interlock when:</strong> listed kit exists for your panel, AHJ allows, you want whole-panel flexibility cheap, and someone disciplined will manage loads.</li><li><strong>Manual switch when:</strong> no listed kit fits, you prefer enforced circuit discipline, or the household needs foolproof toggles (renters, elderly, vacation home).</li><li><strong>Neither when:</strong> outages are frequent/long, medical loads exist, or nobody is home to throw switches — that is standby + ATS territory.</li></ul></section>
+
+  <section id="faq"><span class="sr-only">FAQ anchor</span></section>
+  <FAQSection items={[
+    { q: 'Is an interlock kit as safe as a transfer switch?', a: 'When listed for the panel, permitted, and installed by an electrician: yes for backfeed prevention. The residual risk is human — wrong sequence or overloaded panel — where a manual switch enforces more discipline by construction.' },
+    { q: 'Can a transfer switch fail?', a: 'Yes: worn contacts, loose lugs, corroded mechanisms, dead control batteries (ATS). Symptoms: failure to transfer in exercise, hot/burning smells, visible arcing damage, nuisance trips. Annual transfer testing catches nearly all of it — put it on the service checklist.' },
+    { q: 'Where is the transfer switch installed?', a: 'Adjacent to the main panel (manual/selected-load) or first after the meter (service-rated ATS). Interlocks live on the main panel cover itself. All locations need 36-inch working clearance.' },
+  ]} />
+  <section id="conclusion"><h2>Conclusion</h2><p>Interlock for cheap whole-panel flexibility where listed and allowed; manual switch for enforced simplicity. Both beat cords; neither beats automation. Full numbers: <a href="/cost/transfer-switch-cost/">transfer switch guide</a>.</p></section>
+</ArticleLayout>

@@ -1,0 +1,57 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ComparisonTable from '../../components/ui/ComparisonTable.astro';
+import FAQSection from '../../components/ui/FAQSection.astro';
+import ProConBox from '../../components/ui/ProConBox.astro';
+
+const toc = [
+  { id: 'cost-gap', label: 'The cost gap' },
+  { id: 'compare', label: 'Head-to-head' },
+  { id: 'safety', label: 'Safety & CO reality' },
+  { id: 'decide', label: 'Decision framework' },
+  { id: 'faq', label: 'FAQ' },
+];
+---
+<ArticleLayout
+  title="Standby vs Portable Generator: Cost, Safety & Which Wins"
+  description="Standby vs portable head-to-head: installed cost gap, automation, CO safety, power quality, and a decision framework for US homeowners."
+  category="Comparisons" categoryHref="/comparisons/" updated="2026-10-03" readingTime="9 min read" toc={toc}
+  related={[
+    { href: '/comparisons/transfer-switch-vs-interlock/', title: 'Transfer Switch vs Interlock', description: 'The manual-side decision.', category: 'Comparisons' },
+    { href: '/cost/generator-roi-outage-costs/', title: 'Generator ROI & Outage Costs', description: 'Payback math.', category: 'Cost' },
+    { href: '/guides/generator-safety-carbon-monoxide/', title: 'CO Safety Guide', description: 'The safety chapter.', category: 'Buying Guides' },
+  ]}
+  prev={{ href: '/comparisons/generac-vs-kohler/', label: 'Generac vs Kohler' }}
+  next={{ href: '/comparisons/transfer-switch-vs-interlock/', label: 'Switch vs Interlock' }}
+>
+  <section id="cost-gap"><h2>The cost gap, stated plainly</h2>
+  <p>A quality portable plus manual transfer inlet runs roughly <strong>$1,500–$4,000 installed</strong>; a permanent standby runs <strong>$9,000–$16,000+</strong>. The gap buys: automatic 10–20-second transfer, whole-home capacity, no refueling runs, no extension cords, and dramatically lower CO risk. Whether that is worth 3–4× the money depends on outage frequency, medical needs, travel, and WFH exposure — not on badge loyalty.</p></section>
+
+  <section id="compare"><h2>Head-to-head</h2>
+  <ComparisonTable caption="Standby versus portable" headers={['', 'Standby', 'Portable + inlet']} firstColSticky={true} rows={[
+    ['All-in cost', '$9,000–$16,000+', '$1,500–$4,000'],
+    ['Transfer', 'Automatic, 10–20 s', 'Manual, minutes + setup'],
+    ['Capacity', '10–28 kW whole-home', '5–12 kW essentials'],
+    ['Fuel', 'NG piped / large LP tank', 'Gasoline cans / small LP (refill runs)'],
+    ['Runtime', 'Days–weeks unattended', 'Hours per tank; needs attendance'],
+    ['Power quality', '<5% THD (safe electronics)', '8–25% THD (risks boards/TVs)'],
+    ['Noise', '61–68 dB, fixed placement', '70–80+ dB, wherever you put it'],
+    ['Maintenance', '$300–$600/yr serviced', 'Oil, stabilizer, exercise discipline'],
+  ]} /></section>
+
+  <section id="safety"><h2>Safety & CO reality</h2>
+  <p>Portables cause ~75 US CO deaths yearly (CPSC) — garage placement, rain improvisation, and missing detectors. Standby's fixed placement, engineered exhaust, and automatic operation remove the exact decisions that kill. A portable run safely (fully outdoors 20+ ft, exhaust away, CO alarms, never backfed) is legitimate budget backup; a portable run conveniently is the statistic. Full protocol: <a href="/guides/generator-safety-carbon-monoxide/">CO safety guide</a>.</p>
+  <ProConBox pros={['1/3 the cost; no permits/pad/gas work', 'Powers essentials fine; portable utility', 'No standby maintenance contract']} cons={['Manual everything, in the storm, at 2 AM', 'Refueling logistics; gasoline degrades', 'High THD + high CO risk profile']} prosTitle="Portable wins when…" consTitle="…but accept" />
+  </section>
+
+  <section id="decide"><h2>Decision framework (5 questions)</h2>
+  <ul><li>Outages longer than a day most years? → standby.</li><li>Medical devices, sump, or well water? → standby (or portable + UPS + strict plan).</li><li>Travel frequently / elderly household? → standby (automation is the product).</li><li>Brief summer blips, tight budget, home during outages? → portable + inlet, done right.</li><li>WFH with sensitive gear? → standby's clean power, or portable strictly through inverter + UPS.</li></ul></section>
+
+  <section id="faq"><span class="sr-only">FAQ anchor</span></section>
+  <FAQSection items={[
+    { q: 'Is a standby generator worth it over a portable?', a: 'For frequent, long, or medical-critical outages: yes — automation, capacity, and safety justify 3–4× the cost. For rare brief outages with an able-bodied homeowner present: a properly connected portable is the rational buy.' },
+    { q: 'Can a portable run my whole house?', a: 'No — portables cover essentials (fridge, lights, blower, small pump/AC) via a proper inlet or interlock. Whole-home loads need standby capacity. Never backfeed through dryer outlets.' },
+    { q: 'Which is safer?', a: 'Standby, by a wide margin: fixed placement and automatic operation eliminate the user errors behind ~75 yearly portable CO deaths. Portables demand rigorous placement and detector discipline.' },
+  ]} />
+  <section id="conclusion"><h2>Conclusion</h2><p>Buy automation and safety margin (standby) or buy adequacy on a budget (portable + inlet) — but never buy a portable and run it like a standby. Next: <a href="/comparisons/transfer-switch-vs-interlock/">the manual-side switch decision</a>.</p></section>
+</ArticleLayout>

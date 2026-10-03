@@ -1,0 +1,41 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import AlertBox from '../../components/ui/AlertBox.astro';
+import ComparisonTable from '../../components/ui/ComparisonTable.astro';
+import FAQSection from '../../components/ui/FAQSection.astro';
+
+const toc = [
+  { id: 'where', label: 'Where install money goes' },
+  { id: 'trades', label: 'Trade-by-trade scope' },
+  { id: 'quotes', label: 'Reading bids' },
+  { id: 'save', label: 'Saving without cutting corners' },
+  { id: 'faq', label: 'FAQ' },
+];
+---
+<ArticleLayout
+  title="Standby Installation Cost Breakdown: Where the Money Goes"
+  description="Trade-by-trade standby installation cost breakdown: electrical, gas, pad, permits, startup — and how to read bids fairly."
+  category="Cost" categoryHref="/cost/" updated="2026-10-03" readingTime="8 min read" toc={toc}
+  related={[
+    { href: '/cost/standby-generator-cost/', title: 'Standby Generator Cost (2026)', description: 'National ranges.', category: 'Cost' },
+    { href: '/installation/what-to-expect/', title: 'Installation: What to Expect', description: 'Day-by-day process.', category: 'Installation' },
+  ]}
+  prev={{ href: '/cost/generator-roi-outage-costs/', label: 'Generator ROI & Outage Costs' }}
+  next={{ href: '/cost/transfer-switch-cost/', label: 'Transfer Switch Cost' }}
+>
+  <section id="where"><h2>Where install money goes</h2>
+  <p>Install labor + materials typically run $4,000–$9,000+ on top of equipment — and this is the number most box-price shoppers miss. Rough split for a straightforward 22 kW job: electrical 35–45%, gas 20–30%, pad/site 5–10%, permits/inspections 3–8%, startup/programming/walkthrough 5–10%, margin/warranty reserve the rest. Complex sites skew gas and electrical far higher. <AlertBox type="info" title="Estimates, not bids">All figures are national planning ranges per our <a href="/disclaimer/">disclaimer</a>. Your bids govern.</AlertBox></p></section>
+  <section id="trades"><h2>Trade-by-trade scope</h2>
+  <ComparisonTable caption="Install scope by trade" headers={['Trade', 'Typical scope', 'Cost signal']} rows={[['Electrical', 'Runs, ATS, subpanel, grounding, load modules, startup test', '$2,000–$5,000+'], ['Gas', 'Pipe sizing/run, trench, regulators, pressure test', '$800–$3,500+'], ['Site/civil', 'Pad, grading, clearance, restoration', '$200–$1,500+'], ['Permits', 'Electrical/gas/plumbing + inspections', '$100–$600+'], ['Programming', 'ATS config, shed priorities, app + walkthrough', 'Often bundled — insist on itemization']]} /></section>
+  <section id="quotes"><h2>Reading bids like an auditor</h2>
+  <ul><li>Every bid lists model + kW + fuel + switch type + module count. Vague bids hide upsells.</li><li>Gas scope states linear feet, trench responsibility, and restoration. "Gas by others" is a $2,000 surprise.</li><li>Electrical states panel work explicitly — photos attached, not "as needed."</li><li>Permit puller named; inspection scheduling stated; startup + walkthrough itemized.</li><li>Warranty registration + first-service date in writing.</li></ul></section>
+  <section id="save"><h2>Saving without cutting corners</h2>
+  <ul><li>Shorten runs: place the unit where gas + electrical meet setback rules — every foot costs.</li><li>Right-size with load management instead of brute-force kilowatts.</li><li>Schedule off-peak (not post-storm) for better lead times.</li><li>Bundle panel cleanup with install rather than as a separate visit.</li><li>Never save by skipping permits, undersizing gas, or hiring unlicensed — the three most expensive "savings" in this industry.</li></ul></section>
+  <section id="faq"><span class="sr-only">FAQ anchor</span></section>
+  <FAQSection items={[
+    { q: 'How long does installation take?', a: 'Survey + permits: 1–4 weeks. Physical install: 1–3 days for straightforward sites. Inspections + utility signoff add days. Storm-season backlogs extend everything — book off-peak.' },
+    { q: 'Can one contractor do electrical and gas?', a: 'Sometimes — many standby dealers self-perform both or subcontract transparently. What matters is licensed pros for each trade and a single accountable prime contractor.' },
+    { q: 'Is a concrete pad required?', a: 'A stable, level, code-compliant base is required — precast concrete, poured pad, or manufacturer-approved composite, per manual and inspector. Gravel alone rarely suffices for standby.' },
+  ]} />
+  <section id="conclusion"><h2>Conclusion</h2><p>Installation is 40–60% of project cost and 90% of project risk. Buy the complete scope, not the cheapest box. Next: <a href="/cost/transfer-switch-cost/">transfer-switch costs</a> and <a href="/installation/what-to-expect/">install day</a>.</p></section>
+</ArticleLayout>

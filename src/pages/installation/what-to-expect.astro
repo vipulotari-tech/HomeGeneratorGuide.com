@@ -1,0 +1,94 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import AlertBox from '../../components/ui/AlertBox.astro';
+import ComparisonTable from '../../components/ui/ComparisonTable.astro';
+import FAQSection from '../../components/ui/FAQSection.astro';
+import { clearances } from '../../data/transfer-switches';
+
+const toc = [
+  { id: 'survey', label: 'Survey & quote' },
+  { id: 'permits', label: 'Permits & approvals' },
+  { id: 'site', label: 'Pad & placement' },
+  { id: 'gas', label: 'Gas scope to verify' },
+  { id: 'electrical', label: 'Electrical scope to verify' },
+  { id: 'install', label: 'Install days' },
+  { id: 'startup', label: 'Commissioning & walkthrough' },
+  { id: 'timeline', label: 'Full timeline (4–12 weeks)' },
+  { id: 'redflags', label: 'Red flags' },
+  { id: 'faq', label: 'FAQ' },
+];
+---
+<ArticleLayout
+  title="Standby Generator Installation: What to Expect Day by Day"
+  description="Standby installation explained: survey checklist, pad sizes, NFPA 37 clearances, gas and wire sizing to verify, commissioning tests, permits, and 4–12 week timeline."
+  category="Installation" categoryHref="/installation/" updated="2026-10-03" readingTime="14 min read" toc={toc}
+  related={[
+    { href: '/installation/generator-pad-and-placement/', title: 'Pad & Placement Guide', description: 'Pads, clearances, HOA, noise.', category: 'Installation' },
+    { href: '/cost/transfer-switch-cost/', title: 'Transfer Switch Guide', description: 'MTS vs ATS vs interlock.', category: 'Cost' },
+    { href: '/maintenance/generator-maintenance-checklist/', title: 'Maintenance Checklist', description: 'After install: keep it ready.', category: 'Maintenance' },
+  ]}
+  prev={{ href: '/comparisons/transfer-switch-vs-interlock/', label: 'Switch vs Interlock' }}
+  next={{ href: '/installation/generator-pad-and-placement/', label: 'Pad & Placement Guide' }}
+>
+  <AlertBox type="warning" title="Licensed pros only">Standby installation involves line-voltage wiring, gas piping, and permits. This guide explains what professionals do so you can hire and verify — never DIY panel, transfer-switch, or gas work.</AlertBox>
+
+  <section id="survey"><h2>1. Survey & quote: the 7-point checklist</h2>
+  <p>A good survey takes 45–90 minutes. Verify the bidder checks: (1) panel amperage, space, age/condition; (2) gas meter capacity, pipe size, run distance; (3) placement against clearance rules; (4) load calculation with LRA/surge detail; (5) terrain, drainage, delivery path; (6) underground utilities before trenching; (7) HOA/zoning setbacks and noise rules. Square-footage-only bids without a load list are disqualifying.</p></section>
+
+  <section id="permits"><h2>2. Permits & approvals (1–3 weeks)</h2>
+  <p>Expect three permits: electrical ($100–$400), gas/mechanical ($100–$300), building/zoning ($150–$500) — $500–$1,500 total typical, higher in CA/NY/coastal zones. HOA architectural review adds 1–3 weeks. Inspection sequence: pad → underground gas (before backfill) → rough electrical → fuel pressure test → final after startup. Unpermitted installs risk $500–$5,000+ fines, stop-work orders, forced redo, voided insurance, failed resale inspection, and utility refusal — plus criminal/civil liability if backfeed ever injures a line worker.</p></section>
+
+  <section id="site"><h2>3. Pad & placement</h2>
+  <ComparisonTable caption="Pad sizes by generator" headers={['Generator', 'Min pad', 'Thickness']} rows={[
+    ['10–14 kW', "3' × 4' (36×48 in)", '4 in'],
+    ['16–22 kW', "4' × 5' (48×60 in)", '4 in (rebar advised)'],
+    ['24–26 kW', "4' × 6' (48×72 in)", '4–6 in'],
+    ['30–48 kW liquid', "5' × 7'+", '6 in reinforced'],
+  ]} />
+  <p class="mt-3">Pad extends 4+ in beyond the footprint, level within 1/4 in, sloping away from the house. Pre-cast composite pads skip cure time; poured pads need 3–7 days. Clearance minimums (NFPA 37 simplified):</p>
+  <ComparisonTable caption="Placement clearances" headers={['From', 'Minimum', 'Basis']} rows={clearances.map((c) => [c.from, c.distance, c.basis])} />
+  <p class="mt-3">Local codes and the manual can demand more (e.g., 10 ft from openings in some CA jurisdictions). Full placement detail: <a href="/installation/generator-pad-and-placement/">pad & placement guide</a>.</p></section>
+
+  <section id="gas"><h2>4. Gas scope to verify (pro work — your checklist)</h2>
+  <ComparisonTable caption="Natural gas pipe sizing signals" headers={['Generator', 'BTU/hr', '≤20 ft', '20–50 ft']} rows={[
+    ['10–14 kW', '150,000–180,000', '3/4 in', '1 in'],
+    ['16–22 kW', '200,000–250,000', '1 in', '1–1¼ in'],
+    ['24–26 kW', '250,000–300,000', '1–1¼ in', '1¼–1½ in'],
+  ]} />
+  <ul><li>Propane runs smaller pipe at 11 in WC second-stage pressure (1/2–1 in typical ≤50 ft) but needs tank sizing for your outage horizon; second-stage regulator ≥5 ft from the unit.</li><li>Confirm: meter capacity for total load, pressure test 10–15 PSI × 15 min with zero drop, manometer check at full load (drop ≤0.5 in WC), sediment trap + accessible shutoff.</li><li>Underground propane tanks run $4,000–$6,000 installed; above-ground $2,000–$4,000 with pad and lines; meter upgrades $500–$1,500.</li><li>Gas work requires a licensed plumber/gas fitter and permit in essentially all states — prohibited for DIY in TX, CA, FL, NY, IL, MA among others.</li></ul></section>
+
+  <section id="electrical"><h2>5. Electrical scope to verify</h2>
+  <ul><li>ATS mounted adjacent to the panel; feeders 2/0–3/0 AWG class for 200 A services (100 A: 3 AWG Cu / 1 AWG Al; 200 A: 2/0 Cu / 4/0 Al typical); conduit 1–2 in by distance.</li><li>Panel must qualify: 100 A minimum service (7–14 kW) or 200 A (16–26 kW); space for the ATS; no fuse boxes or Federal Pacific/Zinsco panels (replace first, $2,000–$4,000); no rust, burn damage, or loose gear. Upgrades: 100→200 A $1,500–$3,000; subpanel for essentials $500–$1,500.</li><li>Grounding electrode conductor per NEC 250; 12/24 V control wiring for auto-start; every circuit, switch, and disconnect labeled per NEC 702.</li><li>Power interruptions are brief and scheduled — demand windows in writing.</li></ul>
+  <svg viewBox="0 0 560 120" class="my-4 w-full rounded-lg border border-[#e5e7eb] bg-white" role="img" aria-label="Diagram: generator to transfer switch to home panel"><title>Standby power path</title><rect x="20" y="35" width="130" height="50" rx="8" fill="#1e3a5f"/><text x="30" y="55" font-size="12" fill="#fff" font-family="sans-serif">Generator</text><text x="30" y="72" font-size="11" fill="#cbd5e1" font-family="sans-serif">propane / gas</text><rect x="215" y="35" width="130" height="50" rx="8" fill="#f97316"/><text x="225" y="55" font-size="12" fill="#fff" font-family="sans-serif">Transfer switch</text><text x="225" y="72" font-size="11" fill="#fff" font-family="sans-serif">auto senses</text><rect x="410" y="35" width="130" height="50" rx="8" fill="#1e3a5f"/><text x="420" y="55" font-size="12" fill="#fff" font-family="sans-serif">Home panel</text><text x="420" y="72" font-size="11" fill="#cbd5e1" font-family="sans-serif">backed circuits</text><path d="M150 60 h55 M345 60 h55" stroke="#1e3a5f" stroke-width="3"/></svg></section>
+
+  <section id="install"><h2>6. Install days (typically 1–2; 3–5 liquid-cooled)</h2>
+  <ul><li><strong>Day 1:</strong> unit set, ATS mount, conduit + gas rough-in, panel work with utility-coordinated disconnects.</li><li><strong>Day 2:</strong> terminations, grounding/bonding, gas pressure test, control wiring, load-module programming.</li><li>Keep kids/pets clear; crews need panel + meter + pad access simultaneously.</li></ul></section>
+
+  <section id="startup"><h2>7. Commissioning, inspection & walkthrough</h2>
+  <p>Tech commissions with a 7-point sequence: visual/torque check → gas pressure test → transfer operation (no arcing, correct voltage) → 50–100% load test (voltage/frequency stable) → simulated-outage auto-start (10–30 s) → safety-shutdown alarms (low oil, high temp, overcrank) → inspector signoff. Your walkthrough must cover: Ready/Auto status, alert meanings, exercise schedule, propane reordering, filter/battery schedule, service number, and warranty registration. Leave with paperwork, not handshakes.</p></section>
+
+  <section id="timeline"><h2>Full timeline: 4–12 weeks, mostly waiting</h2>
+  <ComparisonTable caption="Project timeline" headers={['Phase', 'Duration']} rows={[
+    ['Survey & load calc', '1–3 days'],
+    ['Permits (+HOA)', '1–3 weeks'],
+    ['Equipment order', '1–2 weeks (overlaps permits; longer pre-hurricane-season)'],
+    ['Pad + cure', '1–2 days work + 3–7 days cure (pre-cast skips cure)'],
+    ['Physical install', '1–2 days air-cooled; 3–5 liquid-cooled'],
+    ['Inspection', '3–7 days after install'],
+  ]} />
+  <p class="mt-3">Delays are almost always permits and equipment — book off-peak, submit HOA early, and get written install dates in storm season.</p></section>
+
+  <section id="redflags"><h2>Red flags that cancel a contractor</h2>
+  <ul><li>No license numbers; "permits not needed here" without documentation.</li><li>Refusal to itemize switch/gas/panel scope or show the load calculation.</li><li>Cash-only, no written warranty registration, "we install, others maintain."</li><li>Skipping transfer test, pressure test, or exercise setup.</li></ul></section>
+
+  <section id="faq"><span class="sr-only">FAQ anchor</span></section>
+  <FAQSection items={[
+    { q: 'How long does standby installation take?', a: 'On-site work 1–2 days for straightforward air-cooled jobs; contract-to-commissioning 4–12 weeks with permits, equipment, and inspections. Storm-season backlogs extend scheduling.' },
+    { q: 'Will my power be off during install?', a: 'Briefly and on schedule — panel cutovers need coordinated disconnects, usually minutes to hours with notice. Ask for windows in writing.' },
+    { q: 'Can a generator go anywhere in the yard?', a: 'No — NFPA 37 minimums (18 in combustibles, 5 ft openings/vents, 3 ft meters/service) plus local zoning, noise rules, flood elevation, and fuel/electrical run economics constrain placement. The installer proposes; the inspector disposes.' },
+    { q: 'Can I install a standby generator myself?', a: 'No — panel, transfer-switch, and gas work require licensed professionals under permit in essentially all US jurisdictions. Homeowners may pour the concrete pad (with building permit where required) and handle landscaping/screening. Everything past that is pro scope.' },
+    { q: 'Who pulls the permit — me or the contractor?', a: 'The contractor, as a rule — rebut any bid that leaves permits to you. Confirm permit numbers (electrical, gas, building) before work starts, and never accept "permits not needed here" without documentation.' },
+    { q: 'What happens if I skip permits?', a: 'Fines ($500–$5,000+), stop-work orders, forced redo at your expense, voided insurance claims, failed resale inspections, and possible utility disconnection. Permitted work is the cheapest work.' },
+  ]} />
+  <section id="conclusion"><h2>Conclusion</h2><p>Good installs are boring: surveyed, permitted, set level, piped and wired to size, pressure-tested, transfer-tested, and walked through. Demand all of it. Next: <a href="/installation/generator-pad-and-placement/">pad & placement deep dive</a>, then <a href="/maintenance/generator-maintenance-checklist/">maintain it</a>.</p></section>
+</ArticleLayout>

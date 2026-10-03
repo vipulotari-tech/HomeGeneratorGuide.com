@@ -1,0 +1,45 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import AlertBox from '../../components/ui/AlertBox.astro';
+import ComparisonTable from '../../components/ui/ComparisonTable.astro';
+import FAQSection from '../../components/ui/FAQSection.astro';
+
+const toc = [
+  { id: 'why', label: 'Why HVAC dominates sizing' },
+  { id: 'tonnage', label: 'Tonnage to watts' },
+  { id: 'lra', label: 'Reading the LRA nameplate' },
+  { id: 'soft-start', label: 'Soft-start kits' },
+  { id: 'strips', label: 'Heat strips trap' },
+  { id: 'faq', label: 'FAQ' },
+];
+---
+<ArticleLayout
+  title="HVAC & Generator Sizing: AC Tonnage, Surge & Soft-Start"
+  description="How central AC and heat pumps drive standby sizing: tonnage math, LRA nameplates, aux heat strips, and soft-start kits explained."
+  category="Sizing" categoryHref="/sizing/" updated="2026-10-03" readingTime="8 min read" toc={toc}
+  related={[
+    { href: '/sizing/what-size-generator-do-i-need/', title: 'What Size Generator Do I Need?', description: 'Full sizing method.', category: 'Sizing' },
+    { href: '/sizing/whole-home-vs-essential-loads/', title: 'Whole-Home vs Essential Loads', description: 'Backup philosophies.', category: 'Sizing' },
+  ]}
+  prev={{ href: '/sizing/calculator/', label: 'Sizing Calculator' }}
+  next={{ href: '/sizing/well-pump-generator-sizing/', label: 'Well Pump Sizing' }}
+>
+  <section id="why"><h2>Why HVAC dominates sizing</h2>
+  <p>The compressor is the hungriest motor in the house. A 3-ton condenser can surge past 11,000 W for a second — more than fridge, freezer, lights, and internet combined. If your backup plan includes cooling (or electric heating), HVAC is not one line item among many; it <em>is</em> the sizing exercise, with everything else arranged around it. Homes with gas heat and no central AC size dramatically smaller than identical homes with 4-ton AC — which is exactly why <a href="/sizing/what-size-generator-do-i-need/">square footage alone fails</a>.</p></section>
+  <section id="tonnage"><h2>Tonnage to watts (planning figures)</h2>
+  <ComparisonTable caption="AC tonnage watts" headers={['Tonnage', 'Running (W)', 'Starting (W)']} rows={[['2 ton', '2,500', '7,500'], ['2.5 ton', '3,000', '9,000'], ['3 ton', '3,500', '11,000'], ['4 ton', '5,000', '15,000'], ['5 ton', '6,000', '18,000+']]} />
+  <p class="mt-3">One ton = 12,000 BTU/hr of cooling. Older low-SEER units draw more per ton; modern high-SEER/inverter units draw less and surge softer. Tonnage is on the condenser nameplate or original install paperwork — not the thermostat.</p></section>
+  <section id="lra"><h2>Reading the LRA nameplate</h2>
+  <p>Find the outdoor condenser's data plate: note <strong>LRA (Locked Rotor Amps)</strong> and <strong>RLA/FLA (Rated/Full Load Amps)</strong>. Startup VA ≈ LRA × 240 (single-phase residential). Example: 70 A LRA → ~16,800 VA instantaneous; the generator sees less thanks to breaker curves and controls, but this number explains why a "3,500 W" AC needs a 20 kW-class generator alongside other loads. Photograph every nameplate for your electrician — it compresses the quote visit enormously. <AlertBox type="warning" title="Pro-only">Nameplate reading is homeowner-safe; opening electrical compartments is not. Exterior data plates only.</AlertBox></p></section>
+  <section id="soft-start"><h2>Soft-start kits: when they help</h2>
+  <p>Soft starters ramp compressor voltage to cut inrush 30–60% per manufacturer data. They can drop a marginal 24 kW requirement into comfortable 22 kW territory, or let a 20 kW handle a 3-ton unit with headroom. They do not reduce <em>running</em> watts, must be compatible with your compressor type (not all inverter/variable-speed units need or accept them), and should be installed by an HVAC tech — not a generator DIY. Discuss with both your HVAC tech and generator installer before counting the savings.</p></section>
+  <section id="strips"><h2>The heat-strip trap (heat pumps)</h2>
+  <p>Heat pumps sip in mild weather and gulp when auxiliary electric strips engage: 5–10 kW of strip heat can exceed the compressor threefold. Best practice on backup: program controls to <strong>lock out aux strips on generator power</strong> (comfort dips slightly, sizing drops massively), or zone strips onto shed modules. All-electric homes that refuse strip lockout often jump a full generator size — price both paths in <a href="/cost/standby-generator-cost/">installed dollars</a> before deciding.</p></section>
+  <section id="faq"><span class="sr-only">FAQ anchor</span></section>
+  <FAQSection items={[
+    { q: 'Can a 22 kW generator run a 4-ton AC?', a: 'Often yes with load management — 4-ton starting surge (~15,000 W) plus a disciplined base load fits under 22 kW momentary capacity. Verify LRA, add other coincident loads, and confirm with a licensed calculation; tight cases benefit from a soft-start evaluation.' },
+    { q: 'Do mini-splits change the math?', a: 'Yes favorably — inverter mini-splits ramp softly with minimal surge. A home cooled by zoned mini-splits sizes smaller than the same home on a single large central compressor.' },
+    { q: 'Should I replace my AC before buying a generator?', a: 'If the condenser is 15+ years old and oversized, a right-sized high-SEER replacement can shrink the generator a full size — sometimes paying for itself in combined savings. Get HVAC and generator quotes in the same month.' },
+  ]} />
+  <section id="conclusion"><h2>Conclusion</h2><p>HVAC first, everything else second: tonnage → LRA → strip policy → soft-start question. Bring those four answers to your installer and the rest of sizing goes quickly. Next: <a href="/sizing/well-pump-generator-sizing/">well-pump sizing</a> or back to <a href="/sizing/what-size-generator-do-i-need/">the full guide</a>.</p></section>
+</ArticleLayout>

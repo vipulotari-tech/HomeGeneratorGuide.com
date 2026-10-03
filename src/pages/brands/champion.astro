@@ -1,0 +1,47 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import AlertBox from '../../components/ui/AlertBox.astro';
+import ComparisonTable from '../../components/ui/ComparisonTable.astro';
+import FAQSection from '../../components/ui/FAQSection.astro';
+import ProConBox from '../../components/ui/ProConBox.astro';
+import { brands } from '../../data/generator-brands';
+
+const brand = brands.find((b) => b.slug === 'champion')!;
+const toc = [
+  { id: 'position', label: 'Value positioning' },
+  { id: 'lineup', label: 'aXis lineup & MSRP' },
+  { id: 'warranty', label: '10-year warranty' },
+  { id: 'monitoring', label: 'Monitoring' },
+  { id: 'verdict', label: 'Who it suits' },
+  { id: 'faq', label: 'FAQ' },
+];
+---
+<ArticleLayout
+  title="Champion Standby Generators: aXis Review & Value Math"
+  description="Independent Champion aXis review: 8.5–26 kW lineup, MSRP, 10-year warranty, noise ratings, and when 20–30% savings outweigh a thinner service network."
+  category="Brands" categoryHref="/brands/" updated="2026-10-03" readingTime="7 min read" toc={toc}
+  related={[
+    { href: '/brands/generac/', title: 'Generac Standby Generators', description: 'Volume-leader deep dive.', category: 'Brands' },
+    { href: '/brands/briggs-stratton/', title: 'Briggs & Stratton PowerProtect', description: 'Warranty-first alternative.', category: 'Brands' },
+  ]}
+  prev={{ href: '/brands/briggs-stratton/', label: 'Briggs & Stratton Guide' }}
+  next={{ href: '/brands/cummins/', label: 'Cummins Guide' }}
+>
+  <section id="position"><h2>Value positioning, quantified</h2>
+  <p>Founded 2003 (Santa Fe Springs, California), Champion prices aXis standby roughly <strong>20–30% below comparable Generac</strong> — third-party comparisons cite $1,500–$3,000 savings on complete systems (e.g., ~$4,500–$6,000 vs $5,500–$7,500 at 20 kW). The question is never whether the box is cheaper — it is whether local service covers it. <AlertBox type="warning" title="Retail trap">Champion boxes are easy to buy at retail; standby ownership needs a standby servicer, not a shipping box. Confirm local certified service before purchase.</AlertBox></p></section>
+  <section id="lineup"><h2>aXis lineup & MSRP</h2>
+  <ComparisonTable caption="Champion aXis models" headers={['Model', 'kW (LP / NG)', 'MSRP', 'Noise']} rows={brand.models.map((m) => [m.series, m.capacityKw, m.msrp ?? '—', m.noiseDb ?? '—'])} />
+  <p class="mt-3">The 8.5 kW at 59.5 dB is among the quietest small standby units published; the 14 kW (62–63 dB) is class-competitive on noise.</p></section>
+  <section id="warranty"><h2>10-year warranty</h2><p>{brand.warranty} Read term details (limited vs comprehensive, labor windows), but on headline length nobody else in residential standby matches it standard.</p></section>
+  <section id="monitoring"><h2>Monitoring</h2><p>OmniMetrix/OmniView remote monitoring (optional): 24/7 status, text/email alerts, remote testing, LTE cellular options. Confirm what is bundled vs add-on in your quote — connectivity should never be a surprise line item.</p></section>
+  <section id="verdict"><h2>Who aXis suits</h2>
+  <ProConBox pros={['20–30% lower system cost; 10-year warranty', 'Quiet small units (59.5–63 dB)', 'Switches bundled on whole-house SKUs']} cons={['Moderate/growing service network', 'Fewer large-home/liquid-cooled options', 'Retail availability confuses portable vs standby support']} prosTitle="Strengths" consTitle="Watch-outs" />
+  <p class="mt-4">Choose Champion when a certified local servicer exists and the savings fund something real (larger propane tank, service plan, panel cleanup). Skip when no local standby tech will touch it.</p></section>
+  <section id="faq"><span class="sr-only">FAQ anchor</span></section>
+  <FAQSection items={[
+    { q: 'Are Champion standby generators any good?', a: 'The aXis line offers competitive noise, bundled switches, and a 10-year warranty at value pricing. Ownership satisfaction tracks local service availability — verify a standby-certified servicer nearby.' },
+    { q: 'How much cheaper is Champion than Generac?', a: 'Third-party comparisons report roughly 20–30% less ($1,500–$3,000 per complete system at comparable kW). Compare all-in installed quotes, not boxes.' },
+    { q: 'Does the 10-year warranty cover labor?', a: 'Terms are limited — read the current warranty for labor windows, exclusions, and maintenance-compliance clauses before weighting the headline.' },
+  ]} />
+  <section id="conclusion"><h2>Conclusion</h2><p>Best value math in residential standby, conditional on service coverage. Next: <a href="/brands/cummins/">Cummins</a> or <a href="/sizing/what-size-generator-do-i-need/">confirm sizing</a>.</p></section>
+</ArticleLayout>

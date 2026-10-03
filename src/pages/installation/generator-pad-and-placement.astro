@@ -1,0 +1,67 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import AlertBox from '../../components/ui/AlertBox.astro';
+import ComparisonTable from '../../components/ui/ComparisonTable.astro';
+import FAQSection from '../../components/ui/FAQSection.astro';
+import { clearances } from '../../data/transfer-switches';
+
+const toc = [
+  { id: 'pad', label: 'Pad sizes & specs' },
+  { id: 'existing', label: 'Reusing existing concrete' },
+  { id: 'gravel', label: 'Gravel alternative' },
+  { id: 'costs', label: 'Pad costs & DIY' },
+  { id: 'clearances', label: 'Clearance table' },
+  { id: 'hoa', label: 'HOA & noise rules' },
+  { id: 'faq', label: 'FAQ' },
+];
+---
+<ArticleLayout
+  title="Generator Pad & Placement: Sizes, Clearances, HOA & Noise"
+  description="Standby pad and placement guide: concrete pad sizes by kW, reuse rules, gravel alternative, costs, NFPA 37 clearances, HOA screening, and noise ordinances."
+  category="Installation" categoryHref="/installation/" updated="2026-10-03" readingTime="9 min read" toc={toc}
+  related={[
+    { href: '/installation/what-to-expect/', title: 'Installation: What to Expect', description: 'Full install process.', category: 'Installation' },
+    { href: '/cost/installation-cost-breakdown/', title: 'Installation Cost Breakdown', description: 'Where install money goes.', category: 'Cost' },
+  ]}
+  prev={{ href: '/installation/what-to-expect/', label: 'Installation: What to Expect' }}
+  next={{ href: '/maintenance/generator-maintenance-checklist/', label: 'Maintenance Checklist' }}
+>
+  <section id="pad"><h2>Pad sizes & specs by kW</h2>
+  <ComparisonTable caption="Pad sizes" headers={['Generator', 'Min pad', 'Footprint', 'Thickness']} rows={[
+    ['10–14 kW', "36×48 in (3×4 ft)", '~28×40 in', '4 in'],
+    ['16–22 kW', "48×60 in (4×5 ft)", '~40×52 in', '4 in + rebar'],
+    ['24–26 kW', "48×72 in (4×6 ft)", '~40×64 in', '4–6 in'],
+    ['30–48 kW', "60×84 in (5×7 ft)+", '~52×76 in', '6 in reinforced'],
+  ]} />
+  <p class="mt-3">Rules that fail inspections: pad extends 4+ in beyond the footprint on all sides, level within 1/4 in, slopes away from the house (~1/8 in per foot), anchors set for wind/seismic zones. Poured pads cure 3–7 days before the unit lands — schedule accordingly.</p></section>
+
+  <section id="existing"><h2>Reusing existing concrete or patio</h2>
+  <p>Allowed when all five hold: level within 1/4 in, ≥4 in thick, crack- and settlement-free, meeting every clearance below, and draining away from the house. Any spalling, rocking, or pooling water disqualifies it — a bad base telegraphs vibration and voids leveling warranties.</p></section>
+
+  <section id="gravel"><h2>Gravel alternative (when acceptable)</h2>
+  <p>Compacted 4–6 in of 3/4-in-minus crushed stone, contained by timbers or pavers, level within 1/4 in — acceptable where the manufacturer allows, with great drainage and lower cost. Avoid in flood zones, seismic/wind zones (anchoring suffers), expansive clay, and under liquid-cooled units. When in doubt, pour concrete.</p></section>
+
+  <section id="costs"><h2>Pad costs & DIY boundaries</h2>
+  <ComparisonTable caption="Pad costs" headers={['Option', 'Cost signal']} rows={[
+    ['DIY concrete (materials)', '$80–$200 (small pads)'],
+    ['Pro concrete pad', '$600–$1,500 installed; ~$12–$18/sq ft'],
+    ['Pre-cast composite', '$300–$600 complete'],
+    ['DIY gravel', '$40–$80 materials'],
+  ]} />
+  <AlertBox type="info" title="DIY line">A homeowner may pour a pad (with building permit where required) — that is the <em>only</em> DIY in the whole project. Electrical, gas, and transfer equipment stay licensed-pro-only.</AlertBox></section>
+
+  <section id="clearances"><h2>Clearance table (NFPA 37 simplified)</h2>
+  <ComparisonTable caption="Placement clearances" headers={['From', 'Minimum', 'Basis']} rows={clearances.map((c) => [c.from, c.distance, c.basis])} />
+  <p class="mt-3">Exhaust must never aim at windows, doors, AC units, or intakes. Local codes can exceed these (some CA jurisdictions want 10 ft from openings) — the manual plus the AHJ govern, not this table.</p></section>
+
+  <section id="hoa"><h2>HOA & noise rules</h2>
+  <ul><li><strong>HOA screening:</strong> side/rear-yard placement, fencing or shrubs hiding the unit, committee approval before install (adds 1–3 weeks). Propane tanks draw the most aesthetic objections — submit renderings early.</li><li><strong>Noise ordinances:</strong> residential limits typically 60–65 dB at the property line (55–60 urban, often unenforced rural), usually complaint-driven. Reference: Kohler 26RCA 56 · Champion 14 kW 62–63 · Cummins 65 · Generac 22 kW 67 (all at 23 ft).</li><li><strong>Mitigation:</strong> quieter model selection, maximum setback distance, airflow-safe barriers (never choke the 36-in service clearance to muffle sound), exhaust aimed away from neighbors.</li></ul></section>
+
+  <section id="faq"><span class="sr-only">FAQ anchor</span></section>
+  <FAQSection items={[
+    { q: 'How far must a generator be from the house?', a: 'Minimum 18 in from combustible walls, 5 ft from windows, doors, and vents (NFPA 37 simplified) — plus 3 ft service access. Local codes and the manual may require more; confirm both before pouring the pad.' },
+    { q: 'Can I put a generator under my deck?', a: 'Effectively no — 6 ft vertical clearance minimums, CO accumulation risk, and service-access rules rule out nearly all deck placements. Find open-sky placement meeting the clearance table.' },
+    { q: 'Will my HOA let me install a generator?', a: 'Usually yes with screening and placement conditions. Read covenants before buying, submit plans early, and pick a quieter model if the property line is close.' },
+  ]} />
+  <section id="conclusion"><h2>Conclusion</h2><p>Right pad, right clearances, HOA signoff before the concrete truck — placement disputes are the most avoidable delay in the project. Back to <a href="/installation/what-to-expect/">the install process</a>.</p></section>
+</ArticleLayout>

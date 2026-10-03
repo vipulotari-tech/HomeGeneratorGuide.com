@@ -1,0 +1,42 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import AlertBox from '../../components/ui/AlertBox.astro';
+import ComparisonTable from '../../components/ui/ComparisonTable.astro';
+import FAQSection from '../../components/ui/FAQSection.astro';
+
+const toc = [
+  { id: 'why', label: 'Why well pumps surge hard' },
+  { id: 'hp', label: 'Sizing by horsepower' },
+  { id: 'tank', label: 'Pressure tank strategy' },
+  { id: 'rural', label: 'Rural outage planning' },
+  { id: 'faq', label: 'FAQ' },
+];
+---
+<ArticleLayout
+  title="Well Pump Generator Sizing: HP, Surge & Rural Planning"
+  description="Size a standby generator for well pumps: horsepower surge table, pressure-tank strategy, and rural outage planning for private-water homes."
+  category="Sizing" categoryHref="/sizing/" updated="2026-10-03" readingTime="7 min read" toc={toc}
+  related={[
+    { href: '/sizing/what-size-generator-do-i-need/', title: 'What Size Generator Do I Need?', description: 'Full sizing method.', category: 'Sizing' },
+    { href: '/sizing/hvac-generator-sizing/', title: 'HVAC & Generator Sizing', description: 'The other surge giant.', category: 'Sizing' },
+  ]}
+  prev={{ href: '/sizing/hvac-generator-sizing/', label: 'HVAC Sizing' }}
+  next={{ href: '/sizing/whole-home-vs-essential-loads/', label: 'Whole-Home vs Essential' }}
+>
+  <section id="why"><h2>Why well pumps surge hard</h2>
+  <p>No municipal water pressure means no water at all in an outage — the pump is life-safety-adjacent for drinking, sanitation, and (where applicable) livestock. Deep submersible pumps start under water-column load, so starting watts run ~3× running. A 1 HP pump's 6,000 W surge can exceed a small standby's entire headroom if the AC happens to start the same second — hence pump priority in load management.</p></section>
+  <section id="hp"><h2>Sizing by horsepower</h2>
+  <ComparisonTable caption="Well pump watts by HP" headers={['Pump', 'Running (W)', 'Starting (W)', 'Notes']} rows={[['1/3 HP jet/sump', '800', '2,400', 'Sump overlap — plan both'], ['1/2 HP submersible', '1,000', '3,000', 'Most common residential'], ['3/4 HP submersible', '1,500', '4,500', 'Deeper wells'], ['1 HP submersible', '2,000', '6,000', 'Needs priority programming'], ['1.5 HP+', '3,000+', '9,000+', 'Pro design; consider staging']]} />
+  <p class="mt-3">Find HP on the pump control box or well record — not by guessing depth. Variable-speed constant-pressure pumps surge softer; old across-the-line pumps hit hardest. <AlertBox type="warning" title="Do not downsize around the pump">Excluding the well pump from backup in a private-water home means no toilets, no showers, no drinking water. Size it in or plan explicitly around hauling water.</AlertBox></p></section>
+  <section id="tank"><h2>Pressure-tank strategy</h2>
+  <p>A larger pressure tank (e.g., 80+ gal equivalent drawdown) cuts pump starts dramatically — fewer surges, longer pump life, smaller generator stress. Pre-outage: fill tubs and containers. During outage: batch water use (showers back-to-back, then let the pump rest) and never irrigate on generator power. A $500 tank upgrade can save $2,000 in generator size.</p></section>
+  <section id="rural"><h2>Rural outage planning</h2>
+  <ul><li><strong>Septic with effluent pump?</strong> Add its surge (~3,000 W class) — full tanks back up fast.</li><li><strong>Propane synergy:</strong> rural homes often already have propane — size the tank for generator + heat through your longest historical outage.</li><li><strong>Access:</strong> keep the wellhead, tank tee, and generator pad plowed and reachable for winter service.</li><li><strong>Filtration/UV:</strong> include treatment power (~100–300 W) so restored water is safe water.</li></ul></section>
+  <section id="faq"><span class="sr-only">FAQ anchor</span></section>
+  <FAQSection items={[
+    { q: 'What size generator runs a 1/2 HP well pump plus a house?', a: 'The pump adds ~1,000 W running / ~3,000 W surge to your base load. Most such homes land 16–22 kW with AC, or 12–16 kW essentials-only. Work the full load list — the pump alone never decides.' },
+    { q: 'Can I use a portable generator for my well pump?', a: 'Only via a proper manual transfer inlet wired by an electrician to the pump circuit — never extension cords to 240 V pumps or backfeeding. For automatic water security, standby with ATS is the honest answer.' },
+    { q: 'Does a bigger pressure tank let me buy a smaller generator?', a: 'It reduces surge frequency, not surge size — still size for the pump starting once. But fewer starts mean less wear and fewer coincident-surge events, which genuinely helps marginal cases.' },
+  ]} />
+  <section id="conclusion"><h2>Conclusion</h2><p>Size the pump in, give it priority, enlarge the tank, and ban irrigation on backup. Private-water homes should also read <a href="/sizing/whole-home-vs-essential-loads/">backup philosophies</a> and <a href="/maintenance/generator-maintenance-checklist/">storm prep</a>.</p></section>
+</ArticleLayout>

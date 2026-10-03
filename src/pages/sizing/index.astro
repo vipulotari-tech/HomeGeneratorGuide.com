@@ -1,0 +1,23 @@
+---
+import CategoryLayout from '../../layouts/CategoryLayout.astro';
+---
+<CategoryLayout
+  title="Generator Sizing Guides"
+  description="Learn how standby generator sizing really works: running vs starting watts, load calculations, HVAC surges, and size ranges."
+  intro="Square footage alone never sizes a generator — your actual electrical loads do. These guides walk through the method licensed electricians use, so you can plan intelligently before requesting a quote."
+  cards={[
+    { href: '/sizing/what-size-generator-do-i-need/', title: 'What Size Generator Do I Need?', description: 'The complete sizing walkthrough: method, worked example, appliance table, and 10–26 kW ranges.', category: 'Sizing', readingTime: '14 min read' },
+    { href: '/sizing/appliance-wattage-chart/', title: 'Appliance Wattage Chart', description: 'Running and starting watts for 28 common appliances, grouped by category.', category: 'Sizing', readingTime: '8 min read' },
+    { href: '/sizing/calculator/', title: 'Sizing Calculator', description: 'Interactive 60-second tool: check appliances, get your kW band.', category: 'Sizing', readingTime: '3 min use' },
+    { href: '/sizing/hvac-generator-sizing/', title: 'HVAC & Generator Sizing', description: 'Why central AC dominates sizing — LRA surge, tonnage math, and soft-start options.', category: 'Sizing', readingTime: '8 min read' },
+    { href: '/sizing/well-pump-generator-sizing/', title: 'Well Pump Generator Sizing', description: 'Well-pump surge explained by HP, plus pressure-tank and rural-outage planning.', category: 'Sizing', readingTime: '7 min read' },
+    { href: '/sizing/whole-home-vs-essential-loads/', title: 'Whole-Home vs Essential Loads', description: 'Two backup philosophies compared — cost, comfort, and who each suits.', category: 'Sizing', readingTime: '8 min read' },
+    { href: '/sizing/what-size-for-2000-sq-ft/', title: 'Size for a 2,000 Sq Ft House', description: 'The most-asked sizing question, answered honestly with three scenarios.', category: 'Sizing', readingTime: '7 min read' },
+    { href: '/sizing/understanding-generator-ratings/', title: 'Ratings, Derating & Sizing Method', description: 'Standby vs prime, altitude math, surge multipliers, and 7 costly mistakes.', category: 'Sizing', readingTime: '12 min read' },
+  ]}
+>
+  <div class="prose-hgg mt-10">
+    <h2>How sizing fits the bigger picture</h2>
+    <p>Sizing determines everything downstream: <a href="/cost/standby-generator-cost/">cost</a>, <a href="/installation/what-to-expect/">installation scope</a>, and fuel use. Oversizing wastes money and fuel; undersizing trips breakers when the AC starts. Start here, then price what you sized.</p>
+  </div>
+</CategoryLayout>

@@ -1,0 +1,70 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import AlertBox from '../../components/ui/AlertBox.astro';
+import ComparisonTable from '../../components/ui/ComparisonTable.astro';
+import FAQSection from '../../components/ui/FAQSection.astro';
+import StatBox from '../../components/ui/StatBox.astro';
+
+const toc = [
+  { id: 'toll', label: 'The CO toll (CPSC)' },
+  { id: 'standby-vs-portable', label: 'Standby vs portable risk' },
+  { id: 'detectors', label: 'Detector requirements' },
+  { id: 'symptoms', label: 'Symptoms' },
+  { id: 'alarm', label: 'If the alarm sounds' },
+  { id: 'placement', label: 'Placement recap' },
+  { id: 'faq', label: 'FAQ' },
+];
+---
+<ArticleLayout
+  title="Generator Carbon Monoxide Safety: Stats, Detectors & Alarm Response"
+  description="CO safety for generator owners: CPSC death statistics, why standby beats portable, detector placement rules, poisoning symptoms, and exact alarm-response steps."
+  category="Buying Guides" categoryHref="/guides/" updated="2026-10-03" readingTime="9 min read" toc={toc}
+  related={[
+    { href: '/installation/generator-pad-and-placement/', title: 'Pad & Placement Guide', description: 'Clearances that prevent CO entry.', category: 'Installation' },
+    { href: '/guides/us-power-outage-statistics/', title: 'US Outage Statistics', description: 'Exposure data.', category: 'Buying Guides' },
+  ]}
+  prev={{ href: '/guides/us-power-outage-statistics/', label: 'US Outage Statistics' }}
+  next={{ href: '/guides/power-quality-thd-surge-protection/', label: 'Power Quality & Surge' }}
+>
+  <AlertBox type="danger" title="Read this first">Carbon monoxide is colorless, odorless, and tasteless — undetectable without an alarm. If any fuel-burning equipment runs at your home, working CO detectors are non-negotiable. Statistics below are CPSC/CDC/EPA-sourced (researched Oct 2026).</AlertBox>
+
+  <section id="toll"><h2>The CO toll (CPSC data)</h2>
+  <div class="grid gap-4 sm:grid-cols-3 not-prose my-6">
+    <StatBox value="~75/yr" label="Portable-generator CO deaths" sub="2012–2022 avg; 92 in 2024" />
+    <StatBox value="~50%" label="Of non-fire CO deaths" sub="from portable generators" />
+    <StatBox value="~20,000" label="US CO ER visits/year" sub="all sources (CPSC)" />
+  </div>
+  <ul><li>Portables produce as much CO as <strong>hundreds of cars</strong> (CPSC) — the engine is small, the exhaust chemistry is filthy.</li><li>50–60% of deaths hit November–February: storm + cold + windows shut + portable dragged too close.</li><li>Generator-specific injury counts are less comprehensive than death counts — treat any injury estimate you see as rough.</li></ul></section>
+
+  <section id="standby-vs-portable"><h2>Why standby is far safer (but not risk-free)</h2>
+  <ComparisonTable caption="Standby versus portable CO risk" headers={['Factor', 'Standby', 'Portable']} rows={[
+    ['Location', 'Fixed outdoors, 5+ ft from openings', 'User-placed — garages, patios, near doors'],
+    ['Exhaust', 'Engineered away from home', 'Varies with each placement'],
+    ['Operation', 'Automatic — no placement decisions', 'Manual setup every outage, often in rain/dark'],
+    ['Enclosure', 'Ventilated weatherproof housing', 'Open frame or improvised covers'],
+    ['Monitoring', 'Usually paired with home CO alarms', 'Rarely paired with alarms'],
+    ['CPSC incidents', '105 stationary incidents (study period)', '750 deaths 2012–2022'],
+  ]} />
+  <p class="mt-3"><strong>The caveat that matters:</strong> even standby units can poison if misinstalled — too close to windows, vents, or intakes. Clearances are the safety device. Full table: <a href="/installation/generator-pad-and-placement/">placement guide</a>.</p></section>
+
+  <section id="detectors"><h2>Detector requirements for generator homes</h2>
+  <ul><li><strong>Coverage:</strong> one on every level + outside each sleeping area (NFPA 720 / local code pattern).</li><li><strong>Type:</strong> battery-operated or hardwired <em>with battery backup</em> — outages kill hardwired-only units otherwise.</li><li><strong>Placement:</strong> within 10–15 ft of sleeping areas (CO mixes with air — follow manufacturer height guidance).</li><li><strong>Life:</strong> replace every 5–7 years (check the printed date, not your memory); test monthly; fresh batteries yearly.</li></ul></section>
+
+  <section id="symptoms"><h2>Symptoms: flu without the fever</h2>
+  <p><strong>Mild–moderate:</strong> headache (most common), dizziness, weakness, nausea, vomiting, shortness of breath. <strong>Severe:</strong> confusion, chest pain, coordination loss, fainting, seizures, coma. The tell: <strong>flu-like symptoms with no fever, striking multiple people (or pets) at once</strong> — and improving outdoors. Most vulnerable: unborn babies, infants, the elderly, and heart/lung patients. This is health information, not medical advice — when in doubt, get out and call 911.</p></section>
+
+  <section id="alarm"><h2>If the CO alarm sounds: 8 steps</h2>
+  <ol><li><strong>Get outside immediately</strong> — open a window/door on the way if trivially easy, never delay for it.</li><li><strong>Head count</strong> — every person and pet accounted for.</li><li><strong>Call 911 from outside</strong> — never stay inside to call.</li><li><strong>Report symptoms</strong> to the operator; severe or &gt;30-minute symptoms mean the ER.</li><li><strong>Do not re-enter</strong> until responders clear the home.</li><li><strong>Silence sources only if safe</strong> — furnace, water heater, generator.</li><li><strong>Ventilate</strong> (windows/doors) after evacuation.</li><li><strong>Pro inspection before restart</strong> — every fuel-burning appliance checked by a qualified tech.</li></ol></section>
+
+  <section id="placement"><h2>Placement recap (the prevention)</h2>
+  <p>18 in from combustibles · 5 ft from windows, doors, vents, intakes · 3 ft from meters and service sides · exhaust never aimed at the house · local codes may demand more. Installed under permit, inspected, and paired with working detectors, a standby unit's CO risk is a managed engineering problem — not a gamble. Details: <a href="/installation/generator-pad-and-placement/">pad & placement</a>; process: <a href="/installation/what-to-expect/">install day</a>.</p></section>
+
+  <section id="faq"><span class="sr-only">FAQ anchor</span></section>
+  <FAQSection items={[
+    { q: 'Can a standby generator cause carbon monoxide poisoning?', a: 'Yes, if misinstalled — placed too close to windows, doors, or intakes, or with exhaust directed at the home. CPSC identified 105 stationary-generator CO incidents against 750 portable deaths in the comparable window. Correct clearances plus working detectors are the prevention.' },
+    { q: 'Where do CO detectors go in a generator home?', a: 'Every level plus outside each sleeping area, battery or hardwired-with-backup (outages kill power-only units), replaced every 5–7 years, tested monthly.' },
+    { q: 'What does CO poisoning feel like?', a: 'Flu without fever: headache, dizziness, nausea, weakness — escalating to confusion, chest pain, and fainting. Multiple victims at once (including pets) with improvement outdoors is the classic pattern. Get out, call 911.' },
+    { q: 'Is it safe to run a portable generator in the garage with the door open?', a: 'No — never in garages, basements, sheds, or near openings even "with ventilation." CPSC data shows this exact scenario kills. Portables belong fully outdoors, 20+ feet from the home, exhaust pointed away.' },
+  ]} />
+  <section id="conclusion"><h2>Conclusion</h2><p>Detectors on every level, clearances respected, alarm plan rehearsed. CO safety is three cheap devices and one careful install — the highest-value pages on this site per dollar. Next: <a href="/sizing/what-size-generator-do-i-need/">size your system</a>.</p></section>
+</ArticleLayout>

@@ -1,0 +1,21 @@
+---
+interface Props {
+  href: string;
+  title: string;
+  description: string;
+  category?: string;
+  readingTime?: string;
+}
+const { href, title, description, category, readingTime } = Astro.props;
+---
+<article class="flex h-full flex-col rounded-xl border border-[#e5e7eb] bg-white p-5 transition-colors hover:border-orange-300 hover:shadow-sm">
+  {category && <p class="text-xs font-semibold uppercase tracking-wider text-orange-600">{category}</p>}
+  <h3 class="mt-1 text-lg font-semibold leading-snug text-[#1e3a5f]">
+    <a href={href} class="underline-offset-4 hover:underline">{title}</a>
+  </h3>
+  <p class="mt-2 flex-1 text-sm leading-relaxed text-gray-600">{description}</p>
+  <div class="mt-4 flex items-center justify-between text-sm">
+    <a href={href} class="inline-flex min-h-[44px] items-center font-semibold text-orange-600 hover:text-orange-700" aria-label={`Read guide: ${title}`}>Read guide <span aria-hidden="true" class="ml-1">→</span></a>
+    {readingTime && <span class="text-xs text-gray-400">{readingTime}</span>}
+  </div>
+</article>

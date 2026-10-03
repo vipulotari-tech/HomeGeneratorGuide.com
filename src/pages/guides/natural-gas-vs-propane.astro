@@ -1,0 +1,94 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import AlertBox from '../../components/ui/AlertBox.astro';
+import ComparisonTable from '../../components/ui/ComparisonTable.astro';
+import FAQSection from '../../components/ui/FAQSection.astro';
+import { naturalGasCFH, propaneGPH, propaneTanks, priceBands2026 } from '../../data/fuel-consumption';
+
+const toc = [
+  { id: 'basics', label: 'BTU basics' },
+  { id: 'ng', label: 'Natural gas: price & use' },
+  { id: 'ng-outage', label: 'Does gas flow in outages?' },
+  { id: 'meter', label: 'Meter capacity' },
+  { id: 'propane', label: 'Propane: price & seasons' },
+  { id: 'tanks', label: 'Tank sizes & runtimes' },
+  { id: 'own-rent', label: 'Own vs rent the tank' },
+  { id: 'versus', label: 'Head-to-head' },
+  { id: 'situations', label: 'Which fuel fits' },
+  { id: 'dual', label: 'Dual & tri-fuel' },
+  { id: 'diesel', label: 'Diesel (brief)' },
+  { id: 'faq', label: 'FAQ' },
+];
+---
+<ArticleLayout
+  title="Natural Gas vs Propane Generators: Fuel Cost, Tanks & Runtime"
+  description="NG vs propane for standby: consumption tables, hourly costs, tank sizes and runtimes, own-vs-rent math, meter capacity, outage reliability, and diesel context."
+  category="Buying Guides" categoryHref="/guides/" updated="2026-10-03" readingTime="13 min read" toc={toc}
+  related={[
+    { href: '/cost/standby-generator-cost/', title: 'Standby Generator Cost (2026)', description: 'Full project budget.', category: 'Cost' },
+    { href: '/guides/first-time-buyer-guide/', title: 'First-Time Buyer Guide', description: 'Decision 1 is fuel.', category: 'Buying Guides' },
+    { href: '/installation/what-to-expect/', title: 'Installation: What to Expect', description: 'Gas scope detail.', category: 'Installation' },
+  ]}
+  prev={{ href: '/guides/first-time-buyer-guide/', label: 'First-Time Buyer Guide' }}
+  next={{ href: '/guides/us-power-outage-statistics/', label: 'US Outage Statistics' }}
+>
+  <AlertBox type="info" title="Estimates, labeled">Fuel prices move with EIA reports and seasons. Ranges below are 2024–2026 planning figures (EIA + industry sources, researched Oct 2026) — check your utility bill and local propane quotes for decisions. Consumption rows marked * are estimates; verify your exact model's spec sheet.</AlertBox>
+
+  <section id="basics"><h2>BTU basics (one paragraph)</h2>
+  <p>Energy content decides everything downstream: natural gas carries ~1,000–1,036 BTU per cubic foot (1 therm = 100,000 BTU ≈ 100 ft³); liquid propane packs 91,500 BTU per gallon (~2,500 BTU/ft³ vapor) — about 2.5× denser per cubic foot. Gasoline (114,000–120,000 BTU/gal) and diesel (~138,000 BTU/gal) outrank both, which is why portable dual-fuel ratings derate on gaseous fuels. For standby shopping, the practical translation: NG is piped and effectively unlimited; propane is dense but lives in a tank you must size.</p></section>
+
+  <section id="ng"><h2>Natural gas: price & consumption</h2>
+  <p>Residential NG runs roughly <strong>{priceBands2026.naturalGasPerTherm} per therm</strong> — Northeast and California highest on pipeline constraints, South/Midwest lowest near production. Formula: <code>(CFH ÷ 1,000) × price per 1,000 ft³ = $/hour</code>. At $1.20/therm, a 22 kW at half load (~221 ft³/hr) costs ~$2.65/hour; a 3-day outage at half load lands roughly $190–$200 in fuel — not the scary part of the bill. Full 24/7-month math ($1,700–$3,300 for 20–22 kW) is shown for scale only; real outages last 1–3 days.</p>
+  <ComparisonTable caption="Natural gas consumption ft3 per hour" headers={['Size', '50% load (ft³/h)', 'Full load (ft³/h)']} rows={naturalGasCFH.map((r) => [r.kw + (r.verified ? '' : ' *'), r.half, r.full])} />
+  <p class="mt-3 text-sm text-gray-600">Rule of thumb: 10–13 ft³ per rated kW per hour at full load. * = estimated rows.</p></section>
+
+  <section id="ng-outage"><h2>Does natural gas flow during outages? Yes — with exceptions</h2>
+  <p>Gas pipelines are pressurized independently of the electric grid; distribution holds pressure, compressors often self-power or run on gas, and your meter is mechanical. Rare exceptions: earthquake shutoff valves, storm-damaged mains, or utility safety shutoffs. Note the subtlety: gas flows, but gas <em>appliances</em> with electronic ignition still need electricity — which is exactly what the generator restores.</p></section>
+
+  <section id="meter"><h2>Meter capacity: the hidden upgrade</h2>
+  <p>A 20 kW+ generator almost always needs a bigger meter. Standard AL-250 (~250,000 BTU/hr) covers 10–14 kW plus typical appliances; AL-425 (~425,000) fits 18–22 kW; AL-625 (~625,000) covers 22–26 kW with heavy appliance loads. Add everything (furnace 80–120k, water heater up to 199k, range, generator 140–300k BTU). Process: call the utility for a free load calc → they usually swap the meter free → you fund any piping upsizing ($500–$2,000), 1–3 weeks lead. Operating window at the generator: 5–7 in WC, never below 3.5 or above 14; full-load drop ≤0.5 in WC by manometer.</p></section>
+
+  <section id="propane"><h2>Propane: price, seasons & consumption</h2>
+  <p>Residential propane spans roughly <strong>{priceBands2026.propanePerGallon} per gallon</strong> — Northeast highest with $0.50–$1.00 winter spikes, Midwest/South lowest. Winter (Nov–Mar) peaks on heating demand; summer troughs. Formula: <code>GPH × $/gal = $/hour</code> — a 22 kW at half load (~2.5 gal/h) at $2.80/gal runs ~$7/hour, roughly 2–3× NG per kWh. Propane never degrades (no stabilizer needed); it just needs a tank.</p>
+  <ComparisonTable caption="Propane consumption gallons per hour" headers={['Size', '50% load (gal/h)', 'Full load (gal/h)']} rows={propaneGPH.map((r) => [r.kw, r.half, r.full])} />
+  <p class="mt-3 text-sm text-gray-600">Rule of thumb: 0.10–0.13 gal per hour per kW of load.</p></section>
+
+  <section id="tanks"><h2>Tank sizes & runtimes (20 kW reference)</h2>
+  <p>Tanks fill to 80% (thermal expansion) — a "500-gal" tank holds ~400 usable gallons.</p>
+  <ComparisonTable caption="Propane tank runtimes" headers={['Tank', 'Usable', '50% load', 'Full load']} rows={propaneTanks.map((t) => [t.size, t.usable, t.runtime20kwHalf, t.runtime20kwFull])} />
+  <p class="mt-3">Above-ground installs run $500–$1,500 (tank + pad + hookup); underground $1,500–$3,500 with better cold-weather vaporization and curb appeal but harder inspection. Setbacks ~10 ft from buildings/ignition sources. Delivery: 50–100 gal minimums, $25–$75 fees, 1–5 day lead stretching to 1–2 weeks in storms — automatic delivery (refill at 20–30%) beats will-call in outage season.</p></section>
+
+  <section id="own-rent"><h2>Own vs rent the tank (read before signing)</h2>
+  <ul><li><strong>Rent ($0–$150 setup, $50–$175/yr):</strong> no upfront, supplier maintains — but anti-fill laws mean <em>only that supplier</em> may fill it, at their price (often 20–40% markup). Switching costs $500–$1,500 buyout/termination.</li><li><strong>Own ($1,000–$3,500 installed):</strong> shop any supplier ($2.20–$3.00/gal typical), zero switching cost, you own maintenance/inspections. Breakeven roughly 10–18 years — immediate if staying 12+.</li><li>Own the tank if this is your forever home with real outage exposure; rent only for short horizons or minimal use.</li></ul></section>
+
+  <section id="versus"><h2>Head-to-head</h2>
+  <ComparisonTable caption="Natural gas versus propane" headers={['', 'Natural gas', 'Propane']} firstColSticky={true} rows={[
+    ['Cost per kWh', '$0.20–$0.35', '$0.45–$0.75'],
+    ['22 kW @ 50%', '~$2.65–$4.00/hr', '~$6.55–$7.00/hr'],
+    ['Availability', 'Pipeline areas only', 'Anywhere with a tank'],
+    ['Runtime', 'Unlimited (gas flowing)', 'Tank-bound (500 gal ≈ 5–7 days @ 50%)'],
+    ['Install', 'Gas line only', 'Tank ($500–$3,500) + line'],
+    ['Shelf life', 'N/A (piped)', 'Indefinite'],
+    ['Safety note', 'Lighter than air (rises)', 'Heavier than air (pools low — stricter setbacks)'],
+    ['Environment', 'Lower CO₂ per BTU', 'Cleaner than gasoline, higher CO₂ than NG'],
+  ]} /></section>
+
+  <section id="situations"><h2>Which fuel fits</h2>
+  <ul><li><strong>Piped suburbia, any outage length:</strong> natural gas — cheapest to run, nothing to refill.</li><li><strong>Rural, no gas main:</strong> propane, 500-gal minimum mindset (1,000 for storm regions).</li><li><strong>Infrequent short outages:</strong> propane 250–500 gal — low install friction, fuel keeps forever.</li><li><strong>Fuel independence:</strong> owned propane tank — price-shop every fill.</li><li><strong>Sub-zero + no gas:</strong> underground propane (ground warmth aids vaporization).</li><li><strong>HOA aesthetics:</strong> NG (no tank) or buried propane.</li></ul></section>
+
+  <section id="dual"><h2>Dual & tri-fuel (mostly portable territory)</h2>
+  <p>Dual-fuel (gasoline + propane) and tri-fuel (+NG) portables trade peak output for flexibility: propane yields ~85–90% of gasoline power, NG ~75–80%. Standby units are instead NG/LP field-configurable with fuel-specific ratings (hence Generac's split LP/NG kW). Buy tri-fuel for maximum portable flexibility; buy standby for automatic whole-home coverage — different jobs.</p></section>
+
+  <section id="diesel"><h2>Diesel in brief (rarely residential)</h2>
+  <p>Diesel fits 50 kW+ estates, farms, and prime-power duty: ~$0.35–$0.55/kWh, ~1.5–2 gal/h at 22 kW half load — but 75–85 dB noise, 20–40% pricier units, 6–12-month fuel life, gelling in cold, and heavier maintenance keep it out of suburbia. Below 50 kW, gaseous air-cooled wins for nearly every home.</p></section>
+
+  <section id="faq"><span class="sr-only">FAQ anchor</span></section>
+  <FAQSection items={[
+    { q: 'How much does it cost per hour to run a 22 kW generator?', a: 'Roughly $2.65–$4.00/hour on natural gas vs ~$6.55–$7.00/hour on propane at half load (2024–26 prices). A 3-day outage at half load costs on the order of $200 (NG) or $500 (propane) in fuel — verify against your utility bill and propane contract.' },
+    { q: 'What size propane tank do I need?', a: 'For a 20–22 kW unit: 250 gallons covers ~3 days at half load, 500 gallons ~6 days, 1,000 gallons ~12 days (all at 80% fill). Size to your longest historical outage plus margin, and refill before storm season.' },
+    { q: 'Should I rent or buy my propane tank?', a: 'Buy for horizons over ~12 years or heavy use — supplier choice alone usually pays for the tank. Rent only short-term. Never sign a lease without reading the fill exclusivity and termination terms.' },
+    { q: 'Can a standby generator run indefinitely on natural gas?', a: 'Effectively yes, as long as the pipeline delivers — gas flows independent of the grid, and standby duty covers ~200 h/year with maintenance at 100–200-hour intervals during marathon runs. Rare exceptions: quake valves, damaged mains, or utility safety shutoffs.' },
+    { q: 'Will my gas meter handle a generator?', a: 'Often not at 20 kW+: standard 250-CFH meters cover ~10–14 kW plus appliances. The utility typically Upgrades the meter free after a load calc; you fund piping upsizes. Start this 1–3 weeks before install day.' },
+  ]} />
+  <section id="conclusion"><h2>Conclusion</h2><p>Piped gas? Take it — cheapest runtime, infinite horizon. No main? Size propane to the worst week, own the tank for the long haul, and enroll in auto-delivery. Either way, confirm meter/tank capacity <em>before</em> the install date. Next: <a href="/sizing/what-size-generator-do-i-need/">size the unit</a>, then <a href="/cost/standby-generator-cost/">price it installed</a>.</p></section>
+</ArticleLayout>

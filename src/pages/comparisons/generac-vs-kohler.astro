@@ -1,0 +1,157 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import AlertBox from '../../components/ui/AlertBox.astro';
+import ComparisonTable from '../../components/ui/ComparisonTable.astro';
+import FAQSection from '../../components/ui/FAQSection.astro';
+import ProConBox from '../../components/ui/ProConBox.astro';
+
+const toc = [
+  { id: 'background', label: 'Company background' },
+  { id: 'lineup', label: 'Residential range' },
+  { id: 'criteria', label: 'Head-to-head criteria' },
+  { id: 'warranty', label: 'Warranty' },
+  { id: 'noise', label: 'Noise' },
+  { id: 'fuel', label: 'Fuel support' },
+  { id: 'monitoring', label: 'Monitoring' },
+  { id: 'dealers', label: 'Dealers & service' },
+  { id: 'ownership', label: 'Ownership & availability' },
+  { id: 'verdict', label: 'Situation-based verdict' },
+  { id: 'faq', label: 'FAQ' },
+];
+
+const faqs = [
+  { q: 'Which is better, Generac or Kohler?', a: 'Neither universally. Generac offers broader model choice, wider dealer coverage, and typically lower entry pricing; Kohler leans premium on enclosure build, controller diagnostics, and corrosion resistance. Match to your budget, local dealer quality, and noise/placement constraints — not to internet winner-takes-all threads.' },
+  { q: 'Which is quieter?', a: 'Comparable-kW air-cooled units from both brands typically test in the low-to-mid 60s dB(A) at 23 ft in normal exercise mode. Placement, load, and enclosure matter more than badge. Verify the exact model spec sheet and local setback rules.' },
+  { q: 'Which warranty is better?', a: 'Both advertise ~5-year residential limited terms on core air-cooled lines, but exclusions, hour caps, and transferability differ. Read the current warranty PDFs — not the marketing page — and confirm dealer registration.' },
+  { q: 'Is Kohler worth the premium?', a: 'Sometimes: coastal/corrosive sites, buyers prioritizing enclosure and diagnostics, or areas with a standout Kohler dealer. Often not: budget-first essential-load jobs where a Generac + load management covers the same loads for less.' },
+  { q: 'Do both run on natural gas and propane?', a: 'Yes — both core standby lines are dual-fuel capable (field-convertible). Confirm gas-pipe sizing with your installer; fuel starvation affects every brand equally.' },
+];
+---
+<ArticleLayout
+  title="Generac vs Kohler: Neutral Standby Comparison"
+  description="Neutral Generac vs Kohler standby comparison: range, pricing context, warranty, noise, fuel, monitoring, dealers, and situation-based recommendations."
+  category="Comparisons"
+  categoryHref="/comparisons/"
+  updated="2026-10-03"
+  readingTime="11 min read"
+  toc={toc}
+  related={[
+    { href: '/brands/generac/', title: 'Generac Standby Generators', description: 'Guardian lineup deep dive.', category: 'Brands' },
+    { href: '/brands/kohler/', title: 'Kohler Standby Generators', description: 'Premium positioning examined.', category: 'Brands' },
+    { href: '/cost/standby-generator-cost/', title: 'Standby Generator Cost (2026)', description: 'What either choice costs installed.', category: 'Cost' },
+  ]}
+  prev={{ href: '/brands/cummins/', label: 'Cummins Brand Guide' }}
+  next={{ href: '/comparisons/standby-vs-portable/', label: 'Standby vs Portable' }}
+  takeaways={[
+    'No universal winner: Generac brings value breadth and 5,000+ dealers; Kohler brings premium build and a comprehensive 5-year warranty.',
+    'At comparable kilowatts both test in the same noise band — placement matters more than badge.',
+    'Generac warranty is tiered (full coverage effectively two years); Kohler covers parts, labor, and travel throughout.',
+    'The installing dealer quality usually outweighs spec-sheet differences.',
+  ]}
+  sources={[
+    { label: 'Generac — Residential Standby Lineup', href: 'https://www.generac.com/residential-products/standby-generators/' },
+    { label: 'Kohler Home Energy — Home Generators', href: 'https://www.kohlerhomeenergy.rehlko.com/products/home-generators' },
+    { label: 'Kohler — Warranty Promise', href: 'https://www.kohlerhomeenergy.rehlko.com/resource-center/warranty-promise' },
+  ]}
+>
+  <AlertBox type="info" title="How we compare">Fixed criteria, no paid placement, no universal winner. Verify exact-model specs and current warranty PDFs on manufacturer sites before purchase.</AlertBox>
+
+  <section id="background">
+    <h2>Company background</h2>
+    <p><strong>Generac</strong> (Waukesha, Wisconsin) is the US residential standby volume leader — the Guardian line is the default quote in many markets, with the deepest retail and installer footprint. <strong>Kohler</strong> (Kohler, Wisconsin) brings a century-plus power-systems heritage spanning residential through industrial; its residential standby line positions premium, emphasizing enclosure engineering and controller diagnostics. Market share is not quality proof — but it does predict parts availability and how many local techs have seen your unit before.</p>
+  </section>
+
+  <section id="lineup">
+    <h2>Residential product range</h2>
+    <ComparisonTable
+      caption="Generac vs Kohler residential range"
+      headers={['', 'Generac', 'Kohler']}
+      rows={[
+        ['Core air-cooled', 'Guardian 10–26 kW', '10–26 kW class single-phase'],
+        ['Larger residential', 'Liquid-cooled 22 kW+ configs', 'Liquid-cooled 30–60 kW class'],
+        ['Off-grid specialty', 'EcoGen propane-optimized', '— (grid-backup focus)'],
+        ['Entry pricing signal', 'Typically lower', 'Typically higher'],
+      ]}
+    />
+    <p class="mt-3">Both cover the 18–26 kW sweet spot where most US homes land (see <a href="/sizing/what-size-generator-do-i-need/">sizing</a>). Differences emerge at the edges: budget-constrained essentials (Generac breadth helps) vs large-estate liquid-cooled (compare engineered quotes, not brochures).</p>
+  </section>
+
+  <section id="criteria">
+    <h2>Head-to-head criteria (verified specs, Oct 2026 research)</h2>
+    <ComparisonTable
+      caption="Generac vs Kohler criteria table"
+      headers={['Criterion', 'Generac', 'Kohler']}
+      firstColSticky={true}
+      rows={[
+        ['Entry MSRP signal', '10 kW $3,769 unit / $4,619 w/ ATS', '10RESV $3,946'],
+        ['26 kW-class MSRP', 'Next Gen 26 kW $7,159 / $8,219 w/ ATS', '26RCA $7,546'],
+        ['Noise (rated @ 23 ft)', '61–68 dB (10 kW 61; 22–28 kW 67)', '56–71 dB (26RCA 56; 20RCA 64 ex./69 full)'],
+        ['Warranty (verify PDF)', '5-yr tiered: yrs 1–2 full, yr 3 parts, yrs 4–5 engine/alternator', '5-yr / 2,000-hr comprehensive incl. labor + travel'],
+        ['Surge tech', 'Load-shed modules', 'PowerBoost (no-drop large starts)'],
+        ['Monitoring', 'Mobile Link (Wi-Fi/cellular; no voice)', 'OnCue Plus + Alexa/Google voice'],
+        ['Dealer network', '5,000+ US & Canada (largest)', 'Nationwide; rural gaps reported'],
+        ['Enclosure', 'Aluminum standard; coastal rust reports', 'Aluminum, corrosion-focused; 181 mph wind testing (mfr claim)'],
+      ]}
+    />
+  </section>
+
+  <section id="warranty">
+    <h2>Warranty</h2>
+    <p>Headline terms look similar (~5 years residential limited), so read exclusions: hour caps, commercial-use voids, maintenance-compliance clauses, parts-vs-labor splits, and transferability on home sale. The dealer registering your unit correctly matters as much as the PDF. Ask every bidder: "Show me the current warranty PDF for this exact model, and confirm you register it."</p>
+  </section>
+
+  <section id="noise">
+    <h2>Noise</h2>
+    <p>At comparable kW, both sit in the same acoustic neighborhood; weekly exercise mode is quieter than full-load outage mode. What actually changes neighbor relations: setback distance, enclosure orientation, fencing that blocks airflow (do not choke clearance to muffle sound), and local ordinance hours. If noise is decisive, compare exact-model dB(A) figures and visit a running install.</p>
+  </section>
+
+  <section id="fuel">
+    <h2>Fuel support</h2>
+    <p>Both core lines run natural gas or propane. The fuel question is plumbing, not brand: gas-pipe diameter and run length, propane tank sizing for your outage horizon, and regulator setup. An undersized gas feed makes any brand stumble at full load — size fuel with the installer, not the brochure.</p>
+  </section>
+
+  <section id="monitoring">
+    <h2>Monitoring & connectivity</h2>
+    <p>Generac Mobile Link and Kohler OnCue Plus both offer remote status, exercise history, and dealer alerts. Voice control favors Kohler (Alexa/Google); thermostat bundling favors Generac via ecobee ownership (select SKUs like the 7329 — verify current lineup). Evaluate: cellular vs Wi-Fi dependence (storms kill Wi-Fi), alert granularity, dealer-fleet integration (does <em>your</em> dealer actually monitor it?), and subscription fees after year one. Connectivity never replaces the weekly exercise log — see <a href="/maintenance/generator-maintenance-checklist/">maintenance</a>.</p>
+  </section>
+
+  <section id="dealers">
+    <h2>Dealer & service availability</h2>
+    <p>The best generator is the one your local tech can service Thursday. Score dealers on: factory certification, years servicing standby (not just selling), stock of filters/batteries, guaranteed response windows, and reviews mentioning outage-season performance. In many ZIP codes, dealer quality swamps brand deltas — a superb Generac dealer beats a distant Kohler dealer and vice versa.</p>
+  </section>
+
+  <section id="ownership">
+    <h2>Ownership considerations & availability</h2>
+    <ProConBox
+      pros={['Widest parts/installer availability', 'Broader price ladder incl. value configs', 'Mature monitoring ecosystem']}
+      cons={['High-volume support variance by dealer', 'Enclosure/finish less premium on base trims']}
+      prosTitle="Generac strengths / trade-offs"
+      consTitle="Watch-outs"
+    />
+    <div class="mt-4" />
+    <ProConBox
+      pros={['Enclosure and controller refinement', 'Strong diagnostics for pro service', 'Coastal/corrosion-minded options']}
+      cons={['Higher entry pricing', 'Thinner coverage in some regions']}
+      prosTitle="Kohler strengths / trade-offs"
+      consTitle="Watch-outs"
+    />
+    <p class="mt-4">Lead times spike after major storms for both brands. If buying in hurricane season, ask for in-stock model numbers and written install dates — not "2–3 weeks-ish."</p>
+  </section>
+
+  <section id="verdict">
+    <h2>Situation-based verdict (no universal winner)</h2>
+    <ul>
+      <li><strong>Choose Generac when:</strong> budget discipline matters, you want the widest dealer choice, or load management + a mid-range Guardian covers your loads (most homes).</li>
+      <li><strong>Choose Kohler when:</strong> premium enclosure/diagnostics justify the spread, coastal corrosion resistance matters, or your standout local dealer is Kohler-certified.</li>
+      <li><strong>Either way:</strong> size via <a href="/sizing/what-size-generator-do-i-need/">loads not sq ft</a>, compare all-in installed quotes, and weight dealer responsiveness above badge.</li>
+    </ul>
+  </section>
+
+  <section id="faq"><span class="sr-only">FAQ anchor</span></section>
+  <FAQSection items={faqs} />
+
+  <section id="conclusion">
+    <h2>Conclusion</h2>
+    <p>Generac brings ubiquity and value breadth; Kohler brings premium fit and diagnostic depth. For most homes both work — the deciding votes are your load list, your site's fuel and placement constraints, and which certified dealer answers the phone in a storm. Read the <a href="/brands/generac/">Generac deep dive</a>, then price both paths in <a href="/cost/standby-generator-cost/">installed dollars</a>.</p>
+  </section>
+</ArticleLayout>

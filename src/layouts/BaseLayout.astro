@@ -1,0 +1,60 @@
+---
+import '../styles/global.css';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+  noindex?: boolean;
+  schema?: Record<string, unknown> | Record<string, unknown>[];
+}
+const {
+  title,
+  description,
+  canonical,
+  ogImage = '/og-image.png',
+  noindex = false,
+  schema,
+} = Astro.props;
+const site = 'https://homegeneratorguide.com';
+const url = canonical ?? `${site}${Astro.url.pathname}`;
+const fullTitle = title.includes('HomeGeneratorGuide') ? title : `${title} | HomeGeneratorGuide`;
+---
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light" />
+  <meta name="theme-color" content="#1e3a5f" />
+  <title>{fullTitle}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={url} />
+  <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="HomeGeneratorGuide" />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={url} />
+  <meta property="og:image" content={`${site}${ogImage}`} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={fullTitle} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={`${site}${ogImage}`} />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="sitemap" href="/sitemap-index.xml" />
+  <!-- GA4 placeholder: add measurement ID at deploy time. No tracking scripts ship by default. -->
+  {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
+</head>
+<body class="flex min-h-screen flex-col bg-white text-[#1f2937]">
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded focus:bg-white focus:px-4 focus:py-2 focus:text-[#1e3a5f]">Skip to content</a>
+  <Header />
+  <main id="main" class="flex-1">
+    <slot />
+  </main>
+  <Footer />
+</body>
+</html>

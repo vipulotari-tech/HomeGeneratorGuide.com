@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/layout/Breadcrumbs.astro';
+---
+<BaseLayout title="Affiliate Disclosure" description="HomeGeneratorGuide affiliate disclosure: how Amazon affiliate links work, when disclosure appears, and our independence commitment.">
+  <div class="mx-auto max-w-3xl px-4 py-10 sm:px-6">
+    <Breadcrumbs items={[{ href: '/', label: 'Home' }, { label: 'Affiliate Disclosure' }]} />
+    <h1 class="mt-4 text-4xl font-bold text-[#1e3a5f]">Affiliate Disclosure</h1>
+    <div class="prose-hgg mt-6">
+      <p><strong>Current status:</strong> HomeGeneratorGuide does not currently display live affiliate links. This page explains what will happen if that changes.</p>
+      <h2>Future Amazon Associates participation</h2>
+      <p>If we join the Amazon Associates program, pages containing affiliate links will carry a clear disclosure such as: "As an Amazon Associate, we may earn from qualifying purchases." The disclosure will appear near the links, not buried here alone.</p>
+      <h2>What this means</h2>
+      <ul>
+        <li>Clicking an affiliate link and buying may earn us a small commission at no extra cost to you.</li>
+        <li>Commissions help fund independent research and site maintenance.</li>
+        <li>We do not recommend products purely for commission. Coverage decisions come first; monetization never reverses them.</li>
+      </ul>
+      <h2>Primary revenue</h2>
+      <p>Our primary planned revenue is Google AdSense display advertising (currently placeholders only — no live publisher ID is deployed). Advertising never buys editorial conclusions.</p>
+    </div>
+  </div>
+</BaseLayout>

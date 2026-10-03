@@ -1,0 +1,208 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import AlertBox from '../../components/ui/AlertBox.astro';
+import ComparisonTable from '../../components/ui/ComparisonTable.astro';
+import FAQSection from '../../components/ui/FAQSection.astro';
+
+const toc = [
+  { id: 'why', label: 'Why maintenance decides reliability' },
+  { id: 'frequency', label: 'Service frequency by brand' },
+  { id: 'monthly', label: 'Monthly owner checks' },
+  { id: 'exercise', label: 'Exercise: frequency & loaded vs no-load' },
+  { id: 'oil', label: 'Oil: intervals, types & dipstick' },
+  { id: 'airfilter', label: 'Air filter' },
+  { id: 'plugs', label: 'Spark plugs' },
+  { id: 'battery', label: 'Battery: testing & replacement' },
+  { id: 'coolant', label: 'Coolant (liquid-cooled)' },
+  { id: 'fuel', label: 'Fuel system checks' },
+  { id: 'clearance', label: 'Clearance & leak watch' },
+  { id: 'pro', label: 'Pro service: scope, cost & hiring' },
+  { id: 'storm', label: 'Storm preparation' },
+  { id: 'log', label: 'Maintenance log' },
+  { id: 'faq', label: 'FAQ' },
+];
+
+const faqs = [
+  { q: 'How often should a standby generator be serviced?', a: 'Annually by a qualified technician at minimum (Generac: annual oil, 2-year comprehensive; Kohler/Cummins: annual service), plus monthly 5-minute owner visual checks and the automatic weekly exercise. Dusty, coastal, or extreme-temperature sites trend toward shorter intervals — oil every 100 hours in extreme conditions.' },
+  { q: 'What maintenance can a homeowner safely do?', a: 'Dipstick oil-level checks, visual filter inspection (light test, no washing), battery voltage reading with a multimeter, confirming exercise ran, and clearing debris — all with the unit off and cool. Leave oil/filter/plug replacement, valve adjustment, coolant, and all electrical/gas work to qualified service unless your manual authorizes you and you can do it safely with proper disposal.' },
+  { q: 'Why did my generator fail to start in an outage?', a: 'Top causes: dead/weak battery, overdue oil or clogged filter, fuel-supply issues, blocked airflow, and unverified exercise. Most are maintenance failures. Milky oil, metal flakes, or low-oil alarms mean stop the unit and call a technician — do not restart.' },
+  { q: 'How long do standby batteries last?', a: 'AGM 3–5 years, flooded 2–4 years; heat shortens life (3 years typical above 90°F). Replace proactively at 3–4 years. A resting 12.6V+ is full; below 12.4V needs charging; below 12.0V or under 9.6V while cranking means replace.' },
+  { q: 'Do I need fuel stabilizer for natural gas or propane?', a: 'No — piped gas and sealed-tank propane do not degrade. Spend that attention on annual leak, pressure, and regulator checks instead. Stabilizer matters only for gasoline portables.' },
+  { q: 'How do I winterize my standby generator?', a: 'Standbys winterize themselves with correct oil viscosity (0W/5W-30 below freezing), a healthy battery (cold halves capacity), cleared vents, and full propane or confirmed gas pressure. Add a battery warmer in sub-zero zones and keep the service number handy — no covering the enclosure (airflow kills).' },
+  { q: 'Should exercise be loaded or unloaded?', a: 'Weekly no-load exercise is the manufacturer default and exercises the engine. A monthly loaded exercise additionally proves the transfer switch under real load. Schedule mid-week mid-day (e.g., Wednesday 10 AM) to avoid disturbing neighbors.' },
+];
+---
+<ArticleLayout
+  title="Standby Generator Maintenance Checklist: Oil, Filters, Battery & Service"
+  description="Complete standby maintenance guide: brand oil intervals and types, air filter and spark plug specs, battery testing, exercise programming, coolant, pro service costs, and hiring."
+  category="Maintenance" categoryHref="/maintenance/" updated="2026-10-03" readingTime="16 min read" toc={toc}
+  related={[
+    { href: '/installation/what-to-expect/', title: 'Installation: What to Expect', description: 'Good installs make maintenance easy.', category: 'Installation' },
+    { href: '/cost/standby-generator-cost/', title: 'Standby Generator Cost (2026)', description: 'Budget the upkeep.', category: 'Cost' },
+    { href: '/brands/generac/', title: 'Generac Standby Generators', description: 'Brand-specific intervals.', category: 'Brands' },
+  ]}
+  prev={{ href: '/installation/generator-pad-and-placement/', label: 'Pad & Placement Guide' }}
+  next={{ href: '/guides/first-time-buyer-guide/', label: 'First-Time Buyer Guide' }}
+  takeaways={[
+    'Five minutes monthly, weekly exercise always on, pro service yearly, battery replaced at 3–4 years.',
+    'Homeowners check levels and voltages; replacement and adjustment work belongs to qualified service.',
+    'Generac oil every 200 h / 2 yr; Kohler and Cummins annually — extreme conditions halve intervals.',
+    'Keep invoices with the maintenance log: missed intervals are the top warranty-denial reason.',
+  ]}
+  sources={[
+    { label: 'CPSC — Carbon Monoxide Information Center', href: 'https://www.cpsc.gov/Safety-Education/Safety-Education-Centers/Carbon-Monoxide-Information-Center' },
+    { label: 'CDC — Carbon Monoxide Poisoning', href: 'https://www.cdc.gov/carbon-monoxide/about/index.html' },
+    { label: 'EPA — Indoor Air Quality and CO', href: 'https://www.epa.gov/indoor-air-quality-iaq' },
+  ]}
+>
+  <AlertBox type="warning" title="Owner vs pro line">Homeowners: check levels, read voltages, look and listen. Replacement of oil, filters, and plugs, valve adjustment, coolant, and all electrical/gas work belong to qualified service (or to owners only where the manual authorizes and safety + disposal are handled). When in doubt, call service.</AlertBox>
+
+  <section id="why">
+    <h2>Why maintenance decides reliability</h2>
+    <p>Standby units sit idle 99% of their lives, then must start in seconds during a storm. The no-start culprits repeat everywhere: dead batteries, overdue oil, clogged filters, blocked airflow, fuel issues — all preventable. A maintained 10-year-old unit out-starts a neglected 2-year-old one. Budget maintenance as part of purchase (see <a href="/cost/standby-generator-cost/">operating costs</a>), not an afterthought.</p>
+    <svg viewBox="0 0 560 120" class="my-4 w-full rounded-lg border border-[#e5e7eb] bg-white" role="img" aria-label="Maintenance timeline across a year"><title>Maintenance timeline</title><text x="20" y="30" font-size="13" fill="#1e3a5f" font-family="sans-serif">Monthly: 5-min visual  •  Weekly: auto exercise  •  Yearly: pro service  •  3–4 yr: battery</text><rect x="20" y="50" width="120" height="12" rx="6" fill="#1e3a5f"/><rect x="150" y="50" width="120" height="12" rx="6" fill="#f97316"/><rect x="280" y="50" width="120" height="12" rx="6" fill="#1e3a5f"/><rect x="410" y="50" width="120" height="12" rx="6" fill="#22c55e"/></svg>
+  </section>
+
+  <section id="frequency">
+    <h2>Service frequency by brand</h2>
+    <ComparisonTable caption="Maintenance intervals by brand" headers={['Component', 'Generac', 'Kohler', 'Cummins']} rows={[
+      ['First oil (break-in)', '25 hours', '25–50 hours', '20–50 hours'],
+      ['Oil change', '200 h / 2 yr (100 h extreme)', '100–200 h / 1 yr', '150–200 h / 1 yr'],
+      ['Air filter', '400 h / 4 yr (200 h dusty)', '200 h / 1 yr (100 h dusty)', '150–500 h / 1–2 yr'],
+      ['Spark plugs', '400 h / 4 yr', '500 h / 1 yr', '300 h / 1 yr'],
+      ['Battery', '3–5 yr (proactive at 3–4)', '3–5 yr', '3–5 yr'],
+      ['Pro service', 'Annual; comprehensive 2-yr', 'Annual', 'Annual / 150–200 h'],
+    ]} />
+    <p class="mt-3">Calendar-or-hours, whichever comes first. Heavy-outage years accrue hours fast — check the hour meter after multi-day events and advance service past thresholds.</p>
+  </section>
+
+  <section id="monthly">
+    <h2>Monthly owner checks (5 minutes, unit off and cool)</h2>
+    <ul>
+      <li>Controller shows <strong>Ready / Auto</strong> — no fault LEDs or app alerts.</li>
+      <li>Exercise ran this week (app or hour-meter delta).</li>
+      <li>Dipstick between ADD and FULL (procedure below); note color.</li>
+      <li>No oil/fuel stains; no gas odor (odor → leave area, call gas utility + service).</li>
+      <li>Enclosure intact; vents unblocked; no nests, clippings, or snow berms.</li>
+      <li>Propane gauge adequate for your outage plan.</li>
+    </ul>
+  </section>
+
+  <section id="exercise">
+    <h2>Exercise: why, how often, loaded vs no-load</h2>
+    <p>Exercise circulates oil (no dry starts), charges the battery, works transfer-switch contacts against corrosion, conditions seals, and — most underrated — <strong>reveals faults on a calm Wednesday instead of during the hurricane</strong>. Never-exercised units risk dry-start wear, dead batteries, stuck contacts, dried seals, and faults discovered at the worst moment.</p>
+    <ComparisonTable caption="Exercise by brand" headers={['Brand', 'Frequency', 'Default duration']} rows={[
+      ['Generac', 'Weekly', '20–30 min (5–30 configurable; Quiet-Test low-speed)'],
+      ['Kohler', 'Weekly or biweekly', '~20 min (10 reduced + 3 full-speed diagnostics + cooldown)'],
+      ['Cummins', 'Weekly', '10–15 min (10–30 configurable)'],
+    ]} />
+    <ul><li><strong>No-load (default):</strong> quieter, less switch wear, proves the engine. Weekly.</li><li><strong>Loaded:</strong> transfers house circuits — proves the switch under real load. Monthly if tolerable (brief flicker).</li><li><strong>Scheduling:</strong> mid-week mid-day (Tue–Wed, 10 AM or 2 PM); controller menus (Generac Evolution/Power Zone, Kohler RDC2/DC2) set day, time, duration, and loaded/unloaded.</li></ul>
+  </section>
+
+  <section id="oil">
+    <h2>Oil: intervals, types, viscosity & dipstick</h2>
+    <ComparisonTable caption="Oil type and capacity" headers={['Brand / size', 'Capacity', 'Recommended oil']} rows={[
+      ['Generac 8–11 kW', '~1.1–1.2 qt', '5W-20 full synthetic'],
+      ['Generac 14–18 kW', '~2.2–2.5 qt', '5W-20 (or 10W-30)'],
+      ['Generac 20–26 kW', '~1.9–2.0 qt', '5W-20 (or 10W-30)'],
+      ['Kohler 10–12 RESV', '~1.8–2.0 qt', '5W-30 / 10W-30 synthetic (API SG/SH/SJ)'],
+      ['Kohler 14–26 RCA', '~2.0–3.0 qt', '5W-30 / 10W-30 synthetic'],
+      ['Kohler RCL liquid', '~4–6 qt', '5W-30 synthetic'],
+      ['Cummins QuietConnect', '~2.0–2.5 qt', '5W-30 / 10W-30 (API CF-4+)'],
+    ]} />
+    <p class="mt-3"><strong>Viscosity by climate:</strong> below 32°F use 0W-30/5W-30 (0W-20/0W-30 below 0°F); 32–90°F 5W-20/5W-30; above 90°F 10W-30/SAE 30. Never switch to synthetic before the 25-hour break-in change.</p>
+    <h3>Dipstick procedure (owner-safe)</h3>
+    <p>Unit off 5+ minutes and level → wipe dipstick → reseat fully → read between ADD and FULL → top up in small funnel pours, rechecking; never overfill (foaming). During extended outages, check every 8–24 hours.</p>
+    <h3>Warning signs (stop + call tech)</h3>
+    <p>Milky/frothy oil (coolant intrusion), metal flakes (internal wear), low-oil-pressure alarm, fuel-smelling or rapidly darkening oil. Dark oil alone at interval end is normal — change oil and filter.</p>
+    <p class="text-sm text-gray-600">DIY parts run $25–$50 (oil + filters); pro annual service $150–$400 by brand. Oil changes belong to pro service unless your manual authorizes you — hot oil and used-oil disposal (municipal collection, never drains/trash) are the two hazards.</p>
+  </section>
+
+  <section id="airfilter">
+    <h2>Air filter: part numbers, light test, symptoms</h2>
+    <p>Nearly all standby units use disposable paper-pleated elements — Generac 0D9218 (10–14 kW) / 0D9219 (16–26 kW); Kohler GM51390 (RESV) / GM81385 (RCA). OEM $15–$60 by brand; aftermarket $10–$30. Stick with the manual's media — do not substitute washable foam unless specified.</p>
+    <ul><li><strong>Light test:</strong> hold the element to bright light — replace if light barely passes; also replace on visible dirt, oil saturation, tears, or crushed pleats. Never wash paper media or blast with compressed air.</li><li><strong>Dirty-filter symptoms:</strong> reduced output under load, higher fuel burn, black exhaust smoke, hard starting, hotter running — all from restricted airflow richening the mixture.</li></ul>
+  </section>
+
+  <section id="plugs">
+    <h2>Spark plugs: specs, gaps & symptoms</h2>
+    <ComparisonTable caption="Spark plug specs" headers={['Application', 'Plug', 'Gap']} rows={[
+      ['Generac air-cooled', 'Champion RC12YC (alt. NGK BPR5ES)', '0.030 in / 0.76 mm'],
+      ['Kohler 8.5–12 kW', 'Champion RH10 (alt. NGK BPR4ES)', '0.020–0.025 in'],
+      ['Kohler 14–26 kW', 'Champion RC12YC class', '0.030 in / 0.76 mm'],
+      ['Kohler RCL liquid', 'Champion RC12YC class', '0.036–0.040 in'],
+      ['Cummins/Onan gas', 'Champion RC12YC class', '0.024–0.032 in'],
+    ]} />
+    <p class="mt-3">Suspect plugs on hard starting, rough idle, or misfire under load; read the insulator — black/oily means oil or rich mixture, white/blistered means overheating/lean (fix the cause, not just the plug). Plugs cost $5–$15 each; pro replacement runs $50–$100 labor plus parts, usually folded into the 2-year comprehensive service ($250–$450).</p>
+  </section>
+
+  <section id="battery">
+    <h2>Battery: the #1 no-start cause</h2>
+    <ComparisonTable caption="Battery specs" headers={['Application', 'Type / group', 'CCA', 'Cost']} rows={[
+      ['Generac 10–26 kW', 'Lead-acid / AGM, Group 26R or 35', '540 (26R) / 650 (35 AGM)', '$80–$250'],
+      ['Kohler 10–26 kW', 'Lead-acid / AGM, Group 26R or 51', '500–600', '$80–$250'],
+      ['Cummins QuietConnect', 'AGM recommended, 26R/U1R', 'per manual', '$150–$250'],
+      ['30 kW+ liquid', 'AGM/flooded, Group 31+', '800–1,000', '$200–$350'],
+    ]} />
+    <p class="mt-3">AGM lasts 3–5 years, flooded 2–4; heat cuts life (3 years typical above 90°F). Replace proactively at 3–4 years — acid, high current, and control wiring make this tech work; owners report corrosion and swelling instead of touching terminals beyond visual checks.</p>
+    <h3>Voltage test (owner-safe, multimeter on 20 V DC, battery rested 12 h)</h3>
+    <p>Red to (+), black to (−): <strong>≥12.6 V</strong> full · 12.4–12.6 partial (recharge) · &lt;12.4 discharged (charge now) · &lt;12.0 failing. Load test: 50% of CCA for 15 s should stay above 9.6 V. Failure signs: slow cranking, no-start, terminal crust, swollen/cracked case.</p>
+    <p class="text-sm text-gray-600">Cold care: capacity drops 30–50% in the cold — keep fully charged, consider AGM and a battery warmer; most standby units include a 1–2 A built-in float charger (13.2–13.6 V). Never equalize AGM unless specified.</p>
+  </section>
+
+  <section id="coolant">
+    <h2>Coolant (liquid-cooled only: Protector, RCL, larger Cummins)</h2>
+    <p>50/50 ethylene-glycol mix (extended-life ELC preferred); never mix coolant types. Change every 2 years/400–500 hours, or 5 years on ELC. Stop and call service for: milky coolant or oil (head-gasket territory), rusty coolant (flush due), overheating, or sweet exhaust smell.</p>
+  </section>
+
+  <section id="fuel">
+    <h2>Fuel system: filters, NG/propane checks</h2>
+    <ul><li><strong>No stabilizer needed</strong> for natural gas or tank propane — they do not degrade. Inspect lines, hoses, and connections annually instead; stabilizer is for gasoline portables only.</li><li><strong>Gas filters/coalescers:</strong> every 500–1,000 h or annually (NG/propane); diesel primary+secondary every 250–500 h.</li><li><strong>Natural gas annual:</strong> connection leak check, 5–7 in WC at inlet, sediment trap, regulator vent clear.</li><li><strong>Propane annual:</strong> tank/regulator condition, monthly level checks in season, flexible connector integrity, 11 in WC at inlet, DOT recertification every 10 years.</li></ul>
+  </section>
+
+  <section id="clearance">
+    <h2>Clearance & leak watch</h2>
+    <p>Maintain manual clearances (see <a href="/installation/generator-pad-and-placement/">placement guide</a>); trim vegetation; redirect downspouts; check intake screens after mowing. Report drips, fuel odor, or exhaust discoloration immediately — never investigate gas odors yourself beyond leaving the area.</p>
+  </section>
+
+  <section id="pro">
+    <h2>Pro service: scope, cost & hiring</h2>
+    <p><strong>Annual tune-up covers:</strong> visual inspection, oil + filter, air filter, plug check, battery voltage + load test, fuel lines/pressure, terminal torque + corrosion check, transfer-switch operation, controller diagnostics + firmware, 120/240 V ±5% and 60 Hz verification, load test, exercise confirmation. Comprehensive (2-yr) adds plugs, valve lash, and coolant/load-bank where applicable.</p>
+    <ComparisonTable caption="Pro service costs" headers={['Service', 'Range']} rows={[
+      ['Generac annual', '$150–$300'],
+      ['Kohler / Cummins annual', '$200–$400'],
+      ['2-year comprehensive', '$250–$450'],
+      ['DIY parts (comparison)', '$25–$90'],
+    ]} />
+    <h3>Hiring checklist</h3>
+    <ul><li>Factory-authorized for your brand + licensed electrician on staff (gas fitter for fuel work); NATE/OSHA as competency signals.</li><li>Ask: standby-specific years, annual scope in writing, 24/7 emergency + storm response times, written service report, license/insurance, maintenance-plan terms.</li><li>Find Generac techs via the dealer locator or 1-888-GENERAC (Residential → Certified → Premier tiers); Kohler/Cummins via their dealer/distributor directories.</li><li>Red flags: no transfer test, no battery load test, no manual references, cash-only without records.</li></ul>
+  </section>
+
+  <section id="storm">
+    <h2>Storm preparation (48-hour playbook)</h2>
+    <ul><li>Trigger a manual exercise; confirm no alerts.</li><li>Verify propane ≥ your outage plan (refill lead times vanish once warnings post).</li><li>Clear a 3-ft working perimeter; dipstick + voltage check while calm.</li><li>Review load discipline: defer dryer/laundry, stagger AC recovery, know shed breakers.</li><li>Keep the service number on the fridge — not just in the app.</li></ul>
+  </section>
+
+  <section id="log">
+    <h2>Maintenance log (copy this format)</h2>
+    <div class="overflow-x-auto rounded-lg border border-[#e5e7eb] not-prose">
+      <table class="w-full min-w-[560px] border-collapse text-left text-sm">
+        <caption class="sr-only">Maintenance log template</caption>
+        <thead><tr class="bg-[#1e3a5f] text-white"><th scope="col" class="px-4 py-3">Date</th><th scope="col" class="px-4 py-3">Hours</th><th scope="col" class="px-4 py-3">Task</th><th scope="col" class="px-4 py-3">By</th><th scope="col" class="px-4 py-3">Next due</th></tr></thead>
+        <tbody>
+          <tr class="border-t border-[#e5e7eb]"><td class="px-4 py-2.5">2026-10-01</td><td class="px-4 py-2.5">128.4</td><td class="px-4 py-2.5">Annual: oil/filter, air filter OK, battery 12.7 V load-pass</td><td class="px-4 py-2.5">Acme Power (tech J. R.)</td><td class="px-4 py-2.5">2027-10</td></tr>
+          <tr class="border-t border-[#e5e7eb] bg-[#f9fafb]"><td class="px-4 py-2.5">Monthly</td><td class="px-4 py-2.5">—</td><td class="px-4 py-2.5">Visual: alerts / dipstick / debris / propane</td><td class="px-4 py-2.5">Owner</td><td class="px-4 py-2.5">Next month</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="text-sm text-gray-600">Warranty claims live or die on records — keep invoices with this log. Missed intervals are the most common denial reason.</p>
+  </section>
+
+  <section id="faq"><span class="sr-only">FAQ anchor</span></section>
+  <FAQSection items={faqs} />
+
+  <section id="conclusion">
+    <h2>Conclusion</h2>
+    <p>Five minutes monthly, exercise always on, pro service yearly, battery before it fails, records for everything. That routine is the difference between a generator and a guarantee. Pair it with <a href="/installation/what-to-expect/">a quality install</a> and budgeted <a href="/cost/standby-generator-cost/">operating costs</a> — then stop worrying about the next outage.</p>
+  </section>
+</ArticleLayout>

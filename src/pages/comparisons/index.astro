@@ -1,0 +1,18 @@
+---
+import CategoryLayout from '../../layouts/CategoryLayout.astro';
+---
+<CategoryLayout
+  title="Generator Comparisons"
+  description="Neutral side-by-side generator comparisons with fixed criteria and situation-based conclusions — never a preordained winner."
+  intro="Comparisons use the same criteria every time: range, warranty, noise, fuel, monitoring, dealers, and ownership. Conclusions are situational — the right pick depends on your loads, budget, and local service."
+  cards={[
+    { href: '/comparisons/generac-vs-kohler/', title: 'Generac vs Kohler', description: 'The classic matchup: value and ubiquity vs premium build and diagnostics.', category: 'Comparisons', readingTime: '11 min read' },
+    { href: '/comparisons/standby-vs-portable/', title: 'Standby vs Portable', description: 'The 3–4× cost gap explained: automation, safety, power quality.', category: 'Comparisons', readingTime: '9 min read' },
+    { href: '/comparisons/transfer-switch-vs-interlock/', title: 'Transfer Switch vs Interlock', description: 'The manual-side decision: cost, code, and discipline.', category: 'Comparisons', readingTime: '8 min read' },
+  ]}
+>
+  <div class="prose-hgg mt-10">
+    <h2>More comparisons coming</h2>
+    <p>We publish comparisons only when we can add genuine signal — verified specs plus ownership context. Thin matchup pages will never be indexed here. Meanwhile, see <a href="/brands/">brand overviews</a>.</p>
+  </div>
+</CategoryLayout>

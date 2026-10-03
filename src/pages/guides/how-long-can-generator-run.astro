@@ -1,0 +1,51 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ComparisonTable from '../../components/ui/ComparisonTable.astro';
+import FAQSection from '../../components/ui/FAQSection.astro';
+import { propaneTanks } from '../../data/fuel-consumption';
+
+const toc = [
+  { id: 'standby-limits', label: 'Standby runtime limits' },
+  { id: 'ng-week', label: 'Natural gas: the week question' },
+  { id: 'propane-week', label: 'Propane: tank math' },
+  { id: 'limits', label: 'What actually stops a run' },
+  { id: 'stretch', label: 'Stretching runtime' },
+  { id: 'faq', label: 'FAQ' },
+];
+---
+<ArticleLayout
+  title="How Long Can a Generator Run? Week-Long Outage Reality"
+  description="How long standby generators run: NG indefinite operation, propane tank runtimes, oil/maintenance limits, and what stops a week-long run."
+  category="Buying Guides" categoryHref="/guides/" updated="2026-10-03" readingTime="8 min read" toc={toc}
+  related={[
+    { href: '/guides/natural-gas-vs-propane/', title: 'Natural Gas vs Propane', description: 'Fuel costs & tanks.', category: 'Buying Guides' },
+    { href: '/maintenance/generator-maintenance-checklist/', title: 'Maintenance Checklist', description: 'Oil limits explained.', category: 'Maintenance' },
+    { href: '/comparisons/standby-vs-portable/', title: 'Standby vs Portable', description: 'Runtime compared.', category: 'Comparisons' },
+  ]}
+  prev={{ href: '/guides/power-quality-thd-surge-protection/', label: 'Power Quality & Surge' }}
+  next={{ href: '/sizing/what-size-generator-do-i-need/', label: 'Sizing Guide' }}
+>
+  <section id="standby-limits"><h2>Standby runtime limits (the ratings answer)</h2>
+  <p>Standby-rated (ESP) units are built for ~200 hours/year emergency duty — a full week is 168 hours, so one bad week nearly spends the annual budget but stays inside it. Typical homes log 20–50 h/year. There is no hour-counter shutdown; the limits are fuel, oil, and heat — each manageable.</p></section>
+
+  <section id="ng-week"><h2>Natural gas: can it run a week straight? Yes</h2>
+  <p>Piped gas flows independent of the grid (rare exceptions: quake valves, damaged mains, utility shutoffs). The maintenance schedule bends but holds: check the dipstick every 8–24 hours during continuous running, plan an oil/filter service at the 100–200-hour mark (a week-long run earns one), and keep airflow clear in sustained heat. NG standby is the week-long-outage answer — this is precisely its design case.</p></section>
+
+  <section id="propane-week"><h2>Propane: pure tank math (20 kW reference)</h2>
+  <ComparisonTable caption="Propane runtimes" headers={['Tank', 'Usable', '50% load', 'Full load']} rows={propaneTanks.map((t) => [t.size, t.usable, t.runtime20kwHalf, t.runtime20kwFull])} />
+  <p class="mt-3">A 500-gal tank at half load: ~6 days. At full load: ~3. Refill trucks may not reach you mid-disaster (1–2-week storm delays happen) — size the tank to the longest historical outage plus margin, and top off before season. Running dry mid-outage means a restart sequence plus potential air-in-line service.</p></section>
+
+  <section id="limits"><h2>What actually stops a long run</h2>
+  <ul><li><strong>Oil level/condition:</strong> top up on schedule; extended heat shears oil faster — the #1 preventable stoppage.</li><li><strong>Overheating:</strong> blocked intakes, 100°F+ ambient on air-cooled units running hard — clearances and shade (never enclosures) matter.</li><li><strong>Battery/charging faults:</strong> the charger keeps up while running, but a marginal battery plus repeated auto-restarts can cascade.</li><li><strong>Utility backfeed damage:</strong> no — the ATS handles restoration; retransfer waits 15–30 min for stable power.</li><li><strong>Maintenance lockouts:</strong> low-oil and overtemp shutdowns are <em>protecting</em> the engine — investigate, don't bypass.</li></ul></section>
+
+  <section id="stretch"><h2>Stretching runtime (legitimate levers)</h2>
+  <ul><li>Run at 50–70% load: shed dryer, strips, second AC — fuel burn drops disproportionately.</li><li>Stagger big motors; never let well pump + AC start together.</li><li>Night setback on cooling; propane users: every degree is gallons.</li><li>Pre-storm oil/filter/battery service so the 168th hour looks like the 1st.</li></ul></section>
+
+  <section id="faq"><span class="sr-only">FAQ anchor</span></section>
+  <FAQSection items={[
+    { q: 'Can a standby generator run for a week?', a: 'On natural gas: yes — fuel is piped, with dipstick checks every 8–24 hours and an oil service around the 100–200-hour mark. On propane: only if the tank math covers it (500 gal ≈ 6 days at half load for 20 kW) with no mid-storm refill counted on.' },
+    { q: 'How long will 500 gallons of propane run a 22 kW generator?', a: 'Roughly 8–10 days at half load (~2.5 gal/h on 400 usable gallons) or ~4–5 days at full load (~3.8 gal/h). Real loads float between — plan on the conservative end.' },
+    { q: 'What happens if you run a generator too long?', a: 'Nothing dramatic if maintained — oil degrades, filters load, heat accumulates. The engine protects itself via low-oil and overtemp shutdowns. Neglect those warnings and you convert a service stop into a rebuild.' },
+  ]} />
+  <section id="conclusion"><h2>Conclusion</h2><p>A week is inside a standby's design envelope on NG and inside big-tank propane math — the variable is maintenance discipline, not courage. Size the fuel first: <a href="/guides/natural-gas-vs-propane/">fuel guide</a>.</p></section>
+</ArticleLayout>

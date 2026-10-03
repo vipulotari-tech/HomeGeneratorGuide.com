@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/layout/Breadcrumbs.astro';
+---
+<BaseLayout title="Editorial Policy" description="How HomeGeneratorGuide sources, verifies, corrects, and updates content — sourcing hierarchy, neutrality, and corrections process.">
+  <div class="mx-auto max-w-3xl px-4 py-10 sm:px-6">
+    <Breadcrumbs items={[{ href: '/', label: 'Home' }, { label: 'Editorial Policy' }]} />
+    <h1 class="mt-4 text-4xl font-bold text-[#1e3a5f]">Editorial Policy</h1>
+    <div class="prose-hgg mt-6">
+      <h2>Sourcing hierarchy</h2>
+      <ol>
+        <li>Manufacturer documentation, spec sheets, and manuals.</li>
+        <li>Government sources and code-related authoritative references (e.g., NFPA concepts, utility guidance).</li>
+        <li>Reputable installer and industry sources.</li>
+        <li>Credible retailers for pricing context only.</li>
+      </ol>
+      <p>Competitors are used for SERP/feature-gap research — never copied.</p>
+      <h2>Verification</h2>
+      <ul>
+        <li>Facts carry sources where load-bearing (warranties, capacities, code-adjacent claims).</li>
+        <li>Wattages are conservative planning figures; readers must confirm nameplates and get a pro load calculation.</li>
+        <li>Prices are national-level estimate ranges with a mandatory disclaimer — never presented as quotes.</li>
+      </ul>
+      <h2>Neutrality</h2>
+      <p>No payment for placement. Comparisons use fixed criteria and situation-based conclusions. Limitations are published alongside strengths.</p>
+      <h2>Affiliate independence</h2>
+      <p>Per our <a href="/affiliate-disclosure/">affiliate disclosure</a>, any future affiliate revenue never determines coverage or rankings.</p>
+      <h2>Corrections & updates</h2>
+      <p>Errors may be reported via <a href="/contact/">contact</a>. Substantiated corrections are made promptly and, where material, noted with an updated date. Time-sensitive pages state their verification window.</p>
+      <h2>No fake authority</h2>
+      <p>We publish no fake authors, credentials, reviews, testimonials, or certifications. "Editorial team" means the site's editors collectively — not a fictitious expert.</p>
+    </div>
+  </div>
+</BaseLayout>

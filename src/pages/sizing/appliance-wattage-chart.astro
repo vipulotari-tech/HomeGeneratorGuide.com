@@ -1,0 +1,64 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import FAQSection from '../../components/ui/FAQSection.astro';
+import { appliances } from '../../data/appliance-wattage';
+
+const toc = [
+  { id: 'how-to-use', label: 'How to use this chart' },
+  { id: 'chart', label: 'Full wattage chart' },
+  { id: 'example', label: '30-second example' },
+  { id: 'faq', label: 'FAQ' },
+];
+
+const categories = [...new Set(appliances.map((a) => a.category))];
+---
+<ArticleLayout
+  title="Appliance Wattage Chart: Running & Starting Watts"
+  description="Full appliance wattage chart: running and starting watts for HVAC, kitchen, well pumps, laundry, electronics, EV, and medical devices — with source notes."
+  category="Sizing" categoryHref="/sizing/" updated="2026-10-03" readingTime="8 min read" toc={toc}
+  related={[
+    { href: '/sizing/what-size-generator-do-i-need/', title: 'What Size Generator Do I Need?', description: 'The full sizing method.', category: 'Sizing' },
+    { href: '/sizing/hvac-generator-sizing/', title: 'HVAC & Generator Sizing', description: 'The biggest surge, decoded.', category: 'Sizing' },
+    { href: '/sizing/whole-home-vs-essential-loads/', title: 'Whole-Home vs Essential Loads', description: 'Backup philosophies.', category: 'Sizing' },
+  ]}
+  prev={{ href: '/sizing/what-size-generator-do-i-need/', label: 'What Size Generator Do I Need?' }}
+  next={{ href: '/sizing/calculator/', label: 'Sizing Calculator' }}
+>
+  <section id="how-to-use"><h2>How to use this chart</h2>
+  <p>Check off what runs simultaneously on backup, add the <strong>running</strong> watts, then add the single largest <strong>starting</strong> surge on top. Motor loads (compressors, pumps) surge ~3×; resistive loads (heaters, ovens) do not surge. Figures are conservative planning ranges compiled from manufacturer spec-sheet ranges, DOE/EnergyStar references, and motor-chart conventions — your equipment nameplates govern. Source basis is noted per row.</p></section>
+
+  <section id="chart"><h2>Full wattage chart ({appliances.length} appliances)</h2>
+  {categories.map((cat) => (
+    <>
+      <h3>{cat}</h3>
+      <div class="overflow-x-auto rounded-lg border border-[#e5e7eb] not-prose">
+        <table class="w-full min-w-[640px] border-collapse text-left text-sm">
+          <caption class="sr-only">{cat} wattages</caption>
+          <thead><tr class="bg-[#1e3a5f] text-white"><th scope="col" class="px-4 py-3">Appliance</th><th scope="col" class="px-4 py-3">Running (W)</th><th scope="col" class="px-4 py-3">Starting (W)</th><th scope="col" class="px-4 py-3">Notes / basis</th></tr></thead>
+          <tbody>
+            {appliances.filter((a) => a.category === cat).map((a) => (
+              <tr class="border-t border-[#e5e7eb] odd:bg-white even:bg-[#f9fafb]">
+                <th scope="row" class="px-4 py-2.5 font-medium text-[#1e3a5f]">{a.name}</th>
+                <td class="px-4 py-2.5">{a.runningWatts.toLocaleString()}</td>
+                <td class="px-4 py-2.5">{a.startingWatts.toLocaleString()}</td>
+                <td class="px-4 py-2.5 text-gray-600">{[a.notes, a.source].filter(Boolean).join(' · ')}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
+  ))}
+  </section>
+
+  <section id="example"><h2>30-second example</h2>
+  <p>Fridge (700) + freezer (500) + LED lights (300) + internet/TV (400) + furnace blower (800) + well pump running (1,000) = 4,700 W continuous. Largest surge: well pump starts at 3,000 while the rest runs (3,700) → ~6,700 W momentary. Add a 3-ton AC (3,500 running / 11,000 starting) and the peak lands ~15–17 kW — a 20 kW unit with headroom. Full walkthrough: <a href="/sizing/what-size-generator-do-i-need/">sizing guide</a>.</p></section>
+
+  <section id="faq"><span class="sr-only">FAQ anchor</span></section>
+  <FAQSection items={[
+    { q: 'Are these numbers exact for my appliances?', a: 'No — they are planning ranges. A 3-ton AC from 2008 and one from 2024 can differ by thousands of starting watts. Read the nameplate (volts × amps, LRA for motors) and have the electrician confirm.' },
+    { q: 'Why do starting watts matter more than running watts?', a: 'Because the generator must survive the worst second, not the average hour. One DOL motor starting (~7× surge) decides the purchase more than ten LED bulbs.' },
+    { q: 'Should I include everything in the house?', a: 'No — only what runs simultaneously on backup. Dryers, ovens, and EV chargers are usually managed or excluded; see the essential-vs-whole-home guide.' },
+  ]} />
+  <section id="conclusion"><h2>Conclusion</h2><p>List it, add it, surge-check it, verify it — then <a href="/sizing/what-size-generator-do-i-need/">size with confidence</a>.</p></section>
+</ArticleLayout>

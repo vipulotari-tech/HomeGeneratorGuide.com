@@ -1,0 +1,182 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import AlertBox from '../../components/ui/AlertBox.astro';
+import ComparisonTable from '../../components/ui/ComparisonTable.astro';
+import FAQSection from '../../components/ui/FAQSection.astro';
+import ProConBox from '../../components/ui/ProConBox.astro';
+import { brands } from '../../data/generator-brands';
+
+const brand = brands.find((b) => b.slug === 'generac')!;
+const nextGen = brand.models.filter((m) => m.series.startsWith('Next Generation'));
+const toc = [
+  { id: 'overview', label: 'Company overview' },
+  { id: 'lineup', label: 'Next Generation lineup & MSRP' },
+  { id: 'guardian-protector', label: 'Guardian vs Protector' },
+  { id: 'noise', label: 'Noise levels' },
+  { id: 'technology', label: 'Notable technologies' },
+  { id: 'fuel', label: 'Fuel options' },
+  { id: 'warranty', label: 'Warranty (tiered)' },
+  { id: 'monitoring', label: 'Monitoring' },
+  { id: 'maintenance', label: 'Generac maintenance intervals' },
+  { id: 'reputation', label: 'Complaints & praise' },
+  { id: 'pricing', label: 'Pricing context' },
+  { id: 'dealers', label: 'Dealer considerations' },
+  { id: 'alternatives', label: 'Generac vs alternatives' },
+  { id: 'faq', label: 'FAQ' },
+];
+
+const faqs = [
+  { q: 'Are Generac generators reliable?', a: 'The installed base is huge, so review volume cuts both ways: many reliable-when-maintained reports, plus clusters of warranty-service and controller complaints. Reliability in practice tracks sizing, fuel setup, installation quality, and maintenance discipline — especially valve adjustments on OHVI engines — more than badge.' },
+  { q: 'How long is the Generac warranty?', a: 'Air-cooled standby: 5-year limited but tiered — years 1–2 cover parts, labor, and limited travel; year 3 parts only; years 4–5 engine short block and alternator parts only. PowerPact 7.5 kW carries 3 years. 7- and 10-year extended plans exist. Verify the current PDF for your exact model.' },
+  { q: 'How much does a Generac standby cost?', a: 'Manufacturer MSRP runs $3,769–$9,509 with ATS across the 10–28 kW Next Generation line (Oct 2026 research). Installed all-in for most single-family jobs tracks the national $9,000–$16,000 band — installation, gas, and panel scope dominate beyond the box price.' },
+  { q: 'What is the difference between Guardian and Next Generation?', a: 'Next Generation is the current air-cooled platform (10–28 kW); Guardian is the prior generation, still available. Compare exact-model specs — e.g., the 26 kW Guardian is rated 68 dB vs 67 dB for the Next Gen 26 kW.' },
+  { q: 'Do Generac generators need valve adjustments?', a: 'Yes — OHVI engines specify valve-clearance checks around every 100 hours, and neglect is a documented cause of hard starting. Put it on the pro service schedule, not the wish list.' },
+  { q: 'Why does my Generac keep shutting off?', a: 'Usual suspects in order: low oil level or pressure (check dipstick, look for leaks), overload (shed loads, check breaker), clogged air filter, weak battery, or a latched fault code needing dealer diagnostics. Repeated shutdowns mean service — not repeated restarts.' },
+];
+---
+<ArticleLayout
+  title="Generac Standby Generators: Lineup, MSRP, Warranty & Honest Review"
+  description="Independent Generac standby review: Next Generation MSRP table, Guardian vs Protector, tiered warranty, noise ratings, maintenance intervals, and documented complaints."
+  category="Brands"
+  categoryHref="/brands/"
+  updated="2026-10-03"
+  readingTime="13 min read"
+  toc={toc}
+  related={[
+    { href: '/comparisons/generac-vs-kohler/', title: 'Generac vs Kohler', description: 'Neutral head-to-head.', category: 'Comparisons' },
+    { href: '/brands/kohler/', title: 'Kohler Standby Generators', description: 'The premium alternative.', category: 'Brands' },
+    { href: '/sizing/what-size-generator-do-i-need/', title: 'What Size Generator Do I Need?', description: 'Size before you shop.', category: 'Sizing' },
+  ]}
+  prev={{ href: '/cost/transfer-switch-cost/', label: 'Transfer Switch Cost Guide' }}
+  next={{ href: '/brands/kohler/', label: 'Kohler Brand Guide' }}
+  takeaways={[
+    'Next Generation air-cooled line spans 10–28 kW at $3,769–$9,509 with ATS; Protector liquid-cooled runs $21,099–$46,289.',
+    'The 5-year warranty is tiered: comprehensive coverage effectively lasts the first two years.',
+    'OHVI engines need valve-clearance checks around every 100 hours — neglect causes hard starting.',
+    'Watch coastal enclosure corrosion and confirm a responsive local dealer before buying on badge.',
+  ]}
+  sources={[
+    { label: 'Generac — Residential Standby Lineup', href: 'https://www.generac.com/residential-products/standby-generators/' },
+    { label: 'Generac Support — Owner Resources', href: 'https://support.generac.com/' },
+    { label: 'Generac — Find a Dealer', href: 'https://www.generac.com/dealers-installers/' },
+  ]}
+>
+  <section id="overview">
+    <h2>Company overview</h2>
+    <p>Generac was founded in <strong>1959</strong> by Robert Kern in Wales, Wisconsin; headquarters remain in <strong>Waukesha, Wisconsin</strong>, with plants across Wisconsin (Berlin, Oshkosh, Jefferson, Eagle, Whitewater). It is the US residential standby volume leader — one third-party estimate puts its share at roughly two-thirds of the market (treat share figures as reported, not manufacturer-confirmed). Scale is the story: the deepest model ladder and 5,000+ dealers, but support quality varies by office.</p>
+    <AlertBox type="info" title="Independence note">We take no payment for brand placement. MSRPs and ratings below come from Generac's residential and support pages (researched Oct 2026); complaints are attributed to named review sources, not our own testing.</AlertBox>
+  </section>
+
+  <section id="lineup">
+    <h2>Next Generation lineup & MSRP</h2>
+    <p>Current air-cooled platform. MSRP = manufacturer list (unit-only / with ATS); street and installed prices vary. Note LP vs NG ratings diverge above 18 kW. Current model numbers run G007257–G007282 (unit-only) and G007321–G007329 (ATS bundles, including the 7329 with ecobee smart thermostat); Guardian prior-gen models use 70xx-series numbers (e.g., 7042/7043 22 kW, 7210 24 kW).</p>
+    <ComparisonTable
+      caption="Generac Next Generation models, MSRP, and noise"
+      headers={['Model', 'kW (LP / NG)', 'MSRP unit / w/ ATS', 'Noise']}
+      rows={nextGen.map((m) => [m.series.replace('Next Generation ', ''), m.capacityKw, m.msrp ?? '—', m.noiseDb ?? '—'])}
+    />
+    <p class="mt-3">Plus a 20 kW 3-phase unit (~$6,499) for compatible services. Sources: {brand.sourceUrls?.slice(0, 1).join(', ')}.</p>
+  </section>
+
+  <section id="guardian-protector">
+    <h2>Guardian vs Protector</h2>
+    <ComparisonTable
+      caption="Guardian versus Protector series"
+      headers={['', 'Guardian / Next Gen', 'Protector']}
+      rows={[
+        ['Cooling', 'Air-cooled', 'Liquid-cooled'],
+        ['Power range', '10–28 kW', '32–150 kW (XG 32–80, RG 100–150)'],
+        ['Best for', 'Homes up to ~3,500 sq ft', 'Large homes, estates, light commercial'],
+        ['Noise', '61–68 dB', '62–73 dB (quieter at high load)'],
+        ['Fuel', 'NG / LP', 'NG / LP / Diesel'],
+        ['Duty', 'Residential standby', 'Full continuous duty'],
+        ['MSRP signal', '$3,649–$9,509', '$21,099–$46,289'],
+        ['Installed signal', '$5,000–$15,000', '$15,000–$80,000+'],
+      ]}
+    />
+  </section>
+
+  <section id="noise">
+    <h2>Noise levels (dB(A) at 23 ft)</h2>
+    <p>Next Gen: 10 kW 61 · 14/18 kW 65 · 22/24/26/28 kW 67. Guardian prior-gen runs one point louder at 26 kW (68); PowerPact 7.5 kW 69. Per Generac support ratings — placement and full-load vs exercise mode matter more than 1–2 dB of badge difference.</p>
+  </section>
+
+  <section id="technology">
+    <h2>Notable technologies</h2>
+    <ul>
+      <li><strong>G-Force 800/1000-series engines</strong> — purpose-built standby engines (459–997cc across the line).</li>
+      <li><strong>Power management:</strong> smart load-shed modules defer water heaters and secondary zones during compressor surges.</li>
+      <li><strong>Quiet-Test exercise:</strong> weekly self-tests at reduced RPM.</li>
+      <li><strong>Aluminum enclosures</strong> standard on current air-cooled lines (coastal owners: still rinse and inspect — see complaints).</li>
+    </ul>
+  </section>
+
+  <section id="fuel">
+    <h2>Fuel options</h2>
+    <p>Air-cooled: natural gas or propane. Protector liquid-cooled adds diesel. Diesel-only models (15–50 kW, 1800 RPM) are a specialist quote path. Fuel-pipe sizing is installer scope — undersized pipe starves full-load output on every brand.</p>
+  </section>
+
+  <section id="warranty">
+    <h2>Warranty: 5-year limited, tiered</h2>
+    <ul>
+      {brand.warrantyDetail?.map((w) => (<li>{w}</li>))}
+    </ul>
+    <p class="mt-2">The tiering is the fine print that matters: comprehensive coverage effectively lasts two years, so dealer registration and maintenance records carry real weight at claim time.</p>
+  </section>
+
+  <section id="monitoring">
+    <h2>Monitoring: Mobile Link</h2>
+    <p>Remote status, text/email/push alerts, running history, exercise and maintenance scheduling, and dealer contact from the app — compatible with Guardian 9–28 kW (2018+) and Next Generation, over Wi-Fi or cellular. The app is free; cellular plans may carry a subscription. Generac's ecobee ownership adds smart-thermostat bundles (e.g., the 7329 28 kW with ecobee) — the one native thermostat tie-in available; verify the current lineup. Documented complaint cluster: Wi-Fi connectivity and false fault codes — keep the on-unit display as your source of truth.</p>
+  </section>
+
+  <section id="maintenance">
+    <h2>Generac maintenance intervals (per support docs)</h2>
+    <ComparisonTable
+      caption="Generac service intervals"
+      headers={['Interval', 'Task']}
+      rows={[
+        ['First 25 hours', 'Break-in oil & filter change (do not switch to synthetic before this)'],
+        ['Every 200 h / 2 yr', 'Oil & filter (5W-20 full synthetic recommended; 100 h / 1 yr in extreme heat/cold)'],
+        ['Every 400 h / 4 yr', 'Air filter + spark plugs'],
+        ['Every 100 hours', 'Valve-clearance adjustment (OHVI engines — critical)'],
+        ['Every 2–3 years', 'Battery replacement'],
+        ['Annually', 'Professional inspection'],
+      ]}
+    />
+    <p class="mt-3">Oil capacities incl. filter: ~1.1 qt (10 kW) · ~2.2 qt (14/18 kW) · ~1.9 qt (20–26 kW). Full routine context: <a href="/maintenance/generator-maintenance-checklist/">the checklist</a>.</p>
+  </section>
+
+  <section id="reputation">
+    <h2>Documented complaints & praise</h2>
+    <ProConBox
+      pros={['Reliable when maintained; huge knowledge base', 'Easiest parts and tech availability in the industry', 'Strong value per kW; wide model choice', 'Mobile Link useful when connected']}
+      cons={['Warranty-service delays and claim friction (review aggregators)', 'Controller false faults; Mobile Link Wi-Fi drops', 'Enclosure rust in coastal salt air within 3–5 years', 'Valve neglect → hard starting; long support hold times']}
+      prosTitle="Common praise (attributed)"
+      consTitle="Common complaints (attributed)"
+    />
+    <p class="mt-3 text-sm text-gray-600">Patterns drawn from ConsumerAffairs/Trustpilot volumes and independent comparison reviews — high-volume brand means high-volume feedback in both directions. A superb local dealer neutralizes most of the complaint list.</p>
+  </section>
+
+  <section id="pricing">
+    <h2>Pricing context</h2>
+    <p>{brand.priceRange} Installed all-in for most single-family jobs tracks the national $9,000–$16,000 band (see <a href="/cost/standby-generator-cost/">2026 cost guide</a>). Promotions discount equipment, not trenching — compare all-in scope.</p>
+  </section>
+
+  <section id="dealers">
+    <h2>Dealer considerations</h2>
+    <p>{brand.dealerNetwork} Vet the office, not the badge: factory certification, standby-specific years, consumables stock, storm-season response, and outage-season reviews. Get the load calculation and permit plan in writing.</p>
+  </section>
+
+  <section id="alternatives">
+    <h2>Generac vs major alternatives</h2>
+    <p><strong>Vs Kohler:</strong> value breadth and ubiquity vs premium enclosure/diagnostics and comprehensive warranty — full breakdown in <a href="/comparisons/generac-vs-kohler/">the comparison</a>. <strong>Vs Champion:</strong> 20–30% cheaper boxes with a 10-year warranty, thinner service network. <strong>Vs Briggs PowerProtect:</strong> 6-year comprehensive standard warranty is the standout. <strong>Honeywell-branded units</strong> are Generac-built (same engines/components, different paint and price) and Generac-supported.</p>
+  </section>
+
+  <section id="faq"><span class="sr-only">FAQ anchor</span></section>
+  <FAQSection items={faqs} />
+
+  <section id="conclusion">
+    <h2>Conclusion</h2>
+    <p>Generac earns its default-quote status through range, density, and mature load management — but buy it with eyes open: tiered warranty, valve maintenance, coastal upkeep, and above all a responsive certified dealer. Next: size it in <a href="/sizing/what-size-generator-do-i-need/">the sizing guide</a>, price it in <a href="/cost/standby-generator-cost/">2026 costs</a>, or cross-shop <a href="/comparisons/generac-vs-kohler/">Kohler head-to-head</a>.</p>
+  </section>
+</ArticleLayout>

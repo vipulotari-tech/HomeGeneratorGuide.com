@@ -1,0 +1,72 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import AlertBox from '../../components/ui/AlertBox.astro';
+import ComparisonTable from '../../components/ui/ComparisonTable.astro';
+import FAQSection from '../../components/ui/FAQSection.astro';
+import ProConBox from '../../components/ui/ProConBox.astro';
+import { brands } from '../../data/generator-brands';
+
+const brand = brands.find((b) => b.slug === 'kohler')!;
+const toc = [
+  { id: 'overview', label: 'Company overview' },
+  { id: 'lineup', label: 'Lineup & MSRP' },
+  { id: 'strengths', label: 'Where Kohler stands out' },
+  { id: 'warranty', label: 'Warranty (comprehensive)' },
+  { id: 'noise', label: 'Noise levels' },
+  { id: 'monitoring', label: 'OnCue Plus & voice control' },
+  { id: 'pricing', label: 'Pricing context' },
+  { id: 'dealers', label: 'Dealer considerations' },
+  { id: 'verdict', label: 'Who Kohler suits' },
+  { id: 'faq', label: 'FAQ' },
+];
+
+const faqs = [
+  { q: 'Is Kohler better than Generac?', a: 'Neither universally. Kohler leans premium on build, diagnostics, and a comprehensive 5-year warranty; Generac leans broad on value and coverage. Decide by loads, site constraints, local dealer quality, and all-in quotes — full breakdown in our head-to-head.' },
+  { q: 'How long is the Kohler warranty?', a: 'Standard 5-year / 2,000-hour comprehensive (parts, labor, travel) — broader than Generac tiered terms. Costco-sold models carry 3-year / 2,000-hour. Extended plans up to 10 years. Verify the current PDF for your exact model.' },
+  { q: 'Are Kohler generators quiet?', a: 'Per-model ratings run 56–71 dB(A): the 26RCA is rated 56 dB, the 14RCA 63 dB, the 20RCA 64 dB exercise / 69 dB full load, the small RESV units 67–71 dB. Placement and load matter more than badge.' },
+  { q: 'What is PowerBoost?', a: 'Kohler-exclusive starting technology that handles large motor surges without dropping power to other loads — genuinely useful for 3-ton+ AC starts on mid-size units. It complements, not replaces, correct sizing.' },
+];
+---
+<ArticleLayout
+  title="Kohler Standby Generators: Lineup, MSRP, Warranty & Honest Review"
+  description="Independent Kohler standby review: RESV/RCA/RCL MSRP table, comprehensive warranty, noise ratings, PowerBoost, OnCue voice control, and honest trade-offs."
+  category="Brands" categoryHref="/brands/" updated="2026-10-03" readingTime="10 min read" toc={toc}
+  related={[
+    { href: '/brands/generac/', title: 'Generac Standby Generators', description: 'Volume-leader deep dive.', category: 'Brands' },
+    { href: '/comparisons/generac-vs-kohler/', title: 'Generac vs Kohler', description: 'Neutral head-to-head.', category: 'Comparisons' },
+  ]}
+  prev={{ href: '/brands/generac/', label: 'Generac Brand Guide' }}
+  next={{ href: '/brands/briggs-stratton/', label: 'Briggs & Stratton Guide' }}
+>
+  <section id="overview"><h2>Company overview</h2>
+  <p>Kohler's power business dates to <strong>1873</strong> (Kohler, Wisconsin) and now operates as Rehlko; standby units build in <strong>Mosel, Wisconsin</strong> (plant expanded 2022), with commercial engines trusted in hospitals and infrastructure. Residential standby positions premium: PowerBoost starting tech, aluminum enclosures, and diagnostic depth. <AlertBox type="info" title="Independence note">No paid placement. MSRPs and ratings from Kohler Home Energy pages (researched Oct 2026); reputation patterns attributed to named review sources.</AlertBox></p></section>
+
+  <section id="lineup"><h2>Lineup & MSRP</h2>
+  <ComparisonTable
+    caption="Kohler residential models and MSRP"
+    headers={['Model', 'kW (LP / NG)', 'MSRP', 'Noise']}
+    rows={brand.models.map((m) => [m.series, m.capacityKw, m.msrp ?? '—', m.noiseDb ?? '—'])}
+  />
+  <p class="mt-3">Sources: {brand.sourceUrls?.join(', ')}. Amperage runs 41.7 A (10RESV) to 109 A (26RCA) on LP.</p></section>
+
+  <section id="strengths"><h2>Where Kohler stands out</h2>
+  <ul><li><strong>PowerBoost™:</strong> exclusive surge handling for large motor starts — the most meaningful technical differentiator vs Generac.</li><li><strong>Enclosures:</strong> corrosion-resistant aluminum; manufacturer-tested to 181 mph winds (manufacturer claim).</li><li><strong>Controllers:</strong> diagnostic depth pro techs praise — faster fault isolation.</li><li><strong>Commercial heritage:</strong> same engineering culture as hospital/nuclear backup (not the same units — but shared testing discipline).</li><li><strong>Fast transfer:</strong> among the industry's quickest return-to-power figures (verify current spec sheets for exact seconds).</li></ul></section>
+
+  <section id="warranty"><h2>Warranty: 5-year comprehensive</h2><p>{brand.warranty} This is the cleanest contrast with Generac's tiered terms — parts, labor, and travel throughout the standard period. As always: confirm dealer registration and keep maintenance records.</p></section>
+
+  <section id="noise"><h2>Noise levels</h2><p>Standouts: 26RCA at 56 dB is genuinely quiet for its class; 14RCA 63 dB; 20RCA 64 dB exercise / 69 dB full load; compact RESV units 67–71 dB. Compare exact-model figures, not brand averages — Kohler's range (56–71) spans both the quietest and loudest entries here.</p></section>
+
+  <section id="monitoring"><h2>OnCue Plus & voice control</h2><p>Status, email/text/push alerts, remote exercise control, fault-code history, and RXT load management — plus <strong>Amazon Alexa and Google Home voice integration</strong>, which Generac Mobile Link does not offer. Documented gripe: the app is considered less polished than Mobile Link, and some controller faults need a laptop reload (no physical reset button).</p></section>
+
+  <section id="pricing"><h2>Pricing context</h2><p>{brand.priceRange} Slightly above Generac per kW. The spread buys comprehensive warranty, enclosure/controller refinement — not extra kilowatts. Price in <a href="/cost/standby-generator-cost/">installed dollars</a>.</p></section>
+
+  <section id="dealers"><h2>Dealer considerations</h2><p>{brand.dealerNetwork} Verify a certified servicer within reasonable distance <em>before</em> committing; ask about warranty-parts sourcing and storm response. A superb Kohler dealer beats a mediocre anything.</p></section>
+
+  <section id="verdict"><h2>Who Kohler suits</h2>
+  <ProConBox pros={['Comprehensive 5-yr warranty incl. labor/travel', 'PowerBoost surge handling; quiet 26RCA', 'Aluminum enclosures; voice integration']} cons={['Higher MSRP per kW', 'Thinner/rural dealer coverage', 'App less polished; parts sourcing variance']} prosTitle="Strengths" consTitle="Trade-offs" />
+  <p class="mt-4">Choose Kohler when the premium buys something real for your site (corrosion, diagnostics, standout dealer, comprehensive warranty). Otherwise see <a href="/comparisons/generac-vs-kohler/">the head-to-head</a>.</p></section>
+
+  <section id="faq"><span class="sr-only">FAQ anchor</span></section>
+  <FAQSection items={faqs} />
+  <section id="conclusion"><h2>Conclusion</h2><p>Kohler is the considered premium pick — worth it when enclosure, diagnostics, warranty breadth, or dealer excellence returns the spread. Next: <a href="/comparisons/generac-vs-kohler/">compare head-to-head</a> or <a href="/sizing/what-size-generator-do-i-need/">confirm sizing</a>.</p></section>
+</ArticleLayout>

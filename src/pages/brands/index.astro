@@ -1,0 +1,20 @@
+---
+import CategoryLayout from '../../layouts/CategoryLayout.astro';
+---
+<CategoryLayout
+  title="Generator Brand Guides"
+  description="Independent overviews of Generac, Kohler, Briggs & Stratton, and Champion standby lines — lineups, warranties, and honest limitations."
+  intro="No brand wins every home. These overviews trace current lineups and warranty terms to manufacturer sources, then state plainly who each brand tends to suit."
+  cards={[
+    { href: '/brands/generac/', title: 'Generac Standby Generators', description: 'Next Gen MSRP table, tiered warranty, noise ratings, and documented complaints.', category: 'Brands', readingTime: '13 min read' },
+    { href: '/brands/kohler/', title: 'Kohler Standby Generators', description: 'RESV/RCA/RCL pricing, comprehensive warranty, PowerBoost, and voice control.', category: 'Brands', readingTime: '10 min read' },
+    { href: '/brands/briggs-stratton/', title: 'Briggs & Stratton PowerProtect', description: 'Post-2020 status, 13–26 kW lineup, and class-leading 6–10 year warranty.', category: 'Brands', readingTime: '7 min read' },
+    { href: '/brands/champion/', title: 'Champion aXis Generators', description: '20–30% value math, 10-year warranty, and the service-coverage condition.', category: 'Brands', readingTime: '7 min read' },
+    { href: '/brands/cummins/', title: 'Cummins QuietConnect', description: 'Uniform 65 dB, −40°F rating, short warranty stated plainly.', category: 'Brands', readingTime: '6 min read' },
+  ]}
+>
+  <div class="prose-hgg mt-10">
+    <h2>How to use brand guides</h2>
+    <p>Read the brand page, then the <a href="/comparisons/generac-vs-kohler/">head-to-head comparison</a>. Installer availability in your ZIP code often matters more than spec-sheet deltas — confirm local dealer coverage before falling in love with a brochure.</p>
+  </div>
+</CategoryLayout>

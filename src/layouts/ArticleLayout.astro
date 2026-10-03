@@ -1,0 +1,105 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumbs from '../components/layout/Breadcrumbs.astro';
+import TableOfContents from '../components/article/TableOfContents.astro';
+import AuthorBox from '../components/article/AuthorBox.astro';
+import DataDisclaimer from '../components/ui/DataDisclaimer.astro';
+import RelatedArticles from '../components/article/RelatedArticles.astro';
+import AdUnit from '../components/ads/AdUnit.astro';
+
+interface TocItem { id: string; label: string; }
+interface Related { href: string; title: string; description: string; category?: string; }
+interface Source { label: string; href: string; }
+interface Props {
+  title: string;
+  description: string;
+  category: string;
+  categoryHref: string;
+  updated: string;
+  readingTime: string;
+  toc: TocItem[];
+  related?: Related[];
+  prev?: { href: string; label: string };
+  next?: { href: string; label: string };
+  takeaways?: string[];
+  sources?: Source[];
+}
+const { title, description, category, categoryHref, updated, readingTime, toc, related = [], prev, next, takeaways = [], sources = [] } = Astro.props;
+const site = 'https://homegeneratorguide.com';
+const url = `${site}${Astro.url.pathname}`;
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: site + '/' },
+    { '@type': 'ListItem', position: 2, name: category, item: site + categoryHref },
+    { '@type': 'ListItem', position: 3, name: title, item: url },
+  ],
+};
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  author: { '@type': 'Organization', name: 'HomeGeneratorGuide', url: site },
+  publisher: { '@type': 'Organization', name: 'HomeGeneratorGuide', url: site },
+  dateModified: updated,
+  mainEntityOfPage: url,
+};
+// Deliberately no FAQPage/HowTo schema: FAQ rich results are restricted and
+// HowTo has strict eligibility — plain Article + Breadcrumb only.
+---
+<BaseLayout title={title} description={description} schema={[articleSchema, breadcrumbSchema]}>
+  <div class="mx-auto max-w-6xl px-4 py-8 sm:px-6">
+    <Breadcrumbs items={[{ href: '/', label: 'Home' }, { href: categoryHref, label: category }, { label: title }]} />
+    <div class="mt-6 grid gap-10 lg:grid-cols-[minmax(0,1fr)_300px]">
+      <article class="min-w-0">
+        <p class="text-xs font-semibold uppercase tracking-[0.12em] text-orange-600">{category}</p>
+        <h1 class="mt-2 text-3xl font-bold leading-tight text-[#1e3a5f] sm:text-4xl">{title}</h1>
+        <p class="mt-3 text-lg leading-relaxed text-gray-600">{description}</p>
+        <p class="mt-3 text-sm text-gray-500">Updated <time datetime={updated}>{updated}</time> · {readingTime} · Independent educational content</p>
+        {takeaways.length > 0 && (
+          <section aria-label="Key takeaways" class="mt-6 rounded-xl border border-orange-200 bg-orange-50/60 p-5">
+            <p class="text-sm font-semibold uppercase tracking-wider text-[#1e3a5f]">Key takeaways</p>
+            <ul class="mt-2 list-disc space-y-1 pl-5 text-[15px] leading-relaxed text-gray-700">
+              {takeaways.map((t) => (<li>{t}</li>))}
+            </ul>
+          </section>
+        )}
+        <div class="mt-6 lg:hidden">
+          <TableOfContents items={toc} />
+        </div>
+        <div class="mt-6"><AdUnit placement="article-after-intro" minHeight={200} /></div>        <div class="prose-hgg mt-6">
+          <slot />
+        </div>
+        <DataDisclaimer />
+        <div class="mt-8"><AdUnit placement="article-mid" minHeight={280} /></div>
+        {sources.length > 0 && (
+          <section aria-labelledby="sources-heading" class="mt-10">
+            <h2 id="sources-heading" class="text-2xl font-semibold text-[#1e3a5f]">Sources & further reading</h2>
+            <ul class="mt-3 list-disc space-y-1 pl-5 text-[15px] text-gray-700">
+              {sources.map((s) => (<li><a href={s.href} class="underline decoration-orange-400 underline-offset-4">{s.label}</a></li>))}
+            </ul>
+            <p class="mt-2 text-sm text-gray-500">Manufacturer pages confirm specifications; government sources confirm safety and energy data. Accessed October 2026 — verify current pages before purchase.</p>
+          </section>
+        )}
+        <AuthorBox />
+        {(prev || next) && (
+          <nav aria-label="Previous and next guides" class="mt-8 grid gap-3 sm:grid-cols-2">
+            {prev && <a href={prev.href} class="rounded-lg border border-[#e5e7eb] p-4 text-sm hover:border-orange-300"><span class="block text-xs uppercase tracking-wider text-gray-400">Previous</span><span class="font-semibold text-[#1e3a5f]">← {prev.label}</span></a>}
+            {next && <a href={next.href} class="rounded-lg border border-[#e5e7eb] p-4 text-sm text-right hover:border-orange-300"><span class="block text-xs uppercase tracking-wider text-gray-400">Next</span><span class="font-semibold text-[#1e3a5f]">{next.label} →</span></a>}
+          </nav>
+        )}
+        <RelatedArticles articles={related} />
+        <div class="mt-8"><AdUnit placement="article-end" minHeight={250} /></div>
+      </article>
+      <aside class="hidden lg:block">
+        <div class="sticky top-24 space-y-6">
+          <TableOfContents items={toc} />
+          <AdUnit placement="sidebar" minHeight={300} />
+          <AuthorBox />
+        </div>
+      </aside>
+    </div>
+  </div>
+</BaseLayout>

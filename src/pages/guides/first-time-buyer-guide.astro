@@ -1,0 +1,50 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import AlertBox from '../../components/ui/AlertBox.astro';
+import FAQSection from '../../components/ui/FAQSection.astro';
+
+const toc = [
+  { id: 'decisions', label: 'Five decisions in order' },
+  { id: 'fuel', label: '1. Fuel' },
+  { id: 'size', label: '2. Size' },
+  { id: 'switch', label: '3. Switch & loads' },
+  { id: 'installer', label: '4. Installer' },
+  { id: 'service', label: '5. Service plan' },
+  { id: 'timeline', label: 'Realistic timeline & budget' },
+  { id: 'faq', label: 'FAQ' },
+];
+---
+<ArticleLayout
+  title="First-Time Buyer Guide: 5 Decisions Before You Get Quotes"
+  description="New to standby generators? The five decisions in order — fuel, size, switch, installer, service — with a realistic timeline and budget."
+  category="Buying Guides" categoryHref="/guides/" updated="2026-10-03" readingTime="10 min read" toc={toc}
+  related={[
+    { href: '/sizing/what-size-generator-do-i-need/', title: 'What Size Generator Do I Need?', description: 'Decision 2 in depth.', category: 'Sizing' },
+    { href: '/cost/standby-generator-cost/', title: 'Standby Generator Cost (2026)', description: 'Budget reality.', category: 'Cost' },
+    { href: '/installation/what-to-expect/', title: 'Installation: What to Expect', description: 'Decision 4 aftermath.', category: 'Installation' },
+  ]}
+  prev={{ href: '/maintenance/generator-maintenance-checklist/', label: 'Maintenance Checklist' }}
+  next={{ href: '/guides/natural-gas-vs-propane/', label: 'Natural Gas vs Propane' }}
+>
+  <section id="decisions"><h2>Five decisions in order</h2>
+  <p>Buyers who choose the brand first and size later overpay. Work this sequence: <strong>fuel → size → switch/loads → installer → service</strong>. Each decision constrains the next, and each section below ends with the single commitment to make before moving on. <AlertBox type="info" title="Safety framing">Every path ends with licensed pros doing electrical and gas work under permit. Your job is deciding well — theirs is wiring safely.</AlertBox></p></section>
+  <section id="fuel"><h2>1. Fuel: natural gas or propane?</h2>
+  <p>Have piped natural gas with adequate meter capacity? It offers indefinite runtime and no refills — confirm capacity with the gas utility before assuming. Otherwise propane: size the tank for your longest historical outage (250-gal minimum mindset; 500-gal for storm regions), understand refill logistics when roads close, and price first-fill + lease vs buy. Diesel is niche residential — skip unless an engineer specifies it. Full numbers: <a href="/guides/natural-gas-vs-propane/">NG vs propane fuel guide</a>. <strong>Commit:</strong> fuel type + tank size (if propane).</p></section>
+  <section id="size"><h2>2. Size: loads, not floor plans</h2>
+  <p>Inventory coincident loads, add the largest motor surge, add 10–25% headroom — the <a href="/sizing/what-size-generator-do-i-need/">full method with a worked example</a>. Most families land 18–26 kW managed; essentials-only 10–14 kW. Decide the philosophy (<a href="/sizing/whole-home-vs-essential-loads/">whole-home vs essential</a>) before the kilowatts. <strong>Commit:</strong> target kW band + backed-load list.</p></section>
+  <section id="switch"><h2>3. Switch & load strategy</h2>
+  <p>Service-entrance ATS + shed modules for flexible whole-home; subpanel ATS for disciplined essentials. Name deferred giants explicitly (dryer, 2nd AC, strips, EV charger). This choice can shrink the generator a full size — it is a design decision, not an accessory. <strong>Commit:</strong> switch type + shed list. Detail: <a href="/cost/transfer-switch-cost/">switch costs</a>.</p></section>
+  <section id="installer"><h2>4. Installer: the actual product</h2>
+  <p>Three itemized bids on identical scope; factory certification; standby-specific years; parts stock; storm response commitments; reviews about outage season. The bid must show the load calculation and permit plan. <strong>Commit:</strong> signed all-in scope with model + kW + switch + gas/electrical/pad/permit/startup/registration. What happens next: <a href="/installation/what-to-expect/">install day</a>.</p></section>
+  <section id="service"><h2>5. Service plan from day one</h2>
+  <p>Schedule the first annual service at install closeout; log exercise weekly; budget $300–$600/year. Service plans earn their fee via guaranteed storm response + included annual visit — read exclusions. <strong>Commit:</strong> first service date + log location. Full routine: <a href="/maintenance/generator-maintenance-checklist/">the checklist</a>.</p></section>
+  <section id="timeline"><h2>Realistic timeline & budget</h2>
+  <ul><li><strong>Weeks 1–2:</strong> fuel + sizing + philosophy (this guide + load list + 3 bid invitations).</li><li><strong>Weeks 3–6:</strong> surveys, permits, scheduling ($9,000–$16,000 installed nationally — <a href="/cost/standby-generator-cost/">estimates & disclaimer</a>).</li><li><strong>Install week:</strong> 1–3 days work + inspection + walkthrough.</li><li><strong>Ongoing:</strong> exercise + monthly visuals + annual service.</li></ul></section>
+  <section id="faq"><span class="sr-only">FAQ anchor</span></section>
+  <FAQSection items={[
+    { q: 'What is the single biggest beginner mistake?', a: 'Shopping brand before sizing — then discovering the "deal" is the wrong kW, wrong fuel, or a vague install scope. Size and scope first; brand last.' },
+    { q: 'Should I buy retail or through a dealer?', a: 'Dealer-installed bundles usually win: matched ATS, correct fuel scoping, permits, startup, registration, and someone to call in a storm. Retail box + hired install can work with a sharp prime contractor — but coordinate scope tightly.' },
+    { q: 'How do I know if I even need standby vs portable?', a: 'Need automatic coverage (medical, sump, frequent travel, home office) → standby. Home during outages, tight budget, essentials-only → quality portable + inlet can suffice. Do not backfeed either way.' },
+  ]} />
+  <section id="conclusion"><h2>Conclusion</h2><p>Fuel, size, switch, installer, service — in that order, in writing. Do that and the brand choice becomes easy. Start decision 2 now: <a href="/sizing/what-size-generator-do-i-need/">sizing guide</a>.</p></section>
+</ArticleLayout>
