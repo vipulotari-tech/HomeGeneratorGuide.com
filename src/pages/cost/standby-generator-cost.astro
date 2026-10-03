@@ -57,9 +57,9 @@ const faqs = [
     'No federal tax credit exists for standard standby generators.',
   ]}
   sources={[
-    { label: 'U.S. EIA — Natural Gas Monthly Prices', href: 'https://www.eia.gov/naturalgas/monthly/' },
-    { label: 'DSIRE — State Incentive Database', href: 'https://www.dsireusa.org/' },
-    { label: 'Generac — Residential Standby Lineup', href: 'https://www.generac.com/residential-products/standby-generators/' },
+    { label: 'U.S. EIA — Natural Gas Monthly (residential price bands)', href: 'https://www.eia.gov/naturalgas/monthly/', type: 'Government', verified: 'Oct 2026' },
+    { label: 'DSIRE — State Incentive Database (rebate availability)', href: 'https://www.dsireusa.org/', type: 'Government', verified: 'Oct 2026' },
+    { label: 'Generac — Residential Standby Lineup (unit MSRP)', href: 'https://www.generac.com/residential-products/standby-generators/', type: 'Manufacturer', verified: 'Oct 2026' },
   ]}
 >
   <AlertBox type="warning" title="Prices are estimates">{nationalInstalledRange2026.disclaimer}</AlertBox>

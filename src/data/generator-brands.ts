@@ -42,7 +42,7 @@ export const brands: GeneratorBrand[] = [
       'Years 4–5: engine short block + alternator rotor/stator parts only.',
       'Extended 7-year and 10-year plans available.',
     ],
-    dealerNetwork: '5,000+ authorized dealers US & Canada — largest residential network.',
+    dealerNetwork: 'Generac claims 10,000 authorized dealers (marketing figure); independent counts vary — verify local coverage.',
     marketShare: 'Reported ~62–75% of US home standby (third-party estimate — treat as reported, not manufacturer-confirmed).',
     models: [
       { series: 'Next Generation 10 kW', capacityKw: '10 kW (LP & NG)', fuel: 'NG / LP', msrp: '$3,769 unit / $4,419–$4,619 w/ ATS', noiseDb: '61 dB', notes: '459cc engine.' },

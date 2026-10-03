@@ -36,5 +36,24 @@ const toc = [
     { q: 'Does whole-home mean every breaker at once?', a: 'No — even whole-home systems use load management and breaker discipline. It means every circuit is available, not that every appliance runs simultaneously.' },
     { q: 'Which is better for resale?', a: 'Managed whole-home photographs and appraises better, but a documented essential system with permits and service records still adds credible value. Unpermitted work adds nothing — permit either path.' },
   ]} />
-  <section id="conclusion"><h2>Conclusion</h2><p>Default to the managed middle unless budget or fuel forces essentials-only. Either way, size from the <a href="/sizing/what-size-generator-do-i-need/">load list</a> and price in <a href="/cost/standby-generator-cost/">installed dollars</a>.</p></section>
+    <figure class="not-prose my-6">
+    <svg viewBox="0 0 560 300" class="w-full rounded-lg border border-[#e5e7eb] bg-white" role="img" aria-label="Diagram: generator output splits into always-on priority loads and managed loads that shed during surges">
+      <title>Load management concept</title>
+      <rect x="16" y="120" width="124" height="60" rx="8" fill="#1e3a5f"/>
+      <text x="78" y="146" text-anchor="middle" font-size="14" fill="#fff" font-family="sans-serif">Generator</text>
+      <text x="78" y="164" text-anchor="middle" font-size="12" fill="#cbd5e1" font-family="sans-serif">20 kW</text>
+      <path d="M140 150 H168 V90 H196" stroke="#f97316" stroke-width="3" fill="none"/>
+      <path d="M140 150 H168 V230 H196" stroke="#f97316" stroke-width="3" fill="none" stroke-dasharray="7 5"/>
+      <rect x="196" y="40" width="348" height="100" rx="8" fill="#f0fdf4" stroke="#22c55e" stroke-width="2"/>
+      <text x="212" y="66" font-size="14" font-weight="bold" fill="#14532d" font-family="sans-serif">PRIORITY — always on</text>
+      <text x="212" y="90" font-size="13" fill="#14532d" font-family="sans-serif">Fridge · furnace blower · well pump · sump</text>
+      <text x="212" y="110" font-size="13" fill="#14532d" font-family="sans-serif">Medical loads · internet + lights</text>
+      <rect x="196" y="180" width="348" height="100" rx="8" fill="#fffbeb" stroke="#f97316" stroke-width="2"/>
+      <text x="212" y="206" font-size="14" font-weight="bold" fill="#78350f" font-family="sans-serif">MANAGED — sheds on surge</text>
+      <text x="212" y="230" font-size="13" fill="#78350f" font-family="sans-serif">Water heater · dryer · 2nd AC · EV charger</text>
+      <text x="212" y="250" font-size="13" fill="#78350f" font-family="sans-serif">Restored one at a time after stabilizing</text>
+    </svg>
+    <figcaption class="mt-2 text-sm text-gray-500">Load management lets a 20 kW unit cover a 24 kW load list. Illustrative diagram.</figcaption>
+  </figure>
+<section id="conclusion"><h2>Conclusion</h2><p>Default to the managed middle unless budget or fuel forces essentials-only. Either way, size from the <a href="/sizing/what-size-generator-do-i-need/">load list</a> and price in <a href="/cost/standby-generator-cost/">installed dollars</a>.</p></section>
 </ArticleLayout>

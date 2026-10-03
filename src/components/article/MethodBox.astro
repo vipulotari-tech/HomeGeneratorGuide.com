@@ -1,0 +1,15 @@
+---
+interface Props { verified: string; }
+const { verified } = Astro.props;
+---
+<aside class="not-prose mt-6 rounded-xl border border-[#e5e7eb] bg-[#f9fafb] p-5" aria-label="How this guide was researched">
+  <p class="text-sm font-semibold uppercase tracking-wider text-[#1e3a5f]">How this guide was researched</p>
+  <ul class="mt-2 space-y-1 text-sm leading-relaxed text-gray-600">
+    <li>Manufacturer documentation and spec sheets reviewed</li>
+    <li>Government and safety sources cross-checked</li>
+    <li>Specifications verified: {verified}</li>
+    <li>Prices are planning context, never quotes</li>
+    <li>No manufacturer paid for placement or conclusions</li>
+  </ul>
+  <a href="/editorial-policy/" class="mt-2 inline-flex min-h-[32px] items-center text-sm font-medium text-[#1e3a5f] underline decoration-orange-400 underline-offset-4">Corrections policy →</a>
+</aside>
