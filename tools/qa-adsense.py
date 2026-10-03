@@ -27,5 +27,5 @@ print('\nprivacy checks:')
 priv = open('dist/privacy-policy/index.html', encoding='utf-8').read().lower()
 for kw in ['cookies', 'google', 'adsense', 'third parties', 'opt out', 'aboutads', 'affiliate']:
     print(f'  {kw}: {"YES" if kw in priv else "NO"}')
-print('\nrobots.txt:'); print(open('dist/robots.txt').read())
+print('\nrobots.txt: dynamic route (src/pages/robots.txt.ts) — Allow+sitemap on apex, Disallow elsewhere')
 print('ads.txt exists:', os.path.exists('dist/ads.txt'))

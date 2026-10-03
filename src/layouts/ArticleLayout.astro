@@ -23,8 +23,9 @@ interface Props {
   next?: { href: string; label: string };
   takeaways?: string[];
   sources?: Source[];
+  image?: string;
 }
-const { title, description, category, categoryHref, updated, readingTime, toc, related = [], prev, next, takeaways = [], sources = [] } = Astro.props;
+const { title, description, category, categoryHref, updated, readingTime, toc, related = [], prev, next, takeaways = [], sources = [], image } = Astro.props;
 const site = 'https://homegeneratorguide.com';
 const url = `${site}${Astro.url.pathname}`;
 const breadcrumbSchema = {
@@ -46,6 +47,9 @@ const articleSchema = {
   dateModified: updated,
   mainEntityOfPage: url,
 };
+if (image) {
+  (articleSchema as Record<string, unknown>).image = `${site}${image}`;
+}
 // Deliberately no FAQPage/HowTo schema: FAQ rich results are restricted and
 // HowTo has strict eligibility — plain Article + Breadcrumb only.
 ---

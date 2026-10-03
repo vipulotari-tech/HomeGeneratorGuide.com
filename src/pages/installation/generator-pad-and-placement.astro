@@ -18,7 +18,7 @@ const toc = [
 <ArticleLayout
   title="Generator Pad & Placement: Sizes, Clearances, HOA & Noise"
   description="Standby pad and placement guide: concrete pad sizes by kW, reuse rules, gravel alternative, costs, NFPA 37 clearances, HOA screening, and noise ordinances."
-  category="Installation" categoryHref="/installation/" updated="2026-10-03" readingTime="9 min read" toc={toc}
+  category="Installation" categoryHref="/installation/" updated="2026-10-03" image="/images/gas-connection-pad.webp" readingTime="9 min read" toc={toc}
   related={[
     { href: '/installation/what-to-expect/', title: 'Installation: What to Expect', description: 'Full install process.', category: 'Installation' },
     { href: '/cost/installation-cost-breakdown/', title: 'Installation Cost Breakdown', description: 'Where install money goes.', category: 'Cost' },
@@ -54,7 +54,8 @@ const toc = [
   ]} />
   <AlertBox type="info" title="DIY line">A homeowner may pour a pad (with building permit where required) — that is the <em>only</em> DIY in the whole project. Electrical, gas, and transfer equipment stay licensed-pro-only.</AlertBox></section>
 
-  <section id="clearances"><h2>Clearance table (NFPA 37 simplified)</h2>
+  <section id="clearances"><h2>Clearance table — read the four tiers</h2>
+  <p>Numbers below are <strong>planning guidance</strong> (NFPA 37 simplified minimums), not your final answer. Final placement is set by, in order: (1) <strong>manufacturer requirement</strong> — your exact model's manual, which can exceed code; (2) <strong>code/AHJ requirement</strong> — the adopted NEC/NFPA edition plus local amendments and your inspector; (3) <strong>utility requirements</strong> — meter working space and service rules; (4) <strong>best practice</strong> — extra margin for noise, service access, and snow/flood. Never treat a planning table as a mandatory code citation.</p>
   <ComparisonTable caption="Placement clearances" headers={['From', 'Minimum', 'Basis']} rows={clearances.map((c) => [c.from, c.distance, c.basis])} />
   <p class="mt-3">Exhaust must never aim at windows, doors, AC units, or intakes. Local codes can exceed these (some CA jurisdictions want 10 ft from openings) — the manual plus the AHJ govern, not this table.</p></section>
 

@@ -23,7 +23,7 @@ const toc = [
 <ArticleLayout
   title="Natural Gas vs Propane Generators: Fuel Cost, Tanks & Runtime"
   description="NG vs propane for standby: consumption tables, hourly costs, tank sizes and runtimes, own-vs-rent math, meter capacity, outage reliability, and diesel context."
-  category="Buying Guides" categoryHref="/guides/" updated="2026-10-03" readingTime="13 min read" toc={toc}
+  category="Buying Guides" categoryHref="/guides/" updated="2026-10-03" image="/images/propane-tanks-home.webp" readingTime="13 min read" toc={toc}
   related={[
     { href: '/cost/standby-generator-cost/', title: 'Standby Generator Cost (2026)', description: 'Full project budget.', category: 'Cost' },
     { href: '/guides/first-time-buyer-guide/', title: 'First-Time Buyer Guide', description: 'Decision 1 is fuel.', category: 'Buying Guides' },
@@ -60,7 +60,7 @@ const toc = [
   <section id="tanks"><h2>Tank sizes & runtimes (20 kW reference)</h2>
   <p>Tanks fill to 80% (thermal expansion) — a "500-gal" tank holds ~400 usable gallons.</p>
   <ComparisonTable caption="Propane tank runtimes" headers={['Tank', 'Usable', '50% load', 'Full load']} rows={propaneTanks.map((t) => [t.size, t.usable, t.runtime20kwHalf, t.runtime20kwFull])} />
-  <p class="mt-3">Above-ground installs run $500–$1,500 (tank + pad + hookup); underground $1,500–$3,500 with better cold-weather vaporization and curb appeal but harder inspection. Setbacks ~10 ft from buildings/ignition sources. Delivery: 50–100 gal minimums, $25–$75 fees, 1–5 day lead stretching to 1–2 weeks in storms — automatic delivery (refill at 20–30%) beats will-call in outage season.</p></section>
+  <p class="mt-3">Above-ground installs run $500–$1,500 (tank + pad + hookup); underground $1,500–$3,500 with better cold-weather vaporization and curb appeal but harder inspection. Setbacks ~10 ft from buildings/ignition sources. Delivery: 50–100 gal minimums, $25–$75 fees, 1–5 day lead stretching to 1–2 weeks in storms — automatic delivery (refill at 20–30%) beats will-call in outage season. How far a tank actually carries you: <a href="/guides/how-long-can-generator-run/">week-long runtime reality</a>.</p></section>
 
   <section id="own-rent"><h2>Own vs rent the tank (read before signing)</h2>
   <ul><li><strong>Rent ($0–$150 setup, $50–$175/yr):</strong> no upfront, supplier maintains — but anti-fill laws mean <em>only that supplier</em> may fill it, at their price (often 20–40% markup). Switching costs $500–$1,500 buyout/termination.</li><li><strong>Own ($1,000–$3,500 installed):</strong> shop any supplier ($2.20–$3.00/gal typical), zero switching cost, you own maintenance/inspections. Breakeven roughly 10–18 years — immediate if staying 12+.</li><li>Own the tank if this is your forever home with real outage exposure; rent only for short horizons or minimal use.</li></ul></section>
