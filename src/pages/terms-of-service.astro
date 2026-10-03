@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/layout/Breadcrumbs.astro';
+---
+<BaseLayout title="Terms of Service" description="Terms of Service for HomeGeneratorGuide: educational-use terms, safety rules, intellectual property, and liability limits.">
+  <div class="mx-auto max-w-3xl px-4 py-10 sm:px-6">
+    <Breadcrumbs items={[{ href: '/', label: 'Home' }, { label: 'Terms of Service' }]} />
+    <h1 class="mt-4 text-4xl font-bold text-[#1e3a5f]">Terms of Service</h1>
+    <p class="mt-2 text-sm text-gray-500">Last updated: 2026-10-03.</p>
+    <div class="prose-hgg mt-6">
+      <h2>Safety first — read this</h2>
+      <p><strong>The information on HomeGeneratorGuide is for educational purposes. Always hire a licensed electrician for generator installation. Never install a transfer switch yourself. Generator installation requires permits in most US jurisdictions. Information on this site does not constitute professional electrical advice.</strong></p>
+      <h2>Educational use</h2>
+      <p>All content is general information for US homeowners. It is not professional electrical, gas, engineering, or legal advice. Your home, equipment, and local codes are unique — confirm everything with qualified licensed professionals and your authority having jurisdiction.</p>
+      <h2>Estimates, not offers</h2>
+      <p>Prices, costs, and ranges are planning estimates based on market information available at publication. They are not quotes, bids, or guarantees. Actual costs vary by location, labor, equipment, permits, and site conditions.</p>
+      <h2>Intellectual property</h2>
+      <p>Site text, diagrams, and images are owned by HomeGeneratorGuide unless attributed otherwise. You may quote brief excerpts with credit and a link. Do not republish full articles, scrape the site, or present our content as your own.</p>
+      <h2>External links</h2>
+      <p>Links to manufacturer, government, and retailer pages are provided for verification. We do not control third-party sites and are not responsible for their content, accuracy, or availability.</p>
+      <h2>No warranties; liability limits</h2>
+      <p>The site is provided "as is" without warranties of any kind. To the maximum extent permitted by law, HomeGeneratorGuide is not liable for decisions made using this content, including equipment purchases, installation outcomes, or outage losses. Some jurisdictions do not allow certain liability limits; where they do not apply, liability is limited to the minimum permitted.</p>
+      <h2>Changes</h2>
+      <p>We may update these terms as the site evolves; continued use after changes constitutes acceptance. Material questions: <a href="/contact/">contact us</a>.</p>
+    </div>
+  </div>
+</BaseLayout>

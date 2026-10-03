@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/layout/Breadcrumbs.astro';
+import AlertBox from '../components/ui/AlertBox.astro';
+---
+<BaseLayout title="Expert Review Process" description="How HomeGeneratorGuide defines technical review: reviewer qualifications, what reviewed means, disagreement handling, and current status.">
+  <div class="mx-auto max-w-3xl px-4 py-10 sm:px-6">
+    <Breadcrumbs items={[{ href: '/', label: 'Home' }, { label: 'Expert Review Process' }]} />
+    <h1 class="mt-4 text-4xl font-bold text-[#1e3a5f]">Expert Review Process</h1>
+    <div class="mt-6">
+      <AlertBox type="info" title="Current status: reviewer pending">No licensed professional has reviewed our articles yet. Nothing on this site is presented as reviewed work. When review is complete, the reviewer's name, credential, license state, and review date will appear on each reviewed article.</AlertBox>
+    </div>
+    <div class="prose-hgg mt-6">
+      <h2>Who will review, and what qualifies them</h2>
+      <p>Our technical reviewer must hold an active, verifiable credential in one of these categories, in priority order:</p>
+      <ul>
+        <li>Licensed Master Electrician with standby-generator installation experience.</li>
+        <li>EGSA-certified generator technician.</li>
+        <li>Factory-authorized dealer technician — with affiliation disclosed and a written editorial-independence agreement.</li>
+        <li>Licensed Professional Engineer (electrical).</li>
+      </ul>
+      <p>We verify the license against the issuing state board before publishing the reviewer's name. No credential, no byline — ever.</p>
+      <h2>What technically reviewed will mean</h2>
+      <ul>
+        <li>The reviewer reads the full article against current manufacturer docs and applicable code concepts.</li>
+        <li>Every load-bearing number (wattages, clearances, intervals, cost bands, warranty terms) is confirmed or flagged.</li>
+        <li>Safety framing is checked: pro-only boundaries, no DIY electrical/gas instructions, no universalized model-specific rules.</li>
+        <li>The review date is recorded on the article; re-review recurs at least annually or when specifications change.</li>
+      </ul>
+      <h2>Disagreements</h2>
+      <p>If editor and reviewer disagree, the reviewer wins on safety and code interpretation; the editor wins on clarity and structure. Unresolvable conflicts are published as acknowledged uncertainty — never smoothed over. The reviewer may withdraw their name from any article, and we will remove the reviewed mark immediately.</p>
+      <h2>Compensation and independence</h2>
+      <p>Reviewers are paid a flat fee per article — never per conclusion. Payment terms are documented before review begins, and no manufacturer, dealer, or installer may fund, direct, or preview reviews.</p>
+      <h2>Until then</h2>
+      <p>Every article carries its research method, typed sources with verification dates, and planning-estimate disclaimers — transparency first, authority earned. <a href="/contact/">Contact us</a> if you hold one of the credentials above and want to discuss the reviewer role.</p>
+    </div>
+  </div>
+</BaseLayout>

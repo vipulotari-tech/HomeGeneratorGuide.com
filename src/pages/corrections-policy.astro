@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/layout/Breadcrumbs.astro';
+---
+<BaseLayout title="Corrections Policy" description="How HomeGeneratorGuide handles factual errors: 48-hour review commitment, what to include, and how corrections are published.">
+  <div class="mx-auto max-w-3xl px-4 py-10 sm:px-6">
+    <Breadcrumbs items={[{ href: '/', label: 'Home' }, { label: 'Corrections Policy' }]} />
+    <h1 class="mt-4 text-4xl font-bold text-[#1e3a5f]">Corrections Policy</h1>
+    <div class="prose-hgg mt-6">
+      <h2>Our commitment</h2>
+      <p><strong>We are committed to accuracy. If you find a factual error, email <a href="mailto:hello@homegeneratorguide.com?subject=Correction%20report">hello@homegeneratorguide.com</a> with "Correction report" in the subject line. We will review within 48 hours and publish a correction notice if warranted.</strong></p>
+      <h2>What to include</h2>
+      <ul>
+        <li>The page URL and the exact claim you dispute.</li>
+        <li>Your evidence: manufacturer page, manual page number, code section, or dataset.</li>
+        <li>Whether we may follow up with questions.</li>
+      </ul>
+      <h2>How we handle reports</h2>
+      <ul>
+        <li><strong>Substantiated errors</strong> (wrong spec, price, interval, code reference) are corrected promptly, and material corrections are noted with an updated verification date on the article.</li>
+        <li><strong>Disputed interpretations</strong> (sizing philosophy, brand assessments) are reviewed against sources; where evidence is mixed, we clarify wording rather than silently editing.</li>
+        <li><strong>Out-of-scope reports</strong> (quotes for your home, installer disputes, warranty claims) receive a referral to the manufacturer or a local professional — we cannot adjudicate individual cases.</li>
+      </ul>
+      <h2>Transparency</h2>
+      <p>We do not stealth-edit load-bearing facts. When a correction changes a recommendation, number, or conclusion, the article's verification date moves and the change is visible. See also our <a href="/editorial-policy/">editorial policy</a>.</p>
+    </div>
+  </div>
+</BaseLayout>
