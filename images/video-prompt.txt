@@ -1,0 +1,94 @@
+================================================================
+HomeGeneratorGuide.com — HOMEPAGE EXPLAINER VIDEO PROMPT PACK (60 sec)
+Target: 16:9, 720p (1280x720), MP4 H.264, <5MB, silent-safe (captions on)
+Usage: feed scene blocks to any video AI (Runway / Pika / Sora / Veo /
+Luma) OR a stock-footage editor. Voiceover + captions from the script
+lines below. Thumbnail + captions file needed before I embed it.
+================================================================
+
+GLOBAL STYLE (prepend to every scene prompt):
+Photorealistic, US suburban home, warm trustworthy documentary tone,
+golden-hour or clear daylight unless noted, generic UNBRANDED beige
+standby generator (no logos, no brand badges), no readable on-screen
+text, no watermarks, steady tripod-like camera, no shaky movement.
+
+HARD NO-GOs (safety + neutrality):
+- No portable generator in garage / near windows / indoors
+- No open live electrical panels with hands inside
+- No Generac/Kohler/Champion logos or model numbers anywhere
+- No fake technicians making promises, no price claims on screen
+
+----------------------------------------------------------------
+SCENE 1 (0:00-0:07) — THE PROBLEM: storm night, lights die
+PROMPT: Photorealistic wide shot, suburban street at dusk under dark
+storm clouds, house windows glowing warm, then all lights cut out house
+by house until the street goes dark, wet pavement reflections, ominous
+calm, no people, no text.
+VOICEOVER: "Every year, millions of American homes lose power — sometimes
+for days."
+----------------------------------------------------------------
+SCENE 2 (0:07-0:15) — THE HERO UNIT: standby on its pad
+PROMPT: Slow push-in on a generic beige standby generator on a concrete
+pad beside a suburban home, green status LED glowing, morning light,
+dew on grass, calm and solid mood, unbranded, no text.
+VOICEOVER: "A home standby generator watches your power around the clock —
+and takes over automatically."
+----------------------------------------------------------------
+SCENE 3 (0:15-0:23) — THE HANDOFF: transfer switch close-up
+PROMPT: Photorealistic close-up, gray outdoor transfer switch enclosure
+beside an electric meter on home siding, subtle animated-style power
+glow traveling along the conduit (clean energy-flow effect, tasteful),
+daylight, no text, no logos.
+VOICEOVER: "When the grid fails, the transfer switch senses it and moves
+your home to generator power in about ten seconds."
+----------------------------------------------------------------
+SCENE 4 (0:23-0:31) — LIFE GOES ON: warm home in dark street
+PROMPT: Photorealistic night shot, one suburban home glowing warm with
+porch and interior lights while neighboring homes stay dark, quiet
+street, hopeful contrast, no people, no text.
+VOICEOVER: "Heat stays on. Food stays cold. Medical devices, Wi-Fi,
+work-from-home — uninterrupted."
+----------------------------------------------------------------
+SCENE 5 (0:31-0:38) — FUEL CHOICE: meter + propane tanks montage feel
+PROMPT: Two quick photorealistic shots blended: (a) residential natural
+gas meter on a home wall, (b) two white above-ground propane tanks on
+concrete pads. Daylight, tidy installations, no text, no logos.
+VOICEOVER: "It runs on your natural gas line — or a propane tank sized
+for your longest outage."
+----------------------------------------------------------------
+SCENE 6 (0:38-0:46) — CARE: technician service visit
+PROMPT: Photorealistic photo, service technician with tool bag kneeling
+beside an open standby generator checking it with a multimeter, tidy
+suburban backyard, daytime, professional mood, no readable text, no logos.
+VOICEOVER: "A yearly service visit and a weekly self-test keep it ready.
+Most failures are just skipped maintenance."
+----------------------------------------------------------------
+SCENE 7 (0:46-0:54) — SAFETY: CO detector + clearances
+PROMPT: Photorealistic close-up of a white carbon monoxide detector on a
+bedroom hallway wall, soft warm interior light, calm safe-home mood,
+no text, no logos.
+VOICEOVER: "Correct placement plus working CO detectors on every level.
+Safety first — always."
+----------------------------------------------------------------
+SCENE 8 (0:54-1:00) — END CARD: brand moment, no hard sell
+PROMPT: Slow aerial pull-back, suburban home at golden hour with a small
+beige standby unit visible beside it, warm optimistic grade, unbranded,
+no text.
+VOICEOVER: "HomeGeneratorGuide.com — independent sizing, cost, and
+ownership guides for US homeowners."
+----------------------------------------------------------------
+
+VOICEOVER DIRECTION (for ElevenLabs / AI voice):
+Warm American male or female, 40s, documentary pace, ~140 words total
+(script above is ~150 — trim on read), no hype, no urgency tricks.
+
+MUSIC + CAPTIONS:
+- Music: soft ambient acoustic underscore, -20 dB under voice, no lyrics
+- Captions: burn-in OFF — deliver separate .vtt file with the exact
+  script lines above (I will embed it in the player for accessibility)
+
+DELIVERABLES CHECKLIST (before handing to me):
+[ ] final.mp4 — 1280x720, H.264, <5MB (compress with HandBrake if needed)
+[ ] thumbnail.jpg — 1536x864 still frame (Scene 2 or 4)
+[ ] captions.vtt — word-for-word script with timestamps
+[ ] confirm: no logos, no text overlays, no unsafe depictions
