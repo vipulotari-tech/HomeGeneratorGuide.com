@@ -154,16 +154,18 @@ const categories = [
 
   <!-- Value bar -->
   <section aria-label="Why trust this site" class="border-b border-[#e5e7eb] bg-surface">
-    <div class="mx-auto grid max-w-6xl gap-4 px-4 py-6 sm:grid-cols-2 sm:px-6 lg:grid-cols-4">
+    <div class="mx-auto grid max-w-6xl gap-4 px-4 py-10 sm:grid-cols-2 sm:px-6 lg:grid-cols-4">
       {[
         ['In-Depth Generator Guides', 'Step-by-step sizing, cost, and ownership explainers.'],
         ['Major Brands Covered', 'Generac, Kohler, Briggs & Stratton, Champion.'],
         ['Independent Educational Content', 'No manufacturer affiliation; no paid rankings.'],
         ['US Homeowner Focused', 'Fuel, permits, and codes framed for US homes.'],
       ].map(([t, d]) => (
-        <div class="flex gap-3">
-          <svg class="h-6 w-6 shrink-0 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
-          <div><p class="font-semibold text-primary">{t}</p><p class="text-sm text-gray-600">{d}</p></div>
+        <div class="group flex gap-4 rounded-xl border border-[#e5e7eb] bg-white p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-accent hover:shadow-md">
+          <span aria-hidden="true" class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary/5 transition-colors duration-200 group-hover:bg-accent/10">
+            <svg class="h-5 w-5 text-primary transition-colors duration-200 group-hover:text-accent-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
+          </span>
+          <div><p class="font-semibold leading-snug text-primary">{t}</p><p class="mt-1 text-sm leading-relaxed text-gray-600">{d}</p></div>
         </div>
       ))}
     </div>
