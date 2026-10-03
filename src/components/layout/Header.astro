@@ -12,7 +12,7 @@ const path = Astro.url.pathname;
 const active = (href: string) => path === href || path.startsWith(href);
 ---
 <header class="sticky top-0 z-50 border-b border-white/10 bg-primary text-white shadow-sm">
-  <div class="mx-auto flex min-h-20 max-w-6xl items-center justify-between gap-2 px-4 py-3 sm:gap-4 sm:px-6">
+  <div class="mx-auto flex min-h-16 max-w-6xl items-center justify-between gap-2 px-4 py-2 sm:gap-4 sm:px-6">
     <a href="/" class="flex min-h-[44px] items-center gap-2.5" aria-label="HomeGeneratorGuide home">
       <BrandLogo inverse />
     </a>
