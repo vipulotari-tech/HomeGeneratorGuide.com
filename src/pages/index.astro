@@ -2,13 +2,25 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ArticleCard from '../components/article/ArticleCard.astro';
 
-const schema = {
-  '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: 'HomeGeneratorGuide',
-  url: 'https://homegeneratorguide.com/',
-  description: 'Independent guides to help US homeowners understand generator sizing, costs, installation, maintenance, and backup-power options.',
-};
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'HomeGeneratorGuide',
+    url: 'https://homegeneratorguide.com/',
+    description: 'Independent guides to help US homeowners understand generator sizing, costs, installation, maintenance, and backup-power options.',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'VideoObject',
+    name: 'How home standby power works (58 seconds)',
+    description: 'Outage to automatic backup: transfer switch timing, fuel options, maintenance, and CO safety for US homeowners.',
+    thumbnailUrl: 'https://homegeneratorguide.com/videos/home-explainer-poster.jpg',
+    contentUrl: 'https://homegeneratorguide.com/videos/home-explainer.mp4',
+    uploadDate: '2026-10-03',
+    duration: 'PT58S',
+  },
+];
 
 const popular = [
   { href: '/sizing/what-size-generator-do-i-need/', title: 'Generator Sizing Guide', description: 'Running vs starting watts, worked examples, and size ranges from 10 kW to 26 kW.', category: 'Sizing', readingTime: '14 min read' },
@@ -102,6 +114,30 @@ const categories = [
           <!-- ground + caption -->
           <line x1="20" y1="262" x2="470" y2="262" stroke="#ffffff" opacity="0.2" stroke-width="2"/>
         </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works video -->
+  <section class="mx-auto max-w-6xl px-4 py-12 sm:px-6" aria-labelledby="how-it-works-heading">
+    <div class="grid items-center gap-8 lg:grid-cols-2">
+      <div>
+        <h2 id="how-it-works-heading" class="text-3xl font-bold text-[#1e3a5f]">See how standby power works (58 sec)</h2>
+        <p class="mt-3 leading-relaxed text-gray-600">Outage to automatic backup: how the transfer switch moves your home to generator power in about ten seconds, what it runs on, and the two habits that keep it ready.</p>
+        <ul class="mt-4 list-disc space-y-1 pl-5 text-[15px] text-gray-700">
+          <li>Automatic transfer — no cords, no refueling runs</li>
+          <li>Natural gas or propane, sized to your longest outage</li>
+          <li>Weekly self-test plus yearly service</li>
+        </ul>
+        <a href="/guides/first-time-buyer-guide/" class="mt-5 inline-flex min-h-[44px] items-center font-semibold text-orange-600 hover:text-orange-700">Start with the buyer guide <span aria-hidden="true" class="ml-1">→</span></a>
+      </div>
+      <div>
+        <video controls preload="none" playsinline poster="/videos/home-explainer-poster.jpg" style="aspect-ratio:16/9" class="w-full rounded-xl border border-[#e5e7eb] bg-[#152a45]" aria-label="Explainer video: how home standby power works">
+          <source src="/videos/home-explainer.mp4" type="video/mp4" />
+          <track kind="captions" srclang="en" label="English" src="/videos/home-explainer-captions.vtt" default />
+          Sorry, your browser cannot play this video. Read the <a href="/guides/first-time-buyer-guide/">buyer guide</a> instead.
+        </video>
+        <p class="mt-2 text-sm text-gray-500">Transcript: storm outages → automatic transfer in ~10 seconds → uninterrupted essentials → gas or propane fuel → yearly service → CO detectors on every level. Full captions included in the player.</p>
       </div>
     </div>
   </section>
