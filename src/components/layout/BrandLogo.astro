@@ -1,0 +1,14 @@
+---
+import { SITE_NAME, TAGLINE } from '../../config/site';
+interface Props { inverse?: boolean; }
+const { inverse = false } = Astro.props;
+---
+<span class="inline-flex min-w-0 items-center gap-2.5">
+  <span class={`flex h-10 w-10 shrink-0 items-center justify-center rounded-md ${inverse ? 'bg-white' : ''}`}>
+    <img src="/brand-mark.svg" width="36" height="36" alt="" aria-hidden="true" />
+  </span>
+  <span class="min-w-0">
+    <span class={`block whitespace-nowrap text-[15px] font-semibold tracking-tight sm:text-lg ${inverse ? 'text-white' : 'text-primary'}`}>{SITE_NAME}</span>
+    <span class={`block whitespace-nowrap text-[10px] leading-relaxed sm:text-xs ${inverse ? 'text-slate-200' : 'text-ink'}`}>{TAGLINE}</span>
+  </span>
+</span>

@@ -15,7 +15,7 @@ const { title, description, intro, cards } = Astro.props;
 <BaseLayout title={title} description={description}>
   <div class="mx-auto max-w-6xl px-4 py-8 sm:px-6">
     <Breadcrumbs items={[{ href: '/', label: 'Home' }, { label: title }]} />
-    <h1 class="mt-4 text-3xl font-bold text-[#1e3a5f] sm:text-4xl">{title}</h1>
+    <h1 class="mt-4 text-3xl font-bold text-primary sm:text-4xl">{title}</h1>
     <p class="mt-3 max-w-3xl text-lg leading-relaxed text-gray-600">{intro}</p>
     <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {cards.map((c) => (<ArticleCard href={c.href} title={c.title} description={c.description} category={c.category} readingTime={c.readingTime} />))}

@@ -22,3 +22,6 @@ claude-seo/
 
 # Lighthouse local reports
 *.report.html
+
+# Local visual QA artifacts
+.qa/

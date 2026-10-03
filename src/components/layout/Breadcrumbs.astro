@@ -9,8 +9,8 @@ const { items } = Astro.props;
       <li class="flex items-center gap-1.5">
         {i > 0 && <span aria-hidden="true" class="text-slate-300">/</span>}
         {c.href && i < items.length - 1
-          ? <a href={c.href} class="min-h-[32px] inline-flex items-center rounded px-0.5 underline-offset-4 hover:text-[#1e3a5f] hover:underline">{c.label}</a>
-          : <span aria-current="page" class="font-medium text-[#1e3a5f]">{c.label}</span>}
+          ? <a href={c.href} class="min-h-[32px] inline-flex items-center rounded px-0.5 underline-offset-4 hover:text-primary hover:underline">{c.label}</a>
+          : <span aria-current="page" class="font-medium text-primary">{c.label}</span>}
       </li>
     ))}
   </ol>

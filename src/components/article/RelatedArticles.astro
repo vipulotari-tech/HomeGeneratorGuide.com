@@ -6,7 +6,7 @@ const { articles } = Astro.props;
 ---
 {articles.length > 0 && (
   <section aria-labelledby="related-heading" class="mt-12">
-    <h2 id="related-heading" class="text-2xl font-semibold text-[#1e3a5f]">Related guides</h2>
+    <h2 id="related-heading" class="text-2xl font-semibold text-primary">Related guides</h2>
     <div class="mt-4 grid gap-5 sm:grid-cols-2">
       {articles.map((a) => (<ArticleCard href={a.href} title={a.title} description={a.description} category={a.category} />))}
     </div>

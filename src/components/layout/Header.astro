@@ -1,4 +1,5 @@
 ---
+import BrandLogo from './BrandLogo.astro';
 const nav = [
   { href: '/sizing/', label: 'Sizing Guide' },
   { href: '/cost/', label: 'Cost Guide' },
@@ -10,39 +11,38 @@ const nav = [
 const path = Astro.url.pathname;
 const active = (href: string) => path === href || path.startsWith(href);
 ---
-<header class="sticky top-0 z-50 bg-[#1e3a5f] text-white shadow-md">
-  <div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
+<header class="sticky top-0 z-50 border-b border-white/10 bg-primary text-white shadow-sm">
+  <div class="mx-auto flex min-h-20 max-w-6xl items-center justify-between gap-2 px-4 py-3 sm:gap-4 sm:px-6">
     <a href="/" class="flex min-h-[44px] items-center gap-2.5" aria-label="HomeGeneratorGuide home">
-      <svg width="34" height="34" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="12" fill="#ffffff"/><path d="M34 8 18 36h10l-2 20 18-30H34l4-18h-4z" fill="#f97316"/><path d="M14 44l6-6m32 6l-6-6" stroke="#1e3a5f" stroke-width="3" stroke-linecap="round"/></svg>
-      <span class="text-lg font-bold tracking-tight">Home<span class="text-orange-400">Generator</span>Guide</span>
+      <BrandLogo inverse />
     </a>
-    <nav class="hidden items-center gap-1 lg:flex" aria-label="Primary">
+    <nav class="hidden items-center gap-2 lg:flex" aria-label="Primary">
       {nav.map((n) => (
         <a
           href={n.href}
           aria-current={active(n.href) ? 'page' : undefined}
-          class={`rounded-md px-3 py-2.5 text-sm font-medium transition-colors hover:bg-white/10 hover:text-white ${active(n.href) ? 'bg-white/15 text-white underline decoration-orange-400 decoration-2 underline-offset-4' : 'text-slate-200'}`}
+          class={`rounded-md border-b-2 border-transparent px-3 py-2.5 text-sm font-medium text-slate-200 transition-colors hover:bg-white/10 hover:text-white ${active(n.href) ? 'border-accent bg-white/10 text-white' : ''}`}
         >{n.label}</a>
       ))}
     </nav>
     <button
       id="menu-btn"
-      class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-md px-3 text-sm font-semibold hover:bg-white/10 lg:hidden"
+      class="inline-flex min-h-[44px] min-w-[44px] shrink-0 items-center justify-center rounded-md border border-white/30 text-white transition-colors hover:bg-white/10 lg:hidden"
       aria-expanded="false"
       aria-controls="mobile-nav"
     >
-      <span id="menu-label">Menu</span>
-      <svg class="ml-2 h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <span id="menu-label" class="sr-only">Open navigation menu</span>
+      <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
   </div>
-  <nav id="mobile-nav" class="hidden border-t border-white/10 lg:hidden" aria-label="Mobile">
+  <nav id="mobile-nav" class="hidden border-t border-white/10 bg-primary lg:hidden" aria-label="Mobile">
     <ul class="mx-auto max-w-6xl space-y-1 px-4 py-3 sm:px-6">
       {nav.map((n) => (
         <li>
           <a
             href={n.href}
             aria-current={active(n.href) ? 'page' : undefined}
-            class={`block min-h-[44px] rounded-md px-3 py-3 text-[15px] font-medium ${active(n.href) ? 'bg-white/15 text-white' : 'text-slate-200 hover:bg-white/10'}`}
+            class={`block min-h-[44px] rounded-md border-l-2 border-transparent px-3 py-3 text-[15px] font-medium text-slate-200 hover:bg-white/10 hover:text-white ${active(n.href) ? 'border-accent bg-white/10 text-white' : ''}`}
           >{n.label}</a>
         </li>
       ))}
@@ -56,14 +56,14 @@ const active = (href: string) => path === href || path.startsWith(href);
   btn?.addEventListener('click', () => {
     const open = nav?.classList.toggle('hidden') === false;
     btn.setAttribute('aria-expanded', String(open));
-    if (label) label.textContent = open ? 'Close' : 'Menu';
+    if (label) label.textContent = open ? 'Close navigation menu' : 'Open navigation menu';
     if (open) (nav?.querySelector('a') as HTMLElement | null)?.focus();
   });
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && !nav?.classList.contains('hidden')) {
       nav?.classList.add('hidden');
       btn?.setAttribute('aria-expanded', 'false');
-      if (label) label.textContent = 'Menu';
+      if (label) label.textContent = 'Open navigation menu';
       (btn as HTMLElement | null)?.focus();
     }
   });

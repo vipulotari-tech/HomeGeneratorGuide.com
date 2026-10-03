@@ -13,10 +13,9 @@ for root, _, files in os.walk(dist):
 
 broken = []
 for h, pages in sorted(hrefs.items()):
-    if h in ('/og-image.svg', '/favicon.svg'):
-        continue
     cand = 'index.html' if h == '/' else h.strip('/') + '/index.html'
-    if not os.path.exists(os.path.join(dist, cand)):
+    asset = os.path.join(dist, h.lstrip('/'))
+    if not os.path.isfile(asset) and not os.path.isfile(os.path.join(dist, cand)):
         broken.append((h, sorted(pages)[:3]))
 
 print('total distinct internal hrefs:', len(hrefs))
@@ -37,6 +36,4 @@ for p in sorted(glob.glob('dist/**/*.html', recursive=True)):
           '| robots:', r.group(1) if r else '?')
 print()
 print('DUP TITLES:', {k: v for k, v in seen_titles.items() if len(v) > 1} or 'none')
-print()
-print('robots.txt:')
-print(open('public/robots.txt').read())
+assert not broken, broken

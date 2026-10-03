@@ -1,65 +1,47 @@
-# DESIGN.md — HomeGeneratorGuide.com
+# HomeGeneratorGuide design system
 
-Spec: `google-labs-code/design.md` compatible. Machine-readable design tokens for AI generation + human reference.
-
-## Brand
+## Identity
 - Name: HomeGeneratorGuide
-- Voice: independent, editorial, safety-conscious. No sales hype, no fake badges.
-- Logo: text wordmark + lightweight SVG bolt-in-house mark (navy #1e3a5f + orange #f97316).
+- Tagline: Power When It Matters Most
+- Voice: knowledgeable neighbor; direct, honest, reassuring, never salesy.
+- Reader: American homeowner, typically 35–65, researching a first standby-generator purchase and worried about choosing poorly.
+- Logo: navy house silhouette with lightning integrated into the roofline; semi-bold sans-serif wordmark. Shared component: src/components/layout/BrandLogo.astro.
+- Exports: public/brand-mark.svg, public/logo.svg, public/favicon.svg. The favicon uses a purpose-built 16px coordinate system, navy house outline and bolt, white square.
 
-## Tokens (`src/styles/global.css` `@theme`)
-```css
---color-primary: #1e3a5f;        /* navy — header, headings, footer */
---color-primary-dark: #152a45;
---color-accent: #f97316;          /* orange — CTAs, highlights */
---color-accent-dark: #ea580c;
---color-ink: #1f2937;             /* body text */
---color-muted: #6b7280;           /* secondary text */
---color-surface: #f9fafb;          /* card bg */
---color-border: #e5e7eb;
---color-info-bg: #eff6ff; --color-info-border: #bfdbfe;
---color-warn-bg: #fffbeb; --color-warn-border: #fde68a;
---color-danger-bg: #fef2f2; --color-danger-border: #fecaca;
---color-success-bg: #f0fdf4; --color-success-border: #bbf7d0;
---font-sans: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
---radius-card: 0.75rem;
---radius-control: 0.5rem;
---container-max: 72rem;
-```
+## Brand colors
+| Token | Name | Hex | Role |
+| --- | --- | --- | --- |
+| primary | Navy Blue | #1B3A6B | Headings, navigation, links, trust |
+| accent | Power Orange | #F5821F | Actions and decorative highlights |
+| success | Generator Green | #2D7D46 | Approval, safety, confirmed states |
+| danger | Safety Red | #C0392B | Warnings and safety notices |
+| surface | Slate Gray | #F8F9FA | Backgrounds |
+| ink | Near-Black | #1A1A2E | Body text and orange-button text |
 
-## Type scale
-- H1 2.5rem/700, H2 2rem/600, H3 1.5rem/600, body 1rem/1.7, small 0.875rem.
-- Max measure: article prose `max-w-[68ch]`.
-- System font stack (no webfont request) for performance.
+Theme tokens live in src/styles/global.css. primary-dark #12284C and accent-dark #E87517 are supporting hover/dark-surface shades.
 
-## Layout
-- Container: `max-w-6xl mx-auto px-4 sm:px-6`.
-- Article: desktop grid `lg:grid-cols-[minmax(0,1fr)_300px] gap-10` (~70/30); mobile single col, TOC first.
-- Header: sticky `sticky top-0 z-50`, navy bg, white text, 44px+ targets.
-- Footer: navy bg, 3 cols → stack mobile.
-- Cards: white/surface bg, 1px border, rounded-xl, hover border-accent, no shadow spam.
-- Tables: wrapper `overflow-x-auto`, `th` navy-tinted, zebra rows, sticky first col only on wide comparison.
-- Alerts: left border 4px + tinted bg per tone, icon + text, `role="note"` (warning/danger `role="alert"` sparingly).
-- CTAs: primary = orange solid white text; secondary = navy outline. Min height 44px. No manipulative copy.
-- Focus: `:focus-visible { outline: 3px solid #f97316; outline-offset: 2px; }`.
-- Reduced motion: `@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }`.
+## Accessibility
+- Orange buttons use ink text: 6.58:1 contrast. White text on brand orange is insufficient for ordinary text.
+- Navy links on white: 11.27:1. Underline prose links.
+- Focus: 3px navy outline on light surfaces; white on navy surfaces.
+- Navigation and buttons: at least 44px targets; native button toggles mobile navigation, announces expanded state, supports Escape.
+- At 320px: adaptive wordmark size, icon-only menu, flexible header height, no overflow.
+- One H1, orderly headings, header/nav/main/footer landmarks, skip link, meaningful alt text.
+- Reduced-motion preference disables optional animation.
+- SVG decorative instances have empty alt text; standalone exports contain accessible titles/descriptions.
 
-## Component rules
-- Header nav: Sizing Guide, Cost Guide, Brands, Comparisons, Installation, Maintenance. `aria-current="page"` on active. Mobile: `<button aria-expanded>` toggling `<nav>` (progressive, ~20 lines JS inline).
-- Breadcrumbs: `nav[aria-label=Breadcrumb] > ol`, separators aria-hidden.
-- FAQ: native `<details><summary>` — keyboard free, minimal JS (none).
-- AdUnit: dashed border placeholder labeled "Advertisement", reserved `min-h` to avoid CLS, never adjacent to nav buttons.
-- Prose: scoped `.prose-hgg` styles (headings, links underline-offset, table, hr) — never global element resets beyond Tailwind preflight.
-- Diagrams: inline SVG, `role="img"` + `<title>`, currentColor/navy/orange palette, no external assets.
+## Typography and layout
+- System sans-serif stack; no remote font dependency.
+- Wordmark: semi-bold. H1: bold, responsive; body: 1rem/1.7.
+- Containers: max-w-6xl; page padding px-4 sm:px-6.
+- Article measure: 68ch; desktop content/sidebar grid; one column on mobile.
+- Cards: existing project components, light borders, restrained rounded corners.
+- Header: primary navy (#1B3A6B) with the hero's navy field, white/slate navigation, orange active underline, and a quiet white divider; no separate blue strip.
+- Native details/summary for FAQs. Tables scroll in a wrapper.
 
-## Accessibility / performance
-- Landmarks: header/nav/main/footer. One H1 per page. Heading order strict.
-- Contrast: navy-on-white 12.6:1, orange (#ea580c dark variant) for text-on-white; bright #f97316 only for large/bold or button bg with white text (3.9:1 → use dark text? decision: buttons use white on #c2410c hover-safe; base #ea580c 4.5:1 approx — verified choice: CTA bg `bg-orange-600` (#ea580c)).
-- Images: width/height + alt + loading lazy below fold.
-- JS budget: menu toggle + (optional) TOC scrollspy off by default. No frameworks.
-
-## Page patterns
-- Hero (home): navy gradient panel, H1 + sub + 2 CTAs + SVG illustration (house + generator + bolt).
-- Value bar: 4 items with SVG icons, no fake stats.
-- Card grids: `grid sm:grid-cols-2 lg:grid-cols-3 gap-5`.
-- Article header: category eyebrow, H1, dek, meta (updated date, reading time), AlertBox safety note.
+## Editorial surfaces
+- Mission and promise are exact strings from src/config/site.ts and visible in the shared footer on every page.
+- The promise is introduced as the publication standard being worked toward. Current articles display licensed electrician review pending.
+- Never use green verification marks to imply uncompleted review or invent credentials.
+- All brand/dealer/installer advertising, payments, sponsorships, and referral fees are prohibited; advertising stays disabled.
+- Full editorial instructions: EDITORIAL.md.

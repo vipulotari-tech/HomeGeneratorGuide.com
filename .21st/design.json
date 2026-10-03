@@ -1,0 +1,107 @@
+{
+    "version":  1,
+    "project":  {
+                    "name":  "homegeneratorguide",
+                    "productType":  "Independent homeowner education",
+                    "stack":  [
+                                  "astro",
+                                  "tailwind-v4"
+                              ]
+                },
+    "sources":  {
+                    "tokens":  [
+                                   "src/styles/global.css",
+                                   "src/config/site.ts"
+                               ],
+                    "components":  [
+                                       "src/components/ui"
+                                   ],
+                    "assets":  [
+                                   "public/images"
+                               ],
+                    "instructions":  [
+                                         "DESIGN.md",
+                                         "EDITORIAL.md"
+                                     ]
+                },
+    "design":  {
+                   "colorMode":  "light",
+                   "colors":  {
+                                  "primary":  "#1B3A6B",
+                                  "accent":  "#F5821F",
+                                  "success":  "#2D7D46",
+                                  "danger":  "#C0392B",
+                                  "surface":  "#F8F9FA",
+                                  "ink":  "#1A1A2E"
+                              },
+                   "typography":  {
+                                      "family":  "System sans-serif",
+                                      "wordmarkWeight":  600,
+                                      "bodyLineHeight":  1.7
+                                  },
+                   "spacing":  {
+
+                               },
+                   "radius":  {
+
+                              },
+                   "shadows":  {
+
+                               },
+                   "motion":  {
+
+                              },
+                   "density":  "Readable editorial"
+               },
+    "components":  {
+                       "installed":  [
+
+                                     ],
+                       "preferredPrimitives":  [
+
+                                               ],
+                       "patterns":  [
+
+                                    ]
+                   },
+    "constraints":  {
+                        "must":  [
+                                     "Exact publisher-approved mission and promise on every page",
+                                     "Explicit pending licensed-review status",
+                                     "Ink text on orange CTAs",
+                                     "No generator-brand, dealer, or installer advertising or payments",
+                                     "Responsive navigation at 320px"
+                                 ],
+                        "avoid":  [
+                                      "Invented experts or credentials",
+                                      "Unsupported expert-reviewed badges",
+                                      "Sales pressure",
+                                      "New UI runtime dependencies"
+                                  ]
+                    },
+    "decisions":  [
+                      "2026-10-03: Apply publisher brand brief; navy house/bolt mark, semibold wordmark, Power When It Matters Most tagline.",
+                      "2026-10-03: Use existing Astro primitives; no catalog component required.",
+                      "2026-10-03: Separate editorial target from current review evidence; pending review displayed clearly.",
+                      "2026-10-03: Header uses the hero's primary navy, white/slate navigation, orange active indicator, and a restrained divider; no standalone blue strip."
+                  ],
+    "evidence":  [
+                     {
+                         "fact":  "components.installed",
+                         "source":  "src/components/ui"
+                     },
+                     {
+                         "fact":  "project.instructions",
+                         "source":  "DESIGN.md"
+                     },
+                     {
+                         "fact":  "project.stack:astro",
+                         "source":  "package.json"
+                     },
+                     {
+                         "fact":  "project.stack:tailwind-v4",
+                         "source":  "package.json"
+                     }
+                 ],
+    "generatedAt":  "2026-10-03T17:19:48.867Z"
+}

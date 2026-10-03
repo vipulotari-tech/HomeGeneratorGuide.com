@@ -14,9 +14,12 @@ Independent educational resource for US homeowners researching standby generator
 
 - Spec: `.specify/specs/homegeneratorguide/` (spec, plan, tasks)
 - Design: `DESIGN.md`
+- Editorial foundation: `EDITORIAL.md`; brand specification: `specs/001-brand-editorial/`
+- Brand exports: `public/logo.svg`, `public/brand-mark.svg`, `public/favicon.svg`
+- Brand QA: `tools/qa-brand.py` verifies exact copy on every built page and honest pending-review status.
 - Data: `src/data/` (no fabricated state pricing — methodology only)
 - QA tooling: `tools/` (`qa-links.py`, `qa-schema.py`, `qa-hero.py`, `shot.py` Playwright screenshots, `gen-og.py`)
 - Deploy: static `dist/` → Netlify (`netlify.toml`: www→apex 301, security headers) or Vercel (`vercel.json`).
 - This directory is not a git repo yet — `git init`, commit, and push before connecting a host. DNS currently has no A/AAAA record; add one at deploy time.
 - AI citations: `public/llms.txt` ships a machine-readable summary.
-- Monetization: AdSense placeholders only (no live publisher ID); affiliate disclosure pre-written, no live links.
+- Funding: no live advertising or affiliate links. Generator-brand, dealer, and installer advertising, payments, sponsorships, and referral fees are prohibited.

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ArticleCard from '../components/article/ArticleCard.astro';
+import { MISSION, INDEPENDENCE } from '../config/site';
 
 const schema = [
   {
@@ -42,21 +43,22 @@ const categories = [
 ];
 ---
 <BaseLayout
-  title="Find the Right Generator for Your Home"
-  description="Independent guides to help US homeowners understand generator sizing, costs, installation, maintenance, and backup-power options."
+  title="Honest Advice for Your Home Standby Generator"
+  description="Independent, source-cited standby generator guidance for American homeowners. Understand sizing, costs, brands, installation, and maintenance without sales pressure."
   schema={schema}
 >
   <!-- Hero -->
-  <section class="bg-gradient-to-b from-[#1e3a5f] to-[#152a45] text-white">
+  <section class="brand-inverse bg-gradient-to-b from-primary to-primary-dark text-white">
     <div class="mx-auto grid max-w-6xl items-center gap-8 px-4 py-14 sm:px-6 lg:grid-cols-2 lg:py-20">
       <div>
-        <h1 class="text-4xl font-bold leading-tight sm:text-5xl">Find the Right Generator for Your Home</h1>
-        <p class="mt-4 text-lg leading-relaxed text-slate-200">Independent guides to help US homeowners understand generator sizing, costs, installation, maintenance, and backup-power options.</p>
+        <p class="mb-3 text-sm font-semibold uppercase tracking-wider text-accent">Independent advice. A more confident decision.</p>
+        <h1 class="text-4xl font-bold leading-tight sm:text-5xl">Home backup power, explained by someone on your side.</h1>
+        <p class="mt-4 text-lg leading-relaxed text-slate-200">Buying a standby generator is a big decision. You deserve clear answers before you spend a dollar. We'll help you understand what your home needs, what a quote should include, and what to ask your installer.</p>
         <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-          <a href="/sizing/what-size-generator-do-i-need/" class="inline-flex min-h-[48px] items-center justify-center rounded-lg bg-orange-600 px-6 font-semibold text-white hover:bg-orange-700">Find My Generator Size →</a>
-          <a href="/cost/" class="inline-flex min-h-[48px] items-center justify-center rounded-lg border border-white/40 px-6 font-semibold text-white hover:bg-white/10">See Cost Guides →</a>
+          <a href="/guides/first-time-buyer-guide/" class="inline-flex min-h-[48px] items-center justify-center rounded-lg bg-accent px-6 font-semibold text-ink hover:bg-accent-dark">Start with the buyer's guide <span aria-hidden="true" class="ml-1">→</span></a>
+          <a href="/cost/" class="inline-flex min-h-[48px] items-center justify-center rounded-lg border border-white/40 px-6 font-semibold text-white hover:bg-white/10">Understand the costs <span aria-hidden="true" class="ml-1">→</span></a>
         </div>
-        <p class="mt-4 text-xs text-slate-300">Independent educational resource — not affiliated with any manufacturer. Always use licensed professionals for electrical and gas work.</p>
+        <p class="mt-4 text-sm leading-relaxed text-slate-200">{INDEPENDENCE}</p>
       </div>
       <div class="hidden lg:block">
         <svg viewBox="0 0 480 320" role="img" aria-label="Diagram: standby generator sends power through a transfer switch to the home" class="w-full">
@@ -76,41 +78,41 @@ const categories = [
           <line x1="120" y1="62" x2="140" y2="48" stroke="#ffffff" opacity="0.35" stroke-width="3"/>
           <rect x="30" y="132" width="180" height="118" rx="8" fill="#ffffff" opacity="0.12"/>
           <rect x="30" y="132" width="180" height="10" rx="5" fill="#ffffff" opacity="0.08"/>
-          <rect class="lamp" x="55" y="178" width="30" height="28" rx="4" fill="#f97316" opacity="0.9"/>
+          <rect class="lamp" x="55" y="178" width="30" height="28" rx="4" fill="#F5821F" opacity="0.9"/>
           <rect x="55" y="178" width="30" height="8" rx="4" fill="#ffffff" opacity="0.2"/>
           <rect x="105" y="192" width="30" height="58" rx="4" fill="#ffffff" opacity="0.3"/>
-          <rect class="lamp2" x="155" y="178" width="30" height="28" rx="4" fill="#f97316" opacity="0.9"/>
+          <rect class="lamp2" x="155" y="178" width="30" height="28" rx="4" fill="#F5821F" opacity="0.9"/>
           <!-- transfer switch box: premium panel -->
-          <ellipse cx="278" cy="219" rx="50" ry="44" fill="#f97316" opacity="0.12"/>
-          <rect x="246" y="188" width="64" height="62" rx="8" fill="url(#panelFace)" stroke="#f97316" stroke-width="2.5"/>
+          <ellipse cx="278" cy="219" rx="50" ry="44" fill="#F5821F" opacity="0.12"/>
+          <rect x="246" y="188" width="64" height="62" rx="8" fill="url(#panelFace)" stroke="#F5821F" stroke-width="2.5"/>
           <rect x="248.5" y="190.5" width="59" height="57" rx="6" fill="none" stroke="#ffffff" opacity="0.14" stroke-width="1"/>
           <circle cx="253.5" cy="195.5" r="1.6" fill="#8fa3bd"/>
           <circle cx="302.5" cy="195.5" r="1.6" fill="#8fa3bd"/>
           <circle cx="253.5" cy="242.5" r="1.6" fill="#8fa3bd"/>
           <circle cx="302.5" cy="242.5" r="1.6" fill="#8fa3bd"/>
-          <rect x="256" y="200" width="44" height="15" rx="3" fill="#071120" stroke="#22c55e" stroke-width="1"/>
-          <rect x="260" y="204" width="24" height="3" rx="1.5" fill="#22c55e"/>
-          <rect x="260" y="209" width="14" height="2.5" rx="1.25" fill="#22c55e" opacity="0.6"/>
-          <rect x="258" y="220" width="40" height="8" rx="4" fill="#f97316"/>
+          <rect x="256" y="200" width="44" height="15" rx="3" fill="#071120" stroke="#2D7D46" stroke-width="1"/>
+          <rect x="260" y="204" width="24" height="3" rx="1.5" fill="#2D7D46"/>
+          <rect x="260" y="209" width="14" height="2.5" rx="1.25" fill="#2D7D46" opacity="0.6"/>
+          <rect x="258" y="220" width="40" height="8" rx="4" fill="#F5821F"/>
           <rect x="258" y="220" width="40" height="3" rx="1.5" fill="#ffffff" opacity="0.25"/>
-          <circle cx="264" cy="238" r="4" fill="#22c55e"/>
+          <circle cx="264" cy="238" r="4" fill="#2D7D46"/>
           <circle cx="278" cy="238" r="4" fill="#fbbf24"/>
           <rect x="290" y="232" width="12" height="12" rx="2" fill="#ffffff" opacity="0.12"/>
           <!-- generator box: 3D -->
           <ellipse cx="406" cy="254" rx="72" ry="6" fill="#000000" opacity="0.25"/>
           <polygon points="460,170 476,158 476,238 460,250" fill="#0a1626"/>
           <polygon points="348,170 460,170 476,158 364,158" fill="#ffffff" opacity="0.08"/>
-          <rect x="348" y="170" width="112" height="80" rx="10" fill="url(#panelFace)" stroke="#f97316" stroke-width="3"/>
-          <rect x="362" y="188" width="84" height="11" rx="5.5" fill="#f97316"/>
+          <rect x="348" y="170" width="112" height="80" rx="10" fill="url(#panelFace)" stroke="#F5821F" stroke-width="3"/>
+          <rect x="362" y="188" width="84" height="11" rx="5.5" fill="#F5821F"/>
           <rect x="362" y="206" width="58" height="7" rx="3.5" fill="#ffffff" opacity="0.5"/>
-          <circle cx="374" cy="230" r="6" fill="#22c55e"/>
+          <circle cx="374" cy="230" r="6" fill="#2D7D46"/>
           <!-- power flow: generator -> ATS -> house -->
           <!-- bolt above generator, clear of label -->
           <path class="bolt" d="M398 78 l-24 38 h16 l-6 30 28-42 h-16 l8-26 h-6z" fill="#fbbf24"/>
           <!-- power flow: generator -> ATS -> house -->
-          <path class="flow" d="M348 219 H310" stroke="#f97316" stroke-width="4" fill="none"/>
-          <path class="flow" d="M246 219 H230" stroke="#f97316" stroke-width="4" fill="none"/>
-          <path d="M230 212 l-12 7 12 7z" fill="#f97316"/>
+          <path class="flow" d="M348 219 H310" stroke="#F5821F" stroke-width="4" fill="none"/>
+          <path class="flow" d="M246 219 H230" stroke="#F5821F" stroke-width="4" fill="none"/>
+          <path d="M230 212 l-12 7 12 7z" fill="#F5821F"/>
           <!-- ground + caption -->
           <line x1="20" y1="262" x2="470" y2="262" stroke="#ffffff" opacity="0.2" stroke-width="2"/>
         </svg>
@@ -118,21 +120,28 @@ const categories = [
     </div>
   </section>
 
+  <section class="border-b border-primary/10 bg-surface" aria-labelledby="mission-heading">
+    <div class="mx-auto max-w-6xl px-4 py-8 sm:px-6">
+      <h2 id="mission-heading" class="text-sm font-semibold uppercase tracking-wider text-primary">Our reason for being here</h2>
+      <p class="mt-3 max-w-4xl text-base leading-relaxed text-ink">{MISSION}</p>
+    </div>
+  </section>
+
   <!-- How it works video -->
   <section class="mx-auto max-w-6xl px-4 py-12 sm:px-6" aria-labelledby="how-it-works-heading">
     <div class="grid items-center gap-8 lg:grid-cols-2">
       <div>
-        <h2 id="how-it-works-heading" class="text-3xl font-bold text-[#1e3a5f]">See how standby power works (58 sec)</h2>
+        <h2 id="how-it-works-heading" class="text-3xl font-bold text-primary">See how standby power works (58 sec)</h2>
         <p class="mt-3 leading-relaxed text-gray-600">Outage to automatic backup: how the transfer switch moves your home to generator power in about ten seconds, what it runs on, and the two habits that keep it ready.</p>
         <ul class="mt-4 list-disc space-y-1 pl-5 text-[15px] text-gray-700">
           <li>Automatic transfer — no cords, no refueling runs</li>
           <li>Natural gas or propane, sized to your longest outage</li>
           <li>Weekly self-test plus yearly service</li>
         </ul>
-        <a href="/guides/first-time-buyer-guide/" class="mt-5 inline-flex min-h-[44px] items-center font-semibold text-orange-700 hover:text-orange-800">Start with the buyer guide <span aria-hidden="true" class="ml-1">→</span></a>
+        <a href="/guides/first-time-buyer-guide/" class="mt-5 inline-flex min-h-[44px] items-center font-semibold text-primary hover:text-primary-dark">Start with the buyer guide <span aria-hidden="true" class="ml-1">→</span></a>
       </div>
       <div>
-        <video controls preload="none" playsinline poster="/videos/home-explainer-poster.jpg" style="aspect-ratio:16/9" class="w-full rounded-xl border border-[#e5e7eb] bg-[#152a45]" aria-label="Explainer video: how home standby power works">
+        <video controls preload="none" playsinline poster="/videos/home-explainer-poster.jpg" style="aspect-ratio:16/9" class="w-full rounded-xl border border-[#e5e7eb] bg-primary-dark" aria-label="Explainer video: how home standby power works">
           <source src="/videos/home-explainer.mp4" type="video/mp4" />
           <track kind="captions" srclang="en" label="English" src="/videos/home-explainer-captions.vtt" default />
           Sorry, your browser cannot play this video. Read the <a href="/guides/first-time-buyer-guide/">buyer guide</a> instead.
@@ -143,7 +152,7 @@ const categories = [
   </section>
 
   <!-- Value bar -->
-  <section aria-label="Why trust this site" class="border-b border-[#e5e7eb] bg-[#f9fafb]">
+  <section aria-label="Why trust this site" class="border-b border-[#e5e7eb] bg-surface">
     <div class="mx-auto grid max-w-6xl gap-4 px-4 py-6 sm:grid-cols-2 sm:px-6 lg:grid-cols-4">
       {[
         ['In-Depth Generator Guides', 'Step-by-step sizing, cost, and ownership explainers.'],
@@ -152,8 +161,8 @@ const categories = [
         ['US Homeowner Focused', 'Fuel, permits, and codes framed for US homes.'],
       ].map(([t, d]) => (
         <div class="flex gap-3">
-          <svg class="h-6 w-6 shrink-0 text-orange-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
-          <div><p class="font-semibold text-[#1e3a5f]">{t}</p><p class="text-sm text-gray-600">{d}</p></div>
+          <svg class="h-6 w-6 shrink-0 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
+          <div><p class="font-semibold text-primary">{t}</p><p class="text-sm text-gray-600">{d}</p></div>
         </div>
       ))}
     </div>
@@ -161,7 +170,7 @@ const categories = [
 
   <!-- Popular guides -->
   <section class="mx-auto max-w-6xl px-4 py-12 sm:px-6" aria-labelledby="popular-heading">
-    <h2 id="popular-heading" class="text-3xl font-bold text-[#1e3a5f]">Popular guides</h2>
+    <h2 id="popular-heading" class="text-3xl font-bold text-primary">Popular guides</h2>
     <p class="mt-2 text-gray-600">Start with the questions homeowners ask most.</p>
     <div class="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {popular.map((p) => (<ArticleCard href={p.href} title={p.title} description={p.description} category={p.category} readingTime={p.readingTime} />))}
@@ -169,16 +178,16 @@ const categories = [
   </section>
 
   <!-- Why -->
-  <section class="bg-[#1e3a5f] text-white" aria-labelledby="why-heading">
+  <section class="bg-primary text-white" aria-labelledby="why-heading">
     <div class="mx-auto max-w-6xl px-4 py-12 sm:px-6">
-      <h2 id="why-heading" class="text-3xl font-bold">Why HomeGeneratorGuide</h2>
+      <h2 id="why-heading" class="text-3xl font-bold">Advice you can trust</h2>
       <ul class="mt-6 grid gap-4 sm:grid-cols-2">
         {[
           ['Independent educational resource', 'We do not sell generators and take no payment for brand placement.'],
-          ['No manufacturer affiliation', 'Stated in our footer and editorial policy — and we mean it.'],
+          ['No industry influence', 'We are not affiliated with generator brands, dealers, or installers. We never accept their advertising.'],
           ['Specifications verified where possible', 'Capacities and warranties traced to manufacturer pages; estimates labeled as estimates.'],
           ['Safety-conscious guidance', 'Electrical and gas work is pro-only. We explain what pros do so you can hire well.'],
-          ['Maintained editorial process', 'Dated updates, corrections policy, and sourced facts — see how we work.'],
+          ['A transparent editorial standard', 'Real author names, cited sources, and clear review status. Licensed electrician review is currently pending.'],
         ].map(([t, d]) => (
           <li class="rounded-lg bg-white/5 p-5">
             <p class="font-semibold text-orange-300">{t}</p>
@@ -191,19 +200,19 @@ const categories = [
   </section>
 
   <!-- Categories -->
-  <section class="border-y border-[#e5e7eb] bg-[#f9fafb]" aria-label="How we research">
+  <section class="border-y border-[#e5e7eb] bg-surface" aria-label="How we research">
     <div class="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-6">
-      <p class="text-sm leading-relaxed text-gray-600"><strong class="text-[#1e3a5f]">How we research:</strong> manufacturer docs first, safety sources cross-checked, specs verified Oct 2026, prices labeled as estimates — by <a href="/author/vipul-otari/" class="underline decoration-orange-400 underline-offset-4">Vipul Otari</a>.</p>
-      <a href="/editorial-policy/" class="inline-flex min-h-[44px] shrink-0 items-center text-sm font-semibold text-orange-700 hover:text-orange-800">Editorial policy →</a>
+      <p class="text-sm leading-relaxed text-gray-600"><strong class="text-primary">How we research:</strong> manufacturer docs first, safety sources cross-checked, specs verified Oct 2026, prices labeled as estimates — by <a href="/author/vipul-otari/" class="underline decoration-accent underline-offset-4">Vipul Otari</a>.</p>
+      <a href="/editorial-policy/" class="inline-flex min-h-[44px] shrink-0 items-center text-sm font-semibold text-primary hover:text-primary-dark">Editorial policy →</a>
     </div>
   </section>
 
   <section class="mx-auto max-w-6xl px-4 py-12 sm:px-6" aria-labelledby="cats-heading">
-    <h2 id="cats-heading" class="text-3xl font-bold text-[#1e3a5f]">Browse by topic</h2>
+    <h2 id="cats-heading" class="text-3xl font-bold text-primary">Browse by topic</h2>
     <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {categories.map((c) => (
-        <a href={c.href} class="group rounded-xl border border-[#e5e7eb] bg-white p-5 hover:border-orange-300">
-          <p class="font-semibold text-[#1e3a5f] group-hover:underline group-hover:decoration-orange-400 group-hover:underline-offset-4">{c.t} →</p>
+        <a href={c.href} class="group rounded-xl border border-[#e5e7eb] bg-white p-5 hover:border-accent">
+          <p class="font-semibold text-primary group-hover:underline group-hover:decoration-accent group-hover:underline-offset-4">{c.t} →</p>
           <p class="mt-1 text-sm text-gray-600">{c.d}</p>
         </a>
       ))}
@@ -212,7 +221,7 @@ const categories = [
 
   <!-- Latest -->
   <section class="mx-auto max-w-6xl px-4 pb-14 sm:px-6" aria-labelledby="latest-heading">
-    <h2 id="latest-heading" class="text-3xl font-bold text-[#1e3a5f]">Latest guides</h2>
+    <h2 id="latest-heading" class="text-3xl font-bold text-primary">Latest guides</h2>
     <div class="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
       <ArticleCard href="/sizing/what-size-generator-do-i-need/" title="What Size Generator Do I Need?" description="The complete sizing walkthrough with a worked 2,000 sq ft example." category="Sizing" />
       <ArticleCard href="/cost/standby-generator-cost/" title="Standby Generator Cost (2026)" description="Installed ranges, line items, and how to compare quotes fairly." category="Cost" />

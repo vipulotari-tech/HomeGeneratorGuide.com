@@ -208,11 +208,11 @@ const faqs = [
     <div class="overflow-x-auto rounded-lg border border-[#e5e7eb] not-prose">
       <table class="w-full min-w-[560px] border-collapse text-left text-sm">
         <caption class="sr-only">Cost factors and impact</caption>
-        <thead><tr class="bg-[#1e3a5f] text-white"><th scope="col" class="px-4 py-3">Factor</th><th scope="col" class="px-4 py-3">Impact</th><th scope="col" class="px-4 py-3">Guidance</th></tr></thead>
+        <thead><tr class="bg-primary text-white"><th scope="col" class="px-4 py-3">Factor</th><th scope="col" class="px-4 py-3">Impact</th><th scope="col" class="px-4 py-3">Guidance</th></tr></thead>
         <tbody>
           {costFactors.map((f) => (
-            <tr class="border-t border-[#e5e7eb] odd:bg-white even:bg-[#f9fafb]">
-              <th scope="row" class="px-4 py-2.5 font-medium text-[#1e3a5f]">{f.factor}</th>
+            <tr class="border-t border-[#e5e7eb] odd:bg-white even:bg-surface">
+              <th scope="row" class="px-4 py-2.5 font-medium text-primary">{f.factor}</th>
               <td class="px-4 py-2.5 capitalize">{f.impact}</td>
               <td class="px-4 py-2.5 text-gray-600">{f.guidance}</td>
             </tr>

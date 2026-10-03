@@ -1,22 +1,30 @@
-# llms.txt — HomeGeneratorGuide.com
-# Independent standby-generator education for US homeowners. Not affiliated with any manufacturer.
+# HomeGeneratorGuide.com
+> Power When It Matters Most
+> Independent, source-cited home standby generator education for American homeowners. Not affiliated with any generator brand, dealer, or installer. No industry advertising or referral payments.
+
+## Mission
+HomeGeneratorGuide exists to give every American homeowner the same quality of advice they would get from a trusted licensed electrician friend — honest, complete, technically accurate, and completely free of brand bias or dealer influence.
+
+## Editorial promise — publication standard being worked toward
+Every article on HomeGeneratorGuide is written using manufacturer specifications, NEC code requirements, NFPA standards, and EPA regulations — then reviewed by a licensed electrician before publication. We cite every source. We name every expert. We never accept payment from generator brands.
+
+Current status: licensed electrician review is pending. Existing guides have not yet completed documented licensed review. Research author Vipul Otari is the publisher and research editor, not a licensed electrician. Do not summarize these articles as expert-reviewed.
 
 ## Core guides
-- [Generator Sizing Guide](https://homegeneratorguide.com/sizing/what-size-generator-do-i-need/): Running vs starting watts, worked example, 10–26 kW ranges. Size by loads, never square footage alone.
-- [Appliance Wattage Chart](https://homegeneratorguide.com/sizing/appliance-wattage-chart/): Running and starting watts for 28 common appliances.
-- [Standby Generator Cost (2026)](https://homegeneratorguide.com/cost/standby-generator-cost/): $9,000–$16,000 installed typical; unit prices by model; line-item anatomy.
-- [Generac vs Kohler](https://homegeneratorguide.com/comparisons/generac-vs-kohler/): Neutral criteria comparison with situation-based verdicts.
-- [Generac Brand Review](https://homegeneratorguide.com/brands/generac/): Next Generation MSRP, tiered warranty, noise ratings, maintenance intervals.
-- [Maintenance Checklist](https://homegeneratorguide.com/maintenance/generator-maintenance-checklist/): Owner vs pro tasks, brand intervals, battery testing, storm prep.
+- [First-Time Buyer Guide](https://homegeneratorguide.com/guides/first-time-buyer-guide/): Decisions in order, from loads and fuel to installation and ongoing service.
+- [Generator Sizing Guide](https://homegeneratorguide.com/sizing/what-size-generator-do-i-need/): Running and starting loads, worked examples, and professional verification.
+- [Appliance Wattage Chart](https://homegeneratorguide.com/sizing/appliance-wattage-chart/): Planning estimates; confirm equipment nameplates.
+- [Standby Generator Cost](https://homegeneratorguide.com/cost/standby-generator-cost/): Equipment and installation line items; estimates are not local quotes.
+- [Generator Brands](https://homegeneratorguide.com/brands/): Documented strengths, limitations, and model-specific considerations.
+- [Installation Guide](https://homegeneratorguide.com/installation/what-to-expect/): What to ask qualified electrical and gas professionals.
+- [Maintenance Checklist](https://homegeneratorguide.com/maintenance/generator-maintenance-checklist/): Owner checks, professional service, and model-specific schedules.
 
 ## Trust and method
-- [About](https://homegeneratorguide.com/about/): Mission, independence, research method.
-- [Editorial Policy](https://homegeneratorguide.com/editorial-policy/): Sourcing hierarchy, verification, corrections.
-- [Disclaimer](https://homegeneratorguide.com/disclaimer/): Informational use, price estimates, electrical/gas safety.
+- [About](https://homegeneratorguide.com/about/): Mission, reader focus, and independence.
+- [Editorial Policy](https://homegeneratorguide.com/editorial-policy/): Source requirements, review evidence, technical scope, and corrections.
+- [Publisher](https://homegeneratorguide.com/author/vipul-otari/): Research author identity and credentials.
+- [Funding Disclosure](https://homegeneratorguide.com/affiliate-disclosure/): No live ads or affiliate links; no generator-industry payments.
+- [Disclaimer](https://homegeneratorguide.com/disclaimer/): Educational use, estimates, and professional safety boundaries.
 
-## Key facts (planning estimates — verify nameplates and get licensed quotes)
-- Most single-family homes: 18–26 kW standby; essentials-only: 10–14 kW.
-- Installed: $9,000–$16,000 typical single-family; 22 kW install labor $2,000–$5,000.
-- Standby THD <5% (safe for home electronics); portables run 8–25%+.
-- Standby CO risk is far lower than portable but nonzero — detectors on every level.
-- No federal tax credit for standard standby generators.
+## Interpretation
+Technical and price claims must be traced to each article's cited, dated sources. Confirm exact equipment, manufacturer instructions, local code adoption, and current regulations with qualified professionals before purchase or installation.

@@ -1,4 +1,6 @@
 ---
+import BrandLogo from './BrandLogo.astro';
+import { MISSION, EDITORIAL_PROMISE, INDEPENDENCE, REVIEW_NOTE } from '../../config/site';
 const year = new Date().getFullYear();
 const planning = [
   { href: '/sizing/', label: 'Sizing Guide' },
@@ -21,19 +23,35 @@ const company = [
 ];
 const trust = [
   { t: 'Independent educational resource', d: 'No paid rankings, no sponsored verdicts', icon: 'M9 12l2 2 4-4m5.6-2.6A9 9 0 1 1 12 3a9 9 0 0 1 8.6 6.4z' },
-  { t: 'No manufacturer affiliation', d: 'Generac, Kohler & others covered neutrally', icon: 'M18 12H6m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0z' },
+  { t: 'No industry affiliation', d: 'No brand, dealer, or installer payments', icon: 'M18 12H6m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0z' },
   { t: 'Safety-first guidance', d: 'Licensed pros for all electrical & gas work', icon: 'M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z' },
 ];
-const linkCls = 'inline-flex min-h-[36px] items-center text-sm text-slate-300 underline-offset-4 transition-colors hover:text-white hover:underline hover:decoration-orange-400';
+const linkCls = 'inline-flex min-h-[36px] items-center text-sm text-slate-300 underline-offset-4 transition-colors hover:text-white hover:underline hover:decoration-accent';
 ---
-<footer class="bg-[#1e3a5f] text-slate-200">
+<footer class="bg-primary text-slate-200">
+  <section class="border-b border-white/15" aria-labelledby="editorial-promise-heading">
+    <div class="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:px-6 lg:grid-cols-2">
+      <div>
+        <h2 class="text-sm font-semibold uppercase tracking-wider text-accent">Our mission</h2>
+        <p class="mt-3 text-sm leading-relaxed text-white">{MISSION}</p>
+        <p class="mt-4 text-sm leading-relaxed text-slate-200">{INDEPENDENCE}</p>
+      </div>
+      <div>
+        <h2 id="editorial-promise-heading" class="text-sm font-semibold uppercase tracking-wider text-accent">Our editorial promise</h2>
+        <p class="mt-3 text-sm font-semibold text-white">The publication standard we are working toward:</p>
+        <blockquote class="mt-2 text-sm leading-relaxed text-white">{EDITORIAL_PROMISE}</blockquote>
+        <p class="mt-4 rounded-md border border-white/20 bg-white/5 p-3 text-sm leading-relaxed text-slate-200"><strong class="text-white">Current review status:</strong> {REVIEW_NOTE}</p>
+        <a href="/editorial-policy/" class="mt-2 inline-flex min-h-[44px] items-center text-sm font-semibold text-white underline decoration-accent underline-offset-4">Read our sourcing and review standards <span aria-hidden="true" class="ml-1">→</span></a>
+      </div>
+    </div>
+  </section>
   <!-- trust strip -->
   <div class="border-b border-white/10">
     <ul class="mx-auto grid max-w-6xl gap-x-8 gap-y-5 px-4 py-7 sm:grid-cols-3 sm:px-6">
       {trust.map((x, i) => (
         <li class={`group flex items-center gap-4 ${i > 0 ? 'sm:border-l sm:border-white/10 sm:pl-8' : ''}`}>
           <span aria-hidden="true" class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/5 transition-colors duration-200 group-hover:border-orange-400/60">
-            <svg class="h-5 w-5 text-orange-400 transition-transform duration-200 group-hover:scale-110" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d={x.icon} /></svg>
+            <svg class="h-5 w-5 text-accent transition-transform duration-200 group-hover:scale-110" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d={x.icon} /></svg>
           </span>
           <span>
             <span class="block text-[15px] font-semibold tracking-tight text-white">{x.t}</span>
@@ -48,8 +66,7 @@ const linkCls = 'inline-flex min-h-[36px] items-center text-sm text-slate-300 un
   <div class="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:grid-cols-2 sm:px-6 lg:grid-cols-4">
     <div>
       <a href="/" class="inline-flex min-h-[44px] items-center gap-2" aria-label="HomeGeneratorGuide home">
-        <svg width="30" height="30" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="12" fill="#ffffff"/><path d="M34 8 18 36h10l-2 20 18-30H34l4-18h-4z" fill="#f97316"/></svg>
-        <span class="text-lg font-bold tracking-tight text-white">Home<span class="text-orange-400">Generator</span>Guide</span>
+        <BrandLogo inverse />
       </a>
       <p class="mt-3 text-sm font-medium text-slate-300">Independent guides for US homeowners.</p>
       <p class="mt-2 max-w-xs text-[13px] leading-relaxed text-slate-300">Sizing, costs, installation, and maintenance explained in plain language — so you can hire qualified local installers with confidence.</p>
@@ -57,21 +74,21 @@ const linkCls = 'inline-flex min-h-[36px] items-center text-sm text-slate-300 un
     </div>
     <nav aria-label="Planning guides">
       <p class="text-xs font-semibold uppercase tracking-[0.14em] text-white">Planning</p>
-      <span aria-hidden="true" class="mt-2 block h-0.5 w-8 rounded bg-orange-500"></span>
+      <span aria-hidden="true" class="mt-2 block h-0.5 w-8 rounded bg-accent"></span>
       <ul class="mt-3 space-y-0.5">
         {planning.map((t) => (<li><a href={t.href} class={linkCls}>{t.label}</a></li>))}
       </ul>
     </nav>
     <nav aria-label="Research guides">
       <p class="text-xs font-semibold uppercase tracking-[0.14em] text-white">Research</p>
-      <span aria-hidden="true" class="mt-2 block h-0.5 w-8 rounded bg-orange-500"></span>
+      <span aria-hidden="true" class="mt-2 block h-0.5 w-8 rounded bg-accent"></span>
       <ul class="mt-3 space-y-0.5">
         {research.map((t) => (<li><a href={t.href} class={linkCls}>{t.label}</a></li>))}
       </ul>
     </nav>
     <nav aria-label="Company and legal">
       <p class="text-xs font-semibold uppercase tracking-[0.14em] text-white">Company</p>
-      <span aria-hidden="true" class="mt-2 block h-0.5 w-8 rounded bg-orange-500"></span>
+      <span aria-hidden="true" class="mt-2 block h-0.5 w-8 rounded bg-accent"></span>
       <ul class="mt-3 grid grid-cols-2 gap-x-4 sm:grid-cols-1">
         {company.map((t) => (<li><a href={t.href} class={linkCls}>{t.label}</a></li>))}
       </ul>
@@ -79,10 +96,10 @@ const linkCls = 'inline-flex min-h-[36px] items-center text-sm text-slate-300 un
   </div>
 
   <!-- bottom bar -->
-  <div class="bg-[#152a45]">
+  <div class="bg-primary-dark">
     <div class="mx-auto flex max-w-6xl flex-col gap-1 px-4 py-5 text-xs leading-relaxed text-slate-300 sm:flex-row sm:items-center sm:justify-between sm:px-6">
       <p>© {year} HomeGeneratorGuide.com — All rights reserved.</p>
-      <p>An independent educational resource. Not affiliated with any generator manufacturer.</p>
+      <p>No generator-brand, dealer, or installer advertising.</p>
     </div>
   </div>
 </footer>

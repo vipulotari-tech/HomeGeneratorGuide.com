@@ -81,7 +81,7 @@ const faqs = [
   <section id="running-vs-starting">
     <h2>2. Running vs starting watts</h2>
     <p>Every appliance has <strong>running watts</strong> (continuous draw) and many motor-driven ones add <strong>starting watts</strong> (a 1–3 second surge when the motor energizes). Generators must satisfy both: enough continuous kilowatts for everything running, plus enough surge capacity for the largest motor starting <em>while the rest is already running</em>.</p>
-    <svg viewBox="0 0 560 200" class="my-4 w-full rounded-lg border border-[#e5e7eb] bg-white" role="img" aria-label="Diagram comparing running watts baseline with short starting surge spike"><title>Running vs starting watts</title><rect x="40" y="120" width="300" height="40" fill="#1e3a5f" rx="4"/><rect x="40" y="40" width="90" height="120" fill="#f97316" rx="4"/><text x="40" y="180" font-size="13" fill="#fff" font-family="sans-serif">running watts (continuous)</text><text x="46" y="100" font-size="13" fill="#fff" font-family="sans-serif">surge</text><text x="360" y="100" font-size="13" fill="#1f2937" font-family="sans-serif">Motors spike, then settle.</text><text x="360" y="120" font-size="13" fill="#6b7280" font-family="sans-serif">Size for both.</text></svg>
+    <svg viewBox="0 0 560 200" class="my-4 w-full rounded-lg border border-[#e5e7eb] bg-white" role="img" aria-label="Diagram comparing running watts baseline with short starting surge spike"><title>Running vs starting watts</title><rect x="40" y="120" width="300" height="40" fill="#1B3A6B" rx="4"/><rect x="40" y="40" width="90" height="120" fill="#F5821F" rx="4"/><text x="40" y="180" font-size="13" fill="#fff" font-family="sans-serif">running watts (continuous)</text><text x="46" y="100" font-size="13" fill="#fff" font-family="sans-serif">surge</text><text x="360" y="100" font-size="13" fill="#1A1A2E" font-family="sans-serif">Motors spike, then settle.</text><text x="360" y="120" font-size="13" fill="#6b7280" font-family="sans-serif">Size for both.</text></svg>
     <ul>
       <li><strong>Resistive loads</strong> (heaters, ovens, incandescent-era lighting): starting ≈ running. Simple addition.</li>
       <li><strong>Motor loads</strong> (AC compressors, well pumps, fridge compressors): starting ≈ 3–7× running. These dominate sizing.</li>
@@ -157,11 +157,11 @@ const faqs = [
     <div class="overflow-x-auto rounded-lg border border-[#e5e7eb] not-prose">
       <table class="w-full min-w-[640px] border-collapse text-left text-sm">
         <caption class="sr-only">Appliance running and starting watts</caption>
-        <thead><tr class="bg-[#1e3a5f] text-white"><th scope="col" class="px-4 py-3">Appliance</th><th scope="col" class="px-4 py-3">Running</th><th scope="col" class="px-4 py-3">Starting</th><th scope="col" class="px-4 py-3">Notes</th></tr></thead>
+        <thead><tr class="bg-primary text-white"><th scope="col" class="px-4 py-3">Appliance</th><th scope="col" class="px-4 py-3">Running</th><th scope="col" class="px-4 py-3">Starting</th><th scope="col" class="px-4 py-3">Notes</th></tr></thead>
         <tbody>
           {appliances.map((a) => (
-            <tr class="border-t border-[#e5e7eb] odd:bg-white even:bg-[#f9fafb]">
-              <th scope="row" class="px-4 py-2.5 font-medium text-[#1e3a5f]">{a.name}</th>
+            <tr class="border-t border-[#e5e7eb] odd:bg-white even:bg-surface">
+              <th scope="row" class="px-4 py-2.5 font-medium text-primary">{a.name}</th>
               <td class="px-4 py-2.5">{a.runningWatts.toLocaleString()} W</td>
               <td class="px-4 py-2.5">{a.startingWatts.toLocaleString()} W</td>
               <td class="px-4 py-2.5 text-gray-600">{a.notes ?? '—'}</td>
@@ -218,7 +218,7 @@ const faqs = [
   <section id="pro-calculation">
     <h2>15. When professional load calculation is appropriate</h2>
     <p>Always, before purchase — but especially when any of these apply: 400 A service, multiple HVAC systems, all-electric heat, accessory dwelling units, home business with servers, or medical life-safety loads. Expect the electrician to record nameplate LRA/FLA, measure with clamps, apply NEC Article 220 demand factors, and produce a panel schedule showing backed-up vs shed loads. If a bidder sizes from square footage alone or will not show the calculation — get another bid. Our <a href="/cost/standby-generator-cost/">cost guide</a> includes a quote-comparison checklist.</p>
-    <svg viewBox="0 0 560 150" class="my-4 w-full rounded-lg border border-[#e5e7eb] bg-white" role="img" aria-label="Sizing workflow: list loads, add running watts, add largest surge, add headroom, verify with pro"><title>Generator sizing workflow</title><text x="20" y="40" font-size="14" fill="#1e3a5f" font-family="sans-serif">1 List loads → 2 Add running W → 3 Add largest surge → 4 +10–25% → 5 Pro verifies</text><rect x="20" y="60" width="90" height="10" rx="5" fill="#1e3a5f"/><rect x="120" y="60" width="90" height="10" rx="5" fill="#1e3a5f"/><rect x="220" y="60" width="90" height="10" rx="5" fill="#f97316"/><rect x="320" y="60" width="90" height="10" rx="5" fill="#f97316"/><rect x="420" y="60" width="110" height="10" rx="5" fill="#22c55e"/></svg>
+    <svg viewBox="0 0 560 150" class="my-4 w-full rounded-lg border border-[#e5e7eb] bg-white" role="img" aria-label="Sizing workflow: list loads, add running watts, add largest surge, add headroom, verify with pro"><title>Generator sizing workflow</title><text x="20" y="40" font-size="14" fill="#1B3A6B" font-family="sans-serif">1 List loads → 2 Add running W → 3 Add largest surge → 4 +10–25% → 5 Pro verifies</text><rect x="20" y="60" width="90" height="10" rx="5" fill="#1B3A6B"/><rect x="120" y="60" width="90" height="10" rx="5" fill="#1B3A6B"/><rect x="220" y="60" width="90" height="10" rx="5" fill="#F5821F"/><rect x="320" y="60" width="90" height="10" rx="5" fill="#F5821F"/><rect x="420" y="60" width="110" height="10" rx="5" fill="#2D7D46"/></svg>
   </section>
 
   <section id="faq"><span class="sr-only">FAQ anchor</span></section>

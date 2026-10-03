@@ -1,34 +1,53 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from '../components/layout/Breadcrumbs.astro';
+import { EDITORIAL_PROMISE, INDEPENDENCE, REVIEW_NOTE, AUTHOR } from '../config/site';
 ---
-<BaseLayout title="Editorial Policy" description="How HomeGeneratorGuide sources, verifies, corrects, and updates content — sourcing hierarchy, neutrality, and corrections process.">
+<BaseLayout title="Editorial Policy" description="How HomeGeneratorGuide researches and cites sources, handles licensed electrician review, protects editorial independence, and corrects errors.">
   <div class="mx-auto max-w-3xl px-4 py-10 sm:px-6">
     <Breadcrumbs items={[{ href: '/', label: 'Home' }, { label: 'Editorial Policy' }]} />
-    <h1 class="mt-4 text-4xl font-bold text-[#1e3a5f]">Editorial Policy</h1>
+    <h1 class="mt-4 text-4xl font-bold text-primary">How we earn your trust</h1>
+    <p class="mt-4 text-lg text-ink">Good generator advice should show its work. You should be able to see where a fact came from, who checked it, and what still needs confirming.</p>
     <div class="prose-hgg mt-6">
-      <h2>Sourcing hierarchy</h2>
+      <h2>Our editorial promise</h2>
+      <p><strong>The publication standard we are working toward:</strong></p>
+      <blockquote>{EDITORIAL_PROMISE}</blockquote>
+      <p><strong>Current review status:</strong> {REVIEW_NOTE}</p>
+      <h2>Sources you can check</h2>
+      <p>Our editorial standard requires a source for every factual claim that can affect a buying, safety, installation, or maintenance decision. We link readers to the original material and distinguish specifications from estimates and editorial interpretation.</p>
       <ol>
-        <li>Manufacturer documentation, spec sheets, and manuals.</li>
-        <li>Government sources and code-related authoritative references (e.g., NFPA concepts, utility guidance).</li>
-        <li>Reputable installer and industry sources.</li>
-        <li>Credible retailers for pricing context only.</li>
+        <li><strong>Manufacturer specifications and manuals:</strong> the exact model, fuel rating, installation manual, maintenance schedule, and warranty document relevant to the claim. A manufacturer's claim is identified as such.</li>
+        <li><strong>Electrical requirements:</strong> <a href="https://www.nfpa.org/codes-and-standards/nfpa-70-standard-development/70">NFPA 70, the National Electrical Code (NEC)</a>, with the relevant edition and section for specific code claims. Your local authority determines the adopted edition and amendments.</li>
+        <li><strong>Fire and installation standards:</strong> relevant NFPA material, including <a href="https://www.nfpa.org/codes-and-standards/nfpa-37-standard-development/37">NFPA 37 for stationary combustion engines</a>. Model-specific instructions and locally adopted requirements must also be checked.</li>
+        <li><strong>Emissions regulations:</strong> <a href="https://www.epa.gov/stationary-engines/understanding-stationary-engines-rules">EPA stationary engine rules</a> and applicable regulatory text. Applicability depends on the engine and its use; we do not treat one engine category's rule as universal.</li>
+        <li><strong>Pricing context:</strong> clearly identified equipment listings and itemized installation examples, with dates, scope, exclusions, and limitations. A planning estimate is never a quote for your home.</li>
       </ol>
-      <p>Competitors are used for SERP/feature-gap research — never copied.</p>
-      <h2>Verification</h2>
+      <p>We separate mandatory requirements, manufacturer instructions, and practical recommendations. A general guide cannot establish compliance for an individual property. Your licensed installer and permitting authority must confirm that.</p>
+      <h2 id="expert-review">Named, licensed expert review</h2>
+      <p>Research author: <a href={AUTHOR.url}>{AUTHOR.name}</a>, {AUTHOR.role}. Research authorship is separate from professional electrical review.</p>
+      <p>Before an article can be described as reviewed by a licensed electrician, our standard requires:</p>
       <ul>
-        <li>Facts carry sources where load-bearing (warranties, capacities, code-adjacent claims).</li>
-        <li>Wattages are conservative planning figures; readers must confirm nameplates and get a pro load calculation.</li>
-        <li>Prices are national-level estimate ranges with a mandatory disclaimer — never presented as quotes.</li>
+        <li>The reviewer's real full name, licensing jurisdiction, verified license, and relevant experience.</li>
+        <li>A recorded review date and article-specific review scope, including safety and applicable technical claims.</li>
+        <li>Resolution of the reviewer's material corrections before the article receives a completed-review label.</li>
+        <li>A fresh review when a material technical change affects the earlier approval.</li>
       </ul>
-      <h2>Neutrality</h2>
-      <p>No payment for placement. Comparisons use fixed criteria and situation-based conclusions. Limitations are published alongside strengths.</p>
-      <h2>Affiliate independence</h2>
-      <p>Per our <a href="/affiliate-disclosure/">affiliate disclosure</a>, any future affiliate revenue never determines coverage or rankings.</p>
-      <h2>Corrections & updates</h2>
-      <p>Errors may be reported via <a href="/contact/">contact</a>. Substantiated corrections are made promptly and, where material, noted with an updated date. Time-sensitive pages state their verification window.</p>
-      <h2>No fake authority</h2>
-      <p>We publish no fake authors, credentials, reviews, testimonials, or certifications. "Editorial team" means the site's editors collectively — not a fictitious expert.</p>
+      <p><strong>Pending means pending.</strong> We do not display an expert-reviewed badge, invent an expert, or imply that research authorship counts as licensed review. Our current guides remain labeled pending until evidence of a completed review exists.</p>
+      <h2>Independence comes first</h2>
+      <p>{INDEPENDENCE}</p>
+      <p>We never accept payment from generator brands. We do not accept manufacturer advertising, sponsored articles, paid rankings, or generator-dealer and installer referral fees. We do not sell homeowner details or installation leads.</p>
+      <p>Comparisons use consistent criteria: documented capability, installation fit, maintenance, warranty terms, and local service considerations. We explain limitations alongside strengths and say when the answer depends on your home.</p>
+      <h2>Clear answers, honest limits</h2>
+      <ul>
+        <li>We write like a knowledgeable neighbor: plain language, defined terms, and concrete next steps.</li>
+        <li>We label estimates, distinguish starting from running loads, and ask readers to confirm their own equipment nameplates.</li>
+        <li>We explain what licensed professionals do without encouraging homeowners to attempt electrical or gas work.</li>
+        <li>We never manufacture testimonials, qualifications, certifications, or authority claims.</li>
+      </ul>
+      <h2>Corrections and updates</h2>
+      <p><a href="/contact/">Send us the page URL and a supporting source</a> if you find an error. We check substantiated reports, correct the text, and note material changes with an updated date. A research date and an expert review date are separate records.</p>
+      <p>Specifications, product availability, warranties, prices, and code adoption can change. Each article should state its verification date; readers should check current documentation before committing to a purchase.</p>
+      <p>See our <a href="/affiliate-disclosure/">funding disclosure</a> and <a href="/disclaimer/">information-use disclaimer</a>.</p>
     </div>
   </div>
 </BaseLayout>

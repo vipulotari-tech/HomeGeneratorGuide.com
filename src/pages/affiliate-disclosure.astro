@@ -1,23 +1,23 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from '../components/layout/Breadcrumbs.astro';
+import { INDEPENDENCE } from '../config/site';
 ---
-<BaseLayout title="Affiliate Disclosure" description="HomeGeneratorGuide affiliate disclosure: how Amazon affiliate links work, when disclosure appears, and our independence commitment.">
+<BaseLayout title="Funding & Affiliate Disclosure" description="HomeGeneratorGuide funding disclosure: no live affiliate links or advertising, no generator-brand payments, and no dealer or installer referral fees.">
   <div class="mx-auto max-w-3xl px-4 py-10 sm:px-6">
-    <Breadcrumbs items={[{ href: '/', label: 'Home' }, { label: 'Affiliate Disclosure' }]} />
-    <h1 class="mt-4 text-4xl font-bold text-[#1e3a5f]">Affiliate Disclosure</h1>
+    <Breadcrumbs items={[{ href: '/', label: 'Home' }, { label: 'Funding & Affiliate Disclosure' }]} />
+    <h1 class="mt-4 text-4xl font-bold text-primary">Who pays for the advice?</h1>
     <div class="prose-hgg mt-6">
-      <p><strong>Current status:</strong> HomeGeneratorGuide does not currently display live affiliate links. This page explains what will happen if that changes.</p>
-      <h2>Future Amazon Associates participation</h2>
-      <p>If we join the Amazon Associates program, pages containing affiliate links will carry a clear disclosure such as: "As an Amazon Associate, we may earn from qualifying purchases." The disclosure will appear near the links, not buried here alone.</p>
-      <h2>What this means</h2>
-      <ul>
-        <li>Clicking an affiliate link and buying may earn us a small commission at no extra cost to you.</li>
-        <li>Commissions help fund independent research and site maintenance.</li>
-        <li>We do not recommend products purely for commission. Coverage decisions come first; monetization never reverses them.</li>
-      </ul>
-      <h2>Primary revenue</h2>
-      <p>Our primary planned revenue is Google AdSense display advertising (currently placeholders only — no live publisher ID is deployed). Advertising never buys editorial conclusions.</p>
+      <p><strong>Current status:</strong> HomeGeneratorGuide displays no live affiliate links or advertising. Our guides are free to read, and we do not sell generators or installation leads.</p>
+      <h2>Our independence commitment</h2>
+      <p>{INDEPENDENCE}</p>
+      <p>We never accept payment from generator brands. Manufacturer advertising, sponsored articles, paid placement, paid rankings, and favorable coverage in exchange for money are prohibited.</p>
+      <h2>No referral commissions</h2>
+      <p>We do not receive generator-brand, dealer, or installer referral fees. We do not sell your contact information to installers or steer your choice toward a company that pays us.</p>
+      <h2>Any future funding must meet the same standard</h2>
+      <p>If the way this site is funded changes, we will disclose it here and at the point where it matters to readers. It must comply with the existing prohibition on generator-brand, dealer, and installer payments and advertising. Funding cannot buy editorial conclusions.</p>
+      <h2>Questions</h2>
+      <p>Read our <a href="/editorial-policy/">editorial policy</a> or <a href="/contact/">contact us</a> about a potential conflict. You deserve to know whose interests an article serves.</p>
     </div>
   </div>
 </BaseLayout>

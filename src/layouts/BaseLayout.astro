@@ -30,7 +30,7 @@ const fullTitle = title.includes('HomeGeneratorGuide') ? title : `${title} | Hom
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="light" />
-  <meta name="theme-color" content="#1e3a5f" />
+  <meta name="theme-color" content="#1B3A6B" />
   <title>{fullTitle}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href={url} />
@@ -50,8 +50,8 @@ const fullTitle = title.includes('HomeGeneratorGuide') ? title : `${title} | Hom
   <!-- GA4 placeholder: add measurement ID at deploy time. No tracking scripts ship by default. -->
   {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
 </head>
-<body class="flex min-h-screen flex-col bg-white text-[#1f2937]">
-  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded focus:bg-white focus:px-4 focus:py-2 focus:text-[#1e3a5f]">Skip to content</a>
+<body class="flex min-h-screen flex-col bg-white text-ink">
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded focus:bg-white focus:px-4 focus:py-2 focus:text-primary">Skip to content</a>
   <Header />
   <main id="main" class="flex-1">
     <slot />
