@@ -16,6 +16,11 @@ const toc = [
   title="Well Pump Generator Sizing: HP, Surge & Rural Planning"
   description="Size a standby generator for well pumps: horsepower surge table, pressure-tank strategy, and rural outage planning for private-water homes."
   category="Sizing" categoryHref="/sizing/" updated="2026-10-03" readingTime="7 min read" toc={toc}
+  sources={[
+    { label: 'Generac — Residential Standby Lineup', href: 'https://www.generac.com/residential-products/standby-generators/', type: 'Manufacturer', verified: 'Oct 2026' },
+    { label: 'U.S. EIA — Electricity Data Browser', href: 'https://www.eia.gov/electricity/', type: 'Government', verified: 'Oct 2026' },
+    { label: 'DOE Energy Saver', href: 'https://www.energy.gov/energysaver', type: 'Government', verified: 'Oct 2026' },
+  ]}
   related={[
     { href: '/sizing/what-size-generator-do-i-need/', title: 'What Size Generator Do I Need?', description: 'Full sizing method.', category: 'Sizing' },
     { href: '/sizing/hvac-generator-sizing/', title: 'HVAC & Generator Sizing', description: 'The other surge giant.', category: 'Sizing' },
@@ -37,6 +42,10 @@ const toc = [
     { q: 'What size generator runs a 1/2 HP well pump plus a house?', a: 'The pump adds ~1,000 W running / ~3,000 W surge to your base load. Most such homes land 16–22 kW with AC, or 12–16 kW essentials-only. Work the full load list — the pump alone never decides.' },
     { q: 'Can I use a portable generator for my well pump?', a: 'Only via a proper manual transfer inlet wired by an electrician to the pump circuit — never extension cords to 240 V pumps or backfeeding. For automatic water security, standby with ATS is the honest answer.' },
     { q: 'Does a bigger pressure tank let me buy a smaller generator?', a: 'It reduces surge frequency, not surge size — still size for the pump starting once. But fewer starts mean less wear and fewer coincident-surge events, which genuinely helps marginal cases.' },
+  
+    { q: 'Where do I find my pump horsepower?', a: 'On the pump control box or the well record — never by guessing depth. Variable-speed constant-pressure pumps surge softer than old across-the-line pumps.' },
+    { q: 'Does a bigger pressure tank let me downsize?', a: 'It cuts surge frequency, not surge size — still size for one pump start. But fewer starts mean fewer coincident-surge events, which helps marginal cases.' },
+    { q: 'What about my septic effluent pump?', a: 'Add its surge too (roughly 3,000 W class) — full tanks back up fast, and it is easy to forget in the load list.' },
   ]} />
   <section id="conclusion"><h2>Conclusion</h2><p>Size the pump in, give it priority, enlarge the tank, and ban irrigation on backup. Private-water homes should also read <a href="/sizing/whole-home-vs-essential-loads/">backup philosophies</a> and <a href="/maintenance/generator-maintenance-checklist/">storm prep</a>.</p></section>
 </ArticleLayout>

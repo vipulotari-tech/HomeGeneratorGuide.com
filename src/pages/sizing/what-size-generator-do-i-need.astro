@@ -31,6 +31,8 @@ const faqs = [
   { q: 'What is the most common standby size?', a: 'For US single-family homes, 18–26 kW air-cooled standby units cover most essential-plus-comfort scenarios. Smaller essential-load setups can work at 10–14 kW with disciplined load management.' },
   { q: 'Should I include EV charging in backup loads?', a: 'Usually exclude Level 2 EV charging from automatic backup — a 32 A charger alone draws ~7,700 W. Charge from the grid or schedule charging outside outage windows instead of sizing the generator around it.' },
   { q: 'Is a 22 kW generator enough for a whole house?', a: 'For most 4–5 bedroom gas-heat homes: yes — 22 kW covers a 3-ton AC plus typical loads with headroom. All-electric homes with strip heat, 4-ton+ AC, or 400 A service often need 24–26 kW or managed loads. Confirm with the load calculation.' },
+
+  { q: 'How do I add up watts for generator sizing?', a: 'List everything running at once, sum the running watts, add the single largest motor surge, then add 10–25% headroom. One DOL motor starting matters more than ten LED bulbs.' },
 ];
 ---
 <ArticleLayout

@@ -17,6 +17,11 @@ const toc = [
   title="HVAC & Generator Sizing: AC Tonnage, Surge & Soft-Start"
   description="How central AC and heat pumps drive standby sizing: tonnage math, LRA nameplates, aux heat strips, and soft-start kits explained."
   category="Sizing" categoryHref="/sizing/" updated="2026-10-03" readingTime="8 min read" toc={toc}
+  sources={[
+    { label: 'Generac — Residential Standby Lineup', href: 'https://www.generac.com/residential-products/standby-generators/', type: 'Manufacturer', verified: 'Oct 2026' },
+    { label: 'DOE Energy Saver', href: 'https://www.energy.gov/energysaver', type: 'Government', verified: 'Oct 2026' },
+    { label: 'Kohler Home Energy — Home Generators', href: 'https://www.kohlerhomeenergy.rehlko.com/products/home-generators', type: 'Manufacturer', verified: 'Oct 2026' },
+  ]}
   related={[
     { href: '/sizing/what-size-generator-do-i-need/', title: 'What Size Generator Do I Need?', description: 'Full sizing method.', category: 'Sizing' },
     { href: '/sizing/whole-home-vs-essential-loads/', title: 'Whole-Home vs Essential Loads', description: 'Backup philosophies.', category: 'Sizing' },
@@ -38,8 +43,12 @@ const toc = [
   <section id="faq"><span class="sr-only">FAQ anchor</span></section>
   <FAQSection items={[
     { q: 'Can a 22 kW generator run a 4-ton AC?', a: 'Often yes with load management — 4-ton starting surge (~15,000 W) plus a disciplined base load fits under 22 kW momentary capacity. Verify LRA, add other coincident loads, and confirm with a licensed calculation; tight cases benefit from a soft-start evaluation.' },
-    { q: 'Do mini-splits change the math?', a: 'Yes favorably — inverter mini-splits ramp softly with minimal surge. A home cooled by zoned mini-splits sizes smaller than the same home on a single large central compressor.' },
+    { q: 'Do mini-splits change the sizing math?', a: 'Yes, favorably: inverter mini-splits ramp softly with minimal surge (~1.2×), so a mini-split home sizes smaller than the same home on one large central compressor. Zone count matters more than tonnage here.' },
+    { q: 'What is LRA and where do I find it?', a: 'Locked-rotor amps — worst-case compressor startup current, printed on the condenser nameplate. Multiply LRA × 240V for startup volt-amps, then photograph the plate for your electrician.' },
+    { q: 'Do heat strips change the generator size?', a: 'Dramatically: 5–10 kW of auxiliary strip heat can exceed the compressor threefold. Locking strips out on backup power often shrinks the generator a full size.' },
     { q: 'Should I replace my AC before buying a generator?', a: 'If the condenser is 15+ years old and oversized, a right-sized high-SEER replacement can shrink the generator a full size — sometimes paying for itself in combined savings. Get HVAC and generator quotes in the same month.' },
+  
+    { q: 'How do I find my AC tonnage?', a: 'Check the condenser nameplate or original install paperwork — never the thermostat. One ton equals 12,000 BTU/hr of cooling.' },
   ]} />
   <section id="conclusion"><h2>Conclusion</h2><p>HVAC first, everything else second: tonnage → LRA → strip policy → soft-start question. Bring those four answers to your installer and the rest of sizing goes quickly. Next: <a href="/sizing/well-pump-generator-sizing/">well-pump sizing</a> or back to <a href="/sizing/what-size-generator-do-i-need/">the full guide</a>.</p></section>
 </ArticleLayout>

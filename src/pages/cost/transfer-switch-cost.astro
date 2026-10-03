@@ -25,6 +25,11 @@ const toc = [
   title="Transfer Switch Guide: MTS vs ATS vs Interlock Kits, Costs & Code"
   description="Manual vs automatic transfer switches vs interlock kits: how each works, parts and labor costs, brand options, NEC 702 essentials, and load management."
   category="Cost" categoryHref="/cost/" updated="2026-10-03" image="/images/transfer-switch-panel.webp" readingTime="12 min read" toc={toc}
+  sources={[
+    { label: 'Generac — Residential Standby Lineup', href: 'https://www.generac.com/residential-products/standby-generators/', type: 'Manufacturer', verified: 'Oct 2026' },
+    { label: 'Kohler Home Energy — Home Generators', href: 'https://www.kohlerhomeenergy.rehlko.com/products/home-generators', type: 'Manufacturer', verified: 'Oct 2026' },
+    { label: 'NFPA 70 — National Electrical Code', href: 'https://www.nfpa.org/codes-and-standards/nfpa-70-standard-development/70', type: 'Government', verified: 'Oct 2026' },
+  ]}
   related={[
     { href: '/cost/standby-generator-cost/', title: 'Standby Generator Cost (2026)', description: 'Full project budget.', category: 'Cost' },
     { href: '/installation/what-to-expect/', title: 'Installation: What to Expect', description: 'Where the switch fits.', category: 'Installation' },
@@ -98,6 +103,10 @@ const toc = [
     { q: 'Is the transfer switch included with the generator?', a: 'Often bundled in standby kits — but verify ATS model, amperage, and whether it is service-rated or selected-load. Bundle switches that do not match your service are a classic change-order trap.' },
     { q: 'Interlock or transfer switch for a portable?', a: 'Interlock: cheapest whole-panel manual path where panel-compatible and AHJ-allowed. Manual switch: cleaner circuit-by-circuit control for essentials. Neither is automatic — standby + ATS is the hands-off answer.' },
     { q: 'Can I install a transfer switch myself?', a: 'No — panel and utility-interactive work requires a licensed electrician under permit in essentially all US jurisdictions. Unpermitted transfer equipment risks fines, insurance denial, resale failure, and utility disconnection — plus backfeed liability.' },
+  
+    { q: 'How do I know what amperage switch I need?', a: "Match the switch to your service (100/200/400 A), not the generator's kW. 400 A services need dual or 400 A switches — engineered quotes only." },
+    { q: 'Do switches wear out?', a: 'Contactors last decades with exercise cycling and clean contacts; annual transfer testing during service keeps mechanisms proven. Sheltered mounting extends life.' },
+    { q: 'Can my switch handle a future bigger generator?', a: 'Sometimes: a 200 A service-rated ATS already covers growth to 26 kW-class units. Selected-load subpanel switches may need rework — ask before upsizing.' },
   ]} />
   <section id="conclusion"><h2>Conclusion</h2><p>Match the switch to service amperage and backup philosophy: interlock/manual for portable budgets, selected-load ATS for automatic essentials, service-rated ATS + management for flexible whole-home. Then place the generator correctly — see <a href="/installation/generator-pad-and-placement/">pad & placement</a> and <a href="/installation/what-to-expect/">install day</a>.</p></section>
 </ArticleLayout>

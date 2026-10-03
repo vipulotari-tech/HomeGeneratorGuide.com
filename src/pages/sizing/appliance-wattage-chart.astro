@@ -16,6 +16,11 @@ const categories = [...new Set(appliances.map((a) => a.category))];
   title="Appliance Wattage Chart: Running & Starting Watts"
   description="Full appliance wattage chart: running and starting watts for HVAC, kitchen, well pumps, laundry, electronics, EV, and medical devices — with source notes."
   category="Sizing" categoryHref="/sizing/" updated="2026-10-03" readingTime="8 min read" toc={toc}
+  sources={[
+    { label: 'DOE Energy Saver', href: 'https://www.energy.gov/energysaver', type: 'Government', verified: 'Oct 2026' },
+    { label: 'U.S. EIA — Electricity Data Browser', href: 'https://www.eia.gov/electricity/', type: 'Government', verified: 'Oct 2026' },
+    { label: 'Generac — Residential Standby Lineup', href: 'https://www.generac.com/residential-products/standby-generators/', type: 'Manufacturer', verified: 'Oct 2026' },
+  ]}
   related={[
     { href: '/sizing/what-size-generator-do-i-need/', title: 'What Size Generator Do I Need?', description: 'The full sizing method.', category: 'Sizing' },
     { href: '/sizing/hvac-generator-sizing/', title: 'HVAC & Generator Sizing', description: 'The biggest surge, decoded.', category: 'Sizing' },
@@ -59,6 +64,10 @@ const categories = [...new Set(appliances.map((a) => a.category))];
     { q: 'Are these numbers exact for my appliances?', a: 'No — they are planning ranges. A 3-ton AC from 2008 and one from 2024 can differ by thousands of starting watts. Read the nameplate (volts × amps, LRA for motors) and have the electrician confirm.' },
     { q: 'Why do starting watts matter more than running watts?', a: 'Because the generator must survive the worst second, not the average hour. One DOL motor starting (~7× surge) decides the purchase more than ten LED bulbs.' },
     { q: 'Should I include everything in the house?', a: 'No — only what runs simultaneously on backup. Dryers, ovens, and EV chargers are usually managed or excluded; see the essential-vs-whole-home guide.' },
+  
+    { q: 'Why do two identical appliances show different watts?', a: 'Age, efficiency, and features: a 2008 fridge and a 2024 fridge can differ by hundreds of watts. The chart gives planning ranges; nameplates give answers.' },
+    { q: 'What is LRA and where do I find it?', a: 'Locked-rotor amps — worst-case motor startup current, printed on compressor and pump nameplates. Multiply by voltage for startup volt-amps.' },
+    { q: 'Do LED bulbs matter for sizing?', a: 'Barely: twenty LEDs draw roughly 200 W with no surge. Lighting is rounding error next to any single motor start.' },
   ]} />
   <section id="conclusion"><h2>Conclusion</h2><p>List it, add it, surge-check it, verify it — then <a href="/sizing/what-size-generator-do-i-need/">size with confidence</a>.</p></section>
 </ArticleLayout>

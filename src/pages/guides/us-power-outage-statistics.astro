@@ -23,6 +23,10 @@ const toc = [
   title="US Power Outage Statistics by State (2024 EIA Snapshot)"
   description="US outage stats: SAIDI/SAIFI explained, national trend, hardest-hit and most reliable states, causes, historic storms, rural gap, and backup-power adoption."
   category="Buying Guides" categoryHref="/guides/" updated="2026-10-03" image="/images/storm-outage-suburb.webp" readingTime="11 min read" toc={toc}
+  sources={[
+    { label: 'U.S. EIA — Electricity Data Browser', href: 'https://www.eia.gov/electricity/', type: 'Government', verified: 'Oct 2026' },
+    { label: 'DOE Energy Saver', href: 'https://www.energy.gov/energysaver', type: 'Government', verified: 'Oct 2026' },
+  ]}
   related={[
     { href: '/cost/generator-roi-outage-costs/', title: 'Generator ROI & Outage Costs', description: 'Turn stats into payback math.', category: 'Cost' },
     { href: '/guides/first-time-buyer-guide/', title: 'First-Time Buyer Guide', description: 'Five decisions in order.', category: 'Buying Guides' },
@@ -89,6 +93,11 @@ const toc = [
     { q: 'Which state has the worst power outages?', a: 'In 2024: South Carolina (~53 hours, Helene/Beryl), then Maine, North Carolina, Louisiana. Rankings swing with storm tracks — check the latest EIA annual tables rather than treating any year as permanent.' },
     { q: 'Are outages getting worse?', a: 'The decade trend is upward and storm-driven: 2024 SAIDI ran ~83% above the 10-year average, with ~80% of hours from major weather. Aging infrastructure (40+ years average) compounds the exposure.' },
     { q: 'Do I need a generator if my state ranks well?', a: 'Not necessarily — run your feeder reality (well water? medical? WFH? ice season?) through the ROI math. Best-10 states with brief urban blips often suit a portable + inlet instead of standby.' },
+  
+    { q: 'What is SAIDI?', a: 'System Average Interruption Duration Index — total outage hours per customer per year. The US ran 11.0 hours in 2024 against a 5.5–6 hour decade baseline.' },
+    { q: 'Why are rural outages so much longer?', a: 'Longer feeder lines, denser vegetation, lower hardening budgets per customer, and harder crew access — rural SAIDI runs 3–4× urban with 2–3× slower restoration.' },
+    { q: 'Which weather causes the worst outages?', a: 'Gulf hurricanes and Texas freeze events dominate the modern era: multi-day, multi-million-customer outages. Ice and tornado belts fill out the top-15 states.' },
+    { q: 'Do brief blips matter for sizing?', a: 'No — size for your worst realistic week, not the average 90-minute outage. Brief blips argue for a portable + inlet, not standby.' },
   ]} />
   <section id="conclusion"><h2>Conclusion</h2><p>Outages concentrate by geography and weather — match the backup to your exposure, not the national average. Next: <a href="/cost/generator-roi-outage-costs/">turn exposure into dollars</a>, then <a href="/sizing/what-size-generator-do-i-need/">size the answer</a>.</p></section>
 </ArticleLayout>

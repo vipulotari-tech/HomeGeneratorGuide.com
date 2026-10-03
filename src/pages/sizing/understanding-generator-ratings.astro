@@ -19,6 +19,11 @@ const toc = [
   title="Generator Ratings Explained: Standby vs Prime, Derating & Sizing Method"
   description="Standby vs prime vs continuous ratings (ISO 8528), altitude and temperature derating with worked math, motor surge multipliers, pro load-calc steps, and sizing mistakes."
   category="Sizing" categoryHref="/sizing/" updated="2026-10-03" readingTime="12 min read" toc={toc}
+  sources={[
+    { label: 'Generac — Residential Standby Lineup', href: 'https://www.generac.com/residential-products/standby-generators/', type: 'Manufacturer', verified: 'Oct 2026' },
+    { label: 'Kohler Home Energy — Home Generators', href: 'https://www.kohlerhomeenergy.rehlko.com/products/home-generators', type: 'Manufacturer', verified: 'Oct 2026' },
+    { label: 'U.S. EIA — Electricity Data Browser', href: 'https://www.eia.gov/electricity/', type: 'Government', verified: 'Oct 2026' },
+  ]}
   related={[
     { href: '/sizing/what-size-generator-do-i-need/', title: 'What Size Generator Do I Need?', description: 'Full sizing walkthrough.', category: 'Sizing' },
     { href: '/guides/power-quality-thd-surge-protection/', title: 'Power Quality, THD & Surge', description: 'Clean power for electronics.', category: 'Buying Guides' },
@@ -79,6 +84,10 @@ const toc = [
     { q: 'What does standby-rated mean?', a: 'Maximum emergency-backup power, capped around 200 hours/year at ≤70% average load with zero overload allowance. All residential standby units are standby-rated (ISO 8528 ESP) — use them as backup, not primary power.' },
     { q: 'How much power do I lose at altitude?', a: 'Roughly 3.5% per 1,000 ft above 500 ft, plus 1% per 10°F above 77°F. A 22 kW unit at 5,000 ft and 95°F delivers about 18 kW — size up or manage loads to match derated output.' },
     { q: 'Is a bigger generator always safer?', a: 'No. Beyond a 10–25% margin, extra kilowatts buy cost, fuel burn, and low-load inefficiency — not reliability. Undersizing fails loudly; oversizing fails expensively.' },
+  
+    { q: 'Can I run my standby as primary power off-grid?', a: 'No — standby rating caps around 200 hours/year with no overload allowance, and off-grid duty voids the warranty. Off-grid needs prime-rated equipment (see EcoGen-style duty designs).' },
+    { q: 'Does heat derate my generator in summer?', a: 'Roughly 1% per 10°F above 77°F — a 22 kW unit at 95°F delivers about 21.6 kW. Small, but stack it with altitude before dismissing it.' },
+    { q: 'What is the difference between kW and kVA?', a: 'kW does work; kVA includes reactive power. Motors billed in kVA need roughly 20% more headroom than their kW suggests — size the surge, not the label.' },
   ]} />
   <section id="conclusion"><h2>Conclusion</h2><p>Ratings tell you the duty, derating tells you the real kilowatts, surge math tells you the peak — run all three, then <a href="/sizing/what-size-generator-do-i-need/">work the full example</a> and get the licensed calculation.</p></section>
 </ArticleLayout>

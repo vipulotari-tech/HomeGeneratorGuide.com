@@ -17,6 +17,11 @@ const toc = [
   title="How Long Can a Generator Run? Week-Long Outage Reality"
   description="How long standby generators run: NG indefinite operation, propane tank runtimes, oil/maintenance limits, and what stops a week-long run."
   category="Buying Guides" categoryHref="/guides/" updated="2026-10-03" readingTime="8 min read" toc={toc}
+  sources={[
+    { label: 'U.S. EIA — Natural Gas Monthly', href: 'https://www.eia.gov/naturalgas/monthly/', type: 'Government', verified: 'Oct 2026' },
+    { label: 'Generac — Residential Standby Lineup', href: 'https://www.generac.com/residential-products/standby-generators/', type: 'Manufacturer', verified: 'Oct 2026' },
+    { label: 'U.S. EIA — Electricity Data Browser', href: 'https://www.eia.gov/electricity/', type: 'Government', verified: 'Oct 2026' },
+  ]}
   related={[
     { href: '/guides/natural-gas-vs-propane/', title: 'Natural Gas vs Propane', description: 'Fuel costs & tanks.', category: 'Buying Guides' },
     { href: '/maintenance/generator-maintenance-checklist/', title: 'Maintenance Checklist', description: 'Oil limits explained.', category: 'Maintenance' },
@@ -46,6 +51,10 @@ const toc = [
     { q: 'Can a standby generator run for a week?', a: 'On natural gas: yes — fuel is piped, with dipstick checks every 8–24 hours and an oil service around the 100–200-hour mark. On propane: only if the tank math covers it (500 gal ≈ 6 days at half load for 20 kW) with no mid-storm refill counted on.' },
     { q: 'How long will 500 gallons of propane run a 22 kW generator?', a: 'Roughly 8–10 days at half load (~2.5 gal/h on 400 usable gallons) or ~4–5 days at full load (~3.8 gal/h). Real loads float between — plan on the conservative end.' },
     { q: 'What happens if you run a generator too long?', a: 'Nothing dramatic if maintained — oil degrades, filters load, heat accumulates. The engine protects itself via low-oil and overtemp shutdowns. Neglect those warnings and you convert a service stop into a rebuild.' },
+  
+    { q: 'Does idling between outages count toward service?', a: 'Yes — exercise minutes accrue on the hour meter. Heavy-outage years plus weekly exercise can advance your service date; check the meter, not the calendar alone.' },
+    { q: 'Can I pause a long run to check oil?', a: 'Yes, and you should for dipstick checks every 8–24 hours: transfer back is automatic on most ATS setups, or schedule checks between storm bands. Never open hot caps or panels.' },
+    { q: 'What happens when propane runs out mid-outage?', a: 'The unit shuts down on fuel starvation; refills need a delivery truck that may not reach you for days. This is why tanks are sized to the worst week, not the average outage.' },
   ]} />
   <section id="conclusion"><h2>Conclusion</h2><p>A week is inside a standby's design envelope on NG and inside big-tank propane math — the variable is maintenance discipline, not courage. Size the fuel first: <a href="/guides/natural-gas-vs-propane/">fuel guide</a>.</p></section>
 </ArticleLayout>

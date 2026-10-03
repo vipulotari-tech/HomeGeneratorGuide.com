@@ -18,6 +18,11 @@ const toc = [
   title="Power Quality, THD & Surge Protection for Generator Homes"
   description="THD explained: which electronics need clean power, standby vs portable THD ratings, 3-layer surge strategy with device specs, and why computers still need a UPS."
   category="Buying Guides" categoryHref="/guides/" updated="2026-10-03" readingTime="9 min read" toc={toc}
+  sources={[
+    { label: 'Generac Support — Owner Resources', href: 'https://support.generac.com/', type: 'Technical manual', verified: 'Oct 2026' },
+    { label: 'U.S. EIA — Electricity Data Browser', href: 'https://www.eia.gov/electricity/', type: 'Government', verified: 'Oct 2026' },
+    { label: 'Kohler Home Energy — Home Generators', href: 'https://www.kohlerhomeenergy.rehlko.com/products/home-generators', type: 'Manufacturer', verified: 'Oct 2026' },
+  ]}
   related={[
     { href: '/sizing/understanding-generator-ratings/', title: 'Generator Ratings Explained', description: 'Standby vs prime, derating.', category: 'Sizing' },
     { href: '/guides/generator-safety-carbon-monoxide/', title: 'CO Safety Guide', description: 'The other safety essential.', category: 'Buying Guides' },
@@ -65,6 +70,10 @@ const toc = [
     { q: 'Will a standby generator damage my electronics?', a: 'Major-brand standby units publish <5% THD — safe for essentially all home electronics. Damage stories overwhelmingly involve high-THD portables or surge events, which is why the SPD + UPS layers matter even with clean standby power.' },
     { q: 'Do I need a whole-house surge protector with a generator?', a: 'Yes — treat it as essential, not optional. Transfer events, motor switching, utility restoration, and lightning all spike; $150–$300 installed protects every circuit including the generator feed path.' },
     { q: 'Why did my computer reboot when the generator kicked in?', a: 'Open-transition transfer includes a brief break plus the 10–20-second start sequence. A UPS bridges it. This is normal ATS physics, not a generator defect.' },
+  
+    { q: 'Does a UPS really matter with standby?', a: 'Yes — the 10–20 second transfer gap reboots unprotected computers and drops CPAPs and routers. A UPS bridges exactly that gap, regardless of THD.' },
+    { q: 'Where does whole-house surge protection install?', a: 'At the main panel on the line side, by a licensed electrician — protecting both utility and generator feed paths. Point-of-use strips still cover individual gear.' },
+    { q: 'Can THD damage my HVAC?', a: 'High THD overheats variable-speed drives and control boards over time. Standby <5% is safe territory; the risk lives with cheap high-THD portables.' },
   ]} />
   <section id="conclusion"><h2>Conclusion</h2><p>Clean sine (&lt;5% standby), layered surge defense, UPS on anything with unsaved work. Electronics protection costs ~$500 total against thousands in boards and data — spec it with the install, not after the first casualty. Next: <a href="/sizing/understanding-generator-ratings/">ratings & derating</a>.</p></section>
 </ArticleLayout>

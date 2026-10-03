@@ -58,6 +58,11 @@ const groups: { id: string; terms: [string, string][] }[] = [
   title="Generator Glossary: 30 Terms Explained in Plain Language"
   description="Generator glossary: ATS, THD, LRA, SAIDI, ESP ratings, therms, NFPA codes, and 20+ more standby terms defined for US homeowners."
   category="Buying Guides" categoryHref="/guides/" updated="2026-10-04" readingTime="8 min read" toc={toc}
+  sources={[
+    { label: 'NFPA 70 — National Electrical Code', href: 'https://www.nfpa.org/codes-and-standards/nfpa-70-standard-development/70', type: 'Government', verified: 'Oct 2026' },
+    { label: 'U.S. EIA — Electricity Data Browser', href: 'https://www.eia.gov/electricity/', type: 'Government', verified: 'Oct 2026' },
+    { label: 'Generac — Residential Standby Lineup', href: 'https://www.generac.com/residential-products/standby-generators/', type: 'Manufacturer', verified: 'Oct 2026' },
+  ]}
   related={[
     { href: '/sizing/what-size-generator-do-i-need/', title: 'What Size Generator Do I Need?', description: 'Put the terms to work.', category: 'Sizing' },
     { href: '/cost/transfer-switch-cost/', title: 'Transfer Switch Guide', description: 'ATS, MTS, and interlocks in depth.', category: 'Cost' },
@@ -85,6 +90,10 @@ const groups: { id: string; terms: [string, string][] }[] = [
     { q: 'What is the single most important term to understand?', a: 'Starting watts (LRA surge). The gap between running and starting power decides generator size more than any other concept on this page.' },
     { q: 'What does ATS stand for?', a: 'Automatic transfer switch — the device that moves your home between utility and generator power without you touching anything.' },
     { q: 'Do I need to memorize codes?', a: 'No. Know that NEC Article 702 governs standby wiring, NFPA 37 governs placement minimums, and your AHJ plus equipment manual have the final word — then hire licensed pros who live in those documents.' },
+  
+    { q: 'What is an ATS in one sentence?', a: 'The automatic device that moves your home between utility and generator power — the brain of every standby system.' },
+    { q: 'What does prime rating mean for me?', a: 'Nothing to buy — it rates off-grid primary duty. Your home needs standby (ESP) ratings; prime numbers on a residential quote are a red flag.' },
+    { q: 'Why do electricians say kVA?', a: 'Because motors draw apparent power above their working watts. kVA keeps the surge math honest — kW alone understates motor starts ~20%.' },
   ]} />
   <section id="conclusion"><h2>Conclusion</h2><p>Fluent in the vocabulary? Spend it in the <a href="/sizing/calculator/">sizing calculator</a>.</p></section>
 </ArticleLayout>
