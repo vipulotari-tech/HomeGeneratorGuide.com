@@ -1,0 +1,96 @@
+================================================================
+HomeGeneratorGuide.com — AI IMAGE PROMPTS (copy-paste ready)
+How to use: paste ONE block into any image AI (Midjourney / DALL-E /
+Firefly / SDXL), download 1536x1024 (or 16:9), save with the given
+filename into public/images/, then tell me — I will compress to WebP
+and wire it into the listed page with correct alt text.
+================================================================
+
+GLOBAL RULES (add to every generation if the tool allows):
+- Photorealistic, natural light, US suburban setting
+- Generic UNBRANDED equipment — no logos, no brand badges, no readable text
+- No people doing unsafe acts (no open live panels, no garage generators)
+- No watermark, no text overlay, no cartoon look
+
+----------------------------------------------------------------
+1) FILE: sizing-electrician-panel.webp  (1536x1024, landscape)
+USE: /sizing/what-size-generator-do-i-need/ hero
+PROMPT:
+Photorealistic photo, licensed electrician in navy work shirt measuring
+a residential breaker panel with a clamp meter, panel door open showing
+neat labeled breakers, bright garage interior, shallow depth of field,
+morning light, no readable text, no logos
+----------------------------------------------------------------
+2) FILE: cost-install-quote.webp  (1536x1024, landscape)
+USE: /cost/standby-generator-cost/ hero
+PROMPT:
+Photorealistic photo, contractor in plain clothes handing a clipboard
+quote to a homeowner couple beside a new standby generator on a concrete
+pad next to a suburban home, daytime, friendly professional mood, no
+readable text, no logos
+----------------------------------------------------------------
+3) FILE: standby-front-neutral.webp  (1536x1024, landscape)
+USE: /brands/generac/ hero (generic unit — page text names the brand)
+PROMPT:
+Photorealistic studio-style photo of a generic beige home standby
+generator on a concrete pad, green grass, soft daylight, completely
+unbranded enclosure with no logos and no text, three-quarter front view
+----------------------------------------------------------------
+4) FILE: maintenance-technician-service.webp  (1536x1024, landscape)
+USE: /maintenance/generator-maintenance-checklist/ hero
+PROMPT:
+Photorealistic photo, service technician with tool bag kneeling beside
+an open standby generator enclosure checking components with a
+multimeter, suburban backyard, daytime, professional and tidy scene,
+no readable text, no logos
+----------------------------------------------------------------
+5) FILE: install-crew-setting-unit.webp  (1536x1024, landscape)
+USE: /installation/what-to-expect/ hero
+PROMPT:
+Photorealistic photo, two installers guiding a beige standby generator
+being lowered onto a concrete pad beside a suburban home, small crane
+strap visible, morning light, safety vests, no readable text, no logos
+----------------------------------------------------------------
+6) FILE: co-detector-bedroom.webp  (1536x1024, landscape)
+USE: /guides/generator-safety-carbon-monoxide/ hero
+PROMPT:
+Photorealistic close-up photo of a white carbon monoxide detector
+mounted on a bedroom hallway wall, soft warm interior light, shallow
+depth of field, calm safe-home mood, no readable text, no logos
+----------------------------------------------------------------
+7) FILE: propane-tanks-home.webp  (1536x1024, landscape)
+USE: /guides/natural-gas-vs-propane/ hero
+PROMPT:
+Photorealistic photo, two white above-ground propane tanks on concrete
+pads with copper gas line running toward a suburban home, neat
+landscaping, clear day, no readable text, no logos
+----------------------------------------------------------------
+8) FILE: transfer-switch-panel.webp  (1536x1024, landscape)
+USE: /cost/transfer-switch-cost/ hero
+PROMPT:
+Photorealistic close-up photo of a gray automatic transfer switch box
+mounted on an exterior home wall next to the electric meter, conduit
+running neatly into it, daylight, tidy installation, no readable text,
+no logos
+----------------------------------------------------------------
+9) FILE: storm-outage-suburb.webp  (1536x1024, landscape)
+USE: /guides/us-power-outage-statistics/ hero
+PROMPT:
+Photorealistic dramatic photo, dark storm clouds over a suburban street
+at dusk, one house glowing warm with lights on while neighboring homes
+are dark, wet pavement reflections, moody but hopeful tone, no readable
+text, no logos
+----------------------------------------------------------------
+10) FILE: two-standby-units.webp  (1536x1024, landscape)
+USE: /comparisons/generac-vs-kohler/ hero
+PROMPT:
+Photorealistic photo, two generic beige home standby generators side by
+side on concrete pads in front of a suburban home, overcast daylight,
+neutral product-comparison mood, both units completely unbranded with
+no logos and no text
+----------------------------------------------------------------
+
+NAMING RULES for any extra images you generate yourself:
+- kebab-case, ends with .webp, e.g. well-pump-closeup.webp
+- 1536x1024 for heroes, 800x600 max for in-content shots
+- Never use brand names (generac/kohler) in filenames — keeps us neutral
