@@ -19,3 +19,6 @@ claude-seo/
 !.dev.vars.example
 .env*
 !.env.example
+
+# Lighthouse local reports
+*.report.html
