@@ -29,13 +29,15 @@ const linkCls = 'inline-flex min-h-[36px] items-center text-sm text-slate-300 un
 <footer class="bg-[#1e3a5f] text-slate-200">
   <!-- trust strip -->
   <div class="border-b border-white/10">
-    <ul class="mx-auto grid max-w-6xl gap-4 px-4 py-6 sm:grid-cols-3 sm:gap-6 sm:px-6">
-      {trust.map((x) => (
-        <li class="flex items-start gap-3">
-          <svg class="h-5 w-5 shrink-0 translate-y-0.5 text-orange-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d={x.icon} /></svg>
+    <ul class="mx-auto grid max-w-6xl gap-x-8 gap-y-5 px-4 py-7 sm:grid-cols-3 sm:px-6">
+      {trust.map((x, i) => (
+        <li class={`group flex items-center gap-4 ${i > 0 ? 'sm:border-l sm:border-white/10 sm:pl-8' : ''}`}>
+          <span aria-hidden="true" class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/5 transition-colors duration-200 group-hover:border-orange-400/60">
+            <svg class="h-5 w-5 text-orange-400 transition-transform duration-200 group-hover:scale-110" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d={x.icon} /></svg>
+          </span>
           <span>
-            <span class="block text-sm font-semibold text-white">{x.t}</span>
-            <span class="block text-xs leading-relaxed text-slate-400">{x.d}</span>
+            <span class="block text-[15px] font-semibold tracking-tight text-white">{x.t}</span>
+            <span class="mt-0.5 block text-[13px] leading-relaxed text-slate-400">{x.d}</span>
           </span>
         </li>
       ))}
