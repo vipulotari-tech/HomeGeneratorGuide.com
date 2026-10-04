@@ -2,20 +2,19 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import { MODEL_SPECS, type ModelSpec } from '../../data/model-specs';
 
-const routes = new Map([
-  ['G0072600', 'generac-g0072600'],
-  ['G0073270', 'generac-g0073270'],
-  ['26RCA', 'kohler-26rca'],
-  ['26RCAL', 'kohler-26rcal'],
-  ['201222', 'champion-201222'],
-  ['040786', 'briggs-stratton-040786'],
-]);
-
 export function getStaticPaths() {
+  const routeSlugs: Record<string, string> = {
+    G0072600: 'generac-g0072600',
+    G0073270: 'generac-g0073270',
+    '26RCA': 'kohler-26rca',
+    '26RCAL': 'kohler-26rcal',
+    '201222': 'champion-201222',
+    '040786': 'briggs-stratton-040786',
+  };
   return MODEL_SPECS
-    .filter((model) => routes.has(model.modelId))
+    .filter((model) => Boolean(routeSlugs[model.modelId]))
     .map((model) => ({
-      params: { slug: routes.get(model.modelId)! },
+      params: { slug: routeSlugs[model.modelId] },
       props: { model },
     }));
 }
