@@ -9,6 +9,7 @@ const allowed = new Map([
   ['26RCAL', 'kohler-26rcal'],
   ['201222', 'champion-201222'],
   ['040786', 'briggs-stratton-040786'],
+  ['RS20A', 'cummins-rs20a'],
 ]);
 const models = MODEL_SPECS.filter((model) => allowed.has(model.modelId));
 const rating = (model: typeof models[number]) => {
