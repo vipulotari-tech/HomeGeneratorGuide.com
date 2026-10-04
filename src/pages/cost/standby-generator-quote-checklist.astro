@@ -1,0 +1,118 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import FAQSection from '../../components/ui/FAQSection.astro';
+
+const toc = [
+  { id: 'before-you-compare', label: 'Before you compare quotes' },
+  { id: 'checklist', label: '16-line quote checklist' },
+  { id: 'comparison-sheet', label: 'Side-by-side proposal sheet' },
+  { id: 'red-flags', label: 'Proposal red flags' },
+  { id: 'handoff', label: 'What to get at handoff' },
+  { id: 'faq', label: 'Quote questions' },
+];
+---
+<ArticleLayout
+  title="Standby Generator Quote Checklist: 16 Line Items to Compare"
+  description="A printable-style checklist for comparing standby-generator proposals by exact equipment, electrical and fuel scope, site work, permits, commissioning, warranty, exclusions, and change-order terms."
+  category="Cost" categoryHref="/cost/" updated="2026-10-04" verified="2026-10-04" readingTime="8 min read" toc={toc}
+  takeaways={[
+    'Compare proposals on the same backed-up loads and exact equipment wherever possible; headline project totals are not useful until scope is aligned.',
+    'Require generator, transfer-switch, fuel, electrical, site-work, permit, commissioning, warranty, and exclusion details in writing.',
+    'Treat this as a completeness checklist, not a substitute for a licensed contractor, utility, fuel supplier, permit authority, or the exact manufacturer installation instructions.',
+  ]}
+  sources={[
+    { label: 'Generac: backup generator installation process and quote consultation topics', href: 'https://www.generac.com/resources/home-management/backup-generator-installation/', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'Cummins: home generator FAQ — installation, permitting, and warranty overview', href: 'https://www.cummins.com/en-na/na/generators/home-standby/home-generator-faq', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'Generac G0073270 official 22–28 kW specification sheet', href: 'https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'KOHLER/Rehlko 26RCA/26RCAL official specification sheet', href: 'https://techcomm.rehlko.com/techcomm/pdf/g4315.pdf', type: 'Manufacturer', verified: '2026-10-04' },
+  ]}
+  related={[
+    { href: '/cost/standby-generator-cost/', title: 'Standby generator cost guide', description: 'Separate equipment MSRP from installed-project estimates and site variables.', category: 'Cost' },
+    { href: '/installation/what-to-expect/', title: 'Installation: what to expect', description: 'Understand the project sequence from site assessment through commissioning.', category: 'Installation' },
+    { href: '/comparisons/standby-generator-warranty-comparison/', title: 'Standby generator warranty comparison', description: 'Compare exact-model warranty summaries without treating warranty length as a reliability score.', category: 'Comparisons' },
+  ]}
+>
+  <section id="before-you-compare">
+    <h2>Before you compare quotes, align the job</h2>
+    <p>Two proposals can show very different totals while describing different projects. One may include a service-rated automatic transfer switch, panel changes, trenching, gas work, permits, startup, and owner handoff; another may show only the generator plus basic labor. Before comparing price, ask each contractor to price the same backed-up loads and to identify every exact model number and included work item.</p>
+    <p>Generac’s own installation guidance says the at-home consultation should cover placement, site requirements, system requirements, fuel source and connection, and property restrictions. Cummins likewise says installation should be handled by a certified electrician in compliance with local building codes and proper permitting. Those manufacturer statements support the basic principle behind this checklist: the written proposal needs to describe the complete site-specific system, not just the generator cabinet.</p>
+  </section>
+
+  <section id="checklist">
+    <h2>The 16-line standby-generator quote checklist</h2>
+    <p>Ask the contractor to mark each item as <strong>included</strong>, <strong>excluded</strong>, or <strong>allowance / pending site verification</strong>. If a line does not apply, have the proposal say so rather than leaving it ambiguous.</p>
+    <div class="not-prose mt-5 overflow-x-auto rounded-xl border border-[#d9e0ea]">
+      <table class="min-w-[780px] w-full border-collapse text-left text-sm">
+        <caption class="sr-only">Sixteen line items to compare on standby generator proposals</caption>
+        <thead class="bg-[#edf3fb] text-primary">
+          <tr><th scope="col" class="p-3">#</th><th scope="col" class="p-3">Line item</th><th scope="col" class="p-3">What should be stated</th></tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200 text-gray-800">
+          <tr><td class="p-3">1</td><th scope="row" class="p-3">Generator</th><td class="p-3">Exact manufacturer, model, voltage/phase, fuel, and fuel-specific standby rating.</td></tr>
+          <tr><td class="p-3">2</td><th scope="row" class="p-3">Transfer equipment</th><td class="p-3">Exact ATS / switch model, amperage, service-entrance rating where applicable, and whether it is included in the quoted package.</td></tr>
+          <tr><td class="p-3">3</td><th scope="row" class="p-3">Backed-up loads</th><td class="p-3">Circuits / loads intended to operate, plus any explicit exclusions.</td></tr>
+          <tr><td class="p-3">4</td><th scope="row" class="p-3">Load management</th><td class="p-3">Modules, priorities, sequencing assumptions, and which large loads may be shed or delayed.</td></tr>
+          <tr><td class="p-3">5</td><th scope="row" class="p-3">Electrical service work</th><td class="p-3">Panel/service assessment, required modifications, disconnect/service-equipment scope, and utility coordination if needed.</td></tr>
+          <tr><td class="p-3">6</td><th scope="row" class="p-3">Conductors and route</th><td class="p-3">Conduit, wiring route, trenching, penetrations, restoration, and distance assumptions.</td></tr>
+          <tr><td class="p-3">7</td><th scope="row" class="p-3">Fuel capacity check</th><td class="p-3">Who verifies available pressure/flow or propane supply for the exact generator and planned connected loads.</td></tr>
+          <tr><td class="p-3">8</td><th scope="row" class="p-3">Fuel-line work</th><td class="p-3">Pipe / regulator / meter / tank work, trenching, connections, testing, and items assigned to another trade or utility.</td></tr>
+          <tr><td class="p-3">9</td><th scope="row" class="p-3">Generator location</th><td class="p-3">Proposed location and confirmation that manufacturer clearances, service access, drainage, openings, and local rules will be checked.</td></tr>
+          <tr><td class="p-3">10</td><th scope="row" class="p-3">Base and site preparation</th><td class="p-3">Approved pad/base, grading, drainage, lifting/access, vegetation or obstruction work, and restoration.</td></tr>
+          <tr><td class="p-3">11</td><th scope="row" class="p-3">Permits and inspections</th><td class="p-3">Which permits, applications, inspection fees, utility approvals, and HOA/property approvals are included or owner-paid.</td></tr>
+          <tr><td class="p-3">12</td><th scope="row" class="p-3">Startup and commissioning</th><td class="p-3">Initial setup, transfer test / simulated outage where appropriate, operating checks, and owner orientation.</td></tr>
+          <tr><td class="p-3">13</td><th scope="row" class="p-3">Accessories</th><td class="p-3">Battery, cold-weather kits, monitoring hardware/subscription, surge protection, fascia, load modules, or other accessories.</td></tr>
+          <tr><td class="p-3">14</td><th scope="row" class="p-3">Warranty and registration</th><td class="p-3">Generator and ATS warranty documents, registration/activation responsibility, coverage start, and local warranty-service contact.</td></tr>
+          <tr><td class="p-3">15</td><th scope="row" class="p-3">Exclusions and allowances</th><td class="p-3">Every item not included, every provisional allowance, and conditions that can change price after work begins.</td></tr>
+          <tr><td class="p-3">16</td><th scope="row" class="p-3">Commercial terms</th><td class="p-3">Taxes, payment schedule, deposit, estimated schedule assumptions, cancellation terms, and written change-order process.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="comparison-sheet">
+    <h2>Side-by-side proposal comparison sheet</h2>
+    <p>Use this blank worksheet after both contractors have answered the 16 lines above. Print the page or save it as a PDF from your browser.</p>
+    <div class="not-prose mt-5 overflow-x-auto rounded-xl border border-[#d9e0ea]">
+      <table class="min-w-[760px] w-full border-collapse text-left text-sm">
+        <caption class="sr-only">Blank proposal comparison worksheet</caption>
+        <thead class="bg-[#edf3fb] text-primary"><tr><th class="p-3">Comparison field</th><th class="p-3">Proposal A</th><th class="p-3">Proposal B</th></tr></thead>
+        <tbody class="divide-y divide-gray-200">
+          {['Generator + fuel rating','ATS / transfer equipment','Backed-up loads','Load management','Electrical work','Fuel work','Site / pad work','Permits / inspections','Commissioning','Warranty / service','Allowances / exclusions','Total written price'].map((label) => (
+            <tr><th scope="row" class="p-3 font-medium text-gray-800">{label}</th><td class="h-12 p-3">&nbsp;</td><td class="p-3">&nbsp;</td></tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="mt-4">A lower total may still be the better proposal, but only after scope is normalized. If one contractor has included panel work, gas capacity changes, a service-rated ATS, or permit fees that another omitted, the totals are not directly comparable.</p>
+  </section>
+
+  <section id="red-flags">
+    <h2>Proposal red flags worth clarifying before signing</h2>
+    <ul>
+      <li>The proposal says only “22 kW generator” with no exact model or fuel-specific rating.</li>
+      <li>The switch is described only as “200 A” without a model number or package scope.</li>
+      <li>Fuel work is marked “by others” but no one is named as responsible for capacity, routing, or final connection.</li>
+      <li>Permits or inspections are assumed but not assigned to contractor or owner.</li>
+      <li>Panel/service changes, trenching, restoration, or load-management modules are left as open-ended extras.</li>
+      <li>Warranty length is advertised, but the proposal does not identify the exact generator/ATS warranty documents or local service path.</li>
+      <li>A large allowance appears without a stated quantity, unit price, or condition for reconciling the final bill.</li>
+      <li>Change-order terms are missing even though major site conditions remain unknown.</li>
+    </ul>
+  </section>
+
+  <section id="handoff">
+    <h2>What to ask for at project handoff</h2>
+    <p>Keep a permanent folder with the exact model and serial numbers, current operator and installation manuals, permits/inspection records, commissioning or startup records supplied by the installer, warranty/activation documents, service contact, and any load-management configuration notes. The owner should also know where the emergency shutdown instructions are and which qualified service provider to call.</p>
+    <p>This checklist does not authorize electrical, gas, fuel, or transfer-equipment work. Use qualified professionals and the exact manufacturer instructions for the installed system.</p>
+  </section>
+
+  <section id="faq">
+    <span class="sr-only">FAQ anchor</span>
+    <FAQSection items={[
+      { q: 'How many generator quotes should I get?', a: 'There is no universal number. When practical, more than one comparable written proposal can reveal differences in equipment scope, site assumptions, exclusions, and service support. The important part is comparing the same backed-up loads and clearly stated equipment.' },
+      { q: 'Should the quote include the transfer switch?', a: 'The proposal should explicitly say whether a transfer switch is included and identify its exact model and rating. Some generator product prices or packages include a switch and others do not, so never infer it from the generator kW rating or headline price.' },
+      { q: 'What if the contractor cannot price gas or electrical changes yet?', a: 'The proposal can use an allowance or clearly marked pending item, but it should say what information is missing, who will verify it, and how the final price will be adjusted.' },
+      { q: 'Is the lowest bid the best choice?', a: 'Not necessarily. Normalize equipment and scope first, then compare price, local service, warranty path, schedule assumptions, and written exclusions. This site does not select contractors or recommend a universal winning bid.' },
+    ]} />
+  </section>
+</ArticleLayout>

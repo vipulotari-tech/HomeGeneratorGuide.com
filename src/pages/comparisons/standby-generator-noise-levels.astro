@@ -1,0 +1,88 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { MODEL_SPECS } from '../../data/model-specs';
+
+const wanted = new Set(['G0073270', '26RCA', '201222', '040786']);
+const models = MODEL_SPECS.filter((model) => wanted.has(model.modelId));
+const soundRows = models.flatMap((model) => (model.sound ?? []).map((sound) => ({ model, sound })));
+const toc = [
+  { id: 'why-hard', label: 'Why generator noise is hard to compare' },
+  { id: 'published', label: 'Published sound values' },
+  { id: 'conditions', label: 'Why test conditions matter' },
+  { id: 'site', label: 'What matters at your property' },
+  { id: 'quote', label: 'Questions for installer quotes' },
+];
+---
+<ArticleLayout
+  title="Standby Generator Noise Levels: Published dB(A) Compared Carefully"
+  description="Compare manufacturer-published sound values for selected Generac, KOHLER, Champion, and Briggs residential standby generators, including test-condition and distance caveats."
+  category="Comparisons" categoryHref="/comparisons/" updated="2026-10-04" verified="2026-10-04" readingTime="6 min read" toc={toc}
+  takeaways={[
+    'A dB(A) number is only meaningful with its operating mode, load, distance, microphone position, and test method.',
+    'Generac and KOHLER publish similar-looking values for selected 26 kW models, but the manufacturer notes show that the measurements are not a controlled independent head-to-head test.',
+    'For Champion and Briggs selected models, the published source set provides less complete measurement-condition detail, so ranking them by a single number would be misleading.',
+  ]}
+  sources={models.flatMap((model) => model.sources.map((source) => ({ label: source.label, href: source.url, type: 'Manufacturer' as const, verified: source.checkedOn })))}
+  related={[
+    { href: '/comparisons/generac-vs-kohler/', title: 'Generac vs KOHLER exact-model comparison', description: 'Compare fuel output, fuel use, packages, pricing, warranty, and sound caveats.', category: 'Comparisons' },
+    { href: '/comparisons/standby-generator-warranty-comparison/', title: 'Standby generator warranty comparison', description: 'Compare exact-model warranty summaries and full-document questions.', category: 'Comparisons' },
+    { href: '/installation/generator-pad-and-placement/', title: 'Generator pad and placement', description: 'Review general siting questions while deferring to exact manuals and local rules.', category: 'Installation' },
+  ]}
+>
+  <section id="why-hard">
+    <h2>Why generator noise is hard to compare from marketing numbers</h2>
+    <p>A sound-pressure value is not a universal property of the cabinet. Operating speed, electrical load, exercise mode, distance, microphone direction, reflective walls, grade, enclosure orientation, vegetation, and the surrounding neighborhood all affect what a person hears. Manufacturer dB(A) figures are useful only when their stated conditions stay attached to the number.</p>
+    <p>This page therefore does not publish a “quietest brand” winner. It shows exactly what the selected manufacturer sources say and highlights missing test details instead of pretending every value was measured the same way.</p>
+  </section>
+
+  <section id="published">
+    <h2>Manufacturer-published sound values in our exact-model source set</h2>
+    <div class="not-prose mt-5 overflow-x-auto rounded-xl border border-[#d9e0ea]">
+      <table class="min-w-[820px] w-full border-collapse text-left text-sm">
+        <caption class="sr-only">Published sound values and test conditions for selected residential standby generator models</caption>
+        <thead class="bg-[#edf3fb] text-primary"><tr><th class="p-3">Exact model</th><th class="p-3">Published dB(A)</th><th class="p-3">Published condition</th><th class="p-3">Distance / direction</th></tr></thead>
+        <tbody class="divide-y divide-gray-200 text-gray-800">
+          {soundRows.map(({ model, sound }) => (
+            <tr>
+              <th scope="row" class="p-3 align-top"><a href={model.productUrl} rel="external noopener noreferrer" class="font-semibold text-primary underline decoration-accent underline-offset-4">{model.brand} {model.modelId}</a></th>
+              <td class="p-3 align-top">{sound.decibelsA} dB(A)</td>
+              <td class="p-3 align-top">{sound.condition}</td>
+              <td class="p-3 align-top">{sound.distanceFt ? `${sound.distanceFt} ft` : 'Distance not stated in the captured source'}{sound.direction ? `; ${sound.direction}` : ''}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="mt-4">The table deliberately repeats models when the manufacturer publishes both normal-operation and exercise-mode values. Exercise sound is not a substitute for sound under outage load.</p>
+  </section>
+
+  <section id="conditions">
+    <h2>Why the conditions matter more than a one-decibel difference</h2>
+    <p>The selected Generac G0073270 source lists 67 dB(A) at 23 feet at normal load and 55 dB(A) at 23 feet during Quiet-Test low-speed exercise, measured from the front. The selected KOHLER/Rehlko 26RCA source lists 67 dB(A) at 23 feet during full-speed diagnostics/normal operation and 56 dB(A) during exercise, while noting that the published figure is the lowest of eight measurement points and that installation can change sound.</p>
+    <p>Those similar values still do not create an independent tie. Different test geometry or reporting conventions can hide real-world differences. Champion’s selected 201222 page gives an approximate 67 dB(A) value at about 23 feet but does not state the load in our captured source. Briggs & Stratton’s selected 040786 source lists 68 dB(A) normal operating sound but does not state a measurement distance in the captured product/spec source. Missing conditions are a reason to avoid ranking, not a reason to assume equal tests.</p>
+  </section>
+
+  <section id="site">
+    <h2>What matters at your property</h2>
+    <ul>
+      <li><strong>Exact operating mode:</strong> exercise mode can be materially quieter than an outage run.</li>
+      <li><strong>Distance:</strong> a generator farther from a bedroom or neighbor may be perceived very differently, subject to the manufacturer’s placement requirements and local rules.</li>
+      <li><strong>Reflections:</strong> walls, fences, alcoves, and hard surfaces can change sound; do not add improvised barriers that violate ventilation, clearance, exhaust, or service requirements.</li>
+      <li><strong>Load and cycling:</strong> engine speed and household demand can change the acoustic character over time.</li>
+      <li><strong>Local requirements:</strong> ask the installer to check municipal or HOA noise rules alongside the exact installation manual.</li>
+    </ul>
+    <p>Do not move a proposed generator solely to chase a lower perceived sound level. Location is constrained by electrical/fuel routing, exhaust, openings, service access, drainage, manufacturer clearances, and local approvals.</p>
+  </section>
+
+  <section id="quote">
+    <h2>Questions to add to installer quotes</h2>
+    <ol>
+      <li>Which exact generator model is being quoted, and what sound data does its manufacturer publish?</li>
+      <li>What operating condition does that sound figure represent—exercise, normal load, full speed, or another test?</li>
+      <li>At what distance and measurement position was it taken?</li>
+      <li>Are there local noise restrictions or property-line limits that affect the proposed location?</li>
+      <li>Can the installer explain why the proposed placement satisfies the exact manufacturer manual while also reducing exposure to occupied spaces?</li>
+    </ol>
+    <p>Capture the answers in the <a href="/cost/standby-generator-quote-checklist/">standby generator quote checklist</a> so noise and placement are evaluated with the rest of the project scope rather than as an isolated product spec.</p>
+  </section>
+</ArticleLayout>

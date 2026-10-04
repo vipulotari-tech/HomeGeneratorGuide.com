@@ -1,0 +1,96 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { MODEL_SPECS } from '../../data/model-specs';
+
+const wanted = new Set(['G0073270', '26RCA', '201222', '040786', 'RS20A']);
+const models = MODEL_SPECS.filter((model) => wanted.has(model.modelId));
+const toc = [
+  { id: 'scope', label: 'What this comparison can show' },
+  { id: 'table', label: 'Exact-model warranty summaries' },
+  { id: 'not-reliability', label: 'Warranty is not reliability' },
+  { id: 'read-document', label: 'What to verify in the full warranty' },
+  { id: 'quote', label: 'Questions to add to a quote' },
+];
+---
+<ArticleLayout
+  title="Standby Generator Warranty Comparison: Generac, KOHLER, Champion, Briggs & Cummins"
+  description="Compare manufacturer-published warranty summaries for selected residential standby-generator models, with coverage-scope caveats and a checklist for reading the full warranty before purchase."
+  category="Comparisons" categoryHref="/comparisons/" updated="2026-10-04" verified="2026-10-04" readingTime="7 min read" toc={toc}
+  takeaways={[
+    'Warranty length alone is not a reliability score and does not prove equal parts, labor, travel, ATS, corrosion, or hour-limit coverage.',
+    'The selected exact models publish materially different warranty summaries: compare the full document for the quoted generator and transfer switch, not only the headline number of years.',
+    'Local service availability and who pays labor/travel after a failure can matter as much as the headline warranty term.',
+  ]}
+  sources={models.flatMap((model) => model.sources.map((source) => ({ label: source.label, href: source.url, type: 'Manufacturer' as const, verified: source.checkedOn })))}
+  related={[
+    { href: '/comparisons/standby-generator-noise-levels/', title: 'Standby generator noise comparison', description: 'Compare published sound values without pretending unlike test conditions are identical.', category: 'Comparisons' },
+    { href: '/cost/standby-generator-quote-checklist/', title: 'Generator quote checklist', description: 'Require exact warranty documents and local service responsibility in writing.', category: 'Cost' },
+    { href: '/brands/', title: 'Brand and exact-model guides', description: 'Review the cited source data behind selected residential standby models.', category: 'Brands' },
+  ]}
+>
+  <section id="scope">
+    <h2>What this warranty comparison can—and cannot—show</h2>
+    <p>This page compares the manufacturer-published summaries attached to selected exact models in our source registry. It does <strong>not</strong> rate reliability, claim that one manufacturer pays claims more readily, or assume that every generator in a brand family has identical coverage. Warranty documents can contain hour limits, registration requirements, exclusions, corrosion provisions, travel limits, maintenance obligations, or separate transfer-switch coverage.</p>
+    <p>Use the table to identify questions for the dealer, then read the current full warranty for the exact generator and ATS you are buying.</p>
+  </section>
+
+  <section id="table">
+    <h2>Selected exact-model warranty summaries</h2>
+    <div class="not-prose mt-5 overflow-x-auto rounded-xl border border-[#d9e0ea]">
+      <table class="min-w-[820px] w-full border-collapse text-left text-sm">
+        <caption class="sr-only">Manufacturer-published warranty summaries for selected standby generator models</caption>
+        <thead class="bg-[#edf3fb] text-primary"><tr><th class="p-3">Brand / exact model</th><th class="p-3">Published summary in cited source</th><th class="p-3">Important scope note</th></tr></thead>
+        <tbody class="divide-y divide-gray-200 text-gray-800">
+          {models.map((model) => (
+            <tr>
+              <th scope="row" class="p-3 align-top"><a href={model.productUrl} rel="external noopener noreferrer" class="font-semibold text-primary underline decoration-accent underline-offset-4">{model.brand} {model.modelId}</a><span class="mt-1 block font-normal text-gray-600">{model.displayName}</span></th>
+              <td class="p-3 align-top">{model.warranty ?? 'No model-specific warranty summary captured in the current source set.'}</td>
+              <td class="p-3 align-top">
+                {model.modelId === '201222' ? 'Champion’s source distinguishes generator and ATS coverage; do not apply the generator term to the switch.' :
+                 model.modelId === '26RCA' ? 'The cited 2026 specification sheet states a 5-year/2,000-hour limited warranty with parts, labor, and travel; read the complete terms.' :
+                 model.modelId === '040786' ? 'The product/spec source describes comprehensive coverage; confirm exclusions, hour limits, and whether the quoted model/package is the same.' :
+                 model.modelId === 'RS20A' ? 'Cummins’ family FAQ gives the 13/17/20 kW air-cooled term; confirm the exact current warranty document for the purchased unit.' :
+                 'The product page states a limited-warranty term; the complete warranty document controls exclusions and coverage details.'}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="not-reliability">
+    <h2>A longer warranty is not proof of a more reliable generator</h2>
+    <p>Warranty is a contract, not a field-failure study. A longer headline term can coexist with different hour limits, component exclusions, labor/travel rules, corrosion terms, registration requirements, or ATS coverage. We have not found comparable fleet failure-rate data for these residential models, and we do not turn warranty length into an invented reliability score.</p>
+    <p>For the same reason, a shorter warranty does not prove a generator is less durable. Compare the written coverage with local service support, parts availability, installation quality, maintenance requirements, and the exact equipment package.</p>
+  </section>
+
+  <section id="read-document">
+    <h2>What to verify in the full warranty document</h2>
+    <ul>
+      <li><strong>Coverage clock:</strong> purchase, activation, installation, or commissioning date—and whether registration is required.</li>
+      <li><strong>Year and hour limit:</strong> both may apply; the earlier limit can control.</li>
+      <li><strong>Parts, labor, and travel:</strong> whether each is covered for the full period or changes by year.</li>
+      <li><strong>Transfer switch:</strong> whether the ATS has the same warranty or a separate term.</li>
+      <li><strong>Maintenance:</strong> records, specified service intervals, approved fluids/parts, and consequences of neglected maintenance.</li>
+      <li><strong>Consumables and wear items:</strong> batteries, filters, spark plugs, fluids, fuses, belts, or similar service items may be treated differently.</li>
+      <li><strong>Corrosion / environment:</strong> enclosure corrosion, flooding, salt exposure, pests, lightning, fuel contamination, or other exclusions.</li>
+      <li><strong>Commercial / off-grid use:</strong> residential standby coverage may not apply unchanged to other duty cycles.</li>
+      <li><strong>Claim path:</strong> who diagnoses the unit, whether preauthorization is required, and which local dealer can perform warranty service.</li>
+      <li><strong>Transferability:</strong> whether coverage follows the generator or original purchaser.</li>
+    </ul>
+  </section>
+
+  <section id="quote">
+    <h2>Add these warranty questions to the written quote</h2>
+    <ol>
+      <li>What is the exact generator warranty document number or link for this model?</li>
+      <li>What is the exact ATS warranty, and is it different from the generator warranty?</li>
+      <li>Who performs local warranty service and how far away are they?</li>
+      <li>Who pays diagnostic time, labor, mileage/travel, shipping, and removal/reinstallation if a covered component fails?</li>
+      <li>What registration, activation, or maintenance records must the owner keep?</li>
+      <li>Are any extended warranties included, optional, dealer-specific, or promotional?</li>
+    </ol>
+    <p>Put the answers beside the exact model numbers in the proposal. Our <a href="/cost/standby-generator-quote-checklist/">16-line quote checklist</a> shows the other equipment and project-scope details to normalize before comparing total price.</p>
+  </section>
+</ArticleLayout>
