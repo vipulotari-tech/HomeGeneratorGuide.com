@@ -9,6 +9,7 @@ interface Props {
   description: string;
   canonical?: string;
   ogImage?: string;
+  ogType?: 'website' | 'article';
   noindex?: boolean;
   schema?: Record<string, unknown> | Record<string, unknown>[];
 }
@@ -17,6 +18,7 @@ const {
   description,
   canonical,
   ogImage = '/og-image.png',
+  ogType = 'website',
   noindex = false,
   schema,
 } = Astro.props;
@@ -37,7 +39,7 @@ const absoluteOgImage = ogImage.startsWith('http') ? ogImage : `${site}${ogImage
   <meta name="description" content={description} />
   {indexable && <link rel="canonical" href={url} />}
   <meta name="robots" content={indexable ? 'index, follow' : 'noindex, nofollow'} />
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content={ogType} />
   <meta property="og:site_name" content={SITE_NAME} />
   <meta property="og:title" content={fullTitle} />
   <meta property="og:description" content={description} />
