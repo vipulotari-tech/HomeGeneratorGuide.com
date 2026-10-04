@@ -1,233 +1,157 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import AlertBox from '../../components/ui/AlertBox.astro';
-import ComparisonTable from '../../components/ui/ComparisonTable.astro';
-import FAQSection from '../../components/ui/FAQSection.astro';
-import StatBox from '../../components/ui/StatBox.astro';
-import { appliances } from '../../data/appliance-wattage';
+import { APPLIANCE_WATTAGE_SOURCE, appliances } from '../../data/appliance-wattage';
 
 const toc = [
-  { id: 'why-sizing-matters', label: 'Why correct sizing matters' },
-  { id: 'running-vs-starting', label: 'Running vs starting watts' },
-  { id: 'motor-loads', label: 'Motor loads & surge' },
-  { id: 'hvac-startup', label: 'HVAC startup loads' },
-  { id: 'essential-vs-whole', label: 'Essential-load vs whole-home' },
-  { id: 'worked-example', label: 'Worked sizing example' },
-  { id: 'wattage-reference', label: 'Appliance wattage reference' },
-  { id: 'size-ranges', label: 'Common generator-size ranges' },
-  { id: 'square-footage', label: 'Why square footage alone fails' },
-  { id: 'special-loads', label: 'Well pumps, EV, medical' },
-  { id: 'outage-planning', label: 'Outage & climate considerations' },
-  { id: 'pro-calculation', label: 'When to get a pro load calculation' },
-  { id: 'faq', label: 'FAQ' },
-  { id: 'conclusion', label: 'Conclusion' },
+  { id: 'start-with-purpose', label: 'Start with the backup goal' },
+  { id: 'terms', label: 'Running and starting demand' },
+  { id: 'process', label: 'A safe sizing process' },
+  { id: 'worked-example', label: 'A sourced worked example' },
+  { id: 'fuel-ratings', label: 'Fuel and model ratings' },
+  { id: 'planning-sheet', label: 'Information to gather' },
+  { id: 'professional-review', label: 'When professional review is essential' },
+  { id: 'faq', label: 'Common questions' },
 ];
-
+const find = (name: string) => {
+  const result = appliances.find((appliance) => appliance.name === name);
+  if (!result) throw new Error(`Missing appliance reference: ${name}`);
+  return result;
+};
+const refrigerator = find('Refrigerator');
+const ac = find('Central air conditioner, 3 ton');
+const wellPump = find('Well pump, 1/2 HP');
+const furnaceFan = find('Furnace fan, 1/2 HP');
+const ledBulb = find('LED light bulb (each)');
+const router = find('Internet router and modem');
+const runningUpper = refrigerator.runningWatts.maximum + ac.runningWatts.maximum + wellPump.runningWatts.maximum + furnaceFan.runningWatts.maximum + ledBulb.runningWatts.maximum * 10 + router.runningWatts.maximum;
+const acStartsAlone = runningUpper - ac.runningWatts.maximum + (ac.startingWatts?.maximum ?? 0);
+const pumpStartsAlone = runningUpper - wellPump.runningWatts.maximum + (wellPump.startingWatts?.maximum ?? 0);
+const bothStartTogether = runningUpper - ac.runningWatts.maximum - wellPump.runningWatts.maximum + (ac.startingWatts?.maximum ?? 0) + (wellPump.startingWatts?.maximum ?? 0);
 const faqs = [
-  { q: 'What size generator do I need for a 2,000 sq ft home?', a: 'Square footage alone cannot answer this. A 2,000 sq ft all-gas home with a 3-ton AC typically lands in the 16–22 kW standby range, while the same size all-electric home with heat strips can exceed 26 kW. Use the load-list method in this guide, then confirm with a licensed electrician load calculation.' },
-  { q: 'Is it bad to oversize a generator?', a: 'Moderate headroom (10–25%) is good practice. Gross oversizing wastes money, burns more fuel at light load, and can complicate installation (larger gas line, bigger pad). Size to your managed loads plus headroom — not to the biggest number in the brochure.' },
-  { q: 'Can I run my central AC on a portable generator?', a: 'Generally no for standby planning: a 3-ton central AC can surge past 10,000 W on startup, exceeding most portables and requiring a proper transfer setup. Small window units are a different story. Never backfeed through dryer outlets or suicide cords — it can kill line workers.' },
-  { q: 'Do I count starting watts for every appliance at once?', a: 'No. Size for coincident loads: the largest motor starting while everything else you intend to run is already running. Load-management modules let smaller generators cover larger homes by shedding deferrable loads (water heater, second AC) during surges.' },
-  { q: 'What is the most common standby size?', a: 'For US single-family homes, 18–26 kW air-cooled standby units cover most essential-plus-comfort scenarios. Smaller essential-load setups can work at 10–14 kW with disciplined load management.' },
-  { q: 'Should I include EV charging in backup loads?', a: 'Usually exclude Level 2 EV charging from automatic backup — a 32 A charger alone draws ~7,700 W. Charge from the grid or schedule charging outside outage windows instead of sizing the generator around it.' },
-  { q: 'Is a 22 kW generator enough for a whole house?', a: 'For most 4–5 bedroom gas-heat homes: yes — 22 kW covers a 3-ton AC plus typical loads with headroom. All-electric homes with strip heat, 4-ton+ AC, or 400 A service often need 24–26 kW or managed loads. Confirm with the load calculation.' },
-
-  { q: 'How do I add up watts for generator sizing?', a: 'List everything running at once, sum the running watts, add the single largest motor surge, then add 10–25% headroom. One DOL motor starting matters more than ten LED bulbs.' },
+  { q: 'What size generator do I need for a 2,000-square-foot home?', a: 'Square footage cannot determine the required capacity. Heating fuel, HVAC equipment and startup data, well or sump pumps, electric appliances, selected circuits, and the generator fuel all matter. Use this guide to gather information, then have a qualified local professional assess the actual system.' },
+  { q: 'Can I just add the starting watts printed in a chart?', a: 'No. Starting demand is momentary, and the result depends on which loads are already running, which motors start together, and the actual equipment. A generic chart is a rough reference only; use manufacturer nameplates/manuals and a professional load analysis.' },
+  { q: 'Should I add a fixed percentage for headroom?', a: 'There is no single percentage that replaces an equipment-specific load analysis. Do not add an arbitrary margin to an uncertain chart total and treat it as a final generator size. Ask the designer to explain the running load, motor-start assumptions, fuel-specific capacity, site conditions, and any load management.' },
+  { q: 'Do standby generators have the same output on propane and natural gas?', a: 'Not necessarily. Many dual-fuel models have different published ratings by fuel. Check the exact model and fuel in the manufacturer specification sheet and the planned site supply.' },
+  { q: 'Is there a calculator on this site?', a: 'No. We intentionally do not provide an interactive estimator or automated generator recommendation. Use the static worksheet below to prepare for a qualified local assessment.' },
 ];
 ---
 <ArticleLayout
-  title="What Size Generator Do I Need? Standby Sizing Guide"
-  description="Learn how to size a standby generator: running vs starting watts, motor surge, HVAC loads, essential vs whole-home planning, worked example, and size ranges."
-  category="Sizing"
-  categoryHref="/sizing/"
-  updated="2026-10-03"
-  image="/images/sizing-electrician-panel.webp"
-  readingTime="14 min read"
-  toc={toc}
-  related={[
-    { href: '/sizing/hvac-generator-sizing/', title: 'HVAC & Generator Sizing', description: 'AC tonnage, LRA surge, and soft-start options.', category: 'Sizing' },
-    { href: '/cost/standby-generator-cost/', title: 'Standby Generator Cost (2026)', description: 'What your sized system will likely cost installed.', category: 'Cost' },
-    { href: '/sizing/whole-home-vs-essential-loads/', title: 'Whole-Home vs Essential Loads', description: 'Two backup philosophies compared.', category: 'Sizing' },
-  ]}
-  prev={{ href: '/guides/first-time-buyer-guide/', label: 'First-Time Buyer Guide' }}
-  next={{ href: '/sizing/appliance-wattage-chart/', label: 'Appliance Wattage Chart' }}
+  title="What Size Generator Do I Need? A Load-Based Planning Guide"
+  description="A static, source-linked guide to backup loads, running and starting demand, a worked example using a manufacturer chart, fuel-specific model ratings, and information to gather before professional sizing."
+  category="Sizing" categoryHref="/sizing/" updated="2026-10-04" verified="2026-10-04" readingTime="10 min read" toc={toc}
   takeaways={[
-    'Square footage never sizes a generator — your actual electrical loads do.',
-    'Size for running watts plus the single largest motor surge, then add 10–25% headroom.',
-    'Most US single-family homes land on 18–26 kW standby; essentials-only setups work at 10–14 kW.',
-    'Exclude Level 2 EV charging and manage strip heat — both dwarf normal loads.',
-    'A licensed electrician load calculation is the purchase document; this guide is the planning document.',
+    'Square footage is not an electrical load calculation; actual appliance nameplates and selected circuits govern.',
+    'Use approximate wattage charts only as a preliminary reference. Verify exact running and motor-start data from the equipment manufacturer.',
+    'Generator ratings can differ by fuel; confirm the exact model, fuel, voltage, phase, transfer equipment, and site conditions with a qualified professional.',
+    'This guide includes a static worksheet, not a calculator or sizing recommendation.',
   ]}
   sources={[
-    { label: 'U.S. EIA — Electricity Data Browser (outage and sales context)', href: 'https://www.eia.gov/electricity/', type: 'Government', verified: 'Oct 2026' },
-    { label: 'DOE Energy Saver — Heating & Cooling (appliance loads)', href: 'https://www.energy.gov/energysaver', type: 'Government', verified: 'Oct 2026' },
-    { label: 'Generac — Residential Standby Lineup (kW capacities)', href: 'https://www.generac.com/residential-products/standby-generators/', type: 'Manufacturer', verified: 'Oct 2026' },
-    { label: 'Kohler Home Energy — Home Generators (kW capacities)', href: 'https://www.kohlerhomeenergy.rehlko.com/products/home-generators', type: 'Manufacturer', verified: 'Oct 2026' },
+    { label: APPLIANCE_WATTAGE_SOURCE.label, href: APPLIANCE_WATTAGE_SOURCE.url, type: 'Manufacturer', verified: APPLIANCE_WATTAGE_SOURCE.checkedOn },
+    { label: 'Generac: What size generator do I need?', href: 'https://www.generac.com/resources/home-management/what-size-generator-do-i-need/', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'Generac G0073270 official specification sheet (fuel ratings and model limits)', href: 'https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'KOHLER/Rehlko 26RCA official specification sheet (consult professional for exact requirements)', href: 'https://techcomm.rehlko.com/techcomm/pdf/g4315.pdf', type: 'Manufacturer', verified: '2026-10-04' },
   ]}
+  related={[
+    { href: '/sizing/appliance-wattage-chart/', title: 'Appliance wattage reference', description: 'Manufacturer-published approximate ranges for common residential appliances.', category: 'Sizing' },
+    { href: '/sizing/whole-home-vs-essential-loads/', title: 'Essential loads vs. whole home', description: 'Choose which circuits and services matter during an outage.', category: 'Sizing' },
+    { href: '/cost/standby-generator-cost/', title: 'Standby-generator cost guide', description: 'Understand the scope behind a written installation price.', category: 'Cost' },
+  ]}
+  prev={{ href: '/guides/first-time-buyer-guide/', label: 'First-time buyer guide' }}
+  next={{ href: '/sizing/appliance-wattage-chart/', label: 'Appliance wattage chart' }}
 >
-    <figure class="not-prose my-6">
-    <img src="/images/sizing-electrician-panel.webp" alt="Licensed electrician testing a residential breaker panel with a clamp meter" width="1536" height="1024" loading="lazy" decoding="async" class="w-full rounded-xl border border-[#e5e7eb]" />
-    <figcaption class="mt-2 text-sm text-gray-500">Illustrative photo.</figcaption>
-  </figure>
-<section id="why-sizing-matters">
-    <h2>1. Why correct sizing matters</h2>
-    <p>An undersized standby generator trips its breaker exactly when you need it — typically the instant the air conditioner or well pump tries to start. An oversized one costs thousands more upfront, needs a larger gas supply, and sips fuel inefficiently for 15 years. Sizing is the single decision that controls <a href="/cost/standby-generator-cost/">cost</a>, <a href="/installation/what-to-expect/">installation scope</a>, and outage comfort.</p>
-    <div class="grid gap-4 sm:grid-cols-3 not-prose my-6">
-      <StatBox value="~3–7×" label="Typical motor starting surge" sub="vs running watts (LRA ÷ running)" />
-      <StatBox value="10–25%" label="Healthy headroom" sub="above managed peak load" />
-      <StatBox value="18–26 kW" label="Most common standby range" sub="US single-family homes" />
-    </div>
-    <AlertBox type="warning" title="Licensed pro required">Sizing ends in a licensed electrician's load calculation — this guide teaches you the method so you can plan and verify, not replace the calculation. Never attempt panel or transfer-switch work yourself.</AlertBox>
+  <section id="start-with-purpose">
+    <h2>Start with the backup goal—not the house size</h2>
+    <p>Before comparing generator kilowatts, decide which circuits and equipment should work during an outage. An essentials plan might prioritize refrigeration, lights, communications, a sump or well pump, and a heating-system blower. A broader plan may include air conditioning, cooking, laundry, or more than one large motor. The home's square footage does not identify those loads or their startup requirements.</p>
+    <p>Write down what needs to operate at once and what can be delayed or turned off. Do not assume a “whole-house” label means every appliance can run at the same time; transfer-switch and load-management configurations are model- and site-specific.</p>
   </section>
 
-  <section id="running-vs-starting">
-    <h2>2. Running vs starting watts</h2>
-    <p>Every appliance has <strong>running watts</strong> (continuous draw) and many motor-driven ones add <strong>starting watts</strong> (a 1–3 second surge when the motor energizes). Generators must satisfy both: enough continuous kilowatts for everything running, plus enough surge capacity for the largest motor starting <em>while the rest is already running</em>.</p>
-    <svg viewBox="0 0 560 200" class="my-4 w-full rounded-lg border border-[#e5e7eb] bg-white" role="img" aria-label="Diagram comparing running watts baseline with short starting surge spike"><title>Running vs starting watts</title><rect x="40" y="120" width="300" height="40" fill="#1B3A6B" rx="4"/><rect x="40" y="40" width="90" height="120" fill="#F5821F" rx="4"/><text x="40" y="180" font-size="13" fill="#fff" font-family="sans-serif">running watts (continuous)</text><text x="46" y="100" font-size="13" fill="#fff" font-family="sans-serif">surge</text><text x="360" y="100" font-size="13" fill="#1A1A2E" font-family="sans-serif">Motors spike, then settle.</text><text x="360" y="120" font-size="13" fill="#6b7280" font-family="sans-serif">Size for both.</text></svg>
-    <ul>
-      <li><strong>Resistive loads</strong> (heaters, ovens, incandescent-era lighting): starting ≈ running. Simple addition.</li>
-      <li><strong>Motor loads</strong> (AC compressors, well pumps, fridge compressors): starting ≈ 3–7× running. These dominate sizing.</li>
-      <li><strong>Electronics</strong> (TVs, routers, computers): small, no surge — but they are why clean transfer and surge protection matter.</li>
-    </ul>
+  <section id="terms">
+    <h2>Running and starting demand are different</h2>
+    <p><strong>Running watts</strong> describe a load while it is operating. A motor-driven load may need a brief higher starting demand when it begins. The nameplate may provide voltage, amperage, full-load amps, or locked-rotor amps rather than a single starting-watt figure; those values must be interpreted for the actual system by a qualified professional.</p>
+    <p>A generator’s ability to start a motor is not established by adding every “starting watt” row in a general chart. The relevant question is what else is running when a specific motor starts, whether starts overlap, and how the generator’s transient/motor-starting capability performs at the fuel, voltage, and site conditions in the project.</p>
+    <figure class="not-prose my-6 rounded-xl border border-[#d9e0ea] bg-[#f7f9fc] p-4 sm:p-6">
+      <svg viewBox="0 0 820 260" role="img" aria-labelledby="load-diagram-title load-diagram-desc" class="h-auto w-full">
+        <title id="load-diagram-title">Static process for planning generator loads</title>
+        <desc id="load-diagram-desc">A five-step diagram: choose backed-up circuits, record nameplate data, list coincident running loads, assess motor starts and sequencing, and have a professional verify generator, fuel, and transfer equipment.</desc>
+        <defs><marker id="arrow-load" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#1b3a6b" /></marker></defs>
+        <g font-family="system-ui, sans-serif" text-anchor="middle">
+          <rect x="12" y="44" width="138" height="132" rx="14" fill="#edf3fb" stroke="#1b3a6b" stroke-width="2" /><text x="81" y="82" font-size="17" font-weight="700" fill="#1b3a6b">1. Choose</text><text x="81" y="110" font-size="13" fill="#27364d">backed-up</text><text x="81" y="130" font-size="13" fill="#27364d">circuits</text>
+          <rect x="176" y="44" width="138" height="132" rx="14" fill="#edf3fb" stroke="#1b3a6b" stroke-width="2" /><text x="245" y="82" font-size="17" font-weight="700" fill="#1b3a6b">2. Record</text><text x="245" y="110" font-size="13" fill="#27364d">exact nameplate</text><text x="245" y="130" font-size="13" fill="#27364d">and manual data</text>
+          <rect x="340" y="44" width="138" height="132" rx="14" fill="#fff7ed" stroke="#d97706" stroke-width="2" /><text x="409" y="82" font-size="17" font-weight="700" fill="#8a4300">3. List</text><text x="409" y="110" font-size="13" fill="#27364d">loads expected</text><text x="409" y="130" font-size="13" fill="#27364d">to run together</text>
+          <rect x="504" y="44" width="138" height="132" rx="14" fill="#fff7ed" stroke="#d97706" stroke-width="2" /><text x="573" y="82" font-size="17" font-weight="700" fill="#8a4300">4. Assess</text><text x="573" y="110" font-size="13" fill="#27364d">motor starts and</text><text x="573" y="130" font-size="13" fill="#27364d">load sequencing</text>
+          <rect x="668" y="44" width="138" height="132" rx="14" fill="#e9f5ee" stroke="#237a4b" stroke-width="2" /><text x="737" y="82" font-size="17" font-weight="700" fill="#14532d">5. Verify</text><text x="737" y="110" font-size="13" fill="#27364d">fuel, model rating,</text><text x="737" y="130" font-size="13" fill="#27364d">site and transfer</text>
+          <line x1="150" y1="110" x2="171" y2="110" stroke="#1b3a6b" stroke-width="2" marker-end="url(#arrow-load)" /><line x1="314" y1="110" x2="335" y2="110" stroke="#1b3a6b" stroke-width="2" marker-end="url(#arrow-load)" /><line x1="478" y1="110" x2="499" y2="110" stroke="#1b3a6b" stroke-width="2" marker-end="url(#arrow-load)" /><line x1="642" y1="110" x2="663" y2="110" stroke="#1b3a6b" stroke-width="2" marker-end="url(#arrow-load)" />
+          <text x="410" y="221" font-size="15" font-weight="600" fill="#1b3a6b">Planning aid only — not an automated size recommendation</text>
+        </g>
+      </svg>
+      <figcaption class="mt-3 text-sm text-gray-600">Original static editorial diagram. A qualified local professional must evaluate the specific equipment and installation.</figcaption>
+    </figure>
   </section>
 
-  <section id="motor-loads">
-    <h2>3. Motor loads: the surge that decides everything</h2>
-    <p>Motor nameplates list <strong>LRA (Locked Rotor Amps)</strong> — the worst-case startup current. Multiply LRA × voltage for startup volt-amps. A 3-ton condenser with 70 A LRA at 240 V implies ~16,800 VA of instantaneous demand; diversity and modern controls reduce what the generator actually sees, but this is why HVAC rules sizing.</p>
-    <p>Practical rules: stagger motor starts (never let AC + well pump start the same second), use load-management modules to shed deferrable loads during surges, and consider soft-start kits for large single compressors — they can cut startup current 30–60% per manufacturer data, sometimes letting a 22 kW unit do a 24 kW job.</p>
-  </section>
-
-  <section id="hvac-startup">
-    <h2>4. HVAC startup loads</h2>
-    <p>Central air conditioning is the largest single surge in most homes. Plan by tonnage, then verify the condenser nameplate:</p>
-    <ComparisonTable
-      caption="Central AC running and starting watts by tonnage"
-      headers={['System', 'Running (W)', 'Starting (W)', 'Planning note']}
-      rows={[
-        ['2-ton central AC', '2,500', '7,500', 'Fits most 18–22 kW plans'],
-        ['3-ton central AC', '3,500', '11,000', 'Largest single surge in many homes'],
-        ['4-ton central AC', '5,000', '15,000', 'Often needs load management'],
-        ['Heat pump + aux strips', '4,000 + strips', '12,000+', 'Lock out strips on backup if possible'],
-      ]}
-    />
-    <p class="mt-3">Gas furnaces still need electricity (blower ~800 W running / ~2,300 W starting). Heat pumps with electric auxiliary strips are the trap: 5–10 kW of strip heat can dwarf the compressor — configure controls to lock out strips on generator power. Full detail: <a href="/sizing/hvac-generator-sizing/">HVAC sizing guide</a>.</p>
-  </section>
-
-  <section id="essential-vs-whole">
-    <h2>5. Essential-load vs whole-home sizing</h2>
-    <p>Choose a philosophy before choosing kilowatts:</p>
-    <ComparisonTable
-      caption="Essential load versus whole home backup"
-      headers={['', 'Essential loads', 'Whole home']}
-      rows={[
-        ['Typical size', '10–14 kW', '20–26+ kW'],
-        ['Covers', 'Fridge, lights, internet, furnace blower, one small AC or well pump', 'Near-normal life: full HVAC, laundry, kitchen'],
-        ['Cost signal', 'Lower equipment + simpler install', 'Higher equipment, gas, and panel scope'],
-        ['Best for', 'Budget-first, short outages, gas heat homes', 'Medical needs, home office, long outages, all-electric homes'],
-      ]}
-    />
-    <p class="mt-3">Most buyers land between: <strong>managed whole-home</strong> — a 20–24 kW unit with load-shed modules covering everything except 2–3 deferrable giants. See <a href="/sizing/whole-home-vs-essential-loads/">the full comparison</a>.</p>
+  <section id="process">
+    <h2>A safe, source-based planning process</h2>
+    <ol>
+      <li><strong>Choose the loads.</strong> Separate must-run equipment from loads that can be excluded, switched off, or sequenced.</li>
+      <li><strong>Collect exact data.</strong> Photograph nameplates and manuals for compressors, pumps, electric heating/water heating, appliances, and any medical equipment. Use actual amperage and starting information where provided.</li>
+      <li><strong>Build the coincident-load list.</strong> Record running loads expected to operate at the same time. Note when motors may start, and which loads could overlap.</li>
+      <li><strong>Check the exact generator.</strong> Read the current model specification for the intended fuel, voltage, phase, standby rating, motor-starting capability, and transfer-switch configuration. Ratings may differ with fuel and site conditions.</li>
+      <li><strong>Have a professional verify the complete system.</strong> The assessment should account for wiring/transfer equipment, load management, fuel supply and pressure, environmental derating, local requirements, and commissioning.</li>
+    </ol>
   </section>
 
   <section id="worked-example">
-    <h2>6. Worked sizing example (2,000 sq ft, gas heat, 3-ton AC, well pump)</h2>
-    <p>The Miller family (illustrative) lists what runs simultaneously on backup, then adds the largest surge:</p>
-    <ComparisonTable
-      caption="Worked sizing example load list"
-      headers={['Load', 'Running (W)', 'Counts toward surge?']}
-      rows={[
-        ['Refrigerator', '700', 'Already running'],
-        ['Freezer', '500', 'Already running'],
-        ['Lights (LED, generous)', '300', 'Already running'],
-        ['Internet + TV + computers', '400', 'Already running'],
-        ['Furnace blower (winter) / air handler', '800', 'Already running'],
-        ['Well pump 1/2 HP (running)', '1,000', 'Largest motor starts here'],
-        ['Microwave (managed use)', '1,200', 'Stagger — not simultaneous'],
-      ]}
-    />
-    <ul>
-      <li><strong>Continuous base:</strong> 700 + 500 + 300 + 400 + 800 + 1,000 = 4,700 W. Add 3-ton AC running 3,500 W → <strong>8,200 W continuous</strong>.</li>
-      <li><strong>Surge check:</strong> base minus largest motor (well pump 1,000) = 7,200 W already running; add well-pump starting 3,000 W → 10,200 W; then AC starting 11,000 W against the rest → peak ≈ <strong>15–17 kW</strong> momentary.</li>
-      <li><strong>Selection:</strong> 20 kW standby (manages both surges with headroom) or 18 kW with a load-shed module on the water heater. Add 10–25% headroom — never size to the razor edge.</li>
-    </ul>
-    <AlertBox type="info" title="Summer vs winter math">Run the list twice — once for August (AC surging) and once for January (blower + heat strips). Size to the worse season.</AlertBox>
-  </section>
-
-  <section id="wattage-reference">
-    <h2>7. Appliance wattage reference</h2>
-    <p>Conservative planning figures. Your nameplates govern — these get you to a shortlist, not a purchase order. See the full standalone <a href="/sizing/appliance-wattage-chart/">appliance wattage chart</a>.</p>
-    <div class="overflow-x-auto rounded-lg border border-[#e5e7eb] not-prose">
-      <table class="w-full min-w-[640px] border-collapse text-left text-sm">
-        <caption class="sr-only">Appliance running and starting watts</caption>
-        <thead><tr class="bg-primary text-white"><th scope="col" class="px-4 py-3">Appliance</th><th scope="col" class="px-4 py-3">Running</th><th scope="col" class="px-4 py-3">Starting</th><th scope="col" class="px-4 py-3">Notes</th></tr></thead>
-        <tbody>
-          {appliances.map((a) => (
-            <tr class="border-t border-[#e5e7eb] odd:bg-white even:bg-surface">
-              <th scope="row" class="px-4 py-2.5 font-medium text-primary">{a.name}</th>
-              <td class="px-4 py-2.5">{a.runningWatts.toLocaleString()} W</td>
-              <td class="px-4 py-2.5">{a.startingWatts.toLocaleString()} W</td>
-              <td class="px-4 py-2.5 text-gray-600">{a.notes ?? '—'}</td>
-            </tr>
-          ))}
+    <h2>Worked example: what an approximate chart can—and cannot—show</h2>
+    <p>The following is arithmetic using the upper ends of ranges in Champion’s published chart, checked October 4, 2026. It is <strong>not an example home measurement, not a recommendation, and not a generator-size calculation</strong>.</p>
+    <div class="not-prose mt-4 overflow-x-auto rounded-xl border border-[#d9e0ea]">
+      <table class="min-w-[570px] w-full border-collapse text-left text-sm">
+        <caption class="sr-only">Upper-end planning values used in an illustrative arithmetic example</caption>
+        <thead class="bg-[#edf3fb] text-primary"><tr><th scope="col" class="p-3">Reference load</th><th scope="col" class="p-3">Running value used</th><th scope="col" class="p-3">Chart’s upper starting value</th></tr></thead>
+        <tbody class="divide-y divide-gray-200 text-gray-800">
+          <tr><th scope="row" class="p-3">Refrigerator</th><td class="p-3">{refrigerator.runningWatts.maximum.toLocaleString()} W</td><td class="p-3">{refrigerator.startingWatts?.maximum.toLocaleString()} W</td></tr>
+          <tr><th scope="row" class="p-3">3-ton central AC</th><td class="p-3">{ac.runningWatts.maximum.toLocaleString()} W</td><td class="p-3">{ac.startingWatts?.maximum.toLocaleString()} W</td></tr>
+          <tr><th scope="row" class="p-3">1/2 HP well pump</th><td class="p-3">{wellPump.runningWatts.maximum.toLocaleString()} W</td><td class="p-3">{wellPump.startingWatts?.maximum.toLocaleString()} W</td></tr>
+          <tr><th scope="row" class="p-3">1/2 HP furnace fan</th><td class="p-3">{furnaceFan.runningWatts.maximum.toLocaleString()} W</td><td class="p-3">{furnaceFan.startingWatts?.maximum.toLocaleString()} W</td></tr>
+          <tr><th scope="row" class="p-3">Ten LED bulbs at the chart maximum</th><td class="p-3">{(ledBulb.runningWatts.maximum * 10).toLocaleString()} W</td><td class="p-3">No additional start range listed</td></tr>
+          <tr><th scope="row" class="p-3">Router and modem</th><td class="p-3">{router.runningWatts.maximum.toLocaleString()} W</td><td class="p-3">No additional start range listed</td></tr>
+          <tr class="bg-[#f7f9fc]"><th scope="row" class="p-3">Illustrative running sum</th><td class="p-3 font-semibold" colspan="2">{runningUpper.toLocaleString()} W (5.87 kW)</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="text-sm text-gray-500">Sources: manufacturer spec-sheet ranges, DOE/EnergyStar references, motor-chart conventions. Full typed dataset: site data file <code>appliance-wattage.ts</code>.</p>
+    <p class="mt-4">If the AC’s listed upper starting value occurred while all other example loads were running, the simple chart arithmetic is {runningUpper.toLocaleString()} − {ac.runningWatts.maximum.toLocaleString()} + {ac.startingWatts?.maximum.toLocaleString()} = <strong>{acStartsAlone.toLocaleString()} W</strong>. If the pump and AC started at the same time, the same simplified arithmetic would be {bothStartTogether.toLocaleString()} W. If only the pump started, it would be {pumpStartsAlone.toLocaleString()} W.</p>
+    <p>This calculation exposes the importance of timing and load overlap; it does not verify motor acceleration, generator transient response, voltage drop, power factor, or the actual nameplate values. Do not purchase from this total. Provide the load list to a qualified local professional for a model-specific assessment.</p>
   </section>
 
-  <section id="size-ranges">
-    <h2>8. Common generator-size ranges</h2>
-    <ComparisonTable
-      caption="Standby size ranges and typical coverage"
-      headers={['Size', 'Continuous power', 'Typically covers']}
-      rows={[
-        ['10–12 kW', '~40–50 A @ 240 V', 'Essentials: fridge, lights, internet, furnace blower, sump; one small motor with management'],
-        ['14–16 kW', '~60–65 A @ 240 V', 'Essentials + well pump or small AC (with load discipline)'],
-        ['18–22 kW', '~75–90 A @ 240 V', 'Most 4–5 bed homes: 3-ton AC + typical loads; the sweet spot'],
-        ['24–26 kW', '~100–110 A @ 240 V', 'Larger homes / 4-ton AC / concurrent motors with headroom'],
-        ['30 kW+ liquid-cooled', '125 A+ @ 240 V', 'Estates, all-electric, long outages — pro design required'],
-      ]}
-    />
+  <section id="fuel-ratings">
+    <h2>Fuel and model ratings matter</h2>
+    <p>Dual-fuel standby units may have different ratings on natural gas and LP. For example, the manufacturer’s current specification sheet for Generac model G0073270 lists 26 kW on LP and 24 kW on natural gas. That example describes one exact model; it is not a statement about all Generac units or a recommendation that this model fits a home.</p>
+    <p>Before comparing any ratings, match model number, fuel, phase, voltage, ambient/altitude requirements, and transfer-switch/load-management package. See our source-linked <a href="/brands/generac/">Generac</a> and <a href="/brands/kohler/">KOHLER</a> model pages. For broader concepts, review <a href="/sizing/understanding-generator-ratings/">generator ratings and derating</a>.</p>
   </section>
 
-  <section id="square-footage">
-    <h2>9. Why home square footage alone cannot size a generator</h2>
-    <p>Two identical 2,500 sq ft homes can differ by 15 kW: one with gas heat, gas water, and a 2-ton AC; another all-electric with heat strips, two wall ovens, and a 5-ton AC. Square footage hints at lighting and receptacle counts — it says nothing about the compressor LRA, pump HP, or strip heat that actually decides kilowatts. Any chart mapping sq ft → kW without asking about HVAC, water heating, well pumps, and cooking fuel is a marketing shortcut, not engineering. Use it (if at all) as a sanity check after the load list, never instead of it.</p>
+  <section id="planning-sheet">
+    <h2>Information to gather before a professional assessment</h2>
+    <p>This is a blank static planning sheet. It records information; it does not add watts or produce a size.</p>
+    <div class="not-prose mt-4 overflow-x-auto rounded-xl border border-[#d9e0ea]">
+      <table class="min-w-[700px] w-full border-collapse text-left text-sm">
+        <caption class="sr-only">Blank, static generator-load planning worksheet</caption>
+        <thead class="bg-[#edf3fb] text-primary"><tr><th scope="col" class="p-3">Appliance / circuit</th><th scope="col" class="p-3">Manufacturer / model</th><th scope="col" class="p-3">Nameplate or manual data</th><th scope="col" class="p-3">Must run together?</th><th scope="col" class="p-3">Can it be shed/delayed?</th></tr></thead>
+        <tbody class="divide-y divide-gray-200">{Array.from({ length: 7 }).map(() => <tr><td class="h-12 p-3">&nbsp;</td><td class="p-3">&nbsp;</td><td class="p-3">&nbsp;</td><td class="p-3">&nbsp;</td><td class="p-3">&nbsp;</td></tr>)}</tbody>
+      </table>
+    </div>
+    <p class="mt-4">Also note the fuel at the site, service/panel configuration, any medical-device requirements to discuss with a clinician or device supplier, and relevant property or permit constraints.</p>
   </section>
 
-  <section id="special-loads">
-    <h2>10–13. Special loads: well pumps, central AC, EV charging, medical equipment</h2>
-    <h3>Well pumps</h3>
-    <p>Deep-well 1 HP pumps surge to ~6,000 W. Pair with a large pressure tank (fewer starts), never schedule irrigation on backup, and give the pump priority in load-management programming. Detail: <a href="/sizing/well-pump-generator-sizing/">well-pump sizing</a>.</p>
-    <h3>Central AC</h3>
-    <p>Covered above — tonnage + LRA + soft-start evaluation. Detail: <a href="/sizing/hvac-generator-sizing/">HVAC guide</a>.</p>
-    <h3>EV charging</h3>
-    <p>Exclude Level 2 charging from automatic backup. At ~7,700 W it equals an entire essential panel. If outage driving is critical, charge at public DC fast chargers or schedule Level 1 trickle manually — do not bake it into standby kilowatts.</p>
-    <h3>Medical equipment</h3>
-    <p>CPAPs and oxygen concentrators draw modest watts but demand high reliability: keep them on a UPS for the 10-second transfer gap, confirm runtime with your clinician and device label, and tell your installer — medical loads get priority panel placement. This guide is not medical advice.</p>
+  <section id="professional-review">
+    <h2>When professional review is essential</h2>
+    <p>Have a qualified local professional assess the system before purchasing equipment or planning a connection. This is especially important for central HVAC, well/sump pumps, electric heat or water heat, multiple transfer panels, medical loads, high service amperage, load shedding, gas-line changes, or installations in constrained locations. The professional must apply the exact equipment instructions and local code/permit requirements.</p>
+    <p>Do not open an electrical panel, install a transfer switch/interlock, modify fuel piping, or use a calculator’s output as a substitute for the design. HomeGeneratorGuide has not performed an on-site load calculation and does not provide licensed electrical or fuel-system advice.</p>
+    <p>Continue with our guides to <a href="/installation/what-to-expect/">the installation process</a>, <a href="/cost/standby-generator-cost/">project-cost scope</a>, and <a href="/guides/generator-safety-overview/">generator safety</a>.</p>
   </section>
 
-  <section id="outage-planning">
-    <h2>14. Hurricane & extended-outage considerations</h2>
-    <ul>
-      <li><strong>Fuel endurance:</strong> natural gas runs indefinitely (utility permitting); propane depends on tank size — a 250-gal tank at half load lasts roughly 4–6 days. Size the tank with the outage, not just the generator.</li>
-      <li><strong>Heat + humidity:</strong> derate expectations above 95°F; confirm clearance and airflow per manual — blocked enclosures overheat and void warranties.</li>
-      <li><strong>Flood placement:</strong> elevate above base-flood elevation; never in a garage or basement (carbon monoxide).</li>
-      <li><strong>Exercise discipline:</strong> weekly 5–12 minute exercise cycles prove readiness; a unit that has not run in 8 months is a decoration.</li>
-    </ul>
-  </section>
-
-  <section id="pro-calculation">
-    <h2>15. When professional load calculation is appropriate</h2>
-    <p>Always, before purchase — but especially when any of these apply: 400 A service, multiple HVAC systems, all-electric heat, accessory dwelling units, home business with servers, or medical life-safety loads. Expect the electrician to record nameplate LRA/FLA, measure with clamps, apply NEC Article 220 demand factors, and produce a panel schedule showing backed-up vs shed loads. If a bidder sizes from square footage alone or will not show the calculation — get another bid. Our <a href="/cost/standby-generator-cost/">cost guide</a> includes a quote-comparison checklist.</p>
-    <svg viewBox="0 0 560 150" class="my-4 w-full rounded-lg border border-[#e5e7eb] bg-white" role="img" aria-label="Sizing workflow: list loads, add running watts, add largest surge, add headroom, verify with pro"><title>Generator sizing workflow</title><text x="20" y="40" font-size="14" fill="#1B3A6B" font-family="sans-serif">1 List loads → 2 Add running W → 3 Add largest surge → 4 +10–25% → 5 Pro verifies</text><rect x="20" y="60" width="90" height="10" rx="5" fill="#1B3A6B"/><rect x="120" y="60" width="90" height="10" rx="5" fill="#1B3A6B"/><rect x="220" y="60" width="90" height="10" rx="5" fill="#F5821F"/><rect x="320" y="60" width="90" height="10" rx="5" fill="#F5821F"/><rect x="420" y="60" width="110" height="10" rx="5" fill="#2D7D46"/></svg>
-  </section>
-
-  <section id="faq"><span class="sr-only">FAQ anchor</span></section>
-  <FAQSection items={faqs} />
-
-  <section id="conclusion">
-    <h2>Conclusion</h2>
-    <p>Size from loads, not floor plans: list what runs together, add running watts, cover the largest surge, add 10–25% headroom, manage the giants with load shedding — then have a licensed electrician verify with a real calculation. A right-sized 20 kW that starts every time beats an oversized 26 kW bought on guesswork. Next: <a href="/cost/standby-generator-cost/">what it costs installed</a> and <a href="/installation/what-to-expect/">what installation day looks like</a>.</p>
-  </section>
+  <section id="faq"><span class="sr-only">Frequently asked questions anchor</span></section>
+  <div class="mt-4">
+    <h2>Common questions</h2>
+    <dl class="space-y-4">
+      {faqs.map((item) => <div><dt class="font-semibold">{item.q}</dt><dd class="mt-1">{item.a}</dd></div>)}
+    </dl>
+  </div>
 </ArticleLayout>

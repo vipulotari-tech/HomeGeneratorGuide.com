@@ -1,26 +1,67 @@
-import re, glob, os
+"""Validate production sitemap coverage or staging's non-indexable separation."""
+from pathlib import Path
+import re
+from urllib.parse import urlparse
 
-# coverage: every built page must be in sitemap (except 404/500), and every
-# sitemap URL must resolve to a built file. No staging host may leak in.
-sm = open('dist/sitemap-0.xml', encoding='utf-8').read()
-urls = re.findall(r'<loc>(.*?)</loc>', sm)
-print('sitemap urls:', len(urls))
-if any('workers.dev' in u or 'localhost' in u for u in urls):
-    raise SystemExit('STAGING LEAK IN SITEMAP')
+ROOT = Path(__file__).resolve().parents[1]
+DIST = ROOT / "dist"
+assert DIST.is_dir(), "Run a production or staging build first"
 
-built = set()
-for p in glob.glob('dist/**/*.html', recursive=True):
-    rel = os.path.relpath(p, 'dist').replace('\\', '/')
-    if rel in ('404.html', '500.html'):
-        continue
-    u = 'https://homegeneratorguide.com/' + ('' if rel == 'index.html' else rel[:-len('index.html')])
-    built.add(u)
+robots_path = DIST / "robots.txt"
+assert robots_path.is_file(), "robots.txt missing from build"
+robots = robots_path.read_text(encoding="utf-8")
+html_pages = sorted(DIST.rglob("index.html"))
+all_html = sorted(DIST.rglob("*.html"))
+built_paths = {
+    "/" if page.parent == DIST else "/" + page.parent.relative_to(DIST).as_posix() + "/"
+    for page in html_pages
+}
 
-missing = sorted(built - set(urls))
-extra = sorted(set(urls) - built)
-print('built pages:', len(built))
-print('in sitemap but not built:', extra or 'NONE')
-print('built but not in sitemap:', missing or 'NONE')
-if missing or extra:
-    raise SystemExit('COVERAGE MISMATCH')
-print('COVERAGE OK')
+if "Sitemap: https://homegeneratorguide.com/sitemap-index.xml" in robots:
+    base_url = "https://homegeneratorguide.com"
+    assert "Disallow: /" not in robots, "production robots.txt blocks the whole site"
+    headers = (DIST / "_headers").read_text(encoding="utf-8")
+    assert "X-Robots-Tag: noindex" not in headers, "staging noindex header leaked into production"
+    sitemap_path = DIST / "sitemap-0.xml"
+    index_path = DIST / "sitemap-index.xml"
+    assert sitemap_path.is_file() and index_path.is_file(), "production sitemap missing"
+    sitemap_index = index_path.read_text(encoding="utf-8")
+    index_urls = re.findall(r"<loc>(.*?)</loc>", sitemap_index)
+    assert index_urls and all(
+        urlparse(url).scheme == "https" and urlparse(url).netloc == "homegeneratorguide.com"
+        for url in index_urls
+    ), "non-production origin leaked into production sitemap index"
+    sitemap = sitemap_path.read_text(encoding="utf-8")
+    urls = re.findall(r"<loc>(.*?)</loc>", sitemap)
+    assert all(urlparse(url).netloc == "homegeneratorguide.com" for url in urls), (
+        "non-production host leaked into production sitemap"
+    )
+    expected = {base_url + path for path in built_paths}
+    assert set(urls) == expected, {
+        "missing": sorted(expected - set(urls)),
+        "extra": sorted(set(urls) - expected),
+    }
+    for page in all_html:
+        html = page.read_text(encoding="utf-8")
+        if page in html_pages:
+            assert re.search(
+                r'<link rel="canonical" href="https://homegeneratorguide\.com/', html
+            ), page
+            assert 'name="robots" content="noindex' not in html, page
+        else:
+            assert 'name="robots" content="noindex, nofollow"' in html, page
+            assert 'rel="canonical"' not in html, page
+    print(f"Production SEO coverage OK: {len(urls)} URLs, self-canonicals, production robots.txt.")
+else:
+    assert "Disallow: /" in robots, "staging robots.txt must disallow crawling"
+    assert not list(DIST.glob("sitemap*.xml")), "staging must not publish sitemap files"
+    for page in all_html:
+        html = page.read_text(encoding="utf-8")
+        assert 'name="robots" content="noindex, nofollow"' in html, page
+        assert 'rel="canonical"' not in html, page
+        assert "https://homegeneratorguide.com/" not in html, page
+    headers = (DIST / "_headers").read_text(encoding="utf-8")
+    assert "X-Robots-Tag: noindex, nofollow" in headers
+    print(f"Staging SEO isolation OK: {len(all_html)} HTML pages noindex/nofollow; no sitemap.")
+
+print(f"Built route count (excluding error pages): {len(built_paths)}")

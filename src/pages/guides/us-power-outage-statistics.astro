@@ -1,103 +1,62 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import AlertBox from '../../components/ui/AlertBox.astro';
-import ComparisonTable from '../../components/ui/ComparisonTable.astro';
-import FAQSection from '../../components/ui/FAQSection.astro';
-import StatBox from '../../components/ui/StatBox.astro';
-import { worstStates2024, bestStates2024, nationalTrend, outageCauses } from '../../data/outage-stats';
 
 const toc = [
-  { id: 'metrics', label: 'SAIDI & SAIFI explained' },
-  { id: 'trend', label: 'National trend' },
-  { id: 'worst', label: '15 hardest-hit states' },
-  { id: 'best', label: '10 most reliable states' },
-  { id: 'causes', label: 'What causes outages' },
-  { id: 'events', label: 'Historic outage events' },
-  { id: 'rural', label: 'Rural vs urban gap' },
-  { id: 'adoption', label: 'Who already owns backup' },
-  { id: 'decide', label: 'Does your state justify standby?' },
-  { id: 'faq', label: 'FAQ' },
+  { id: 'latest-national', label: 'EIA’s 2024 national snapshot' },
+  { id: 'metrics', label: 'What SAIDI and SAIFI mean' },
+  { id: 'limits', label: 'What averages cannot tell you' },
+  { id: 'local-planning', label: 'Use local data for planning' },
 ];
 ---
 <ArticleLayout
-  title="US Power Outage Statistics by State (2024 EIA Snapshot)"
-  description="US outage stats: SAIDI/SAIFI explained, national trend, hardest-hit and most reliable states, causes, historic storms, rural gap, and backup-power adoption."
-  category="Buying Guides" categoryHref="/guides/" updated="2026-10-03" image="/images/storm-outage-suburb.webp" readingTime="11 min read" toc={toc}
+  title="U.S. Power Outage Statistics: What EIA’s 2024 Data Shows"
+  description="A restrained summary of EIA’s 2024 U.S. outage data, SAIDI and SAIFI definitions, and why national averages do not predict a household’s outages or generator payback."
+  category="Guides" categoryHref="/guides/" updated="2026-10-04" verified="2026-10-04" readingTime="5 min read" toc={toc}
+  takeaways={[
+    'EIA reported an average of 11 hours of electricity interruptions per U.S. customer in 2024; major events accounted for 80% of the hours without electricity that year.',
+    'EIA’s annual reliability measures describe average interruption duration and frequency; they are not forecasts for an individual home.',
+    'Use local utility information and household needs—not a state ranking or national average—to plan for backup power.',
+  ]}
   sources={[
-    { label: 'U.S. EIA — Electricity Data Browser', href: 'https://www.eia.gov/electricity/', type: 'Government', verified: 'Oct 2026' },
-    { label: 'DOE Energy Saver', href: 'https://www.energy.gov/energysaver', type: 'Government', verified: 'Oct 2026' },
+    { label: 'EIA: Hurricanes in 2024 led to the most hours without power in the U.S. in 10 years (Dec. 1, 2025)', href: 'https://www.eia.gov/todayinenergy/detail.php?id=66744', type: 'Government', verified: '2026-10-04' },
+    { label: 'EIA Electric Power Annual: SAIDI values by state, 2014–2024 (Table 11.4)', href: 'https://www.eia.gov/electricity/annual/table.php?t=epa_11_04.html', type: 'Government', verified: '2026-10-04' },
+    { label: 'EIA Electric Power Annual: SAIFI values by state, 2014–2024 (Table 11.5)', href: 'https://www.eia.gov/electricity/annual/table.php?t=epa_11_05.html', type: 'Government', verified: '2026-10-04' },
   ]}
   related={[
-    { href: '/cost/generator-roi-outage-costs/', title: 'Generator ROI & Outage Costs', description: 'Turn stats into payback math.', category: 'Cost' },
-    { href: '/guides/first-time-buyer-guide/', title: 'First-Time Buyer Guide', description: 'Five decisions in order.', category: 'Buying Guides' },
+    { href: '/cost/generator-roi-outage-costs/', title: 'Is a standby generator worth it?', description: 'Assess household priorities without invented payback claims.', category: 'Cost' },
+    { href: '/guides/first-time-buyer-guide/', title: 'First-time buyer guide', description: 'Work through the backup decisions in order.', category: 'Guides' },
+    { href: '/guides/generator-safety-overview/', title: 'Generator safety overview', description: 'CO, connection, fuel, and storm precautions.', category: 'Guides' },
   ]}
-  prev={{ href: '/guides/natural-gas-vs-propane/', label: 'Natural Gas vs Propane' }}
-  next={{ href: '/guides/generator-safety-carbon-monoxide/', label: 'CO Safety Guide' }}
 >
-  <AlertBox type="warning" title="2024 was an extreme storm year">Rankings below are a 2024 snapshot dominated by Helene, Milton, and Beryl — they swing hard year to year. Use them for relative exposure, not as permanent state grades. EIA Electric Power Annual tables are the authoritative series; per-state bands blend EIA with tracker estimates.</AlertBox>
+  <section id="latest-national">
+    <h2>EIA’s 2024 national snapshot</h2>
+    <p>The U.S. Energy Information Administration reported that U.S. electricity customers experienced an average of <strong>11 hours of interruptions in 2024</strong>, nearly twice the annual average of the prior decade. EIA attributed <strong>80% of the 2024 hours without electricity to major events</strong>, including Hurricanes Beryl, Helene, and Milton. Interruptions attributed to major events averaged nearly nine hours in 2024, compared with nearly four hours per year on average from 2014 through 2023.</p>
+    <p>These are EIA’s reported U.S. averages for one year that included major weather events. They do not show that every customer lost power for 11 hours, nor do they establish a trend for every utility or address.</p>
+  </section>
 
-    <figure class="not-prose my-6">
-    <img src="/images/storm-outage-suburb.webp" alt="Storm clouds over a suburban street with one home lit during an outage" width="1536" height="1024" loading="lazy" decoding="async" class="w-full rounded-xl border border-[#e5e7eb]" />
-    <figcaption class="mt-2 text-sm text-gray-500">Illustrative photo.</figcaption>
-  </figure>
-<section id="metrics"><h2>SAIDI & SAIFI in one minute</h2>
-  <div class="grid gap-4 sm:grid-cols-3 not-prose my-6">
-    <StatBox value="11.0 h" label="US SAIDI 2024" sub="~83% above 10-yr avg; weather-driven" />
-    <StatBox value="1.53" label="US SAIFI 2024" sub="outages per customer" />
-    <StatBox value="~80%" label="2024 outage hours from major weather" sub="EIA attribution" />
-  </div>
-  <p><strong>SAIDI</strong> (System Average Interruption Duration Index) = total hours dark per customer per year. <strong>SAIFI</strong> (Frequency Index) = number of interruptions per customer per year. Together they separate "often but brief" grids from "rare but week-long" ones — standby math cares mostly about SAIDI plus your personal worst week.</p></section>
+  <section id="metrics">
+    <h2>What SAIDI and SAIFI mean</h2>
+    <ul>
+      <li><strong>SAIDI</strong> (System Average Interruption Duration Index) measures the total duration of non-momentary interruptions experienced by an average customer over a year.</li>
+      <li><strong>SAIFI</strong> (System Average Interruption Frequency Index) measures the number of interruptions in a year.</li>
+    </ul>
+    <p>These indices summarize utility-reported reliability information. Definitions, data coverage, and whether major events are included matter when comparing years or jurisdictions. Read EIA’s notes alongside the table rather than treating a single figure as a household prediction.</p>
+  </section>
 
-  <section id="trend"><h2>National trend: rising, storm-driven</h2>
-  <ComparisonTable caption="US outage trend" headers={['Year', 'SAIDI', 'SAIFI', 'Drivers']} rows={nationalTrend.map((r) => [r.year, r.saidi, r.saifi, r.events])} />
-  <p class="mt-3">2024's 11.0 hours is the decade high and ~83% above the 10-year average — but note the lumpiness: 2021 (Uri/Ida) spiked to 8.5, then 2022–23 settled before 2024's hurricane cluster. Trend, not staircase.</p></section>
+  <section id="limits">
+    <h2>What national or state averages cannot tell you</h2>
+    <p>An annual average cannot predict your next outage’s timing, duration, cause, or restoration sequence. It does not tell you whether a particular home needs a generator, what loads should be backed up, what a project will cost, or whether an installation would pay for itself. A state-level statistic can mask substantial variation among utilities and service areas.</p>
+    <p>We do not publish generator-ownership percentages, future payback claims, unsupported cause-of-outage shares, or a permanent “best/worst state” ranking. The EIA data cited here do not establish those claims.</p>
+  </section>
 
-  <section id="worst"><h2>15 hardest-hit states (2024 SAIDI)</h2>
-  <ComparisonTable caption="Worst states for outages 2024" headers={['State', 'Hours/yr', 'Outages/yr', 'Drivers']} rows={worstStates2024.map((s) => [s.state, String(s.saidiHours), s.saifiBand, s.causes])} />
-  <p class="mt-3">Gulf Coast, Southeast, and ice/tornado belts dominate — hurricanes plus rural exposure. Full 50-state tables live in the EIA annual data; check the current year before citing a rank.</p></section>
-
-  <section id="best"><h2>10 most reliable states (2024 SAIDI)</h2>
-  <ComparisonTable caption="Most reliable states 2024" headers={['State', 'Hours/yr', 'Outages/yr', 'Notes']} rows={bestStates2024.map((s) => [s.state, String(s.saidiHours), s.saifiBand, s.causes])} />
-  <p class="mt-3">Northern Plains lead (1.4–1.5 h); even the "best" still average an outage a year. California's 3.0 h includes wildfire safety shutoffs (PSPS) — a different, scheduled failure mode.</p></section>
-
-  <section id="causes"><h2>What actually causes outages</h2>
-  <ComparisonTable caption="Outage causes" headers={['Cause', 'Share of outages', 'Share of hours', 'Notes']} rows={outageCauses.map((c) => [c.cause, c.shareOutages, c.shareHours, c.notes])} />
-  <p class="mt-3">The key asymmetry: weather is under half of <em>events</em> but ~80% of <em>hours</em>. Vegetation contact is the #1 distribution-level cause (~21%) — hence why tree-canopy states (Maine, W. Virginia) rank poorly without a single hurricane.</p></section>
-
-  <section id="events"><h2>Historic events that reset expectations</h2>
-  <ComparisonTable caption="Major US outage events" headers={['Event', 'Year', 'Peak customers out', 'Typical duration']} rows={[
-    ['Katrina', '2005', '3M', '2–6 weeks (hardest hit)'],
-    ['Sandy', '2012', '8.1–8.5M', '7–14 days'],
-    ['Winter Storm Uri', '2021', '4.5–4.8M', '~42 h avg (some 120+)'],
-    ['Ida', '2021', '2.15M', '~96 h avg (weeks hardest hit)'],
-    ['Ian', '2022', '2.7M', '5–10 days'],
-    ['Helene', '2024', '4.7M', '3–14 days (some 4+ weeks)'],
-    ['Milton', '2024', '3.2M', '3–7 days'],
-    ['Beryl', '2024', '2.6M', '2–5 days'],
-    ['CA PSPS program', '2019–24', '0.1–0.8M/event', '1–5 days/event'],
-  ]} />
-  <p class="mt-3">Pattern: Gulf hurricanes and Texas freeze events dominate the modern era — multi-day, multi-million-customer outages that standby is explicitly designed for.</p></section>
-
-  <section id="rural"><h2>Rural vs urban: the 3–4× gap</h2>
-  <p>Rural SAIDI runs 15–25 hours vs 4–8 urban (3–4× worse), with 2× the frequency and 2–3× longer restoration — longer feeder lines, denser vegetation, lower hardening budgets per customer, harder crew access. Rural private-well homes (no power = no water) have the strongest standby case in the country.</p></section>
-
-  <section id="adoption"><h2>Who already owns backup (industry-estimated)</h2>
-  <p>Roughly 6% of US households (~8M) have permanent standby; 10–15% a portable; 2–3% battery backup — 15–20% with anything at all. Adoption tracks exposure: Florida (12–15%), Texas (10–13%), Louisiana (10–12%), then the Southeast belt. If four neighbors on your street own standby, that is data about your grid.</p></section>
-
-  <section id="decide"><h2>Does your state justify standby?</h2>
-  <ul><li><strong>Top-15 exposure + well water / medical / WFH:</strong> standby is infrastructure, not luxury — size it in <a href="/sizing/what-size-generator-do-i-need/">the sizing guide</a>.</li><li><strong>Mid-table with ice/tornado seasons:</strong> essentials backup (10–14 kW) covers the realistic worst week at half the price.</li><li><strong>Best-10 states, urban, brief blips:</strong> a portable + inlet may be the rational buy — run the <a href="/cost/generator-roi-outage-costs/">payback math</a> honestly.</li><li><strong>Everyone:</strong> your utility's feeder history beats your state's average — ask neighbors and check local outage archives.</li></ul></section>
-
-  <section id="faq"><span class="sr-only">FAQ anchor</span></section>
-  <FAQSection items={[
-    { q: 'How many outages does the average American get per year?', a: 'About 1.5 interruptions totaling ~11 hours in 2024 (EIA) — both elevated by major hurricanes. The 10-year baseline is ~1.2–1.4 outages and 5.5–6 hours. Your state and feeder vary enormously around the average.' },
-    { q: 'Which state has the worst power outages?', a: 'In 2024: South Carolina (~53 hours, Helene/Beryl), then Maine, North Carolina, Louisiana. Rankings swing with storm tracks — check the latest EIA annual tables rather than treating any year as permanent.' },
-    { q: 'Are outages getting worse?', a: 'The decade trend is upward and storm-driven: 2024 SAIDI ran ~83% above the 10-year average, with ~80% of hours from major weather. Aging infrastructure (40+ years average) compounds the exposure.' },
-    { q: 'Do I need a generator if my state ranks well?', a: 'Not necessarily — run your feeder reality (well water? medical? WFH? ice season?) through the ROI math. Best-10 states with brief urban blips often suit a portable + inlet instead of standby.' },
-  
-    { q: 'What is SAIDI?', a: 'System Average Interruption Duration Index — total outage hours per customer per year. The US ran 11.0 hours in 2024 against a 5.5–6 hour decade baseline.' },
-    { q: 'Why are rural outages so much longer?', a: 'Longer feeder lines, denser vegetation, lower hardening budgets per customer, and harder crew access — rural SAIDI runs 3–4× urban with 2–3× slower restoration.' },
-    { q: 'Which weather causes the worst outages?', a: 'Gulf hurricanes and Texas freeze events dominate the modern era: multi-day, multi-million-customer outages. Ice and tornado belts fill out the top-15 states.' },
-    { q: 'Do brief blips matter for sizing?', a: 'No — size for your worst realistic week, not the average 90-minute outage. Brief blips argue for a portable + inlet, not standby.' },
-  ]} />
-  <section id="conclusion"><h2>Conclusion</h2><p>Outages concentrate by geography and weather — match the backup to your exposure, not the national average. Next: <a href="/cost/generator-roi-outage-costs/">turn exposure into dollars</a>, then <a href="/sizing/what-size-generator-do-i-need/">size the answer</a>.</p></section>
+  <section id="local-planning">
+    <h2>Use local data and household needs for planning</h2>
+    <ul>
+      <li>Ask your electric utility for outage history or reliability information for your service area where available.</li>
+      <li>Consider household-specific needs such as a private well, sump pump, communications, heating/cooling, or equipment that requires a continuity plan.</li>
+      <li>Decide which circuits need backup and which loads can be delayed or excluded.</li>
+      <li>Discuss the site, electrical service, fuel supply, safe transfer equipment, and installation permits with a qualified local professional.</li>
+    </ul>
+    <p>Use the <a href="/sizing/what-size-generator-do-i-need/">load-based sizing guide</a> and <a href="/cost/generator-roi-outage-costs/">cautious value framework</a> as planning context, not automated recommendations.</p>
+  </section>
 </ArticleLayout>

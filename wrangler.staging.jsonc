@@ -1,14 +1,8 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "homegeneratorguide-production",
+  "name": "homegeneratorguide",
   "compatibility_date": "2026-09-18",
-  "workers_dev": false,
-  "routes": [
-    {
-      "pattern": "homegeneratorguide.com/*",
-      "zone_name": "homegeneratorguide.com"
-    }
-  ],
+  "workers_dev": true,
   "assets": {
     "directory": "./dist"
   },

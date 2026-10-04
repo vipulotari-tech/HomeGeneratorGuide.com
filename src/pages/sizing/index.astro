@@ -2,23 +2,22 @@
 import CategoryLayout from '../../layouts/CategoryLayout.astro';
 ---
 <CategoryLayout
-  title="Generator Sizing Guides"
-  description="Learn how standby generator sizing really works: running vs starting watts, load calculations, HVAC surges, and size ranges."
-  intro="Square footage alone never sizes a generator — your actual electrical loads do. These guides walk through the method licensed electricians use, so you can plan intelligently before requesting a quote."
+  title="Generator Sizing Guides: Start with the Loads"
+  description="Learn how to prepare for standby-generator sizing with exact appliance data, fuel-specific model ratings, starting demand, transfer equipment, and professional site assessment."
+  intro="A home’s floor area or appliance count does not reveal its generator requirement. These guides explain what data to collect, how model and fuel ratings differ, and what a qualified local professional should evaluate. The site provides static references and worksheets—not automated sizing recommendations."
   cards={[
-    { href: '/sizing/what-size-generator-do-i-need/', title: 'What Size Generator Do I Need?', description: 'The complete sizing walkthrough: method, worked example, appliance table, and 10–26 kW ranges.', category: 'Sizing', readingTime: '14 min read' },
-    { href: '/sizing/appliance-wattage-chart/', title: 'Appliance Wattage Chart', description: 'Running and starting watts for 28 common appliances, grouped by category.', category: 'Sizing', readingTime: '8 min read' },
-    { href: '/sizing/calculator/', title: 'Sizing Calculator', description: 'Interactive 60-second tool: check appliances, get your kW band.', category: 'Sizing', readingTime: '3 min use' },
-    { href: '/sizing/hvac-generator-sizing/', title: 'HVAC & Generator Sizing', description: 'Why central AC dominates sizing — LRA surge, tonnage math, and soft-start options.', category: 'Sizing', readingTime: '8 min read' },
-    { href: '/sizing/well-pump-generator-sizing/', title: 'Well Pump Generator Sizing', description: 'Well-pump surge explained by HP, plus pressure-tank and rural-outage planning.', category: 'Sizing', readingTime: '7 min read' },
-    { href: '/sizing/whole-home-vs-essential-loads/', title: 'Whole-Home vs Essential Loads', description: 'Two backup philosophies compared — cost, comfort, and who each suits.', category: 'Sizing', readingTime: '8 min read' },
-    { href: '/sizing/what-size-for-2000-sq-ft/', title: 'Size for a 2,000 Sq Ft House', description: 'The most-asked sizing question, answered honestly with three scenarios.', category: 'Sizing', readingTime: '7 min read' },
-    { href: '/sizing/understanding-generator-ratings/', title: 'Ratings, Derating & Sizing Method', description: 'Standby vs prime, altitude math, surge multipliers, and 7 costly mistakes.', category: 'Sizing', readingTime: '12 min read' },
+    { href: '/sizing/what-size-generator-do-i-need/', title: 'What Size Generator Do I Need?', description: 'A static load-based planning method, sourced chart-arithmetic example, and blank worksheet.', category: 'Sizing', readingTime: '10 min read' },
+    { href: '/sizing/appliance-wattage-chart/', title: 'Appliance Wattage Chart', description: '28 approximate manufacturer-published appliance references with scope caveats.', category: 'Sizing', readingTime: '8 min read' },
+    { href: '/sizing/what-size-for-2000-sq-ft/', title: 'Generator Size for a 2,000 Sq. Ft. Home', description: 'See why floor area alone cannot determine capacity and which equipment data matters.', category: 'Sizing', readingTime: '6 min read' },
+    { href: '/sizing/hvac-generator-sizing/', title: 'HVAC and Generator Sizing', description: 'Collect exact HVAC model, starting, controls, and auxiliary-heat information.', category: 'Sizing', readingTime: '6 min read' },
+    { href: '/sizing/well-pump-generator-sizing/', title: 'Well Pump and Generator Planning', description: 'Use the pump and control data; treat generic manufacturer ranges as references only.', category: 'Sizing', readingTime: '6 min read' },
+    { href: '/sizing/whole-home-vs-essential-loads/', title: 'Whole-Home vs. Essential-Load Backup', description: 'Compare circuit priorities, transfer arrangements, load management, and quote scope.', category: 'Sizing', readingTime: '7 min read' },
+    { href: '/sizing/understanding-generator-ratings/', title: 'Understanding Generator Ratings', description: 'Read exact model, fuel, phase, voltage, rating conditions, and site limits.', category: 'Sizing', readingTime: '7 min read' },
   ]}
 >
   <div class="prose-hgg mt-10">
-    <h2>How sizing fits the bigger picture</h2>
-    <p><strong>Start here:</strong> <a href="/sizing/what-size-generator-do-i-need/">What Size Generator Do I Need?</a> — then use the <a href="/sizing/calculator/">60-second calculator</a> with your actual appliances.</p>
-    <p>Sizing determines everything downstream: <a href="/cost/standby-generator-cost/">cost</a>, <a href="/installation/what-to-expect/">installation scope</a>, and fuel use. Oversizing wastes money and fuel; undersizing trips breakers when the AC starts. Start here, then price what you sized.</p>
+    <h2>How to use these guides</h2>
+    <p><strong>Start with the load-based guide.</strong> Gather exact appliance nameplates and manuals, list which loads may run together, and use the <a href="/sizing/appliance-wattage-chart/">appliance wattage reference</a> only as a generic manufacturer-published estimate when exact data is unavailable. Then ask a qualified local professional to assess the generator, fuel supply, transfer equipment, site conditions, and local requirements.</p>
+    <p>These pages do not provide a calculator, estimator, universal multiplier, floor-area rule, or purchase recommendation. A generator’s selected rating and backed-up-load plan influence the equipment and installation scope, but only a property-specific assessment can determine whether a proposed design fits.</p>
   </div>
 </CategoryLayout>

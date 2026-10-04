@@ -1,53 +1,71 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import ComparisonTable from '../../components/ui/ComparisonTable.astro';
-import FAQSection from '../../components/ui/FAQSection.astro';
-import ProConBox from '../../components/ui/ProConBox.astro';
-import { brands } from '../../data/generator-brands';
+import ModelSpecs from '../../components/brands/ModelSpecs.astro';
+import { getModelSpecs } from '../../data/model-specs';
 
-const brand = brands.find((b) => b.slug === 'cummins')!;
+const models = getModelSpecs('Cummins');
 const toc = [
-  { id: 'heritage', label: 'Industrial heritage' },
-  { id: 'lineup', label: 'QuietConnect lineup' },
-  { id: 'warranty', label: 'Shorter warranty, honestly' },
-  { id: 'verdict', label: 'Who it suits' },
-  { id: 'faq', label: 'FAQ' },
+  { id: 'series-scope', label: 'What the series page supports' },
+  { id: 'accessible-model-data', label: 'Accessible model-page ratings' },
+  { id: 'spec-sheet-limitation', label: 'Fuel-specific spec limitation' },
+  { id: 'warranty', label: 'Warranty summary' },
+  { id: 'quote-checklist', label: 'Quote checklist' },
 ];
 ---
 <ArticleLayout
-  title="Cummins QuietConnect Standby Generators: Honest Review"
-  description="Independent Cummins QuietConnect review: 13–20 kW lineup, uniform 65 dB noise, −40°F rating, short standard warranty, and who should shortlist it."
-  category="Brands" categoryHref="/brands/" updated="2026-10-03" readingTime="6 min read" toc={toc}
+  title="Cummins QuietConnect: Model Ratings, Warranty & Source Limits"
+  description="A source-linked overview of current Cummins QuietConnect residential model-page ratings, a series-level sound claim, warranty summary, and which details require the full specification sheet."
+  category="Brands" categoryHref="/brands/" updated="2026-10-04" verified="2026-10-04" readingTime="6 min read" toc={toc}
+  takeaways={[
+    'Cummins’ current model pages list standby ratings of 13, 17, and 20 kW for RS13A, RS17A, and RS20A.',
+    'The accessible Cummins model-page summaries do not expose fuel-specific output or complete specifications; do not assume an LP/NG split from another source.',
+    'Cummins’ FAQ lists 5-year/2,000-hour limited warranties for 13, 17, and 20 kW models; verify full terms with the actual model warranty document.',
+  ]}
   sources={[
-    { label: 'Cummins — QuietConnect Series', href: 'https://www.cummins.com/en-in/na/generators/home-standby/quietconnect-series', type: 'Manufacturer', verified: 'Oct 2026' },
-    { label: 'Generac — Residential Standby Lineup', href: 'https://www.generac.com/residential-products/standby-generators/', type: 'Manufacturer', verified: 'Oct 2026' },
-    { label: 'U.S. EIA — Electricity Data Browser', href: 'https://www.eia.gov/electricity/', type: 'Government', verified: 'Oct 2026' },
+    { label: 'Cummins RS13A product page', href: 'https://www.cummins.com/en-na/generators/products/rs13a', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'Cummins RS17A product page', href: 'https://www.cummins.com/en-na/generators/products/rs17a', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'Cummins RS20A product page', href: 'https://www.cummins.com/en-na/generators/products/rs20a', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'Cummins current QuietConnect series and specification index', href: 'https://www.cummins.com/en-na/generators/products/quietconnecttm-series?application=Residential%20Home%20Standby&v=3151#tab-navigation', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'Cummins home generator FAQ and warranty summary', href: 'https://www.cummins.com/en-na/na/generators/home-standby/home-generator-faq', type: 'Manufacturer', verified: '2026-10-04' },
   ]}
   related={[
-    { href: '/brands/kohler/', title: 'Kohler Standby Generators', description: 'Premium alternative.', category: 'Brands' },
-    { href: '/brands/champion/', title: 'Champion Standby Generators', description: 'Value alternative.', category: 'Brands' },
+    { href: '/brands/generac/', title: 'Generac exact-model data', description: 'Fuel-specific ratings, fuel-use figures, sound conditions, and MSRP.', category: 'Brands' },
+    { href: '/brands/kohler/', title: 'KOHLER 26RCA data', description: 'Current manufacturer spec sheet and ATS configuration details.', category: 'Brands' },
+    { href: '/comparisons/standby-vs-portable/', title: 'Standby vs. portable', description: 'Compare operation, safety, and installation scope.', category: 'Comparisons' },
   ]}
-  prev={{ href: '/brands/champion/', label: 'Champion Brand Guide' }}
-  next={{ href: '/comparisons/generac-vs-kohler/', label: 'Generac vs Kohler' }}
 >
-  <section id="heritage"><h2>Industrial heritage (Onan lineage)</h2>
-  <p>Cummins (founded 1919, Columbus, Indiana) powers everything from RVs (Onan) to data centers. QuietConnect is its residential standby line — sound-insulated, weather-protective enclosures with industrial-service DNA and fewer residential storefronts than Generac.</p></section>
-  <section id="lineup"><h2>QuietConnect lineup: one noise number</h2>
-  <ComparisonTable caption="QuietConnect models" headers={['Model', 'Capacity', 'Noise', 'Notes']} rows={brand.models.map((m) => [m.series, m.capacityKw, m.noiseDb ?? '—', m.notes ?? '—'])} />
-  <p class="mt-3">Uniform 65 dB(A) at 23 ft across the line (manufacturer "best-in-class" claim), cold-rated to −40°F, natural gas or propane. The RS20AC bundles the ATS.</p></section>
-  <section id="warranty"><h2>Shorter warranty, stated plainly</h2><p>{brand.warranty} This is the thinnest standard coverage in the comparison set — price it accordingly and read the extended terms before signing. A great unit with weak warranty backup needs a great dealer to compensate.</p></section>
-  <section id="verdict"><h2>Who QuietConnect suits</h2>
-  <ProConBox pros={['Uniform 65 dB; strong cold-weather rating', 'Industrial build and service culture', 'Tight 13–20 kW focus, no bloat']} cons={['Short 2-year standard warranty', 'Fewer residential dealers; caps at 20 kW', 'Less pricing transparency']} prosTitle="Strengths" consTitle="Watch-outs" />
-  <p class="mt-4">Shortlist for cold climates and noise-sensitive lots where a Cummins servicer is genuinely local — especially 13–20 kW essentials-to-mid homes.</p></section>
-  <section id="faq"><span class="sr-only">FAQ anchor</span></section>
-  <FAQSection items={[
-    { q: 'Are Cummins home generators quiet?', a: 'QuietConnect models are uniformly rated 65 dB(A) at 23 ft with insulated enclosures — competitive, though rivals publish quieter flagship numbers (e.g., Kohler 26RCA 56 dB, Champion 8.5 kW 59.5 dB).' },
-    { q: 'Why is the Cummins warranty so short?', a: 'The 2-year residential standard reflects its industrial quoting culture; a 5-year extended exists (parts only after year 2). Factor extended coverage into price comparisons.' },
-    { q: 'Cummins vs Generac for cold climates?', a: 'Cummins −40°F rating is a documented edge for extreme-cold regions; Generac counters with denser cold-region dealer coverage. Weight whichever your ZIP code actually supports.' },
-  
-    { q: 'What does QuietConnect mean in practice?', a: 'Sound-insulated, weather-protective enclosures tuned for a uniform 65 dB(A) across the 13–20 kW line — no loud outlier in the family.' },
-    { q: 'Who services Cummins residential units?', a: 'Cummins distributors and certified dealers — industrial-service DNA with fewer residential storefronts. Confirm one near you before committing.' },
-    { q: 'Is Cummins worth it over Generac?', a: 'For extreme cold or noise-sensitive lots with a local Cummins servicer: yes. For everywhere else, weigh the 2-year standard warranty honestly against the price.' },
-  ]} />
-  <section id="conclusion"><h2>Conclusion</h2><p>Industrial-grade quiet and cold-weather chops with warranty fine print to respect. Next: <a href="/comparisons/generac-vs-kohler/">the big comparison</a> or <a href="/cost/standby-generator-cost/">installed costs</a>.</p></section>
+  <section id="series-scope">
+    <h2>What the series page supports</h2>
+    <p>Cummins describes QuietConnect as a home standby-generator series with sound-insulated, weather-protective enclosures, remote diagnostics, and load-management options. Its series page makes a “65 dB or lower” noise claim, but does not specify one test condition for every model. We do not present a current series-wide starting price because the accessible current manufacturer page does not establish one.</p>
+    <p>Manufacturer feature language is not independent reliability, noise, or performance testing. Check the exact model sheet and written installation proposal for the intended fuel, package, location, and service arrangement.</p>
+  </section>
+
+  <section id="accessible-model-data">
+    <h2>Standby ratings on the accessible model pages</h2>
+    <p>The current Cummins product pages list the following standby kW/kVA ratings. The cards deliberately show only those fields available in the accessible model-page summaries, together with their model-page links.</p>
+    <ModelSpecs models={models} label="Cummins QuietConnect model-page ratings checked October 4, 2026" />
+  </section>
+
+  <section id="spec-sheet-limitation">
+    <h2>Fuel-specific and detailed specifications require the linked model sheet</h2>
+    <p>Each current model page links to a Cummins specification sheet through Cummins’ document-viewer portal. That portal presented an interactive consent screen in this audit, so we could not inspect the complete document contents here. We therefore do not list natural-gas/LP output splits, dimensions, fuel consumption, sound test conditions, starting capability, or included transfer-switch configurations that were not visible in the accessible model summary.</p>
+    <p>Before comparing a Cummins model with another manufacturer, open the current linked specification sheet, confirm its revision and exact model/fuel configuration, and ask the dealer to include those details in a written quote. We have not used a reseller-hosted older sheet to fill this gap.</p>
+  </section>
+
+  <section id="warranty">
+    <h2>Warranty summary</h2>
+    <p>Cummins’ home-generator FAQ states that its <strong>13, 17, and 20 kW models include a 5-year/2,000-hour limited warranty</strong>; the same FAQ lists a different warranty duration for larger models. This summary is not the full warranty document. Ask the dealer for current terms, coverage, exclusions, registration requirements, and the servicing provider for the exact purchased model.</p>
+  </section>
+
+  <section id="quote-checklist">
+    <h2>Questions for a written quote</h2>
+    <ul>
+      <li>Exact Cummins model and current specification-sheet revision.</li>
+      <li>Standby output on the selected fuel, phase/voltage, motor-starting capability, and any environmental derating.</li>
+      <li>Exact ATS model, rating, service configuration, included controls, and load-management parts.</li>
+      <li>Fuel supply, electrical route, panel work, site preparation, permits, commissioning, and exclusions.</li>
+      <li>Current warranty document, local service contact, and routine maintenance schedule.</li>
+    </ul>
+    <p>As with all standby systems, use a qualified local professional to assess the house and verify the current manufacturer instructions.</p>
+  </section>
 </ArticleLayout>

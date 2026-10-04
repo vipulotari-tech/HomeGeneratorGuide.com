@@ -1,62 +1,75 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import AlertBox from '../../components/ui/AlertBox.astro';
-import ComparisonTable from '../../components/ui/ComparisonTable.astro';
-import FAQSection from '../../components/ui/FAQSection.astro';
 
 const toc = [
-  { id: 'mechanics', label: 'How each works' },
-  { id: 'compare', label: 'Head-to-head' },
-  { id: 'code', label: 'Code & AHJ acceptance' },
-  { id: 'decide', label: 'Decision framework' },
-  { id: 'faq', label: 'FAQ' },
+  { id: 'terms', label: 'Understand the terms' },
+  { id: 'compare', label: 'Manual switch vs. interlock' },
+  { id: 'safety', label: 'Backfeed is the hazard' },
+  { id: 'ask', label: 'Questions for an electrician' },
 ];
 ---
 <ArticleLayout
-  title="Transfer Switch vs Interlock Kit: Which Manual Option Wins?"
-  description="Transfer switch vs interlock kit: mechanics, cost, panel compatibility, code acceptance, and a decision framework for portable-generator owners."
-  category="Comparisons" categoryHref="/comparisons/" updated="2026-10-03" readingTime="8 min read" toc={toc}
+  title="Manual Transfer Switch vs. Panel Interlock: A Safety-First Guide"
+  description="Understand the difference between a manual transfer switch, an automatic transfer switch, and a panel interlock kit—and what to ask a licensed electrician before connecting a generator."
+  category="Comparisons" categoryHref="/comparisons/" updated="2026-10-04" verified="2026-10-04" readingTime="6 min read" toc={toc}
+  takeaways={[
+    'A transfer switch selects between utility and generator power; some switches are manual and some are automatic.',
+    'A panel interlock is a model-specific mechanical device intended to prevent the utility main and generator breaker from being on together.',
+    'Compatibility, listing, installation, panel condition, permits, and local approval must be checked by a qualified electrical professional.',
+  ]}
   sources={[
-    { label: 'Generac — Residential Standby Lineup', href: 'https://www.generac.com/residential-products/standby-generators/', type: 'Manufacturer', verified: 'Oct 2026' },
-    { label: 'Kohler Home Energy — Home Generators', href: 'https://www.kohlerhomeenergy.rehlko.com/products/home-generators', type: 'Manufacturer', verified: 'Oct 2026' },
-    { label: 'NFPA 70 — National Electrical Code', href: 'https://www.nfpa.org/codes-and-standards/nfpa-70-standard-development/70', type: 'Government', verified: 'Oct 2026' },
+    { label: 'Electrical Safety Foundation International: generator safety and transfer switches', href: 'https://www.esfi.org/generator-safety/', type: 'Safety organization', verified: '2026-10-04' },
+    { label: 'CPSC portable-generator safety alert: backfeeding hazard', href: 'https://www.cpsc.gov/s3fs-public/5123_SafetyAlert_PortableGenerators_102021.pdf', type: 'Safety authority', verified: '2026-10-04' },
+    { label: 'OSHA: using portable generators safely', href: 'https://www.osha.gov/sites/default/files/publications/OSHA3286.pdf', type: 'Safety authority', verified: '2026-10-04' },
   ]}
   related={[
-    { href: '/cost/transfer-switch-cost/', title: 'Transfer Switch Guide', description: 'Full MTS/ATS/interlock costs.', category: 'Cost' },
-    { href: '/comparisons/standby-vs-portable/', title: 'Standby vs Portable', description: 'The bigger decision.', category: 'Comparisons' },
+    { href: '/comparisons/standby-vs-portable/', title: 'Standby vs. portable generators', description: 'Compare fuel, operation, safety, and installation scope.', category: 'Comparisons' },
+    { href: '/cost/transfer-switch-cost/', title: 'Transfer-switch cost and scope', description: 'Understand what can change a written installation quote.', category: 'Cost' },
+    { href: '/installation/what-to-expect/', title: 'Standby installation: what to expect', description: 'Planning and questions for a qualified local contractor.', category: 'Installation' },
   ]}
-  prev={{ href: '/comparisons/standby-vs-portable/', label: 'Standby vs Portable' }}
-  next={{ href: '/installation/what-to-expect/', label: 'Installation: What to Expect' }}
 >
-  <section id="mechanics"><h2>How each works (30 seconds)</h2>
-  <p><strong>Manual transfer switch:</strong> a separate double-throw panel (typically 6–10 toggled circuits) wired beside your main panel — LINE/OFF/GEN positions with break-before-make contacts. <strong>Interlock kit:</strong> a listed sliding plate on your existing main panel that physically blocks the main and a backfed generator breaker from ever being ON together. Both are pro-installed, permitted devices; neither is automatic.</p>
-  <AlertBox type="warning" title="The third option that kills">A double-male "suicide cord" into a dryer outlet is not a transfer method — it energizes utility lines and can kill line workers and destroy equipment on restoration. If that was under consideration, stop: a $50–$150 listed interlock plus an electrician is the cheapest legal path.</AlertBox></section>
+  <section id="terms">
+    <h2>Understand the terms</h2>
+    <p>A <strong>transfer switch</strong> isolates the utility supply from the generator supply and selects which source feeds a home circuit or panel. A <strong>manual transfer switch</strong> requires a person to make the change. An <strong>automatic transfer switch (ATS)</strong> can detect a utility outage and change sources when used with a compatible standby generator and controls.</p>
+    <p>A <strong>panel interlock kit</strong> is a mechanical accessory designed for a particular panel configuration. It allows the generator breaker to be operated only when the corresponding utility main breaker is in the required off position. It is not a universal substitute for any transfer switch or panel accessory.</p>
+    <p>The names are sometimes used loosely in product listings. Confirm the exact device, listing, panel compatibility, circuit coverage, and operating method in the quote.</p>
+  </section>
 
-  <section id="compare"><h2>Head-to-head</h2>
-  <ComparisonTable caption="Manual switch versus interlock" headers={['', 'Manual transfer switch', 'Interlock kit']} rows={[
-    ['Parts', '$200–$800 (6–10 ckt)', '$50–$150'],
-    ['Installed', '$400–$1,300', '$200–$600'],
-    ['Circuits', 'Pre-chosen 6–10', 'Whole panel (you manage)'],
-    ['Install time', '3–5 hours + circuit moves', '2–4 hours'],
-    ['Example models', 'Reliance 31406CWK / 510C', 'Square D QOCGK2C, Siemens kits'],
-    ['Failure mode', 'Worn switch, loose lugs', 'User sequence error, incompatible panel'],
-  ]} /></section>
+  <section id="compare">
+    <h2>Manual transfer switch vs. panel interlock</h2>
+    <div class="not-prose mt-4 overflow-x-auto rounded-xl border border-[#d9e0ea]">
+      <table class="min-w-[640px] w-full border-collapse text-left text-sm">
+        <caption class="sr-only">General comparison between a manual transfer switch and a panel interlock</caption>
+        <thead class="bg-[#edf3fb] text-primary"><tr><th scope="col" class="p-3">Question</th><th scope="col" class="p-3">Manual transfer switch</th><th scope="col" class="p-3">Panel interlock kit</th></tr></thead>
+        <tbody class="divide-y divide-gray-200 text-gray-800">
+          <tr><th scope="row" class="p-3 font-semibold">What does it do?</th><td class="p-3">Selects utility or generator source for the circuits covered by the switch.</td><td class="p-3">Physically constrains the compatible panel breakers so the sources cannot be connected together in the intended configuration.</td></tr>
+          <tr><th scope="row" class="p-3 font-semibold">How is it operated?</th><td class="p-3">The homeowner manually switches the named circuits after following the equipment instructions.</td><td class="p-3">The homeowner follows the exact panel/interlock instructions and selects the approved generator-fed circuits.</td></tr>
+          <tr><th scope="row" class="p-3 font-semibold">Circuit selection</th><td class="p-3">Usually limited to the circuits wired through the switch; exact capacity varies by device.</td><td class="p-3">Uses compatible breakers in the existing panel; load limits and breaker arrangement depend on the panel and generator.</td></tr>
+          <tr><th scope="row" class="p-3 font-semibold">Panel compatibility</th><td class="p-3">Must be appropriate for the service, generator, and selected circuit arrangement.</td><td class="p-3">Must be specifically listed or approved for the exact panel model and configuration.</td></tr>
+          <tr><th scope="row" class="p-3 font-semibold">Automatic operation?</th><td class="p-3">No. A separate ATS is a different device and system configuration.</td><td class="p-3">No. The owner operates it manually.</td></tr>
+          <tr><th scope="row" class="p-3 font-semibold">What determines cost?</th><td class="p-3">Device type/rating, circuits, wiring route, labor, permitting, and service scope.</td><td class="p-3">Panel compatibility, the listed interlock and breaker, inlet/routing work, labor, permitting, and any needed panel changes.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="mt-4">An automatic transfer switch for a permanently installed standby unit is a third arrangement. Do not compare its price or capabilities to a manual switch/interlock without matching amperage, service-entrance rating, circuits, and included work.</p>
+  </section>
 
-  <section id="code"><h2>Code & AHJ acceptance</h2>
-  <p>NEC Article 702 requires listed transfer equipment — both qualify <em>when listed for your exact panel</em>. The interlock's catch: panel compatibility (brand/model-specific kits only — no universal plates on listed panels) and AHJ acceptance (most allow, some do not — ask the inspector before buying). Manual switches dodge both issues at higher cost and narrower coverage.</p></section>
+  <section id="safety">
+    <h2>Backfeed is the hazard to prevent</h2>
+    <p>Connecting generator power to household wiring without correctly installed transfer equipment can energize utility wiring and endanger utility workers, neighbors, or occupants. CPSC explicitly warns never to power house wiring by plugging a generator into a wall outlet; it also says this can bypass household circuit protection. ESFI likewise recommends appropriate transfer equipment. Never use a “suicide cord,” dryer outlet, or improvised connection.</p>
+    <p>This page is not wiring instruction. A qualified electrician must determine whether a transfer switch or a panel-specific interlock is permitted for the exact equipment and local jurisdiction, select compatible listed equipment, and complete any required permit and inspection.</p>
+  </section>
 
-  <section id="decide"><h2>Decision framework</h2>
-  <ul><li><strong>Interlock when:</strong> listed kit exists for your panel, AHJ allows, you want whole-panel flexibility cheap, and someone disciplined will manage loads.</li><li><strong>Manual switch when:</strong> no listed kit fits, you prefer enforced circuit discipline, or the household needs foolproof toggles (renters, elderly, vacation home).</li><li><strong>Neither when:</strong> outages are frequent/long, medical loads exist, or nobody is home to throw switches — that is standby + ATS territory.</li></ul></section>
-
-  <section id="faq"><span class="sr-only">FAQ anchor</span></section>
-  <FAQSection items={[
-    { q: 'Is an interlock kit as safe as a transfer switch?', a: 'When listed for the panel, permitted, and installed by an electrician: yes for backfeed prevention. The residual risk is human — wrong sequence or overloaded panel — where a manual switch enforces more discipline by construction.' },
-    { q: 'Can a transfer switch fail?', a: 'Yes: worn contacts, loose lugs, corroded mechanisms, dead control batteries (ATS). Symptoms: failure to transfer in exercise, hot/burning smells, visible arcing damage, nuisance trips. Annual transfer testing catches nearly all of it — put it on the service checklist.' },
-    { q: 'Where is the transfer switch installed?', a: 'Adjacent to the main panel (manual/selected-load) or first after the meter (service-rated ATS). Interlocks live on the main panel cover itself. All locations need 36-inch working clearance.' },
-  
-    { q: 'Will an interlock pass inspection everywhere?', a: 'No — most AHJs allow listed panel-matched kits, but some prohibit them. Ask the inspector before buying the $69 plate.' },
-    { q: 'What gauge wire does my inlet need?', a: 'Sized to the breaker and run length by your electrician — inlet, breaker, and cord ends must all match amperage. Mismatched parts melt.' },
-    { q: 'Can I use any kit on any panel?', a: 'No — only the kit listed for your exact panel make and model. Universal plates on listed panels void the listing and fail inspection.' },
-  ]} />
-  <section id="conclusion"><h2>Conclusion</h2><p>Interlock for cheap whole-panel flexibility where listed and allowed; manual switch for enforced simplicity. Both beat cords; neither beats automation. Full numbers: <a href="/cost/transfer-switch-cost/">transfer switch guide</a>.</p></section>
+  <section id="ask">
+    <h2>Questions for a qualified electrician</h2>
+    <ul>
+      <li>Which exact generator, inlet, transfer equipment, panel, and breaker models are included?</li>
+      <li>Is the proposed interlock or switch listed/approved for this exact panel and service arrangement?</li>
+      <li>Which loads can be energized together, and how will the homeowner know what to shed?</li>
+      <li>Do the generator’s neutral/grounding arrangement and transfer equipment require specific configuration?</li>
+      <li>What permit, inspection, labeling, operating instructions, and commissioning are included?</li>
+      <li>Will panel condition or capacity require repairs or replacement before the work is approved?</li>
+    </ul>
+    <p>Request an itemized written quote; scope, not a device label alone, determines cost. See <a href="/cost/transfer-switch-cost/">our transfer-switch cost guide</a> for planning factors, and follow the generator, switch, and panel manufacturers’ current instructions.</p>
+  </section>
 </ArticleLayout>

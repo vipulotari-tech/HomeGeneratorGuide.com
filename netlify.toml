@@ -1,7 +1,14 @@
 # Netlify deploy configuration for HomeGeneratorGuide.com (static Astro output)
 [build]
-  command = "npm run build"
+  command = "npm run build:production"
   publish = "dist"
+
+# Retire the prohibited estimator URL without reintroducing an interactive tool.
+[[redirects]]
+  from = "/sizing/calculator/"
+  to = "/sizing/what-size-generator-do-i-need/"
+  status = 301
+  force = true
 
 # Canonical host: apex. Redirect www -> apex for SEO consolidation.
 [[redirects]]

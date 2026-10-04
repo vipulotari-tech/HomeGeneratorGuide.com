@@ -1,112 +1,86 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import AlertBox from '../../components/ui/AlertBox.astro';
-import ComparisonTable from '../../components/ui/ComparisonTable.astro';
-import FAQSection from '../../components/ui/FAQSection.astro';
-import { switchTypes } from '../../data/transfer-switches';
 
 const toc = [
-  { id: 'three-types', label: 'MTS vs ATS vs interlock' },
-  { id: 'how-they-work', label: 'How each works' },
-  { id: 'pros-cons', label: 'Pros & cons' },
-  { id: 'costs', label: 'Parts & labor costs' },
-  { id: 'situations', label: 'Which situation fits' },
-  { id: 'brands', label: 'Top brands' },
-  { id: 'nec', label: 'NEC Article 702 essentials' },
-  { id: 'load-mgmt', label: 'Load management explained' },
-  { id: 'whole-vs-selected', label: 'Whole-panel vs selected-circuit' },
-  { id: 'transitions', label: 'Transition types' },
-  { id: 'service-entrance', label: 'Service-entrance rating' },
-  { id: 'circuits', label: 'Circuit counts' },
-  { id: 'faq', label: 'FAQ' },
+  { id: 'what-a-switch-does', label: 'What transfer equipment does' },
+  { id: 'types', label: 'Common equipment types' },
+  { id: 'published-costs', label: 'Published cost references' },
+  { id: 'bundle-examples', label: 'Exact model bundle examples' },
+  { id: 'quote-questions', label: 'Questions for the installer' },
 ];
 ---
 <ArticleLayout
-  title="Transfer Switch Guide: MTS vs ATS vs Interlock Kits, Costs & Code"
-  description="Manual vs automatic transfer switches vs interlock kits: how each works, parts and labor costs, brand options, NEC 702 essentials, and load management."
-  category="Cost" categoryHref="/cost/" updated="2026-10-03" image="/images/transfer-switch-panel.webp" readingTime="12 min read" toc={toc}
+  title="Generator Transfer-Switch Cost: Scope, Ratings & Quotes"
+  description="Understand transfer-switch and generator-inlet scope, published installation-cost ranges, bundle differences, and safety questions to ask a qualified electrician."
+  category="Cost" categoryHref="/cost/" updated="2026-10-04" verified="2026-10-04" readingTime="6 min read" toc={toc}
+  takeaways={[
+    'A transfer switch separates utility and generator sources; the exact device and circuit scope must suit the generator, panel, and service.',
+    'One cost-guide range is not a universal part price; installation, amperage, service-entry rating, wiring, and permits affect the quote.',
+    'Confirm the exact included switch model and package in writing rather than assuming every generator includes an ATS.',
+  ]}
   sources={[
-    { label: 'Generac — Residential Standby Lineup', href: 'https://www.generac.com/residential-products/standby-generators/', type: 'Manufacturer', verified: 'Oct 2026' },
-    { label: 'Kohler Home Energy — Home Generators', href: 'https://www.kohlerhomeenergy.rehlko.com/products/home-generators', type: 'Manufacturer', verified: 'Oct 2026' },
-    { label: 'NFPA 70 — National Electrical Code', href: 'https://www.nfpa.org/codes-and-standards/nfpa-70-standard-development/70', type: 'Government', verified: 'Oct 2026' },
+    { label: 'HomeGuide: generator cost and transfer-equipment installation references (published Dec. 30, 2025)', href: 'https://homeguide.com/costs/generator-cost', type: 'Industry', verified: '2026-10-04' },
+    { label: 'Electrical Safety Foundation International: generator safety', href: 'https://www.esfi.org/generator-safety/', type: 'Safety organization', verified: '2026-10-04' },
+    { label: 'CPSC portable-generator safety alert', href: 'https://www.cpsc.gov/s3fs-public/5123_SafetyAlert_PortableGenerators_102021.pdf', type: 'Safety authority', verified: '2026-10-04' },
+    { label: 'Generac G0073270 specification sheet', href: 'https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'KOHLER/Rehlko 26RCA specification sheet', href: 'https://techcomm.rehlko.com/techcomm/pdf/g4315.pdf', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'Champion model 201222 product page', href: 'https://www.championpowerequipment.com/product/201222-22-kw-whole-house-home-standby-generator-and-200a-switch-with-axis-technology/', type: 'Manufacturer', verified: '2026-10-04' },
   ]}
   related={[
-    { href: '/cost/standby-generator-cost/', title: 'Standby Generator Cost (2026)', description: 'Full project budget.', category: 'Cost' },
-    { href: '/installation/what-to-expect/', title: 'Installation: What to Expect', description: 'Where the switch fits.', category: 'Installation' },
-    { href: '/installation/generator-pad-and-placement/', title: 'Pad & Placement Guide', description: 'Where the generator sits.', category: 'Installation' },
+    { href: '/comparisons/transfer-switch-vs-interlock/', title: 'Manual transfer switch vs. interlock', description: 'A safety-first comparison of connection approaches.', category: 'Comparisons' },
+    { href: '/cost/standby-generator-cost/', title: 'Standby-generator cost guide', description: 'Separate equipment MSRP from an installed project.', category: 'Cost' },
+    { href: '/installation/what-to-expect/', title: 'Installation: what to expect', description: 'Where transfer equipment fits into the project.', category: 'Installation' },
   ]}
-  prev={{ href: '/cost/installation-cost-breakdown/', label: 'Installation Breakdown' }}
-  next={{ href: '/brands/generac/', label: 'Generac Brand Guide' }}
 >
-  <AlertBox type="warning" title="Pro-only work">Transfer equipment connects to your panel and the utility grid. Sizing, wiring, and gas-adjacent work belong to licensed electricians under permit. This guide teaches you to specify and verify — never to DIY the switch.</AlertBox>
+  <section id="what-a-switch-does">
+    <h2>What transfer equipment does</h2>
+    <p>Transfer equipment safely selects the utility source or generator source for the circuits it serves. Manual transfer switches and panel interlocks require an owner to operate equipment as instructed. An automatic transfer switch can move between sources with compatible generator controls. The exact equipment must be selected for the generator, electrical service, panel, load plan, and local approval.</p>
+    <p>Never connect generator power by plugging into a household wall outlet. CPSC and ESFI warn that improper backfeeding can energize utility wiring and endanger line workers and others. This guide is not wiring instruction; transfer-equipment work must be planned and installed by a qualified electrician.</p>
+  </section>
 
-    <figure class="not-prose my-6">
-    <img src="/images/transfer-switch-panel.webp" alt="Outdoor transfer switch enclosure beside the electric meter" width="1536" height="1024" loading="lazy" decoding="async" class="w-full rounded-xl border border-[#e5e7eb]" />
-    <figcaption class="mt-2 text-sm text-gray-500">Illustrative photo.</figcaption>
-  </figure>
-<section id="three-types"><h2>Three types at a glance</h2>
-  <ComparisonTable caption="Transfer switch types" headers={['Type', 'Operation', 'Parts', 'Installed', 'Best for']} rows={switchTypes.map((s) => [s.name, s.operation === 'automatic' ? 'Automatic' : 'Manual', s.partsCost, s.installedCost, s.bestFor])} />
-  <p class="mt-3">Costs are 2024–2026 planning ranges (parts only vs all-in vary by source); electrician rates typically $50–$130/hr. Always get the installed figure in writing.</p></section>
+  <section id="types">
+    <h2>Common equipment types</h2>
+    <div class="not-prose mt-4 overflow-x-auto rounded-xl border border-[#d9e0ea]">
+      <table class="min-w-[660px] w-full border-collapse text-left text-sm">
+        <caption class="sr-only">General transfer-equipment distinctions</caption>
+        <thead class="bg-[#edf3fb] text-primary"><tr><th scope="col" class="p-3">Equipment</th><th scope="col" class="p-3">Operation</th><th scope="col" class="p-3">Questions to resolve</th></tr></thead>
+        <tbody class="divide-y divide-gray-200 text-gray-800">
+          <tr><th scope="row" class="p-3">Manual transfer switch</th><td class="p-3">Selects approved circuits manually between utility and generator.</td><td class="p-3">Circuit coverage, current rating, generator connection, and operating steps.</td></tr>
+          <tr><th scope="row" class="p-3">Automatic transfer switch (ATS)</th><td class="p-3">Transfers sources automatically with compatible generator controls.</td><td class="p-3">Service rating, amperage, selected vs. whole-panel scope, and included control/load-management equipment.</td></tr>
+          <tr><th scope="row" class="p-3">Panel interlock kit</th><td class="p-3">Provides a manual panel-specific breaker interlock where the equipment is listed/approved for the exact panel and allowed locally.</td><td class="p-3">Panel compatibility, breaker/inlet ratings, professional installation, permits, and user load management.</td></tr>
+          <tr><th scope="row" class="p-3">Generator inlet and cord connection</th><td class="p-3">Provides the connection point for portable-generator equipment as part of an approved transfer arrangement.</td><td class="p-3">Outdoor rating, grounding/neutral instructions, conductor size, and safe source isolation.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="mt-3">“Transfer switch” is often used broadly in retail listings. Ask for the exact component model, the circuits it serves, and whether it is manual or automatic.</p>
+  </section>
 
-  <section id="how-they-work"><h2>How each works (technically)</h2>
-  <h3>Manual transfer switch</h3>
-  <p>A double-throw switch with three positions — LINE (utility), OFF, GEN. You turn off the main, flip to GEN, and internal contacts open the utility connection <em>before</em> closing the generator connection (break-before-make). Individual toggles select 6–10 circuits. Transfer takes 1–5 minutes of your time, plus the walk to a portable.</p>
-  <h3>Automatic transfer switch</h3>
-  <p>Electrically operated contactors plus a control board watching utility voltage (sensing dropout, roughly below ~190 V on a 240 V service). On outage it signals the generator to start, waits 10–30 seconds for stabilization, swaps contactors (10–20 seconds typical transfer), then on restoration waits 5–15 minutes for stable utility, transfers back, cool-down-runs, and shuts down. Advanced units shed managed loads when the generator nears capacity.</p>
-  <h3>Interlock kit</h3>
-  <p>A listed sliding metal plate on your main panel that physically prevents the main breaker and a backfed generator breaker from being ON together. Sequence: main OFF → slide plate → generator breaker ON → manage branch circuits manually. Reverse to restore. Cheap and whole-panel — but you are the load manager, and not every panel or jurisdiction accepts them.</p></section>
+  <section id="published-costs">
+    <h2>Published cost references</h2>
+    <p>HomeGuide’s cost guide, published December 30, 2025, lists a planning range of <strong>$600–$2,500</strong> for automatic transfer-switch installation. The same guide gives an installed <strong>$400–$850</strong> reference for a generator interlock. Those are broad published estimates, not current local bids; device rating, panel compatibility, wiring route, labor, permits, and existing equipment change the work.</p>
+    <p>Do not interpret these as directly comparable equipment prices. An ATS could be a large service-rated device, an interlock is panel-specific and manual, and an inlet/wiring job may be quoted separately or bundled. The quote should show which parts and work are included.</p>
+  </section>
 
-  <section id="pros-cons"><h2>Pros & cons</h2>
-  <ComparisonTable caption="Pros and cons by switch type" headers={['Type', 'Pros', 'Cons']} rows={[
-    ['Manual (selected)', 'Low cost; no battery; simple mechanics; circuit-by-circuit choice', 'Manual 1–5 min; 6–10 circuits only; go outside for portable'],
-    ['Automatic', 'Hands-off; 10–20 s transfer; whole-panel or managed; remote start; load mgmt', '$600–$2,500+ unit; complex install; needs compatible standby; more failure points'],
-    ['Interlock', 'Cheapest ($50–$150); whole panel; simple; uses existing panel', 'Manual load discipline; must remember sequence; panel-compatibility limits; some AHJs prohibit'],
-  ]} /></section>
+  <section id="bundle-examples">
+    <h2>Exact model examples show why bundle scope matters</h2>
+    <ul>
+      <li><strong>Generac G0073270:</strong> its model-family specification sheet says a 200 A service-rated transfer switch is included in bundled models. The G0073270 product page does not establish that a switch is included with the displayed starting MSRP.</li>
+      <li><strong>KOHLER 26RCA/26RCAL:</strong> the official specification sheet says the 26RCAL package includes a 200 A service-entrance-rated RXT ATS; 26RCA is also listed as a separate generator-set configuration.</li>
+      <li><strong>Champion 201222:</strong> the manufacturer describes this system as including a 200 A aXis ATS. Its published warranty terms distinguish generator coverage from ATS coverage.</li>
+    </ul>
+    <p>These are examples from different packages, not a price comparison. Review the <a href="/brands/generac/">Generac</a>, <a href="/brands/kohler/">KOHLER</a>, and <a href="/brands/champion/">Champion</a> source-linked model pages before comparing dealer proposals.</p>
+  </section>
 
-  <section id="costs"><h2>Parts & labor costs (2024–2026 ranges)</h2>
-  <ComparisonTable caption="Switch costs and labor" headers={['Type', 'Parts', 'Labor / installed', 'Example models']} rows={switchTypes.map((s) => [s.name, s.partsCost, `${s.installedCost} · ${s.laborHours}`, s.exampleModels ?? '—'])} />
-  <p class="mt-3">Service-rated ATS labor runs highest because utility disconnect/reconnect coordination is often involved. Interlock labor is lowest — plate plus a generator breaker — but the panel must be a listed-compatible match.</p></section>
-
-  <section id="situations"><h2>Which situation fits</h2>
-  <ul><li><strong>Portable + essentials:</strong> manual 6–10 circuit switch — selective, cost-effective.</li><li><strong>Portable + whole panel:</strong> interlock kit (if your panel and AHJ allow) — cheapest whole-panel path with strict load discipline.</li><li><strong>Standby + essentials:</strong> selected-load ATS — automatic, smaller generator suffices.</li><li><strong>Standby + whole home:</strong> service-rated ATS with load management.</li><li><strong>Frequent outages / convenience critical / medical:</strong> ATS — hands-off 10–20-second transfer wins.</li><li><strong>Rural, limited electricians:</strong> interlock if allowed — simplest install, fewest specialized skills.</li></ul></section>
-
-  <section id="brands"><h2>Top brands</h2>
-  <p><strong>Generac</strong> (RXSW series, Symphony Plus — pairs with Mobile Link), <strong>Kohler</strong> (RXT — pairs with OnCue), <strong>Reliance Controls</strong> (Pro/Tran manual line — the default manual choice), <strong>Square D / Schneider</strong> (widest panel-matched interlocks, QOCGK series), <strong>Siemens</strong> and <strong>Eaton</strong> (panel-matched kits and switches). Match the switch brand to your panel where interlocks are concerned; ATS brand usually follows the generator.</p></section>
-
-  <section id="nec"><h2>NEC Article 702 essentials (simplified)</h2>
-  <p>Article 702 covers optional standby systems. What your installer must satisfy:</p>
-  <ul><li><strong>Listed transfer equipment is mandatory</strong> — any generator tied to premises wiring needs a listed switch or interlock preventing simultaneous utility/generator connection (the backfeed rule that protects line workers).</li><li><strong>Sizing:</strong> manual-transfer systems need only cover intended loads (you manage); automatic systems must carry the full transferred calculated load <em>or</em> include automatic load management — the code reason managed-load ATS designs exist.</li><li><strong>Grounding, overcurrent protection, and labeling</strong> per Article 702 and Article 250, with a disconnect-location sign at the service equipment.</li></ul>
-  <p class="text-sm text-gray-600">Simplified summary — the AHJ's adopted NEC edition and local amendments govern. Ask your bidder which edition they build to.</p></section>
-
-  <section id="load-mgmt"><h2>Load management explained</h2>
-  <p>Priority circuits (HVAC, well pump, fridge) stay on; managed circuits (water heater, dryer, EV charger, second AC zone) sit on shedding contactors. On start or near-overload, managed loads drop; once stable, they restore one at a time (sequencing). Variants: time-delay shedding (startup window), current-sensing (amps-based), and app-driven smart priority. Payoff: a 16–20 kW unit doing a 24–26 kW job — saving $2,000–$4,000 in equipment plus gas and pad scope.</p></section>
-
-  <section id="whole-vs-selected"><h2>Whole-panel vs selected-circuit ATS</h2>  <ComparisonTable caption="Whole panel versus selected circuit ATS" headers={['', 'Whole-panel ATS', 'Selected-circuit ATS']} rows={[
-    ['Powers', 'Entire panel', 'Pre-chosen 6–16 circuits'],
-    ['Generator fit', 'Must carry full load or manage', 'Smaller unit OK (10–16 kW)'],
-    ['ATS cost signal', '$1,500–$3,500+', '$600–$1,500'],
-    ['Install', 'Complex; possible service upgrade', 'Simpler subpanel'],
-    ['Example', 'Generac RXSW200A3 200 A', 'Reliance Pro/Tran 10-circuit'],
-  ]} /></section>
-
-  <section id="transitions"><h2>Open vs closed vs delayed transition</h2>
-  <p>Residential standby uses <strong>open transition</strong> (break-before-make): a sub-second break during the swap — the reason computers want a UPS. Closed transition (momentary paralleling, seamless) serves hospitals and data centers but needs utility approval and money no home requires. Delayed transition inserts a deliberate 0.5–5 s pause so motor residual voltage decays — specified for big-motor/transformer loads, not typical homes. Detection-to-power timeline: 1–3 s sensing delay → 5–15 s crank/stabilize → 10–20 s total to generator power; retransfer waits 15–30 min for stable utility.</p></section>
-
-  <section id="service-entrance"><h2>Service-entrance-rated vs downstream ATS</h2>
-  <p>A <strong>service-entrance-rated</strong> ATS carries a suitable-for-service-equipment marking with integral disconnecting means — it can sit first after the meter (new construction, panel upgrades, whole-home). A standard ATS (UL 1008 listed transfer equipment) installs downstream of the existing main panel — the essentials-subpanel path. Examples: Generac RXSW200A3 / Kohler RXT (service-rated) vs RXS / RSC lines. Your service layout and AHJ pick the type, not your budget.</p></section>
-
-  <section id="circuits"><h2>Circuit counts & selection (8 / 10 / 16)</h2>
-  <p>Selected-load switches come in 8 (~$400–$800 parts), 10 (~$500–$900), and 16 (~$700–$1,200) circuit sizes. A proven 8-circuit list: fridge, freezer, furnace, well pump, sump, kitchen GFCI, key lights, internet/TV. Sixteen adds microwave, bath GFCI, bedrooms, living areas, garage door, gas water heater controls, laundry (one at a time), basement. Tandem (twin) breakers count as two circuits for ATS sizing and tempt overload — label them and respect the generator's limit.</p></section>
-
-  <section id="faq"><span class="sr-only">FAQ anchor</span></section>
-  <FAQSection items={[
-    { q: 'Is the transfer switch included with the generator?', a: 'Often bundled in standby kits — but verify ATS model, amperage, and whether it is service-rated or selected-load. Bundle switches that do not match your service are a classic change-order trap.' },
-    { q: 'Interlock or transfer switch for a portable?', a: 'Interlock: cheapest whole-panel manual path where panel-compatible and AHJ-allowed. Manual switch: cleaner circuit-by-circuit control for essentials. Neither is automatic — standby + ATS is the hands-off answer.' },
-    { q: 'Can I install a transfer switch myself?', a: 'No — panel and utility-interactive work requires a licensed electrician under permit in essentially all US jurisdictions. Unpermitted transfer equipment risks fines, insurance denial, resale failure, and utility disconnection — plus backfeed liability.' },
-  
-    { q: 'How do I know what amperage switch I need?', a: "Match the switch to your service (100/200/400 A), not the generator's kW. 400 A services need dual or 400 A switches — engineered quotes only." },
-    { q: 'Do switches wear out?', a: 'Contactors last decades with exercise cycling and clean contacts; annual transfer testing during service keeps mechanisms proven. Sheltered mounting extends life.' },
-    { q: 'Can my switch handle a future bigger generator?', a: 'Sometimes: a 200 A service-rated ATS already covers growth to 26 kW-class units. Selected-load subpanel switches may need rework — ask before upsizing.' },
-  ]} />
-  <section id="conclusion"><h2>Conclusion</h2><p>Match the switch to service amperage and backup philosophy: interlock/manual for portable budgets, selected-load ATS for automatic essentials, service-rated ATS + management for flexible whole-home. Then place the generator correctly — see <a href="/installation/generator-pad-and-placement/">pad & placement</a> and <a href="/installation/what-to-expect/">install day</a>.</p></section>
+  <section id="quote-questions">
+    <h2>Questions for the electrical contractor</h2>
+    <ul>
+      <li>What is the exact transfer switch/interlock/inlet model and current rating?</li>
+      <li>Does the equipment serve selected circuits, the whole panel, or service entrance—and what is not backed up?</li>
+      <li>Is the proposed device compatible and approved for this exact panel, generator, and service?</li>
+      <li>Which loads can operate together, and what must be turned off or sequenced manually?</li>
+      <li>Are wiring, trenching, panel changes, grounding/neutral configuration, permits, inspections, and labels included?</li>
+      <li>Who commissions the system, demonstrates safe operation, and handles future service?</li>
+    </ul>
+    <p>Ask a licensed electrician to explain the proposed design. See <a href="/comparisons/transfer-switch-vs-interlock/">our manual-switch/interlock comparison</a> and <a href="/cost/installation-cost-breakdown/">installation cost breakdown</a> for related planning context.</p>
+  </section>
 </ArticleLayout>

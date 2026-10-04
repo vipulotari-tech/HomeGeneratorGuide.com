@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
-import { SITE_URL, SITE_NAME } from '../config/site';
+import { IS_INDEXABLE, SITE_URL, SITE_NAME } from '../config/site';
 
 interface Props {
   title: string;
@@ -22,7 +22,9 @@ const {
 } = Astro.props;
 const site = SITE_URL;
 const url = canonical ?? `${site}${Astro.url.pathname}`;
+const indexable = IS_INDEXABLE && !noindex;
 const fullTitle = title.includes('HomeGeneratorGuide') ? title : `${title} | HomeGeneratorGuide`;
+const absoluteOgImage = ogImage.startsWith('http') ? ogImage : `${site}${ogImage}`;
 ---
 <!doctype html>
 <html lang="en-US">
@@ -33,21 +35,20 @@ const fullTitle = title.includes('HomeGeneratorGuide') ? title : `${title} | Hom
   <meta name="theme-color" content="#1B3A6B" />
   <title>{fullTitle}</title>
   <meta name="description" content={description} />
-  <link rel="canonical" href={url} />
-  <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
+  {indexable && <link rel="canonical" href={url} />}
+  <meta name="robots" content={indexable ? 'index, follow' : 'noindex, nofollow'} />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content={SITE_NAME} />
   <meta property="og:title" content={fullTitle} />
   <meta property="og:description" content={description} />
   <meta property="og:url" content={url} />
-  <meta property="og:image" content={`${site}${ogImage}`} />
+  <meta property="og:image" content={absoluteOgImage} />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={fullTitle} />
   <meta name="twitter:description" content={description} />
-  <meta name="twitter:image" content={`${site}${ogImage}`} />
+  <meta name="twitter:image" content={absoluteOgImage} />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="sitemap" href="/sitemap-index.xml" />
-  <!-- GA4 placeholder: add measurement ID at deploy time. No tracking scripts ship by default. -->
+  {indexable && <link rel="sitemap" href="/sitemap-index.xml" />}
   {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
 </head>
 <body class="flex min-h-screen flex-col bg-white text-ink">
@@ -58,8 +59,8 @@ const fullTitle = title.includes('HomeGeneratorGuide') ? title : `${title} | Hom
   </main>
   <Footer />
   <script>
-    // Keyboard-only focus rings: hide outlines for mouse/touch interaction,
-    // restore them the moment keyboard navigation (Tab) is used.
+    // Keyboard-only focus rings: hide outlines for pointer interaction, restore
+    // them immediately when the user resumes keyboard navigation.
     document.documentElement.addEventListener('mousedown', () => document.documentElement.classList.add('mouse-nav'), { passive: true });
     document.documentElement.addEventListener('touchstart', () => document.documentElement.classList.add('mouse-nav'), { passive: true });
     document.documentElement.addEventListener('keydown', (e) => { if (e.key === 'Tab') document.documentElement.classList.remove('mouse-nav'); });

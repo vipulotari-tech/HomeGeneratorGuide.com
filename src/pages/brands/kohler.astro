@@ -1,82 +1,79 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import AlertBox from '../../components/ui/AlertBox.astro';
-import ComparisonTable from '../../components/ui/ComparisonTable.astro';
-import FAQSection from '../../components/ui/FAQSection.astro';
-import ProConBox from '../../components/ui/ProConBox.astro';
-import { brands } from '../../data/generator-brands';
+import ModelSpecs from '../../components/brands/ModelSpecs.astro';
+import { getModelSpecs } from '../../data/model-specs';
 
-const brand = brands.find((b) => b.slug === 'kohler')!;
+const models = getModelSpecs('KOHLER / Rehlko');
 const toc = [
-  { id: 'overview', label: 'Company overview' },
-  { id: 'lineup', label: 'Lineup & MSRP' },
-  { id: 'strengths', label: 'Where Kohler stands out' },
-  { id: 'warranty', label: 'Warranty (comprehensive)' },
-  { id: 'noise', label: 'Noise levels' },
-  { id: 'monitoring', label: 'OnCue Plus & voice control' },
-  { id: 'pricing', label: 'Pricing context' },
-  { id: 'dealers', label: 'Dealer considerations' },
-  { id: 'verdict', label: 'Who Kohler suits' },
-  { id: 'faq', label: 'FAQ' },
-];
-
-const faqs = [
-  { q: 'Is Kohler better than Generac?', a: 'Neither universally. Kohler leans premium on build, diagnostics, and a comprehensive 5-year warranty; Generac leans broad on value and coverage. Decide by loads, site constraints, local dealer quality, and all-in quotes — full breakdown in our head-to-head.' },
-  { q: 'How long is the Kohler warranty?', a: 'Standard 5-year / 2,000-hour comprehensive (parts, labor, travel) — broader than Generac tiered terms. Costco-sold models carry 3-year / 2,000-hour. Extended plans up to 10 years. Verify the current PDF for your exact model.' },
-  { q: 'Are Kohler generators quiet?', a: 'Per-model ratings run 56–71 dB(A): the 26RCA is rated 56 dB, the 14RCA 63 dB, the 20RCA 64 dB exercise / 69 dB full load, the small RESV units 67–71 dB. Placement and load matter more than badge.' },
-  { q: 'What is PowerBoost?', a: 'Kohler-exclusive starting technology that handles large motor surges without dropping power to other loads — genuinely useful for 3-ton+ AC starts on mid-size units. It complements, not replaces, correct sizing.' },
-
-  { q: 'What sizes does Kohler offer?', a: 'Air-cooled 10–26 kW (RESV/RCA) plus liquid-cooled RCL models from 24 to 60 kW for estates and long runtimes.' },
-  { q: 'Does OnCue monitoring cost extra?', a: 'The app is free; Wi-Fi monitoring carries no subscription, while cellular plans may. Confirm what your quote bundles before assuming.' },
-  { q: 'Where are Kohler standby units built?', a: 'Kohler, Wisconsin heritage with standby production in Mosel, Wisconsin (plant expanded 2022).' },
-  { q: 'How much does a Kohler standby cost installed?', a: 'Equipment MSRP runs $3,946–$7,546 air-cooled ($17,900–$28,304 liquid-cooled); installed all-in tracks the national $9,000–$16,000+ band by site scope.' },
+  { id: 'model-identity', label: 'Model and configuration' },
+  { id: 'model-facts', label: 'Verified 26RCA data' },
+  { id: 'noise-and-exercise', label: 'Sound and exercise modes' },
+  { id: 'ats-and-price', label: 'Transfer switch and MSRP' },
+  { id: 'warranty', label: 'Warranty scope' },
+  { id: 'quote-checklist', label: 'What to verify in a quote' },
 ];
 ---
 <ArticleLayout
-  title="Kohler Standby Generators: Lineup, MSRP, Warranty & Honest Review"
-  description="Independent Kohler standby review: RESV/RCA/RCL MSRP table, comprehensive warranty, noise ratings, PowerBoost, OnCue voice control, and honest trade-offs."
-  category="Brands" categoryHref="/brands/" updated="2026-10-03" readingTime="10 min read" toc={toc}
+  title="KOHLER 26RCA Home Generator: Verified Model Data & Guide"
+  description="A source-linked look at the KOHLER 26RCA and 26RCAL: LP and natural-gas output, sound conditions, fuel use, 200 A ATS configuration, MSRP scope, and warranty documentation."
+  category="Brands" categoryHref="/brands/" updated="2026-10-04" verified="2026-10-04" readingTime="7 min read" toc={toc}
+  takeaways={[
+    'The single-phase 26RCA configuration is rated 26 kW on LP and 24 kW on natural gas; the same product family also has separately listed three-phase configurations.',
+    'The 26RCAL package is the named configuration that includes a 200 A service-entrance-rated RXT transfer switch in the official specification sheet.',
+    'The official G4-315 specification sheet reviewed here is marked 2026 and describes a 5-year/2,000-hour limited warranty covering parts, labor, and travel; confirm the written warranty for the purchased serial/model.',
+  ]}
   sources={[
-    { label: 'Kohler Home Energy — Home Generators', href: 'https://www.kohlerhomeenergy.rehlko.com/products/home-generators', type: 'Manufacturer', verified: 'Oct 2026' },
-    { label: 'Kohler — Warranty Promise', href: 'https://www.kohlerhomeenergy.rehlko.com/resource-center/warranty-promise', type: 'Manufacturer', verified: 'Oct 2026' },
-    { label: 'Generac — Residential Standby Lineup', href: 'https://www.generac.com/residential-products/standby-generators/', type: 'Manufacturer', verified: 'Oct 2026' },
+    { label: 'KOHLER 26RCA product page (without ATS configuration)', href: 'https://www.kohlerhomeenergy.rehlko.com/products/home-generators/26rca', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'KOHLER 26RCAL ATS-inclusive product page', href: 'https://www.kohlerhomeenergy.rehlko.com/products/home-generators/26rcal', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'KOHLER/Rehlko G4-315 26RCA/26RCAL official specification sheet (2026)', href: 'https://techcomm.rehlko.com/techcomm/pdf/g4315.pdf', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'KOHLER 26RCA installation manual (TP-7091)', href: 'https://techcomm.rehlko.com/techcomm/pdf/tp7091.pdf', type: 'Technical manual', verified: '2026-10-04' },
   ]}
   related={[
-    { href: '/brands/generac/', title: 'Generac Standby Generators', description: 'Volume-leader deep dive.', category: 'Brands' },
-    { href: '/comparisons/generac-vs-kohler/', title: 'Generac vs Kohler', description: 'Neutral head-to-head.', category: 'Comparisons' },
+    { href: '/comparisons/generac-vs-kohler/', title: 'Generac vs. KOHLER', description: 'Compare exact 26 kW-class models without conflating bundle scope.', category: 'Comparisons' },
+    { href: '/brands/generac/', title: 'Generac model data', description: 'Manufacturer-source links for two exact Generac model numbers.', category: 'Brands' },
+    { href: '/sizing/what-size-generator-do-i-need/', title: 'How generator sizing works', description: 'Use backed-up loads and nameplate values—not square footage alone.', category: 'Sizing' },
   ]}
-  prev={{ href: '/brands/generac/', label: 'Generac Brand Guide' }}
-  next={{ href: '/brands/briggs-stratton/', label: 'Briggs & Stratton Guide' }}
+  showMethod={true}
 >
-  <section id="overview"><h2>Company overview</h2>
-  <p>Kohler's power business dates to <strong>1873</strong> (Kohler, Wisconsin) and now operates as Rehlko; standby units build in <strong>Mosel, Wisconsin</strong> (plant expanded 2022), with commercial engines trusted in hospitals and infrastructure. Residential standby positions premium: PowerBoost starting tech, aluminum enclosures, and diagnostic depth. <AlertBox type="info" title="Independence note">No paid placement. MSRPs and ratings from Kohler Home Energy pages (researched Oct 2026); reputation patterns attributed to named review sources.</AlertBox></p></section>
+  <section id="model-identity">
+    <h2>Model and configuration matter</h2>
+    <p>The product page presents the KOHLER 26RCA as a 26 kW residential generator. The official G4-315 sheet describes a multi-fuel 26RCA(L) family and separately lists single- and three-phase ratings. The figures below cover the <strong>single-phase 120/240 V configuration</strong> sold on the residential 26RCA product page. A three-phase model in the same document is not interchangeable with it.</p>
+    <p>The sheet is marked © 2026 and was checked with the current product page on October 4, 2026. Manufacturer documentation and configurations can change; check the exact model suffix, phase, voltage, fuel, and document supplied with any quote.</p>
+  </section>
 
-  <section id="lineup"><h2>Lineup & MSRP</h2>
-  <ComparisonTable
-    caption="Kohler residential models and MSRP"
-    headers={['Model', 'kW (LP / NG)', 'MSRP', 'Noise']}
-    rows={brand.models.map((m) => [m.series, m.capacityKw, m.msrp ?? '—', m.noiseDb ?? '—'])}
-  />
-  <p class="mt-3">Sources: {brand.sourceUrls?.join(', ')}. Amperage runs 41.7 A (10RESV) to 109 A (26RCA) on LP.</p></section>
+  <section id="model-facts">
+    <h2>Verified 26RCA data</h2>
+    <p>Values in the card below come from the current product page and official manufacturer specification sheet. These are published specifications, not measurements or tests performed by HomeGeneratorGuide.</p>
+    <ModelSpecs models={models} label="KOHLER 26RCA model specifications checked October 4, 2026" />
+  </section>
 
-  <section id="strengths"><h2>Where Kohler stands out</h2>
-  <ul><li><strong>PowerBoost™:</strong> exclusive surge handling for large motor starts — the most meaningful technical differentiator vs Generac.</li><li><strong>Enclosures:</strong> corrosion-resistant aluminum; manufacturer-tested to 181 mph winds (manufacturer claim).</li><li><strong>Controllers:</strong> diagnostic depth pro techs praise — faster fault isolation.</li><li><strong>Commercial heritage:</strong> same engineering culture as hospital/nuclear backup (not the same units — but shared testing discipline).</li><li><strong>Fast transfer:</strong> among the industry's quickest return-to-power figures (verify current spec sheets for exact seconds).</li></ul></section>
+  <section id="noise-and-exercise">
+    <h2>Read sound figures with their test conditions</h2>
+    <p>The 26RCA sheet lists <strong>56 dB(A) during engine exercise</strong> and <strong>67 dB(A) during full-speed diagnostics and normal operation</strong>, measured 23 feet from the generator set. It also says the listed result is the lowest of eight points measured around the set and that other measurement points may differ with installation. It is therefore not a universal perimeter reading or a promise about the sound at a neighbor’s property.</p>
+    <p>An exercise-mode reading is not comparable to a normal-operation reading. Compare the sound mode, load/state, measurement distance, and direction before treating two numbers as comparable.</p>
+  </section>
 
-  <section id="warranty"><h2>Warranty: 5-year comprehensive</h2><p>{brand.warranty} This is the cleanest contrast with Generac's tiered terms — parts, labor, and travel throughout the standard period. As always: confirm dealer registration and keep maintenance records.</p></section>
+  <section id="ats-and-price">
+    <h2>Do not assume the ATS is included in every package</h2>
+    <p>The official spec sheet states that the <strong>26RCAL model package</strong> includes a 200 A service-entrance-rated Model RXT automatic transfer switch; the 26RCA generator set is also listed separately. The manufacturer pages checked October 4, 2026 show a <strong>$7,546 starting MSRP for the 26RCA configuration without the ATS</strong> and <strong>$8,515 starting MSRP for the ATS-inclusive 26RCAL package</strong>. The product pages say final pricing depends on dealer customization and installation type. Neither price is an installed quote; confirm exact equipment and scope in writing.</p>
+    <p>Ask the dealer to put the full model and ATS part number, switch rating, load-management equipment, fuel work, electrical work, permits, site work, startup, and warranty scope on the quote.</p>
+  </section>
 
-  <section id="noise"><h2>Noise levels</h2><p>Standouts: 26RCA at 56 dB is genuinely quiet for its class; 14RCA 63 dB; 20RCA 64 dB exercise / 69 dB full load; compact RESV units 67–71 dB. Compare exact-model figures, not brand averages — Kohler's range (56–71) spans both the quietest and loudest entries here.</p></section>
+  <section id="warranty">
+    <h2>Warranty scope: use the document, not the headline</h2>
+    <p>The 2026 official specification sheet describes a premium <strong>5-year/2,000-hour limited standby warranty</strong> that covers parts, labor, and travel for the full warranty period. The current product page summarizes a five-year parts warranty and separately mentions dealer travel coverage. Because web summaries and warranty terms may differ in scope or conditions, read the linked warranty document for the exact model and serial number before purchase.</p>
+    <p>The manufacturer also states that its commercial-grade engines are tested for 2,000 hours of continuous operation and describes the enclosure as designed to withstand winds up to 181 mph. Those are manufacturer statements about its product; they are not independent durability testing, a 20-year service-life guarantee, or a field performance finding by this publication.</p>
+  </section>
 
-  <section id="monitoring"><h2>OnCue Plus & voice control</h2><p>Status, email/text/push alerts, remote exercise control, fault-code history, and RXT load management — plus <strong>Amazon Alexa and Google Home voice integration</strong>, which Generac Mobile Link does not offer. Documented gripe: the app is considered less polished than Mobile Link, and some controller faults need a laptop reload (no physical reset button).</p></section>
-
-  <section id="pricing"><h2>Pricing context</h2><p>{brand.priceRange} Slightly above Generac per kW. The spread buys comprehensive warranty, enclosure/controller refinement — not extra kilowatts. Price in <a href="/cost/standby-generator-cost/">installed dollars</a>.</p></section>
-
-  <section id="dealers"><h2>Dealer considerations</h2><p>{brand.dealerNetwork} Verify a certified servicer within reasonable distance <em>before</em> committing; ask about warranty-parts sourcing and storm response. A superb Kohler dealer beats a mediocre anything.</p></section>
-
-  <section id="verdict"><h2>Who Kohler suits</h2>
-  <ProConBox pros={['Comprehensive 5-yr warranty incl. labor/travel', 'PowerBoost surge handling; quiet 26RCA', 'Aluminum enclosures; voice integration']} cons={['Higher MSRP per kW', 'Thinner/rural dealer coverage', 'App less polished; parts sourcing variance']} prosTitle="Strengths" consTitle="Trade-offs" />
-  <p class="mt-4">Choose Kohler when the premium buys something real for your site (corrosion, diagnostics, standout dealer, comprehensive warranty). Otherwise see <a href="/comparisons/generac-vs-kohler/">the head-to-head</a>.</p></section>
-
-  <section id="faq"><span class="sr-only">FAQ anchor</span></section>
-  <FAQSection items={faqs} />
-  <section id="conclusion"><h2>Conclusion</h2><p>Kohler is the considered premium pick — worth it when enclosure, diagnostics, warranty breadth, or dealer excellence returns the spread. Next: <a href="/comparisons/generac-vs-kohler/">compare head-to-head</a> or <a href="/sizing/what-size-generator-do-i-need/">confirm sizing</a>.</p></section>
+  <section id="quote-checklist">
+    <h2>What to verify in a written quote</h2>
+    <ul>
+      <li>Exact model suffix, phase, voltage, fuel, and output rating.</li>
+      <li>Whether the quote is 26RCA generator-only or the 26RCAL package with the stated RXT ATS.</li>
+      <li>Which circuits and motor starts the final design supports, including any load-management components.</li>
+      <li>Fuel-supply capacity, pipe route/size, electrical route, permits, site preparation, inspections, startup, and commissioning.</li>
+      <li>The applicable warranty document, covered costs, hours limit, registration requirements, and local service provider.</li>
+    </ul>
+    <p>Generator capacity must be selected from actual loads and the installation conditions. Use our <a href="/sizing/what-size-generator-do-i-need/">sizing guide</a> as background, then have a qualified local professional assess the property.</p>
+  </section>
 </ArticleLayout>

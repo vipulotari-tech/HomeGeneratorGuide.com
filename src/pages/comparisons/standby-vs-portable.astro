@@ -1,70 +1,116 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import ComparisonTable from '../../components/ui/ComparisonTable.astro';
-import FAQSection from '../../components/ui/FAQSection.astro';
-import ProConBox from '../../components/ui/ProConBox.astro';
 
 const toc = [
-  { id: 'cost-gap', label: 'The cost gap' },
-  { id: 'compare', label: 'Head-to-head' },
-  { id: 'safety', label: 'Safety & CO reality' },
-  { id: 'decide', label: 'Decision framework' },
-  { id: 'faq', label: 'FAQ' },
+  { id: 'what-differs', label: 'How the systems differ' },
+  { id: 'static-comparison', label: 'Comparison table' },
+  { id: 'safety', label: 'Safety comes first' },
+  { id: 'cost-scope', label: 'Compare project scope' },
+  { id: 'decision', label: 'Questions for your household' },
 ];
 ---
 <ArticleLayout
-  title="Standby vs Portable Generator: Cost, Safety & Which Wins"
-  description="Standby vs portable head-to-head: installed cost gap, automation, CO safety, power quality, and a decision framework for US homeowners."
-  category="Comparisons" categoryHref="/comparisons/" updated="2026-10-03" image="/images/outage-dark-vs-powered.webp" readingTime="9 min read" toc={toc}
+  title="Standby vs. Portable Generators: Setup, Safety & Tradeoffs"
+  description="Compare permanently installed standby generators with portable backup by transfer method, fuel, safety responsibilities, installation scope, and outage needs—without a calculator or universal winner."
+  category="Comparisons" categoryHref="/comparisons/" updated="2026-10-04" verified="2026-10-04" readingTime="7 min read" toc={toc}
+  takeaways={[
+    'A standby system can start automatically only when its controls and transfer equipment are properly installed and maintained.',
+    'A portable generator requires an outdoor operating location, active supervision, fuel management, and a safe connection method.',
+    'Never connect a generator by plugging into a wall outlet; use electrical equipment and installation approved for the exact setup.',
+  ]}
   sources={[
-    { label: 'Generac — Residential Standby Lineup', href: 'https://www.generac.com/residential-products/standby-generators/', type: 'Manufacturer', verified: 'Oct 2026' },
-    { label: 'CPSC — Carbon Monoxide Information Center', href: 'https://www.cpsc.gov/Safety-Education/Safety-Education-Centers/Carbon-Monoxide-Information-Center', type: 'Safety authority', verified: 'Oct 2026' },
-    { label: 'U.S. EIA — Electricity Data Browser', href: 'https://www.eia.gov/electricity/', type: 'Government', verified: 'Oct 2026' },
+    { label: 'CPSC 2026 generator safety guidance', href: 'https://www.cpsc.gov/Newsroom/News-Releases/2026/CPSC-Warns-of-Generator-Carbon-Monoxide-and-Fire-Hazards-Ahead-of-Hurricane-Season', type: 'Safety authority', verified: '2026-10-04' },
+    { label: 'HomeGuide: whole-house generator cost and scope (published Dec. 30, 2025)', href: 'https://homeguide.com/costs/generator-cost', type: 'Industry', verified: '2026-10-04' },
+    { label: 'Generac home standby installation guide', href: 'https://www.generac.com/resources/home-management/backup-generator-installation/', type: 'Manufacturer', verified: '2026-10-04' },
   ]}
   related={[
-    { href: '/comparisons/transfer-switch-vs-interlock/', title: 'Transfer Switch vs Interlock', description: 'The manual-side decision.', category: 'Comparisons' },
-    { href: '/cost/generator-roi-outage-costs/', title: 'Generator ROI & Outage Costs', description: 'Payback math.', category: 'Cost' },
-    { href: '/guides/generator-safety-carbon-monoxide/', title: 'CO Safety Guide', description: 'The safety chapter.', category: 'Buying Guides' },
+    { href: '/comparisons/transfer-switch-vs-interlock/', title: 'Transfer switch vs. interlock', description: 'Understand the connection options and the safety boundary.', category: 'Comparisons' },
+    { href: '/guides/generator-safety-carbon-monoxide/', title: 'Generator carbon-monoxide safety', description: 'Official safety guidance for portable-generator operation.', category: 'Buying Guides' },
+    { href: '/cost/standby-generator-cost/', title: 'Standby-generator costs', description: 'Separate equipment, included switchgear, and installation scope.', category: 'Cost' },
   ]}
-  prev={{ href: '/comparisons/generac-vs-kohler/', label: 'Generac vs Kohler' }}
-  next={{ href: '/comparisons/transfer-switch-vs-interlock/', label: 'Switch vs Interlock' }}
+  prev={{ href: '/comparisons/generac-vs-kohler/', label: 'Generac vs. KOHLER' }}
+  next={{ href: '/comparisons/transfer-switch-vs-interlock/', label: 'Transfer switch vs. interlock' }}
 >
-    <figure class="not-prose my-6">
-    <img src="/images/outage-dark-vs-powered.webp" alt="Street during an outage: dark home beside a powered home with backup" width="1536" height="1024" loading="lazy" decoding="async" class="w-full rounded-xl border border-[#e5e7eb]" />
-    <figcaption class="mt-2 text-sm text-gray-500">The difference backup makes: dark street beside a powered home. Illustrative photo.</figcaption>
-  </figure>
-<section id="cost-gap"><h2>The cost gap, stated plainly</h2>
-  <p>A quality portable plus manual transfer inlet runs roughly <strong>$1,500–$4,000 installed</strong>; a permanent standby runs <strong>$9,000–$16,000+</strong>. The gap buys: automatic 10–20-second transfer, whole-home capacity, no refueling runs, no extension cords, and dramatically lower CO risk. Whether that is worth 3–4× the money depends on outage frequency, medical needs, travel, and WFH exposure — not on badge loyalty.</p></section>
-
-  <section id="compare"><h2>Head-to-head</h2>
-  <ComparisonTable caption="Standby versus portable" headers={['', 'Standby', 'Portable + inlet']} firstColSticky={true} rows={[
-    ['All-in cost', '$9,000–$16,000+', '$1,500–$4,000'],
-    ['Transfer', 'Automatic, 10–20 s', 'Manual, minutes + setup'],
-    ['Capacity', '10–28 kW whole-home', '5–12 kW essentials'],
-    ['Fuel', 'NG piped / large LP tank', 'Gasoline cans / small LP (refill runs)'],
-    ['Runtime', 'Days–weeks unattended', 'Hours per tank; needs attendance'],
-    ['Power quality', '<5% THD (safe electronics)', '8–25% THD (risks boards/TVs)'],
-    ['Noise', '61–68 dB, fixed placement', '70–80+ dB, wherever you put it'],
-    ['Maintenance', '$300–$600/yr serviced', 'Oil, stabilizer, exercise discipline'],
-  ]} /></section>
-
-  <section id="safety"><h2>Safety & CO reality</h2>
-  <p>Portables cause ~75 US CO deaths yearly (CPSC) — garage placement, rain improvisation, and missing detectors. Standby's fixed placement, engineered exhaust, and automatic operation remove the exact decisions that kill. A portable run safely (fully outdoors 20+ ft, exhaust away, CO alarms, never backfed) is legitimate budget backup; a portable run conveniently is the statistic. Full protocol: <a href="/guides/generator-safety-carbon-monoxide/">CO safety guide</a>.</p>
-  <ProConBox pros={['1/3 the cost; no permits/pad/gas work', 'Powers essentials fine; portable utility', 'No standby maintenance contract']} cons={['Manual everything, in the storm, at 2 AM', 'Refueling logistics; gasoline degrades', 'High THD + high CO risk profile']} prosTitle="Portable wins when…" consTitle="…but accept" />
+  <section id="what-differs">
+    <h2>How the systems differ</h2>
+    <p>A <strong>standby generator</strong> is a permanent outdoor installation. When paired with compatible automatic controls and transfer equipment, it can detect a utility interruption, start, and switch the selected electrical loads. It still depends on a correctly sized fuel supply, commissioned system, and ongoing maintenance.</p>
+    <p>A <strong>portable generator</strong> is brought out for use and must be operated outdoors. The owner must manage setup, fuel, operating conditions, and the connection to backed-up circuits. It does not become a safe or automatic standby system merely because it is large or uses a particular fuel.</p>
+    <p class="mt-5">The diagram is a simplified explanation of the usual operating distinction, not wiring instructions. Exact system design belongs to the equipment manuals and a qualified installer.</p>
+    <figure class="not-prose my-5 rounded-xl border border-[#d9e0ea] bg-[#f7f9fc] p-4 sm:p-6">
+      <svg viewBox="0 0 920 350" role="img" aria-labelledby="power-path-title power-path-desc" class="h-auto w-full">
+        <title id="power-path-title">How standby and portable home backup systems differ</title>
+        <desc id="power-path-desc">Two separate paths connect a generator through appropriate transfer equipment to selected home circuits. Standby starts and transfers automatically when properly configured; a portable generator requires the owner to place, start, supervise, fuel, and connect it safely.</desc>
+        <rect x="10" y="10" width="440" height="330" rx="18" fill="#ffffff" stroke="#1b3a6b" stroke-width="3" />
+        <rect x="470" y="10" width="440" height="330" rx="18" fill="#ffffff" stroke="#d97706" stroke-width="3" />
+        <text x="230" y="48" text-anchor="middle" font-size="22" font-weight="700" fill="#1b3a6b">PERMANENT STANDBY</text>
+        <text x="690" y="48" text-anchor="middle" font-size="22" font-weight="700" fill="#9a4b00">PORTABLE BACKUP</text>
+        <rect x="38" y="78" width="140" height="66" rx="10" fill="#edf3fb" stroke="#1b3a6b" stroke-width="2" />
+        <text x="108" y="105" text-anchor="middle" font-size="16" font-weight="700" fill="#142c52">Utility</text><text x="108" y="126" text-anchor="middle" font-size="13" fill="#142c52">normal source</text>
+        <rect x="270" y="78" width="140" height="66" rx="10" fill="#edf3fb" stroke="#1b3a6b" stroke-width="2" />
+        <text x="340" y="105" text-anchor="middle" font-size="16" font-weight="700" fill="#142c52">Standby set</text><text x="340" y="126" text-anchor="middle" font-size="13" fill="#142c52">fixed outdoor unit</text>
+        <line x1="178" y1="111" x2="223" y2="111" stroke="#1b3a6b" stroke-width="3" /><line x1="223" y1="111" x2="270" y2="111" stroke="#1b3a6b" stroke-width="3" />
+        <rect x="151" y="174" width="160" height="60" rx="10" fill="#fff7ed" stroke="#d97706" stroke-width="2" />
+        <text x="231" y="199" text-anchor="middle" font-size="15" font-weight="700" fill="#7c3a00">Automatic transfer</text><text x="231" y="218" text-anchor="middle" font-size="13" fill="#7c3a00">when configured</text>
+        <line x1="108" y1="144" x2="108" y2="204" stroke="#1b3a6b" stroke-width="3" /><line x1="340" y1="144" x2="340" y2="204" stroke="#1b3a6b" stroke-width="3" /><line x1="108" y1="204" x2="151" y2="204" stroke="#1b3a6b" stroke-width="3" /><line x1="311" y1="204" x2="340" y2="204" stroke="#1b3a6b" stroke-width="3" />
+        <rect x="155" y="267" width="152" height="48" rx="10" fill="#e9f5ee" stroke="#237a4b" stroke-width="2" />
+        <text x="231" y="297" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">Selected home loads</text>
+        <line x1="231" y1="234" x2="231" y2="267" stroke="#237a4b" stroke-width="3" />
+        <text x="690" y="82" text-anchor="middle" font-size="14" fill="#374151">Operate outdoors; CPSC portable-generator guidance:</text><text x="690" y="103" text-anchor="middle" font-size="15" font-weight="700" fill="#7c3a00">at least 20 ft from buildings</text>
+        <rect x="500" y="126" width="150" height="60" rx="10" fill="#fff7ed" stroke="#d97706" stroke-width="2" />
+        <text x="575" y="151" text-anchor="middle" font-size="15" font-weight="700" fill="#7c3a00">Portable generator</text><text x="575" y="171" text-anchor="middle" font-size="13" fill="#7c3a00">owner supervises</text>
+        <rect x="710" y="126" width="150" height="60" rx="10" fill="#fff7ed" stroke="#d97706" stroke-width="2" />
+        <text x="785" y="151" text-anchor="middle" font-size="15" font-weight="700" fill="#7c3a00">Approved transfer</text><text x="785" y="171" text-anchor="middle" font-size="13" fill="#7c3a00">equipment / inlet</text>
+        <line x1="650" y1="156" x2="710" y2="156" stroke="#9a4b00" stroke-width="3" />
+        <rect x="709" y="237" width="152" height="48" rx="10" fill="#e9f5ee" stroke="#237a4b" stroke-width="2" />
+        <text x="785" y="267" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">Selected home loads</text>
+        <line x1="785" y1="186" x2="785" y2="237" stroke="#237a4b" stroke-width="3" />
+        <text x="690" y="318" text-anchor="middle" font-size="13" fill="#374151">No wall-outlet backfeeding; connection must be properly designed.</text>
+      </svg>
+      <figcaption class="mt-3 text-sm text-gray-600">Original editorial diagram. The CPSC distance shown is for portable-generator safety; standby placement is governed by the exact manufacturer installation manual and local requirements.</figcaption>
+    </figure>
   </section>
 
-  <section id="decide"><h2>Decision framework (5 questions)</h2>
-  <ul><li>Outages longer than a day most years? → standby.</li><li>Medical devices, sump, or well water? → standby (or portable + UPS + strict plan).</li><li>Travel frequently / elderly household? → standby (automation is the product).</li><li>Brief summer blips, tight budget, home during outages? → portable + inlet, done right.</li><li>WFH with sensitive gear? → standby's clean power, or portable strictly through inverter + UPS.</li></ul></section>
+  <section id="static-comparison">
+    <h2>Comparison table</h2>
+    <div class="not-prose mt-4 overflow-x-auto rounded-xl border border-[#d9e0ea]">
+      <table class="min-w-[640px] w-full border-collapse text-left text-sm">
+        <caption class="sr-only">General differences between permanently installed standby and portable generators</caption>
+        <thead class="bg-[#edf3fb] text-primary"><tr><th scope="col" class="p-3">Consideration</th><th scope="col" class="p-3">Permanent standby</th><th scope="col" class="p-3">Portable</th></tr></thead>
+        <tbody class="divide-y divide-gray-200 text-gray-800">
+          <tr><th scope="row" class="p-3">Starting and transfer</th><td class="p-3">Can start/transfer automatically with compatible, correctly installed controls and transfer equipment.</td><td class="p-3">Requires owner setup and operation; exact transfer method depends on the system.</td></tr>
+          <tr><th scope="row" class="p-3">Fuel responsibility</th><td class="p-3">Connected fuel supply or storage must be sized and installed for the exact unit.</td><td class="p-3">Owner must store/obtain fuel and follow the generator’s operating instructions.</td></tr>
+          <tr><th scope="row" class="p-3">Placement</th><td class="p-3">Exact model clearances, openings, service access, and local rules apply; have the installer use the current manual.</td><td class="p-3">Operate outdoors at least 20 feet from homes/buildings with exhaust directed away, per CPSC guidance.</td></tr>
+          <tr><th scope="row" class="p-3">Electrical connection</th><td class="p-3">Permanent wiring and transfer equipment are part of the installation scope.</td><td class="p-3">Use only a connection method approved for the equipment; do not backfeed through a receptacle.</td></tr>
+          <tr><th scope="row" class="p-3">Project cost</th><td class="p-3">Requires an installation quote; equipment MSRP is only one line in the project.</td><td class="p-3">Equipment may cost less, but safe connection equipment and any professional work still have costs.</td></tr>
+          <tr><th scope="row" class="p-3">Capacity</th><td class="p-3">Varies by exact model, fuel, phase, and load design.</td><td class="p-3">Varies by exact model and safe connection; never assume a portable can serve every fixed load.</td></tr>
+          <tr><th scope="row" class="p-3">Maintenance</th><td class="p-3">Follow the exact manufacturer schedule and service manual.</td><td class="p-3">Follow the exact owner’s manual; portable units also require safe fuel handling and operation.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
 
-  <section id="faq"><span class="sr-only">FAQ anchor</span></section>
-  <FAQSection items={[
-    { q: 'Is a standby generator worth it over a portable?', a: 'For frequent, long, or medical-critical outages: yes — automation, capacity, and safety justify 3–4× the cost. For rare brief outages with an able-bodied homeowner present: a properly connected portable is the rational buy.' },
-    { q: 'Can a portable run my whole house?', a: 'No — portables cover essentials (fridge, lights, blower, small pump/AC) via a proper inlet or interlock. Whole-home loads need standby capacity. Never backfeed through dryer outlets.' },
-    { q: 'Which is safer?', a: 'Standby, by a wide margin: fixed placement and automatic operation eliminate the user errors behind ~75 yearly portable CO deaths. Portables demand rigorous placement and detector discipline.' },
-  
-    { q: 'Can a portable power my furnace in winter?', a: 'Yes via a proper inlet or interlock — furnace blowers draw modest watts. Size the blower plus fridge and lights, and never backfeed.' },
-    { q: 'How much fuel does a portable burn in an outage?', a: 'Far less in absolute terms, but gasoline needs refills every 8–12 hours and degrades in storage — the logistics tax standby owners never pay.' },
-    { q: 'Should renters buy standby or portable?', a: "Portable (with landlord permission for inlet work) — standby is a permanent improvement to someone else's asset." },
-  ]} />
-  <section id="conclusion"><h2>Conclusion</h2><p>Buy automation and safety margin (standby) or buy adequacy on a budget (portable + inlet) — but never buy a portable and run it like a standby. Next: <a href="/comparisons/transfer-switch-vs-interlock/">the manual-side switch decision</a>.</p></section>
+  <section id="safety">
+    <h2>Safety comes first</h2>
+    <p>The CPSC’s May 2026 guidance says portable generators must be used outdoors at least 20 feet from homes and buildings, with exhaust directed away from windows, doors, and vents. Never run one inside a home, garage, basement, crawlspace, shed, or other enclosed space—even with openings left open. Install and maintain working carbon-monoxide alarms on every level and outside sleeping areas.</p>
+    <p>For an electrical connection, never plug a generator into a household wall outlet. That can energize wiring in an unsafe way and create shock/fire risk. Ask a qualified electrician about transfer equipment appropriate to your panel and generator. Standby equipment also needs correct placement, exhaust management, and professional installation; it is not exempt from site-specific safety requirements.</p>
+    <p>Read our <a href="/guides/generator-safety-carbon-monoxide/">carbon-monoxide safety guide</a> and <a href="/comparisons/transfer-switch-vs-interlock/">transfer-switch/interlock overview</a> before planning portable backup.</p>
+  </section>
+
+  <section id="cost-scope">
+    <h2>Compare project scope, not just unit price</h2>
+    <p>For a broad planning reference, HomeGuide lists a $6,000–$11,000 average installed cost for a whole-house generator and a $9,500–$24,000 range for longer distances or systems above 20 kW (published December 30, 2025). The same guide’s portable-generator equipment range is separate from costs for a transfer switch or connection work. Generac’s current guidance gives its own $8,000–$16,000 range including its generator, system equipment/materials, and installation. These sources use different scopes and market methods; neither is a quote for a particular home.</p>
+    <p>See the <a href="/cost/standby-generator-cost/">standby-generator cost guide</a> for estimate scope and factors such as fuel-line capacity, conductor/trench distance, panel changes, permits, and site preparation.</p>
+  </section>
+
+  <section id="decision">
+    <h2>Questions for your household</h2>
+    <ul>
+      <li>Which loads must remain powered, and which can be turned off or sequenced?</li>
+      <li>Does the property have a safe place that meets the equipment manual and local requirements?</li>
+      <li>Can someone safely operate and refuel a portable unit during the outage conditions you expect?</li>
+      <li>Would automatic transfer be necessary for medical equipment, water, heating, or long periods away from home?</li>
+      <li>What does an itemized written quote include—and which items remain allowances or exclusions?</li>
+    </ul>
+    <p>There is no universal winner. Match the system to actual loads, outage conditions, safety capacity, and a complete installation plan—not to a generic ranking.</p>
+  </section>
 </ArticleLayout>

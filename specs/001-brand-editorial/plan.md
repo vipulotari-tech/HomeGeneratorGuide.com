@@ -8,7 +8,7 @@ Apply the publisher's exact mission, promise, independence policy, six colors, a
 
 ## Technical Context
 
-- Language: TypeScript and Astro templates; existing Astro 5 project.
+- Language: TypeScript and Astro templates; see `package.json` for the current declared version range.
 - Dependencies: existing Astro and Tailwind v4 only; no new production packages.
 - Storage: source files and static SVG assets; no database.
 - Testing: production build, TypeScript, existing schema/link checks, one brand-contract check, browser checks at 320px/390px/1440px.

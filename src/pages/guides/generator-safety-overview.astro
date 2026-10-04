@@ -1,77 +1,90 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import AlertBox from '../../components/ui/AlertBox.astro';
-import FAQSection from '../../components/ui/FAQSection.astro';
 
 const toc = [
-  { id: 'rule', label: 'The one rule' },
-  { id: 'placement', label: 'Placement & clearances' },
-  { id: 'electrical', label: 'Electrical boundaries' },
-  { id: 'fuel', label: 'Fuel boundaries' },
-  { id: 'outage', label: 'During extended outages' },
-  { id: 'kids-pets', label: 'Children & pets' },
-  { id: 'storm', label: 'Storm & flood rules' },
-  { id: 'emergency', label: 'When to call 911' },
-  { id: 'recalls', label: 'Recalls' },
-  { id: 'faq', label: 'FAQ' },
+  { id: 'co-basics', label: 'Carbon monoxide: the immediate hazard' },
+  { id: 'placement', label: 'Portable vs. permanently installed units' },
+  { id: 'alarms', label: 'CO alarm placement and maintenance' },
+  { id: 'electric', label: 'Electrical connection safety' },
+  { id: 'fuel-weather', label: 'Fuel, wet weather, and flooding' },
+  { id: 'emergency', label: 'If an alarm sounds or someone feels ill' },
+  { id: 'recalls', label: 'Check recalls and the exact manual' },
 ];
 ---
 <ArticleLayout
-  title="Generator Safety Overview: Placement, CO, Electrical & Storm Rules"
-  description="Generator safety overview: CO prevention, placement and clearance tiers, pro-only electrical and gas boundaries, outage discipline, kids and pets, storms, and recalls."
-  category="Buying Guides" categoryHref="/guides/" updated="2026-10-04" readingTime="9 min read" toc={toc}
+  title="Generator Safety: Carbon Monoxide, Electrical & Storm Risks"
+  description="Evidence-based generator safety guidance for portable and standby systems, including CPSC placement advice, CO alarms, electrical connection limits, gas leaks, wet equipment, and emergency response."
+  category="Guides" categoryHref="/guides/" updated="2026-10-04" verified="2026-10-04" readingTime="7 min read" toc={toc}
+  takeaways={[
+    'Portable generators belong outdoors, at least 20 feet from buildings, with exhaust directed away from windows, doors, and vents; never run one inside or in an enclosed/partially enclosed space.',
+    'For a permanently installed standby unit, use the current manual for the exact model and confirm the site with the local authority—portable-generator distance advice is not a standby clearance rule.',
+    'If a CO alarm sounds or symptoms occur, move everyone outside to fresh air, call emergency services, and do not re-enter until responders allow it.',
+  ]}
   sources={[
-    { label: 'CPSC — Carbon Monoxide Information Center', href: 'https://www.cpsc.gov/Safety-Education/Safety-Education-Centers/Carbon-Monoxide-Information-Center', type: 'Safety authority', verified: 'Oct 2026' },
-    { label: 'CDC — Carbon Monoxide Poisoning', href: 'https://www.cdc.gov/carbon-monoxide/about/index.html', type: 'Safety authority', verified: 'Oct 2026' },
-    { label: 'EPA — Indoor Air Quality and CO', href: 'https://www.epa.gov/indoor-air-quality-iaq', type: 'Safety authority', verified: 'Oct 2026' },
-    { label: 'NFPA 37 — Stationary Combustion Engines', href: 'https://www.nfpa.org/codes-and-standards/nfpa-37-standard-development/37', type: 'Government', verified: 'Oct 2026' },
+    { label: 'CPSC 2026 generator safety guidance', href: 'https://www.cpsc.gov/Newsroom/News-Releases/2026/CPSC-Warns-of-Generator-Carbon-Monoxide-and-Fire-Hazards-Ahead-of-Hurricane-Season', type: 'Safety authority', verified: '2026-10-04' },
+    { label: 'CPSC Carbon Monoxide Fact Sheet', href: 'https://www.cpsc.gov/safety-education/safety-guides/carbon-monoxide/carbon-monoxide-fact-sheet', type: 'Safety authority', verified: '2026-10-04' },
+    { label: 'CDC: Carbon Monoxide Poisoning Basics (updated January 12, 2026)', href: 'https://www.cdc.gov/carbon-monoxide/about/index.html', type: 'Safety authority', verified: '2026-10-04' },
+    { label: 'CPSC Portable Generator Hazards safety alert', href: 'https://www.cpsc.gov/s3fs-public/5123_SafetyAlert_PortableGenerators_102021_0.pdf?VersionId=PK4zcSnKUJE8ovzbCGV09MM5.RBIG_E5', type: 'Safety authority', verified: '2026-10-04' },
+    { label: 'Generac G0073270 current installation manual', href: 'https://productmanuals.generac.com/api/manualfiles/G0073270/A0004332575/0', type: 'Technical manual', verified: '2026-10-04' },
   ]}
   related={[
-    { href: '/guides/generator-safety-carbon-monoxide/', title: 'CO Safety Guide', description: 'Detectors, symptoms, alarm protocol.', category: 'Buying Guides' },
-    { href: '/installation/generator-pad-and-placement/', title: 'Pad & Placement Guide', description: 'Clearance tables.', category: 'Installation' },
-    { href: '/installation/what-to-expect/', title: 'Installation: What to Expect', description: 'Licensed-pro process.', category: 'Installation' },
+    { href: '/guides/generator-safety-carbon-monoxide/', title: 'Carbon monoxide safety', description: 'Detector guidance, symptoms, and alarm response.', category: 'Guides' },
+    { href: '/installation/generator-pad-and-placement/', title: 'Standby generator placement', description: 'Why exact-model instructions and local approval govern.', category: 'Installation' },
+    { href: '/installation/what-to-expect/', title: 'Standby installation: what to expect', description: 'A professional assessment, permits, and commissioning.', category: 'Installation' },
   ]}
-  prev={{ href: '/guides/generator-safety-carbon-monoxide/', label: 'CO Safety Guide' }}
-  next={{ href: '/guides/power-quality-thd-surge-protection/', label: 'Power Quality & Surge' }}
 >
-  <AlertBox type="danger" title="Carbon monoxide kills without warning">Portable generators kill roughly 75 Americans a year (CPSC 2012–2022 average). CO is colorless and odorless — working detectors on every level are non-negotiable in any generator home.</AlertBox>
+  <AlertBox type="danger" title="Carbon monoxide can kill without warning">CO is colorless and odorless. Do not rely on smell, open doors/windows, fans, or a CO alarm to make an unsafe generator location acceptable.</AlertBox>
 
-  <section id="rule"><h2>The one rule above all others</h2>
-  <p><strong>Combustion stays outside, professionals touch wiring and gas, detectors stay working.</strong> Every section below is that rule applied to a specific situation. This page is safety information, not medical, legal, or professional advice — when in doubt, leave the area and call emergency services or a licensed professional.</p></section>
+  <section id="co-basics">
+    <h2>Carbon monoxide is the immediate hazard</h2>
+    <p>Fuel-burning engines and appliances can produce carbon monoxide. The CDC lists headache, dizziness, weakness, upset stomach, vomiting, chest pain, and confusion among common symptoms. People who are sleeping or unable to recognize symptoms may be at particular risk. Multiple people or pets feeling ill in the same space is an urgent warning, but symptoms are not required for an alarm to be taken seriously.</p>
+  </section>
 
-  <section id="placement"><h2>Placement & clearances (four tiers)</h2>
-  <p>Final placement is set by: (1) <strong>manufacturer requirement</strong> — your exact model's manual; (2) <strong>code/AHJ requirement</strong> — adopted NEC/NFPA editions plus local amendments; (3) <strong>utility requirements</strong>; (4) <strong>planning guidance</strong> — NFPA 37 simplified minimums (18 in combustibles, 5 ft openings/vents, 3 ft meters/service). Portable units follow the stricter CPSC guidance: fully outdoors, 20+ feet from the home, exhaust pointed away. Full tables: <a href="/installation/generator-pad-and-placement/">placement guide</a>.</p></section>
+  <section id="placement">
+    <h2>Portable and permanently installed generators have different placement instructions</h2>
+    <h3>Portable generator</h3>
+    <p>CPSC guidance is to operate portable generators <strong>outdoors, at least 20 feet from homes and buildings</strong>, with exhaust directed away from windows, doors, and vents. Never operate one inside a home, garage, basement, crawlspace, shed, or other enclosed area—even if doors or windows are open. Follow the exact owner’s manual for additional limits, weather protection, and operation.</p>
+    <h3>Permanently installed standby generator</h3>
+    <p>Do not apply the portable-generator 20-foot distance as a fixed standby-generator clearance. For a permanently installed unit, the exact model’s current installation manual, installation listing, local code, permit authority, utility requirements, and site conditions govern. Have a qualified installer and the authority having jurisdiction confirm the planned location before work begins. See the <a href="/installation/generator-pad-and-placement/">standby placement guide</a> for model-specific examples and limits.</p>
+  </section>
 
-  <section id="electrical"><h2>Electrical boundaries (pro-only)</h2>
-  <p>Panel work, transfer switches, interlocks, and inlet wiring require a licensed electrician under permit — no exceptions, no YouTube exemptions. The single most lethal homeowner improvisation is the double-male "suicide cord" backfeeding a dryer outlet: it energizes utility lines and can kill line workers and destroy equipment on restoration. Listed transfer equipment is the only legal connection method. Detail: <a href="/cost/transfer-switch-cost/">transfer switch guide</a>.</p></section>
+  <section id="alarms">
+    <h2>Install and maintain CO alarms</h2>
+    <p>CPSC recommends battery-operated CO alarms or alarms with battery backup on every level of the home and outside sleeping areas; interconnected alarms are preferable where practical. Follow the alarm manufacturer’s placement, test, battery, and end-of-life instructions. CPSC’s current storm-safety guidance says to test alarms monthly. Alarms are an additional layer, not permission to operate equipment unsafely.</p>
+  </section>
 
-  <section id="fuel"><h2>Fuel boundaries (pro-only)</h2>
-  <p>Gas piping, regulators, and pressure testing belong to licensed plumbers/gas fitters under permit — required in essentially all states, DIY-prohibited in many. Report gas odor by leaving the area and calling the gas utility, never by investigating. Refueling a hot portable, storing gasoline indoors, or running any unit in attached spaces are all disqualified.</p></section>
+  <section id="electric">
+    <h2>Keep electrical connections within safe boundaries</h2>
+    <ul>
+      <li>Never power home wiring by plugging a generator into a wall outlet (“backfeeding”). CPSC warns that this can endanger utility workers and neighbors and bypass household circuit protection.</li>
+      <li>Use only the transfer equipment, generator connection, cords, and operating method approved for the exact equipment and intended use.</li>
+      <li>Have home transfer equipment selected and installed by a qualified electrician; permit and licensing requirements vary by location.</li>
+      <li>Follow the generator manual’s instructions about wet conditions and electrical-shock hazards. Do not touch electrical equipment while standing in water or if it is wet and energized.</li>
+    </ul>
+  </section>
 
-  <section id="outage"><h2>During extended outages</h2>
-  <ul><li>Re-check CO detectors on day one (batteries die quietly).</li><li>Keep the 3-ft working perimeter clear of snow, leaves, and storm debris — blocked intakes overheat units.</li><li>Never drape tarps or enclosures over a running generator for "weather protection."</li><li>Rest, don't defeat: low-oil and overtemp shutdowns protect the engine — investigate, don't bypass.</li><li>Refuel portables only when cool, outdoors, away from the home.</li></ul></section>
+  <section id="fuel-weather">
+    <h2>Fuel, weather, and flood precautions</h2>
+    <p>If you smell or hear gas leaking, leave the building immediately. Do not operate lights, phones, or other electronics before leaving; contact the gas utility or local gas authority from outside. Do not restart equipment after a suspected leak until the appropriate professionals say it is safe.</p>
+    <p>After flooding, CPSC says not to touch wet appliances that remain connected to electricity and to have a qualified professional or utility representative inspect affected equipment before use. Do not approach a flooded generator, panel, or fuel installation to shut it off. Follow local emergency instructions and contact the utility or qualified service provider.</p>
+    <p>For portable equipment during rain or snow, follow its manual and CPSC wet-weather warnings. Never use a cover or structure that places the unit inside or near an opening to an occupied building.</p>
+  </section>
 
-  <section id="kids-pets"><h2>Children & pets</h2>
-  <p>Enclosures get hot enough to burn; exhaust points the opposite way from play areas; teach children the unit is never a seat, shelf, or hiding spot. Pets: same heat and exhaust logic, plus fuel storage locked away from curious noses.</p></section>
+  <section id="emergency">
+    <h2>If a CO alarm sounds or someone feels ill</h2>
+    <ol>
+      <li>Move everyone outside to fresh air immediately. Do not try to locate the source first.</li>
+      <li>Call 911 or local emergency services from outside.</li>
+      <li>Account for everyone, including children and pets; tell responders about symptoms and possible CO exposure.</li>
+      <li>Do not re-enter until emergency responders say it is safe.</li>
+      <li>Seek prompt medical care for suspected exposure, and have fuel-burning equipment checked by a qualified service professional before reuse.</li>
+    </ol>
+    <p>This is general safety information; emergency responders and medical professionals should guide the response to an actual incident.</p>
+  </section>
 
-  <section id="storm"><h2>Storm & flood rules</h2>
-  <ul><li>Elevate above base-flood elevation; never install in basements, garages, or under low decks.</li><li>Standing water + electricity: if the pad floods, shut down via the disconnect (dry, from outside the water) and call service before restart.</li><li>Post-storm: inspect for shifted pads, damaged conduit, and debris-packed vents before the next run.</li><li>Lightning: whole-house surge protection plus UPS on critical electronics — <a href="/guides/power-quality-thd-surge-protection/">power quality guide</a>.</li></ul></section>
-
-  <section id="emergency"><h2>When to call 911</h2>
-  <p>CO alarm sounding, anyone with headache/dizziness/nausea/confusion around running equipment, gas odor you cannot attribute, fire or sparking, or floodwater reaching electrical equipment. Get out first, call from outside, do not re-enter until cleared. Full protocol: <a href="/guides/generator-safety-carbon-monoxide/">CO alarm response</a>.</p></section>
-
-  <section id="recalls"><h2>Recalls (check, don't assume)</h2>
-  <p>We maintain no recall database — models change too fast for a static list to stay honest. Check the <a href="https://www.cpsc.gov/Recalls">CPSC recall search</a> for your exact model plus the manufacturer's support pages before every storm season, and register your unit so recalls reach you directly.</p></section>
-
-  <section id="faq"><span class="sr-only">FAQ anchor</span></section>
-  <FAQSection items={[
-    { q: 'How far must a generator be from the house?', a: 'Standby: per your exact manual plus AHJ, built on NFPA 37 minimums (18 in combustibles, 5 ft openings/vents). Portables: CPSC guidance is 20+ feet, fully outdoors, exhaust away. Two different rules for two different machines.' },
-    { q: 'Can I run a generator in the garage with the door open?', a: 'No — never in garages, basements, sheds, or near openings, door position irrelevant. This exact scenario kills.' },
-    { q: 'What is a suicide cord and why is it banned?', a: 'A double-male cord backfeeding a dryer outlet. It energizes utility lines (lethal to line workers), risks fire, and destroys equipment on restoration. Listed transfer equipment is the only legal path.' },
-  
-    { q: 'Do I need a fire extinguisher near the generator?', a: 'Keep an ABC-rated extinguisher accessible — but evacuation beats firefighting for fuel-fed fires. Call 911 first, fight nothing involving gas.' },
-    { q: 'Are propane tanks safe beside the house?', a: 'Yes within code setbacks (~10 ft typical) on proper pads with clear access. Underground tanks add aesthetics and cold-weather vaporization.' },
-    { q: 'Should I shut off gas before a hurricane?', a: 'No — utilities manage storm shutoffs; closing your own meter starves the generator you installed for the storm. Evacuation orders override everything: leave.' },
-  ]} />
-  <section id="conclusion"><h2>Conclusion</h2><p>Outside, permitted, pro-wired, detected, and clear. Five words that prevent nearly every generator tragedy. Next: <a href="/guides/generator-safety-carbon-monoxide/">the CO deep dive</a>.</p></section>
+  <section id="recalls">
+    <h2>Check recalls and keep the exact manual</h2>
+    <p>Check the <a href="https://www.cpsc.gov/Recalls" rel="external noopener noreferrer">CPSC recall database</a> for the exact product and model, register equipment where the manufacturer offers registration, and keep the current owner and installation manuals accessible. Do not rely on a general article or an older model-family manual for instructions that depend on the equipment installed at your property.</p>
+  </section>
 </ArticleLayout>

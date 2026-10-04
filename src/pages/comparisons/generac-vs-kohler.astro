@@ -1,187 +1,101 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import AlertBox from '../../components/ui/AlertBox.astro';
-import ComparisonTable from '../../components/ui/ComparisonTable.astro';
-import FAQSection from '../../components/ui/FAQSection.astro';
-import ProConBox from '../../components/ui/ProConBox.astro';
+import { getModelSpecs } from '../../data/model-specs';
 
+const generac = getModelSpecs('Generac').find((model) => model.modelId === 'G0073270');
+const kohler = getModelSpecs('KOHLER / Rehlko').find((model) => model.modelId === '26RCA');
+if (!generac || !kohler) throw new Error('Exact comparison models are missing from the model-specs registry.');
+const genFuel = (fuel: 'LP' | 'Natural gas', loadPercent: number) => generac.fuelConsumption?.find((row) => row.fuel === fuel && row.loadPercent === loadPercent);
+const kohlerFuel = (fuel: 'LP' | 'Natural gas', loadPercent: number) => kohler.fuelConsumption?.find((row) => row.fuel === fuel && row.loadPercent === loadPercent);
+const genNormalNoise = generac.sound?.find((sound) => sound.condition === 'normal load');
+const genExerciseNoise = generac.sound?.find((sound) => sound.condition.includes('Quiet-Test'));
+const kohlerNormalNoise = kohler.sound?.find((sound) => sound.condition.includes('normal operation'));
+const kohlerExerciseNoise = kohler.sound?.find((sound) => sound.condition === 'engine exercise');
 const toc = [
-  { id: 'background', label: 'Company background' },
-  { id: 'lineup', label: 'Residential range' },
-  { id: 'criteria', label: 'Head-to-head criteria' },
-  { id: 'warranty', label: 'Warranty' },
-  { id: 'noise', label: 'Noise' },
-  { id: 'fuel', label: 'Fuel support' },
-  { id: 'monitoring', label: 'Monitoring' },
-  { id: 'dealers', label: 'Dealers & service' },
-  { id: 'ownership', label: 'Ownership & availability' },
-  { id: 'verdict', label: 'Situation-based verdict' },
-  { id: 'faq', label: 'FAQ' },
-];
-
-const faqs = [
-  { q: 'Which is better, Generac or Kohler?', a: 'Neither universally. Generac offers broader model choice, wider dealer coverage, and typically lower entry pricing; Kohler leans premium on enclosure build, controller diagnostics, and corrosion resistance. Match to your budget, local dealer quality, and noise/placement constraints — not to internet winner-takes-all threads.' },
-  { q: 'Which warranty is better?', a: 'Both advertise ~5-year residential limited terms on core air-cooled lines, but exclusions, hour caps, and transferability differ. Read the current warranty PDFs — not the marketing page — and confirm dealer registration.' },
-  { q: 'Is Kohler worth the premium?', a: 'Sometimes: coastal/corrosive sites, buyers prioritizing enclosure and diagnostics, or areas with a standout Kohler dealer. Often not: budget-first essential-load jobs where a Generac + load management covers the same loads for less.' },
-  { q: 'Do both run on natural gas and propane?', a: 'Yes — both core standby lines are dual-fuel capable (field-convertible). Confirm gas-pipe sizing with your installer; fuel starvation affects every brand equally.' },
-
-  { q: 'Which is quieter, Generac or Kohler?', a: 'At comparable kilowatts both test in the same band — Generac 22–28 kW at 67 dB, Kohler flagships as low as 56 dB on select models. Placement and load matter more than badge; compare exact-model sheets.' },
-  { q: 'Which has better monitoring?', a: 'Both cover remote status, alerts, and exercise history. Kohler adds Alexa/Google voice; Generac counters with ecobee thermostat bundles on select SKUs. Evaluate cellular-vs-WiFi dependence and whether your dealer actually monitors either.' },
-  { q: 'Which dealer network is stronger?', a: 'Generac claims 10,000 authorized dealers — the widest US coverage, with quality varying by office. Kohler is nationwide but thinner with rural gaps. Vet the local office, not the national count.' },
-  { q: 'Do Generac and Kohler need the same maintenance?', a: 'Broadly: annual professional service for both, Generac oil every 200 hours or 2 years and Kohler on an annual rhythm — confirm each manual. Batteries every 3–4 years and scheduled valve checks apply across brands.' },
+  { id: 'scope', label: 'Models and scope' },
+  { id: 'spec-comparison', label: 'Side-by-side specifications' },
+  { id: 'sound-comparison', label: 'Sound ratings' },
+  { id: 'price-warranty', label: 'Price and warranty' },
+  { id: 'choose', label: 'How to choose between quotes' },
 ];
 ---
 <ArticleLayout
-  title="Generac vs Kohler: Neutral Standby Comparison"
-  description="Neutral Generac vs Kohler standby comparison: range, pricing context, warranty, noise, fuel, monitoring, dealers, and situation-based recommendations."
-  category="Comparisons"
-  categoryHref="/comparisons/"
-  updated="2026-10-03"
-  readingTime="11 min read"
-  toc={toc}
-  related={[
-    { href: '/brands/generac/', title: 'Generac Standby Generators', description: 'Guardian lineup deep dive.', category: 'Brands' },
-    { href: '/brands/kohler/', title: 'Kohler Standby Generators', description: 'Premium positioning examined.', category: 'Brands' },
-    { href: '/cost/standby-generator-cost/', title: 'Standby Generator Cost (2026)', description: 'What either choice costs installed.', category: 'Cost' },
-  ]}
-  prev={{ href: '/brands/cummins/', label: 'Cummins Brand Guide' }}
-  next={{ href: '/comparisons/standby-vs-portable/', label: 'Standby vs Portable' }}
+  title="Generac vs. KOHLER Standby Generators: Exact 26 kW Model Comparison"
+  description="A fact-checked comparison of Generac G0073270 and KOHLER 26RCA residential standby generators, including fuel-specific output, noise-test conditions, fuel use, bundle scope, MSRP, and warranty wording."
+  category="Comparisons" categoryHref="/comparisons/" updated="2026-10-04" verified="2026-10-04" readingTime="7 min read" toc={toc}
   takeaways={[
-    'No universal winner: Generac brings value breadth and 5,000+ dealers; Kohler brings premium build and a comprehensive 5-year warranty.',
-    'At comparable kilowatts both test in the same noise band — placement matters more than badge.',
-    'Generac warranty is tiered (full coverage effectively two years); Kohler covers parts, labor, and travel throughout.',
-    'The installing dealer quality usually outweighs spec-sheet differences.',
+    'Both selected single-phase models are rated 26 kW on LP and 24 kW on natural gas; those fuel-specific figures do not size a home by themselves.',
+    'Both manufacturer sheets list 67 dB(A) around 23 feet in normal operation, but their measurement directions differ, so the matching number is not a controlled head-to-head test.',
+    'Starting prices are package-specific: $7,159 for G0073270 (ATS inclusion not established), $7,546 for 26RCA without ATS, and $8,515 for ATS-inclusive 26RCAL. Do not compare them as equal-scope system prices.',
   ]}
   sources={[
-    { label: 'Generac — Residential Standby Lineup (range and MSRP)', href: 'https://www.generac.com/residential-products/standby-generators/', type: 'Manufacturer', verified: 'Oct 2026' },
-    { label: 'Generac Support — Home Standby Warranty Coverage (tiered terms)', href: 'https://support.generac.com/s/article/What-Does-My-Home-Standby-Generator-Warranty-Cover', type: 'Technical manual', verified: 'Oct 2026' },
-    { label: 'Generac Support — Decibel Ratings (model noise figures)', href: 'https://support.generac.com/s/article/What-are-the-decibel-ratings-for-my-generator', type: 'Technical manual', verified: 'Oct 2026' },
-    { label: 'Kohler Home Energy — Home Generators (range and MSRP)', href: 'https://www.kohlerhomeenergy.rehlko.com/products/home-generators', type: 'Manufacturer', verified: 'Oct 2026' },
-    { label: 'Kohler — Warranty Promise (comprehensive terms)', href: 'https://www.kohlerhomeenergy.rehlko.com/resource-center/warranty-promise', type: 'Manufacturer', verified: 'Oct 2026' },
+    { label: 'Generac G0073270 official product page', href: 'https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-26kw-7327/', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'Generac G0073270 official 22–28 kW specification sheet', href: 'https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'KOHLER 26RCA product page', href: 'https://www.kohlerhomeenergy.rehlko.com/products/home-generators/26rca', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'KOHLER 26RCAL ATS-inclusive product page', href: 'https://www.kohlerhomeenergy.rehlko.com/products/home-generators/26rcal', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'KOHLER/Rehlko G4-315 26RCA/26RCAL official specification sheet (2026)', href: 'https://techcomm.rehlko.com/techcomm/pdf/g4315.pdf', type: 'Manufacturer', verified: '2026-10-04' },
   ]}
+  related={[
+    { href: '/brands/generac/', title: 'Generac model data', description: 'Specifications and bundle caveats for G0072600 and G0073270.', category: 'Brands' },
+    { href: '/brands/kohler/', title: 'KOHLER 26RCA model data', description: 'Configuration, warranty, sound, and ATS-source details.', category: 'Brands' },
+    { href: '/comparisons/', title: 'All generator comparisons', description: 'Compare technologies and installation choices without a one-size winner.', category: 'Comparisons' },
+  ]}
+  showMethod={true}
 >
-  <AlertBox type="info" title="How we compare">Fixed criteria, no paid placement, no universal winner. Verify exact-model specs and current warranty PDFs on manufacturer sites before purchase.</AlertBox>
-
-    <figure class="not-prose my-6">
-    <img src="/images/two-standby-units.webp" alt="Two unbranded standby generators side by side (illustrative comparison, not specific brands)" width="1536" height="1024" loading="lazy" decoding="async" class="w-full rounded-xl border border-[#e5e7eb]" />
-    <figcaption class="mt-2 text-sm text-gray-500">Generic units shown.</figcaption>
-  </figure>
-<section id="background">
-    <h2>Company background</h2>
-    <p><strong>Generac</strong> (Waukesha, Wisconsin) is the US residential standby volume leader — the Guardian line is the default quote in many markets, with the deepest retail and installer footprint. <strong>Kohler</strong> (Kohler, Wisconsin) brings a century-plus power-systems heritage spanning residential through industrial; its residential standby line positions premium, emphasizing enclosure engineering and controller diagnostics. Market share is not quality proof — but it does predict parts availability and how many local techs have seen your unit before.</p>
+  <section id="scope">
+    <h2>Models and scope</h2>
+    <p>This comparison uses the <strong>Generac G0073270 26 kW</strong> and the <strong>single-phase 120/240 V KOHLER 26RCA</strong>. Each is listed at 26 kW on LP and 24 kW on natural gas in its cited configuration. “26 kW” is the LP rating here; an NG installation has a lower nameplate rating.</p>
+    <p>The manufacturer documents were checked on October 4, 2026. This is a comparison of published data, not an independent test, reliability study, or recommendation for a specific home. Rehlko’s sheet also lists three-phase configurations within the broader 26RCA family; those are not the single-phase residential configuration used below.</p>
   </section>
 
-  <section id="lineup">
-    <h2>Residential product range</h2>
-    <ComparisonTable
-      caption="Generac vs Kohler residential range"
-      headers={['', 'Generac', 'Kohler']}
-      rows={[
-        ['Core air-cooled', 'Guardian 10–26 kW', '10–26 kW class single-phase'],
-        ['Larger residential', 'Liquid-cooled 22 kW+ configs', 'Liquid-cooled 30–60 kW class'],
-        ['Off-grid specialty', 'EcoGen propane-optimized', '— (grid-backup focus)'],
-        ['Entry pricing signal', 'Typically lower', 'Typically higher'],
-      ]}
-    />
-    <p class="mt-3">Both cover the 18–26 kW sweet spot where most US homes land (see <a href="/sizing/what-size-generator-do-i-need/">sizing</a>). Differences emerge at the edges: budget-constrained essentials (Generac breadth helps) vs large-estate liquid-cooled (compare engineered quotes, not brochures).</p>
+  <section id="spec-comparison">
+    <h2>Side-by-side specifications</h2>
+    <div class="not-prose mt-5 overflow-x-auto rounded-xl border border-[#d9e0ea]">
+      <table class="min-w-[700px] w-full border-collapse text-left text-sm">
+        <caption class="sr-only">Manufacturer-published specifications for Generac G0073270 and KOHLER 26RCA, checked October 4, 2026</caption>
+        <thead class="bg-[#edf3fb] text-primary">
+          <tr><th scope="col" class="p-3 font-semibold">Published field</th><th scope="col" class="p-3 font-semibold">Generac G0073270</th><th scope="col" class="p-3 font-semibold">KOHLER 26RCA</th></tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200 text-gray-800">
+          <tr><th scope="row" class="p-3 font-semibold">Standby output</th><td class="p-3">26 kW LP; 24 kW natural gas</td><td class="p-3">26 kW LP; 24 kW natural gas (single-phase, 120/240 V)</td></tr>
+          <tr><th scope="row" class="p-3 font-semibold">Natural-gas consumption at 50% load</th><td class="p-3">{genFuel('Natural gas', 50)?.amount} {genFuel('Natural gas', 50)?.unit}</td><td class="p-3">{kohlerFuel('Natural gas', 50)?.amount} {kohlerFuel('Natural gas', 50)?.unit}</td></tr>
+          <tr><th scope="row" class="p-3 font-semibold">LP consumption at 50% load</th><td class="p-3">{genFuel('LP', 50)?.amount} {genFuel('LP', 50)?.unit}</td><td class="p-3">{kohlerFuel('LP', 50)?.amount} {kohlerFuel('LP', 50)?.unit}</td></tr>
+          <tr><th scope="row" class="p-3 font-semibold">Engine</th><td class="p-3">Generac G-Force 1000; 997 cc</td><td class="p-3">KOHLER CH1006; 999 cc</td></tr>
+          <tr><th scope="row" class="p-3 font-semibold">Published dimensions (L × W × H)</th><td class="p-3">46.4 × 26.3 × 30.7 in</td><td class="p-3">47 × 26 × 32.3 in</td></tr>
+          <tr><th scope="row" class="p-3 font-semibold">Starting MSRP on product page</th><td class="p-3">${generac.startingMsrpUsd?.toLocaleString('en-US')}</td><td class="p-3">${kohler.startingMsrpUsd?.toLocaleString('en-US')} (26RCA, no ATS)</td></tr>
+          <tr><th scope="row" class="p-3 font-semibold">Transfer-switch scope</th><td class="p-3">200 A service-rated switch is specified for bundled models; G0073270 product page does not establish an included switch.</td><td class="p-3">The 26RCAL package includes a 200 A service-entrance-rated RXT ATS; 26RCA is also listed separately.</td></tr>
+          <tr><th scope="row" class="p-3 font-semibold">Published warranty summary</th><td class="p-3">5-year limited warranty (Generac product page)</td><td class="p-3">5-year/2,000-hour limited; official spec sheet says parts, labor, and travel</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="mt-4">Fuel-use values are manufacturer test points and depend on load and fuel conditions; do not convert a 50% test point into a household bill without current local fuel prices and actual operating hours. The two dimensions come from manufacturer pages/documents and are not an installation plan.</p>
   </section>
 
-  <section id="criteria">
-    <h2>Head-to-head criteria (verified specs, Oct 2026 research)</h2>
-    <ComparisonTable
-      caption="Generac vs Kohler criteria table"
-      headers={['Criterion', 'Generac', 'Kohler']}
-      firstColSticky={true}
-      rows={[
-        ['Entry MSRP signal', '10 kW $3,769 unit / $4,619 w/ ATS', '10RESV $3,946'],
-        ['26 kW-class MSRP', 'Next Gen 26 kW $7,159 / $8,219 w/ ATS', '26RCA $7,546'],
-        ['Noise (rated @ 23 ft)', '61–68 dB (10 kW 61; 22–28 kW 67)', '56–71 dB (26RCA 56; 20RCA 64 ex./69 full)'],
-        ['Warranty (verify PDF)', '5-yr tiered: yrs 1–2 full, yr 3 parts, yrs 4–5 engine/alternator', '5-yr / 2,000-hr comprehensive incl. labor + travel'],
-        ['Surge tech', 'Load-shed modules', 'PowerBoost (no-drop large starts)'],
-        ['Monitoring', 'Mobile Link (Wi-Fi/cellular; no voice)', 'OnCue Plus + Alexa/Google voice'],
-        ['Dealer network', '10,000 claimed (verify locally)', 'Nationwide; rural gaps reported'],
-        ['Enclosure', 'Aluminum standard; coastal rust reports', 'Aluminum, corrosion-focused; 181 mph wind testing (mfr claim)'],
-      ]}
-    />
-  </section>
-
-  <section id="warranty">
-    <h2>Warranty</h2>
-    <p>Headline terms look similar (~5 years residential limited), so read exclusions: hour caps, commercial-use voids, maintenance-compliance clauses, parts-vs-labor splits, and transferability on home sale. The dealer registering your unit correctly matters as much as the PDF. Ask every bidder: "Show me the current warranty PDF for this exact model, and confirm you register it."</p>
-  </section>
-
-  <section id="noise">
-    <h2>Noise</h2>
-    <p>At comparable kW, both sit in the same acoustic neighborhood; weekly exercise mode is quieter than full-load outage mode. What actually changes neighbor relations: setback distance, enclosure orientation, fencing that blocks airflow (do not choke clearance to muffle sound), and local ordinance hours. If noise is decisive, compare exact-model dB(A) figures and visit a running install.</p>
-  </section>
-
-  <section id="fuel">
-    <h2>Fuel support</h2>
-    <p>Both core lines run natural gas or propane. The fuel question is plumbing, not brand: gas-pipe diameter and run length, propane tank sizing for your outage horizon, and regulator setup. An undersized gas feed makes any brand stumble at full load — size fuel with the installer, not the brochure.</p>
-  </section>
-
-  <section id="monitoring">
-    <h2>Monitoring & connectivity</h2>
-    <p>Generac Mobile Link and Kohler OnCue Plus both offer remote status, exercise history, and dealer alerts. Voice control favors Kohler (Alexa/Google); thermostat bundling favors Generac via ecobee ownership (select SKUs like the 7329 — verify current lineup). Evaluate: cellular vs Wi-Fi dependence (storms kill Wi-Fi), alert granularity, dealer-fleet integration (does <em>your</em> dealer actually monitor it?), and subscription fees after year one. Connectivity never replaces the weekly exercise log — see <a href="/maintenance/generator-maintenance-checklist/">maintenance</a>.</p>
-  </section>
-
-  <section id="dealers">
-    <h2>Dealer & service availability</h2>
-    <p>The best generator is the one your local tech can service Thursday. Score dealers on: factory certification, years servicing standby (not just selling), stock of filters/batteries, guaranteed response windows, and reviews mentioning outage-season performance. In many ZIP codes, dealer quality swamps brand deltas — a superb Generac dealer beats a distant Kohler dealer and vice versa.</p>
-  </section>
-
-  <section id="ownership">
-    <h2>Ownership considerations & availability</h2>
-    <ProConBox
-      pros={['Widest parts/installer availability', 'Broader price ladder incl. value configs', 'Mature monitoring ecosystem']}
-      cons={['High-volume support variance by dealer', 'Enclosure/finish less premium on base trims']}
-      prosTitle="Generac strengths / trade-offs"
-      consTitle="Watch-outs"
-    />
-    <div class="mt-4" />
-    <ProConBox
-      pros={['Enclosure and controller refinement', 'Strong diagnostics for pro service', 'Coastal/corrosion-minded options']}
-      cons={['Higher entry pricing', 'Thinner coverage in some regions']}
-      prosTitle="Kohler strengths / trade-offs"
-      consTitle="Watch-outs"
-    />
-    <p class="mt-4">Lead times spike after major storms for both brands. If buying in hurricane season, ask for in-stock model numbers and written install dates — not "2–3 weeks-ish."</p>
-  </section>
-
-  <section id="verdict">
-    <h2>Situation-based verdict (no universal winner)</h2>
+  <section id="sound-comparison">
+    <h2>Sound ratings: the figures are close, but the tests differ</h2>
     <ul>
-      <li><strong>Choose Generac when:</strong> budget discipline matters, you want the widest dealer choice, or load management + a mid-range Guardian covers your loads (most homes).</li>
-      <li><strong>Choose Kohler when:</strong> premium enclosure/diagnostics justify the spread, coastal corrosion resistance matters, or your standout local dealer is Kohler-certified.</li>
-      <li><strong>Either way:</strong> size via <a href="/sizing/what-size-generator-do-i-need/">loads not sq ft</a>, compare all-in installed quotes, and weight dealer responsiveness above badge.</li>
+      <li><strong>Normal-operation/full-speed:</strong> Generac lists {genNormalNoise?.decibelsA} dB(A) at {genNormalNoise?.distanceFt} feet at normal load, measured from the front. KOHLER lists {kohlerNormalNoise?.decibelsA} dB(A) at {kohlerNormalNoise?.distanceFt} feet during full-speed diagnostics and normal operation; its document says this is the lowest of eight measured points and other points may differ.</li>
+      <li><strong>Exercise mode:</strong> Generac lists {genExerciseNoise?.decibelsA} dB(A) at {genExerciseNoise?.distanceFt} feet during Quiet-Test low-speed exercise, measured from the front. KOHLER lists {kohlerExerciseNoise?.decibelsA} dB(A) at {kohlerExerciseNoise?.distanceFt} feet during engine exercise; its sheet again notes the lowest of eight measured points.</li>
     </ul>
+    <p>These are not independent acoustic tests, and a different microphone position, wall, enclosure placement, load, or mode changes what a listener hears. Do not read a one- or two-decibel numerical difference here as proof that one unit is quieter at a particular property. Check local noise rules and the exact installation manual.</p>
   </section>
 
-  <section id="faq"><span class="sr-only">FAQ anchor</span></section>
-  <FAQSection items={faqs} />
+  <section id="price-warranty">
+    <h2>Starting MSRP and warranty are not equal-scope shorthand</h2>
+    <p>The pages displayed starting MSRPs of <strong>$7,159 for Generac G0073270</strong>, <strong>$7,546 for the KOHLER 26RCA configuration without an ATS</strong>, and <strong>$8,515 for the ATS-inclusive KOHLER 26RCAL package</strong> on the date checked. The Generac product page does not establish an included switch for G0073270. KOHLER says final pricing depends on dealer customization and installation. These page prices are not a like-for-like project comparison or installed quotes.</p>
+    <p>Generac states a 5-year limited warranty for the generator. The 2026 KOHLER/Rehlko spec sheet states a 5-year/2,000-hour limited warranty covering parts, labor, and travel. Those descriptions differ in detail; confirm the current full warranty terms, exclusions, registration rules, coverage start, and servicing dealer for the exact equipment being quoted.</p>
+  </section>
 
-    <figure class="not-prose my-6">
-    <svg viewBox="0 0 560 215" class="w-full rounded-lg border border-[#e5e7eb] bg-white" role="img" aria-label="Diagram: Generac five year tiered warranty versus Kohler five year comprehensive warranty">
-      <title>Warranty comparison timeline</title>
-      <text x="16" y="70" font-size="14" font-weight="bold" fill="#1B3A6B" font-family="sans-serif">Generac</text>
-      <rect x="130" y="48" width="152" height="34" rx="6" fill="#F5821F"/>
-      <rect x="282" y="48" width="76" height="34" rx="6" fill="#fdba74"/>
-      <rect x="358" y="48" width="152" height="34" rx="6" fill="#fff" stroke="#F5821F" stroke-width="2"/>
-      <text x="206" y="70" text-anchor="middle" font-size="12" fill="#fff" font-family="sans-serif">Yrs 1–2: full</text>
-      <text x="320" y="70" text-anchor="middle" font-size="12" fill="#7c2d12" font-family="sans-serif">Yr 3: parts</text>
-      <text x="434" y="70" text-anchor="middle" font-size="12" fill="#7c2d12" font-family="sans-serif">Yrs 4–5: engine/alt</text>
-      <text x="16" y="140" font-size="14" font-weight="bold" fill="#1B3A6B" font-family="sans-serif">Kohler</text>
-      <rect x="130" y="118" width="380" height="34" rx="6" fill="#1B3A6B"/>
-      <text x="320" y="140" text-anchor="middle" font-size="12" fill="#fff" font-family="sans-serif">Yrs 1–5: comprehensive incl. labor + travel</text>
-      <text x="130" y="176" font-size="12" fill="#6b7280" font-family="sans-serif">Year 1</text>
-      <text x="282" y="176" font-size="12" fill="#6b7280" font-family="sans-serif">Year 3</text>
-      <text x="490" y="176" font-size="12" fill="#6b7280" font-family="sans-serif">Year 5</text>
-      <text x="16" y="200" font-size="12" fill="#6b7280" font-family="sans-serif">Verify current warranty PDFs — terms change.</text>
-    </svg>
-    <figcaption class="mt-2 text-sm text-gray-500">Tiered vs comprehensive: the fine-print contrast. Illustrative diagram.</figcaption>
-  </figure>
-<section id="conclusion">
-    <h2>Conclusion</h2>
-    <p>Generac brings ubiquity and value breadth; Kohler brings premium fit and diagnostic depth. For most homes both work — the deciding votes are your load list, your site's fuel and placement constraints, and which certified dealer answers the phone in a storm. Read the <a href="/brands/generac/">Generac deep dive</a>, then price both paths in <a href="/cost/standby-generator-cost/">installed dollars</a>.</p>
+  <section id="choose">
+    <h2>How to choose between written quotes</h2>
+    <p>There is no universal winner from the manufacturer specifications reviewed here. A sound choice depends on the selected fuel, load analysis, local service capability, exact transfer-switch package, warranty terms, installation proposal, and any local constraints.</p>
+    <ol>
+      <li>Have the same backed-up loads and motor-starting assumptions evaluated for each proposal.</li>
+      <li>Require exact generator and ATS model numbers and identify whether the switch is service-entrance rated.</li>
+      <li>Compare line items for fuel and electrical connections, site work, permits, load management, startup, and commissioning.</li>
+      <li>Read the warranty documents and ask who provides local service and what travel/labor it covers.</li>
+      <li>Ask the installer to confirm code, clearances, fuel pressure/flow, local permits, and the authority having jurisdiction’s requirements.</li>
+    </ol>
+    <p>For background, see our separate <a href="/brands/generac/">Generac model guide</a>, <a href="/brands/kohler/">KOHLER model guide</a>, and <a href="/sizing/what-size-generator-do-i-need/">sizing guide</a>.</p>
   </section>
 </ArticleLayout>

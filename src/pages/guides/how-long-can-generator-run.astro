@@ -1,60 +1,78 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import ComparisonTable from '../../components/ui/ComparisonTable.astro';
-import FAQSection from '../../components/ui/FAQSection.astro';
-import { propaneTanks } from '../../data/fuel-consumption';
 
 const toc = [
-  { id: 'standby-limits', label: 'Standby runtime limits' },
-  { id: 'ng-week', label: 'Natural gas: the week question' },
-  { id: 'propane-week', label: 'Propane: tank math' },
-  { id: 'limits', label: 'What actually stops a run' },
-  { id: 'stretch', label: 'Stretching runtime' },
-  { id: 'faq', label: 'FAQ' },
+  { id: 'short-answer', label: 'There is no universal runtime number' },
+  { id: 'model-example', label: 'One exact model’s fuel-use data' },
+  { id: 'fuel-supply', label: 'Fuel supply is not guaranteed' },
+  { id: 'maintenance', label: 'Maintenance during long operation' },
+  { id: 'planning', label: 'Questions to plan for an outage' },
 ];
 ---
 <ArticleLayout
-  title="How Long Can a Generator Run? Week-Long Outage Reality"
-  description="How long standby generators run: NG indefinite operation, propane tank runtimes, oil/maintenance limits, and what stops a week-long run."
-  category="Buying Guides" categoryHref="/guides/" updated="2026-10-03" readingTime="8 min read" toc={toc}
+  title="How Long Can a Standby Generator Run? Model, Fuel & Maintenance"
+  description="A source-linked guide to standby-generator runtime limits, exact-model fuel-consumption data, fuel-supply assumptions, and the maintenance instructions to follow during extended operation."
+  category="Guides" categoryHref="/guides/" updated="2026-10-04" verified="2026-10-04" readingTime="6 min read" toc={toc}
+  takeaways={[
+    'A universal runtime in hours or days cannot be stated without the exact generator, load, fuel source, site conditions, and maintenance instructions.',
+    'Manufacturer fuel-consumption test points are not a household-specific prediction or an installed fuel-supply guarantee.',
+    'Use the exact operator manual for maintenance during extended operation; do not assume one oil interval or annual-hours limit applies to every standby model.',
+  ]}
   sources={[
-    { label: 'U.S. EIA — Natural Gas Monthly', href: 'https://www.eia.gov/naturalgas/monthly/', type: 'Government', verified: 'Oct 2026' },
-    { label: 'Generac — Residential Standby Lineup', href: 'https://www.generac.com/residential-products/standby-generators/', type: 'Manufacturer', verified: 'Oct 2026' },
-    { label: 'U.S. EIA — Electricity Data Browser', href: 'https://www.eia.gov/electricity/', type: 'Government', verified: 'Oct 2026' },
+    { label: 'Generac G0073270 current product page and official specification sheet', href: 'https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-26kw-7327/', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'Generac G0073270 current owner/operator manual', href: 'https://productmanuals.generac.com/api/manualfiles/G0073270/A0004332577/0', type: 'Technical manual', verified: '2026-10-04' },
+    { label: 'Cummins home-generator FAQ: exact-model maintenance manuals', href: 'https://www.cummins.com/en-na/na/generators/home-standby/home-generator-faq', type: 'Manufacturer', verified: '2026-10-04' },
   ]}
   related={[
-    { href: '/guides/natural-gas-vs-propane/', title: 'Natural Gas vs Propane', description: 'Fuel costs & tanks.', category: 'Buying Guides' },
-    { href: '/maintenance/generator-maintenance-checklist/', title: 'Maintenance Checklist', description: 'Oil limits explained.', category: 'Maintenance' },
-    { href: '/comparisons/standby-vs-portable/', title: 'Standby vs Portable', description: 'Runtime compared.', category: 'Comparisons' },
+    { href: '/guides/natural-gas-vs-propane/', title: 'Natural gas vs. propane', description: 'Compare site supply, model output, and fuel-consumption units.', category: 'Guides' },
+    { href: '/maintenance/generator-maintenance-checklist/', title: 'Manual-first maintenance checklist', description: 'Use the exact operator manual for tasks and intervals.', category: 'Maintenance' },
+    { href: '/brands/generac/', title: 'Generac exact-model data', description: 'See model-specific fuel test points and output ratings.', category: 'Brands' },
   ]}
-  prev={{ href: '/guides/power-quality-thd-surge-protection/', label: 'Power Quality & Surge' }}
-  next={{ href: '/guides/generator-glossary/', label: 'Generator Glossary' }}
 >
-  <section id="standby-limits"><h2>Standby runtime limits (the ratings answer)</h2>
-  <p>Standby-rated (ESP) units are built for ~200 hours/year emergency duty — a full week is 168 hours, so one bad week nearly spends the annual budget but stays inside it. Typical homes log 20–50 h/year. There is no hour-counter shutdown; the limits are fuel, oil, and heat — each manageable.</p></section>
+  <section id="short-answer">
+    <h2>There is no universal runtime number</h2>
+    <p>How long a standby generator can operate depends on the exact model and configuration, electrical load, fuel supply at the required pressure/flow, environmental conditions, service requirements, and any instructions or limits in the current operator manual. A week-long outage cannot be translated into one runtime number for all natural-gas or propane systems.</p>
+    <p>A standby rating describes an output duty category, not by itself a universal annual hour cap or promised run duration. Read the exact model’s rating definition and maintenance schedule; do not interpret a general “standby” label as permission to ignore service, fuel supply, or site conditions.</p>
+  </section>
 
-  <section id="ng-week"><h2>Natural gas: can it run a week straight? Yes</h2>
-  <p>Piped gas flows independent of the grid (rare exceptions: quake valves, damaged mains, utility shutoffs). The maintenance schedule bends but holds: check the dipstick every 8–24 hours during continuous running, plan an oil/filter service at the 100–200-hour mark (a week-long run earns one), and keep airflow clear in sustained heat. NG standby is the week-long-outage answer — this is precisely its design case.</p></section>
+  <section id="model-example">
+    <h2>One exact model’s manufacturer fuel-use data</h2>
+    <p>Generac’s current G0073270 specification sheet lists the following consumption points for this specific model, at the manufacturer’s stated test loads:</p>
+    <div class="not-prose mt-4 overflow-x-auto rounded-xl border border-[#d9e0ea]">
+      <table class="min-w-[640px] w-full border-collapse text-left text-sm">
+        <caption class="sr-only">Generac G0073270 manufacturer-published fuel-consumption test values</caption>
+        <thead class="bg-[#edf3fb] text-primary"><tr><th scope="col" class="p-3">Fuel</th><th scope="col" class="p-3">50% load</th><th scope="col" class="p-3">Full load</th><th scope="col" class="p-3">Unit</th></tr></thead>
+        <tbody class="divide-y divide-gray-200 text-gray-800">
+          <tr><th scope="row" class="p-3">Natural gas</th><td class="p-3">182</td><td class="p-3">316</td><td class="p-3">ft³/hr</td></tr>
+          <tr><th scope="row" class="p-3">LP</th><td class="p-3">2.05</td><td class="p-3">3.95</td><td class="p-3">gal/hr</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="mt-4">These are the manufacturer’s test figures for G0073270, not average real-world consumption, not a prediction for a different load or model, and not proof that a local service/tank can supply the generator continuously. Actual use and available output depend on fuel quality, pressure/flow, ambient conditions, elevation, equipment configuration, and load.</p>
+    <p>For a planning scenario, use the exact model’s published rate at a relevant load and your expected operating time, then discuss the assumptions with the installer and fuel provider. Do not treat this as a calculator or a fuel-bill estimate.</p>
+  </section>
 
-  <section id="propane-week"><h2>Propane: pure tank math (20 kW reference)</h2>
-  <ComparisonTable caption="Propane runtimes" headers={['Tank', 'Usable', '50% load', 'Full load']} rows={propaneTanks.map((t) => [t.size, t.usable, t.runtime20kwHalf, t.runtime20kwFull])} />
-  <p class="mt-3">A 500-gal tank at half load: ~6 days. At full load: ~3. Refill trucks may not reach you mid-disaster (1–2-week storm delays happen) — size the tank to the longest historical outage plus margin, and top off before season. Running dry mid-outage means a restart sequence plus potential air-in-line service.</p></section>
+  <section id="fuel-supply">
+    <h2>Fuel supply is not guaranteed by the fuel label</h2>
+    <p>A natural-gas connection still depends on the utility service and the installed meter, regulator, and piping meeting the model’s requirements while other appliances may be operating. Utility service availability during a particular emergency is not something a product page can guarantee.</p>
+    <p>Propane runtime depends on the exact tank and usable fuel, temperature, supply rate, regulator/line design, actual load, and refill access. A tank’s nominal gallon label is not by itself an exact amount of fuel available to the generator. Ask the propane supplier and installer to verify the setup and expected consumption for the purchased model.</p>
+  </section>
 
-  <section id="limits"><h2>What actually stops a long run</h2>
-  <ul><li><strong>Oil level/condition:</strong> top up on schedule; extended heat shears oil faster — the #1 preventable stoppage.</li><li><strong>Overheating:</strong> blocked intakes, 100°F+ ambient on air-cooled units running hard — clearances and shade (never enclosures) matter.</li><li><strong>Battery/charging faults:</strong> the charger keeps up while running, but a marginal battery plus repeated auto-restarts can cascade.</li><li><strong>Utility backfeed damage:</strong> no — the ATS handles restoration; retransfer waits 15–30 min for stable power.</li><li><strong>Maintenance lockouts:</strong> low-oil and overtemp shutdowns are <em>protecting</em> the engine — investigate, don't bypass.</li></ul></section>
+  <section id="maintenance">
+    <h2>Use the exact maintenance schedule during extended operation</h2>
+    <p>Do not apply a generic oil-change interval, dipstick frequency, or shutdown schedule to every generator. Cummins directs owners to the exact operator manual because maintenance differs by model. Check the installed unit’s current instructions before a storm and ask a qualified service provider what additional inspection is due for the expected run duration.</p>
+    <p>Never bypass a warning or protective shutdown. If the unit shows a fault, overheats, loses fuel, or behaves abnormally, follow the manual and contact qualified service. Do not open electrical or fuel-system components.</p>
+  </section>
 
-  <section id="stretch"><h2>Stretching runtime (legitimate levers)</h2>
-  <ul><li>Run at 50–70% load: shed dryer, strips, second AC — fuel burn drops disproportionately.</li><li>Stagger big motors; never let well pump + AC start together.</li><li>Night setback on cooling; propane users: every degree is gallons.</li><li>Pre-storm oil/filter/battery service so the 168th hour looks like the 1st.</li></ul></section>
-
-  <section id="faq"><span class="sr-only">FAQ anchor</span></section>
-  <FAQSection items={[
-    { q: 'Can a standby generator run for a week?', a: 'On natural gas: yes — fuel is piped, with dipstick checks every 8–24 hours and an oil service around the 100–200-hour mark. On propane: only if the tank math covers it (500 gal ≈ 6 days at half load for 20 kW) with no mid-storm refill counted on.' },
-    { q: 'How long will 500 gallons of propane run a 22 kW generator?', a: 'Roughly 8–10 days at half load (~2.5 gal/h on 400 usable gallons) or ~4–5 days at full load (~3.8 gal/h). Real loads float between — plan on the conservative end.' },
-    { q: 'What happens if you run a generator too long?', a: 'Nothing dramatic if maintained — oil degrades, filters load, heat accumulates. The engine protects itself via low-oil and overtemp shutdowns. Neglect those warnings and you convert a service stop into a rebuild.' },
-  
-    { q: 'Does idling between outages count toward service?', a: 'Yes — exercise minutes accrue on the hour meter. Heavy-outage years plus weekly exercise can advance your service date; check the meter, not the calendar alone.' },
-    { q: 'Can I pause a long run to check oil?', a: 'Yes, and you should for dipstick checks every 8–24 hours: transfer back is automatic on most ATS setups, or schedule checks between storm bands. Never open hot caps or panels.' },
-    { q: 'What happens when propane runs out mid-outage?', a: 'The unit shuts down on fuel starvation; refills need a delivery truck that may not reach you for days. This is why tanks are sized to the worst week, not the average outage.' },
-  ]} />
-  <section id="conclusion"><h2>Conclusion</h2><p>A week is inside a standby's design envelope on NG and inside big-tank propane math — the variable is maintenance discipline, not courage. Size the fuel first: <a href="/guides/natural-gas-vs-propane/">fuel guide</a>.</p></section>
+  <section id="planning">
+    <h2>Questions to answer before an extended outage</h2>
+    <ul>
+      <li>What exact model, fuel, output rating, and operator-manual revision are installed?</li>
+      <li>What is the manufacturer’s fuel consumption at the planned load, and can the local supply sustain the required flow/pressure?</li>
+      <li>What maintenance tasks or service call are due for the expected operating hours?</li>
+      <li>Which loads can be delayed or turned off to stay within the system design?</li>
+      <li>Who can provide fuel, service, or emergency support if roads or utility service are disrupted?</li>
+    </ul>
+    <p>See the <a href="/guides/natural-gas-vs-propane/">fuel guide</a>, <a href="/maintenance/generator-maintenance-checklist/">maintenance checklist</a>, and <a href="/installation/what-to-expect/">installation overview</a> for related planning questions.</p>
+  </section>
 </ArticleLayout>

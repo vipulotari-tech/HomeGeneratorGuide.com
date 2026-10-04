@@ -1,54 +1,67 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import AlertBox from '../../components/ui/AlertBox.astro';
-import ComparisonTable from '../../components/ui/ComparisonTable.astro';
-import FAQSection from '../../components/ui/FAQSection.astro';
 
 const toc = [
-  { id: 'why', label: 'Why HVAC dominates sizing' },
-  { id: 'tonnage', label: 'Tonnage to watts' },
-  { id: 'lra', label: 'Reading the LRA nameplate' },
-  { id: 'soft-start', label: 'Soft-start kits' },
-  { id: 'strips', label: 'Heat strips trap' },
-  { id: 'faq', label: 'FAQ' },
+  { id: 'why-it-matters', label: 'Why HVAC data matters' },
+  { id: 'nameplate', label: 'Collect exact equipment information' },
+  { id: 'starting', label: 'Starting demand and controls' },
+  { id: 'heat-pumps', label: 'Heat pumps and auxiliary heat' },
+  { id: 'professional-review', label: 'What the installer should check' },
 ];
 ---
 <ArticleLayout
-  title="HVAC & Generator Sizing: AC Tonnage, Surge & Soft-Start"
-  description="How central AC and heat pumps drive standby sizing: tonnage math, LRA nameplates, aux heat strips, and soft-start kits explained."
-  category="Sizing" categoryHref="/sizing/" updated="2026-10-03" readingTime="8 min read" toc={toc}
+  title="HVAC and Generator Sizing: Use the Exact Equipment Data"
+  description="A practical, source-linked guide to collecting central-AC and heat-pump data, understanding motor-start needs, identifying auxiliary heat, and preparing for a professional load assessment."
+  category="Sizing" categoryHref="/sizing/" updated="2026-10-04" verified="2026-10-04" readingTime="6 min read" toc={toc}
+  takeaways={[
+    'AC tonnage alone does not reveal running demand, starting demand, or generator compatibility.',
+    'Use the exact HVAC model’s nameplate and manufacturer documentation; generic wattage charts are estimates only.',
+    'Auxiliary electric heat, simultaneous loads, transfer equipment, fuel-specific output, and controls belong in the professional design.',
+  ]}
   sources={[
-    { label: 'Generac — Residential Standby Lineup', href: 'https://www.generac.com/residential-products/standby-generators/', type: 'Manufacturer', verified: 'Oct 2026' },
-    { label: 'DOE Energy Saver', href: 'https://www.energy.gov/energysaver', type: 'Government', verified: 'Oct 2026' },
-    { label: 'Kohler Home Energy — Home Generators', href: 'https://www.kohlerhomeenergy.rehlko.com/products/home-generators', type: 'Manufacturer', verified: 'Oct 2026' },
+    { label: 'Champion Power Equipment Generator Wattage Chart (generic reference ranges)', href: 'https://www.championpowerequipment.com/generator-wattage-chart/', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'Generac: What size generator do I need?', href: 'https://www.generac.com/resources/home-management/what-size-generator-do-i-need/', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'Generac G0073270 official specification sheet (example generator-side ratings)', href: 'https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'U.S. Department of Energy: Air-Source Heat Pumps', href: 'https://www.energy.gov/energysaver/air-source-heat-pumps', type: 'Government', verified: '2026-10-04' },
   ]}
   related={[
-    { href: '/sizing/what-size-generator-do-i-need/', title: 'What Size Generator Do I Need?', description: 'Full sizing method.', category: 'Sizing' },
-    { href: '/sizing/whole-home-vs-essential-loads/', title: 'Whole-Home vs Essential Loads', description: 'Backup philosophies.', category: 'Sizing' },
+    { href: '/sizing/what-size-generator-do-i-need/', title: 'Generator sizing process', description: 'Plan from exact loads and professional verification.', category: 'Sizing' },
+    { href: '/sizing/appliance-wattage-chart/', title: 'Appliance wattage chart', description: 'Approximate ranges published by Champion; not exact-equipment data.', category: 'Sizing' },
+    { href: '/sizing/well-pump-generator-sizing/', title: 'Well-pump planning', description: 'Collect pump data for the same site-specific assessment.', category: 'Sizing' },
   ]}
-  prev={{ href: '/sizing/calculator/', label: 'Sizing Calculator' }}
-  next={{ href: '/sizing/well-pump-generator-sizing/', label: 'Well Pump Sizing' }}
 >
-  <section id="why"><h2>Why HVAC dominates sizing</h2>
-  <p>The compressor is the hungriest motor in the house. A 3-ton condenser can surge past 11,000 W for a second — more than fridge, freezer, lights, and internet combined. If your backup plan includes cooling (or electric heating), HVAC is not one line item among many; it <em>is</em> the sizing exercise, with everything else arranged around it. Homes with gas heat and no central AC size dramatically smaller than identical homes with 4-ton AC — which is exactly why <a href="/sizing/what-size-generator-do-i-need/">square footage alone fails</a>.</p></section>
-  <section id="tonnage"><h2>Tonnage to watts (planning figures)</h2>
-  <ComparisonTable caption="AC tonnage watts" headers={['Tonnage', 'Running (W)', 'Starting (W)']} rows={[['2 ton', '2,500', '7,500'], ['2.5 ton', '3,000', '9,000'], ['3 ton', '3,500', '11,000'], ['4 ton', '5,000', '15,000'], ['5 ton', '6,000', '18,000+']]} />
-  <p class="mt-3">One ton = 12,000 BTU/hr of cooling. Older low-SEER units draw more per ton; modern high-SEER/inverter units draw less and surge softer. Tonnage is on the condenser nameplate or original install paperwork — not the thermostat.</p></section>
-  <section id="lra"><h2>Reading the LRA nameplate</h2>
-  <p>Find the outdoor condenser's data plate: note <strong>LRA (Locked Rotor Amps)</strong> and <strong>RLA/FLA (Rated/Full Load Amps)</strong>. Startup VA ≈ LRA × 240 (single-phase residential). Example: 70 A LRA → ~16,800 VA instantaneous; the generator sees less thanks to breaker curves and controls, but this number explains why a "3,500 W" AC needs a 20 kW-class generator alongside other loads. Photograph every nameplate for your electrician — it compresses the quote visit enormously. <AlertBox type="warning" title="Pro-only">Nameplate reading is homeowner-safe; opening electrical compartments is not. Exterior data plates only.</AlertBox></p></section>
-  <section id="soft-start"><h2>Soft-start kits: when they help</h2>
-  <p>Soft starters ramp compressor voltage to cut inrush 30–60% per manufacturer data. They can drop a marginal 24 kW requirement into comfortable 22 kW territory, or let a 20 kW handle a 3-ton unit with headroom. They do not reduce <em>running</em> watts, must be compatible with your compressor type (not all inverter/variable-speed units need or accept them), and should be installed by an HVAC tech — not a generator DIY. Discuss with both your HVAC tech and generator installer before counting the savings.</p></section>
-  <section id="strips"><h2>The heat-strip trap (heat pumps)</h2>
-  <p>Heat pumps sip in mild weather and gulp when auxiliary electric strips engage: 5–10 kW of strip heat can exceed the compressor threefold. Best practice on backup: program controls to <strong>lock out aux strips on generator power</strong> (comfort dips slightly, sizing drops massively), or zone strips onto shed modules. All-electric homes that refuse strip lockout often jump a full generator size — price both paths in <a href="/cost/standby-generator-cost/">installed dollars</a> before deciding.</p></section>
-  <section id="faq"><span class="sr-only">FAQ anchor</span></section>
-  <FAQSection items={[
-    { q: 'Can a 22 kW generator run a 4-ton AC?', a: 'Often yes with load management — 4-ton starting surge (~15,000 W) plus a disciplined base load fits under 22 kW momentary capacity. Verify LRA, add other coincident loads, and confirm with a licensed calculation; tight cases benefit from a soft-start evaluation.' },
-    { q: 'Do mini-splits change the sizing math?', a: 'Yes, favorably: inverter mini-splits ramp softly with minimal surge (~1.2×), so a mini-split home sizes smaller than the same home on one large central compressor. Zone count matters more than tonnage here.' },
-    { q: 'What is LRA and where do I find it?', a: 'Locked-rotor amps — worst-case compressor startup current, printed on the condenser nameplate. Multiply LRA × 240V for startup volt-amps, then photograph the plate for your electrician.' },
-    { q: 'Do heat strips change the generator size?', a: 'Dramatically: 5–10 kW of auxiliary strip heat can exceed the compressor threefold. Locking strips out on backup power often shrinks the generator a full size.' },
-    { q: 'Should I replace my AC before buying a generator?', a: 'If the condenser is 15+ years old and oversized, a right-sized high-SEER replacement can shrink the generator a full size — sometimes paying for itself in combined savings. Get HVAC and generator quotes in the same month.' },
-  
-    { q: 'How do I find my AC tonnage?', a: 'Check the condenser nameplate or original install paperwork — never the thermostat. One ton equals 12,000 BTU/hr of cooling.' },
-  ]} />
-  <section id="conclusion"><h2>Conclusion</h2><p>HVAC first, everything else second: tonnage → LRA → strip policy → soft-start question. Bring those four answers to your installer and the rest of sizing goes quickly. Next: <a href="/sizing/well-pump-generator-sizing/">well-pump sizing</a> or back to <a href="/sizing/what-size-generator-do-i-need/">the full guide</a>.</p></section>
+  <section id="why-it-matters">
+    <h2>Why HVAC data matters</h2>
+    <p>Central air conditioners and heat pumps include motors and electronic controls, and may be among the larger loads in a home. Whether they can operate on backup depends on the exact equipment, other loads running at the same time, starting behavior, generator rating on the chosen fuel, and transfer/load-management configuration. Home size or nominal cooling tonnage is not enough to select a generator.</p>
+  </section>
+
+  <section id="nameplate">
+    <h2>Collect the exact HVAC information</h2>
+    <p>Photograph the outdoor and indoor equipment nameplates and collect the manufacturer manuals or technical data. Record the exact model numbers and any published voltage, phase, rated current/input, locked-rotor or starting-current data, and auxiliary-heat information. Not every label exposes every starting figure; do not fill missing fields with a rule of thumb.</p>
+    <p>Champion’s wattage chart provides generic reference ranges for some common air conditioners. It is a manufacturer-published estimate, not a measurement of your equipment or a sizing recommendation. Use the <a href="/sizing/appliance-wattage-chart/">sourced chart</a> only to understand the scale of possible variation while obtaining exact nameplate data.</p>
+  </section>
+
+  <section id="starting">
+    <h2>Starting demand depends on the actual motor and controls</h2>
+    <p>A motor or compressor can have a higher demand while starting than during steady operation. The relevant starting information and control behavior depend on the specific equipment. If a plate or manual lists locked-rotor amps (LRA), provide that value to the electrician; do not simply multiply it by voltage and treat the result as a complete generator-sizing answer. Power factor, voltage dip, other concurrent loads, and the generator/transfer system matter.</p>
+    <p>Soft-start or other starting-control devices are not universal fixes. Ask the HVAC manufacturer or a qualified HVAC technician whether the exact compressor accepts the device, whether it affects warranty or operation, and what verified starting data should be used in the generator design.</p>
+  </section>
+
+  <section id="heat-pumps">
+    <h2>Heat pumps and auxiliary electric heat</h2>
+    <p>Some heat-pump systems include electric auxiliary or emergency heat. Identify the exact air handler/heat-strip model and staged controls, and ask the installer which heating elements are expected to operate on generator power. Do not assume those elements are disabled, or that they can be shed safely, unless the approved system configuration explicitly provides for it.</p>
+    <p>Any load-shedding or lockout plan must be compatible with the HVAC controls and documented in the written proposal. Consider comfort and freeze-protection needs with the HVAC professional; a generic article cannot decide which heat sources a specific home should lose.</p>
+  </section>
+
+  <section id="professional-review">
+    <h2>What the generator professional should verify</h2>
+    <ul>
+      <li>Exact HVAC equipment models and manufacturer starting/running data.</li>
+      <li>Which systems are expected to operate together and what controls or load-management devices are installed.</li>
+      <li>Generator output on the planned fuel, site derating, electrical service, transfer equipment, and motor-starting capability.</li>
+      <li>Whether any manufacturer-approved soft-start or sequencing changes are planned and who is responsible for them.</li>
+      <li>Which operating limitations and load priorities will be documented for the homeowner.</li>
+    </ul>
+    <p>Do not open electrical compartments or change HVAC wiring. Bring the nameplate photographs to a qualified local professional and request a written load assessment. Continue with the <a href="/sizing/what-size-generator-do-i-need/">load-based sizing guide</a>.</p>
+  </section>
 </ArticleLayout>

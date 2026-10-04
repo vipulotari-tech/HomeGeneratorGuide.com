@@ -1,50 +1,92 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import AlertBox from '../../components/ui/AlertBox.astro';
-import ComparisonTable from '../../components/ui/ComparisonTable.astro';
-import FAQSection from '../../components/ui/FAQSection.astro';
 
 const toc = [
-  { id: 'where', label: 'Where install money goes' },
-  { id: 'trades', label: 'Trade-by-trade scope' },
-  { id: 'quotes', label: 'Reading bids' },
-  { id: 'save', label: 'Saving without cutting corners' },
-  { id: 'faq', label: 'FAQ' },
+  { id: 'published-ranges', label: 'Published cost ranges' },
+  { id: 'work-stages', label: 'What installation work involves' },
+  { id: 'planning-reference', label: 'Published line-item references' },
+  { id: 'site-factors', label: 'Factors that change a project' },
+  { id: 'quote-checklist', label: 'Compare itemized proposals' },
 ];
 ---
 <ArticleLayout
-  title="Standby Installation Cost Breakdown: Where the Money Goes"
-  description="Trade-by-trade standby installation cost breakdown: electrical, gas, pad, permits, startup — and how to read bids fairly."
-  category="Cost" categoryHref="/cost/" updated="2026-10-03" readingTime="8 min read" toc={toc}
+  title="Standby Generator Installation Cost Breakdown: Scope & Quotes"
+  description="A sourced overview of residential standby-generator installation work, published planning ranges, quote variables, and questions to ask before hiring qualified local contractors."
+  category="Cost" categoryHref="/cost/" updated="2026-10-04" verified="2026-10-04" readingTime="7 min read" toc={toc}
+  takeaways={[
+    'Installation is a site-specific scope, not one fixed labor amount or percentage of the generator price.',
+    'Published cost ranges disagree; do not add overlapping line-item estimates to create a fictional quote.',
+    'A complete written proposal should show equipment, electrical/fuel work, site preparation, permits, startup, and exclusions.',
+  ]}
   sources={[
-    { label: 'Generac — Residential Standby Lineup', href: 'https://www.generac.com/residential-products/standby-generators/', type: 'Manufacturer', verified: 'Oct 2026' },
-    { label: 'Generac — Find a Dealer', href: 'https://www.generac.com/dealers-installers/', type: 'Manufacturer', verified: 'Oct 2026' },
-    { label: 'U.S. EIA — Natural Gas Monthly', href: 'https://www.eia.gov/naturalgas/monthly/', type: 'Government', verified: 'Oct 2026' },
+    { label: 'Generac: home standby installation process and cost range', href: 'https://www.generac.com/resources/home-management/backup-generator-installation/', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'HomeGuide: whole-house generator cost (published Dec. 30, 2025)', href: 'https://homeguide.com/costs/generator-cost', type: 'Industry', verified: '2026-10-04' },
+    { label: 'Generac G0073270 official installation manual and support documents', href: 'https://productmanuals.generac.com/api/manualfiles/G0073270/A0004332575/0', type: 'Technical manual', verified: '2026-10-04' },
   ]}
   related={[
-    { href: '/cost/standby-generator-cost/', title: 'Standby Generator Cost (2026)', description: 'National ranges.', category: 'Cost' },
-    { href: '/installation/what-to-expect/', title: 'Installation: What to Expect', description: 'Day-by-day process.', category: 'Installation' },
+    { href: '/cost/standby-generator-cost/', title: 'Standby-generator cost guide', description: 'Compare published installed ranges and exact model MSRPs.', category: 'Cost' },
+    { href: '/cost/transfer-switch-cost/', title: 'Transfer-switch cost and scope', description: 'Compare ATS and manual connection equipment carefully.', category: 'Cost' },
+    { href: '/installation/what-to-expect/', title: 'Installation: what to expect', description: 'Plan assessment, siting, installation, and handoff.', category: 'Installation' },
   ]}
-  prev={{ href: '/cost/generator-roi-outage-costs/', label: 'Generator ROI & Outage Costs' }}
-  next={{ href: '/cost/transfer-switch-cost/', label: 'Transfer Switch Cost' }}
 >
-  <section id="where"><h2>Where install money goes</h2>
-  <p>Install labor + materials typically run $4,000–$9,000+ on top of equipment — and this is the number most box-price shoppers miss. Rough split for a straightforward 22 kW job: electrical 35–45%, gas 20–30%, pad/site 5–10%, permits/inspections 3–8%, startup/programming/walkthrough 5–10%, margin/warranty reserve the rest. Complex sites skew gas and electrical far higher. <AlertBox type="info" title="Estimates, not bids">All figures are national planning ranges per our <a href="/disclaimer/">disclaimer</a>. Your bids govern.</AlertBox></p></section>
-  <section id="trades"><h2>Trade-by-trade scope</h2>
-  <ComparisonTable caption="Install scope by trade" headers={['Trade', 'Typical scope', 'Cost signal']} rows={[['Electrical', 'Runs, ATS, subpanel, grounding, load modules, startup test', '$2,000–$5,000+'], ['Gas', 'Pipe sizing/run, trench, regulators, pressure test', '$800–$3,500+'], ['Site/civil', 'Pad, grading, clearance, restoration', '$200–$1,500+'], ['Permits', 'Electrical/gas/plumbing + inspections', '$100–$600+'], ['Programming', 'ATS config, shed priorities, app + walkthrough', 'Often bundled — insist on itemization']]} /></section>
-  <section id="quotes"><h2>Reading bids like an auditor</h2>
-  <ul><li>Every bid lists model + kW + fuel + switch type + module count. Vague bids hide upsells.</li><li>Gas scope states linear feet, trench responsibility, and restoration. "Gas by others" is a $2,000 surprise.</li><li>Electrical states panel work explicitly — photos attached, not "as needed."</li><li>Permit puller named; inspection scheduling stated; startup + walkthrough itemized.</li><li>Warranty registration + first-service date in writing.</li></ul></section>
-  <section id="save"><h2>Saving without cutting corners</h2>
-  <ul><li>Shorten runs: place the unit where gas + electrical meet setback rules — every foot costs.</li><li>Right-size with load management instead of brute-force kilowatts.</li><li>Schedule off-peak (not post-storm) for better lead times.</li><li>Bundle panel cleanup with install rather than as a separate visit.</li><li>Never save by skipping permits, undersizing gas, or hiring unlicensed — the three most expensive "savings" in this industry.</li></ul></section>
-  <section id="faq"><span class="sr-only">FAQ anchor</span></section>
-  <FAQSection items={[
-    { q: 'How long does installation take?', a: 'Survey + permits: 1–4 weeks. Physical install: 1–3 days for straightforward sites. Inspections + utility signoff add days. Storm-season backlogs extend everything — book off-peak.' },
-    { q: 'Can one contractor do electrical and gas?', a: 'Sometimes — many standby dealers self-perform both or subcontract transparently. What matters is licensed pros for each trade and a single accountable prime contractor.' },
-    { q: 'Is a concrete pad required?', a: 'A stable, level, code-compliant base is required — precast concrete, poured pad, or manufacturer-approved composite, per manual and inspector. Gravel alone rarely suffices for standby.' },
-  
-    { q: 'What is the most commonly underestimated line item?', a: 'Gas scope: trench length, rock, driveway crossings, and meter upsizes turn a $400 line into a $2,000 surprise. Demand linear feet in writing.' },
-    { q: 'Should one contractor do everything?', a: 'Prefer a single accountable prime with licensed electricians and gas fitters in-house or transparently subcontracted — split contracts create blame gaps at inspection time.' },
-    { q: 'Can I prep anything myself to save money?', a: 'Yes, safely: clear access, handle landscaping restoration yourself, and shorten runs by approving smart placement. Never DIY panel, gas, or permit work.' },
-  ]} />
-  <section id="conclusion"><h2>Conclusion</h2><p>Installation is 40–60% of project cost and 90% of project risk. Buy the complete scope, not the cheapest box. Next: <a href="/cost/transfer-switch-cost/">transfer-switch costs</a> and <a href="/installation/what-to-expect/">install day</a>.</p></section>
+  <section id="published-ranges">
+    <h2>Published planning ranges—and why they are not a quote</h2>
+    <p>Generac’s current installation guidance gives a broad <strong>$8,000–$16,000</strong> range inclusive of the generator, system equipment/materials, and installation, and says location and project complexity affect the cost. HomeGuide’s guide published December 30, 2025 lists a <strong>$6,000–$11,000</strong> average installed total and a <strong>$9,500–$24,000</strong> range for long distances or generators above 20 kW. These are different published estimates, not a single settled national average.</p>
+    <p>A contractor’s quote must reflect the actual model/package, fuel supply, electrical path, panel, site, approvals, and local labor. Ask what is included and what remains an allowance. See our <a href="/cost/standby-generator-cost/">full standby cost guide</a>.</p>
+  </section>
+
+  <section id="work-stages">
+    <h2>What installation work can involve</h2>
+    <ol>
+      <li><strong>Property assessment and load plan.</strong> A qualified professional reviews backed-up loads, generator/fuel options, equipment locations, and site constraints.</li>
+      <li><strong>Design and approvals.</strong> Confirm generator, transfer equipment, wiring/fuel route, code/permit requirements, utility coordination, and property restrictions.</li>
+      <li><strong>Site preparation.</strong> Prepare an approved stable base and ensure the location meets the exact manual’s clearances, exhaust direction, service access, drainage, and local requirements.</li>
+      <li><strong>Electrical and fuel connections.</strong> Licensed trades connect the generator, transfer equipment, home panel, and compatible fuel supply. Scope varies with existing infrastructure and route length.</li>
+      <li><strong>Inspection, commissioning, and handoff.</strong> The contractor tests the system, documents its operation and limits, completes required inspections, and explains safe operation and maintenance.</li>
+    </ol>
+    <p>This list describes typical work categories only; it is not a DIY procedure. Generac’s installation guide similarly notes that location, fuel, electrical, site, and installation requirements are part of a consultation and that project timing depends on preparation, permits, and contractor availability.</p>
+  </section>
+
+  <section id="planning-reference">
+    <h2>Selected published line-item references</h2>
+    <p>HomeGuide lists these planning figures in its cost guide. Its gas-line value differs between the table and narrative, so both are shown below rather than silently selecting one. The figures can overlap with bundled proposals and are not intended to be summed as an installation estimate.</p>
+    <div class="not-prose mt-4 overflow-x-auto rounded-xl border border-[#d9e0ea]">
+      <table class="min-w-[650px] w-full border-collapse text-left text-sm">
+        <caption class="sr-only">Published cost guide references for selected generator installation components</caption>
+        <thead class="bg-[#edf3fb] text-primary"><tr><th scope="col" class="p-3">Component</th><th scope="col" class="p-3">Published reference</th><th scope="col" class="p-3">Important scope note</th></tr></thead>
+        <tbody class="divide-y divide-gray-200 text-gray-800">
+          <tr><th scope="row" class="p-3">Automatic transfer switch installation</th><td class="p-3">$600–$2,500</td><td class="p-3">Equipment/rating, circuits, service arrangement, wiring, and labor vary.</td></tr>
+          <tr><th scope="row" class="p-3">Electrical wiring</th><td class="p-3">$6–$8 per foot</td><td class="p-3">Route, conductor size, conduit, trenching, and local labor can change the work.</td></tr>
+          <tr><th scope="row" class="p-3">Gas line installation</th><td class="p-3">$12–$25/ft in HomeGuide’s cost-factor table; $15–$50+/ft in its narrative note</td><td class="p-3">The same guide gives different ranges. Treat them as inconsistent planning references; fuel capacity/pressure, pipe size, meter/regulator, trenching, and route matter.</td></tr>
+          <tr><th scope="row" class="p-3">Precast concrete pad</th><td class="p-3">$150–$400</td><td class="p-3">Site preparation, base type, drainage, and equipment instructions affect scope.</td></tr>
+          <tr><th scope="row" class="p-3">Permits</th><td class="p-3">$80–$450</td><td class="p-3">Local requirements and permit types differ.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="mt-3">Source: <a href="https://homeguide.com/costs/generator-cost" rel="external noopener noreferrer">HomeGuide, published Dec. 30, 2025</a>, accessed Oct. 4, 2026. These estimates do not represent local contractor bids.</p>
+  </section>
+
+  <section id="site-factors">
+    <h2>Factors that can change the work</h2>
+    <ul>
+      <li>Whether a gas meter, regulator, or existing fuel line can serve the generator and other connected appliances at the required load.</li>
+      <li>Distance and routing between generator, fuel source, electrical service, and transfer equipment.</li>
+      <li>Panel condition, service rating, circuit-selection strategy, and any load-management controls.</li>
+      <li>Excavation, driveway crossings, landscaping restoration, limited equipment access, flood/drainage issues, or a complex property layout.</li>
+      <li>Local permits, inspections, utility coordination, HOA restrictions, and contractor backlog.</li>
+    </ul>
+    <p>These factors are why published line items should not be combined into a single project total without a scope and site assessment.</p>
+  </section>
+
+  <section id="quote-checklist">
+    <h2>Compare itemized proposals</h2>
+    <ul>
+      <li>Exact generator model, fuel, rating, transfer equipment, and included accessories.</li>
+      <li>Electrical and fuel connection route, named work, testing, and any allowances.</li>
+      <li>Pad/base and site restoration, permits, inspections, and utility coordination.</li>
+      <li>Startup/commissioning, operating walkthrough, owner manuals, registration, and warranty support.</li>
+      <li>Explicit exclusions, change-order process, schedule, payment terms, and service contact.</li>
+    </ul>
+    <p>Compare bids on the same equipment and scope, and have the licensed professionals identify any unresolved fuel, panel, code, or placement questions before purchase. Read <a href="/installation/what-to-expect/">what to expect during installation</a> for additional planning context.</p>
+  </section>
 </ArticleLayout>
