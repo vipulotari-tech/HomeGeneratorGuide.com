@@ -52,6 +52,26 @@ try {
     assert.equal(await page.locator('#main h1').count(), 1, `expected one content H1 at ${path}`);
   }
 
+  // Full generated-route crawl: every static index page gets a mobile load,
+  // one-H1, and horizontal-overflow check. This catches new content routes,
+  // not just the hand-picked smoke cases above.
+  const generatedRoutes = fs.readdirSync('dist', { recursive: true })
+    .filter((entry) => typeof entry === 'string' && entry.endsWith('index.html'))
+    .map((entry) => entry === 'index.html' ? '/' : '/' + entry.replace(/\\/g, '/').replace(/index\.html$/, ''))
+    .sort();
+
+  await page.setViewportSize({ width: 390, height: 900 });
+  for (const path of generatedRoutes) {
+    const response = await page.goto(`${baseUrl}${path}`, { waitUntil: 'networkidle' });
+    assert(response && response.ok(), `generated page failed to load: ${path}`);
+    assert.equal(await page.locator('#main h1').count(), 1, `expected one content H1 at ${path}`);
+    assert.equal(
+      await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth),
+      false,
+      `horizontal overflow at generated route ${path}`,
+    );
+  }
+
   await page.setViewportSize({ width: 1280, height: 900 });
   await page.goto(`${baseUrl}/sizing/what-size-generator-do-i-need/`, { waitUntil: 'networkidle' });
   assert.equal(
@@ -126,8 +146,8 @@ try {
 
   assert.deepEqual(errors, [], `browser console/page errors: ${JSON.stringify(errors)}`);
   console.log(
-    `Browser QA passed: ${smokeCases.length} page/viewport combinations, no overflow, static worksheet, ` +
-      'mobile navigation, keyboard focus, and redirect configuration.',
+    `Browser QA passed: ${smokeCases.length} targeted page/viewport combinations plus ${generatedRoutes.length} generated routes, ` +
+      'no horizontal overflow, static worksheet, mobile navigation, keyboard focus, and redirect configuration.',
   );
 } finally {
   await browser.close();
