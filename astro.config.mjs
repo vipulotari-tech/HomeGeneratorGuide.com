@@ -20,7 +20,14 @@ export default defineConfig({
   site: siteEnvironment === 'production' ? productionUrl : stagingUrl,
   output: 'static',
   trailingSlash: 'always',
-  integrations: [mdx(), sitemap()],
+  integrations: [
+    mdx(),
+    sitemap({
+      // Astro's sitemap integration does not infer page-level noindex state.
+      // Keep error documents out of the production sitemap explicitly.
+      filter: (page) => !page.endsWith('/404/') && !page.endsWith('/404.html'),
+    }),
+  ],
   vite: {
     server: {
       host: '0.0.0.0',
