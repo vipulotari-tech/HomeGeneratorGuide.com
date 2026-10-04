@@ -5,16 +5,18 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "build": "node tools/build-site.mjs production",
-    "build:production": "node tools/build-site.mjs production",
+    "build": "node tools/build-site.mjs staging",
     "build:staging": "node tools/build-site.mjs staging",
-    "preview": "npm run build:production && wrangler dev --ip 0.0.0.0",
+    "build:production": "node tools/build-site.mjs production",
+    "preview": "npm run build:staging && wrangler dev --ip 0.0.0.0",
     "preview:staging": "npm run build:staging && wrangler dev --config wrangler.staging.jsonc --ip 0.0.0.0",
+    "preview:production": "npm run build:production && wrangler dev --config wrangler.production.jsonc --ip 0.0.0.0",
     "check": "astro check",
     "typecheck": "tsc --noEmit",
     "qa:browser": "node tools/qa-browser.mjs",
+    "deploy": "npm run build:staging && wrangler deploy",
     "deploy:staging": "npm run build:staging && wrangler deploy --config wrangler.staging.jsonc",
-    "deploy": "npm run build:production && wrangler deploy",
+    "deploy:production": "npm run build:production && wrangler deploy --config wrangler.production.jsonc",
     "cf-typegen": "wrangler types"
   },
   "dependencies": {

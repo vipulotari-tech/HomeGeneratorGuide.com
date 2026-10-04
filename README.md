@@ -16,30 +16,35 @@ npm run typecheck
 ## Build targets
 
 ```sh
+npm run build              # pre-launch default: staging, noindex/nofollow
 npm run build:staging      # noindex/nofollow; staging origin
 npm run build:production   # indexable; production origin and sitemap
-npm run build              # alias for the production build
 ```
 
 Both targets write to `dist/`, so build them sequentially. Staging pages include `noindex,nofollow`, staging `robots.txt` disallows crawling, and the response header adds `X-Robots-Tag: noindex, nofollow`. Production pages use self-canonicals and an indexable `robots.txt` with the production sitemap.
 
 ## Cloudflare Workers
 
-The Worker configs deliberately separate the pre-launch and production targets:
+The Worker configs deliberately separate the pre-launch and production targets. While the real domain is not launched, the repository defaults to the staging Worker so generic Cloudflare/Git deploy commands cannot accidentally publish the production route.
 
-- `wrangler.staging.jsonc` deploys the staging build to the Worker named `homegeneratorguide` (`homegeneratorguide.tender-telescope.workers.dev`).
-- `wrangler.jsonc` deploys the production build to `homegeneratorguide-production` and routes `homegeneratorguide.com/*` through the configured Cloudflare zone.
+- `wrangler.jsonc` is the pre-launch default and deploys to the Worker named `homegeneratorguide` (`homegeneratorguide.tender-telescope.workers.dev`).
+- `wrangler.staging.jsonc` is the explicit staging config for the same Worker.
+- `wrangler.production.jsonc` deploys to `homegeneratorguide-production` and routes `homegeneratorguide.com/*` through the configured Cloudflare zone.
 
 ```sh
-npm run preview:staging
-npm run deploy:staging
 npm run preview
+npm run preview:staging
 npm run deploy
+npm run deploy:staging
+
+# Only when the production domain is intentionally ready to launch:
+npm run preview:production
+npm run deploy:production
 ```
 
-Deploy commands are explicit and are not part of the build or test scripts. Before production deployment, confirm the Cloudflare zone and custom-domain route are available and that any existing Worker serving the production hostname has been safely migrated. The `www`-to-apex redirect remains a Cloudflare dashboard rule for the Workers deployment; Netlify and Vercel redirects are defined in their config files.
+Before production deployment, confirm the Cloudflare zone and custom-domain route are available and that any existing Worker serving the production hostname has been safely migrated. The `www`-to-apex redirect remains a Cloudflare dashboard rule for the Workers deployment; Netlify and Vercel redirects are defined in their config files.
 
-Netlify and Vercel configs also publish the production static build from `dist/`. The current target-specific Worker separation applies to Cloudflare; configure a distinct non-indexable preview deployment separately if using another host for staging.
+Netlify and Vercel configs publish the production static build from `dist/`; the pre-launch default described above is specifically for Cloudflare Worker/Git deployment safety.
 
 ## Quality assurance
 
