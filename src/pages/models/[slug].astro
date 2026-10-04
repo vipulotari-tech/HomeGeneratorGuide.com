@@ -1,0 +1,141 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { MODEL_SPECS, type ModelSpec } from '../../data/model-specs';
+
+const routes = new Map([
+  ['G0072600', 'generac-g0072600'],
+  ['G0073270', 'generac-g0073270'],
+  ['26RCA', 'kohler-26rca'],
+  ['26RCAL', 'kohler-26rcal'],
+  ['201222', 'champion-201222'],
+  ['040786', 'briggs-stratton-040786'],
+]);
+
+export function getStaticPaths() {
+  return MODEL_SPECS
+    .filter((model) => routes.has(model.modelId))
+    .map((model) => ({
+      params: { slug: routes.get(model.modelId)! },
+      props: { model },
+    }));
+}
+
+interface Props { model: ModelSpec; }
+const { model } = Astro.props;
+const ratingBits = [
+  model.ratingsKw.LP !== undefined ? model.ratingsKw.LP + ' kW LP' : null,
+  model.ratingsKw['Natural gas'] !== undefined ? model.ratingsKw['Natural gas'] + ' kW natural gas' : null,
+].filter(Boolean);
+const ratingSummary = ratingBits.length
+  ? ratingBits.join(' / ')
+  : model.standbyRatingKw !== undefined
+    ? model.standbyRatingKw + ' kW published standby rating'
+    : 'Fuel-specific output not established in current source set';
+const brandHref =
+  model.brand === 'Generac' ? '/brands/generac/' :
+  model.brand === 'KOHLER / Rehlko' ? '/brands/kohler/' :
+  model.brand === 'Champion' ? '/brands/champion/' :
+  model.brand === 'Briggs & Stratton' ? '/brands/briggs-stratton/' :
+  '/brands/';
+const toc = [
+  { id: 'snapshot', label: 'Model snapshot' },
+  { id: 'fuel', label: 'Fuel-use data' },
+  { id: 'sound', label: 'Sound data' },
+  { id: 'package', label: 'Price, ATS & warranty' },
+  { id: 'limits', label: 'What the sources do not prove' },
+  { id: 'quote', label: 'Questions for a quote' },
+];
+---
+<ArticleLayout
+  title={model.brand + ' ' + model.modelId + ': Exact-Model Standby Generator Guide'}
+  description={'Manufacturer-linked guide to ' + model.brand + ' ' + model.modelId + ' covering ' + ratingSummary + ', fuel-use test points where published, sound conditions, price/package scope, warranty and source limitations.'}
+  category="Models" categoryHref="/models/" updated="2026-10-04" verified="2026-10-04" readingTime="6 min read" toc={toc}
+  takeaways={[
+    'This page is tied to exact model ' + model.modelId + '; values are not silently borrowed from another model in the same brand family.',
+    ratingSummary + '. Fuel-specific ratings and test conditions still do not size a home by themselves.',
+    'Manufacturer specifications describe the product; they do not prove field reliability, local service quality, installed price, or fit for a particular property.',
+  ]}
+  sources={model.sources.map((source) => ({ label: source.label, href: source.url, type: 'Manufacturer' as const, verified: source.checkedOn }))}
+  related={[
+    { href: brandHref, title: model.brand + ' brand guide', description: 'See the broader brand/model context and source limitations.', category: 'Brands' },
+    { href: '/comparisons/five-brand-standby-generator-comparison/', title: 'Five-brand standby comparison', description: 'Compare selected exact models without turning the table into a universal winner.', category: 'Comparisons' },
+    { href: '/cost/standby-generator-quote-checklist/', title: 'Quote checklist', description: 'Require the exact generator, ATS, fuel rating and inclusions in writing.', category: 'Cost' },
+  ]}
+>
+  <section id="snapshot">
+    <h2>Exact-model snapshot</h2>
+    <p><strong>{model.brand} {model.modelId}</strong> — {model.displayName}. {model.configuration}</p>
+    <div class="not-prose mt-5 overflow-x-auto rounded-xl border border-[#d9e0ea]">
+      <table class="min-w-[700px] w-full border-collapse text-left text-sm">
+        <caption class="sr-only">Manufacturer-published model snapshot for {model.brand} {model.modelId}</caption>
+        <tbody class="divide-y divide-gray-200 text-gray-800">
+          <tr><th scope="row" class="w-56 bg-[#edf3fb] p-3 text-primary">Published standby output</th><td class="p-3">{ratingSummary}</td></tr>
+          {model.engine && <tr><th scope="row" class="bg-[#edf3fb] p-3 text-primary">Engine</th><td class="p-3">{[model.engine.maker, model.engine.model, model.engine.displacementCc ? model.engine.displacementCc + ' cc' : null].filter(Boolean).join(' · ')}</td></tr>}
+          {model.dimensionsIn && <tr><th scope="row" class="bg-[#edf3fb] p-3 text-primary">Dimensions</th><td class="p-3">{model.dimensionsIn.length} × {model.dimensionsIn.width} × {model.dimensionsIn.height} in (L × W × H)</td></tr>}
+          {model.weightLb && <tr><th scope="row" class="bg-[#edf3fb] p-3 text-primary">Published weight</th><td class="p-3">{model.weightLb} lb</td></tr>}
+          <tr><th scope="row" class="bg-[#edf3fb] p-3 text-primary">Manufacturer page</th><td class="p-3"><a href={model.productUrl} rel="external noopener noreferrer" class="text-primary underline decoration-accent underline-offset-4">Open exact product page</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="fuel">
+    <h2>Fuel-use data: keep load and units attached</h2>
+    {model.fuelConsumption?.length ? (
+      <>
+        <p>The current source registry contains the following manufacturer-published test points. These are not a household fuel forecast; actual consumption changes with electrical load, fuel conditions, setup and runtime.</p>
+        <div class="not-prose mt-4 overflow-x-auto rounded-xl border border-[#d9e0ea]">
+          <table class="min-w-[620px] w-full border-collapse text-left text-sm">
+            <caption class="sr-only">Published fuel-consumption points for {model.brand} {model.modelId}</caption>
+            <thead class="bg-[#edf3fb] text-primary"><tr><th class="p-3">Fuel</th><th class="p-3">Load</th><th class="p-3">Published consumption</th></tr></thead>
+            <tbody class="divide-y divide-gray-200">
+              {model.fuelConsumption.map((row) => <tr><td class="p-3">{row.fuel}</td><td class="p-3">{row.loadPercent}%</td><td class="p-3">{row.amount.toLocaleString('en-US')} {row.unit}</td></tr>)}
+            </tbody>
+          </table>
+        </div>
+      </>
+    ) : <p>No model-specific fuel-consumption test point is stored in the current accessible source set. We leave the field blank rather than copy a value from another model.</p>}
+  </section>
+
+  <section id="sound">
+    <h2>Sound data: mode and measurement conditions matter</h2>
+    {model.sound?.length ? (
+      <ul>{model.sound.map((row) => <li><strong>{row.decibelsA} dB(A)</strong> — {row.condition}{row.distanceFt ? ', at ' + row.distanceFt + ' ft' : ', measurement distance not stated in the captured source'}{row.direction ? '; ' + row.direction : ''}.</li>)}</ul>
+    ) : <p>No model-specific sound figure is stored in the current source set. A missing value is not evidence that the generator is louder or quieter than a competitor.</p>}
+    <p>Manufacturer values are not an independent head-to-head acoustic test. Installation geometry, reflective surfaces, load and operating mode can change what a listener experiences.</p>
+  </section>
+
+  <section id="package">
+    <h2>Price, transfer-equipment scope and warranty</h2>
+    <p><strong>Starting price:</strong> {model.startingMsrpUsd !== undefined ? '$' + model.startingMsrpUsd.toLocaleString('en-US') + ' USD' : 'No current starting MSRP established in the captured manufacturer source.'}</p>
+    {model.startingMsrpNote && <p>{model.startingMsrpNote}</p>}
+    <p><strong>Transfer equipment:</strong> {model.transferSwitch ?? 'The current exact-model source record does not establish an included transfer switch. Confirm the package in the written quote.'}</p>
+    <p><strong>Warranty summary:</strong> {model.warranty ?? 'No model-specific warranty summary is stored in the current source record; use the exact current warranty document.'}</p>
+    <p>A product-page MSRP is not an installed-project price. Site work, ATS/service equipment, fuel work, electrical work, permits, load management, accessories, commissioning and local labor can materially change the total.</p>
+  </section>
+
+  <section id="limits">
+    <h2>What the manufacturer sources do not prove</h2>
+    <ul>
+      <li>They do not establish field reliability or failure rate versus another brand.</li>
+      <li>They do not prove the quality or availability of local dealer/service support.</li>
+      <li>They do not size a specific home or prove that every desired load can run simultaneously.</li>
+      <li>They do not convert starting MSRP into a complete installed quote.</li>
+      <li>They do not make unlike sound-test conditions directly comparable.</li>
+      <li>They do not replace the current installation/operator manuals, local code, utility/fuel requirements, or a qualified property-specific assessment.</li>
+    </ul>
+  </section>
+
+  <section id="quote">
+    <h2>Questions to put beside this exact model in a quote</h2>
+    <ol>
+      <li>Is <strong>{model.modelId}</strong> the exact generator being supplied, or can the contractor substitute another model?</li>
+      <li>Which fuel and published standby rating are being used in the load analysis?</li>
+      <li>What exact ATS / transfer-equipment model is included?</li>
+      <li>Which load-management modules or accessories are included?</li>
+      <li>Which current warranty documents apply to the generator and ATS?</li>
+      <li>Who performs commissioning, scheduled service and warranty repairs locally?</li>
+      <li>Which site, fuel, electrical and permit items are excluded or allowances?</li>
+    </ol>
+  </section>
+</ArticleLayout>

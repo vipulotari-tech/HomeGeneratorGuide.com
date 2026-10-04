@@ -97,3 +97,19 @@ header :focus-visible {
 .prose-hgg blockquote { border-left: 4px solid var(--color-accent); background: var(--color-surface); padding: 0.75rem 1rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
 .prose-hgg hr { border: 0; border-top: 1px solid var(--color-border); margin: 2rem 0; }
 .prose-hgg code { background: #f3f4f6; color: var(--color-ink); padding: 0.15rem 0.4rem; border-radius: 0.3rem; font-size: 0.88em; }
+
+
+/* Print-friendly worksheets and long-form guides. */
+@media print {
+  header, footer, aside, .ad-unit, nav[aria-label="Previous and next guides"] {
+    display: none !important;
+  }
+  html { scroll-behavior: auto; }
+  body { background: #fff !important; color: #000 !important; font-size: 11pt; }
+  main, article, .prose-hgg { max-width: none !important; width: 100% !important; }
+  a { color: #000 !important; text-decoration: underline !important; }
+  table, figure, blockquote, section { break-inside: avoid; }
+  .prose-hgg h2, .prose-hgg h3 { break-after: avoid; }
+  .rounded-xl, .rounded-lg, .rounded-2xl { border-radius: 0 !important; }
+  .bg-orange-50\/60, .bg-orange-50\/40, .bg-\[\#edf3fb\], .bg-\[\#f7f9fc\], .bg-surface { background: #fff !important; }
+}

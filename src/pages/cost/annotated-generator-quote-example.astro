@@ -1,0 +1,93 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import AlertBox from '../../components/ui/AlertBox.astro';
+
+const toc = [
+  { id: 'sample', label: 'Annotated example proposal' },
+  { id: 'good', label: 'What a stronger proposal does' },
+  { id: 'red-flags', label: 'Ambiguities to resolve' },
+  { id: 'change-orders', label: 'Allowances & change orders' },
+  { id: 'before-signing', label: 'Before signing' },
+];
+---
+<ArticleLayout
+  title="What a Good Standby Generator Quote Looks Like: Annotated Example"
+  description="A clearly fictional, educational standby-generator proposal showing the equipment, fuel, electrical, site-work, permit, commissioning, warranty, exclusions, allowance, and change-order details worth having in writing."
+  category="Cost" categoryHref="/cost/" updated="2026-10-04" verified="2026-10-04" readingTime="9 min read" toc={toc}
+  takeaways={[
+    'A useful quote identifies exact equipment and project scope; it does not rely on labels like “22 kW package” or “whole house” alone.',
+    'Allowances and exclusions are not automatically bad, but they should say what is unknown, who will verify it, and how the final price changes.',
+    'This page is a fictional educational example—not a contractor bid, price benchmark, legal form, or recommended contract language.',
+  ]}
+  sources={[
+    { label: 'Generac: backup generator installation process and consultation topics', href: 'https://www.generac.com/resources/home-management/backup-generator-installation/', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'Cummins: home generator FAQ — installation, permitting and professional-installation overview', href: 'https://www.cummins.com/en-na/na/generators/home-standby/home-generator-faq', type: 'Manufacturer', verified: '2026-10-04' },
+  ]}
+  related={[
+    { href: '/cost/standby-generator-quote-checklist/', title: '16-line quote checklist', description: 'Use a blank side-by-side worksheet to normalize competing proposals.', category: 'Cost' },
+    { href: '/cost/standby-generator-cost/', title: 'Standby generator cost guide', description: 'Separate manufacturer MSRP from installed-project estimates.', category: 'Cost' },
+    { href: '/installation/what-to-expect/', title: 'Installation: what to expect', description: 'See the project stages from site assessment to commissioning and handoff.', category: 'Installation' },
+    { href: '/comparisons/five-brand-standby-generator-comparison/', title: 'Five-brand exact-model comparison', description: 'Compare model, fuel, package, warranty, and source scope before requesting quotes.', category: 'Comparisons' },
+  ]}
+>
+  <AlertBox type="info" title="Fictional educational example">The proposal below is invented to show useful scope detail. It is not a real contractor quote, not a price benchmark, and not contract language. Local code, licensing, taxes, utility requirements, consumer-protection rules, and contract terms vary.</AlertBox>
+
+  <section id="sample">
+    <h2>Annotated example: the detail you want to see in writing</h2>
+    <div class="not-prose mt-5 overflow-x-auto rounded-xl border border-[#d9e0ea]">
+      <table class="min-w-[940px] w-full border-collapse text-left text-sm">
+        <caption class="sr-only">Fictional annotated standby generator proposal example</caption>
+        <thead class="bg-[#edf3fb] text-primary">
+          <tr><th class="p-3">Proposal line</th><th class="p-3">Fictional example wording</th><th class="p-3">Why this is useful</th></tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200 text-gray-800">
+          <tr><th scope="row" class="p-3">Generator</th><td class="p-3">“Manufacturer / exact model / 120-240 V single phase / natural-gas rating stated from current manufacturer sheet.”</td><td class="p-3">Prevents a generic kW label from hiding a different fuel rating or substituted model.</td></tr>
+          <tr><th scope="row" class="p-3">Transfer equipment</th><td class="p-3">“Exact ATS model, 200 A, service-entrance rating if applicable; included in proposal.”</td><td class="p-3">Shows that the switch is part of the scope and identifies what is actually being installed.</td></tr>
+          <tr><th scope="row" class="p-3">Backed-up loads</th><td class="p-3">“Proposal is based on attached load schedule. Large loads A/B/C are managed; load D is excluded from generator operation.”</td><td class="p-3">Turns “whole house” into a written operating assumption.</td></tr>
+          <tr><th scope="row" class="p-3">Load management</th><td class="p-3">“Exact module model and quantity; priorities documented during commissioning.”</td><td class="p-3">Avoids discovering later that required control modules were optional extras.</td></tr>
+          <tr><th scope="row" class="p-3">Electrical work</th><td class="p-3">“ATS placement, conductor route, panel/service modifications, trench/penetrations, labeling and restoration described.”</td><td class="p-3">Clarifies whether the total includes the difficult part of the electrical installation.</td></tr>
+          <tr><th scope="row" class="p-3">Fuel work</th><td class="p-3">“Fuel capacity to be verified by named trade/utility. Included work and excluded meter/regulator/tank changes listed separately.”</td><td class="p-3">Assigns responsibility instead of leaving “gas by others” unexplained.</td></tr>
+          <tr><th scope="row" class="p-3">Site / pad</th><td class="p-3">“Proposed location, approved base/pad, grading/drainage, lifting/access and restoration scope stated.”</td><td class="p-3">Makes site preparation visible before construction starts.</td></tr>
+          <tr><th scope="row" class="p-3">Permits</th><td class="p-3">“Electrical/mechanical/fuel permits and inspections: contractor responsible; utility/HOA items separately identified.”</td><td class="p-3">Clarifies who files and who pays.</td></tr>
+          <tr><th scope="row" class="p-3">Commissioning</th><td class="p-3">“Startup, transfer operation test, load-management verification, owner orientation and documentation handoff included.”</td><td class="p-3">Defines completion as more than physically setting the generator in place.</td></tr>
+          <tr><th scope="row" class="p-3">Warranty</th><td class="p-3">“Exact generator and ATS warranty documents linked; registration responsibility and local warranty-service contact named.”</td><td class="p-3">Keeps the warranty attached to the exact equipment instead of a sales slogan.</td></tr>
+          <tr><th scope="row" class="p-3">Allowance</th><td class="p-3">“Example: trench restoration allowance based on stated length/surface; overage requires written change order.”</td><td class="p-3">A defined allowance is easier to evaluate than an open-ended placeholder.</td></tr>
+          <tr><th scope="row" class="p-3">Exclusions</th><td class="p-3">“Landscaping beyond disturbed work area, unforeseen service upgrade, utility meter change, hazardous-material remediation, and other excluded items listed.”</td><td class="p-3">Reduces surprises by stating what the number does not cover.</td></tr>
+          <tr><th scope="row" class="p-3">Commercial terms</th><td class="p-3">“Deposit/payment milestones, taxes, schedule assumptions, cancellation, warranty-service path and written change-order process stated.”</td><td class="p-3">Lets the homeowner compare business terms separately from equipment scope.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="good">
+    <h2>What a stronger proposal does</h2>
+    <p>A stronger proposal makes the contractor’s assumptions inspectable. It ties the system to exact model numbers, a load plan, a fuel plan, the transfer equipment, site work, permits, and commissioning. It also distinguishes fixed inclusions from allowances and exclusions.</p>
+    <p>That does not guarantee a perfect project, and a detailed quote can still contain errors. The value is that disagreements can be traced to written scope rather than reconstructed after work begins.</p>
+  </section>
+
+  <section id="red-flags">
+    <h2>Ambiguities worth resolving before signing</h2>
+    <ul>
+      <li>“22 kW whole-house package” with no exact generator or ATS model.</li>
+      <li>“Gas by others” with no person/company responsible for confirming capacity or completing the connection.</li>
+      <li>“Permit as required” with no statement about filing responsibility or fees.</li>
+      <li>“Load management included” with no module quantity, model, or controlled loads.</li>
+      <li>“Standard installation” with no definition of standard distance, trenching, panel work, or restoration.</li>
+      <li>A large “miscellaneous materials” allowance with no basis or reconciliation method.</li>
+      <li>Warranty marketing copied into the quote without the actual generator and ATS warranty documents.</li>
+      <li>No commissioning / transfer test / owner handoff language.</li>
+    </ul>
+  </section>
+
+  <section id="change-orders">
+    <h2>Allowances and change orders: make uncertainty visible</h2>
+    <p>Some site conditions cannot be known until utilities, inspectors, excavation, panel access, or fuel-capacity checks are completed. A responsible proposal can acknowledge that uncertainty. The useful question is whether the allowance has a stated basis and whether the contract explains how any increase or decrease is documented.</p>
+    <p>For example, if trench restoration is uncertain, an allowance can identify the assumed length and surface type rather than hiding the uncertainty inside a round number. If a service upgrade is not included, the proposal can state the condition that would trigger separate pricing. Local contract law varies, so use appropriate professional/legal advice for contract terms rather than copying this page as a form.</p>
+  </section>
+
+  <section id="before-signing">
+    <h2>Before signing, compare the proposal against the 16-line checklist</h2>
+    <p>Take each bid and mark generator, ATS, backed-up loads, load management, electrical work, fuel work, site work, permits, commissioning, accessories, warranty, exclusions, allowances, taxes, payment terms and change-order rules. If one proposal remains vague on several categories, ask for clarification in writing before comparing the bottom-line totals.</p>
+    <p>Use the <a href="/cost/standby-generator-quote-checklist/">standby generator quote checklist</a> for the blank worksheet and the <a href="/cost/standby-generator-ownership-cost/">5- and 10-year ownership-cost worksheet</a> to keep recurring service/fuel assumptions separate from the installation price.</p>
+  </section>
+</ArticleLayout>

@@ -1,0 +1,82 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import AlertBox from '../../components/ui/AlertBox.astro';
+
+const toc = [
+  { id: 'cold', label: 'Cold-weather planning' },
+  { id: 'heat', label: 'Heat and altitude' },
+  { id: 'snow', label: 'Snow, ice, airflow & access' },
+  { id: 'fuel', label: 'Fuel-system considerations' },
+  { id: 'quote', label: 'Questions for the installer' },
+];
+---
+<ArticleLayout
+  title="Standby Generators in Cold, Heat & High Altitude: Climate Planning Guide"
+  description="A manual-first guide to cold-weather kits, heat and altitude derating, snow and airflow, fuel supply, and the site-specific questions to resolve before installing a standby generator."
+  category="Buying Guides" categoryHref="/guides/" updated="2026-10-04" verified="2026-10-04" readingTime="9 min read" toc={toc}
+  takeaways={[
+    'Cold-weather accessories are model-specific: battery, oil, regulator, or block heaters may be recommended only under stated temperature conditions.',
+    'High ambient temperature and altitude can reduce available engine/generator output on some models; use the exact model manual rather than a universal derating rule.',
+    'Climate planning is not only about temperature. Snow, ice, airflow, exhaust, service access, drainage, fuel delivery, and local placement rules all affect the installation.',
+  ]}
+  sources={[
+    { label: 'Generac air-cooled standby owner manual — high-altitude kit and model-specific operating guidance', href: 'https://www.generac.com/globalassets/products/residential/standby-generators/owners-manual/g-10-26kw-60hz-standby-generator-owners-manual-en.pdf', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'Generac cold-weather kit specification sheet', href: 'https://www.generac.com/globalassets/products/residential/standby-generators/other/22kw-150kw-cold-weather-kit-spec-sheet.pdf', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'KOHLER/Rehlko cold-weather package overview', href: 'https://www.kohlerhomeenergy.rehlko.com/products/parts-accessories/gm110948-kp1-qs', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'Briggs & Stratton standby accessories — cold-weather kits', href: 'https://energy.briggsandstratton.com/en-us/residential/products/standby-generators/transfer-switches-and-accessories', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'Cummins home-generator FAQ — extreme-weather kits', href: 'https://www.cummins.com/en-na/na/generators/home-standby/home-generator-faq', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'Champion 201202 operator manual — ambient-temperature and altitude derating example', href: 'https://www.championpowerequipment.com/wp-content/uploads/2025/09/201202-OM-english.pdf', type: 'Manufacturer', verified: '2026-10-04' },
+  ]}
+  related={[
+    { href: '/installation/generator-pad-and-placement/', title: 'Generator pad and placement', description: 'Understand site constraints, drainage, clearances, access, and local approval.', category: 'Installation' },
+    { href: '/maintenance/generator-maintenance-checklist/', title: 'Maintenance checklist', description: 'Keep the exact manual at the center of seasonal and periodic maintenance.', category: 'Maintenance' },
+    { href: '/guides/natural-gas-vs-propane/', title: 'Natural gas vs propane', description: 'Review fuel-supply and storage tradeoffs without assuming one fuel is universally better.', category: 'Buying Guides' },
+    { href: '/cost/standby-generator-quote-checklist/', title: 'Quote checklist', description: 'Put climate accessories, site assumptions, and exclusions into the written proposal.', category: 'Cost' },
+  ]}
+>
+  <section id="cold">
+    <h2>Cold-weather planning starts with the exact model manual</h2>
+    <p>There is no single “winter kit” rule that applies to every residential standby generator. Manufacturers publish different accessory combinations, trigger temperatures, and supported model ranges. Generac’s cold-weather-kit documentation describes thermostat-controlled battery warming and recommends cold-weather accessories for covered generators installed where temperatures regularly fall below freezing. KOHLER/Rehlko lists cold-weather packages that can include oil and fuel-regulator heating. Briggs & Stratton lists battery and oil warming options for selected standby models, while Cummins says its extreme-weather kits use component heaters depending on generator size.</p>
+    <p>Those examples show the decision process, not a substitute for the exact model documentation. The proposal should identify the generator model, accessory part numbers, supply voltage where relevant, temperature condition that triggers the recommendation, and who is responsible for installation and verification.</p>
+    <AlertBox type="warning" title="Accessory fitment is model-specific">Do not add heaters, covers, barriers, improvised insulation, or enclosure modifications based on a generic article. Use the exact manufacturer accessory list and qualified service/installation instructions for the installed generator.</AlertBox>
+  </section>
+
+  <section id="heat">
+    <h2>Heat and altitude can reduce available power</h2>
+    <p>Engines make less power when air density falls. High elevation lowers air density, and high ambient temperature can also reduce available output. The amount of derating is model-specific.</p>
+    <p>For example, Champion’s 201202 standby-generator operator manual states a general derate of 1% for every 10°F above 77°F and 3.5% for every 1,000 feet of elevation. That is an example from one exact Champion manual—not a universal rule for every Champion model or every manufacturer. Generac’s air-cooled owner documentation also warns that a high-altitude kit may be required above a stated elevation for emissions and performance reasons. The designer should use the exact current manual and specification sheet for the proposed generator.</p>
+    <p>A quote that is already close to the generator’s usable capacity deserves extra scrutiny in a hot or high-altitude site. Ask the designer to state the ambient/elevation assumptions used in the load analysis and whether the selected generator’s published rating needs adjustment for the site.</p>
+  </section>
+
+  <section id="snow">
+    <h2>Snow, ice, airflow, exhaust and service access are part of the design</h2>
+    <p>A standby generator needs the airflow and exhaust path specified by its installation manual. Snow drift, ice, landscaping, fencing, stored items, or an improvised sound barrier can change ventilation or block service access. The correct response is not a generic distance copied from another brand; it is a site plan that follows the exact equipment manual and local requirements.</p>
+    <ul>
+      <li>Ask how snow accumulation and roof runoff will affect the proposed location.</li>
+      <li>Keep drainage and standing water in the site discussion, especially around pads and low areas.</li>
+      <li>Confirm service-panel access, lid/door swing, filter/battery access, and technician working space.</li>
+      <li>Do not build a decorative screen or enclosure around the generator unless the manufacturer and authority having jurisdiction allow the resulting arrangement.</li>
+      <li>Plan how the unit remains reachable after a storm without asking the homeowner to work around energized or hot equipment.</li>
+    </ul>
+  </section>
+
+  <section id="fuel">
+    <h2>Cold weather can also become a fuel-supply problem</h2>
+    <p>Generator readiness depends on more than the engine. Natural-gas pressure/flow, regulators, meters, piping, and propane storage/delivery all have site-specific limits. A cold-weather accessory on the generator cannot compensate for an undersized fuel system or an empty/poorly planned propane supply.</p>
+    <p>For propane, ask the fuel provider and installer how expected ambient conditions, tank size, regulator capacity, connected load, and delivery logistics affect the proposed design. For natural gas, ask who confirms pressure/flow at generator demand and whether other household gas loads are included in that check. Our <a href="/guides/natural-gas-vs-propane/">fuel comparison</a> explains the decision questions without publishing a universal tank size or gas-line formula.</p>
+  </section>
+
+  <section id="quote">
+    <h2>Climate questions to put in the written proposal</h2>
+    <ol>
+      <li>What outdoor temperature and elevation assumptions were used when selecting the generator?</li>
+      <li>Does the exact model manual require or recommend a cold-weather / extreme-weather accessory at this site?</li>
+      <li>What are the accessory model/part numbers, and are they included in the quote?</li>
+      <li>Has any heat or altitude derating been applied to the usable generator output?</li>
+      <li>How does the proposed location handle snow, ice, drainage, roof runoff, airflow, exhaust, and service access?</li>
+      <li>Who verifies natural-gas capacity or propane storage/regulator capacity for expected conditions?</li>
+      <li>Which seasonal owner checks are safe, and which tasks must be performed by qualified service personnel?</li>
+    </ol>
+    <p>Add those answers to the <a href="/cost/standby-generator-quote-checklist/">standby generator quote checklist</a> so climate assumptions are part of the project scope instead of an afterthought.</p>
+  </section>
+</ArticleLayout>

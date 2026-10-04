@@ -1,0 +1,40 @@
+---
+import CategoryLayout from '../../layouts/CategoryLayout.astro';
+import { MODEL_SPECS } from '../../data/model-specs';
+
+const allowed = new Map([
+  ['G0072600', 'generac-g0072600'],
+  ['G0073270', 'generac-g0073270'],
+  ['26RCA', 'kohler-26rca'],
+  ['26RCAL', 'kohler-26rcal'],
+  ['201222', 'champion-201222'],
+  ['040786', 'briggs-stratton-040786'],
+]);
+const models = MODEL_SPECS.filter((model) => allowed.has(model.modelId));
+const rating = (model: typeof models[number]) => {
+  const lp = model.ratingsKw.LP;
+  const ng = model.ratingsKw['Natural gas'];
+  const bits = [];
+  if (lp !== undefined) bits.push(lp + ' kW LP');
+  if (ng !== undefined) bits.push(ng + ' kW NG');
+  return bits.length ? bits.join(' / ') : (model.standbyRatingKw ? model.standbyRatingKw + ' kW standby' : 'See source record');
+};
+---
+<CategoryLayout
+  title="Exact Standby Generator Model Guides"
+  description="Exact-model residential standby generator guides with manufacturer-linked fuel ratings, fuel-use test points, sound conditions, MSRP/package caveats, warranty scope, and source gaps."
+  intro="These pages stay model-specific. We do not copy a fuel rating, transfer switch, price, sound figure, or warranty term from another model just because the brand name matches."
+  cards={models.map((model) => ({
+    href: '/models/' + allowed.get(model.modelId) + '/',
+    title: model.brand + ' ' + model.modelId,
+    description: model.displayName + ' — ' + rating(model) + '. Exact-source scope, package notes, warranty and missing-data limits.',
+    category: 'Models',
+    readingTime: '6 min read',
+  }))}
+>
+  <div class="prose-hgg mt-10">
+    <h2>Why exact-model pages matter</h2>
+    <p>A brand family can contain multiple fuels, output ratings, ATS bundles, controllers, engine sizes, warranty terms, and revisions. A dealer quote should identify the exact generator and transfer equipment so the source data you compare actually belongs to the equipment being proposed.</p>
+    <p>Use these pages with the <a href="/comparisons/five-brand-standby-generator-comparison/">five-brand comparison</a> and the <a href="/cost/standby-generator-quote-checklist/">quote checklist</a>. The model pages are desk research, not independent product tests or reliability scores.</p>
+  </div>
+</CategoryLayout>
