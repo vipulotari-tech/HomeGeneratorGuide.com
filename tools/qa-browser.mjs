@@ -60,6 +60,9 @@ try {
     .map((entry) => entry === 'index.html' ? '/' : '/' + entry.replace(/\\/g, '/').replace(/index\.html$/, ''))
     .sort();
 
+  const knownRoutes = new Set(generatedRoutes);
+  const internalLinks = new Set();
+
   await page.setViewportSize({ width: 390, height: 900 });
   for (const path of generatedRoutes) {
     const response = await page.goto(`${baseUrl}${path}`, { waitUntil: 'networkidle' });
@@ -69,6 +72,19 @@ try {
       await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth),
       false,
       `horizontal overflow at generated route ${path}`,
+    );
+    const links = await page.locator('#main a[href^="/"]').evaluateAll((anchors) =>
+      anchors.map((anchor) => anchor.getAttribute('href')).filter(Boolean)
+    );
+    for (const href of links) internalLinks.add(href);
+  }
+
+  for (const href of internalLinks) {
+    const pathname = new URL(href, baseUrl).pathname;
+    const normalized = pathname.endsWith('/') ? pathname : pathname + '/';
+    assert(
+      knownRoutes.has(pathname) || knownRoutes.has(normalized),
+      `internal link points to a non-generated route: ${href}`,
     );
   }
 
@@ -147,7 +163,7 @@ try {
   assert.deepEqual(errors, [], `browser console/page errors: ${JSON.stringify(errors)}`);
   console.log(
     `Browser QA passed: ${smokeCases.length} targeted page/viewport combinations plus ${generatedRoutes.length} generated routes, ` +
-      'no horizontal overflow, static worksheet, mobile navigation, keyboard focus, and redirect configuration.',
+      `${internalLinks.size} internal links checked, no horizontal overflow, static worksheet, mobile navigation, keyboard focus, and redirect configuration.`,
   );
 } finally {
   await browser.close();
