@@ -99,6 +99,10 @@ header :focus-visible {
 .prose-hgg code { background: #f3f4f6; color: var(--color-ink); padding: 0.15rem 0.4rem; border-radius: 0.3rem; font-size: 0.88em; }
 
 
+/* Accessible small orange text on light surfaces. Keep --color-accent-dark
+   unchanged for filled controls; this override is for text utility usage only. */
+.text-accent-dark { color: #B95400; }
+
 /* Print-friendly worksheets and long-form guides. */
 @media print {
   header, footer, aside, .ad-unit, nav[aria-label="Previous and next guides"] {
