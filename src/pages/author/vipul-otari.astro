@@ -2,10 +2,28 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/layout/Breadcrumbs.astro';
 import ArticleCard from '../../components/article/ArticleCard.astro';
+import { SITE_URL } from '../../config/site';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  mainEntity: {
+    '@type': 'Person',
+    name: 'Vipul Otari',
+    jobTitle: 'Publisher & Research Editor',
+    url: `${SITE_URL}/author/vipul-otari/`,
+    worksFor: {
+      '@type': 'Organization',
+      name: 'HomeGeneratorGuide',
+      url: SITE_URL,
+    },
+  },
+};
 ---
 <BaseLayout
   title="Vipul Otari, Publisher & Research Editor"
   description="Meet Vipul Otari, publisher and research editor of HomeGeneratorGuide. See the publication’s research method, scope, and review limitations."
+  schema={schema}
 >
   <div class="mx-auto max-w-3xl px-4 py-10 sm:px-6">
     <Breadcrumbs items={[{ href: '/', label: 'Home' }, { href: '/about/', label: 'About' }, { label: 'Vipul Otari' }]} />
