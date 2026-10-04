@@ -2,6 +2,7 @@
 import BaseLayout from './BaseLayout.astro';
 import Breadcrumbs from '../components/layout/Breadcrumbs.astro';
 import ArticleCard from '../components/article/ArticleCard.astro';
+import { SITE_URL } from '../config/site';
 
 interface Card { href: string; title: string; description: string; category?: string; readingTime?: string; }
 interface Props {
@@ -11,8 +12,28 @@ interface Props {
   cards: Card[];
 }
 const { title, description, intro, cards } = Astro.props;
+const pageUrl = `${SITE_URL}${Astro.url.pathname}`;
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: title,
+    description,
+    url: pageUrl,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    itemListElement: cards.map((card, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: card.title,
+      url: new URL(card.href, SITE_URL).href,
+    })),
+  },
+];
 ---
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} schema={schema}>
   <div class="mx-auto max-w-6xl px-4 py-8 sm:px-6">
     <Breadcrumbs items={[{ href: '/', label: 'Home' }, { label: title }]} />
     <h1 class="mt-4 text-3xl font-bold text-primary sm:text-4xl">{title}</h1>
