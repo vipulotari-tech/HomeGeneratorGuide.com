@@ -1,99 +1,107 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import FAQSection from '../../components/ui/FAQSection.astro';
 
 const toc = [
-  { id: 'electrical', label: 'Electrical terms' },
-  { id: 'equipment', label: 'Equipment terms' },
-  { id: 'fuel', label: 'Fuel terms' },
-  { id: 'codes', label: 'Codes & standards' },
-  { id: 'metrics', label: 'Ratings & metrics' },
-  { id: 'faq', label: 'FAQ' },
+  { id: 'electrical', label: 'Electrical and transfer terms' },
+  { id: 'performance', label: 'Ratings and performance terms' },
+  { id: 'fuel', label: 'Fuel and site terms' },
+  { id: 'planning', label: 'Reliability and code terms' },
 ];
 
-const groups: { id: string; terms: [string, string][] }[] = [
-  { id: 'electrical', terms: [
-    ['Automatic transfer switch (ATS)', 'A listed device that senses utility loss, starts the generator, and swaps your home to backup power — then swaps back when utility stabilizes.'],
-    ['Manual transfer switch (MTS)', 'A hand-operated double-throw switch serving 6–10 pre-chosen circuits. Break-before-make contacts prevent utility and generator ever connecting together.'],
-    ['Interlock kit', 'A listed sliding plate on your main panel that physically blocks the main breaker and a generator breaker from being ON at the same time.'],
-    ['Backfeed', 'Generator power flowing backward onto utility lines — lethal to line workers. Listed transfer equipment exists to make it impossible.'],
-    ['Suicide cord', 'A double-male extension cord used to backfeed through dryer outlets. Never acceptable — causes backfeed, fire, and equipment destruction.'],
-    ['Total harmonic distortion (THD)', 'How far generator output deviates from a pure sine wave, in percent. Standby units run under 5%; cheap portables reach 8–25%.'],
-    ['Locked-rotor amps (LRA)', 'A motor nameplate figure: worst-case startup current. Multiply by voltage for startup volt-amps — the number that sizes generators.'],
-    ['Power factor', 'The fraction of apparent power (kVA) that does real work (kW). Residential math typically assumes ~0.8 for motor loads.'],
-  ]},
-  { id: 'equipment', terms: [
-    ['Air-cooled standby', 'Fan-cooled 3,600 RPM engine, 7–26 kW. Simpler and cheaper; the default for most homes.'],
-    ['Liquid-cooled standby', 'Radiator-cooled 1,800 RPM engine, 22 kW and up. Longer-lived and steadier; heavier, pricier, needs coolant service.'],
-    ['Exercise cycle', 'The automatic weekly 5–20 minute self-test: circulates oil, charges the battery, works switch contacts, and reveals faults early.'],
-    ['Load shedding / load management', 'Automatically dropping deferrable circuits (water heater, dryer, second AC) during surges so a smaller generator covers a larger home.'],
-    ['Soft starter', 'A device that ramps compressor voltage to cut startup surge roughly 30–60%. Evaluated per compressor by an HVAC tech.'],
-    ['PowerBoost (Kohler)', 'Kohler-exclusive starting technology that handles large motor surges without dropping other loads.'],
-    ['Quiet-Test', 'Low-speed weekly exercise mode that cuts test noise and wear versus full-speed exercise.'],
-  ]},
-  { id: 'fuel', terms: [
-    ['Therm', '100,000 BTU — about 100 cubic feet of natural gas. The unit behind most gas bills and run-cost math.'],
-    ['Inches water column (in WC)', 'Gas-pressure unit. Homes run ~5–7 in WC for natural gas, ~11 in WC after a propane second-stage regulator.'],
-    ['Second-stage regulator', 'The propane regulator at the house end that steps tank pressure down to the 11 in WC appliances expect.'],
-    ['80% fill rule', 'Propane tanks fill to 80% only, leaving vapor space for expansion. A "500-gallon" tank holds ~400 usable gallons.'],
-    ['Dual-fuel / tri-fuel', 'Portables that burn gasoline + propane (+ natural gas for tri-fuel), with derated output on gaseous fuels. Standby units are NG/LP field-configurable instead.'],
-  ]},
-  { id: 'codes', terms: [
-    ['NEC (NFPA 70)', 'The National Electrical Code: wiring, grounding, overcurrent, and transfer-equipment rules (Article 702 covers optional standby systems). Adopted with local amendments.'],
-    ['NFPA 37', 'Stationary combustion-engine standard behind the familiar minimums: 18 in from combustibles, 5 ft from openings and vents.'],
-    ['NFPA 54 / 58', 'Fuel-gas code (54, natural gas) and LP-gas code (58): pipe sizing, regulators, tank placement.'],
-    ['AHJ', 'Authority Having Jurisdiction — your local inspector/office whose adopted edition and amendments actually govern your install.'],
-    ['SwRI listing', 'Southwest Research Institute listing some manufacturers use to certify reduced-clearance installs. Model-specific — check the manual, not folklore.'],
-  ]},
-  { id: 'metrics', terms: [
-    ['kW vs kVA', 'Kilowatts do work; kilovolt-amps include reactive power. Motors billed in kVA need roughly 20% more headroom than their kW suggests.'],
-    ['Standby rating (ESP)', 'Emergency-backup power, capped around 200 hours/year with no overload allowance. Every residential standby unit carries this rating.'],
-    ['Prime / continuous ratings', 'Unlimited-hours ratings for off-grid primary (PRP) or constant-load (COP) duty. Buying these for a home buys capability you will never use.'],
-    ['SAIDI / SAIFI', 'Utility reliability indices: average outage hours (SAIDI) and outage count (SAIFI) per customer per year. EIA publishes both.'],
-    ['Derating', 'Capacity lost to altitude (~3.5% per 1,000 ft above 500 ft) and heat (~1% per 10°F above 77°F). A mountain 22 kW is an 18 kW.'],
-  ]},
+const groups: { id: string; title: string; terms: [string, string][] }[] = [
+  {
+    id: 'electrical',
+    title: 'Electrical and transfer terms',
+    terms: [
+      ['Automatic transfer switch (ATS)', 'Equipment that changes the connected load between utility and generator sources as part of a compatible system. The exact sensing, timing, neutral, service, and load-control arrangement depends on the switch and generator models.'],
+      ['Manual transfer switch', 'A switch that requires a person to change between utility and generator power. Circuit coverage, rating, and operating steps are specific to the installed equipment.'],
+      ['Panel interlock', 'A mechanical accessory intended for a compatible electrical panel and breaker arrangement. It is not universal; the exact panel/accessory compatibility, installation, and local approval must be checked.'],
+      ['Backfeed', 'Electrical energy flowing toward a source or conductors that are not intended to be energized by the generator. CPSC warns not to connect a generator to house wiring by plugging it into a wall outlet; use properly installed transfer equipment.'],
+      ['Load management / load shedding', 'A control strategy that may delay, sequence, or disconnect selected loads when system conditions require it. Which loads can be managed and how they behave depend on the exact equipment and configuration.'],
+      ['Service-entrance-rated switch', 'Transfer equipment identified by its manufacturer for a particular service-entrance application. The rating does not by itself establish the switch’s compatibility with a specific panel or complete installation.'],
+    ],
+  },
+  {
+    id: 'performance',
+    title: 'Ratings and performance terms',
+    terms: [
+      ['Kilowatt (kW)', 'A unit of real electrical power. A generator’s kW rating is only meaningful alongside the model, fuel, phase, voltage, and rating conditions.'],
+      ['Kilovolt-ampere (kVA)', 'A unit of apparent electrical power. The relationship to real power depends on power factor; do not assume a universal conversion when comparing equipment.'],
+      ['Power factor', 'The ratio of real power (kW) to apparent power (kVA) for an AC load under the stated conditions. Use the value or rating applicable to the specific generator or load.'],
+      ['Standby rating', 'A manufacturer’s stated output rating for standby/emergency use under stated conditions. Definitions and overload capability can differ; for example, the cited Generac sheet says its listed standby rating has no overload capability. Check the exact model documentation.'],
+      ['Locked-rotor amps (LRA)', 'A motor’s nameplate or manufacturer value associated with starting current. It may help describe motor-start demand, but LRA alone is not a complete generator-sizing calculation.'],
+      ['Total harmonic distortion (THD)', 'A measure of harmonic content in an electrical waveform relative to its fundamental component, commonly expressed as a percentage. Test load and method matter; do not compare ratings without their stated conditions.'],
+      ['dB(A)', 'A sound level expressed using A-weighting. Distance, microphone direction, operating mode, load, surroundings, and the manufacturer’s test method all affect whether two reported values can be compared.'],
+      ['Exercise mode', 'A scheduled generator test or exercise operation. Timing, duration, speed, loading, and controller behavior vary by model and settings; use the current owner manual.'],
+    ],
+  },
+  {
+    id: 'fuel',
+    title: 'Fuel and site terms',
+    terms: [
+      ['Fuel-specific output', 'The rated power a particular model publishes for a stated fuel and configuration. A natural-gas rating and an LP rating may differ; do not substitute one for the other.'],
+      ['Dual-fuel standby generator', 'A standby model designed to operate on either of two specified fuels, commonly natural gas or LP. The chosen fuel, field configuration, output, fuel use, and supply requirements must be confirmed for that model.'],
+      ['Fuel-consumption test point', 'A manufacturer-published fuel-use value at a stated load and test condition. It is not automatically a household average or a fuel-bill prediction.'],
+      ['Fuel inlet pressure and flow', 'The pressure and volume available at the generator connection while operating. The exact model’s installation manual specifies requirements; a qualified installer or fuel provider must verify the supply under the proposed load.'],
+      ['Site derating', 'A reduction in available output that may apply under environmental or installation conditions identified by the manufacturer. The conditions and calculation are model-specific; there is no universal percentage for every generator.'],
+    ],
+  },
+  {
+    id: 'planning',
+    title: 'Reliability and code terms',
+    terms: [
+      ['SAIDI', 'System Average Interruption Duration Index: EIA describes it as the total duration of non-momentary interruptions experienced by an average customer in a year. It is a utility reliability measure, not a prediction for one home.'],
+      ['SAIFI', 'System Average Interruption Frequency Index: EIA describes it as the number of interruptions in a year. Check the data notes and event-inclusion rules when comparing values.'],
+      ['Authority Having Jurisdiction (AHJ)', 'The authority responsible for applying or enforcing relevant requirements in a particular location. The responsible office and adopted rules can vary by jurisdiction.'],
+      ['National Electrical Code (NEC / NFPA 70)', 'A model electrical code published by NFPA. The edition adopted locally and any local amendments determine what applies; installation design and approval are not established by this glossary.'],
+    ],
+  },
 ];
 ---
 <ArticleLayout
-  title="Generator Glossary: 30 Terms Explained in Plain Language"
-  description="Generator glossary: ATS, THD, LRA, SAIDI, ESP ratings, therms, NFPA codes, and 20+ more standby terms defined for US homeowners."
-  category="Buying Guides" categoryHref="/guides/" updated="2026-10-04" readingTime="8 min read" toc={toc}
+  title="Generator Glossary: 23 Terms with Source and Scope Notes"
+  description="Plain-language definitions for generator transfer equipment, ratings, fuel data, reliability metrics, and electrical-code terms—without universal sizing or clearance rules."
+  category="Guides" categoryHref="/guides/" updated="2026-10-04" verified="2026-10-04" readingTime="7 min read" toc={toc}
+  takeaways={[
+    'Model, fuel, electrical configuration, test conditions, and local requirements matter when interpreting generator terminology.',
+    'A glossary definition does not replace the exact product manual, equipment listing, or professional installation assessment.',
+    'Generic multipliers, clearance numbers, sound comparisons, and maintenance intervals should not be applied across all models.',
+  ]}
   sources={[
-    { label: 'NFPA 70 — National Electrical Code', href: 'https://www.nfpa.org/codes-and-standards/nfpa-70-standard-development/70', type: 'Government', verified: 'Oct 2026' },
-    { label: 'U.S. EIA — Electricity Data Browser', href: 'https://www.eia.gov/electricity/', type: 'Government', verified: 'Oct 2026' },
-    { label: 'Generac — Residential Standby Lineup', href: 'https://www.generac.com/residential-products/standby-generators/', type: 'Manufacturer', verified: 'Oct 2026' },
+    { label: 'Generac 22–28 kW official specification sheet', href: 'https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'KOHLER/Rehlko G4-315 26RCA/26RCAL official specification sheet', href: 'https://techcomm.rehlko.com/techcomm/pdf/g4315.pdf', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'CPSC: portable-generator CO and fire safety guidance (2026)', href: 'https://www.cpsc.gov/Newsroom/News-Releases/2026/CPSC-Warns-of-Generator-Carbon-Monoxide-and-Fire-Hazards-Ahead-of-Hurricane-Season', type: 'Safety authority', verified: '2026-10-04' },
+    { label: 'EIA: 2024 outage duration and reliability metric definitions', href: 'https://www.eia.gov/todayinenergy/detail.php?id=66744', type: 'Government', verified: '2026-10-04' },
+    { label: 'NFPA 70: National Electrical Code information', href: 'https://www.nfpa.org/codes-and-standards/nfpa-70-standard-development/70', type: 'Standards organization', verified: '2026-10-04' },
   ]}
   related={[
-    { href: '/sizing/what-size-generator-do-i-need/', title: 'What Size Generator Do I Need?', description: 'Put the terms to work.', category: 'Sizing' },
-    { href: '/cost/transfer-switch-cost/', title: 'Transfer Switch Guide', description: 'ATS, MTS, and interlocks in depth.', category: 'Cost' },
+    { href: '/sizing/what-size-generator-do-i-need/', title: 'Load-based sizing guide', description: 'A static worksheet and professional-review framework.', category: 'Sizing' },
+    { href: '/comparisons/transfer-switch-vs-interlock/', title: 'Transfer switch vs. interlock', description: 'Review connection terminology and safety boundaries.', category: 'Comparisons' },
+    { href: '/guides/us-power-outage-statistics/', title: 'U.S. outage statistics', description: 'Interpret EIA measures without treating them as home forecasts.', category: 'Guides' },
+    { href: '/guides/natural-gas-vs-propane/', title: 'Natural gas vs. propane', description: 'Compare site supply and exact-model data.', category: 'Guides' },
   ]}
-  prev={{ href: '/guides/how-long-can-generator-run/', label: 'How Long Can It Run?' }}
-  next={{ href: '/sizing/what-size-generator-do-i-need/', label: 'Sizing Guide' }}
 >
-  <section id="how-to-use"><h2>How to use this glossary</h2>
-  <p>Standard industry definitions in homeowner language. Where a term drives a buying decision, we link the deep guide. Nothing here replaces your equipment manual or local inspector.</p></section>
-  {groups.map((g) => (
-    <section id={g.id}>
-      <h2>{g.id === 'electrical' ? 'Electrical terms' : g.id === 'equipment' ? 'Equipment terms' : g.id === 'fuel' ? 'Fuel terms' : g.id === 'codes' ? 'Codes & standards' : 'Ratings & metrics'}</h2>
+  <section id="how-to-use">
+    <h2>How to use this glossary</h2>
+    <p>These concise definitions explain common terms, not a specific design. Manufacturer values and code requirements can be model- and location-specific. Read the exact manual and ask a qualified local professional before making equipment or installation decisions.</p>
+  </section>
+
+  {groups.map((group) => (
+    <section id={group.id}>
+      <h2>{group.title}</h2>
       <dl>
-        {g.terms.map(([t, d]) => (
+        {group.terms.map(([term, definition]) => (
           <div class="mt-4 rounded-lg border border-[#e5e7eb] bg-white p-4">
-            <dt class="font-semibold text-[#1e3a5f]">{t}</dt>
-            <dd class="mt-1 text-[15px] text-gray-600">{d}</dd>
+            <dt class="font-semibold text-[#1e3a5f]">{term}</dt>
+            <dd class="mt-1 text-[15px] leading-relaxed text-gray-600">{definition}</dd>
           </div>
         ))}
       </dl>
     </section>
   ))}
-  <section id="faq"><span class="sr-only">FAQ anchor</span></section>
-  <FAQSection items={[
-    { q: 'What is the single most important term to understand?', a: 'Starting watts (LRA surge). The gap between running and starting power decides generator size more than any other concept on this page.' },
-    { q: 'What does ATS stand for?', a: 'Automatic transfer switch — the device that moves your home between utility and generator power without you touching anything.' },
-    { q: 'Do I need to memorize codes?', a: 'No. Know that NEC Article 702 governs standby wiring, NFPA 37 governs placement minimums, and your AHJ plus equipment manual have the final word — then hire licensed pros who live in those documents.' },
-  
-    { q: 'What is an ATS in one sentence?', a: 'The automatic device that moves your home between utility and generator power — the brain of every standby system.' },
-    { q: 'What does prime rating mean for me?', a: 'Nothing to buy — it rates off-grid primary duty. Your home needs standby (ESP) ratings; prime numbers on a residential quote are a red flag.' },
-    { q: 'Why do electricians say kVA?', a: 'Because motors draw apparent power above their working watts. kVA keeps the surge math honest — kW alone understates motor starts ~20%.' },
-  ]} />
-  <section id="conclusion"><h2>Conclusion</h2><p>Fluent in the vocabulary? Spend it in the <a href="/sizing/calculator/">sizing calculator</a>.</p></section>
+
+  <section id="cross-links">
+    <h2>Continue with a specific question</h2>
+    <p>For actual appliance input, use the <a href="/sizing/appliance-wattage-chart/">manufacturer-published generic wattage reference</a> only as a starting point, then obtain exact nameplate data. For model ratings, see the <a href="/brands/">brand data pages</a>; for safe operation, read the <a href="/guides/generator-safety-overview/">safety guide</a>.</p>
+  </section>
 </ArticleLayout>

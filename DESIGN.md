@@ -4,7 +4,7 @@
 - Name: HomeGeneratorGuide
 - Tagline: Power When It Matters Most
 - Voice: knowledgeable neighbor; direct, honest, reassuring, never salesy.
-- Reader: American homeowner, typically 35–65, researching a first standby-generator purchase and worried about choosing poorly.
+- Reader: US homeowner researching standby backup power; age, purchase history, and budget are not assumed.
 - Logo: navy house silhouette with lightning integrated into the roofline; semi-bold sans-serif wordmark. Shared component: src/components/layout/BrandLogo.astro.
 - Exports: public/brand-mark.svg, public/logo.svg, public/favicon.svg. The favicon uses a purpose-built 16px coordinate system, navy house outline and bolt, white square.
 
@@ -40,8 +40,8 @@ Theme tokens live in src/styles/global.css. primary-dark #12284C and accent-dark
 - Native details/summary for FAQs. Tables scroll in a wrapper.
 
 ## Editorial surfaces
-- Mission and promise are exact strings from src/config/site.ts and visible in the shared footer on every page.
-- The promise is introduced as the publication standard being worked toward. Current articles display licensed electrician review pending.
+- Mission and editorial promise are exact strings from src/config/site.ts and visible in the shared footer on site pages; the static 500 page mirrors them.
+- No independent licensed professional has reviewed the current articles. Source citations and publisher research are not professional signoff.
 - Never use green verification marks to imply uncompleted review or invent credentials.
 - All brand/dealer/installer advertising, payments, sponsorships, and referral fees are prohibited; advertising stays disabled.
 - Full editorial instructions: EDITORIAL.md.

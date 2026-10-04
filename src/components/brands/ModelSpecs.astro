@@ -1,0 +1,106 @@
+---
+import type { ModelSpec } from '../../data/model-specs';
+
+interface Props {
+  models: ModelSpec[];
+  label?: string;
+}
+const { models, label = 'Manufacturer-published specifications' } = Astro.props;
+const formatRating = (fuel: 'LP' | 'Natural gas', value: number) => `${fuel} ${value} kW`;
+const formatNumber = (value: number) => new Intl.NumberFormat('en-US').format(value);
+const formatSound = (sound: NonNullable<ModelSpec['sound']>[number]) =>
+  `${sound.decibelsA} dB(A)${sound.distanceFt ? ` at ${sound.distanceFt} ft` : ''} — ${sound.condition}${sound.direction ? `; ${sound.direction}` : ''}.`;
+const formatFuelUse = (entry: NonNullable<ModelSpec['fuelConsumption']>[number]) =>
+  `${entry.fuel}, ${entry.loadPercent}% load: ${entry.amount} ${entry.unit}`;
+---
+<section aria-label={label} class="not-prose mt-6 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+  {models.map((model) => (
+    <article class="min-w-0 rounded-xl border border-[#d9e0ea] bg-white p-5 shadow-sm">
+      <header class="border-b border-[#e5e7eb] pb-4">
+        <p class="text-xs font-semibold uppercase tracking-[0.12em] text-primary">{model.brand}</p>
+        <h3 class="mt-1 text-xl font-bold text-primary">{model.displayName}</h3>
+        <p class="mt-1 text-sm text-gray-600">Model {model.modelId}</p>
+        {model.configuration && <p class="mt-3 text-sm leading-relaxed text-gray-700">{model.configuration}</p>}
+        {(Object.keys(model.ratingsKw).length > 0 || model.standbyRatingKw !== undefined) && (
+          <p class="mt-3 flex flex-wrap gap-2">
+            {Object.entries(model.ratingsKw).map(([fuel, kw]) => (
+              <span class="rounded-full bg-[#edf3fb] px-3 py-1 text-sm font-semibold text-[#1b3a6b]">{formatRating(fuel as 'LP' | 'Natural gas', kw as number)}</span>
+            ))}
+            {model.standbyRatingKw !== undefined && (
+              <span class="rounded-full bg-[#edf3fb] px-3 py-1 text-sm font-semibold text-[#1b3a6b]">{model.standbyRatingKw} kW{model.standbyRatingKva !== undefined ? ` / ${model.standbyRatingKva} kVA` : ''} standby rating</span>
+            )}
+          </p>
+        )}
+      </header>
+
+      <dl class="mt-4 space-y-4 text-sm">
+        {model.engine && (
+          <div>
+            <dt class="font-semibold text-gray-900">Engine</dt>
+            <dd class="mt-1 text-gray-700">{[model.engine.maker, model.engine.model].filter(Boolean).join(' ')}{model.engine.displacementCc ? ` · ${formatNumber(model.engine.displacementCc)} cc` : ''}</dd>
+          </div>
+        )}
+        {model.dimensionsIn && (
+          <div>
+            <dt class="font-semibold text-gray-900">Published dimensions (L × W × H)</dt>
+            <dd class="mt-1 text-gray-700">{model.dimensionsIn.length} × {model.dimensionsIn.width} × {model.dimensionsIn.height} in</dd>
+          </div>
+        )}
+        {model.weightLb && (
+          <div>
+            <dt class="font-semibold text-gray-900">Published weight</dt>
+            <dd class="mt-1 text-gray-700">{formatNumber(model.weightLb)} lb</dd>
+          </div>
+        )}
+        {model.sound?.length && (
+          <div>
+            <dt class="font-semibold text-gray-900">Sound level stated by manufacturer</dt>
+            <dd class="mt-1 space-y-1 text-gray-700">
+              {model.sound.map((sound) => <p>{formatSound(sound)}</p>)}
+              {model.sound.some((sound) => sound.condition.includes('not stated')) && (
+                <p class="text-xs text-gray-600">The published figure should not be ranked against models with different or undisclosed test conditions.</p>
+              )}
+            </dd>
+          </div>
+        )}
+        {model.fuelConsumption?.length && (
+          <div>
+            <dt class="font-semibold text-gray-900">Fuel use at cited test loads</dt>
+            <dd class="mt-1 space-y-1 text-gray-700">
+              {model.fuelConsumption.map((entry) => <p>{formatFuelUse(entry)}</p>)}
+              <p class="text-xs text-gray-600">Manufacturer test values; actual consumption depends on load, fuel quality, site conditions, and the exact configuration.</p>
+            </dd>
+          </div>
+        )}
+        {model.startingMsrpUsd !== undefined && (
+          <div>
+            <dt class="font-semibold text-gray-900">Starting MSRP shown on manufacturer page</dt>
+            <dd class="mt-1 text-gray-700">${formatNumber(model.startingMsrpUsd)} USD</dd>
+            {model.startingMsrpNote && <p class="mt-1 text-xs leading-relaxed text-gray-600">{model.startingMsrpNote}</p>}
+          </div>
+        )}
+        {model.transferSwitch && (
+          <div>
+            <dt class="font-semibold text-gray-900">Transfer-switch scope</dt>
+            <dd class="mt-1 text-gray-700">{model.transferSwitch}</dd>
+          </div>
+        )}
+        {model.warranty && (
+          <div>
+            <dt class="font-semibold text-gray-900">Warranty summary</dt>
+            <dd class="mt-1 text-gray-700">{model.warranty}</dd>
+          </div>
+        )}
+      </dl>
+
+      <footer class="mt-5 border-t border-[#e5e7eb] pt-4">
+        <p class="text-xs font-semibold uppercase tracking-wide text-gray-600">Sources for this model information</p>
+        <ul class="mt-2 space-y-1 text-sm">
+          {model.sources.map((source) => (
+            <li><a href={source.url} rel="external noopener noreferrer" class="font-medium text-primary underline decoration-accent underline-offset-4">{source.label}</a> <span class="text-xs text-gray-500">(accessed {source.checkedOn})</span></li>
+          ))}
+        </ul>
+      </footer>
+    </article>
+  ))}
+</section>

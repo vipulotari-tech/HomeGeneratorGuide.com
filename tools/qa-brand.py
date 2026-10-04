@@ -1,4 +1,4 @@
-"""Verify the publisher's brand contract against the complete built website."""
+"""Verify core editorial disclosures and brand assets across the built site."""
 import json
 import re
 from html.parser import HTMLParser
@@ -6,9 +6,22 @@ from pathlib import Path
 from xml.etree import ElementTree
 
 ROOT = Path(__file__).resolve().parents[1]
-MISSION = "HomeGeneratorGuide exists to give every American homeowner the same quality of advice they would get from a trusted licensed electrician friend — honest, complete, technically accurate, and completely free of brand bias or dealer influence."
-PROMISE = "Every article on HomeGeneratorGuide is written using manufacturer specifications, NEC code requirements, NFPA standards, and EPA regulations — then reviewed by a licensed electrician before publication. We cite every source. We name every expert. We never accept payment from generator brands."
-STATUS = "Licensed electrician review pending"
+MISSION = (
+    "HomeGeneratorGuide is an independent informational publication helping US homeowners "
+    "understand standby generator sizing, equipment, installation scope, costs, and maintenance "
+    "before speaking with qualified local professionals."
+)
+PROMISE = (
+    "We distinguish manufacturer specifications from manufacturer claims, estimates, and "
+    "editorial interpretation. We link to source material where practical, do not claim "
+    "hands-on testing or licensed review we have not performed, and update or correct "
+    "material errors transparently."
+)
+REVIEW_NOTE = (
+    "Our guides are editorial research, not hands-on product testing, licensed electrical "
+    "advice, or a substitute for a local site assessment. Where a qualified professional "
+    "has not reviewed a specific article, we say so."
+)
 
 
 class VisibleText(HTMLParser):
@@ -31,27 +44,35 @@ class VisibleText(HTMLParser):
 
 
 pages = sorted((ROOT / "dist").rglob("*.html"))
-assert pages, "Run npm run build first"
+assert pages, "Run a production or staging build first"
 articles = 0
 for page in pages:
     html = page.read_text(encoding="utf-8")
     parser = VisibleText()
     parser.feed(html)
     text = " ".join(" ".join(parser.parts).split())
-    assert MISSION in text, (page, "Missing verbatim mission")
-    assert PROMISE in text, (page, "Missing verbatim promise")
-    assert "The publication standard we are working toward:" in text, page
-    assert "have not yet completed documented review by a licensed electrician" in text, page
-    assert "Power When It Matters Most" in text, page
-    assert not re.search(r'<script[^>]+src=["\'][^"\']*(?:googlesyndication|doubleclick)', html), page
-    for script in re.findall(r'<script[^>]+type="application/ld\+json"[^>]*>(.*?)</script>', html, re.S):
+    assert MISSION in text, (page, "Missing independent-publication mission")
+    assert PROMISE in text, (page, "Missing editorial transparency disclosure")
+    assert REVIEW_NOTE in text, (page, "Missing current professional-review limitation")
+    assert "Power When It Matters Most" in text, (page, "Missing brand tagline")
+    assert not re.search(
+        r'<script[^>]+src=["\'][^"\']*(?:googlesyndication|doubleclick)', html
+    ), page
+    for script in re.findall(
+        r'<script[^>]+type="application/ld\+json"[^>]*>(.*?)</script>', html, re.S
+    ):
         data = json.loads(script)
         for item in data if isinstance(data, list) else [data]:
             if item.get("@type") == "Article":
                 articles += 1
-                assert STATUS in text, (page, "Missing article review status")
                 assert "reviewedBy" not in item, (page, "Unsupported review schema")
                 assert item["publisher"]["logo"]["url"].endswith("/logo.svg"), page
+
+assert not (ROOT / "src/pages/sizing/calculator.astro").exists(), (
+    "the prohibited interactive estimator source still exists"
+)
+redirects = (ROOT / "public/_redirects").read_text(encoding="utf-8")
+assert "/sizing/calculator/ /sizing/what-size-generator-do-i-need/ 301" in redirects
 
 css = (ROOT / "src/styles/global.css").read_text(encoding="utf-8")
 for token, value in {
@@ -82,4 +103,7 @@ orange, ink = luminance("#F5821F"), luminance("#1A1A2E")
 contrast = (orange + 0.05) / (ink + 0.05)
 assert contrast >= 4.5, contrast
 assert articles > 0, "No article pages were checked"
-print(f"Brand contract passed: {len(pages)} pages, {articles} articles, SVG assets, six colors; CTA contrast {contrast:.2f}:1.")
+print(
+    f"Editorial/brand QA passed: {len(pages)} pages, {articles} articles, no estimator, "
+    f"SVG assets, six colors; CTA contrast {contrast:.2f}:1."
+)

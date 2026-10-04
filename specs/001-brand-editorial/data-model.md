@@ -6,10 +6,10 @@ All values are source constants; there is no persistence service.
 | --- | --- | --- |
 | SITE_NAME | Exactly HomeGeneratorGuide | Logo and metadata |
 | TAGLINE | Exactly Power When It Matters Most | Logo, header, footer |
-| MISSION | Exact supplied wording, punctuation preserved | Homepage, About, all-page footer |
-| EDITORIAL_PROMISE | Exact supplied wording, punctuation preserved | Every HTML page |
+| MISSION | Exact wording in `src/config/site.ts`, punctuation preserved | Homepage, About, all-page footer |
+| EDITORIAL_PROMISE | Current transparent editorial approach in `src/config/site.ts` | Every HTML page |
 | INDEPENDENCE | No affiliation or payments from brands, dealers, installers | Footer and editorial policy |
-| REVIEW_STATUS | Licensed electrician review pending | All article metadata and editorial notes |
+| REVIEW_STATUS | Licensed professional review has not been completed | Article metadata and editorial notes |
 | ADS_ENABLED | false | Existing advertisement component |
 | AUTHOR | Existing real publisher identity; no electrician credentials | Articles and author page |
 

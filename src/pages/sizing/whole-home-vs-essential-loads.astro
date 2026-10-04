@@ -1,68 +1,80 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import ComparisonTable from '../../components/ui/ComparisonTable.astro';
-import FAQSection from '../../components/ui/FAQSection.astro';
 
 const toc = [
-  { id: 'two-ways', label: 'Two backup philosophies' },
-  { id: 'compare', label: 'Side-by-side' },
-  { id: 'managed', label: 'The managed middle' },
-  { id: 'decide', label: 'How to decide' },
-  { id: 'faq', label: 'FAQ' },
+  { id: 'start-with-circuits', label: 'Start with circuits and priorities' },
+  { id: 'transfer-arrangements', label: 'Transfer-equipment arrangements' },
+  { id: 'load-management', label: 'What load management does' },
+  { id: 'compare-proposals', label: 'Compare written proposals' },
+  { id: 'worksheet', label: 'Planning worksheet' },
 ];
 ---
 <ArticleLayout
-  title="Whole-Home vs Essential-Load Backup: Which Fits You?"
-  description="Whole-home vs essential-load generator backup compared: cost, comfort, sizing, and who each approach suits — plus the managed middle most buyers choose."
-  category="Sizing" categoryHref="/sizing/" updated="2026-10-03" readingTime="8 min read" toc={toc}
+  title="Whole-Home vs. Essential-Load Generator Backup"
+  description="Compare whole-panel and selected-circuit backup by transfer equipment, load priorities, load management, and written installation scope—without assuming a generator size or universal winner."
+  category="Sizing" categoryHref="/sizing/" updated="2026-10-04" verified="2026-10-04" readingTime="7 min read" toc={toc}
+  takeaways={[
+    '“Whole-home” and “essential loads” describe different backup plans, not guaranteed generator capacities.',
+    'A transfer-switch amp rating is not the same thing as generator output in kW; exact models and supported load configurations matter.',
+    'Load management can control which compatible loads run together, but does not create generator capacity or replace a site-specific design.',
+  ]}
   sources={[
-    { label: 'Generac — Residential Standby Lineup', href: 'https://www.generac.com/residential-products/standby-generators/', type: 'Manufacturer', verified: 'Oct 2026' },
-    { label: 'Kohler Home Energy — Home Generators', href: 'https://www.kohlerhomeenergy.rehlko.com/products/home-generators', type: 'Manufacturer', verified: 'Oct 2026' },
-    { label: 'U.S. EIA — Electricity Data Browser', href: 'https://www.eia.gov/electricity/', type: 'Government', verified: 'Oct 2026' },
+    { label: 'Champion 201222 product page and specifications (200 A ATS; load-management modules listed separately)', href: 'https://www.championpowerequipment.com/product/201222-22-kw-whole-house-home-standby-generator-and-200a-switch-with-axis-technology/', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'Cummins QuietConnect series (transfer equipment and load-management kits)', href: 'https://www.cummins.com/en-na/na/generators/home-standby/quietconnect-series', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'Generac G0073270 official product page and model specification sheet', href: 'https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-26kw-7327/', type: 'Manufacturer', verified: '2026-10-04' },
   ]}
   related={[
-    { href: '/sizing/what-size-generator-do-i-need/', title: 'What Size Generator Do I Need?', description: 'Full sizing method.', category: 'Sizing' },
-    { href: '/cost/standby-generator-cost/', title: 'Standby Generator Cost (2026)', description: 'Price both philosophies.', category: 'Cost' },
+    { href: '/sizing/what-size-generator-do-i-need/', title: 'How generator sizing works', description: 'Start from the actual loads and starting conditions.', category: 'Sizing' },
+    { href: '/cost/standby-generator-cost/', title: 'Standby generator cost guide', description: 'Compare estimates by the work and equipment included.', category: 'Cost' },
+    { href: '/comparisons/transfer-switch-vs-interlock/', title: 'Transfer switch vs. interlock', description: 'Understand the transfer-equipment distinction and limits.', category: 'Comparisons' },
   ]}
-  prev={{ href: '/sizing/whole-home-vs-essential-loads/', label: 'Whole-Home vs Essential Loads' }}
-  next={{ href: '/sizing/understanding-generator-ratings/', label: 'Ratings & Sizing Method' }}
 >
-  <section id="two-ways"><h2>Two backup philosophies</h2>
-  <p><strong>Essential-load backup</strong> powers a chosen circuit list — fridge, freezer, lights, internet, furnace blower, sump, one small AC or the well pump — typically on a 10–14 kW standby with a subpanel switch. <strong>Whole-home backup</strong> powers near-normal life through a service-entrance ATS, typically 20–26+ kW, with optional load-shed modules deferring the 2–3 largest giants during surges. Neither is morally superior; they are budget-vs-comfort positions on the same engineering curve.</p></section>
-  <section id="compare"><h2>Side-by-side</h2>
-  <ComparisonTable caption="Backup philosophies compared" headers={['', 'Essential loads', 'Whole home']} rows={[['Typical standby', '10–14 kW', '20–26+ kW'], ['Switch', 'Subpanel / essential circuits', 'Service-entrance ATS + management'], ['Installed signal', 'Lower; simpler gas/panel scope', 'Higher; larger gas/panel scope'], ['Outage life', 'Camping-plus: comfortable, deliberate', 'Near-normal: AC, laundry, cooking'], ['Failure mode', 'Must respect the circuit list', 'Must respect shed programming'], ['Best for', 'Budget-first, gas heat, short outages', 'Medical needs, home office, long outages, all-electric']]} /></section>
-  <section id="managed"><h2>The managed middle (what most buyers actually choose)</h2>
-  <p>A 20–22 kW unit with 2–4 load-shed modules: everything backed except deferred giants (dryer, second AC zone, water heater, EV charger). Daily life feels whole-home; the system sheds gracefully for 30-second surges. It costs less than brute-force whole-home (no 26 kW + massive gas upsizing) and comforts far more than strict essentials. Ask bidders to quote both strict-essential and managed options — the delta is often smaller than expected.</p></section>
-  <section id="decide"><h2>How to decide in 15 minutes</h2>
-  <ul><li>List non-negotiables (medical, sump, well, work-from-home) — these are backed in every scenario.</li><li>Circle comfort loads (AC zones, dryer, range) — these decide the philosophy.</li><li>Price both: if managed whole-home is &lt;20% more installed, most families take it.</li><li>Check fuel: propane-tank capacity for 5-day outages often decides before the panel does.</li><li>Confirm with the load calculation — philosophy first, kilowatts second.</li></ul></section>
-  <section id="faq"><span class="sr-only">FAQ anchor</span></section>
-  <FAQSection items={[
-    { q: 'Can I start essential and upgrade later?', a: 'Partially — the pad, gas, and panel work can be sized for growth, but the generator and switch themselves are not incrementally upgradeable. Tell bidders about upgrade intent so infrastructure is not undersized.' },
-    { q: 'Does whole-home mean every breaker at once?', a: 'No — even whole-home systems use load management and breaker discipline. It means every circuit is available, not that every appliance runs simultaneously.' },
-    { q: 'Which is better for resale?', a: 'Managed whole-home photographs and appraises better, but a documented essential system with permits and service records still adds credible value. Unpermitted work adds nothing — permit either path.' },
-  
-    { q: 'Can I upgrade from essential to whole-home later?', a: 'Partially: pad, gas, and panel work can be sized for growth, but the generator and switch are not incrementally upgradeable. Tell bidders about upgrade intent upfront.' },
-    { q: 'Does load management really replace kilowatts?', a: 'Often a full size of them: shedding 2–4 deferrable giants lets a 20–22 kW unit cover a 24–26 kW load list, saving thousands in equipment, gas, and pad scope.' },
-    { q: 'Which adds more resale value?', a: 'Managed whole-home photographs and appraises better, but a documented, permitted essential system with service records still adds credible value. Unpermitted work adds nothing.' },
-  ]} />
-    <figure class="not-prose my-6">
-    <svg viewBox="0 0 560 300" class="w-full rounded-lg border border-[#e5e7eb] bg-white" role="img" aria-label="Diagram: generator output splits into always-on priority loads and managed loads that shed during surges">
-      <title>Load management concept</title>
-      <rect x="16" y="120" width="124" height="60" rx="8" fill="#1B3A6B"/>
-      <text x="78" y="146" text-anchor="middle" font-size="14" fill="#fff" font-family="sans-serif">Generator</text>
-      <text x="78" y="164" text-anchor="middle" font-size="12" fill="#cbd5e1" font-family="sans-serif">20 kW</text>
-      <path d="M140 150 H168 V90 H196" stroke="#F5821F" stroke-width="3" fill="none"/>
-      <path d="M140 150 H168 V230 H196" stroke="#F5821F" stroke-width="3" fill="none" stroke-dasharray="7 5"/>
-      <rect x="196" y="40" width="348" height="100" rx="8" fill="#f0fdf4" stroke="#2D7D46" stroke-width="2"/>
-      <text x="212" y="66" font-size="14" font-weight="bold" fill="#14532d" font-family="sans-serif">PRIORITY — always on</text>
-      <text x="212" y="90" font-size="13" fill="#14532d" font-family="sans-serif">Fridge · furnace blower · well pump · sump</text>
-      <text x="212" y="110" font-size="13" fill="#14532d" font-family="sans-serif">Medical loads · internet + lights</text>
-      <rect x="196" y="180" width="348" height="100" rx="8" fill="#fffbeb" stroke="#F5821F" stroke-width="2"/>
-      <text x="212" y="206" font-size="14" font-weight="bold" fill="#78350f" font-family="sans-serif">MANAGED — sheds on surge</text>
-      <text x="212" y="230" font-size="13" fill="#78350f" font-family="sans-serif">Water heater · dryer · 2nd AC · EV charger</text>
-      <text x="212" y="250" font-size="13" fill="#78350f" font-family="sans-serif">Restored one at a time after stabilizing</text>
-    </svg>
-    <figcaption class="mt-2 text-sm text-gray-500">Load management lets a 20 kW unit cover a 24 kW load list. Illustrative diagram.</figcaption>
-  </figure>
-<section id="conclusion"><h2>Conclusion</h2><p>Default to the managed middle unless budget or fuel forces essentials-only. Either way, size from the <a href="/sizing/what-size-generator-do-i-need/">load list</a> and price in <a href="/cost/standby-generator-cost/">installed dollars</a>.</p></section>
+  <section id="start-with-circuits">
+    <h2>Start with circuits and priorities—not a label</h2>
+    <p>Write down what the household wants available during an outage and which loads may need to run at the same time. Refrigeration, communications, lights, heating controls, pumps, cooking, air conditioning, and electric water or space heating can have different priorities and electrical demands. Record the actual equipment model and nameplate/manual data; a room count or square-footage rule does not reveal those loads.</p>
+    <p>“Essential-load” backup usually means only selected circuits are connected to the backup system. “Whole-panel” or “whole-house” wording generally describes which circuits may be available through the chosen transfer arrangement. It does <strong>not</strong> promise that every appliance can operate simultaneously. Ask the installer to define exactly what the term means in the written proposal.</p>
+    <p>For medical equipment, confirm backup needs with the equipment provider or clinician as appropriate, and include that requirement in the system discussion. Do not treat this page as medical, electrical, or fuel-system advice.</p>
+  </section>
+
+  <section id="transfer-arrangements">
+    <h2>Transfer-equipment arrangements are part of the plan</h2>
+    <p>A proposal may use a service-entrance transfer switch, a separate transfer switch and selected-load panel, or another manufacturer-approved arrangement. The right equipment depends on the service, panel, generator, and local requirements. Ask for the exact switch model, rating, configuration, circuits served, and any separate subpanel or controls—not only “200 amp” or “whole house.”</p>
+    <p>For a concrete example, Champion identifies model 201222 as a 22 kW generator system with a 200 A automatic transfer switch, and says its aXis load-management modules are sold separately. Those numbers describe two different components: the 200 A figure is the switch rating, not the generator's output in kW; it also does not establish which loads can run together.</p>
+  </section>
+
+  <section id="load-management">
+    <h2>What load management can—and cannot—do</h2>
+    <p>Compatible load-management controls can sequence, defer, or disconnect selected equipment when system limits would otherwise be exceeded. Manufacturer descriptions for standby systems explain that controlled loads can be turned on or off in response to household demand. The exact supported loads, control method, priorities, and equipment compatibility are model-specific.</p>
+    <p>Load management does not add electrical capacity to the generator. The designer still has to account for steady demand, motor starts, the generator's rating on the selected fuel, transfer equipment, and the loads that may overlap. Ask the installer to explain the sequence in writing and identify what happens when demand exceeds the planned combination.</p>
+  </section>
+
+  <section id="compare-proposals">
+    <h2>Compare written proposals on the same basis</h2>
+    <div class="not-prose mt-5 overflow-x-auto rounded-xl border border-[#d9e0ea]">
+      <table class="min-w-[640px] w-full border-collapse text-left text-sm">
+        <caption class="sr-only">Questions that distinguish selected-load and broad-panel standby proposals</caption>
+        <thead class="bg-[#edf3fb] text-primary"><tr><th scope="col" class="p-3">Question</th><th scope="col" class="p-3">Selected-circuit plan</th><th scope="col" class="p-3">Broad-panel plan</th></tr></thead>
+        <tbody class="divide-y divide-gray-200 text-gray-800">
+          <tr><th scope="row" class="p-3 font-semibold">What receives backup?</th><td class="p-3">List each selected circuit and any separate panel.</td><td class="p-3">Identify which circuits are connected and any circuits excluded.</td></tr>
+          <tr><th scope="row" class="p-3 font-semibold">How are large loads handled?</th><td class="p-3">Explain included loads, restrictions, and any permitted sequence.</td><td class="p-3">Identify required load controls and the conditions under which loads are delayed or shed.</td></tr>
+          <tr><th scope="row" class="p-3 font-semibold">What is included?</th><td class="p-3">Name the generator, switch, subpanel, controls, and circuits.</td><td class="p-3">Name the generator, switch, controls, and any excluded circuits or appliances.</td></tr>
+          <tr><th scope="row" class="p-3 font-semibold">What work is priced?</th><td class="p-3">Compare fuel, electrical work, site preparation, permits, startup, and exclusions.</td><td class="p-3">Compare the same line items and request a written explanation for differences.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="mt-4">A higher or lower quote cannot be interpreted without its equipment and site-work scope. Ask each bidder to use the same backed-up loads and to identify every assumed exclusion. See the <a href="/cost/standby-generator-cost/">cost guide</a> for estimate limitations.</p>
+  </section>
+
+  <section id="worksheet">
+    <h2>Planning worksheet for a qualified local professional</h2>
+    <p>This is a static note-taking aid; it does not calculate demand, choose equipment, or predict a generator size.</p>
+    <div class="not-prose mt-4 overflow-x-auto rounded-xl border border-[#d9e0ea]">
+      <table class="min-w-[700px] w-full border-collapse text-left text-sm">
+        <caption class="sr-only">Blank worksheet for documenting outage priorities and equipment information</caption>
+        <thead class="bg-[#edf3fb] text-primary"><tr><th scope="col" class="p-3">Load or circuit</th><th scope="col" class="p-3">Exact make/model</th><th scope="col" class="p-3">Nameplate/manual data</th><th scope="col" class="p-3">Priority / delay allowed?</th></tr></thead>
+        <tbody class="divide-y divide-gray-200">{Array.from({ length: 7 }).map(() => <tr><td class="h-12 p-3">&nbsp;</td><td class="p-3">&nbsp;</td><td class="p-3">&nbsp;</td><td class="p-3">&nbsp;</td></tr>)}</tbody>
+      </table>
+    </div>
+    <p class="mt-4">Take the list and equipment labels to a qualified professional. Ask them to document the load assumptions, fuel-specific generator rating, transfer arrangement, and local permitting/code considerations. Do not open a service panel or connect a generator yourself.</p>
+  </section>
 </ArticleLayout>

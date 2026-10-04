@@ -1,54 +1,61 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import AlertBox from '../../components/ui/AlertBox.astro';
-import ComparisonTable from '../../components/ui/ComparisonTable.astro';
-import FAQSection from '../../components/ui/FAQSection.astro';
-import ProConBox from '../../components/ui/ProConBox.astro';
-import { brands } from '../../data/generator-brands';
+import ModelSpecs from '../../components/brands/ModelSpecs.astro';
+import { getModelSpecs } from '../../data/model-specs';
 
-const brand = brands.find((b) => b.slug === 'briggs-stratton')!;
+const models = getModelSpecs('Briggs & Stratton');
 const toc = [
-  { id: 'status', label: 'Post-2020 status' },
-  { id: 'lineup', label: 'PowerProtect lineup' },
-  { id: 'warranty', label: 'Warranty' },
-  { id: 'verdict', label: 'Who it suits' },
-  { id: 'faq', label: 'FAQ' },
+  { id: 'scope', label: 'Scope of this guide' },
+  { id: 'model-data', label: 'PowerProtect 040786 data' },
+  { id: 'warranty', label: 'Warranty and claims' },
+  { id: 'quote-checklist', label: 'Quote checklist' },
 ];
 ---
 <ArticleLayout
-  title="Briggs & Stratton Standby Generators: PowerProtect Review"
-  description="Independent Briggs & Stratton PowerProtect review: post-bankruptcy status, 13–26 kW lineup, 6-to-10-year warranty, Vanguard engines, and dealer reality."
-  category="Brands" categoryHref="/brands/" updated="2026-10-03" readingTime="7 min read" toc={toc}
+  title="Briggs & Stratton PowerProtect 040786: Verified Model Data"
+  description="A source-linked guide to Briggs & Stratton PowerProtect standby generator model 040786, with separate LP/NG ratings, sound and fuel-use conditions, MSRP, warranty, and quote-scope caveats."
+  category="Brands" categoryHref="/brands/" updated="2026-10-04" verified="2026-10-04" readingTime="6 min read" toc={toc}
+  takeaways={[
+    'Manufacturer data for model 040786 lists 22 kW on both LP and natural gas and a 45 kVA motor-starting capability.',
+    'The product page lists a $6,037 starting MSRP and 7-year comprehensive limited warranty; neither is an installed quote or a substitute for full terms.',
+    'The listed 68 dB(A) sound figure has no measurement distance stated on the product page.',
+  ]}
   sources={[
-    { label: 'Briggs & Stratton — Residential Standby', href: 'https://energy.briggsandstratton.com/en-us/products/residential-standby-generators', type: 'Manufacturer', verified: 'Oct 2026' },
-    { label: 'Generac — Residential Standby Lineup', href: 'https://www.generac.com/residential-products/standby-generators/', type: 'Manufacturer', verified: 'Oct 2026' },
-    { label: 'U.S. EIA — Electricity Data Browser', href: 'https://www.eia.gov/electricity/', type: 'Government', verified: 'Oct 2026' },
+    { label: 'Briggs & Stratton PowerProtect model 040786 product page and specifications', href: 'https://energy.briggsandstratton.com/en-us/products/powerprotect-22kw-standby-generator', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'Briggs & Stratton model 040786 specification sheet', href: 'https://briggs.widen.net/s/vxr2wjzrkp/16395_pp22_spec-sheet_10', type: 'Manufacturer', verified: '2026-10-04' },
   ]}
   related={[
-    { href: '/brands/generac/', title: 'Generac Standby Generators', description: 'Volume-leader deep dive.', category: 'Brands' },
-    { href: '/brands/champion/', title: 'Champion Standby Generators', description: 'Value alternative.', category: 'Brands' },
+    { href: '/brands/champion/', title: 'Champion 201222 model data', description: 'Ratings, included ATS, and separate warranty terms.', category: 'Brands' },
+    { href: '/brands/generac/', title: 'Generac model data', description: 'Source-linked ratings, sound conditions, fuel use, and MSRP.', category: 'Brands' },
+    { href: '/cost/standby-generator-cost/', title: 'Standby-generator cost guide', description: 'Compare manufacturer equipment prices with installed estimates.', category: 'Cost' },
   ]}
-  prev={{ href: '/brands/kohler/', label: 'Kohler Brand Guide' }}
-  next={{ href: '/brands/champion/', label: 'Champion Brand Guide' }}
 >
-  <section id="status"><h2>Post-2020 status: still building generators</h2>
-  <p>Briggs &amp; Stratton filed Chapter 11 in <strong>July 2020</strong> and was acquired by KPS Capital Partners (sale completed September 2020), reorganized as Briggs &amp; Stratton Energy Solutions. The standby line survived and was rebuilt as <strong>PowerProtect</strong> — this is not a zombie brand, but confirm your dealer is Energy-Solutions-authorized so parts and warranty flow correctly. <AlertBox type="info" title="Correction note">Some third-party roundups misdate the bankruptcy to 2023. Court records and KPS filings confirm 2020 — one reason to check primary sources, including ours.</AlertBox></p></section>
-  <section id="lineup"><h2>PowerProtect lineup (13–26 kW)</h2>
-  <ComparisonTable caption="PowerProtect models" headers={['Model', 'Capacity', 'Notes']} rows={brand.models.map((m) => [m.series, m.capacityKw, m.notes ?? '—'])} />
-  <p class="mt-3">Vanguard commercial-grade engines, engineered and assembled in the USA, with EnergyTrak 24/7 remote monitoring. Fuel: natural gas or propane.</p></section>
-  <section id="warranty"><h2>Warranty: the standout</h2><p>{brand.warranty} Against Generac's tiered 5-year and Kohler's comprehensive 5-year, a 6-year comprehensive standard (and 10-year dealer/DX options) is genuinely class-leading on paper. Read the exclusions and confirm who performs warranty labor in your area before weighting it heavily.</p></section>
-  <section id="verdict"><h2>Who PowerProtect suits</h2>
-  <ProConBox pros={['6-year comprehensive standard; 10-year options', 'Vanguard commercial engines', 'Competitive mid-range pricing']} cons={['Moderate dealer network — verify local standby service', 'Post-bankruptcy brand confidence varies', 'Fewer published MSRPs; quote variance']} prosTitle="Strengths" consTitle="Watch-outs" />
-  <p class="mt-4">Shortlist PowerProtect when a certified local dealer quotes it against Generac/Kohler on identical scope — the warranty is worth real money if service is truly local.</p></section>
-  <section id="faq"><span class="sr-only">FAQ anchor</span></section>
-  <FAQSection items={[
-    { q: 'Is Briggs & Stratton still in business?', a: 'Yes — acquired by KPS Capital Partners out of 2020 bankruptcy and operating as Briggs & Stratton Energy Solutions, still producing PowerProtect standby generators.' },
-    { q: 'How good is the PowerProtect warranty?', a: '6-year comprehensive standard with 10-year dealer-exclusive and DX options — among the strongest headline terms in residential standby. Verify current terms and local servicing.' },
-    { q: 'PowerProtect vs Generac Guardian?', a: 'Comparable kW bands; Briggs leads on standard warranty length, Generac on dealer density and model choice. Get same-scope quotes and weight dealer responsiveness.' },
-  
-    { q: 'What does Vanguard mean on a Briggs standby?', a: "Vanguard is Briggs' commercial-grade engine line — the selling point of PowerProtect units versus residential-only blocks." },
-    { q: 'Is parts availability a risk after bankruptcy?', a: 'Energy Solutions operates normally post-2020, but confirm your dealer stocks filters, batteries, and common parts — availability is a dealer question, not a logo question.' },
-    { q: 'What is PowerProtect+ DX?', a: 'The dealer-exclusive top trim carrying the 10-year warranty. Same capacities, longest coverage — price it against standard-trim plus risk tolerance.' },
-  ]} />
-  <section id="conclusion"><h2>Conclusion</h2><p>A legitimate contender with the best standard warranty in the comparison set — contingent on local dealer strength. Next: <a href="/brands/champion/">Champion</a> or <a href="/cost/standby-generator-cost/">installed costs</a>.</p></section>
+  <section id="scope">
+    <h2>Scope of this guide</h2>
+    <p>This page addresses exact Briggs & Stratton standby model <strong>040786</strong>, called PowerProtect 22 kW on the current product page. It does not summarize every PowerProtect capacity or imply independent reliability testing. Source data was checked October 4, 2026.</p>
+  </section>
+
+  <section id="model-data">
+    <h2>PowerProtect 040786 manufacturer data</h2>
+    <ModelSpecs models={models} label="Briggs & Stratton model 040786 specifications checked October 4, 2026" />
+    <p class="mt-4">The manufacturer's 50%-load fuel-use values are reported in BTU/hr on its page. They are not gas volume rates; do not convert them into a household bill without fuel heating value, actual load, and local energy prices.</p>
+  </section>
+
+  <section id="warranty">
+    <h2>Warranty summary and promotional claims</h2>
+    <p>The manufacturer lists a <strong>7-year comprehensive limited warranty</strong> for model 040786 and says labor, parts, and service are included. Read the linked warranty document for the exact coverage conditions, required registration, start date, exclusions, and any limits that apply to the purchased model and installation.</p>
+    <p>Briggs & Stratton markets the engine and warranty with comparative language such as “most comprehensive.” Those are manufacturer marketing claims; this publication has not independently ranked warranty coverage, motor-start performance, reliability, or service availability.</p>
+  </section>
+
+  <section id="quote-checklist">
+    <h2>Before comparing a quote</h2>
+    <ul>
+      <li>Confirm model number 040786 and its fuel-specific rating on the proposal.</li>
+      <li>Ask whether a transfer switch is included; the cited generator product page does not establish an included switch package.</li>
+      <li>Match motor-starting claims to actual equipment, system voltage, and load conditions.</li>
+      <li>Ask for the warranty document and identify the local installer/service provider.</li>
+      <li>Compare permits, fuel/electrical runs, pad/site work, inspections, startup, and exclusions line by line.</li>
+    </ul>
+    <p>See the <a href="/cost/standby-generator-cost/">standby cost guide</a> for how unit MSRP and installed-project estimates differ.</p>
+  </section>
 </ArticleLayout>

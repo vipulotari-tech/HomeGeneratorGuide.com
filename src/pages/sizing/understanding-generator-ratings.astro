@@ -1,93 +1,68 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import AlertBox from '../../components/ui/AlertBox.astro';
-import ComparisonTable from '../../components/ui/ComparisonTable.astro';
-import FAQSection from '../../components/ui/FAQSection.astro';
 
 const toc = [
-  { id: 'ratings', label: 'Standby vs prime vs continuous' },
-  { id: 'testing', label: 'How ratings are tested' },
-  { id: 'derating', label: 'Altitude & temperature derating' },
-  { id: 'surge-mult', label: 'Motor surge multipliers' },
-  { id: 'method', label: 'Pro load-calc method' },
-  { id: 'mistakes', label: '7 sizing mistakes' },
-  { id: 'over-under', label: 'Over vs under-sizing' },
-  { id: 'faq', label: 'FAQ' },
+  { id: 'nameplate', label: 'Read the exact model and rating' },
+  { id: 'fuel', label: 'Separate fuel-specific output' },
+  { id: 'derating', label: 'Altitude, temperature, and site limits' },
+  { id: 'starting', label: 'Running load and motor starting' },
+  { id: 'design', label: 'What the professional design resolves' },
 ];
 ---
 <ArticleLayout
-  title="Generator Ratings Explained: Standby vs Prime, Derating & Sizing Method"
-  description="Standby vs prime vs continuous ratings (ISO 8528), altitude and temperature derating with worked math, motor surge multipliers, pro load-calc steps, and sizing mistakes."
-  category="Sizing" categoryHref="/sizing/" updated="2026-10-03" readingTime="12 min read" toc={toc}
+  title="Generator Ratings Explained: Fuel, Standby Output & Site Conditions"
+  description="A source-linked guide to interpreting generator nameplates, fuel-specific standby output, kW/kVA fields, environmental derating, and motor-starting information without unsupported rules of thumb."
+  category="Sizing" categoryHref="/sizing/" updated="2026-10-04" verified="2026-10-04" readingTime="7 min read" toc={toc}
+  takeaways={[
+    'A generator’s advertised kW is not enough: check exact model, fuel, phase, voltage, frequency, rating type, and document footnotes.',
+    'Natural-gas and LP ratings can differ, and site conditions can reduce the capacity available at the property.',
+    'Do not use generic motor-surge multipliers or percentage headroom as a substitute for equipment nameplates and a professional load analysis.',
+  ]}
   sources={[
-    { label: 'Generac — Residential Standby Lineup', href: 'https://www.generac.com/residential-products/standby-generators/', type: 'Manufacturer', verified: 'Oct 2026' },
-    { label: 'Kohler Home Energy — Home Generators', href: 'https://www.kohlerhomeenergy.rehlko.com/products/home-generators', type: 'Manufacturer', verified: 'Oct 2026' },
-    { label: 'U.S. EIA — Electricity Data Browser', href: 'https://www.eia.gov/electricity/', type: 'Government', verified: 'Oct 2026' },
+    { label: 'Generac G0073270 product page and official specification sheet', href: 'https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-26kw-7327/', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'KOHLER/Rehlko G4-315 26RCA/26RCAL official specification sheet', href: 'https://techcomm.rehlko.com/techcomm/pdf/g4315.pdf', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'Cummins RS20A exact model page', href: 'https://www.cummins.com/en-na/generators/products/rs20a', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'Generac: What size generator do I need?', href: 'https://www.generac.com/resources/home-management/what-size-generator-do-i-need/', type: 'Manufacturer', verified: '2026-10-04' },
   ]}
   related={[
-    { href: '/sizing/what-size-generator-do-i-need/', title: 'What Size Generator Do I Need?', description: 'Full sizing walkthrough.', category: 'Sizing' },
-    { href: '/guides/power-quality-thd-surge-protection/', title: 'Power Quality, THD & Surge', description: 'Clean power for electronics.', category: 'Buying Guides' },
+    { href: '/sizing/what-size-generator-do-i-need/', title: 'What size generator do I need?', description: 'A load-first process and static worksheet.', category: 'Sizing' },
+    { href: '/sizing/appliance-wattage-chart/', title: 'Appliance wattage chart', description: 'Approximate manufacturer-published reference ranges.', category: 'Sizing' },
+    { href: '/sizing/hvac-generator-sizing/', title: 'HVAC and generator sizing', description: 'Why exact compressor and equipment data matters.', category: 'Sizing' },
   ]}
-  prev={{ href: '/sizing/understanding-generator-ratings/', label: 'Ratings & Sizing Method' }}
-  next={{ href: '/sizing/what-size-for-2000-sq-ft/', label: 'Size for 2,000 Sq Ft' }}
 >
-  <section id="ratings"><h2>Standby vs prime vs continuous (ISO 8528)</h2>
-  <ComparisonTable caption="Generator duty ratings" headers={['', 'Standby (ESP)', 'Prime (PRP)', 'Continuous (COP)']} rows={[
-    ['Use', 'Emergency backup only', 'Unlimited hrs, variable load', 'Unlimited hrs, constant load'],
-    ['Annual cap', '~200 h (some 500 h)', 'Unlimited', 'Unlimited'],
-    ['Avg load factor', '≤70%', 'Variable', 'Constant'],
-    ['Overload', 'None allowed', '10% for 1 h per 12 h', 'None allowed'],
-    ['Home relevance', 'Every residential standby', 'Off-grid primary, sites', 'Peak shaving, base load'],
-  ]} />
-  <p class="mt-3">Same-machine relationship: prime ≈ 90% of standby, continuous ≈ 70–80% — a 22 kW standby unit is ~20 kW prime, ~17 kW continuous. Residential buyers pay for standby and must <em>use</em> standby: off-grid primary duty on a standby-rated unit voids warranties and kills engines early. Typical homes log 20–50 h/year — nowhere near the 200-hour ceiling.</p></section>
+  <section id="nameplate">
+    <h2>Read the exact model and rating</h2>
+    <p>Before comparing capacity, record the complete generator model and configuration. Check the current specification sheet for fuel, phase, voltage, frequency, standby or other rating, and any conditions printed in footnotes. A product family can include multiple outputs or electrical configurations; the headline kW alone does not identify the unit being proposed.</p>
+    <p>As one example, Cummins lists the exact RS20A at <strong>20 kW / 18 kVA standby</strong> on its model page. This is the manufacturer’s rating for that model—not a generic conversion rule for other generators.</p>
+  </section>
 
-  <section id="testing"><h2>How ratings are tested (and why nameplates are honest)</h2>
-  <p>ISO 8528-1 defines the ratings; testing runs load banks at rated power while monitoring temperature, fuel burn at multiple load points, voltage/frequency stability under load steps, and emissions — at reference conditions of 77°F, ~328 ft altitude, 30% humidity. Your backyard is not the lab, which is exactly why derating exists.</p></section>
+  <section id="fuel">
+    <h2>Separate the fuel-specific output</h2>
+    <p>Some dual-fuel standby generators publish different output on natural gas and LP. For example, Generac’s G0073270 is listed at <strong>26 kW on LP and 24 kW on natural gas</strong>; the single-phase KOHLER 26RCA is also listed at 26 kW LP and 24 kW natural gas. Do not compare one model’s LP rating with another model’s natural-gas rating and call them equal.</p>
+    <p>Verify that the proposed fuel supply can meet the selected model’s inlet requirements while the planned loads are operating. See the <a href="/guides/natural-gas-vs-propane/">natural-gas versus propane guide</a> for exact-model examples and supply questions.</p>
+  </section>
 
-  <section id="derating"><h2>Altitude & temperature derating (with math)</h2>
-  <ComparisonTable caption="Derating rules" headers={['Factor', 'Rule', '22 kW example']} rows={[
-    ['Altitude', '−3.5% per 1,000 ft above 500 ft', 'At 5,000 ft: 22 × (1 − 0.035 × 4.5) = 18.5 kW (−16%)'],
-    ['Temperature', '−1% per 10°F above 77°F', 'At 95°F: 22 × (1 − 0.01 × 1.8) = 21.6 kW (−2%)'],
-    ['Combined', 'Multiply both', '5,000 ft + 95°F: 22 × 0.84 × 0.98 ≈ 18.1 kW (−18%)'],
-  ]} />
-  <AlertBox type="warning" title="Mountain buyers read this">Above ~10,000 ft consult the manufacturer (tuning/turbocharging territory), and gas engines derate harder than diesel on thin air. A Denver home and a Miami home do not buy the same 22 kW — size to <em>derated</em> capacity, then confirm with the local dealer.</AlertBox></section>
+  <section id="derating">
+    <h2>Altitude, temperature, and site limits</h2>
+    <p>Manufacturers may publish environmental derating guidance for an exact model or family. Generac’s cited 22–28 kW sheet states that maximum output decreases with altitude and temperature and provides approximate model-family factors. Those factors are not universal, and exact available capacity also depends on fuel, ambient conditions, humidity, barometric pressure, fuel quality, and equipment condition.</p>
+    <p>Give the installer the property elevation and expected ambient conditions. Ask them to show how the exact manual/specification sheet and site conditions affect the design; do not treat the brochure’s base rating as guaranteed output at every location.</p>
+  </section>
 
-  <section id="surge-mult"><h2>Motor surge multipliers (why starting type matters)</h2>
-  <ComparisonTable caption="Starting surge by motor type" headers={['Starting method', 'Surge vs running', 'Where you meet it']} rows={[
-    ['Direct-on-line (DOL)', '~7×', 'Well pumps, basic compressors'],
-    ['Star-delta', '~2.5×', 'Three-phase with soft start'],
-    ['Electronic soft starter', '~3×', 'Retrofitted compressors'],
-    ['VFD drive', '~1.5×', 'Modern HVAC, VFD well pumps'],
-    ['Inverter compressor', '~1.2×', 'Inverter HVAC, mini-splits'],
-  ]} />
-  <p class="mt-3">This table is the quiet reason two "3-ton AC" homes size differently: a DOL compressor surges ~7× while an inverter sibling barely ripples. Ask the nameplate, not the tonnage.</p></section>
+  <section id="starting">
+    <h2>Running load and motor starting are different questions</h2>
+    <p>Motors and compressors can draw more current while starting than after they are running. The amount depends on the exact equipment, controls, starting method, and what else is operating. Use the equipment nameplate, technical manual, or measured/design data—not a generic “times running watts” multiplier.</p>
+    <p>In a written proposal, ask which equipment may start while other loads are already running, how load management affects that sequence, and which fuel-specific generator rating applies. The <a href="/sizing/appliance-wattage-chart/">appliance wattage chart</a> is only a generic manufacturer-published reference; it cannot replace the exact nameplate.</p>
+  </section>
 
-  <section id="method"><h2>Pro load-calc method in 7 steps</h2>
-  <ol><li>Inventory every backed-up device (nameplates, not guesses).</li><li>Sum continuous running watts.</li><li>Identify the single largest motor; add its starting surge (multiplier above).</li><li>Apply diversity (×0.7–0.8 — not everything runs at once).</li><li>Add 10–25% headroom for growth and derating.</li><li>Select the next standard size at or above the result.</li><li>Verify derated capacity at your altitude/temperature still covers the peak.</li></ol>
-  <p>Manufacturer selectors (e.g., Generac's online tool: home size → circuits → appliances → fuel → coverage) follow this same skeleton with built-in diversity — a fine starting point that a licensed calculation must still confirm for large or complex homes.</p></section>
-
-  <section id="mistakes"><h2>7 sizing mistakes, each expensive differently</h2>
-  <ul><li><strong>Running watts only:</strong> trips the instant the AC starts — add the largest surge.</li><li><strong>kW vs kVA confusion:</strong> motors billed in kVA (kW ÷ power factor ~0.8) need ~20% more headroom.</li><li><strong>Gross oversizing:</strong> +10 kW unneeded costs $3,000–$5,000 and idles below efficient loading.</li><li><strong>Wrong duty rating:</strong> standby unit as primary power — voided warranty, early death.</li><li><strong>No diversity factor:</strong> nameplate-stacking oversizes 30–50%.</li><li><strong>Ignoring derating:</strong> the 5,000-ft 22 kW is an 18.5 kW.</li><li><strong>No growth margin:</strong> the future EV charger or pool has nowhere to go.</li></ul></section>
-
-  <section id="over-under"><h2>Over vs under-sizing, priced</h2>
-  <ComparisonTable caption="Over versus under sizing" headers={['', 'Oversized', 'Undersized']} rows={[
-    ['Cost signal', '+$3,000–$5,000 per spare 10 kW', 'Breaker trips, stalled motors, flicker'],
-    ['Reliability', 'Low-load carbon buildup (chronic <25%)', 'Overheating, unstable V/Hz, shortened life'],
-    ['Warranty', 'Safe', 'Over-capacity operation can void'],
-    ['Fix', 'Load management to keep loading healthy', 'Shed loads, add management, or upsize'],
-    ['Verdict', '10–25% margin, never 50–100%', 'Never — size the surge'],
-  ]} />
-  <p class="mt-3 text-sm text-gray-600">Note: "wet stacking" (unburned-fuel buildup) is properly a diesel/light-load phenomenon — gas air-cooled units suffer chronic light loading differently (carbon, moisture, efficiency). Either way the prescription matches: correct size plus healthy loading.</p></section>
-
-  <section id="faq"><span class="sr-only">FAQ anchor</span></section>
-  <FAQSection items={[
-    { q: 'What does standby-rated mean?', a: 'Maximum emergency-backup power, capped around 200 hours/year at ≤70% average load with zero overload allowance. All residential standby units are standby-rated (ISO 8528 ESP) — use them as backup, not primary power.' },
-    { q: 'How much power do I lose at altitude?', a: 'Roughly 3.5% per 1,000 ft above 500 ft, plus 1% per 10°F above 77°F. A 22 kW unit at 5,000 ft and 95°F delivers about 18 kW — size up or manage loads to match derated output.' },
-    { q: 'Is a bigger generator always safer?', a: 'No. Beyond a 10–25% margin, extra kilowatts buy cost, fuel burn, and low-load inefficiency — not reliability. Undersizing fails loudly; oversizing fails expensively.' },
-  
-    { q: 'Can I run my standby as primary power off-grid?', a: 'No — standby rating caps around 200 hours/year with no overload allowance, and off-grid duty voids the warranty. Off-grid needs prime-rated equipment (see EcoGen-style duty designs).' },
-    { q: 'Does heat derate my generator in summer?', a: 'Roughly 1% per 10°F above 77°F — a 22 kW unit at 95°F delivers about 21.6 kW. Small, but stack it with altitude before dismissing it.' },
-    { q: 'What is the difference between kW and kVA?', a: 'kW does work; kVA includes reactive power. Motors billed in kVA need roughly 20% more headroom than their kW suggests — size the surge, not the label.' },
-  ]} />
-  <section id="conclusion"><h2>Conclusion</h2><p>Ratings tell you the duty, derating tells you the real kilowatts, surge math tells you the peak — run all three, then <a href="/sizing/what-size-generator-do-i-need/">work the full example</a> and get the licensed calculation.</p></section>
+  <section id="design">
+    <h2>What the professional design should resolve</h2>
+    <ul>
+      <li>Exact connected loads and which ones are expected to operate at the same time.</li>
+      <li>Motor-start data, load-management controls, and any restrictions on simultaneous operation.</li>
+      <li>Generator output on the actual fuel, with applicable site derating.</li>
+      <li>Transfer-switch configuration, voltage/phase, utility service, and approved installation method.</li>
+      <li>Fuel-system capacity, permits, inspections, local code, and manufacturer installation requirements.</li>
+    </ul>
+    <p>HomeGeneratorGuide has not performed an on-site load calculation. Use this article to prepare questions, then have a qualified local professional produce and explain the property-specific design.</p>
+  </section>
 </ArticleLayout>

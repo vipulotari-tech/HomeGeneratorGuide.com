@@ -1,15 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from '../components/layout/Breadcrumbs.astro';
-import { MISSION, INDEPENDENCE, AUTHOR } from '../config/site';
+import { MISSION, INDEPENDENCE, AUTHOR, SITE_URL } from '../config/site';
 
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'HomeGeneratorGuide',
-  url: 'https://homegeneratorguide.com/',
+  url: `${SITE_URL}/`,
   description: 'Independent, source-cited home standby generator education for American homeowners.',
-  logo: 'https://homegeneratorguide.com/logo.svg',
+  logo: `${SITE_URL}/logo.svg`,
 };
 ---
 <BaseLayout title="About HomeGeneratorGuide" description="Honest standby generator advice for American homeowners. Our mission, independence, research method, and transparent electrician-review standard." schema={schema}>
@@ -38,10 +38,9 @@ const schema = {
         <li><a href="/brands/">Brand research</a> and <a href="/comparisons/">comparisons</a> that explain both strengths and limitations.</li>
         <li><a href="/installation/what-to-expect/">Installation</a> and <a href="/maintenance/generator-maintenance-checklist/">maintenance</a> guidance so you can ask qualified professionals better questions.</li>
       </ul>
-      <h2>Research and expert review</h2>
+      <h2>Research and professional review</h2>
       <p>Research is credited to <a href={AUTHOR.url}>{AUTHOR.name}</a>, our publisher and research editor. We use manufacturer specifications, government and safety sources, and clearly labeled estimates. The publisher is not a licensed electrician.</p>
-      <p><strong>Licensed electrician review is currently pending.</strong> We are working toward a publication standard that requires named, licensed review before publication. Current articles have not yet completed that documented review. We will publish the reviewer's name, verified credentials, and article review date when it is complete.</p>
-      <p>Read the full <a href="/editorial-policy/">editorial policy</a> for source requirements, review evidence, and corrections.</p>
+      <p><strong>No independent licensed professional review has been completed.</strong> Our sources and editorial research should not be mistaken for professional signoff. Read the <a href="/review-process/">current review status</a> and the <a href="/editorial-policy/">editorial policy</a> for more information.</p>
       <h2>Help us keep it accurate</h2>
       <p>If something looks wrong, <a href="/contact/">send the page URL and the source that supports your correction</a>. We'll check it and explain material changes. Your own installer and local permitting office remain the right people to confirm requirements for your property.</p>
     </div>

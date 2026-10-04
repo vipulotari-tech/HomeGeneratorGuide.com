@@ -6,7 +6,7 @@ Change only the shared header and design context. Use the existing navy primary 
 
 ## Technical context
 
-- Astro 5 templates with Tailwind v4 theme tokens.
+- Astro templates with Tailwind v4 theme tokens; see `package.json` for the current declared version range.
 - Shared files: `src/components/layout/Header.astro`, `BrandLogo.astro`, `src/styles/global.css`, `DESIGN.md`, `.21st/design.json`.
 - Validation: Astro build, TypeScript, Playwright smoke checks, 21st review.
 - No new dependencies or client-side behavior.

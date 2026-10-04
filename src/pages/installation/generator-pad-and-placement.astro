@@ -1,81 +1,81 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import AlertBox from '../../components/ui/AlertBox.astro';
-import ComparisonTable from '../../components/ui/ComparisonTable.astro';
-import FAQSection from '../../components/ui/FAQSection.astro';
-import { clearances } from '../../data/transfer-switches';
 
 const toc = [
-  { id: 'pad', label: 'Pad sizes & specs' },
-  { id: 'existing', label: 'Reusing existing concrete' },
-  { id: 'gravel', label: 'Gravel alternative' },
-  { id: 'costs', label: 'Pad costs & DIY' },
-  { id: 'clearances', label: 'Clearance table' },
-  { id: 'hoa', label: 'HOA & noise rules' },
-  { id: 'faq', label: 'FAQ' },
+  { id: 'no-universal-rule', label: 'There is no universal setback table' },
+  { id: 'manufacturer-examples', label: 'Two manufacturer examples' },
+  { id: 'site-checklist', label: 'Site-assessment checklist' },
+  { id: 'base-and-drainage', label: 'Base, drainage, and access' },
+  { id: 'noise-neighbors', label: 'Noise and neighbors' },
 ];
 ---
 <ArticleLayout
-  title="Generator Pad & Placement: Sizes, Clearances, HOA & Noise"
-  description="Standby pad and placement guide: concrete pad sizes by kW, reuse rules, gravel alternative, costs, NFPA 37 clearances, HOA screening, and noise ordinances."
-  category="Installation" categoryHref="/installation/" updated="2026-10-03" image="/images/gas-connection-pad.webp" readingTime="9 min read" toc={toc}
+  title="Standby Generator Placement & Pad: Follow the Exact Model Manual"
+  description="A safety-first standby generator placement guide explaining why clearances, opening distances, pad dimensions, and local approvals must come from the exact model manual and local authority."
+  category="Installation" categoryHref="/installation/" updated="2026-10-04" verified="2026-10-04" readingTime="6 min read" toc={toc}
+  takeaways={[
+    'There is no single clearance table that safely applies to every standby generator, building, and jurisdiction.',
+    'Use the exact model’s current installation manual and get local authority/utility approval before selecting a site or pouring a base.',
+    'The CPSC’s 20-foot placement advice is for portable generators; do not substitute it for a standby generator’s listed installation instructions.',
+  ]}
   sources={[
-    { label: 'Generac Support — Owner Resources', href: 'https://support.generac.com/', type: 'Technical manual', verified: 'Oct 2026' },
-    { label: 'NFPA 37 — Stationary Combustion Engines', href: 'https://www.nfpa.org/codes-and-standards/nfpa-37-standard-development/37', type: 'Government', verified: 'Oct 2026' },
-    { label: 'CPSC — Carbon Monoxide Information Center', href: 'https://www.cpsc.gov/Safety-Education/Safety-Education-Centers/Carbon-Monoxide-Information-Center', type: 'Safety authority', verified: 'Oct 2026' },
+    { label: 'Generac G0073270 official specification sheet', href: 'https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'Generac G0073270 current installation manual', href: 'https://productmanuals.generac.com/api/manualfiles/G0073270/A0004332575/0', type: 'Technical manual', verified: '2026-10-04' },
+    { label: 'KOHLER/Rehlko 26RCA official 2026 specification sheet', href: 'https://techcomm.rehlko.com/techcomm/pdf/g4315.pdf', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'CPSC 2026 generator safety guidance (portable generator placement)', href: 'https://www.cpsc.gov/Newsroom/News-Releases/2026/CPSC-Warns-of-Generator-Carbon-Monoxide-and-Fire-Hazards-Ahead-of-Hurricane-Season', type: 'Safety authority', verified: '2026-10-04' },
+    { label: 'HomeGuide: generator pad cost reference (published Dec. 30, 2025)', href: 'https://homeguide.com/costs/generator-cost', type: 'Industry', verified: '2026-10-04' },
   ]}
   related={[
-    { href: '/installation/what-to-expect/', title: 'Installation: What to Expect', description: 'Full install process.', category: 'Installation' },
-    { href: '/cost/installation-cost-breakdown/', title: 'Installation Cost Breakdown', description: 'Where install money goes.', category: 'Cost' },
+    { href: '/installation/what-to-expect/', title: 'Standby installation: what to expect', description: 'Plan the professional site assessment and project sequence.', category: 'Installation' },
+    { href: '/guides/generator-safety-carbon-monoxide/', title: 'Generator carbon-monoxide safety', description: 'Portable and fixed-generator safety sources and limits.', category: 'Buying Guides' },
+    { href: '/cost/installation-cost-breakdown/', title: 'Installation cost breakdown', description: 'Site work, permits, fuel, and electrical scope.', category: 'Cost' },
   ]}
-  prev={{ href: '/installation/what-to-expect/', label: 'Installation: What to Expect' }}
-  next={{ href: '/maintenance/generator-maintenance-checklist/', label: 'Maintenance Checklist' }}
 >
-    <figure class="not-prose my-6">
-    <img src="/images/gas-connection-pad.webp" alt="Natural-gas connection and shutoff valve on a standby unit mounted on a concrete pad" width="1536" height="1024" loading="lazy" decoding="async" class="w-full rounded-xl border border-[#e5e7eb]" />
-    <figcaption class="mt-2 text-sm text-gray-500">Fuel connection detail on a pad-mounted unit. Illustrative photo.</figcaption>
-  </figure>
-<section id="pad"><h2>Pad sizes & specs by kW</h2>
-  <ComparisonTable caption="Pad sizes" headers={['Generator', 'Min pad', 'Footprint', 'Thickness']} rows={[
-    ['10–14 kW', "36×48 in (3×4 ft)", '~28×40 in', '4 in'],
-    ['16–22 kW', "48×60 in (4×5 ft)", '~40×52 in', '4 in + rebar'],
-    ['24–26 kW', "48×72 in (4×6 ft)", '~40×64 in', '4–6 in'],
-    ['30–48 kW', "60×84 in (5×7 ft)+", '~52×76 in', '6 in reinforced'],
-  ]} />
-  <p class="mt-3">Rules that fail inspections: pad extends 4+ in beyond the footprint on all sides, level within 1/4 in, slopes away from the house (~1/8 in per foot), anchors set for wind/seismic zones. Poured pads cure 3–7 days before the unit lands — schedule accordingly.</p></section>
+  <section id="no-universal-rule">
+    <h2>There is no universal standby-generator setback table</h2>
+    <p>Placement depends on the exact generator enclosure and installation listing, doors/windows/air intakes, exhaust direction, combustible materials, service access, fuel equipment, property layout, local code, and the authority having jurisdiction (AHJ). A generic chart that says “all generators need X feet” can be dangerously incomplete.</p>
+    <p>Get the <strong>current installation manual for the exact model and revision</strong> and ask the installer to confirm it with the local permit authority and utility before construction. Do not choose a pad location from this page or treat manufacturer examples below as permission for another model or site.</p>
+    <p>The CPSC’s 2026 guidance says to operate <strong>portable generators outdoors at least 20 feet from homes and buildings</strong>, with exhaust directed away from openings. That is a portable-generator safety instruction; it is not a replacement for a permanently installed standby unit’s model-specific listed instructions.</p>
+  </section>
 
-  <section id="existing"><h2>Reusing existing concrete or patio</h2>
-  <p>Allowed when all five hold: level within 1/4 in, ≥4 in thick, crack- and settlement-free, meeting every clearance below, and draining away from the house. Any spalling, rocking, or pooling water disqualifies it — a bad base telegraphs vibration and voids leveling warranties.</p></section>
+  <section id="manufacturer-examples">
+    <h2>Two model-specific manufacturer examples</h2>
+    <div class="not-prose mt-4 overflow-x-auto rounded-xl border border-[#d9e0ea]">
+      <table class="min-w-[650px] w-full border-collapse text-left text-sm">
+        <caption class="sr-only">Clearance wording in two exact standby-generator manufacturer documents</caption>
+        <thead class="bg-[#edf3fb] text-primary"><tr><th scope="col" class="p-3">Exact document</th><th scope="col" class="p-3">What the manufacturer states</th><th scope="col" class="p-3">What the statement does not establish</th></tr></thead>
+        <tbody class="divide-y divide-gray-200 text-gray-800">
+          <tr><th scope="row" class="p-3">Generac 22–28 kW G0073270 family specification sheet</th><td class="p-3">States listed/labeled installation as close as 18 inches to a structure for the models covered.</td><td class="p-3">The same sheet says to locate the unit away from doors, windows, and fresh-air intakes and follow local codes. It is not a universal setback or opening clearance.</td></tr>
+          <tr><th scope="row" class="p-3">KOHLER/Rehlko G4-315 26RCA/26RCAL sheet</th><td class="p-3">States an aluminum enclosure can be installed as close as 18 inches from a home/small business; its footnote refers to clearance from combustible materials.</td><td class="p-3">The sheet says to check state/local code for minimum distance to a structure. It is not a general rule for all Kohler/other models or all site openings.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="mt-3">Both examples are limited to their referenced product documents. Use the complete installation manual to determine orientation, openings, airflow, access, fuel equipment, and all other site constraints.</p>
+  </section>
 
-  <section id="gravel"><h2>Gravel alternative (when acceptable)</h2>
-  <p>Compacted 4–6 in of 3/4-in-minus crushed stone, contained by timbers or pavers, level within 1/4 in — acceptable where the manufacturer allows, with great drainage and lower cost. Avoid in flood zones, seismic/wind zones (anchoring suffers), expansive clay, and under liquid-cooled units. When in doubt, pour concrete.</p></section>
+  <section id="site-checklist">
+    <h2>Site-assessment checklist for the installer</h2>
+    <ul>
+      <li>Exact generator model, serial/configuration, manual revision, and any applicable listed placement instructions.</li>
+      <li>All building openings and air intakes; exhaust direction and potential re-entry paths.</li>
+      <li>Clearance from combustible surfaces, walls, fences, landscaping, fuel equipment, meters, condensers, and property boundaries as applicable.</li>
+      <li>Required service access, ventilation, overhead conditions, snow/vegetation management, and delivery/replacement access.</li>
+      <li>Drainage, flood exposure, soil/base design, anchoring if required, and whether the proposed pad/base is manufacturer-approved.</li>
+      <li>Local zoning, HOA, noise, fire/building, electrical/fuel permits, utility rules, and inspection approval.</li>
+    </ul>
+    <p>Ask the installer to identify the governing manual pages and have the local authority confirm any site-specific requirement. Keep the signed plans/permit documents with the equipment records.</p>
+  </section>
 
-  <section id="costs"><h2>Pad costs & DIY boundaries</h2>
-  <ComparisonTable caption="Pad costs" headers={['Option', 'Cost signal']} rows={[
-    ['DIY concrete (materials)', '$80–$200 (small pads)'],
-    ['Pro concrete pad', '$600–$1,500 installed; ~$12–$18/sq ft'],
-    ['Pre-cast composite', '$300–$600 complete'],
-    ['DIY gravel', '$40–$80 materials'],
-  ]} />
-  <AlertBox type="info" title="DIY line">A homeowner may pour a pad (with building permit where required) — that is the <em>only</em> DIY in the whole project. Electrical, gas, and transfer equipment stay licensed-pro-only.</AlertBox></section>
+  <section id="base-and-drainage">
+    <h2>Base, drainage, and access</h2>
+    <p>Pad dimensions, depth, material, level tolerance, anchors, gravel/concrete options, and drainage details are not universal. Use the exact installation manual and installer/engineer’s site plan. Do not pour a slab based on a generic “inches wider than the generator” rule.</p>
+    <p>As one general planning reference, HomeGuide lists a $150–$400 range for a precast generator pad in its December 2025 guide. This is a published cost estimate, not a design specification or a guarantee that a particular base is permitted or adequate.</p>
+    <p>Keep the planned service route accessible without blocking ventilation or creating a conflict with windows, doors, air intakes, meters, or neighboring property. A qualified installer must confirm final placement.</p>
+  </section>
 
-  <section id="clearances"><h2>Clearance table — read the four tiers</h2>
-  <p>Numbers below are <strong>planning guidance</strong> (NFPA 37 simplified minimums), not your final answer. Final placement is set by, in order: (1) <strong>manufacturer requirement</strong> — your exact model's manual, which can exceed code; (2) <strong>code/AHJ requirement</strong> — the adopted NEC/NFPA edition plus local amendments and your inspector; (3) <strong>utility requirements</strong> — meter working space and service rules; (4) <strong>best practice</strong> — extra margin for noise, service access, and snow/flood. Never treat a planning table as a mandatory code citation.</p>
-  <ComparisonTable caption="Placement clearances" headers={['From', 'Minimum', 'Basis']} rows={clearances.map((c) => [c.from, c.distance, c.basis])} />
-  <p class="mt-3">Exhaust must never aim at windows, doors, AC units, or intakes. Local codes can exceed these (some CA jurisdictions want 10 ft from openings) — the manual plus the AHJ govern, not this table.</p></section>
-
-  <section id="hoa"><h2>HOA & noise rules</h2>
-  <ul><li><strong>HOA screening:</strong> side/rear-yard placement, fencing or shrubs hiding the unit, committee approval before install (adds 1–3 weeks). Propane tanks draw the most aesthetic objections — submit renderings early.</li><li><strong>Noise ordinances:</strong> residential limits typically 60–65 dB at the property line (55–60 urban, often unenforced rural), usually complaint-driven. Reference: Kohler 26RCA 56 · Champion 14 kW 62–63 · Cummins 65 · Generac 22 kW 67 (all at 23 ft).</li><li><strong>Mitigation:</strong> quieter model selection, maximum setback distance, airflow-safe barriers (never choke the 36-in service clearance to muffle sound), exhaust aimed away from neighbors.</li></ul></section>
-
-  <section id="faq"><span class="sr-only">FAQ anchor</span></section>
-  <FAQSection items={[
-    { q: 'How far must a generator be from the house?', a: 'Minimum 18 in from combustible walls, 5 ft from windows, doors, and vents (NFPA 37 simplified) — plus 3 ft service access. Local codes and the manual may require more; confirm both before pouring the pad.' },
-    { q: 'Can I put a generator under my deck?', a: 'Effectively no — 6 ft vertical clearance minimums, CO accumulation risk, and service-access rules rule out nearly all deck placements. Find open-sky placement meeting the clearance table.' },
-    { q: 'Will my HOA let me install a generator?', a: 'Usually yes with screening and placement conditions. Read covenants before buying, submit plans early, and pick a quieter model if the property line is close.' },
-  
-    { q: 'Can the pad double as a walkway?', a: 'No — keep the pad dedicated and clear. Foot traffic, planters, and stored items violate working clearances and block service access.' },
-    { q: 'How do I keep the pad from settling?', a: 'Compacted gravel base, proper thickness, drainage slope, and (where needed) rebar. Settlement telegraphs vibration into the unit — photograph pre-pour.' },
-    { q: 'Does the pad need frost footings?', a: 'Residential standby pads are typically floating slabs, not footed foundations — but expansive clay, flood zones, and seismic/wind anchoring change the answer. Ask the inspector.' },
-  ]} />
-  <section id="conclusion"><h2>Conclusion</h2><p>Right pad, right clearances, HOA signoff before the concrete truck — placement disputes are the most avoidable delay in the project. Back to <a href="/installation/what-to-expect/">the install process</a>.</p></section>
+  <section id="noise-neighbors">
+    <h2>Noise, neighbors, and property rules</h2>
+    <p>Check local noise ordinances and HOA covenants before buying a unit or building an enclosure. Compare only model sound values with their stated distance, operating mode, load, and microphone direction; manufacturer ratings are not a prediction of sound at a property line. See our <a href="/brands/generac/">Generac</a> and <a href="/brands/kohler/">KOHLER</a> model pages for sourced conditions.</p>
+    <p>Do not build a wall, planting screen, or cover that conflicts with airflow, exhaust, fire, access, or warranty instructions. Have a professional evaluate any noise mitigation plan before installation.</p>
+  </section>
 </ArticleLayout>

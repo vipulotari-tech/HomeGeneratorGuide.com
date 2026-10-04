@@ -1,45 +1,33 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ArticleCard from '../components/article/ArticleCard.astro';
-import { MISSION, INDEPENDENCE } from '../config/site';
+import { MISSION, INDEPENDENCE, SITE_URL } from '../config/site';
 
-const schema = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: 'HomeGeneratorGuide',
-    url: 'https://homegeneratorguide.com/',
-    description: 'Independent guides to help US homeowners understand generator sizing, costs, installation, maintenance, and backup-power options.',
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'VideoObject',
-    name: 'How home standby power works (58 seconds)',
-    description: 'Outage to automatic backup: transfer switch timing, fuel options, maintenance, and CO safety for US homeowners.',
-    thumbnailUrl: 'https://homegeneratorguide.com/videos/home-explainer-poster.jpg',
-    contentUrl: 'https://homegeneratorguide.com/videos/home-explainer.mp4',
-    uploadDate: '2026-10-03',
-    duration: 'PT58S',
-  },
-];
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'HomeGeneratorGuide',
+  url: `${SITE_URL}/`,
+  description: 'Independent guides to help US homeowners understand generator sizing, costs, installation, maintenance, and backup-power options.',
+};
 
 const popular = [
-  { href: '/sizing/what-size-generator-do-i-need/', title: 'Generator Sizing Guide', description: 'Running vs starting watts, worked examples, and size ranges from 10 kW to 26 kW.', category: 'Sizing', readingTime: '14 min read' },
-  { href: '/cost/standby-generator-cost/', title: 'Standby Generator Cost Guide', description: 'Equipment, installation, permits, fuel, and maintenance — with honest 2026 estimate ranges.', category: 'Cost', readingTime: '12 min read' },
-  { href: '/comparisons/generac-vs-kohler/', title: 'Generac vs Kohler', description: 'Neutral head-to-head on warranty, noise, monitoring, dealers, and who each suits.', category: 'Comparisons', readingTime: '11 min read' },
-  { href: '/installation/what-to-expect/', title: 'Installation Guide', description: 'Site prep, transfer switch, gas and electrical scope, permits, and day-of timeline.', category: 'Installation', readingTime: '10 min read' },
-  { href: '/maintenance/generator-maintenance-checklist/', title: 'Maintenance Checklist', description: 'Owner checks vs pro service, exercise cycles, battery, oil, and storm prep.', category: 'Maintenance', readingTime: '9 min read' },
-  { href: '/guides/first-time-buyer-guide/', title: 'First-Time Buyer Guide', description: 'The five decisions every buyer makes, in order — fuel, size, switch, installer, service.', category: 'Buying Guides', readingTime: '10 min read' },
+  { href: '/sizing/what-size-generator-do-i-need/', title: 'Generator Sizing Guide', description: 'A static worksheet, generic chart ranges, and load questions to take to a qualified assessor.', category: 'Sizing', readingTime: '10 min read' },
+  { href: '/cost/standby-generator-cost/', title: 'Standby Generator Cost Guide', description: 'Separate published equipment prices, sourced cost estimates, and project-specific installation scope.', category: 'Cost', readingTime: '9 min read' },
+  { href: '/comparisons/generac-vs-kohler/', title: 'Generac vs. KOHLER: Current 26 kW Models', description: 'Compare cited ratings, sound conditions, package and price caveats, and manufacturer data gaps.', category: 'Comparisons', readingTime: '7 min read' },
+  { href: '/installation/what-to-expect/', title: 'Installation Guide', description: 'Project stages, utility coordination, permits, fuel scope, and questions for a local installer.', category: 'Installation', readingTime: '6 min read' },
+  { href: '/maintenance/generator-maintenance-checklist/', title: 'Maintenance Checklist', description: 'Manual-first guidance that separates owner checks from technician work.', category: 'Maintenance', readingTime: '7 min read' },
+  { href: '/guides/first-time-buyer-guide/', title: 'First-Time Buyer Guide', description: 'Five decision areas, from backed-up loads and fuel to proposals and ongoing ownership.', category: 'Buying Guides', readingTime: '9 min read' },
 ];
 
 const categories = [
-  { href: '/sizing/', t: 'Sizing', d: 'Match the generator to your real electrical loads.' },
-  { href: '/cost/', t: 'Cost', d: 'Budgets, quotes, and hidden-cost traps.' },
-  { href: '/brands/', t: 'Brands', d: 'Generac, Kohler, Briggs & Stratton, Champion.' },
-  { href: '/comparisons/', t: 'Comparisons', d: 'Side-by-side, situation-based verdicts.' },
-  { href: '/installation/', t: 'Installation', d: 'What licensed pros actually do on site.' },
-  { href: '/maintenance/', t: 'Maintenance', d: 'Keep it ready for the next outage.' },
-  { href: '/guides/', t: 'Buying Guides', d: 'Start here if you are brand new.' },
+  { href: '/sizing/', t: 'Sizing', d: 'Use equipment data and a static worksheet—not floor-area rules or automated recommendations.' },
+  { href: '/cost/', t: 'Cost', d: 'Understand source-scoped estimates, published prices, and quote scope.' },
+  { href: '/brands/', t: 'Brands', d: 'Model-specific research across five standby-generator manufacturers; coverage varies by model.' },
+  { href: '/comparisons/', t: 'Comparisons', d: 'Compare documented fit, packages, and tradeoffs—not a universal winner.' },
+  { href: '/installation/', t: 'Installation', d: 'Learn about project stages and prepare questions for qualified local installers.' },
+  { href: '/maintenance/', t: 'Maintenance', d: 'Start with the exact model manual; separate owner checks from technician tasks.' },
+  { href: '/guides/', t: 'Buying Guides', d: 'Build a decision checklist before discussing a property-specific design.' },
 ];
 ---
 <BaseLayout
@@ -53,7 +41,7 @@ const categories = [
     <div class="relative mx-auto grid max-w-6xl items-center gap-8 px-4 pb-14 pt-10 sm:px-6 lg:grid-cols-2 lg:pb-20 lg:pt-14">
       <div>
         <h1 class="text-balance text-4xl font-bold leading-tight tracking-tight sm:text-5xl">Home backup power, explained by someone on your side.</h1>
-        <p class="mt-4 max-w-xl text-lg leading-relaxed text-slate-200">Buying a standby generator is a big decision. You deserve clear answers before you spend a dollar. We'll help you understand what your home needs, what a quote should include, and what to ask your installer.</p>
+        <p class="mt-4 max-w-xl text-lg leading-relaxed text-slate-200">Buying a standby generator is a big decision. You deserve clear answers before you spend a dollar. We’ll help you gather the information a property-specific assessment needs, understand what a quote should cover, and prepare questions for an installer.</p>
         <div class="mt-8 flex flex-col gap-3 sm:flex-row">
           <a href="/guides/first-time-buyer-guide/" class="inline-flex min-h-[48px] items-center justify-center rounded-lg bg-accent px-6 font-semibold text-ink shadow-lg shadow-black/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-accent-dark">Start with the buyer's guide <span aria-hidden="true" class="ml-1">→</span></a>
           <a href="/cost/" class="inline-flex min-h-[48px] items-center justify-center rounded-lg border border-white/40 px-6 font-semibold text-white hover:bg-white/10">Understand the costs <span aria-hidden="true" class="ml-1">→</span></a>
@@ -128,27 +116,32 @@ const categories = [
     </div>
   </section>
 
-  <!-- How it works video -->
+  <!-- How a standby system works -->
   <section class="mx-auto max-w-6xl px-4 py-12 sm:px-6" aria-labelledby="how-it-works-heading">
-    <div class="grid items-center gap-8 lg:grid-cols-2">
+    <div class="grid items-start gap-8 lg:grid-cols-[0.9fr_1.1fr]">
       <div>
-        <h2 id="how-it-works-heading" class="text-3xl font-bold text-primary">See how standby power works (58 sec)</h2>
-        <p class="mt-3 leading-relaxed text-gray-600">Outage to automatic backup: how the transfer switch moves your home to generator power in about ten seconds, what it runs on, and the two habits that keep it ready.</p>
-        <ul class="mt-4 list-disc space-y-1 pl-5 text-[15px] text-gray-700">
-          <li>Automatic transfer — no cords, no refueling runs</li>
-          <li>Natural gas or propane, sized to your longest outage</li>
-          <li>Weekly self-test plus yearly service</li>
-        </ul>
-        <a href="/guides/first-time-buyer-guide/" class="mt-5 inline-flex min-h-[44px] items-center font-semibold text-primary hover:text-primary-dark">Start with the buyer guide <span aria-hidden="true" class="ml-1">→</span></a>
+        <h2 id="how-it-works-heading" class="text-3xl font-bold text-primary">How a standby system is arranged</h2>
+        <p class="mt-3 leading-relaxed text-gray-600">Compatible transfer equipment can move the designed load from utility power to generator power during an outage. The handoff may involve a brief interruption; it does not guarantee that every circuit will run.</p>
+        <p class="mt-3 leading-relaxed text-gray-600">Transfer timing, connected loads, fuel supply, and maintenance requirements depend on the exact equipment and site. Confirm them in the manufacturer’s manual and the installer’s written proposal.</p>
+        <a href="/comparisons/transfer-switch-vs-interlock/" class="mt-5 inline-flex min-h-[44px] items-center font-semibold text-primary hover:text-primary-dark">Understand transfer equipment <span aria-hidden="true" class="ml-1">→</span></a>
       </div>
-      <div>
-        <video controls preload="none" playsinline poster="/videos/home-explainer-poster.jpg" style="aspect-ratio:16/9" class="w-full rounded-xl border border-[#e5e7eb] bg-primary-dark" aria-label="Explainer video: how home standby power works">
-          <source src="/videos/home-explainer.mp4" type="video/mp4" />
-          <track kind="captions" srclang="en" label="English" src="/videos/home-explainer-captions.vtt" default />
-          Sorry, your browser cannot play this video. Read the <a href="/guides/first-time-buyer-guide/">buyer guide</a> instead.
-        </video>
-        <p class="mt-2 text-sm text-gray-500">Transcript: storm outages → automatic transfer in ~10 seconds → uninterrupted essentials → gas or propane fuel → yearly service → CO detectors on every level. Full captions included in the player.</p>
-      </div>
+      <ol class="grid gap-4 sm:grid-cols-3" aria-label="Basic standby power path">
+        <li class="rounded-xl border border-[#e5e7eb] bg-surface p-5">
+          <span class="text-xs font-bold uppercase tracking-wider text-accent-dark">01 · Utility</span>
+          <h3 class="mt-2 font-semibold text-primary">Normal service</h3>
+          <p class="mt-2 text-sm leading-relaxed text-gray-600">The home normally receives power from the utility supply.</p>
+        </li>
+        <li class="rounded-xl border border-[#e5e7eb] bg-surface p-5">
+          <span class="text-xs font-bold uppercase tracking-wider text-accent-dark">02 · Transfer</span>
+          <h3 class="mt-2 font-semibold text-primary">Approved equipment</h3>
+          <p class="mt-2 text-sm leading-relaxed text-gray-600">The installed transfer arrangement separates sources and follows the system’s controls.</p>
+        </li>
+        <li class="rounded-xl border border-[#e5e7eb] bg-surface p-5">
+          <span class="text-xs font-bold uppercase tracking-wider text-accent-dark">03 · Generator</span>
+          <h3 class="mt-2 font-semibold text-primary">Designed loads</h3>
+          <p class="mt-2 text-sm leading-relaxed text-gray-600">Backup power is limited by the generator, transfer equipment, and loads included in the design.</p>
+        </li>
+      </ol>
     </div>
   </section>
 
@@ -157,7 +150,7 @@ const categories = [
     <div class="mx-auto grid max-w-6xl gap-4 px-4 py-10 sm:grid-cols-2 sm:px-6 lg:grid-cols-4">
       {[
         ['In-Depth Generator Guides', 'Step-by-step sizing, cost, and ownership explainers.'],
-        ['Major Brands Covered', 'Generac, Kohler, Briggs & Stratton, Champion.'],
+        ['Selected Brands Researched', 'Generac, KOHLER, Cummins, Briggs & Stratton, and Champion; exact-model coverage varies.'],
         ['Independent Educational Content', 'No manufacturer affiliation; no paid rankings.'],
         ['US Homeowner Focused', 'Fuel, permits, and codes framed for US homes.'],
       ].map(([t, d]) => (
@@ -188,9 +181,9 @@ const categories = [
         {[
           ['Independent educational resource', 'We do not sell generators and take no payment for brand placement.'],
           ['No industry influence', 'We are not affiliated with generator brands, dealers, or installers. We never accept their advertising.'],
-          ['Specifications verified where possible', 'Capacities and warranties traced to manufacturer pages; estimates labeled as estimates.'],
-          ['Safety-conscious guidance', 'Electrical and gas work is pro-only. We explain what pros do so you can hire well.'],
-          ['A transparent editorial standard', 'Real author names, cited sources, and clear review status. Licensed electrician review is currently pending.'],
+          ['Manufacturer data with scope notes', 'Selected model ratings and warranties link to manufacturer pages; missing details are not guessed.'],
+          ['Safety-conscious guidance', 'Electrical, fuel, and placement requirements must be confirmed with qualified local professionals and authorities.'],
+          ['A transparent editorial standard', 'Researcher, sources, and limitations are named. No independent licensed review has been completed.'],
         ].map(([t, d]) => (
           <li class="rounded-lg bg-white/5 p-5">
             <p class="font-semibold text-orange-300">{t}</p>
@@ -205,7 +198,7 @@ const categories = [
   <!-- Categories -->
   <section class="border-y border-[#e5e7eb] bg-surface" aria-label="How we research">
     <div class="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-6">
-      <p class="text-sm leading-relaxed text-gray-600"><strong class="text-primary">How we research:</strong> manufacturer docs first, safety sources cross-checked, specs verified Oct 2026, prices labeled as estimates — by <a href="/author/vipul-otari/" class="underline decoration-accent underline-offset-4">Vipul Otari</a>.</p>
+      <p class="text-sm leading-relaxed text-gray-600"><strong class="text-primary">How we research:</strong> manufacturer and safety sources are linked; model facts, prices, estimates, and limitations are identified by scope — research by <a href="/author/vipul-otari/" class="underline decoration-accent underline-offset-4">Vipul Otari</a>.</p>
       <a href="/editorial-policy/" class="inline-flex min-h-[44px] shrink-0 items-center text-sm font-semibold text-primary hover:text-primary-dark">Editorial policy →</a>
     </div>
   </section>
@@ -226,9 +219,9 @@ const categories = [
   <section class="mx-auto max-w-6xl px-4 pb-14 sm:px-6" aria-labelledby="latest-heading">
     <h2 id="latest-heading" class="text-3xl font-bold text-primary">Latest guides</h2>
     <div class="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-      <ArticleCard href="/sizing/what-size-generator-do-i-need/" title="What Size Generator Do I Need?" description="The complete sizing walkthrough with a worked 2,000 sq ft example." category="Sizing" />
-      <ArticleCard href="/cost/standby-generator-cost/" title="Standby Generator Cost (2026)" description="Installed ranges, line items, and how to compare quotes fairly." category="Cost" />
-      <ArticleCard href="/brands/generac/" title="Generac Standby Generators" description="Guardian lineup, warranty, monitoring, and honest limitations." category="Brands" />
+      <ArticleCard href="/sizing/what-size-generator-do-i-need/" title="What Size Generator Do I Need?" description="Load-based planning, generic manufacturer-chart ranges, and a static worksheet—not an automatic recommendation." category="Sizing" />
+      <ArticleCard href="/cost/standby-generator-cost/" title="Standby Generator Cost (2026)" description="Source-scoped equipment prices and cost estimates, plus a framework for comparing installation proposals." category="Cost" />
+      <ArticleCard href="/brands/generac/" title="Generac Standby Generators" description="Selected-model ratings, fuel use, sound conditions, published price, and source limitations." category="Brands" />
     </div>
   </section>
 </BaseLayout>

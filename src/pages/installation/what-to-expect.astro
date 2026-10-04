@@ -1,106 +1,103 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import AlertBox from '../../components/ui/AlertBox.astro';
-import ComparisonTable from '../../components/ui/ComparisonTable.astro';
-import FAQSection from '../../components/ui/FAQSection.astro';
-import { clearances } from '../../data/transfer-switches';
 
 const toc = [
-  { id: 'survey', label: 'Survey & quote' },
-  { id: 'permits', label: 'Permits & approvals' },
-  { id: 'site', label: 'Pad & placement' },
-  { id: 'gas', label: 'Gas scope to verify' },
-  { id: 'electrical', label: 'Electrical scope to verify' },
-  { id: 'install', label: 'Install days' },
-  { id: 'startup', label: 'Commissioning & walkthrough' },
-  { id: 'timeline', label: 'Full timeline (4–12 weeks)' },
-  { id: 'redflags', label: 'Red flags' },
-  { id: 'faq', label: 'FAQ' },
+  { id: 'assessment', label: 'Site and load assessment' },
+  { id: 'proposal', label: 'Written proposal' },
+  { id: 'approvals', label: 'Permits and approvals' },
+  { id: 'preparation', label: 'Site preparation and connections' },
+  { id: 'commissioning', label: 'Commissioning and handoff' },
+  { id: 'timeline', label: 'Project timing' },
+  { id: 'checklist', label: 'Homeowner checklist' },
 ];
 ---
 <ArticleLayout
-  title="Standby Generator Installation: What to Expect Day by Day"
-  description="Standby installation explained: survey checklist, pad sizes, NFPA 37 clearances, gas and wire sizing to verify, commissioning tests, permits, and 4–12 week timeline."
-  category="Installation" categoryHref="/installation/" updated="2026-10-03" image="/images/install-crew-setting-unit.webp" readingTime="14 min read" toc={toc}
+  title="Standby Generator Installation: What Homeowners Can Expect"
+  description="A practical, safety-first overview of professional standby-generator assessment, quote, permits, site work, electrical/fuel connections, commissioning, and homeowner handoff."
+  category="Installation" categoryHref="/installation/" updated="2026-10-04" verified="2026-10-04" readingTime="7 min read" toc={toc}
+  takeaways={[
+    'A site-specific load assessment, exact model/manual review, and written installation scope should come before purchase.',
+    'Permits, utilities, clearances, and local approvals vary; do not assume one national schedule or checklist applies everywhere.',
+    'Startup, transfer testing, documentation, and owner instruction belong in the handoff plan.',
+  ]}
   sources={[
-    { label: 'Generac Support — Owner Resources', href: 'https://support.generac.com/', type: 'Technical manual', verified: 'Oct 2026' },
-    { label: 'Generac — Find a Dealer', href: 'https://www.generac.com/dealers-installers/', type: 'Manufacturer', verified: 'Oct 2026' },
-    { label: 'NFPA 70 — National Electrical Code', href: 'https://www.nfpa.org/codes-and-standards/nfpa-70-standard-development/70', type: 'Government', verified: 'Oct 2026' },
+    { label: 'Generac: home standby installation process and cost overview', href: 'https://www.generac.com/resources/home-management/backup-generator-installation/', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'Generac G0073270 official installation manual', href: 'https://productmanuals.generac.com/api/manualfiles/G0073270/A0004332575/0', type: 'Technical manual', verified: '2026-10-04' },
+    { label: 'Generac G0073270 official specification sheet', href: 'https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'KOHLER/Rehlko 26RCA official installation manual (TP-7091)', href: 'https://techcomm.rehlko.com/techcomm/pdf/tp7091.pdf', type: 'Technical manual', verified: '2026-10-04' },
   ]}
   related={[
-    { href: '/installation/generator-pad-and-placement/', title: 'Pad & Placement Guide', description: 'Pads, clearances, HOA, noise.', category: 'Installation' },
-    { href: '/cost/transfer-switch-cost/', title: 'Transfer Switch Guide', description: 'MTS vs ATS vs interlock.', category: 'Cost' },
-    { href: '/maintenance/generator-maintenance-checklist/', title: 'Maintenance Checklist', description: 'After install: keep it ready.', category: 'Maintenance' },
+    { href: '/installation/generator-pad-and-placement/', title: 'Generator placement and pad', description: 'Model-specific site requirements and local approval.', category: 'Installation' },
+    { href: '/cost/installation-cost-breakdown/', title: 'Installation cost breakdown', description: 'Compare site and trade scope in written proposals.', category: 'Cost' },
+    { href: '/maintenance/generator-maintenance-checklist/', title: 'Maintenance checklist', description: 'Follow the equipment’s required service schedule.', category: 'Maintenance' },
   ]}
-  prev={{ href: '/comparisons/transfer-switch-vs-interlock/', label: 'Switch vs Interlock' }}
-  next={{ href: '/installation/generator-pad-and-placement/', label: 'Pad & Placement Guide' }}
 >
-  <AlertBox type="warning" title="Licensed pros only">Standby installation involves line-voltage wiring, gas piping, and permits. This guide explains what professionals do so you can hire and verify — never DIY panel, transfer-switch, or gas work.</AlertBox>
+  <section id="assessment">
+    <h2>1. Site and load assessment</h2>
+    <p>A qualified local professional should review which loads the homeowner expects to back up, the exact generator/fuel options, the electrical service and panel, available fuel, potential equipment locations, and applicable local requirements. Bring photographs and model numbers for HVAC, pumps, and other large loads. Square footage alone is not enough information for a project design.</p>
+    <p>The professional should confirm the manufacturer’s current installation manual and the fuel and electrical conditions required for the selected equipment. This publication has not surveyed a property or produced an electrical load calculation.</p>
+  </section>
 
-    <figure class="not-prose my-6">
-    <img src="/images/install-crew-setting-unit.webp" alt="Installers lowering a standby generator onto a concrete pad" width="1536" height="1024" loading="lazy" decoding="async" class="w-full rounded-xl border border-[#e5e7eb]" />
-    <figcaption class="mt-2 text-sm text-gray-500">Illustrative photo.</figcaption>
-  </figure>
-<section id="survey"><h2>1. Survey & quote: the 7-point checklist</h2>
-  <p>A good survey takes 45–90 minutes. Verify the bidder checks: (1) panel amperage, space, age/condition; (2) gas meter capacity, pipe size, run distance; (3) placement against clearance rules; (4) load calculation with LRA/surge detail; (5) terrain, drainage, delivery path; (6) underground utilities before trenching; (7) HOA/zoning setbacks and noise rules. Square-footage-only bids without a load list are disqualifying.</p></section>
+  <section id="proposal">
+    <h2>2. Ask for a complete written proposal</h2>
+    <p>Before accepting a proposal, check that it identifies exact equipment and makes the installation boundaries clear:</p>
+    <ul>
+      <li>Generator model, fuel, rating, transfer switch/ATS model, panel/service arrangement, and any load-management accessories.</li>
+      <li>Which circuits are included, which loads may be shed, and how the system is expected to operate.</li>
+      <li>Fuel and electrical connection scope, routes, meter/regulator or panel work, and any allowances.</li>
+      <li>Site preparation/base, restoration, permits, inspections, utility coordination, commissioning, and owner orientation.</li>
+      <li>Written exclusions, warranty responsibility, future service provider, schedule, payment milestones, and change-order process.</li>
+    </ul>
+    <p>Generac describes its own dealer consultation as covering placement, installation-site requirements, system requirements, fuel source/connection, and property restrictions; exact scope varies by manufacturer and project.</p>
+  </section>
 
-  <section id="permits"><h2>2. Permits & approvals (1–3 weeks)</h2>
-  <p>Expect three permits: electrical ($100–$400), gas/mechanical ($100–$300), building/zoning ($150–$500) — $500–$1,500 total typical, higher in CA/NY/coastal zones. HOA architectural review adds 1–3 weeks. Inspection sequence: pad → underground gas (before backfill) → rough electrical → fuel pressure test → final after startup. Unpermitted installs risk $500–$5,000+ fines, stop-work orders, forced redo, voided insurance, failed resale inspection, and utility refusal — plus criminal/civil liability if backfeed ever injures a line worker.</p></section>
+  <section id="approvals">
+    <h2>3. Confirm permits and approvals</h2>
+    <p>Permit types and required approvals vary with the property, equipment, utility, and jurisdiction. Ask the contractor which permits and inspections are required, who obtains them, which edition/local amendments apply, and whether HOA/property approvals or utility coordination are needed.</p>
+    <p>Do not accept “no permit is needed” without confirmation from the relevant local authority. Do not start electrical or fuel-system work until the required approvals are in place.</p>
+  </section>
 
-  <section id="site"><h2>3. Pad & placement</h2>
-  <ComparisonTable caption="Pad sizes by generator" headers={['Generator', 'Min pad', 'Thickness']} rows={[
-    ['10–14 kW', "3' × 4' (36×48 in)", '4 in'],
-    ['16–22 kW', "4' × 5' (48×60 in)", '4 in (rebar advised)'],
-    ['24–26 kW', "4' × 6' (48×72 in)", '4–6 in'],
-    ['30–48 kW liquid', "5' × 7'+", '6 in reinforced'],
-  ]} />
-  <p class="mt-3">Pad extends 4+ in beyond the footprint, level within 1/4 in, sloping away from the house. Pre-cast composite pads skip cure time; poured pads need 3–7 days. Clearance minimums (NFPA 37 simplified):</p>
-  <ComparisonTable caption="Placement clearances" headers={['From', 'Minimum', 'Basis']} rows={clearances.map((c) => [c.from, c.distance, c.basis])} />
-  <p class="mt-3">Local codes and the manual can demand more (e.g., 10 ft from openings in some CA jurisdictions). Full placement detail: <a href="/installation/generator-pad-and-placement/">pad & placement guide</a>.</p></section>
+  <section id="preparation">
+    <h2>4. Site preparation, equipment setting, and connections</h2>
+    <p>The exact installation sequence depends on the equipment and site. The work may include preparing an approved mounting base, placing the generator, routing fuel and electrical connections, installing the specified transfer equipment, and completing required inspections. A professional must follow the model’s current manual for clearances, exhaust, ventilation, access, fuel pressure/flow, wiring, and mounting.</p>
+    <figure class="not-prose my-6 rounded-xl border border-[#d9e0ea] bg-[#f7f9fc] p-4 sm:p-6">
+      <svg viewBox="0 0 800 220" role="img" aria-labelledby="install-flow-title install-flow-desc" class="h-auto w-full">
+        <title id="install-flow-title">Standby generator installation planning sequence</title>
+        <desc id="install-flow-desc">Assessment and equipment selection lead to written scope and approvals, then professional site work and connections, then inspection, commissioning, and owner handoff.</desc>
+        <defs><marker id="arrow-install" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#1b3a6b" /></marker></defs>
+        <g font-family="system-ui, sans-serif" text-anchor="middle">
+          <rect x="10" y="42" width="174" height="116" rx="14" fill="#edf3fb" stroke="#1b3a6b" stroke-width="2"/><text x="97" y="82" font-size="16" font-weight="700" fill="#1b3a6b">Assess</text><text x="97" y="108" font-size="13" fill="#27364d">loads, fuel, panel,</text><text x="97" y="128" font-size="13" fill="#27364d">site and model</text>
+          <rect x="210" y="42" width="174" height="116" rx="14" fill="#fff7ed" stroke="#d97706" stroke-width="2"/><text x="297" y="82" font-size="16" font-weight="700" fill="#8a4300">Document</text><text x="297" y="108" font-size="13" fill="#27364d">written scope, permits,</text><text x="297" y="128" font-size="13" fill="#27364d">utility / property approvals</text>
+          <rect x="410" y="42" width="174" height="116" rx="14" fill="#fff7ed" stroke="#d97706" stroke-width="2"/><text x="497" y="82" font-size="16" font-weight="700" fill="#8a4300">Install</text><text x="497" y="108" font-size="13" fill="#27364d">qualified electrical,</text><text x="497" y="128" font-size="13" fill="#27364d">fuel and site work</text>
+          <rect x="610" y="42" width="174" height="116" rx="14" fill="#e9f5ee" stroke="#237a4b" stroke-width="2"/><text x="697" y="82" font-size="16" font-weight="700" fill="#14532d">Verify & hand off</text><text x="697" y="108" font-size="13" fill="#27364d">inspection, test, records</text><text x="697" y="128" font-size="13" fill="#27364d">and owner instructions</text>
+          <line x1="184" y1="100" x2="205" y2="100" stroke="#1b3a6b" stroke-width="2" marker-end="url(#arrow-install)"/><line x1="384" y1="100" x2="405" y2="100" stroke="#1b3a6b" stroke-width="2" marker-end="url(#arrow-install)"/><line x1="584" y1="100" x2="605" y2="100" stroke="#1b3a6b" stroke-width="2" marker-end="url(#arrow-install)"/>
+          <text x="400" y="196" font-size="14" fill="#374151">Local sequence, work time, and approvals depend on the project.</text>
+        </g>
+      </svg>
+      <figcaption class="mt-3 text-sm text-gray-600">Original editorial diagram; it does not describe wiring or fuel-line installation instructions.</figcaption>
+    </figure>
+  </section>
 
-  <section id="gas"><h2>4. Gas scope to verify (pro work — your checklist)</h2>
-  <ComparisonTable caption="Natural gas pipe sizing signals" headers={['Generator', 'BTU/hr', '≤20 ft', '20–50 ft']} rows={[
-    ['10–14 kW', '150,000–180,000', '3/4 in', '1 in'],
-    ['16–22 kW', '200,000–250,000', '1 in', '1–1¼ in'],
-    ['24–26 kW', '250,000–300,000', '1–1¼ in', '1¼–1½ in'],
-  ]} />
-  <ul><li>Propane runs smaller pipe at 11 in WC second-stage pressure (1/2–1 in typical ≤50 ft) but needs tank sizing for your outage horizon; second-stage regulator ≥5 ft from the unit.</li><li>Confirm: meter capacity for total load, pressure test 10–15 PSI × 15 min with zero drop, manometer check at full load (drop ≤0.5 in WC), sediment trap + accessible shutoff.</li><li>Underground propane tanks run $4,000–$6,000 installed; above-ground $2,000–$4,000 with pad and lines; meter upgrades $500–$1,500.</li><li>Gas work requires a licensed plumber/gas fitter and permit in essentially all states — prohibited for DIY in TX, CA, FL, NY, IL, MA among others.</li></ul></section>
+  <section id="commissioning">
+    <h2>5. Inspection, commissioning, and handoff</h2>
+    <p>Before the contractor leaves, confirm the required authority inspection has occurred or has a documented schedule. Ask the installer to explain the correct operating modes and demonstrate the system’s manufacturer-prescribed startup/transfer test.</p>
+    <p>Request the final model/serial details, permits/inspection records, manuals, warranty and registration information, operating limits, maintenance schedule, service contact, and instructions for alarms or shutdowns. Keep the written load/transfer configuration and any approved changes with the records.</p>
+  </section>
 
-  <section id="electrical"><h2>5. Electrical scope to verify</h2>
-  <ul><li>ATS mounted adjacent to the panel; feeders 2/0–3/0 AWG class for 200 A services (100 A: 3 AWG Cu / 1 AWG Al; 200 A: 2/0 Cu / 4/0 Al typical); conduit 1–2 in by distance.</li><li>Panel must qualify: 100 A minimum service (7–14 kW) or 200 A (16–26 kW); space for the ATS; no fuse boxes or Federal Pacific/Zinsco panels (replace first, $2,000–$4,000); no rust, burn damage, or loose gear. Upgrades: 100→200 A $1,500–$3,000; subpanel for essentials $500–$1,500.</li><li>Grounding electrode conductor per NEC 250; 12/24 V control wiring for auto-start; every circuit, switch, and disconnect labeled per NEC 702.</li><li>Power interruptions are brief and scheduled — demand windows in writing.</li></ul>
-  <svg viewBox="0 0 560 120" class="my-4 w-full rounded-lg border border-[#e5e7eb] bg-white" role="img" aria-label="Diagram: generator to transfer switch to home panel"><title>Standby power path</title><rect x="20" y="35" width="130" height="50" rx="8" fill="#1B3A6B"/><text x="30" y="55" font-size="12" fill="#fff" font-family="sans-serif">Generator</text><text x="30" y="72" font-size="11" fill="#cbd5e1" font-family="sans-serif">propane / gas</text><rect x="215" y="35" width="130" height="50" rx="8" fill="#F5821F"/><text x="225" y="55" font-size="12" fill="#fff" font-family="sans-serif">Transfer switch</text><text x="225" y="72" font-size="11" fill="#fff" font-family="sans-serif">auto senses</text><rect x="410" y="35" width="130" height="50" rx="8" fill="#1B3A6B"/><text x="420" y="55" font-size="12" fill="#fff" font-family="sans-serif">Home panel</text><text x="420" y="72" font-size="11" fill="#cbd5e1" font-family="sans-serif">backed circuits</text><path d="M150 60 h55 M345 60 h55" stroke="#1B3A6B" stroke-width="3"/></svg></section>
+  <section id="timeline">
+    <h2>Project timing depends on preparation and approvals</h2>
+    <p>Generac says physical installation usually takes hours, while preparation may take multiple weeks; dealer availability, site preparation, gas work, and permits affect timing. That is a manufacturer’s general description—not a guaranteed schedule for another brand, contractor, or jurisdiction.</p>
+    <p>Ask for a written schedule that distinguishes equipment availability, permit/utility approval, site preparation, on-site work, inspection, and commissioning. Storm-related demand or local backlogs may change the dates.</p>
+  </section>
 
-  <section id="install"><h2>6. Install days (typically 1–2; 3–5 liquid-cooled)</h2>
-  <ul><li><strong>Day 1:</strong> unit set, ATS mount, conduit + gas rough-in, panel work with utility-coordinated disconnects.</li><li><strong>Day 2:</strong> terminations, grounding/bonding, gas pressure test, control wiring, load-module programming.</li><li>Keep kids/pets clear; crews need panel + meter + pad access simultaneously.</li></ul></section>
-
-  <section id="startup"><h2>7. Commissioning, inspection & walkthrough</h2>
-  <p>Tech commissions with a 7-point sequence: visual/torque check → gas pressure test → transfer operation (no arcing, correct voltage) → 50–100% load test (voltage/frequency stable) → simulated-outage auto-start (10–30 s) → safety-shutdown alarms (low oil, high temp, overcrank) → inspector signoff. Your walkthrough must cover: Ready/Auto status, alert meanings, exercise schedule, propane reordering, filter/battery schedule, service number, and warranty registration. Leave with paperwork, not handshakes.</p></section>
-
-  <section id="timeline"><h2>Full timeline: 4–12 weeks, mostly waiting</h2>
-  <ComparisonTable caption="Project timeline" headers={['Phase', 'Duration']} rows={[
-    ['Survey & load calc', '1–3 days'],
-    ['Permits (+HOA)', '1–3 weeks'],
-    ['Equipment order', '1–2 weeks (overlaps permits; longer pre-hurricane-season)'],
-    ['Pad + cure', '1–2 days work + 3–7 days cure (pre-cast skips cure)'],
-    ['Physical install', '1–2 days air-cooled; 3–5 liquid-cooled'],
-    ['Inspection', '3–7 days after install'],
-  ]} />
-  <p class="mt-3">Delays are almost always permits and equipment — book off-peak, submit HOA early, and get written install dates in storm season.</p></section>
-
-  <section id="redflags"><h2>Red flags that cancel a contractor</h2>
-  <ul><li>No license numbers; "permits not needed here" without documentation.</li><li>Refusal to itemize switch/gas/panel scope or show the load calculation.</li><li>Cash-only, no written warranty registration, "we install, others maintain."</li><li>Skipping transfer test, pressure test, or exercise setup.</li></ul></section>
-
-  <section id="faq"><span class="sr-only">FAQ anchor</span></section>
-  <FAQSection items={[
-    { q: 'How long does standby installation take?', a: 'On-site work 1–2 days for straightforward air-cooled jobs; contract-to-commissioning 4–12 weeks with permits, equipment, and inspections. Storm-season backlogs extend scheduling.' },
-    { q: 'Will my power be off during install?', a: 'Briefly and on schedule — panel cutovers need coordinated disconnects, usually minutes to hours with notice. Ask for windows in writing.' },
-    { q: 'Can a generator go anywhere in the yard?', a: 'No — NFPA 37 minimums (18 in combustibles, 5 ft openings/vents, 3 ft meters/service) plus local zoning, noise rules, flood elevation, and fuel/electrical run economics constrain placement. The installer proposes; the inspector disposes.' },
-    { q: 'Can I install a standby generator myself?', a: 'No — panel, transfer-switch, and gas work require licensed professionals under permit in essentially all US jurisdictions. Homeowners may pour the concrete pad (with building permit where required) and handle landscaping/screening. Everything past that is pro scope.' },
-    { q: 'Who pulls the permit — me or the contractor?', a: 'The contractor, as a rule — rebut any bid that leaves permits to you. Confirm permit numbers (electrical, gas, building) before work starts, and never accept "permits not needed here" without documentation.' },
-    { q: 'What happens if I skip permits?', a: 'Fines ($500–$5,000+), stop-work orders, forced redo at your expense, voided insurance claims, failed resale inspections, and possible utility disconnection. Permitted work is the cheapest work.' },
-  
-    { q: 'What should I ask a prospective installer?', a: 'License numbers, a written load calculation, permit plan, gas scope in linear feet, panel work details, transfer-test and startup inclusion, warranty registration, and storm-season response times.' },
-    { q: 'How do I prepare my yard for install day?', a: 'Clear crew access to the panel, meter, and pad site; keep kids and pets inside; photograph the pre-work state. The crew handles disconnection windows — get them in writing.' },
-  ]} />
-  <section id="conclusion"><h2>Conclusion</h2><p>Good installs are boring: surveyed, permitted, set level, piped and wired to size, pressure-tested, transfer-tested, and walked through. Demand all of it. Next: <a href="/installation/generator-pad-and-placement/">pad & placement deep dive</a>, then <a href="/maintenance/generator-maintenance-checklist/">maintain it</a>.</p></section>
+  <section id="checklist">
+    <h2>Homeowner checklist</h2>
+    <ul>
+      <li>Keep access clear to the panel, fuel equipment, and planned generator site during scheduled work.</li>
+      <li>Confirm pets/children remain clear of the work area and identify any temporary utility interruption in advance.</li>
+      <li>Obtain written confirmation of each permit/inspection responsibility.</li>
+      <li>Do not operate the generator until it has been installed, inspected as required, and commissioned according to the manufacturer instructions.</li>
+      <li>Save the final documents and set reminders based on the exact manufacturer maintenance schedule.</li>
+    </ul>
+  </section>
 </ArticleLayout>

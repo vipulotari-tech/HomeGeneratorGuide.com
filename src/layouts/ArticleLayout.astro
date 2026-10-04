@@ -11,13 +11,13 @@ import AdUnit from '../components/ads/AdUnit.astro';
 
 interface TocItem { id: string; label: string; }
 interface Related { href: string; title: string; description: string; category?: string; }
-interface Source { label: string; href: string; type?: 'Manufacturer' | 'Government' | 'Safety authority' | 'Technical manual' | 'Industry'; verified?: string; }
+interface Source { label: string; href: string; type?: 'Manufacturer' | 'Government' | 'Safety authority' | 'Safety organization' | 'Technical manual' | 'Standards organization' | 'Industry'; verified?: string; }
 interface Props {
   title: string;
   description: string;
   category: string;
   categoryHref: string;
-  updated: string;
+  updated?: string;
   readingTime: string;
   toc: TocItem[];
   related?: Related[];
@@ -30,7 +30,7 @@ interface Props {
   verified?: string;
   showMethod?: boolean;
 }
-const { title, description, category, categoryHref, updated, readingTime, toc, related = [], prev, next, takeaways = [], sources = [], image, published = '2026-10-03', verified = '2026-10-03', showMethod = true } = Astro.props;
+const { title, description, category, categoryHref, updated, readingTime, toc, related = [], prev, next, takeaways = [], sources = [], image, published, verified, showMethod = true } = Astro.props;
 const site = SITE_URL;
 const url = `${site}${Astro.url.pathname}`;
 const fmtDate = (iso: string) =>
@@ -44,7 +44,7 @@ const breadcrumbSchema = {
     { '@type': 'ListItem', position: 3, name: title, item: url },
   ],
 };
-const articleSchema = {
+const articleSchema: Record<string, unknown> = {
   '@context': 'https://schema.org',
   '@type': 'Article',
   headline: title,
@@ -56,13 +56,11 @@ const articleSchema = {
     url: site,
     logo: { '@type': 'ImageObject', url: `${site}/logo.svg` },
   },
-  datePublished: published,
-  dateModified: updated,
   mainEntityOfPage: url,
 };
-if (image) {
-  (articleSchema as Record<string, unknown>).image = `${site}${image}`;
-}
+if (published) articleSchema.datePublished = published;
+if (updated) articleSchema.dateModified = updated;
+if (image) articleSchema.image = `${site}${image}`;
 // Deliberately no FAQPage/HowTo schema: FAQ rich results are restricted and
 // HowTo has strict eligibility — plain Article + Breadcrumb only.
 ---
@@ -76,17 +74,17 @@ if (image) {
         <p class="mt-3 text-lg leading-relaxed text-gray-600">{description}</p>
         <p class="mt-3 text-sm leading-relaxed text-gray-500">
           Researched by <a href={AUTHOR.url} class="font-medium text-primary underline decoration-accent underline-offset-4">{AUTHOR.name}</a>
-          <span aria-hidden="true"> · </span>Published <time datetime={published}>{fmtDate(published)}</time>
-          <span aria-hidden="true"> · </span>Updated <time datetime={updated}>{fmtDate(updated)}</time>
-          <span aria-hidden="true"> · </span>Specs verified <time datetime={verified}>{fmtDate(verified)}</time>
-          {sources.length > 0 && (<><span aria-hidden="true"> · </span>{sources.length} primary sources</>)}
+          {published && <><span aria-hidden="true"> · </span>Published <time datetime={published}>{fmtDate(published)}</time></>}
+          {updated && <><span aria-hidden="true"> · </span>Updated <time datetime={updated}>{fmtDate(updated)}</time></>}
+          {verified && <><span aria-hidden="true"> · </span>Source links checked <time datetime={verified}>{fmtDate(verified)}</time></>}
+          {sources.length > 0 && (<><span aria-hidden="true"> · </span>{sources.length} linked sources</>)}
           <span aria-hidden="true"> · </span>{readingTime}
         </p>
         <p class="mt-4 rounded-lg border-l-4 border-primary bg-surface px-4 py-3 text-sm text-ink">
           <strong>{REVIEW_STATUS}.</strong> This article has not yet completed documented licensed review.
           <a href="/editorial-policy/#expert-review" class="font-semibold text-primary underline underline-offset-4">See our review standard.</a>
         </p>
-        {showMethod && (<MethodBox verified={fmtDate(verified)} />)}
+        {showMethod && (<MethodBox verified={verified ? fmtDate(verified) : undefined} />)}
         {takeaways.length > 0 && (
           <section aria-label="Key takeaways" class="mt-6 rounded-xl border border-orange-200 bg-orange-50/60 p-5">
             <p class="text-sm font-semibold uppercase tracking-wider text-primary">Key takeaways</p>
@@ -98,7 +96,8 @@ if (image) {
         <div class="mt-6 lg:hidden">
           <TableOfContents items={toc} />
         </div>
-        <div class="mt-6"><AdUnit placement="article-after-intro" minHeight={200} /></div>        <div class="prose-hgg mt-6">
+        <div class="mt-6"><AdUnit placement="article-after-intro" minHeight={200} /></div>
+        <div class="prose-hgg mt-6">
           <slot />
         </div>
         <DataDisclaimer />
@@ -109,13 +108,13 @@ if (image) {
             <ul class="mt-3 space-y-2 text-[15px] text-gray-700">
               {sources.map((s) => (
                 <li class="flex flex-wrap items-baseline gap-x-2">
-                  <a href={s.href} class="underline decoration-accent underline-offset-4">{s.label}</a>
+                  <a href={s.href} rel="external noopener noreferrer" class="underline decoration-accent underline-offset-4">{s.label}</a>
                   {s.type && <span class="rounded-full bg-primary/5 px-2 py-0.5 text-xs font-medium text-primary">{s.type}</span>}
-                  {s.verified && <span class="text-xs text-gray-500">verified {s.verified}</span>}
+                  {s.verified && <span class="text-xs text-gray-500">accessed {s.verified}</span>}
                 </li>
               ))}
             </ul>
-            <p class="mt-2 text-sm text-gray-500">Each source is typed by what it evidences. Accessed October 2026 — verify current pages before purchase.</p>
+            <p class="mt-2 text-sm text-gray-500">Source pages and product details can change; check the linked manufacturer or authority material before making a decision.</p>
           </section>
         )}
         <AuthorBox />

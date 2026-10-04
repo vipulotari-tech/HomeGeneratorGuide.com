@@ -1,20 +1,15 @@
 import type { APIRoute } from 'astro';
-import { SITE_URL } from '../config/site';
+import { IS_INDEXABLE, SITE_URL } from '../config/site';
 
-// Server-rendered (the site's only dynamic route) so Astro bundles the
-// edge middleware. Apex + www: crawlable with sitemap reference.
-// Everywhere else (staging, previews, localhost): fully disallowed.
-export const prerender = false;
+// A separate static build is produced for production and staging. Staging is
+// explicitly blocked and carries noindex/nofollow metadata on every HTML page;
+// production is crawlable and advertises its own sitemap only.
+export const prerender = true;
 
-const APEX_HOST = 'homegeneratorguide.com';
+const robotsText = IS_INDEXABLE
+  ? `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}/sitemap-index.xml\n`
+  : 'User-agent: *\nDisallow: /\n';
 
-export const GET: APIRoute = ({ url }) => {
-  const production =
-    url.hostname === APEX_HOST || url.hostname === `www.${APEX_HOST}`;
-  const body = production
-    ? `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}/sitemap-index.xml\n`
-    : `User-agent: *\nDisallow: /\n`;
-  return new Response(body, {
-    headers: { 'Content-Type': 'text/plain; charset=utf-8' },
-  });
-};
+export const GET: APIRoute = () => new Response(robotsText, {
+  headers: { 'Content-Type': 'text/plain; charset=utf-8' },
+});

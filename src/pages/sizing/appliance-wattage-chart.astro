@@ -1,73 +1,87 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import FAQSection from '../../components/ui/FAQSection.astro';
-import { appliances } from '../../data/appliance-wattage';
+import { APPLIANCE_WATTAGE_SOURCE, appliances } from '../../data/appliance-wattage';
 
 const toc = [
   { id: 'how-to-use', label: 'How to use this chart' },
-  { id: 'chart', label: 'Full wattage chart' },
-  { id: 'example', label: '30-second example' },
-  { id: 'faq', label: 'FAQ' },
+  { id: 'cooling', label: 'Cooling and HVAC' },
+  { id: 'pumps', label: 'Pumps and water' },
+  { id: 'kitchen', label: 'Kitchen and laundry' },
+  { id: 'other', label: 'Lights, electronics, and medical' },
+  { id: 'worksheet', label: 'Printable load worksheet' },
 ];
-
-const categories = [...new Set(appliances.map((a) => a.category))];
+const groups = [
+  { id: 'cooling', title: 'Cooling and HVAC', categories: ['Cooling', 'Heating'] },
+  { id: 'pumps', title: 'Pumps and water', categories: ['Pumps', 'Water'] },
+  { id: 'kitchen', title: 'Kitchen and laundry', categories: ['Kitchen', 'Laundry'] },
+  { id: 'other', title: 'Lighting, electronics, and medical devices', categories: ['Lighting and electronics', 'Medical'] },
+];
+const formatRange = (value: { minimum: number; maximum: number }) =>
+  `${value.minimum.toLocaleString('en-US')}–${value.maximum.toLocaleString('en-US')} W`;
 ---
 <ArticleLayout
-  title="Appliance Wattage Chart: Running & Starting Watts"
-  description="Full appliance wattage chart: running and starting watts for HVAC, kitchen, well pumps, laundry, electronics, EV, and medical devices — with source notes."
-  category="Sizing" categoryHref="/sizing/" updated="2026-10-03" readingTime="8 min read" toc={toc}
+  title="Home Appliance Wattage Chart: Running & Starting Ranges"
+  description="A static reference chart of manufacturer-published running and starting watt ranges for common household loads, with scope caveats and a printable list for professional assessment."
+  category="Sizing" categoryHref="/sizing/" updated="2026-10-04" verified={APPLIANCE_WATTAGE_SOURCE.checkedOn} readingTime="8 min read" toc={toc}
+  takeaways={[
+    'Every value is an approximate manufacturer-published reference range—not a measurement of your appliance or a generator recommendation.',
+    'Check the actual nameplate/manual, especially for motors, air conditioners, pumps, electric heating, and EV charging.',
+    'Do not simply add every starting number: starting demand is momentary and the overlap of running loads and a motor start matters.',
+  ]}
   sources={[
-    { label: 'DOE Energy Saver', href: 'https://www.energy.gov/energysaver', type: 'Government', verified: 'Oct 2026' },
-    { label: 'U.S. EIA — Electricity Data Browser', href: 'https://www.eia.gov/electricity/', type: 'Government', verified: 'Oct 2026' },
-    { label: 'Generac — Residential Standby Lineup', href: 'https://www.generac.com/residential-products/standby-generators/', type: 'Manufacturer', verified: 'Oct 2026' },
+    { label: APPLIANCE_WATTAGE_SOURCE.label, href: APPLIANCE_WATTAGE_SOURCE.url, type: 'Manufacturer', verified: APPLIANCE_WATTAGE_SOURCE.checkedOn },
   ]}
   related={[
-    { href: '/sizing/what-size-generator-do-i-need/', title: 'What Size Generator Do I Need?', description: 'The full sizing method.', category: 'Sizing' },
-    { href: '/sizing/hvac-generator-sizing/', title: 'HVAC & Generator Sizing', description: 'The biggest surge, decoded.', category: 'Sizing' },
-    { href: '/sizing/whole-home-vs-essential-loads/', title: 'Whole-Home vs Essential Loads', description: 'Backup philosophies.', category: 'Sizing' },
+    { href: '/sizing/what-size-generator-do-i-need/', title: 'How generator sizing works', description: 'Plan from running loads and the actual startup requirements.', category: 'Sizing' },
+    { href: '/sizing/hvac-generator-sizing/', title: 'HVAC and generator sizing', description: 'Why HVAC model data and startup current can matter.', category: 'Sizing' },
+    { href: '/sizing/well-pump-generator-sizing/', title: 'Well-pump generator sizing', description: 'Collect pump nameplate information and discuss it with an electrician.', category: 'Sizing' },
   ]}
-  prev={{ href: '/sizing/what-size-generator-do-i-need/', label: 'What Size Generator Do I Need?' }}
-  next={{ href: '/sizing/calculator/', label: 'Sizing Calculator' }}
+  prev={{ href: '/sizing/what-size-generator-do-i-need/', label: 'Sizing method' }}
+  next={{ href: '/sizing/understanding-generator-ratings/', label: 'Generator ratings' }}
 >
-  <section id="how-to-use"><h2>How to use this chart</h2>
-  <p>Check off what runs simultaneously on backup, add the <strong>running</strong> watts, then add the single largest <strong>starting</strong> surge on top. Motor loads (compressors, pumps) surge ~3×; resistive loads (heaters, ovens) do not surge. Figures are conservative planning ranges compiled from manufacturer spec-sheet ranges, DOE/EnergyStar references, and motor-chart conventions — your equipment nameplates govern. Source basis is noted per row.</p></section>
+  <section id="how-to-use">
+    <h2>How to use this chart</h2>
+    <p>This chart is a transcription of selected values from Champion Power Equipment’s published wattage chart, checked on October 4, 2026. Champion describes these as common-appliance estimates; they are not data for a specific make/model, not independent measurements, and not a guarantee that a generator will start the load.</p>
+    <ol>
+      <li>Find each appliance’s manufacturer nameplate and owner’s manual. Record voltage, running input, amps, motor-start information, and any model-specific instructions.</li>
+      <li>List only the loads expected to run at the same time. Note loads that a transfer system or approved load-management device will prevent from running together.</li>
+      <li>Ask a qualified electrician to evaluate the continuous load, motor-start conditions, generator fuel-specific ratings, transfer equipment, and any site derating.</li>
+    </ol>
+    <p>Do not take a convenient point in these ranges as an “actual” value. If the exact nameplate or manual is unavailable, the model-specific load is unknown; a generic chart cannot fill that gap.</p>
+  </section>
 
-  <section id="chart"><h2>Full wattage chart ({appliances.length} appliances)</h2>
-  {categories.map((cat) => (
-    <>
-      <h3>{cat}</h3>
-      <div class="overflow-x-auto rounded-lg border border-[#e5e7eb] not-prose">
-        <table class="w-full min-w-[640px] border-collapse text-left text-sm">
-          <caption class="sr-only">{cat} wattages</caption>
-          <thead><tr class="bg-primary text-white"><th scope="col" class="px-4 py-3">Appliance</th><th scope="col" class="px-4 py-3">Running (W)</th><th scope="col" class="px-4 py-3">Starting (W)</th><th scope="col" class="px-4 py-3">Notes / basis</th></tr></thead>
-          <tbody>
-            {appliances.filter((a) => a.category === cat).map((a) => (
-              <tr class="border-t border-[#e5e7eb] odd:bg-white even:bg-surface">
-                <th scope="row" class="px-4 py-2.5 font-medium text-primary">{a.name}</th>
-                <td class="px-4 py-2.5">{a.runningWatts.toLocaleString()}</td>
-                <td class="px-4 py-2.5">{a.startingWatts.toLocaleString()}</td>
-                <td class="px-4 py-2.5 text-gray-600">{[a.notes, a.source].filter(Boolean).join(' · ')}</td>
+  {groups.map((group) => (
+    <section id={group.id}>
+      <h2>{group.title}</h2>
+      <div class="not-prose mt-4 overflow-x-auto rounded-xl border border-[#d9e0ea]">
+        <table class="min-w-[620px] w-full border-collapse text-left text-sm">
+          <caption class="sr-only">{group.title}: approximate watt ranges from Champion Power Equipment</caption>
+          <thead class="bg-[#edf3fb] text-primary"><tr><th scope="col" class="p-3">Appliance reference</th><th scope="col" class="p-3">Running watts</th><th scope="col" class="p-3">Starting watts listed by source</th></tr></thead>
+          <tbody class="divide-y divide-gray-200 text-gray-800">
+            {appliances.filter((appliance) => group.categories.includes(appliance.category)).map((appliance) => (
+              <tr>
+                <th scope="row" class="p-3 font-medium">{appliance.name}</th>
+                <td class="p-3">{formatRange(appliance.runningWatts)}</td>
+                <td class="p-3">{appliance.startingWatts ? formatRange(appliance.startingWatts) : 'No separate starting range listed in the cited chart'}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-    </>
+      <p class="mt-2 text-sm text-gray-600">Source for every row: <a href={APPLIANCE_WATTAGE_SOURCE.url} rel="external noopener noreferrer">Champion Power Equipment’s chart</a>. Actual appliances may differ substantially.</p>
+    </section>
   ))}
+
+  <section id="worksheet">
+    <h2>Printable load worksheet for a professional discussion</h2>
+    <p>This static worksheet is for collecting information; it does not calculate a generator size. Use manufacturer labels/manuals, not the example ranges above.</p>
+    <div class="not-prose mt-4 overflow-x-auto rounded-xl border border-[#d9e0ea]">
+      <table class="min-w-[680px] w-full border-collapse text-left text-sm">
+        <caption class="sr-only">Blank, static generator load-planning worksheet</caption>
+        <thead class="bg-[#edf3fb] text-primary"><tr><th scope="col" class="p-3">Load / appliance</th><th scope="col" class="p-3">Exact make/model</th><th scope="col" class="p-3">Nameplate/manual data</th><th scope="col" class="p-3">Priority / can be delayed?</th></tr></thead>
+        <tbody class="divide-y divide-gray-200">{Array.from({ length: 7 }).map(() => <tr><td class="h-12 p-3">&nbsp;</td><td class="p-3">&nbsp;</td><td class="p-3">&nbsp;</td><td class="p-3">&nbsp;</td></tr>)}</tbody>
+      </table>
+    </div>
+    <p class="mt-4">Take this list and photographs of equipment nameplates to a qualified local electrician or generator installer. The final design also depends on transfer equipment, fuel availability and pressure, local requirements, and the exact generator rating on the fuel to be used.</p>
   </section>
-
-  <section id="example"><h2>30-second example</h2>
-  <p>Fridge (700) + freezer (500) + LED lights (300) + internet/TV (400) + furnace blower (800) + well pump running (1,000) = 4,700 W continuous. Largest surge: well pump starts at 3,000 while the rest runs (3,700) → ~6,700 W momentary. Add a 3-ton AC (3,500 running / 11,000 starting) and the peak lands ~15–17 kW — a 20 kW unit with headroom. Full walkthrough: <a href="/sizing/what-size-generator-do-i-need/">sizing guide</a>.</p></section>
-
-  <section id="faq"><span class="sr-only">FAQ anchor</span></section>
-  <FAQSection items={[
-    { q: 'Are these numbers exact for my appliances?', a: 'No — they are planning ranges. A 3-ton AC from 2008 and one from 2024 can differ by thousands of starting watts. Read the nameplate (volts × amps, LRA for motors) and have the electrician confirm.' },
-    { q: 'Why do starting watts matter more than running watts?', a: 'Because the generator must survive the worst second, not the average hour. One DOL motor starting (~7× surge) decides the purchase more than ten LED bulbs.' },
-    { q: 'Should I include everything in the house?', a: 'No — only what runs simultaneously on backup. Dryers, ovens, and EV chargers are usually managed or excluded; see the essential-vs-whole-home guide.' },
-  
-    { q: 'Why do two identical appliances show different watts?', a: 'Age, efficiency, and features: a 2008 fridge and a 2024 fridge can differ by hundreds of watts. The chart gives planning ranges; nameplates give answers.' },
-    { q: 'What is LRA and where do I find it?', a: 'Locked-rotor amps — worst-case motor startup current, printed on compressor and pump nameplates. Multiply by voltage for startup volt-amps.' },
-    { q: 'Do LED bulbs matter for sizing?', a: 'Barely: twenty LEDs draw roughly 200 W with no surge. Lighting is rounding error next to any single motor start.' },
-  ]} />
-  <section id="conclusion"><h2>Conclusion</h2><p>List it, add it, surge-check it, verify it — then <a href="/sizing/what-size-generator-do-i-need/">size with confidence</a>.</p></section>
 </ArticleLayout>

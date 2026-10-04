@@ -5,7 +5,7 @@ import ArticleCard from '../../components/article/ArticleCard.astro';
 ---
 <BaseLayout
   title="Vipul Otari, Publisher & Research Editor"
-  description="About Vipul Otari, publisher and research editor of HomeGeneratorGuide: independent standby-generator research method, focus areas, and corrections policy."
+  description="Meet Vipul Otari, publisher and research editor of HomeGeneratorGuide. See the publication’s research method, scope, and review limitations."
 >
   <div class="mx-auto max-w-3xl px-4 py-10 sm:px-6">
     <Breadcrumbs items={[{ href: '/', label: 'Home' }, { href: '/about/', label: 'About' }, { label: 'Vipul Otari' }]} />
@@ -17,22 +17,23 @@ import ArticleCard from '../../components/article/ArticleCard.astro';
       </div>
     </div>
     <div class="prose-hgg mt-6">
-      <h2>What I do</h2>
-      <p>I research home standby generators full-time for this site: reading manufacturer documentation and spec sheets, cross-checking government and safety sources, and turning it into plain-language guides for US homeowners. My focus areas are generator sizing methodology, installed-cost research, brand/warranty verification, and outage-preparedness planning.</p>
-      <h2>What I am not</h2>
-      <p>I am not a licensed electrician, electrical engineer, or generator installer, and nothing here is presented as professional trade work. Every installation article on this site directs electrical and gas work to properly licensed professionals — that boundary is deliberate.</p>
-      <h2>How articles are produced</h2>
+      <h2>Editorial role and limits</h2>
+      <p>Vipul Otari is identified here as the publisher and research editor for HomeGeneratorGuide. The site’s work is desk research: reviewing public manufacturer documentation, government material, safety guidance, and clearly labeled estimates, then explaining where those sources do and do not answer a homeowner’s question.</p>
+      <p>This role is not a trade credential. The publisher is not presented as a licensed electrician, electrical engineer, generator installer, or product tester. The site does not claim in-person installation experience, hands-on equipment testing, or independent reliability testing. Its articles are educational research and cannot replace an on-site load calculation, equipment-specific instructions, or local code review.</p>
+      <h2>Research standards</h2>
       <ul>
-        <li>Specifications traced to manufacturer pages, support docs, or manuals, with verification dates.</li>
-        <li>Prices published as labeled planning ranges, never as quotes.</li>
-        <li>No manufacturer pays for placement, coverage, or conclusions — see the <a href="/editorial-policy/">editorial policy</a>.</li>
-        <li>Errors: <a href="/contact/">send the page URL plus your source</a>; substantiated corrections ship promptly.</li>
+        <li>Prefer current manufacturer pages, specification sheets, operator manuals, government sources, and recognized safety authorities.</li>
+        <li>Label manufacturer statements as manufacturer-published information; distinguish estimates from measured or model-specific facts.</li>
+        <li>Omit values that cannot be verified rather than filling gaps from a different model, fuel, or reseller listing.</li>
+        <li>Do not sell generator or installer leads, and do not accept payment for rankings or conclusions.</li>
+        <li>For corrections, <a href="/contact/">send the page URL and source</a>; material changes should be documented on the page.</li>
       </ul>
+      <p>See the <a href="/editorial-policy/">editorial policy</a> for details about source checks and corrections, and the <a href="/review-process/">professional review status</a> for current review limitations.</p>
       <h2>Start reading</h2>
     </div>
     <div class="mt-4 grid gap-5 sm:grid-cols-2">
-      <ArticleCard href="/sizing/what-size-generator-do-i-need/" title="What Size Generator Do I Need?" description="The complete sizing walkthrough." category="Sizing" />
-      <ArticleCard href="/cost/standby-generator-cost/" title="Standby Generator Cost (2026)" description="Installed ranges and line items." category="Cost" />
+      <ArticleCard href="/sizing/what-size-generator-do-i-need/" title="What Size Generator Do I Need?" description="A load-first process and static worksheet." category="Sizing" />
+      <ArticleCard href="/cost/standby-generator-cost/" title="Standby Generator Cost Guide" description="Understand estimates, project scope, and written quotes." category="Cost" />
     </div>
     <p class="mt-6 text-sm text-gray-600">Site method: <a href="/about/" class="underline decoration-accent underline-offset-4">About</a> · <a href="/editorial-policy/" class="underline decoration-accent underline-offset-4">Editorial Policy</a> · <a href="/disclaimer/" class="underline decoration-accent underline-offset-4">Disclaimer</a></p>
   </div>

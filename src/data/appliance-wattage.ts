@@ -1,43 +1,58 @@
-export interface Appliance {
-  name: string;
-  category: string;
-  runningWatts: number;
-  startingWatts: number;
-  notes?: string;
-  source?: string;
+export interface WattRange {
+  minimum: number;
+  maximum: number;
 }
 
-// Conservative planning figures compiled from manufacturer spec sheets and
-// US DOE / EnergyStar appliance references. Ranges vary by model — always
-// confirm against the nameplate of your own equipment and a licensed
-// electrician's load calculation.
-export const appliances: Appliance[] = [
-  { name: 'Refrigerator (18–22 cu ft)', category: 'Kitchen', runningWatts: 700, startingWatts: 2200, notes: 'Compressor surge ~3x running', source: 'Manufacturer spec sheets (range)' },
-  { name: 'Deep freezer', category: 'Kitchen', runningWatts: 500, startingWatts: 1500, source: 'Manufacturer spec sheets (range)' },
-  { name: 'Microwave (1000 W output)', category: 'Kitchen', runningWatts: 1200, startingWatts: 1200, notes: 'Resistive — no surge', source: 'Nameplate convention' },
-  { name: 'Electric range (one element)', category: 'Kitchen', runningWatts: 2500, startingWatts: 2500, notes: 'Full range up to 12,000 W — stagger use', source: 'Nameplate convention' },
-  { name: 'Dishwasher (heated dry)', category: 'Kitchen', runningWatts: 1500, startingWatts: 1500, source: 'EnergyStar references' },
-  { name: 'Coffee maker', category: 'Kitchen', runningWatts: 1000, startingWatts: 1000, source: 'Nameplate convention' },
-  { name: 'Central AC — 2 ton', category: 'HVAC', runningWatts: 2500, startingWatts: 7500, notes: 'LRA surge; soft-start kits reduce surge', source: 'HVAC nameplate / LRA data' },
-  { name: 'Central AC — 3 ton', category: 'HVAC', runningWatts: 3500, startingWatts: 11000, notes: 'Largest single residential surge', source: 'HVAC nameplate / LRA data' },
-  { name: 'Central AC — 4 ton', category: 'HVAC', runningWatts: 5000, startingWatts: 15000, notes: 'Often needs load management', source: 'HVAC nameplate / LRA data' },
-  { name: 'Window AC (10,000 BTU)', category: 'HVAC', runningWatts: 1200, startingWatts: 3600, source: 'Manufacturer spec sheets (range)' },
-  { name: 'Furnace blower (gas furnace)', category: 'HVAC', runningWatts: 800, startingWatts: 2300, notes: 'Gas heat still needs electricity', source: 'Furnace spec sheets' },
-  { name: 'Heat pump (3 ton)', category: 'HVAC', runningWatts: 4000, startingWatts: 12000, notes: 'Aux heat strips add 5,000–10,000 W', source: 'Heat-pump nameplates' },
-  { name: 'Portable space heater', category: 'HVAC', runningWatts: 1500, startingWatts: 1500, source: 'Nameplate convention' },
-  { name: 'Well pump — 1/2 HP', category: 'Water', runningWatts: 1000, startingWatts: 3000, notes: 'Deep wells surge hard', source: 'Pump motor charts' },
-  { name: 'Well pump — 1 HP', category: 'Water', runningWatts: 2000, startingWatts: 6000, source: 'Pump motor charts' },
-  { name: 'Sump pump (1/3 HP)', category: 'Water', runningWatts: 800, startingWatts: 2400, source: 'Pump motor charts' },
-  { name: 'Sewage ejector pump', category: 'Water', runningWatts: 1000, startingWatts: 3000, source: 'Pump motor charts' },
-  { name: 'Electric water heater (50 gal)', category: 'Water', runningWatts: 4500, startingWatts: 4500, notes: 'Consider load-shed module', source: 'Nameplate convention' },
-  { name: 'Tankless electric water heater', category: 'Water', runningWatts: 18000, startingWatts: 18000, notes: 'Usually excluded from backup panel', source: 'Nameplate convention' },
-  { name: 'Clothes washer', category: 'Laundry', runningWatts: 500, startingWatts: 1500, notes: 'Motor surge on agitation', source: 'Manufacturer spec sheets (range)' },
-  { name: 'Electric dryer', category: 'Laundry', runningWatts: 5400, startingWatts: 5400, notes: 'Usually excluded from essential panel', source: 'Nameplate convention' },
-  { name: 'TV (55 in LED)', category: 'Electronics', runningWatts: 150, startingWatts: 150, source: 'EnergyStar references' },
-  { name: 'Desktop computer + monitor', category: 'Electronics', runningWatts: 300, startingWatts: 300, source: 'Nameplate convention' },
-  { name: 'Wi-Fi router + modem', category: 'Electronics', runningWatts: 30, startingWatts: 30, source: 'Nameplate convention' },
-  { name: 'LED lighting (whole home, 20 bulbs)', category: 'Lighting', runningWatts: 200, startingWatts: 200, source: 'DOE lighting data' },
-  { name: 'Garage door opener', category: 'Other', runningWatts: 600, startingWatts: 1800, source: 'Opener spec sheets' },
-  { name: 'EV charger (Level 2, 32 A)', category: 'Other', runningWatts: 7700, startingWatts: 7700, notes: 'Usually excluded; charge scheduling helps', source: 'EVSE nameplates' },
-  { name: 'CPAP machine', category: 'Medical', runningWatts: 60, startingWatts: 60, notes: 'Verify with device label; keep on UPS + backup', source: 'Device labels' },
+export interface ApplianceReference {
+  name: string;
+  category: 'Cooling' | 'Pumps' | 'Water' | 'Kitchen' | 'Heating' | 'Laundry' | 'Lighting and electronics' | 'Medical';
+  runningWatts: WattRange;
+  /** null means the cited chart does not list additional starting watts. */
+  startingWatts: WattRange | null;
+  sourceUrl: string;
+}
+
+/**
+ * Curated residential values transcribed from Champion Power Equipment's
+ * published wattage chart. These are manufacturer-published reference ranges,
+ * not measurements of a specific appliance and not sizing recommendations.
+ */
+export const APPLIANCE_WATTAGE_SOURCE = {
+  label: 'Champion Power Equipment, Generator Wattage Chart',
+  url: 'https://www.championpowerequipment.com/generator-wattage-chart/',
+  checkedOn: '2026-10-04',
+} as const;
+
+const sourceUrl = APPLIANCE_WATTAGE_SOURCE.url;
+const range = (minimum: number, maximum: number): WattRange => ({ minimum, maximum });
+
+export const appliances: ApplianceReference[] = [
+  { name: 'Refrigerator', category: 'Kitchen', runningWatts: range(150, 400), startingWatts: range(800, 1200), sourceUrl },
+  { name: 'Freezer', category: 'Kitchen', runningWatts: range(100, 500), startingWatts: range(500, 1000), sourceUrl },
+  { name: 'Microwave', category: 'Kitchen', runningWatts: range(600, 1200), startingWatts: null, sourceUrl },
+  { name: 'Dishwasher', category: 'Kitchen', runningWatts: range(1200, 2400), startingWatts: null, sourceUrl },
+  { name: 'Electric range, one burner', category: 'Kitchen', runningWatts: range(1200, 2400), startingWatts: null, sourceUrl },
+  { name: 'Electric water heater', category: 'Water', runningWatts: range(3000, 4500), startingWatts: null, sourceUrl },
+  { name: 'Central air conditioner, 2 ton', category: 'Cooling', runningWatts: range(2000, 2500), startingWatts: range(3500, 4500), sourceUrl },
+  { name: 'Central air conditioner, 3 ton', category: 'Cooling', runningWatts: range(3000, 3500), startingWatts: range(5000, 6000), sourceUrl },
+  { name: 'Central air conditioner, 4 ton', category: 'Cooling', runningWatts: range(4000, 5000), startingWatts: range(6500, 8000), sourceUrl },
+  { name: 'Window air conditioner, 5,000 BTU', category: 'Cooling', runningWatts: range(450, 600), startingWatts: range(900, 1200), sourceUrl },
+  { name: 'Window air conditioner, 10,000 BTU', category: 'Cooling', runningWatts: range(900, 1200), startingWatts: range(1800, 2400), sourceUrl },
+  { name: 'Furnace fan, 1/2 HP', category: 'Heating', runningWatts: range(300, 800), startingWatts: range(800, 1600), sourceUrl },
+  { name: 'Well pump, 1/2 HP', category: 'Pumps', runningWatts: range(750, 1000), startingWatts: range(1500, 2000), sourceUrl },
+  { name: 'Well pump, 1 HP', category: 'Pumps', runningWatts: range(1000, 2000), startingWatts: range(2000, 4000), sourceUrl },
+  { name: 'Sump pump, 1/3 HP', category: 'Pumps', runningWatts: range(500, 800), startingWatts: range(1000, 1600), sourceUrl },
+  { name: 'Sump pump, 1/2 HP', category: 'Pumps', runningWatts: range(800, 1050), startingWatts: range(1300, 2150), sourceUrl },
+  { name: 'Washing machine', category: 'Laundry', runningWatts: range(500, 1000), startingWatts: range(1000, 2300), sourceUrl },
+  { name: 'Electric dryer', category: 'Laundry', runningWatts: range(4000, 6000), startingWatts: null, sourceUrl },
+  { name: 'Space heater', category: 'Heating', runningWatts: range(750, 1500), startingWatts: null, sourceUrl },
+  { name: 'Ceiling fan', category: 'Lighting and electronics', runningWatts: range(15, 75), startingWatts: null, sourceUrl },
+  { name: 'Television, 32–55 in', category: 'Lighting and electronics', runningWatts: range(80, 400), startingWatts: null, sourceUrl },
+  { name: 'LED light bulb (each)', category: 'Lighting and electronics', runningWatts: range(8, 15), startingWatts: null, sourceUrl },
+  { name: 'Phone or laptop charger', category: 'Lighting and electronics', runningWatts: range(20, 100), startingWatts: null, sourceUrl },
+  { name: 'Window fan', category: 'Lighting and electronics', runningWatts: range(50, 200), startingWatts: null, sourceUrl },
+  { name: 'Home security system', category: 'Lighting and electronics', runningWatts: range(15, 40), startingWatts: null, sourceUrl },
+  { name: 'Internet router and modem', category: 'Lighting and electronics', runningWatts: range(10, 20), startingWatts: null, sourceUrl },
+  { name: 'CPAP, without heated humidifier', category: 'Medical', runningWatts: range(30, 60), startingWatts: null, sourceUrl },
+  { name: 'CPAP, with heated humidifier', category: 'Medical', runningWatts: range(60, 120), startingWatts: null, sourceUrl },
 ];

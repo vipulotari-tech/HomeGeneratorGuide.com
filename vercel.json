@@ -2,6 +2,24 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
   "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.homegeneratorguide.com" }],
+      "destination": "https://homegeneratorguide.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/sizing/calculator",
+      "destination": "/sizing/what-size-generator-do-i-need/",
+      "permanent": true
+    },
+    {
+      "source": "/sizing/calculator/",
+      "destination": "/sizing/what-size-generator-do-i-need/",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",

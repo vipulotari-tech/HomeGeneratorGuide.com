@@ -1,3 +1,6 @@
-# NOTE: www -> apex canonical redirect is configured as a Cloudflare
-# dashboard Redirect Rule (Bulk Redirects), because Static Assets
-# _redirects only allows relative URLs. Do not add absolute URLs here.
+# Retire the old interactive estimator URL; preserve any legacy inbound links.
+/sizing/calculator/ /sizing/what-size-generator-do-i-need/ 301
+/sizing/calculator /sizing/what-size-generator-do-i-need/ 301
+
+# www -> apex canonical redirect is configured as a Cloudflare dashboard
+# Redirect Rule for Workers; Netlify and Vercel redirects are also configured.

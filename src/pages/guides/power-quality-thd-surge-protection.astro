@@ -1,79 +1,79 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import AlertBox from '../../components/ui/AlertBox.astro';
-import ComparisonTable from '../../components/ui/ComparisonTable.astro';
-import FAQSection from '../../components/ui/FAQSection.astro';
 
 const toc = [
-  { id: 'thd', label: 'THD in one minute' },
-  { id: 'sensitivity', label: 'What needs clean power' },
-  { id: 'brands', label: 'Brand THD ratings' },
-  { id: 'surge', label: 'Surge strategy (3 layers)' },
-  { id: 'models', label: 'Which surge devices' },
-  { id: 'ups', label: 'UPS: bridging the 10 seconds' },
-  { id: 'faq', label: 'FAQ' },
+  { id: 'thd', label: 'What THD measures' },
+  { id: 'model-examples', label: 'Read model-specific ratings' },
+  { id: 'surges', label: 'Surges are a separate issue' },
+  { id: 'protection', label: 'Questions about protection' },
+  { id: 'ups', label: 'UPS and sensitive equipment' },
 ];
 ---
 <ArticleLayout
-  title="Power Quality, THD & Surge Protection for Generator Homes"
-  description="THD explained: which electronics need clean power, standby vs portable THD ratings, 3-layer surge strategy with device specs, and why computers still need a UPS."
-  category="Buying Guides" categoryHref="/guides/" updated="2026-10-03" readingTime="9 min read" toc={toc}
+  title="Generator Power Quality, THD & Surge Protection"
+  description="Understand what total harmonic distortion can tell you, why one model’s published rating is not a guarantee for all electronics, and how to discuss surge protection and UPS needs with qualified professionals."
+  category="Guides" categoryHref="/guides/" updated="2026-10-04" verified="2026-10-04" readingTime="6 min read" toc={toc}
+  takeaways={[
+    'THD describes waveform distortion; it is not a complete measure of power quality or a guarantee that every connected device will operate correctly.',
+    'Use the exact generator model’s published test conditions—do not apply a brand-wide THD figure to all models.',
+    'Surge protection and an uninterruptible power supply address different issues; ask a qualified electrician and equipment manufacturers what your setup needs.',
+  ]}
   sources={[
-    { label: 'Generac Support — Owner Resources', href: 'https://support.generac.com/', type: 'Technical manual', verified: 'Oct 2026' },
-    { label: 'U.S. EIA — Electricity Data Browser', href: 'https://www.eia.gov/electricity/', type: 'Government', verified: 'Oct 2026' },
-    { label: 'Kohler Home Energy — Home Generators', href: 'https://www.kohlerhomeenergy.rehlko.com/products/home-generators', type: 'Manufacturer', verified: 'Oct 2026' },
+    { label: 'Generac G0073270 official specification sheet', href: 'https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'KOHLER/Rehlko G4-315 26RCA/26RCAL specification sheet', href: 'https://techcomm.rehlko.com/techcomm/pdf/g4315.pdf', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'Champion 201222 model page', href: 'https://www.championpowerequipment.com/product/201222-22-kw-whole-house-home-standby-generator-and-200a-switch-with-axis-technology/', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'Electrical Safety Foundation International: generator safety', href: 'https://www.esfi.org/generator-safety/', type: 'Safety organization', verified: '2026-10-04' },
   ]}
   related={[
-    { href: '/sizing/understanding-generator-ratings/', title: 'Generator Ratings Explained', description: 'Standby vs prime, derating.', category: 'Sizing' },
-    { href: '/guides/generator-safety-carbon-monoxide/', title: 'CO Safety Guide', description: 'The other safety essential.', category: 'Buying Guides' },
+    { href: '/brands/', title: 'Exact-model brand guides', description: 'Read the model-level specification and bundle caveats.', category: 'Brands' },
+    { href: '/sizing/understanding-generator-ratings/', title: 'Generator ratings explained', description: 'Interpret standby ratings and manufacturer documentation.', category: 'Sizing' },
+    { href: '/guides/generator-safety-overview/', title: 'Generator safety overview', description: 'CO, electrical, and storm-safety basics.', category: 'Guides' },
   ]}
-  prev={{ href: '/guides/generator-safety-overview/', label: 'Safety Overview' }}
-  next={{ href: '/guides/how-long-can-generator-run/', label: 'How Long Can It Run?' }}
 >
-  <section id="thd"><h2>THD in one minute</h2>
-  <p>Total Harmonic Distortion measures how far a generator's AC wave deviates from a perfect sine — 0% is ideal, and every generator adds some distortion. High THD overheats transformers, motors, and power supplies; corrupts data; and shortens electronics. The thresholds below are commonly cited industry guidance, not manufacturer guarantees — treat them as planning bands.</p></section>
+  <AlertBox type="info" title="A specification is not a compatibility guarantee">Verify the exact generator, transfer equipment, connected electronics, and installation. A published harmonic-distortion value does not replace the equipment maker’s operating instructions or an electrical professional’s assessment.</AlertBox>
 
-  <section id="sensitivity"><h2>What needs clean power</h2>
-  <ComparisonTable caption="Equipment THD sensitivity" headers={['Tier', 'Equipment', 'Planning limit']} rows={[
-    ['Highly sensitive', 'Computers, phones/tablets, TVs, audio, consoles, furnace boards, inverter HVAC, medical devices, network gear', '<3–5%'],
-    ['Moderately sensitive', 'Fridges/freezers, washers/dryers, dishwashers, LED lighting, microwaves, VFD well pumps', '<10%'],
-    ['Tolerant', 'Incandescent/halogen, resistance heat, electric water heaters, basic single-speed motors', '>10% OK'],
-  ]} /></section>
+  <section id="thd">
+    <h2>What total harmonic distortion measures</h2>
+    <p>Total harmonic distortion (THD) is one way manufacturers describe harmonic content in an electrical waveform relative to its fundamental component. A THD figure should be read with its test method, load, and applicable model. It does not by itself describe voltage/frequency regulation during a transfer, startup behavior, transient events, every load condition, or compatibility with a particular device.</p>
+    <p>Use the generator’s exact specification sheet and the electronics manufacturer’s requirements. If a device has strict input-power limits, ask its manufacturer or service provider about operation on the proposed generator/transfer system.</p>
+  </section>
 
-  <section id="brands"><h2>Brand THD ratings (the good news)</h2>
-  <ComparisonTable caption="THD by generator type" headers={['Type', 'Typical THD', 'Electronics-safe?']} rows={[
-    ['Standby (Generac Guardian, Kohler RES/RCA, Cummins QuietConnect)', '<5%', 'Yes — most home electronics'],
-    ['Inverter (Honda EU, Generac iQ, Champion inverter)', '<3%', 'Yes — excellent'],
-    ['Conventional portable', '8–15%', 'No — risk to sensitive gear'],
-    ['Budget portable', '15–25%+', 'No — high damage risk'],
-  ]} />
-  <p class="mt-3">This is a genuine standby advantage worth stating: a standby's &lt;5% THD covers everything short of the most delicate lab gear, while a cheap portable can eat furnace boards and TVs over time. Verify your exact model's spec sheet — ratings vary by SKU.</p></section>
+  <section id="model-examples">
+    <h2>Three exact-model examples—not a brand-wide ranking</h2>
+    <div class="not-prose mt-4 overflow-x-auto rounded-xl border border-[#d9e0ea]">
+      <table class="min-w-[640px] w-full border-collapse text-left text-sm">
+        <caption class="sr-only">Manufacturer-published THD statements for three exact generator models</caption>
+        <thead class="bg-[#edf3fb] text-primary"><tr><th scope="col" class="p-3">Exact model/document</th><th scope="col" class="p-3">Published statement</th><th scope="col" class="p-3">Limit of the statement</th></tr></thead>
+        <tbody class="divide-y divide-gray-200 text-gray-800">
+          <tr><th scope="row" class="p-3">Generac G0073270, 22–28 kW specification sheet</th><td class="p-3">Lists total harmonic distortion as less than 5%.</td><td class="p-3">Applies to the model family and manufacturer document; do not generalize to every Generac unit or every operating condition.</td></tr>
+          <tr><th scope="row" class="p-3">KOHLER/Rehlko 26RCA/26RCAL, G4-315</th><td class="p-3">Lists THD below 5% from no load to full load with a linear load.</td><td class="p-3">The stated load condition is part of the claim; it is not a universal test of every household device or transient event.</td></tr>
+          <tr><th scope="row" class="p-3">Champion 201222</th><td class="p-3">Its product page says the alternator produces less than 5% THD.</td><td class="p-3">This is manufacturer-published product information, not independent testing or a guarantee for a connected device.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
 
-  <section id="surge"><h2>Surge strategy: 3 layers, in order</h2>
-  <p>THD is about wave <em>shape</em>; surges are about voltage <em>spikes</em> — transfer events, compressor switching, utility restoration, and lightning all transient-spike a generator home. Layer the defense:</p>
-  <ComparisonTable caption="Surge protection layers" headers={['Layer', 'Device', 'Location', 'Cost', 'Priority']} rows={[
-    ['1 — Whole house', 'Panel SPD', 'Main panel, line side of transfer switch', '$150–$300 installed', 'Essential'],
-    ['2 — Generator feed', 'Generator-output SPD', 'Between generator and transfer switch', '$200–$400', 'Recommended'],
-    ['3 — Point of use', 'Surge strips', 'At computers, TVs, audio', '$30–$100 each', 'Recommended'],
-  ]} />
-  <p class="mt-3">Whole-house SPD spec targets: clamping ≤400 V, ≥1,000 joules/leg, sub-nanosecond response, UL 1449 listed. Installed by a licensed electrician — panel work, same rule as everything else here.</p></section>
+  <section id="surges">
+    <h2>Surge protection addresses a different issue</h2>
+    <p>THD concerns distortion in the AC waveform. A surge-protective device is intended to limit certain transient overvoltages. They are not interchangeable specifications, and a low THD claim does not mean a house is protected from every lightning, utility, switching, or equipment event.</p>
+    <p>Whether to install a whole-service or point-of-use surge-protective device, and where it belongs in a system with a generator and transfer switch, depends on the electrical design and product listings. Ask the electrician to identify the device, rating, location, and what it does not protect against. Do not open a panel or modify a generator connection yourself.</p>
+  </section>
 
-  <section id="models"><h2>Which surge devices (examples, not endorsements)</h2>
-  <p>Commonly specified panel SPDs: Eaton CHSPT2SURGE (~$150–$200 installed), Siemens QSA220150 (~$150–$200), Square D HOM2175SB (~$120–$180), Leviton 51120-1 (~$180–$250). Match the SPD to your panel brand and have the installer confirm coordination with the transfer switch — examples for shopping orientation, verified at purchase time.</p></section>
+  <section id="protection">
+    <h2>Questions to ask about the complete system</h2>
+    <ul>
+      <li>What are the exact generator, transfer switch, and surge-device models in the proposal?</li>
+      <li>Which published THD, voltage, frequency, and load conditions apply to that generator model?</li>
+      <li>Does the transfer sequence create an interruption or voltage variation that matters to the equipment being protected?</li>
+      <li>Are any electronic or medical devices subject to specific input-power requirements? Confirm those with the device manufacturer or clinician.</li>
+      <li>What inspection, grounding/bonding, and surge-protection work is included and permitted?</li>
+    </ul>
+  </section>
 
-  <section id="ups"><h2>UPS: bridging the 10 seconds (and the flicker)</h2>
-  <p>Residential ATS is open-transition: a sub-second break plus the 10–20-second start sequence. Computers, routers, and CPAPs should sit on a UPS ($100–$500) regardless of THD — it bridges the gap, filters the transfer, and outlives the argument about whether the reboot "counts." Critical for WFH and medical loads; cheap insurance everywhere else.</p>
-  <AlertBox type="info" title="The complete electronics recipe">Standby with &lt;5% THD + whole-house SPD + point-of-use strips + UPS on computers/network/medical = a home office that survives transfers without noticing them.</AlertBox></section>
-
-  <section id="faq"><span class="sr-only">FAQ anchor</span></section>
-  <FAQSection items={[
-    { q: 'Will a standby generator damage my electronics?', a: 'Major-brand standby units publish <5% THD — safe for essentially all home electronics. Damage stories overwhelmingly involve high-THD portables or surge events, which is why the SPD + UPS layers matter even with clean standby power.' },
-    { q: 'Do I need a whole-house surge protector with a generator?', a: 'Yes — treat it as essential, not optional. Transfer events, motor switching, utility restoration, and lightning all spike; $150–$300 installed protects every circuit including the generator feed path.' },
-    { q: 'Why did my computer reboot when the generator kicked in?', a: 'Open-transition transfer includes a brief break plus the 10–20-second start sequence. A UPS bridges it. This is normal ATS physics, not a generator defect.' },
-  
-    { q: 'Does a UPS really matter with standby?', a: 'Yes — the 10–20 second transfer gap reboots unprotected computers and drops CPAPs and routers. A UPS bridges exactly that gap, regardless of THD.' },
-    { q: 'Where does whole-house surge protection install?', a: 'At the main panel on the line side, by a licensed electrician — protecting both utility and generator feed paths. Point-of-use strips still cover individual gear.' },
-    { q: 'Can THD damage my HVAC?', a: 'High THD overheats variable-speed drives and control boards over time. Standby <5% is safe territory; the risk lives with cheap high-THD portables.' },
-  ]} />
-  <section id="conclusion"><h2>Conclusion</h2><p>Clean sine (&lt;5% standby), layered surge defense, UPS on anything with unsaved work. Electronics protection costs ~$500 total against thousands in boards and data — spec it with the install, not after the first casualty. Next: <a href="/sizing/understanding-generator-ratings/">ratings & derating</a>.</p></section>
+  <section id="ups">
+    <h2>When a UPS may be useful</h2>
+    <p>An uninterruptible power supply (UPS) can provide temporary backup and, depending on the model, conditioning for equipment connected to it. Select one by checking its rated output, the connected equipment’s input requirements, and the runtime needed; do not assume any UPS will support every load or generator waveform.</p>
+    <p>Ask the device maker and a qualified professional to confirm compatibility with the generator, transfer system, and intended load. A UPS does not replace safe generator installation, a correctly rated transfer system, or a CO alarm.</p>
+  </section>
 </ArticleLayout>

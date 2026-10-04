@@ -1,97 +1,69 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import AlertBox from '../../components/ui/AlertBox.astro';
-import ComparisonTable from '../../components/ui/ComparisonTable.astro';
-import FAQSection from '../../components/ui/FAQSection.astro';
 
 const toc = [
-  { id: 'outage-costs', label: 'What outages cost' },
-  { id: 'payback', label: 'Outage math vs investment' },
-  { id: 'resale', label: 'Resale & ROI (reported)' },
-  { id: 'timing', label: 'Best time to buy' },
-  { id: 'quotes', label: 'Quote strategy that saves' },
-  { id: 'financing', label: 'Financing options' },
-  { id: 'tax', label: 'Tax credits: the honest answer' },
-  { id: 'partial', label: 'Partial vs whole-home savings' },
-  { id: 'faq', label: 'FAQ' },
+  { id: 'roi-is-personal', label: 'Why payback is personal' },
+  { id: 'reliability-context', label: 'Outage data and its limits' },
+  { id: 'costs-to-record', label: 'Costs to record' },
+  { id: 'nonfinancial', label: 'Non-financial considerations' },
+  { id: 'compare-options', label: 'Compare backup options' },
 ];
 ---
 <ArticleLayout
-  title="Generator ROI: Outage Costs, Payback, Financing & Tax Facts"
-  description="Is a standby generator worth it? Outage cost breakdowns, payback math, reported resale ROI, best buying season, financing, and the federal tax-credit truth."
-  category="Cost" categoryHref="/cost/" updated="2026-10-03" readingTime="10 min read" toc={toc}
+  title="Is a Standby Generator Worth It? A Practical ROI Framework"
+  description="A cautious way to assess standby-generator value using your own outage history, itemized project costs, operating expenses, and non-financial priorities—without invented payback claims."
+  category="Cost" categoryHref="/cost/" updated="2026-10-04" verified="2026-10-04" readingTime="6 min read" toc={toc}
+  takeaways={[
+    'There is no universal payback period: outage costs, outage frequency, installation scope, fuel use, maintenance, and personal priorities differ.',
+    'National outage averages cannot predict one household’s future outages, duration, or avoided losses.',
+    'Treat avoided food loss, lodging, work disruption, health needs, and property risk as household-specific—not as guaranteed generator savings.',
+  ]}
   sources={[
-    { label: 'U.S. EIA — Electricity Data Browser', href: 'https://www.eia.gov/electricity/', type: 'Government', verified: 'Oct 2026' },
-    { label: 'DSIRE — State Incentive Database', href: 'https://www.dsireusa.org/', type: 'Government', verified: 'Oct 2026' },
-    { label: 'Generac — Residential Standby Lineup', href: 'https://www.generac.com/residential-products/standby-generators/', type: 'Manufacturer', verified: 'Oct 2026' },
+    { label: 'U.S. EIA: 2024 outage duration and major-event context (published Dec. 1, 2025)', href: 'https://www.eia.gov/todayinenergy/detail.php?id=66744', type: 'Government', verified: '2026-10-04' },
+    { label: 'U.S. EIA: 2024 state reliability data', href: 'https://www.eia.gov/electricity/annual/table.php?t=epa_11_04.html', type: 'Government', verified: '2026-10-04' },
+    { label: 'Generac: standby installation and cost scope', href: 'https://www.generac.com/resources/home-management/backup-generator-installation/', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'HomeGuide: whole-house generator cost (published Dec. 30, 2025)', href: 'https://homeguide.com/costs/generator-cost', type: 'Industry', verified: '2026-10-04' },
   ]}
   related={[
-    { href: '/cost/standby-generator-cost/', title: 'Standby Generator Cost (2026)', description: 'Installed ranges.', category: 'Cost' },
-    { href: '/guides/natural-gas-vs-propane/', title: 'Natural Gas vs Propane', description: 'Running costs.', category: 'Buying Guides' },
+    { href: '/cost/standby-generator-cost/', title: 'Standby-generator cost guide', description: 'Compare published system and installation ranges with scope caveats.', category: 'Cost' },
+    { href: '/guides/us-power-outage-statistics/', title: 'U.S. power-outage statistics', description: 'Interpret EIA reliability measures and their limitations.', category: 'Buying Guides' },
+    { href: '/comparisons/standby-vs-portable/', title: 'Standby vs. portable generators', description: 'Compare technology, operation, and safety tradeoffs.', category: 'Comparisons' },
   ]}
-  prev={{ href: '/cost/standby-generator-cost/', label: 'Standby Generator Cost' }}
-  next={{ href: '/cost/installation-cost-breakdown/', label: 'Installation Breakdown' }}
 >
-  <AlertBox type="warning" title="Estimates, labeled">Outage costs and ROI figures are industry-reported ranges, not guarantees. Resale and payback vary by region, storm history, and buyer pool — your three local quotes plus your outage history decide, not national averages.</AlertBox>
+  <section id="roi-is-personal">
+    <h2>Why generator payback is personal</h2>
+    <p>Financial payback depends on uncertain future outages and on what a homeowner would actually lose without backup power. A standby system also has costs beyond its equipment price: installation, fuel during operation, scheduled service, parts, and eventual repairs. Some homeowners value automatic backup, heat, water, communications, or continuity for work/health needs even when a strictly financial payback cannot be established.</p>
+    <p>We do not publish a universal payback period, resale premium, or guaranteed return. A contractor’s quote and the homeowner’s own outage records are better inputs than a generic online “ROI” figure.</p>
+  </section>
 
-  <section id="outage-costs"><h2>What outages actually cost</h2>
-  <ComparisonTable caption="Outage cost breakdown" headers={['Category', 'Typical range']} rows={[
-    ['Fridge + freezer spoilage', '$250–$600 per outage'],
-    ['Hotel (family, per night)', '$150–$400 (5 nights = $750–$2,000)'],
-    ['Burst-pipe damage (winter, no heat)', '$5,000–$32,000+'],
-    ['Basement flooding (dead sump)', '$2,000–$15,000+'],
-    ['Lost WFH productivity', '$200–$500/day'],
-    ['Typical 48-hr summer outage', '$500–$1,000 all-in'],
-    ['5-day winter outage, no property damage', '$1,000–$5,000'],
-  ]} /></section>
+  <section id="reliability-context">
+    <h2>Outage data is useful context—not a household forecast</h2>
+    <p>The U.S. Energy Information Administration reported that U.S. electricity customers averaged <strong>11 hours of interruptions in 2024</strong>; major events including Hurricanes Beryl, Helene, and Milton accounted for <strong>80% of the hours without electricity</strong> that year. EIA also reported that the 2024 national average was nearly twice the annual average in the previous decade.</p>
+    <p>That is one national year affected by major storms, not a prediction for a particular address or a stable annual average. EIA distinguishes <strong>SAIDI</strong> (average interruption duration) from <strong>SAIFI</strong> (frequency). Local utility performance, weather exposure, and individual service territory matter. Use EIA’s data for broad context and utility reports for local planning; do not infer your personal future outage hours from a national figure.</p>
+  </section>
 
-  <section id="payback"><h2>Outage math vs a $10,000–$14,500 system</h2>
-  <ComparisonTable caption="Payback scenarios" headers={['Scenario', 'Without generator', 'Payback signal']} rows={[
-    ['One 48-hr summer outage', '$500–$1,000', '10–29 such outages'],
-    ['One 5-day winter outage', '$1,000–$5,000', '2–14 such outages'],
-    ['One winter outage + frozen pipes', '$26,000–$32,000', 'Immediate — one event'],
-  ]} />
-  <p class="mt-3">The honest frame: generators rarely "pay back" on spoiled milk alone. They pay on the tail risks — burst pipes, flooded basements, medical continuity — plus imputed comfort. If your area loses power for days most winters, the math is easy; if outages are brief summer blips, budget accordingly. Exposure data: <a href="/guides/us-power-outage-statistics/">outage statistics by state</a>.</p></section>
+  <section id="costs-to-record">
+    <h2>Record the household-specific costs and exposures</h2>
+    <p>For several past outages, write down only costs you can substantiate, such as receipts, bills, or documented lost work. Keep direct out-of-pocket costs separate from estimates and from risks that did not actually occur.</p>
+    <div class="not-prose mt-4 overflow-x-auto rounded-xl border border-[#d9e0ea]">
+      <table class="min-w-[680px] w-full border-collapse text-left text-sm">
+        <caption class="sr-only">Static household outage-cost record worksheet</caption>
+        <thead class="bg-[#edf3fb] text-primary"><tr><th scope="col" class="p-3">Outage date/duration</th><th scope="col" class="p-3">Documented direct cost</th><th scope="col" class="p-3">Uncertain/indirect impact</th><th scope="col" class="p-3">Source or note</th></tr></thead>
+        <tbody class="divide-y divide-gray-200">{Array.from({ length: 5 }).map(() => <tr><td class="h-12 p-3">&nbsp;</td><td class="p-3">&nbsp;</td><td class="p-3">&nbsp;</td><td class="p-3">&nbsp;</td></tr>)}</tbody>
+      </table>
+    </div>
+    <p class="mt-4">Separately document possible concerns—such as heat, water supply, medical equipment, sump-pump operation, remote work, or food storage—and discuss them with the relevant professional. Do not assign a monetary value to health or safety without appropriate expertise.</p>
+  </section>
 
-  <section id="resale"><h2>Resale & ROI (industry-reported, handle with care)</h2>
-  <p>Remodeling-magazine-style reports cite 3–5% home-value lift ($12,000–$20,000 on a $400k home), ~50–75% cost recovery nationally, and 100–150% in storm-prone markets (FL, Gulf Coast, Carolinas). Treat these as directional: appraisers weight permitted, serviced, transfer-tested systems in outage-prone ZIPs — and near-zero for unpermitted units anywhere. Permits and service records are the ROI.</p></section>
+  <section id="nonfinancial">
+    <h2>Non-financial reasons may matter more than payback</h2>
+    <p>For some households, the decision is primarily about comfort, accessibility, a well pump, continuity for critical equipment, or confidence during long outages. Those needs deserve careful planning, but no backup system eliminates every outage-related risk. Medical-device backup and runtime requirements should be discussed with the clinician and device manufacturer; do not rely on this publication for medical decisions.</p>
+    <p>Also consider noise/placement constraints, local fuel availability, maintenance access, safe installation, and who can respond to service needs. Our <a href="/comparisons/standby-vs-portable/">standby vs. portable comparison</a> describes the operational differences.</p>
+  </section>
 
-  <section id="timing"><h2>Best time to buy: January–February</h2>
-  <p>Winter is the off-season trough — lowest demand, shortest lead times, likeliest promos. Spring is fine (pre-storm-season); summer brings peak prices and backlogs in storm regions; fall normalizes. Never buy during an active outage backlog unless the bid guarantees model numbers and dates.</p></section>
-
-  <section id="quotes"><h2>Quote strategy that saves $500–$2,000</h2>
-  <ul><li>Get 3–5 bids on <em>identical</em> scope — dealer pricing swings 15–30% on the same kW.</li><li>Compare all-in installed totals; flag bids excluding pad, permits, or gas runs.</li><li>Ask for generator+ATS+install bundles ($300–$800 typical savings).</li><li>Negotiate with competing line items — dealers match scope, not vibes.</li></ul></section>
-
-  <section id="financing"><h2>Financing options (typical terms — verify current offers)</h2>
-  <ComparisonTable caption="Financing options" headers={['Option', 'Typical terms']} rows={[
-    ['Dealer / manufacturer promo', '0% for 12–24 mo, then up to ~13% APR, 12–120 mo'],
-    ['HELOC / home equity', '~6–9% APR, 10–20 yr (interest often deductible — ask your tax pro)'],
-    ['Personal loan', '~7–15% APR, 24–84 mo'],
-    ['0% intro credit card', '0% 12–18 mo then 18–28% (small systems only)'],
-  ]} />
-  <p class="mt-3">A $12,000 system at 7% over 60 months runs roughly $238/month — useful context, not advice. Never finance through anyone who will not itemize the scope first.</p></section>
-
-  <section id="tax"><h2>Tax credits: the honest answer is no</h2>
-  <p>Standard natural-gas, propane, or diesel standby generators do <strong>not</strong> qualify for federal energy tax credits — only solar, wind, geothermal, fuel cells, and battery storage do. Some rural co-ops and Texas propane programs offer $250–$500 rebates; check the DSIRE database and your utility. (Solar-plus-battery's 30% federal credit is a different product under changing law — verify current code before planning around it.)</p></section>
-
-  <section id="partial"><h2>Partial vs whole-home: the $4,000–$8,000 lever</h2>
-  <ComparisonTable caption="Partial versus whole home cost" headers={['Approach', 'Equipment', 'Install', 'All-in']} rows={[
-    ['Essential circuits (7–10 kW)', '$2,000–$4,000', '$2,000–$3,500', '$4,000–$7,500'],
-    ['Partial home (10–14 kW)', '$3,700–$5,500', '$2,500–$4,500', '$6,200–$10,000'],
-    ['Whole home (22–26 kW)', '$6,000–$9,000', '$5,000–$8,000', '$11,000–$17,000'],
-  ]} />
-  <p class="mt-3">Right-sizing plus load management is the biggest legitimate saving available — see <a href="/sizing/whole-home-vs-essential-loads/">the philosophy guide</a>. Never "save" via unlicensed work or skipped permits.</p></section>
-
-  <section id="faq"><span class="sr-only">FAQ anchor</span></section>
-  <FAQSection items={[
-    { q: 'Do standby generators increase home value?', a: 'Industry reports suggest 3–5% lift and 50–150% cost recovery depending on market — strongest in storm-prone regions. Only permitted, documented systems count; get local realtor input, not national averages.' },
-    { q: 'Is there a federal tax credit for generators?', a: 'No — standard NG/propane/diesel standby units do not qualify for federal energy credits. Limited state/co-op rebates exist; check DSIRE and your utility.' },
-    { q: 'When is the cheapest month to buy?', a: 'January–February: lowest demand, shortest leads, best promo odds. Avoid buying mid-outage-season unless dates and model numbers are guaranteed in writing.' },
-    { q: 'Does a standby generator add value to my home?', a: 'Industry reports suggest 3–5% ($12,000–$20,000 on a $400k home) with 50–150% cost recovery by market — strongest in storm-prone regions. Only permitted, documented, serviced systems count; confirm with a local realtor, not national averages.' },
-  
-    { q: 'How do I estimate MY outage costs?', a: 'Inventory your last five years: spoiled food per event, hotel nights, missed workdays, plus one tail risk (frozen pipes, flooded basement). Price each honestly — that ledger beats national averages.' },
-    { q: 'Does a generator help sell faster or just higher?', a: 'Both, in outage-prone markets: documented backup shortens days-on-market objections about reliability and supports the 3–5% value reports. Keep permits and service records transferable.' },
-    { q: 'Should I finance or pay cash?', a: "Cash avoids interest on a depreciating install; 0% promos (12–24 mo) are free leverage if you can clear them. Never finance through a bidder who won't itemize scope first." },
-  ]} />
-  <section id="conclusion"><h2>Conclusion</h2><p>Price the tail risk, buy off-season, bid identically, finance deliberately, and claim no credits that do not exist. Then <a href="/cost/standby-generator-cost/">build the budget line by line</a>.</p></section>
+  <section id="compare-options">
+    <h2>Compare complete ownership scope, not a single price</h2>
+    <p>When requesting proposals, compare the exact generator and fuel rating, transfer switch, load-management plan, fuel and electrical work, permits, site preparation, startup, and warranty/service scope. Use current local bids rather than treating published national ranges as a personal estimate. Then account for manufacturer-specified fuel use at the loads you expect, current local fuel prices, maintenance, and service arrangements.</p>
+    <p>For published planning context and source qualifications, see <a href="/cost/standby-generator-cost/">our cost guide</a>. It distinguishes manufacturer starting MSRP from installed-system estimates and does not claim a guaranteed return on investment.</p>
+  </section>
 </ArticleLayout>
