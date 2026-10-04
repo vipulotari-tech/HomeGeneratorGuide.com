@@ -10,6 +10,7 @@ export function getStaticPaths() {
     '26RCAL': 'kohler-26rcal',
     '201222': 'champion-201222',
     '040786': 'briggs-stratton-040786',
+    'RS20A': 'cummins-rs20a',
   };
   return MODEL_SPECS
     .filter((model) => Boolean(routeSlugs[model.modelId]))
@@ -35,9 +36,71 @@ const brandHref =
   model.brand === 'KOHLER / Rehlko' ? '/brands/kohler/' :
   model.brand === 'Champion' ? '/brands/champion/' :
   model.brand === 'Briggs & Stratton' ? '/brands/briggs-stratton/' :
+  model.brand === 'Cummins' ? '/brands/cummins/' :
   '/brands/';
+const modelDecisionNotes: Record<string, { heading: string; points: string[] }> = {
+  G0072600: {
+    heading: 'What stands out about this 22 kW Generac record',
+    points: [
+      'The cited record separates output by fuel: 22 kW on LP and 21 kW on natural gas, so the fuel choice changes the published standby rating.',
+      'It shares the same published enclosure dimensions and G-Force 1000 engine family as the cited 26 kW G0073270, but the two records have different output, weight, fuel-use points, and starting MSRP.',
+      'The exact G0072600 product page does not establish an included transfer switch. A dealer bundle should identify the switch separately in writing.',
+    ],
+  },
+  G0073270: {
+    heading: 'What stands out about this 26 kW Generac record',
+    points: [
+      'The cited record publishes 26 kW on LP and 24 kW on natural gas and includes both 50% and 100% load fuel-consumption test points.',
+      'Its published enclosure dimensions match the cited G0072600 record while published weight is higher; that is a product-spec difference, not evidence of durability or installation quality.',
+      'The product page does not establish an included ATS even though family documentation describes bundled configurations, so quote scope matters.',
+    ],
+  },
+  '26RCA': {
+    heading: 'Why 26RCA and 26RCAL should not be treated as the same package',
+    points: [
+      'The 26RCA record is the generator-set configuration, while the manufacturer separately identifies 26RCAL as the ATS-inclusive package.',
+      'The cited single-phase rating is 26 kW LP and 24 kW natural gas; the family sheet also covers other electrical configurations that should not be mixed into a residential single-phase comparison.',
+      'Price comparisons should keep the no-ATS 26RCA starting MSRP separate from the 26RCAL package price and from any installed project quote.',
+    ],
+  },
+  '26RCAL': {
+    heading: 'What the ATS-inclusive 26RCAL package changes',
+    points: [
+      'The manufacturer identifies 26RCAL as the package that includes a 200 A service-entrance-rated RXT automatic transfer switch.',
+      'Its published generator output matches the selected 26RCA single-phase record, so the important comparison is package scope rather than pretending the extra price buys more kW.',
+      'The cited sound figures include manufacturer measurement caveats; they are not an independent acoustic test against other brands.',
+    ],
+  },
+  '201222': {
+    heading: 'What stands out about the Champion aXis system',
+    points: [
+      'This cited product is explicitly a system with a 200 A aXis automatic transfer switch, which makes its package scope different from generator-only starting-price pages.',
+      'The manufacturer publishes 22 kW on LP and 19.8 kW on natural gas and lists separate generator and ATS warranty terms.',
+      'aXis load-management modules are described as separate accessories, so a “whole-house” quote should state module model numbers, quantities, and managed loads.',
+    ],
+  },
+  '040786': {
+    heading: 'What stands out about this Briggs & Stratton record',
+    points: [
+      'The cited PowerProtect record publishes 22 kW on both LP and natural gas, unlike several selected competitors whose published output changes by fuel.',
+      'Its captured fuel-use figures are expressed in BTU/hr rather than gallons/hr or ft³/hr. Do not compare the raw numbers across units without explicit conversion assumptions.',
+      'The exact generator page does not establish an included transfer switch, so ATS scope should be confirmed separately in a dealer proposal.',
+    ],
+  },
+  RS20A: {
+    heading: 'Why the Cummins RS20A page is deliberately more conservative',
+    points: [
+      'The accessible Cummins model summary establishes a 20 kW standby rating, but our current source set does not expose a complete fuel-specific rating table, sound figure, starting MSRP, or ATS bundle for this exact model.',
+      'The warranty summary comes from Cummins family-level home-generator FAQ context covering its 13, 17, and 20 kW models; buyers should confirm the exact warranty document for the purchased unit.',
+      'Those missing fields are shown as gaps instead of being filled from a reseller, a different QuietConnect model, or another configuration.',
+    ],
+  },
+};
+const decisionNotes = modelDecisionNotes[model.modelId];
+
 const toc = [
   { id: 'snapshot', label: 'Model snapshot' },
+  { id: 'decision-notes', label: 'What stands out' },
   { id: 'fuel', label: 'Fuel-use data' },
   { id: 'sound', label: 'Sound data' },
   { id: 'package', label: 'Price, ATS & warranty' },
@@ -48,7 +111,7 @@ const toc = [
 <ArticleLayout
   title={model.brand + ' ' + model.modelId + ': Exact-Model Standby Generator Guide'}
   description={'Manufacturer-linked guide to ' + model.brand + ' ' + model.modelId + ' covering ' + ratingSummary + ', fuel-use test points where published, sound conditions, price/package scope, warranty and source limitations.'}
-  category="Models" categoryHref="/models/" updated="2026-10-04" verified="2026-10-04" readingTime="6 min read" toc={toc}
+  category="Models" categoryHref="/models/" updated="2026-10-04" verified="2026-10-04" image="/images/standby-front-neutral.webp" readingTime="7 min read" toc={toc}
   takeaways={[
     'This page is tied to exact model ' + model.modelId + '; values are not silently borrowed from another model in the same brand family.',
     ratingSummary + '. Fuel-specific ratings and test conditions still do not size a home by themselves.',
@@ -77,6 +140,13 @@ const toc = [
       </table>
     </div>
   </section>
+
+  {decisionNotes && (
+    <section id="decision-notes">
+      <h2>{decisionNotes.heading}</h2>
+      <ul>{decisionNotes.points.map((point) => <li>{point}</li>)}</ul>
+    </section>
+  )}
 
   <section id="fuel">
     <h2>Fuel-use data: keep load and units attached</h2>
