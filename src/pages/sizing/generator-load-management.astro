@@ -1,0 +1,103 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import AlertBox from '../../components/ui/AlertBox.astro';
+
+const toc = [
+  { id: 'what-it-is', label: 'What load management does' },
+  { id: 'sequence', label: 'A simple priority sequence' },
+  { id: 'brand-examples', label: 'Manufacturer examples' },
+  { id: 'not-extra-power', label: 'What it cannot do' },
+  { id: 'questions', label: 'Questions for the designer' },
+];
+---
+<ArticleLayout
+  title="Generator Load Management Explained: Priorities, Shedding & Smart Sequencing"
+  description="Understand residential standby-generator load management without wiring instructions: how priority loads, shedding, recovery, and manufacturer-specific modules can keep large loads from starting together."
+  category="Sizing" categoryHref="/sizing/" updated="2026-10-04" verified="2026-10-04" readingTime="8 min read" toc={toc}
+  takeaways={[
+    'Load management does not create more generator capacity. It controls when selected loads are allowed to run so the system can avoid or recover from overload conditions.',
+    'The exact behavior is manufacturer- and system-specific: priorities, lockout options, supported loads, recovery timing, ATS integration, and module limits differ.',
+    'A qualified designer still needs the real running loads, motor-start requirements, fuel-specific generator rating, transfer equipment, and site conditions.',
+  ]}
+  sources={[
+    { label: 'Generac: What is a Load Manager? — priorities, shedding, lockout, supported load-management architecture', href: 'https://support.generac.com/s/article/What-Is-a-Smart-Management-Module-SMM', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'Generac 50A Smart Management Module owner/installation manual', href: 'https://www.generac.com/link/6adc5da12379438fb2c1dc37b3d6f126.aspx', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'Champion 201222 22 kW aXis system — ATS and load-management-module support', href: 'https://www.championpowerequipment.com/product/201222-22-kw-whole-house-home-standby-generator-and-200a-switch-with-axis-technology/', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'Cummins QuietConnect — load management kit overview', href: 'https://www.cummins.com/en-apac/na/generators/home-standby/quietconnect-series', type: 'Manufacturer', verified: '2026-10-04' },
+  ]}
+  related={[
+    { href: '/sizing/what-size-generator-do-i-need/', title: 'Load-based sizing guide', description: 'Gather actual load and motor-start data before a property-specific assessment.', category: 'Sizing' },
+    { href: '/sizing/whole-home-vs-essential-loads/', title: 'Whole-home vs essential-load backup', description: 'Decide what truly needs to operate during an outage.', category: 'Sizing' },
+    { href: '/comparisons/transfer-switch-vs-interlock/', title: 'Transfer switch vs interlock', description: 'Understand transfer-equipment concepts without DIY wiring instructions.', category: 'Comparisons' },
+    { href: '/cost/standby-generator-quote-checklist/', title: 'Quote checklist', description: 'Require load-management modules, priorities, and exclusions in writing.', category: 'Cost' },
+  ]}
+>
+  <section id="what-it-is">
+    <h2>Load management is traffic control for electrical demand</h2>
+    <p>A standby generator has a finite output. Some homes contain large loads—air conditioning, electric water heating, pumps, cooking equipment, dryers, pool equipment, or other motors—that do not need to start at the same instant. A load-management system can delay, shed, or lock out selected loads according to the equipment’s design so demand stays within what the generator and system can support.</p>
+    <p>Generac describes its Load Manager as a device that can shed connected loads when it detects overload conditions and restore them according to priority. Champion’s 201222 aXis system says its whole-house ATS can manage high-demand appliances using separate aXis Load Management Modules. Cummins describes QuietConnect load-management kits as preventing overload by turning equipment on or off based on household demand.</p>
+    <AlertBox type="warning" title="Not a DIY wiring guide">Load managers, transfer switches, generator connections, service equipment, and large appliance circuits involve hazardous electrical work. This page explains decision concepts only. Use the exact manufacturer manuals and qualified electrical professionals for design and installation.</AlertBox>
+  </section>
+
+  <section id="sequence">
+    <h2>A simple priority sequence</h2>
+    <p>The visual below is an editorial example of the concept, not a wiring diagram and not a claim about one manufacturer’s exact timing.</p>
+    <div class="not-prose my-6 rounded-2xl border border-[#d9e0ea] bg-[#f7f9fc] p-5" role="img" aria-label="Conceptual load-management sequence: generator and transfer equipment feed high-priority loads first, then lower-priority large loads are allowed or shed based on available capacity">
+      <div class="grid gap-3 lg:grid-cols-[1fr_auto_1fr_auto_1fr] lg:items-center">
+        <div class="rounded-xl border border-primary/20 bg-white p-4">
+          <p class="text-xs font-bold uppercase tracking-wider text-accent-dark">Source</p>
+          <p class="mt-1 font-semibold text-primary">Generator + approved transfer equipment</p>
+          <p class="mt-2 text-sm leading-relaxed text-gray-600">Available capacity is finite and depends on the exact model, fuel, load, and system.</p>
+        </div>
+        <div class="hidden text-2xl text-accent lg:block" aria-hidden="true">→</div>
+        <div class="rounded-xl border border-green-200 bg-white p-4">
+          <p class="text-xs font-bold uppercase tracking-wider text-green-700">Priority group</p>
+          <p class="mt-1 font-semibold text-primary">Loads that should recover first</p>
+          <p class="mt-2 text-sm leading-relaxed text-gray-600">Example categories might include refrigeration, controls, selected lighting, or a critical pump—only if the actual design supports them.</p>
+        </div>
+        <div class="hidden text-2xl text-accent lg:block" aria-hidden="true">→</div>
+        <div class="rounded-xl border border-orange-200 bg-white p-4">
+          <p class="text-xs font-bold uppercase tracking-wider text-orange-700">Managed large loads</p>
+          <p class="mt-1 font-semibold text-primary">HVAC / water heat / other high demand</p>
+          <p class="mt-2 text-sm leading-relaxed text-gray-600">The system may delay, shed, lock out, or later restore selected loads according to its rules and priorities.</p>
+        </div>
+      </div>
+      <div class="mt-4 rounded-xl bg-primary px-4 py-3 text-sm leading-relaxed text-white">
+        Concept: if demand exceeds what the system can support, managed lower-priority loads may be removed temporarily so higher-priority loads can continue or recover. The exact trigger and recovery behavior must come from the installed equipment documentation.
+      </div>
+    </div>
+  </section>
+
+  <section id="brand-examples">
+    <h2>Manufacturer examples show why the exact system matters</h2>
+    <h3>Generac Load Manager / former Smart Management Module</h3>
+    <p>Generac’s current support material says its Load Manager can manage large loads by monitoring generator frequency and shedding a connected appliance when overload conditions are detected. It describes priority settings from 1 through 8 and a lockout option. Generac also says systems can use up to eight individual Load Managers, with additional integrated SACM-managed loads in supported configurations. Those limits and behaviors are product-specific and should be confirmed for the exact controller, ATS, and generation.</p>
+
+    <h3>Champion aXis</h3>
+    <p>Champion’s model 201222 is sold as a 22 kW LP / 19.8 kW natural-gas system with a 200 A aXis ATS. The manufacturer says the ATS can manage high-demand appliances using aXis Load Management Modules model 100868, sold separately. That means a quote should state whether modules are included, how many, and which appliances they control rather than simply saying “whole house.”</p>
+
+    <h3>Cummins QuietConnect</h3>
+    <p>Cummins’ QuietConnect overview describes load-management kits that work with its intelligent load-management approach to turn equipment on or off based on household demand. The exact available kit, transfer equipment, priority behavior, and generator compatibility should be confirmed for the selected system rather than inferred across the whole brand.</p>
+  </section>
+
+  <section id="not-extra-power">
+    <h2>Load management does not create extra kilowatts</h2>
+    <p>Sequencing can make a finite generator serve a broader set of loads over time, but it cannot make every large load run simultaneously if the generator, fuel supply, transfer equipment, and wiring are not designed for that demand. It also cannot replace motor-start analysis. A large compressor or pump may still have a brief starting requirement that the designer must account for.</p>
+    <p>Do not use load management as an excuse to choose an arbitrary smaller generator. The useful question is whether a qualified designer can document a system in which the selected generator, fuel-specific rating, starting requirements, priority strategy, and transfer equipment work together for the loads you actually want backed up.</p>
+  </section>
+
+  <section id="questions">
+    <h2>Questions to ask before accepting a load-management design</h2>
+    <ol>
+      <li>Which exact loads are managed, and which remain unmanaged?</li>
+      <li>What are the priority settings, lockouts, or recovery rules for each managed load?</li>
+      <li>Which loads may never operate together on generator power?</li>
+      <li>What motor-start assumptions were used for HVAC, wells, pumps, or other large motors?</li>
+      <li>Which generator fuel rating and transfer-switch configuration were used in the design?</li>
+      <li>Which load-management modules/controllers are included in the quote, with exact model numbers and quantities?</li>
+      <li>How is the system tested during commissioning to confirm the intended priority and recovery behavior?</li>
+      <li>What happens if a managed module fails, loses communication where applicable, or is manually locked out?</li>
+    </ol>
+    <p>Record those answers in the <a href="/cost/standby-generator-quote-checklist/">quote checklist</a> so the load-management plan becomes part of the written project scope.</p>
+  </section>
+</ArticleLayout>

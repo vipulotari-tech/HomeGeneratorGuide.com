@@ -1,0 +1,107 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { MODEL_SPECS } from '../../data/model-specs';
+
+const generac = MODEL_SPECS.find((model) => model.modelId === 'G0073270');
+if (!generac) throw new Error('Generac G0073270 source record missing.');
+const ng50 = generac.fuelConsumption?.find((row) => row.fuel === 'Natural gas' && row.loadPercent === 50);
+const lp50 = generac.fuelConsumption?.find((row) => row.fuel === 'LP' && row.loadPercent === 50);
+if (!ng50 || !lp50) throw new Error('Fuel test points missing for ownership-cost example.');
+
+const hours = 100;
+const ngAnnual = ng50.amount * hours;
+const lpAnnual = lp50.amount * hours;
+const maintenanceLow = 200;
+const maintenanceHigh = 650;
+const toc = [
+  { id: 'framework', label: 'What ownership cost includes' },
+  { id: 'fuel', label: 'Fuel-use worked example' },
+  { id: 'maintenance', label: 'Maintenance planning range' },
+  { id: 'worksheet', label: '5- and 10-year worksheet' },
+  { id: 'not-included', label: 'Costs the worksheet cannot predict' },
+];
+---
+<ArticleLayout
+  title="Standby Generator Ownership Cost: A 5- and 10-Year Planning Worksheet"
+  description="Plan standby-generator ownership costs without a fake universal total: use exact-model fuel test points, your local fuel rate, current service quotes, and a transparent 5- and 10-year worksheet."
+  category="Cost" categoryHref="/cost/" updated="2026-10-04" verified="2026-10-04" readingTime="8 min read" toc={toc}
+  takeaways={[
+    'There is no credible universal 5- or 10-year ownership total because outage hours, load, local fuel prices, maintenance plans, batteries, repairs, subscriptions, and inflation vary.',
+    'A useful worksheet separates the installed project price from recurring fuel, scheduled service, subscriptions/accessories, consumables, and unpredictable repairs.',
+    'The worked fuel example below uses one exact manufacturer test point and 100 outage hours only to show the arithmetic; it is not a forecast of your home.',
+  ]}
+  sources={[
+    { label: 'Generac G0073270 official specification sheet — fuel-consumption test points', href: 'https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'HomeGuide: whole-house generator cost and maintenance planning ranges (published Dec. 30, 2025)', href: 'https://homeguide.com/costs/generator-cost', type: 'Industry', verified: '2026-10-04' },
+    { label: 'Cummins home generator FAQ — follow model-specific maintenance guidance', href: 'https://www.cummins.com/en-na/na/generators/home-standby/home-generator-faq', type: 'Manufacturer', verified: '2026-10-04' },
+  ]}
+  related={[
+    { href: '/cost/standby-generator-cost/', title: 'Standby generator purchase and installation cost', description: 'Separate equipment pricing from installed-project scope.', category: 'Cost' },
+    { href: '/cost/generator-roi-outage-costs/', title: 'ROI and outage-cost framework', description: 'Evaluate value without inventing a universal payback period.', category: 'Cost' },
+    { href: '/maintenance/generator-maintenance-checklist/', title: 'Maintenance checklist', description: 'Use the exact manual and keep owner checks separate from technician work.', category: 'Maintenance' },
+    { href: '/cost/standby-generator-quote-checklist/', title: 'Quote comparison checklist', description: 'Make service-plan and warranty responsibilities explicit before purchase.', category: 'Cost' },
+  ]}
+>
+  <section id="framework">
+    <h2>What standby-generator ownership cost actually includes</h2>
+    <p>Ownership cost starts with the installed project, but it does not end there. A useful planning model keeps recurring and uncertain costs separate so one assumption does not masquerade as a guaranteed total.</p>
+    <ul>
+      <li><strong>Installed project:</strong> generator, transfer equipment, site/pad work, electrical and fuel work, permits, commissioning, taxes, and any included accessories.</li>
+      <li><strong>Fuel during outages and testing:</strong> exact-model consumption varies with fuel, load, operating mode, fuel conditions, and runtime.</li>
+      <li><strong>Scheduled service:</strong> labor, fluids, filters, plugs, inspections, valve work where applicable, and other model-specific tasks.</li>
+      <li><strong>Consumables / replacement items:</strong> battery and other wear items when required by the exact manual and condition.</li>
+      <li><strong>Monitoring or connectivity:</strong> only if the selected product or service plan has a paid component.</li>
+      <li><strong>Repairs outside warranty:</strong> inherently uncertain and should not be disguised as a fixed annual estimate.</li>
+    </ul>
+  </section>
+
+  <section id="fuel">
+    <h2>Worked fuel-use example: one exact model, one published test point</h2>
+    <p>The Generac G0073270 manufacturer sheet lists a 50% load test point of <strong>{ng50.amount} {ng50.unit}</strong> on natural gas and <strong>{lp50.amount} {lp50.unit}</strong> on LP. If someone used those test points for an illustrative <strong>{hours} outage hours in one year</strong>, the arithmetic would be:</p>
+    <div class="not-prose mt-5 overflow-x-auto rounded-xl border border-[#d9e0ea]">
+      <table class="min-w-[760px] w-full border-collapse text-left text-sm">
+        <caption class="sr-only">Illustrative fuel volume arithmetic using Generac G0073270 manufacturer 50 percent load test points</caption>
+        <thead class="bg-[#edf3fb] text-primary"><tr><th class="p-3">Fuel</th><th class="p-3">Published 50% test point</th><th class="p-3">100-hour illustrative volume</th><th class="p-3">5 years at same assumed hours</th><th class="p-3">10 years at same assumed hours</th></tr></thead>
+        <tbody class="divide-y divide-gray-200 text-gray-800">
+          <tr><th scope="row" class="p-3">Natural gas</th><td class="p-3">{ng50.amount} ft³/hr</td><td class="p-3">{ngAnnual.toLocaleString('en-US')} ft³</td><td class="p-3">{(ngAnnual * 5).toLocaleString('en-US')} ft³</td><td class="p-3">{(ngAnnual * 10).toLocaleString('en-US')} ft³</td></tr>
+          <tr><th scope="row" class="p-3">LP</th><td class="p-3">{lp50.amount} gal/hr</td><td class="p-3">{lpAnnual.toLocaleString('en-US')} gal</td><td class="p-3">{(lpAnnual * 5).toLocaleString('en-US')} gal</td><td class="p-3">{(lpAnnual * 10).toLocaleString('en-US')} gal</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="mt-4"><strong>Do not treat those volumes as a forecast.</strong> Real homes do not stay at exactly 50% load, outage hours vary, exercise/runtime behavior varies, and fuel conditions matter. To turn volume into dollars, multiply a realistic model-specific volume by the rate structure that actually applies to your utility or propane supply. For natural gas, confirm whether your bill is quoted per therm, CCF, MCF, or another unit before converting.</p>
+  </section>
+
+  <section id="maintenance">
+    <h2>Maintenance planning range: keep the source and scope visible</h2>
+    <p>HomeGuide’s December 2025 cost guide lists an annual generator maintenance planning estimate of <strong>$200–$650</strong>. That is a secondary-source national planning range, not a required fee and not a quote for a specific brand or region. Using it mechanically would produce <strong>$1000–$3250</strong> over five years and <strong>$2000–$6500</strong> over ten years before inflation.</p>
+    <p>A better input is a current written service-plan or maintenance quote for the exact model. Ask what labor, travel, fluids, filters, battery checks/replacement, valve service where applicable, emergency calls, and warranty support are included. Follow the exact operator/maintenance manual rather than a generic annual schedule from another model.</p>
+  </section>
+
+  <section id="worksheet">
+    <h2>5- and 10-year ownership-cost worksheet</h2>
+    <p>Fill this out with your installed quote, exact-model fuel data, local fuel rates, and written service pricing. Leave uncertain repairs separate rather than forcing them into a fake annual average.</p>
+    <div class="not-prose mt-5 overflow-x-auto rounded-xl border border-[#d9e0ea]">
+      <table class="min-w-[860px] w-full border-collapse text-left text-sm">
+        <caption class="sr-only">Blank standby generator ownership cost worksheet</caption>
+        <thead class="bg-[#edf3fb] text-primary"><tr><th class="p-3">Input</th><th class="p-3">Your annual / one-time amount</th><th class="p-3">5-year planning math</th><th class="p-3">10-year planning math</th></tr></thead>
+        <tbody class="divide-y divide-gray-200 text-gray-800">
+          <tr><th scope="row" class="p-3">Installed project price</th><td class="h-12 p-3">&nbsp;</td><td class="p-3">One time</td><td class="p-3">One time</td></tr>
+          <tr><th scope="row" class="p-3">Expected outage/test fuel volume</th><td class="p-3">&nbsp;</td><td class="p-3">Annual volume × 5</td><td class="p-3">Annual volume × 10</td></tr>
+          <tr><th scope="row" class="p-3">Applicable local fuel rate</th><td class="p-3">&nbsp;</td><td class="p-3">Use correct billing units</td><td class="p-3">Use correct billing units</td></tr>
+          <tr><th scope="row" class="p-3">Scheduled service / plan</th><td class="p-3">&nbsp;</td><td class="p-3">Annual quote × 5</td><td class="p-3">Annual quote × 10</td></tr>
+          <tr><th scope="row" class="p-3">Monitoring / connectivity</th><td class="p-3">&nbsp;</td><td class="p-3">Annual fee × 5</td><td class="p-3">Annual fee × 10</td></tr>
+          <tr><th scope="row" class="p-3">Known scheduled consumables</th><td class="p-3">&nbsp;</td><td class="p-3">Use exact manual / service quote</td><td class="p-3">Use exact manual / service quote</td></tr>
+          <tr><th scope="row" class="p-3">Extended warranty, if purchased</th><td class="p-3">&nbsp;</td><td class="p-3">One time or per terms</td><td class="p-3">One time or per terms</td></tr>
+          <tr><th scope="row" class="p-3">Unplanned repairs outside warranty</th><td class="p-3">Keep separate / unknown</td><td class="p-3">Do not invent</td><td class="p-3">Do not invent</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="mt-4">For a present-day budget, keep future inflation and fuel-price changes visible as uncertainty instead of silently assuming today’s rate holds for a decade.</p>
+  </section>
+
+  <section id="not-included">
+    <h2>What this worksheet cannot predict</h2>
+    <p>It cannot predict future outage hours, fuel prices, inflation, failures, parts availability, dealer labor rates, warranty claim outcomes, resale value, or future code requirements. It also cannot tell whether a standby generator is financially “worth it” for a household whose decision is driven by heat, water, medical equipment, sump pumping, accessibility, or other non-financial needs.</p>
+    <p>Use the <a href="/cost/generator-roi-outage-costs/">ROI and outage-cost framework</a> for those tradeoffs, and the <a href="/cost/standby-generator-quote-checklist/">quote checklist</a> to make recurring service and warranty responsibilities explicit before purchase.</p>
+  </section>
+</ArticleLayout>

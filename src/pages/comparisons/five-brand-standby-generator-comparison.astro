@@ -1,0 +1,153 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { MODEL_SPECS } from '../../data/model-specs';
+
+const pick = (id: string) => {
+  const model = MODEL_SPECS.find((item) => item.modelId === id);
+  if (!model) throw new Error('Missing exact model ' + id);
+  return model;
+};
+const models = [
+  pick('G0073270'),
+  pick('26RCA'),
+  pick('201222'),
+  pick('040786'),
+  pick('RS20A'),
+];
+const rating = (model: typeof models[number]) => {
+  const lp = model.ratingsKw.LP;
+  const ng = model.ratingsKw['Natural gas'];
+  if (lp !== undefined || ng !== undefined) {
+    return [
+      lp !== undefined ? lp + ' kW LP' : null,
+      ng !== undefined ? ng + ' kW NG' : null,
+    ].filter(Boolean).join(' · ');
+  }
+  return model.standbyRatingKw !== undefined
+    ? model.standbyRatingKw + ' kW published standby rating; accessible source does not separate LP/NG'
+    : 'Not established in current source set';
+};
+const price = (model: typeof models[number]) =>
+  model.startingMsrpUsd !== undefined
+    ? '$' + model.startingMsrpUsd.toLocaleString('en-US') + ' starting MSRP'
+    : 'No current starting MSRP established in captured manufacturer source';
+const sound = (model: typeof models[number]) => {
+  const rows = model.sound ?? [];
+  if (!rows.length) return 'No model-specific sound value captured';
+  return rows.map((row) =>
+    row.decibelsA + ' dB(A), ' + row.condition +
+    (row.distanceFt ? ', ' + row.distanceFt + ' ft' : ', distance not stated in captured source')
+  ).join('; ');
+};
+const toc = [
+  { id: 'scope', label: 'What is being compared' },
+  { id: 'table', label: 'Five-brand exact-model table' },
+  { id: 'differences', label: 'What actually differs' },
+  { id: 'shortlist', label: 'How to build a shortlist' },
+  { id: 'quote', label: 'Questions to put in writing' },
+];
+---
+<ArticleLayout
+  title="Generac vs KOHLER vs Champion vs Briggs vs Cummins: Five-Brand Standby Comparison"
+  description="A source-linked comparison of selected residential standby-generator models from Generac, KOHLER/Rehlko, Champion, Briggs & Stratton, and Cummins, with fuel-rating, package, warranty, sound, and pricing caveats."
+  category="Comparisons" categoryHref="/comparisons/" updated="2026-10-04" verified="2026-10-04" readingTime="9 min read" toc={toc}
+  takeaways={[
+    'Brand names alone are too broad for a useful comparison. This page uses exact selected models and keeps fuel, package, sound, and warranty scope attached to each number.',
+    'The selected Generac, KOHLER, Champion, and Briggs models publish different package and pricing details; the captured Cummins source does not establish an equivalent current starting MSRP.',
+    'There is no universal winner without a property-specific load plan, local service path, exact transfer equipment, fuel supply, installation scope, and written warranty terms.',
+  ]}
+  sources={models.flatMap((model) => model.sources.map((source) => ({ label: source.label, href: source.url, type: 'Manufacturer' as const, verified: source.checkedOn })))}
+  related={[
+    { href: '/comparisons/generac-vs-kohler/', title: 'Generac vs KOHLER: exact 26 kW comparison', description: 'Go deeper on two similarly rated single-phase models.', category: 'Comparisons' },
+    { href: '/comparisons/standby-generator-warranty-comparison/', title: 'Warranty comparison', description: 'Compare headline warranty summaries and the details a quote should identify.', category: 'Comparisons' },
+    { href: '/comparisons/standby-generator-noise-levels/', title: 'Noise-level comparison', description: 'Keep operating mode, distance, and measurement conditions attached to dB(A) values.', category: 'Comparisons' },
+    { href: '/cost/standby-generator-quote-checklist/', title: '16-line quote checklist', description: 'Normalize scope before comparing total installed price.', category: 'Cost' },
+  ]}
+>
+  <section id="scope">
+    <h2>What is being compared</h2>
+    <p>This page compares one selected residential standby model or package from each of five manufacturers: Generac G0073270, KOHLER/Rehlko 26RCA, Champion 201222, Briggs & Stratton PowerProtect 040786, and Cummins QuietConnect RS20A. The models are not all the same output, bundle, or price class. That is intentional: the goal is to show how easily a brand-level comparison becomes misleading when exact-model scope is removed.</p>
+    <p>All values below come from the linked manufacturer pages or specification sheets captured in our model registry. Missing values remain missing. We do not fill a Cummins price from a dealer listing, infer a transfer switch from another package, or turn a warranty term into a reliability score.</p>
+  </section>
+
+  <section id="table">
+    <h2>Selected five-brand exact-model comparison</h2>
+    <div class="not-prose mt-5 overflow-x-auto rounded-xl border border-[#d9e0ea]">
+      <table class="min-w-[980px] w-full border-collapse text-left text-sm">
+        <caption class="sr-only">Selected residential standby-generator models from five manufacturers</caption>
+        <thead class="bg-[#edf3fb] text-primary">
+          <tr>
+            <th scope="col" class="p-3">Exact model</th>
+            <th scope="col" class="p-3">Published standby rating</th>
+            <th scope="col" class="p-3">Starting price scope</th>
+            <th scope="col" class="p-3">Transfer-switch / package scope</th>
+            <th scope="col" class="p-3">Warranty summary</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200 text-gray-800">
+          {models.map((model) => (
+            <tr>
+              <th scope="row" class="p-3 align-top">
+                <a href={model.productUrl} rel="external noopener noreferrer" class="font-semibold text-primary underline decoration-accent underline-offset-4">{model.brand} {model.modelId}</a>
+                <span class="mt-1 block font-normal text-gray-600">{model.displayName}</span>
+              </th>
+              <td class="p-3 align-top">{rating(model)}</td>
+              <td class="p-3 align-top">{price(model)}{model.startingMsrpNote ? <span class="mt-1 block text-xs text-gray-500">{model.startingMsrpNote}</span> : null}</td>
+              <td class="p-3 align-top">{model.transferSwitch ?? 'Not established in current model source set.'}</td>
+              <td class="p-3 align-top">{model.warranty ?? 'No model-specific warranty summary captured.'}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="mt-4">Do not read the table as a ranking. A package with an included ATS should not be price-compared directly with a generator-only starting MSRP, and a 26 kW LP label should not be assumed to equal the natural-gas rating. Exact quote scope matters more than a brand logo.</p>
+  </section>
+
+  <section id="differences">
+    <h2>The differences that matter more than a generic “best brand” score</h2>
+    <h3>Fuel-specific output</h3>
+    <p>The selected Generac and KOHLER single-phase models publish 26 kW on LP and 24 kW on natural gas. Champion 201222 publishes 22 kW LP and 19.8 kW natural gas. Briggs & Stratton 040786 publishes 22 kW on both listed fuels. The captured Cummins RS20A page establishes a 20 kW standby rating but does not expose separate LP/NG output in the accessible summary we use, so we do not invent it.</p>
+
+    <h3>Package scope</h3>
+    <p>Champion 201222 is explicitly sold with a 200 A aXis ATS. KOHLER distinguishes the 26RCA generator from the ATS-inclusive 26RCAL package. The Generac G0073270 product page does not establish an included switch even though its family documentation describes bundled configurations. The selected Briggs page does not establish an included switch. Cummins offers multiple residential transfer-switch options, but the exact RS20A product page captured here is not treated as an ATS bundle.</p>
+
+    <h3>Sound data</h3>
+    <p>Manufacturer sound figures are not a standardized independent test. For the selected models, the published values and conditions differ in completeness. See the <a href="/comparisons/standby-generator-noise-levels/">dedicated noise comparison</a> rather than ranking brands by one marketing number.</p>
+    <div class="not-prose mt-4 overflow-x-auto rounded-xl border border-[#d9e0ea]">
+      <table class="min-w-[760px] w-full border-collapse text-left text-sm">
+        <caption class="sr-only">Sound-data scope for five selected standby generator models</caption>
+        <thead class="bg-[#edf3fb] text-primary"><tr><th class="p-3">Model</th><th class="p-3">What the current source set publishes</th></tr></thead>
+        <tbody class="divide-y divide-gray-200">
+          {models.map((model) => <tr><th scope="row" class="p-3">{model.brand} {model.modelId}</th><td class="p-3">{sound(model)}</td></tr>)}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="shortlist">
+    <h2>How to build a shortlist without pretending one brand fits every home</h2>
+    <ol>
+      <li><strong>Start with loads:</strong> document the loads that need backup, motor-start requirements, and what can be delayed or shed.</li>
+      <li><strong>Confirm fuel:</strong> compare the exact model’s output on the fuel actually available at the property and have the supply verified.</li>
+      <li><strong>Match transfer equipment:</strong> require the exact ATS or other approved transfer-equipment model and service rating in writing.</li>
+      <li><strong>Check local service:</strong> ask who will commission the unit, perform warranty work, and provide scheduled service in your area.</li>
+      <li><strong>Read warranty documents:</strong> compare years/hours, ATS coverage, labor/travel, registration, and maintenance obligations.</li>
+      <li><strong>Normalize installed scope:</strong> compare pad/site work, electrical work, fuel work, permits, load management, accessories, and commissioning before looking at the bottom-line price.</li>
+    </ol>
+    <p>That process may leave more than one reasonable brand on the shortlist. The final choice should come from the complete system and service proposal, not a universal internet winner.</p>
+  </section>
+
+  <section id="quote">
+    <h2>Put these questions into the written proposal</h2>
+    <ul>
+      <li>What are the exact generator and transfer-switch model numbers?</li>
+      <li>What is the generator’s published rating on the selected fuel?</li>
+      <li>Which loads can run together, and what load management is included?</li>
+      <li>What fuel-supply changes are required and who is responsible for them?</li>
+      <li>Which warranty documents apply to the generator and ATS?</li>
+      <li>Who performs local commissioning, scheduled service, and warranty repairs?</li>
+      <li>Which items are excluded, allowances, or dependent on permits/utility approval?</li>
+    </ul>
+    <p>Use the <a href="/cost/standby-generator-quote-checklist/">16-line quote checklist</a> to compare the answers side by side.</p>
+  </section>
+</ArticleLayout>
