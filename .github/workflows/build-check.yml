@@ -21,5 +21,34 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci
+      - name: Astro checks
+        run: npm run check
+      - name: TypeScript checks
+        run: npm run typecheck
       - name: Build staging
         run: npm run build:staging
+      - name: Install browser
+        run: npx playwright install --with-deps chromium
+      - name: Start staging preview
+        run: |
+          npx wrangler dev --config wrangler.staging.jsonc --ip 127.0.0.1 --port 8321 > /tmp/hgg-wrangler.log 2>&1 &
+          for i in {1..30}; do
+            if curl -fsS http://127.0.0.1:8321/ >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/hgg-wrangler.log
+          exit 1
+      - name: Browser QA
+        env:
+          BASE_URL: http://127.0.0.1:8321
+        run: npm run qa:browser
+      - name: Build production
+        run: npm run build:production
+      - name: Production SEO assertions
+        run: |
+          test -f dist/robots.txt
+          grep -q "Allow: /" dist/robots.txt
+          grep -q "https://homegeneratorguide.com/sitemap-index.xml" dist/robots.txt
+          test -f dist/sitemap-index.xml
+          ! grep -R -q "homegeneratorguide.com/404/" dist/sitemap*.xml
+          ! grep -q "X-Robots-Tag: noindex" dist/_headers
