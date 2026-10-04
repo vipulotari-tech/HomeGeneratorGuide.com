@@ -57,5 +57,12 @@ const fullTitle = title.includes('HomeGeneratorGuide') ? title : `${title} | Hom
     <slot />
   </main>
   <Footer />
+  <script>
+    // Keyboard-only focus rings: hide outlines for mouse/touch interaction,
+    // restore them the moment keyboard navigation (Tab) is used.
+    document.documentElement.addEventListener('mousedown', () => document.documentElement.classList.add('mouse-nav'), { passive: true });
+    document.documentElement.addEventListener('touchstart', () => document.documentElement.classList.add('mouse-nav'), { passive: true });
+    document.documentElement.addEventListener('keydown', (e) => { if (e.key === 'Tab') document.documentElement.classList.remove('mouse-nav'); });
+  </script>
 </body>
 </html>
