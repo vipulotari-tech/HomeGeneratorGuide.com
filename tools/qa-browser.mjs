@@ -124,11 +124,18 @@ try {
     'static worksheet disclosure is missing',
   );
 
-  await page.setViewportSize({ width: 390, height: 844 });
+  await page.setViewportSize({ width: 320, height: 640 });
   await page.goto(`${baseUrl}/`, { waitUntil: 'networkidle' });
   await page.click('#menu-btn');
   assert.equal(await page.getAttribute('#menu-btn', 'aria-expanded'), 'true', 'mobile menu did not open');
   assert.equal(await page.locator('#mobile-nav').isVisible(), true, 'mobile navigation is not visible');
+  assert(
+    await page.evaluate(() => {
+      const nav = document.querySelector('#mobile-nav');
+      return nav ? nav.getBoundingClientRect().bottom <= window.innerHeight + 1 : false;
+    }),
+    'mobile menu exceeds viewport instead of becoming internally scrollable',
+  );
   await page.keyboard.press('Escape');
   assert.equal(await page.getAttribute('#menu-btn', 'aria-expanded'), 'false', 'Escape did not close the menu');
 
