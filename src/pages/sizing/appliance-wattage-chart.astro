@@ -54,7 +54,7 @@ const formatRange = (value: { minimum: number; maximum: number }) =>
     <section id={group.id}>
       <h2>{group.title}</h2>
       <div class="not-prose mt-4 overflow-x-auto rounded-xl border border-[#d9e0ea]">
-        <table class="min-w-[620px] w-full border-collapse text-left text-sm">
+        <table class="mobile-card-table min-w-[620px] w-full border-collapse text-left text-sm">
           <caption class="sr-only">{group.title}: approximate watt ranges from Champion Power Equipment</caption>
           <thead class="bg-[#edf3fb] text-primary"><tr><th scope="col" class="p-3">Appliance reference</th><th scope="col" class="p-3">Running watts</th><th scope="col" class="p-3">Starting watts listed by source</th></tr></thead>
           <tbody class="divide-y divide-gray-200 text-gray-800">
@@ -76,7 +76,7 @@ const formatRange = (value: { minimum: number; maximum: number }) =>
     <h2>Printable load worksheet for a professional discussion</h2>
     <p>This static worksheet is for collecting information; it does not calculate a generator size. Use manufacturer labels/manuals, not the example ranges above.</p>
     <div class="not-prose mt-4 overflow-x-auto rounded-xl border border-[#d9e0ea]">
-      <table class="min-w-[680px] w-full border-collapse text-left text-sm">
+      <table class="mobile-card-table min-w-[680px] w-full border-collapse text-left text-sm">
         <caption class="sr-only">Blank, static generator load-planning worksheet</caption>
         <thead class="bg-[#edf3fb] text-primary"><tr><th scope="col" class="p-3">Load / appliance</th><th scope="col" class="p-3">Exact make/model</th><th scope="col" class="p-3">Nameplate/manual data</th><th scope="col" class="p-3">Priority / can be delayed?</th></tr></thead>
         <tbody class="divide-y divide-gray-200">{Array.from({ length: 7 }).map(() => <tr><td class="h-12 p-3">&nbsp;</td><td class="p-3">&nbsp;</td><td class="p-3">&nbsp;</td><td class="p-3">&nbsp;</td></tr>)}</tbody>
