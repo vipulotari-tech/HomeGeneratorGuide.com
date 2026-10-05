@@ -163,6 +163,32 @@ export const MODEL_SPECS: ModelSpec[] = [
   },
   {
     brand: 'Champion',
+    modelId: '201614',
+    displayName: '26 kW fleX Home Standby Generator System',
+    configuration: '26 kW on LP and 23.4 kW on natural gas; 60 Hz, single-phase, 120/240 V. Product is sold as a system with a 200 A service-entrance-rated fleX automatic transfer switch.',
+    productUrl: 'https://www.championpowerequipment.com/product/201614-26-kw-whole-house-home-standby-generator-and-200a-switch-with-flex-technology/',
+    ratingsKw: { LP: 26, 'Natural gas': 23.4 },
+    dimensionsIn: { length: 57.4, width: 29.5, height: 43.9 },
+    weightLb: 642.7,
+    engine: { maker: 'Champion', displacementCc: 999 },
+    sound: [
+      { decibelsA: 68, condition: 'manufacturer-listed operational volume; Champion says the measurement is approximate, measured at 23 ft, and installation-site conditions may vary', distanceFt: 23 },
+    ],
+    fuelConsumption: [
+      { fuel: 'LP', loadPercent: 50, amount: 2.39, unit: 'gal/hr' },
+      { fuel: 'LP', loadPercent: 100, amount: 3.95, unit: 'gal/hr' },
+      { fuel: 'Natural gas', loadPercent: 50, amount: 197.8, unit: 'ft³/hr' },
+      { fuel: 'Natural gas', loadPercent: 100, amount: 321.1, unit: 'ft³/hr' },
+    ],
+    transferSwitch: 'The 201614 system includes a 200 A, 120/240 V, service-entrance fleX automatic transfer switch with NEMA 3R enclosure. Champion states that the fleX controller supports load management; quote scope should identify any required load-management modules and controlled loads.',
+    warranty: 'Champion lists a 10-year limited generator warranty and a separate 2-year limited transfer-switch warranty. Champion’s air-cooled HSB warranty terms also state a 10-year/2,000-hour limit, with mileage/labor/parts coverage in years 1–2 and parts-only coverage in years 3–10, subject to activation, maintenance, service, and other warranty conditions.',
+    sources: [
+      { label: 'Champion model 201614 product page and specifications', url: 'https://www.championpowerequipment.com/product/201614-26-kw-whole-house-home-standby-generator-and-200a-switch-with-flex-technology/', checkedOn: '2026-10-05' },
+      { label: 'Champion air-cooled home standby 10-year limited warranty (official manual)', url: 'https://www.championpowerequipment.com/wp-content/uploads/2025/09/201202-OM-english.pdf', checkedOn: '2026-10-05' },
+    ],
+  },
+  {
+    brand: 'Champion',
     modelId: '201222',
     displayName: '22 kW aXis Home Standby Generator System',
     configuration: '22 kW on LP and 19.8 kW on natural gas; 60 Hz, single-phase, 120/240 V. Product is sold as a system with a 200 A aXis automatic transfer switch.',
@@ -179,9 +205,10 @@ export const MODEL_SPECS: ModelSpec[] = [
       { fuel: 'Natural gas', loadPercent: 100, amount: 270.2, unit: 'ft³/hr' },
     ],
     transferSwitch: 'The 201222 system includes a 200 A aXis automatic transfer switch; load-management modules are listed as sold separately.',
-    warranty: 'Manufacturer states a 10-year limited warranty on the generator and a separate 2-year limited warranty on the ATS.',
+    warranty: 'Manufacturer states a 10-year limited warranty on the generator and a separate 2-year limited warranty on the ATS. Read the current warranty document for year-by-year labor/travel/parts terms and maintenance obligations.',
     sources: [
       { label: 'Champion model 201222 product page and specifications', url: 'https://www.championpowerequipment.com/product/201222-22-kw-whole-house-home-standby-generator-and-200a-switch-with-axis-technology/', checkedOn },
+      { label: 'Champion home standby generator warranty summary', url: 'https://help.championpowerequipment.com/article/e9pbt6pk36-home-standby-generator-warranty', checkedOn: '2026-10-05' },
     ],
   },
   {
