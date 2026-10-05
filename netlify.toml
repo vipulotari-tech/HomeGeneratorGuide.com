@@ -1,3 +1,10 @@
+# Retired personal author route.
+[[redirects]]
+  from = "/author/vipul-otari/"
+  to = "/editorial-team/"
+  status = 301
+  force = true
+
 # Netlify deploy configuration for HomeGeneratorGuide.com (static Astro output)
 [build]
   command = "npm run build:production"
