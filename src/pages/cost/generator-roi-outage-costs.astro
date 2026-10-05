@@ -46,7 +46,7 @@ const toc = [
     <h2>Record the household-specific costs and exposures</h2>
     <p>For several past outages, write down only costs you can substantiate, such as receipts, bills, or documented lost work. Keep direct out-of-pocket costs separate from estimates and from risks that did not actually occur.</p>
     <div class="not-prose mt-4 overflow-x-auto rounded-xl border border-[#d9e0ea]">
-      <table class="min-w-[680px] w-full border-collapse text-left text-sm">
+      <table class="mobile-card-table min-w-[680px] w-full border-collapse text-left text-sm">
         <caption class="sr-only">Static household outage-cost record worksheet</caption>
         <thead class="bg-[#edf3fb] text-primary"><tr><th scope="col" class="p-3">Outage date/duration</th><th scope="col" class="p-3">Documented direct cost</th><th scope="col" class="p-3">Uncertain/indirect impact</th><th scope="col" class="p-3">Source or note</th></tr></thead>
         <tbody class="divide-y divide-gray-200">{Array.from({ length: 5 }).map(() => <tr><td class="h-12 p-3">&nbsp;</td><td class="p-3">&nbsp;</td><td class="p-3">&nbsp;</td><td class="p-3">&nbsp;</td></tr>)}</tbody>
