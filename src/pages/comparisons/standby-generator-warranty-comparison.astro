@@ -2,7 +2,7 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import { MODEL_SPECS } from '../../data/model-specs';
 
-const wanted = new Set(['G0073270', '26RCA', '201222', '040786', 'RS20A']);
+const wanted = new Set(['G0073270', '26RCA', '201614', '040786', 'RS20A']);
 const models = MODEL_SPECS.filter((model) => wanted.has(model.modelId));
 const toc = [
   { id: 'scope', label: 'What this comparison can show' },
@@ -15,7 +15,7 @@ const toc = [
 <ArticleLayout
   title="Standby Generator Warranty Comparison: Generac, KOHLER, Champion, Briggs & Cummins"
   description="Compare manufacturer-published warranty summaries for selected residential standby-generator models, with coverage-scope caveats and a checklist for reading the full warranty before purchase."
-  category="Comparisons" categoryHref="/comparisons/" updated="2026-10-04" verified="2026-10-04" image="/images/two-standby-units.webp" readingTime="7 min read" toc={toc}
+  category="Comparisons" categoryHref="/comparisons/" updated="2026-10-05" verified="2026-10-05" image="/images/two-standby-units.webp" readingTime="7 min read" toc={toc}
   takeaways={[
     'Warranty length alone is not a reliability score and does not prove equal parts, labor, travel, ATS, corrosion, or hour-limit coverage.',
     'The selected exact models publish materially different warranty summaries: compare the full document for the quoted generator and transfer switch, not only the headline number of years.',
@@ -46,7 +46,7 @@ const toc = [
               <th scope="row" class="p-3 align-top"><a href={model.productUrl} rel="external noopener noreferrer" class="font-semibold text-primary underline decoration-accent underline-offset-4">{model.brand} {model.modelId}</a><span class="mt-1 block font-normal text-gray-600">{model.displayName}</span></th>
               <td class="p-3 align-top">{model.warranty ?? 'No model-specific warranty summary captured in the current source set.'}</td>
               <td class="p-3 align-top">
-                {model.modelId === '201222' ? 'Champion’s source distinguishes generator and ATS coverage; do not apply the generator term to the switch.' :
+                {model.modelId === '201614' ? 'Champion’s sources distinguish the generator and ATS warranties and describe materially different coverage after year 2; do not read the 10-year headline as identical labor/travel/parts coverage for all 10 years.' :
                  model.modelId === '26RCA' ? 'The cited 2026 specification sheet states a 5-year/2,000-hour limited warranty with parts, labor, and travel; read the complete terms.' :
                  model.modelId === '040786' ? 'The product/spec source describes comprehensive coverage; confirm exclusions, hour limits, and whether the quoted model/package is the same.' :
                  model.modelId === 'RS20A' ? 'Cummins’ family FAQ gives the 13/17/20 kW air-cooled term; confirm the exact current warranty document for the purchased unit.' :
