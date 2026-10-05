@@ -8,7 +8,7 @@ const { inverse = false } = Astro.props;
     <img src="/brand-mark.svg" width="36" height="36" alt="" aria-hidden="true" />
   </span>
   <span class="min-w-0">
-    <span class={`block whitespace-nowrap text-[15px] font-semibold tracking-tight sm:text-lg ${inverse ? 'text-white' : 'text-primary'}`}>{SITE_NAME}</span>
-    <span class={`block whitespace-nowrap text-[10px] leading-relaxed sm:text-xs ${inverse ? 'text-slate-200' : 'text-ink'}`}>{TAGLINE}</span>
+    <span class={`block whitespace-nowrap text-[14px] font-semibold tracking-tight min-[360px]:text-[15px] sm:text-lg ${inverse ? 'text-white' : 'text-primary'}`}>{SITE_NAME}</span>
+    <span class={`hidden whitespace-nowrap text-[10px] leading-relaxed min-[350px]:block sm:text-xs ${inverse ? 'text-slate-200' : 'text-ink'}`}>{TAGLINE}</span>
   </span>
 </span>
