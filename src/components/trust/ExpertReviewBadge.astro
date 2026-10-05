@@ -1,0 +1,6 @@
+---
+import { reviewForPage, REVIEWERS } from '../../data/editorial';
+const review = reviewForPage(Astro.url.pathname);
+const reviewer = review && REVIEWERS.find(r => r.id === review.reviewerId);
+---
+<span class="evidence-tag">{reviewer ? 'Technical professional reviewed' : 'Technical professional review pending.'}</span>

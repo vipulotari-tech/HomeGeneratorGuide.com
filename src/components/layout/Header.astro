@@ -1,13 +1,12 @@
 ---
 import BrandLogo from './BrandLogo.astro';
 const nav = [
-  { href: '/sizing/', label: 'Sizing Guide' },
-  { href: '/cost/', label: 'Cost Guide' },
-  { href: '/brands/', label: 'Brands' },
-  { href: '/comparisons/', label: 'Comparisons' },
-  { href: '/installation/', label: 'Installation' },
-  { href: '/maintenance/', label: 'Maintenance' },
-  { href: '/guides/', label: 'Guides' },
+  {href:'/planning/',label:'Planning tools'},
+  {href:'/models/',label:'Exact models'},
+  {href:'/brands/',label:'Brands'},
+  {href:'/cost/',label:'Costs'},
+  {href:'/installation/',label:'Installation'},
+  {href:'/guides/',label:'Research'},
 ];
 const path = Astro.url.pathname;
 const active = (href: string) => path === href || path.startsWith(href);
@@ -17,7 +16,7 @@ const active = (href: string) => path === href || path.startsWith(href);
     <a href="/" class="flex min-h-[44px] items-center gap-2.5" aria-label="HomeGeneratorGuide home">
       <BrandLogo inverse />
     </a>
-    <nav class="hidden items-center gap-2 lg:flex" aria-label="Primary">
+    <nav class="hidden items-center gap-2 xl:flex" aria-label="Primary">
       {nav.map((n) => (
         <a
           href={n.href}
@@ -28,7 +27,7 @@ const active = (href: string) => path === href || path.startsWith(href);
     </nav>
     <button
       id="menu-btn"
-      class="inline-flex min-h-[44px] min-w-[44px] shrink-0 items-center justify-center rounded-md border border-white/30 text-white transition-colors hover:bg-white/10 lg:hidden"
+      class="inline-flex min-h-[44px] min-w-[44px] shrink-0 items-center justify-center rounded-md border border-white/30 text-white transition-colors hover:bg-white/10 xl:hidden"
       aria-expanded="false"
       aria-controls="mobile-nav"
     >
@@ -36,7 +35,7 @@ const active = (href: string) => path === href || path.startsWith(href);
       <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
   </div>
-  <nav id="mobile-nav" class="hidden max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain border-t border-white/10 bg-primary lg:hidden" aria-label="Mobile">
+  <nav id="mobile-nav" class="hidden max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain border-t border-white/10 bg-primary xl:hidden" aria-label="Mobile">
     <ul class="mx-auto max-w-6xl space-y-1 px-4 py-3 sm:px-6">
       {nav.map((n) => (
         <li>

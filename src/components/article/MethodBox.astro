@@ -2,8 +2,8 @@
 interface Props { verified?: string; }
 const { verified } = Astro.props;
 ---
-<aside class="not-prose mt-6 rounded-xl border border-[#e5e7eb] bg-surface p-5" aria-label="Editorial method and limits">
-  <p class="text-sm font-semibold uppercase tracking-wider text-primary">Editorial method & limits</p>
+<details class="not-prose mt-6 rounded-xl border border-[#e5e7eb] bg-surface p-5" aria-label="Editorial method and limits">
+  <summary class="min-h-[44px] cursor-pointer text-sm font-semibold text-primary">Sources, editorial method &amp; limitations</summary>
   <ul class="mt-2 space-y-1 text-sm leading-relaxed text-gray-600">
     <li>Manufacturer statements are distinguished from independent facts and our editorial interpretation.</li>
     <li>Linked sources are listed below; product details, laws, and utility requirements can change.</li>
@@ -13,4 +13,4 @@ const { verified } = Astro.props;
     <li>We do not accept generator-brand, dealer, or installer advertising or referral payments.</li>
   </ul>
   <a href="/editorial-policy/" class="mt-2 inline-flex min-h-[32px] items-center text-sm font-medium text-primary underline decoration-accent underline-offset-4">Editorial and corrections policy →</a>
-</aside>
+</details>

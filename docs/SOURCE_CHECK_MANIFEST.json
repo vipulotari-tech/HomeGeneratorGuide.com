@@ -1,0 +1,222 @@
+{
+  "checkedOn": "2026-10-05",
+  "method": "Official exact-product pages retrieved; manually reviewed source sections. Hashes identify retrieved snapshots, not immutable manufacturer revisions. Model-level evidence notes preserve conflicts. No manufacturer documents redistributed.",
+  "sources": [
+    {
+      "url": "https://www.cummins.com/en-na/generators/products/rs13a",
+      "bytes": 177548,
+      "sha256": "24aa30f67999930ab31f9434b5474d3143582a598047a56b15f86b7236ab7199",
+      "status": 200
+    },
+    {
+      "url": "https://www.championpowerequipment.com/product/201613-26-kw-whole-house-home-standby-generator-and-150a-switch-with-flex-technology/",
+      "bytes": 154622,
+      "sha256": "a4702f7ca27085892fff990ea51fbbc1a7c341795af0bc2e2390727e1b00e97b",
+      "status": 200
+    },
+    {
+      "url": "https://energy.briggsandstratton.com/en-us/products/powerprotectplus-26kw-home-standby-generator",
+      "bytes": 369123,
+      "sha256": "7186e80a5784d0614dfe8b2bf9bd9263aff8c7d219f15c099286eace82c06cc4",
+      "status": 200
+    },
+    {
+      "url": "https://techcomm.rehlko.com/techcomm/pdf/g4315.pdf",
+      "bytes": 1429388,
+      "sha256": "2727f8f1c02362f5c289fb9d00add9b9d2cbeb2d24520c0dd46ac857392c7c0f",
+      "status": 200
+    },
+    {
+      "url": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/20rca",
+      "bytes": 346373,
+      "sha256": "b99c9643a1fed9e798f9e639ae5f3294a2be13a264f3c639f16b0b19a4e01c92",
+      "status": 200
+    },
+    {
+      "url": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-10kw/",
+      "bytes": 118896,
+      "sha256": "ed36e9ed039215fe41615a0801a8ad293e5575b67bd5a3ad5ea89f3c874132f8",
+      "status": 200
+    },
+    {
+      "url": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-10kw-7257/",
+      "bytes": 118848,
+      "sha256": "fa1f71bd5bd662ce397771304f7c5b3ceaa365e301a48d0d8a8e82982b55c1e2",
+      "status": 200
+    },
+    {
+      "url": "https://manfilemode-generacsoa.generac.com/api/manualfiles/G0072600/A0004332577/0",
+      "bytes": 7232642,
+      "sha256": "5d815bbac22dbfb2333d73fc999b0002e1150f0fcb10c5ba3d17c8c015b7ae16",
+      "status": 200
+    },
+    {
+      "url": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-18kw-7259/",
+      "bytes": 118841,
+      "sha256": "c7215c00b50514a0a737647944edae2959a70bfcf882c366208ddce0b3bea26b",
+      "status": 200
+    },
+    {
+      "url": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/26rca",
+      "bytes": 345268,
+      "sha256": "4a0b5da7e3609ad7d2b8b5a93b10992699b831066d26978f78f43ab8642018af",
+      "status": 200
+    },
+    {
+      "url": "https://www.championpowerequipment.com/product/201614-26-kw-whole-house-home-standby-generator-and-200a-switch-with-flex-technology/",
+      "bytes": 151600,
+      "sha256": "64d99b5cfa4c4f67b701fcdd8a558b4af63335cf2be36255c1d5d34ae6bb3ee4",
+      "status": 200
+    },
+    {
+      "url": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-14kw-7258/",
+      "bytes": 118841,
+      "sha256": "1dd2114a071dc911cd1b3b00938ea08399c80a149a52c0c20b906bfc6ed14264",
+      "status": 200
+    },
+    {
+      "url": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-26kw-7328-transfer-switch/",
+      "bytes": 119831,
+      "sha256": "02a29793b77ffb3fc1e1cf519594fbdcdc5b12c5a8cf3652ebce5867238c3784",
+      "status": 200
+    },
+    {
+      "url": "https://www.championpowerequipment.com/product/201612-26-kw-whole-house-home-standby-generator-and-100a-switch-with-flex-technology/",
+      "bytes": 154544,
+      "sha256": "4bbc777e9c483c437bd4ac3b94a052f4659988a4bbd90bc0e163d7caee389a56",
+      "status": 200
+    },
+    {
+      "url": "https://www.cummins.com/en-na/generators/products/rs20a",
+      "bytes": 177555,
+      "sha256": "9b4f8f8f822a5151954cfb27806d74caaea44acd4ccec00ce43fa4b7f116fcf9",
+      "status": 200
+    },
+    {
+      "url": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-26kw-7327/",
+      "bytes": 118833,
+      "sha256": "8793361469104de0123e7655dccdc413f3630b5982a119482445297149c50ed2",
+      "status": 200
+    },
+    {
+      "url": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-22kw-7260/",
+      "bytes": 119022,
+      "sha256": "50118a80304723c6448d9d3e1028229d14ab1485335833d66ad0e1eeed1d1c5b",
+      "status": 200
+    },
+    {
+      "url": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-18kw-7324/",
+      "bytes": 119237,
+      "sha256": "d2ab2ee020b9a5ea5c6904859b2cbe0111de3216140bf71ab3ad5a260acb020d",
+      "status": 200
+    },
+    {
+      "url": "https://www.championpowerequipment.com/product/201222-22-kw-whole-house-home-standby-generator-and-200a-switch-with-axis-technology/",
+      "bytes": 158721,
+      "sha256": "50da6d5f0284a645ecdd4efc08cc314d073e854b2b918470dd228ab8e88bc18d",
+      "status": 200
+    },
+    {
+      "url": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/14rca",
+      "bytes": 346415,
+      "sha256": "572356ec2233e2f1a100e5661bdb0b5e67186427f37916ceaad74d49b37178b5",
+      "status": 200
+    },
+    {
+      "url": "https://www.cummins.com/en-na/generators/products/rs17a",
+      "bytes": 177548,
+      "sha256": "b8209f6c612ad71731a7f95f5adf9efe31d7ecda38bc02af45d5ec28c6e2a122",
+      "status": 200
+    },
+    {
+      "url": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-14kw-7323/",
+      "bytes": 119237,
+      "sha256": "5c9f3b4e17a080514eeeccc3763a967480871c3b4a8eea277496beeca77e933c",
+      "status": 200
+    },
+    {
+      "url": "https://energy.briggsandstratton.com/en-us/products/powerprotectplus-18kw-home-standby-generator",
+      "bytes": 369011,
+      "sha256": "f4fae870d7438c70b941f03049e6e28c0738af711ab9685071fe18b377475c0c",
+      "status": 200
+    },
+    {
+      "url": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/26rcal",
+      "bytes": 343181,
+      "sha256": "e130752a4885abfa26c3aaa06c898588e0a8528de7e8256fcb6c74990b98f2b6",
+      "status": 200
+    },
+    {
+      "url": "https://energy.briggsandstratton.com/en-us/products/powerprotectplus-dx-22kw-home-standby-generator",
+      "bytes": 366966,
+      "sha256": "c28b42de10f70945f776811ad7b742b2adf2e2305148db0dd8da097c0ac63c0c",
+      "status": 200
+    },
+    {
+      "url": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-22kw-7325/",
+      "bytes": 119244,
+      "sha256": "e62e1a97b3ec83b634e8b664e1ca4686d3c09a375ffde991ca52592b402557cf",
+      "status": 200
+    },
+    {
+      "url": "https://techcomm.rehlko.com/techcomm/pdf/tp7092.pdf",
+      "bytes": 3410092,
+      "sha256": "ecf6383a02b0e2889b26a212f59deab04e772e321f179cae66f458868636ad03",
+      "status": 200
+    },
+    {
+      "url": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-24kw-7326/",
+      "bytes": 119736,
+      "sha256": "ea681aaf8807d83fc7a194d9f58130a4595d158c4874f2e75fbe42490e330b19",
+      "status": 200
+    },
+    {
+      "url": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-28kw-7282/",
+      "bytes": 119651,
+      "sha256": "c98a1c00e97eb6fc43d28205a96412af8bdb17e7b53c0751320d96bdb726b70c",
+      "status": 200
+    },
+    {
+      "url": "https://energy.briggsandstratton.com/en-us/products/powerprotect-22kw-standby-generator",
+      "bytes": 373124,
+      "sha256": "8dec0a1a176af0dcd3c1649ec62f3ce3f3600cb6878a020186f3e218243d93c1",
+      "status": 200
+    },
+    {
+      "url": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-24kw-72610/",
+      "bytes": 118932,
+      "sha256": "045231208b7d10dcc018706098966cd80e02c82f79f69f6b53ec1096c72d907a",
+      "status": 200
+    },
+    {
+      "url": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-28kw-7329/",
+      "bytes": 121452,
+      "sha256": "34fb132dcdd98df7c95fb605cf9ab6f01a4691726b89543bfb5f17ba4a878b73",
+      "status": 200
+    },
+    {
+      "url": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/10resv",
+      "bytes": 317237,
+      "sha256": "3c97e1b93036f1ee88b14a367fd7d5e3f1823ebd92006aec353783cc9eb382c8",
+      "status": 200
+    },
+    {
+      "url": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/12resv",
+      "bytes": 312789,
+      "sha256": "4df4b55f02607ebda91b04bd07185b8ff60a4e51d58384fc46769eb2f93aeddf",
+      "status": 200
+    },
+    {
+      "url": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "status": 200,
+      "bytes": 1269129,
+      "sha256": "1b7cf9ffcea36c22a2107f0dee014cc9002bab35f1b210ac40b16047ac88d7c4"
+    },
+    {
+      "url": "https://productmanuals.generac.com/api/manualfiles/G0072590/A0005151081/0",
+      "status": 200,
+      "bytes": 1205983,
+      "sha256": "7f5f90a6e7a13137f1a69c57e9b05288f6cc5a371640d5912bc20dbcd44071be"
+    }
+  ]
+}

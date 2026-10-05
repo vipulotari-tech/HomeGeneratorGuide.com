@@ -1,0 +1,3209 @@
+[
+  {
+    "brand": "Generac",
+    "modelId": "G0072600",
+    "displayName": "Standby Generator, 22kW | Generac",
+    "configuration": "60 Hz, single-phase; 22 kW on LP and 21 kW on natural gas.",
+    "productUrl": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-22kw-7260/",
+    "ratingsKw": {
+      "LP": 22.0,
+      "Natural gas": 21.0
+    },
+    "dimensionsIn": {
+      "length": 46.4,
+      "width": 26.3,
+      "height": 30.7
+    },
+    "weightLb": 451.0,
+    "engine": {
+      "maker": "Generac",
+      "model": "G-Force 1000 Series",
+      "displacementCc": 997
+    },
+    "sound": [
+      {
+        "decibelsA": 67,
+        "condition": "normal load",
+        "distanceFt": 23,
+        "direction": "measured from the front; other sides may be higher"
+      },
+      {
+        "decibelsA": 55,
+        "condition": "Quiet-Test low-speed exercise",
+        "distanceFt": 23,
+        "direction": "measured from the front; other sides may be higher"
+      }
+    ],
+    "fuelConsumption": [
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 50,
+        "amount": 221,
+        "unit": "ft³/hr"
+      },
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 100,
+        "amount": 311,
+        "unit": "ft³/hr"
+      },
+      {
+        "fuel": "LP",
+        "loadPercent": 50,
+        "amount": 2.45,
+        "unit": "gal/hr"
+      },
+      {
+        "fuel": "LP",
+        "loadPercent": 100,
+        "amount": 3.71,
+        "unit": "gal/hr"
+      }
+    ],
+    "startingMsrpUsd": 6309.0,
+    "startingMsrpNote": "Published equipment/package starting MSRP; installation, taxes and local project scope are not included by this record.",
+    "transferSwitch": "Included transfer equipment is not established by the captured exact-model page. Require the complete generator and ATS package in writing.",
+    "warranty": "Product page states a 5-year limited warranty. Full contract, hour limits, labor, travel and exclusions require confirmation.",
+    "sources": [
+      {
+        "label": "Generac G0072600 product specifications",
+        "url": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-22kw-7260/",
+        "checkedOn": "2026-10-05"
+      },
+      {
+        "label": "Generac G0072600 official 22–28 kW specification sheet",
+        "url": "https://productmanuals.generac.com/api/manualfiles/G0072600/A0005151077/0",
+        "checkedOn": "2026-10-04"
+      },
+      {
+        "label": "22–28 kW official specification sheet; exact configurations listed, pp. 1, 4, 6–7",
+        "url": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+        "checkedOn": "2026-10-05"
+      }
+    ],
+    "evidenceNotes": [
+      "The product page mislabels one 3.71 gal/hr row as NG at 50% load. That ambiguous row is not used; the separate exact-configuration specification sheet supplies the full-load LP value used here."
+    ],
+    "fieldSources": {
+      "displayName": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-22kw-7260/",
+      "family": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-22kw-7260/",
+      "ratingsKw": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-22kw-7260/",
+      "startingMsrpUsd": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-22kw-7260/",
+      "dimensionsIn": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-22kw-7260/",
+      "weightLb": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-22kw-7260/",
+      "engine": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "enclosure": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-22kw-7260/",
+      "fuelConsumption": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "warranty": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-22kw-7260/",
+      "monitoring": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-22kw-7260/",
+      "transferSwitch": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-22kw-7260/",
+      "sound": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "electrical": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "coldWeather": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "loadManagement": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0"
+    },
+    "lastSourceCheck": "2026-10-05",
+    "family": "Cellular standby",
+    "enclosure": "Aluminum",
+    "monitoring": "Built-in cellular Mobile Link; product page notes that some alerts/functions require a premium subscription.",
+    "documents": {
+      "specification": "https://manfilemode-generacsoa.generac.com/api/manualfiles/G0072600/A0005151077/0",
+      "ownerManual": "https://manfilemode-generacsoa.generac.com/api/manualfiles/G0072600/A0004332577/0"
+    },
+    "slug": "generac-g0072600",
+    "missingFields": [
+      "ats",
+      "warrantyHourLimit",
+      "fullWarrantyExclusions",
+      "certificationsNotIndependentlyVerified"
+    ],
+    "electrical": {
+      "voltage": "240 V rated (manufacturer specification)",
+      "phase": "Single phase",
+      "frequencyHz": 60
+    },
+    "coldWeather": "Listed accessories: G007211-0 battery heater and G007102-1 oil heater when temperatures regularly fall below 32°F; G007103-2 breather heater below 0°F. Confirm applicability to the purchased serial number.",
+    "loadManagement": "Specification lists optional G007000-1 (50 A) and G007006-1 (100 A) Load Managers. Module selection and control compatibility require installer confirmation."
+  },
+  {
+    "brand": "Generac",
+    "modelId": "G0073270",
+    "displayName": "Standby Generator, 26kW | Generac",
+    "configuration": "60 Hz, single-phase; 26 kW on LP and 24 kW on natural gas.",
+    "productUrl": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-26kw-7327/",
+    "ratingsKw": {
+      "LP": 26.0,
+      "Natural gas": 24.0
+    },
+    "dimensionsIn": {
+      "length": 46.4,
+      "width": 26.3,
+      "height": 30.7
+    },
+    "weightLb": 524.0,
+    "engine": {
+      "maker": "Generac",
+      "model": "G-Force 1000 Series",
+      "displacementCc": 997
+    },
+    "sound": [
+      {
+        "decibelsA": 67,
+        "condition": "normal load",
+        "distanceFt": 23,
+        "direction": "measured from the front; other sides may be higher"
+      },
+      {
+        "decibelsA": 55,
+        "condition": "Quiet-Test low-speed exercise",
+        "distanceFt": 23,
+        "direction": "measured from the front; other sides may be higher"
+      }
+    ],
+    "fuelConsumption": [
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 50,
+        "amount": 182,
+        "unit": "ft³/hr"
+      },
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 100,
+        "amount": 316,
+        "unit": "ft³/hr"
+      },
+      {
+        "fuel": "LP",
+        "loadPercent": 50,
+        "amount": 2.05,
+        "unit": "gal/hr"
+      },
+      {
+        "fuel": "LP",
+        "loadPercent": 100,
+        "amount": 3.95,
+        "unit": "gal/hr"
+      }
+    ],
+    "startingMsrpUsd": 7159.0,
+    "startingMsrpNote": "Published equipment/package starting MSRP; installation, taxes and local project scope are not included by this record.",
+    "transferSwitch": "Included transfer equipment is not established by the captured exact-model page. Require the complete generator and ATS package in writing.",
+    "warranty": "Product page states a 5-year limited warranty. Full contract, hour limits, labor, travel and exclusions require confirmation.",
+    "sources": [
+      {
+        "label": "Generac G0073270 product specifications",
+        "url": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-26kw-7327/",
+        "checkedOn": "2026-10-05"
+      },
+      {
+        "label": "Generac G0073270 official 22–28 kW specification sheet",
+        "url": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+        "checkedOn": "2026-10-04"
+      }
+    ],
+    "evidenceNotes": [],
+    "fieldSources": {
+      "displayName": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-26kw-7327/",
+      "family": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-26kw-7327/",
+      "ratingsKw": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-26kw-7327/",
+      "startingMsrpUsd": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-26kw-7327/",
+      "dimensionsIn": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-26kw-7327/",
+      "weightLb": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-26kw-7327/",
+      "engine": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "enclosure": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-26kw-7327/",
+      "fuelConsumption": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "warranty": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-26kw-7327/",
+      "monitoring": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-26kw-7327/",
+      "transferSwitch": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-26kw-7327/",
+      "sound": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "electrical": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "coldWeather": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "loadManagement": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0"
+    },
+    "lastSourceCheck": "2026-10-05",
+    "family": "Cellular standby",
+    "enclosure": "Aluminum",
+    "monitoring": "Built-in cellular Mobile Link; product page notes that some alerts/functions require a premium subscription.",
+    "documents": {
+      "specification": "https://manfilemode-generacsoa.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "ownerManual": "https://manfilemode-generacsoa.generac.com/api/manualfiles/G0072600/A0004332577/0"
+    },
+    "slug": "generac-g0073270",
+    "missingFields": [
+      "ats",
+      "warrantyHourLimit",
+      "fullWarrantyExclusions",
+      "certificationsNotIndependentlyVerified"
+    ],
+    "electrical": {
+      "voltage": "240 V rated (manufacturer specification)",
+      "phase": "Single phase",
+      "frequencyHz": 60
+    },
+    "coldWeather": "Listed accessories: G007211-0 battery heater and G007102-1 oil heater when temperatures regularly fall below 32°F; G007103-2 breather heater below 0°F. Confirm applicability to the purchased serial number.",
+    "loadManagement": "Specification lists optional G007000-1 (50 A) and G007006-1 (100 A) Load Managers. Module selection and control compatibility require installer confirmation."
+  },
+  {
+    "brand": "KOHLER / Rehlko",
+    "modelId": "26RCA",
+    "displayName": "26RCA residential standby generator",
+    "configuration": "Selected 60 Hz single-phase residential ratings; manufacturer pages may also list other electrical configurations. Confirm exact ordering code.",
+    "productUrl": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/26rca",
+    "ratingsKw": {
+      "LP": 26.0,
+      "Natural gas": 24.0
+    },
+    "dimensionsIn": {
+      "length": 47.0,
+      "width": 26.0,
+      "height": 32.3
+    },
+    "engine": {
+      "maker": "KOHLER",
+      "model": "CH1006",
+      "displacementCc": 999.0
+    },
+    "sound": [
+      {
+        "decibelsA": 67,
+        "condition": "full-speed generator diagnostics and normal operation",
+        "distanceFt": 23
+      },
+      {
+        "decibelsA": 56,
+        "condition": "engine exercise",
+        "distanceFt": 23
+      }
+    ],
+    "fuelConsumption": [
+      {
+        "fuel": "LP",
+        "loadPercent": 50,
+        "amount": 85.0,
+        "unit": "ft³/hr"
+      },
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 50,
+        "amount": 180.0,
+        "unit": "ft³/hr"
+      }
+    ],
+    "startingMsrpUsd": 7546.0,
+    "startingMsrpNote": "Manufacturer starting MSRP for the identified configuration; dealer customization and installation determine the final quote.",
+    "transferSwitch": "Unresolved manufacturer-page conflict: specification table says ATS included, while the same page’s RCA/RCAL FAQ says RCA switches are sold separately. Exact package must be confirmed in writing.",
+    "warranty": "The current official spec sheet states a premium 5-year/2,000-hour limited warranty covering parts, labor, and travel for the full warranty period.",
+    "sources": [
+      {
+        "label": "KOHLER / Rehlko 26RCA product specifications",
+        "url": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/26rca",
+        "checkedOn": "2026-10-05"
+      },
+      {
+        "label": "Official 26RCA/26RCAL specification sheet (G4-315, 2026)",
+        "url": "https://techcomm.rehlko.com/techcomm/pdf/g4315.pdf",
+        "checkedOn": "2026-10-04"
+      }
+    ],
+    "evidenceNotes": [
+      "Unresolved manufacturer-page conflict: specification table says ATS included, while the same page’s RCA/RCAL FAQ says RCA switches are sold separately. Exact package must be confirmed in writing.",
+      "Weight withheld: product pages list 625 lb (26RCA) / 670 lb (26RCAL), while current G4-315 lists 670 lb / 681.7 lb respectively. Confirm the applicable revision and package before transport."
+    ],
+    "fieldSources": {
+      "displayName": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/26rca",
+      "family": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/26rca",
+      "ratingsKw": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/26rca",
+      "startingMsrpUsd": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/26rca",
+      "enclosure": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/26rca",
+      "engine": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/26rca",
+      "dimensionsIn": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/26rca",
+      "electrical": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/26rca",
+      "fuelConsumption": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/26rca",
+      "monitoring": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/26rca",
+      "sound": "https://techcomm.rehlko.com/techcomm/pdf/g4315.pdf",
+      "warranty": "https://techcomm.rehlko.com/techcomm/pdf/g4315.pdf",
+      "transferSwitch": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/26rca"
+    },
+    "lastSourceCheck": "2026-10-05",
+    "family": "RCA",
+    "enclosure": "Aluminum",
+    "electrical": {
+      "voltage": "120/240 V selected residential configuration",
+      "frequencyHz": 60,
+      "phase": "Single-phase; other configurations may also appear on manufacturer page"
+    },
+    "monitoring": "Manufacturer lists remote monitoring as Included. Confirm connection and subscription requirements.",
+    "documents": {
+      "ownerManual": "https://techcomm.rehlko.com/techcomm/pdf/tp7092.pdf",
+      "specification": "https://techcomm.rehlko.com/techcomm/pdf/g4315.pdf",
+      "installationManual": "https://techcomm.rehlko.com/techcomm/pdf/tp7091.pdf"
+    },
+    "slug": "kohler-26rca",
+    "missingFields": [
+      "ats",
+      "loadManagement",
+      "coldWeather",
+      "fullWarrantyExclusions",
+      "certificationsNotIndependentlyVerified",
+      "weightLb"
+    ]
+  },
+  {
+    "brand": "KOHLER / Rehlko",
+    "modelId": "26RCAL",
+    "displayName": "26RCAL residential standby generator with ATS",
+    "configuration": "Selected 60 Hz single-phase residential ratings; manufacturer pages may also list other electrical configurations. Confirm exact ordering code.",
+    "productUrl": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/26rcal",
+    "ratingsKw": {
+      "LP": 26.0,
+      "Natural gas": 24.0
+    },
+    "dimensionsIn": {
+      "length": 47.0,
+      "width": 26.0,
+      "height": 32.3
+    },
+    "engine": {
+      "maker": "KOHLER",
+      "model": "CH1006",
+      "displacementCc": 999.0
+    },
+    "sound": [
+      {
+        "decibelsA": 67,
+        "condition": "full-speed generator diagnostics and normal operation; manufacturer says this is the lowest of eight measurement points and other points may differ with installation",
+        "distanceFt": 23
+      },
+      {
+        "decibelsA": 56,
+        "condition": "90-second EcoExercise mode; manufacturer says this is the lowest of eight measurement points and other points may differ with installation",
+        "distanceFt": 23
+      }
+    ],
+    "fuelConsumption": [
+      {
+        "fuel": "LP",
+        "loadPercent": 50,
+        "amount": 85.0,
+        "unit": "ft³/hr"
+      },
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 50,
+        "amount": 180.0,
+        "unit": "ft³/hr"
+      }
+    ],
+    "startingMsrpUsd": 8515.0,
+    "startingMsrpNote": "Manufacturer starting MSRP for the identified configuration; dealer customization and installation determine the final quote.",
+    "transferSwitch": "The 26RCAL product page says an automatic transfer switch is included; the official G4-315 specification sheet identifies the Model RXT as a 200 A service-entrance-rated ATS.",
+    "warranty": "The current official G4-315 specification sheet states a premium 5-year/2,000-hour limited warranty covering parts, labor, and travel for the full warranty period.",
+    "sources": [
+      {
+        "label": "KOHLER / Rehlko 26RCAL product specifications",
+        "url": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/26rcal",
+        "checkedOn": "2026-10-05"
+      },
+      {
+        "label": "Official 26RCA/26RCAL specification sheet (G4-315, 2026)",
+        "url": "https://techcomm.rehlko.com/techcomm/pdf/g4315.pdf",
+        "checkedOn": "2026-10-04"
+      }
+    ],
+    "evidenceNotes": [
+      "Product page labels the weight 670 lb and also 670 kg, an inconsistent conversion. The record retains the explicitly labeled pounds value; confirm package weight before transport.",
+      "Weight withheld: product pages list 625 lb (26RCA) / 670 lb (26RCAL), while current G4-315 lists 670 lb / 681.7 lb respectively. Confirm the applicable revision and package before transport."
+    ],
+    "fieldSources": {
+      "displayName": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/26rcal",
+      "family": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/26rcal",
+      "ratingsKw": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/26rcal",
+      "startingMsrpUsd": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/26rcal",
+      "enclosure": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/26rcal",
+      "engine": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/26rcal",
+      "dimensionsIn": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/26rcal",
+      "electrical": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/26rcal",
+      "fuelConsumption": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/26rcal",
+      "monitoring": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/26rcal",
+      "ats": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/26rcal",
+      "sound": "https://techcomm.rehlko.com/techcomm/pdf/g4315.pdf",
+      "warranty": "https://techcomm.rehlko.com/techcomm/pdf/g4315.pdf",
+      "transferSwitch": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/26rcal"
+    },
+    "lastSourceCheck": "2026-10-05",
+    "family": "RCA",
+    "enclosure": "Aluminum",
+    "electrical": {
+      "voltage": "120/240 V selected residential configuration",
+      "frequencyHz": 60,
+      "phase": "Single-phase; other configurations may also appear on manufacturer page"
+    },
+    "monitoring": "Manufacturer lists remote monitoring as Included. Confirm connection and subscription requirements.",
+    "ats": {
+      "included": true,
+      "amps": 200,
+      "serviceEntranceRated": true,
+      "model": "RXT"
+    },
+    "documents": {
+      "ownerManual": "https://techcomm.rehlko.com/techcomm/pdf/tp7092.pdf",
+      "specification": "https://techcomm.rehlko.com/techcomm/pdf/g4315.pdf",
+      "installationManual": "https://techcomm.rehlko.com/techcomm/pdf/tp7091.pdf"
+    },
+    "slug": "kohler-26rcal",
+    "missingFields": [
+      "loadManagement",
+      "coldWeather",
+      "fullWarrantyExclusions",
+      "certificationsNotIndependentlyVerified",
+      "weightLb"
+    ]
+  },
+  {
+    "brand": "Champion",
+    "modelId": "201222",
+    "displayName": "22 kW aXis Home Standby Generator System",
+    "configuration": "22 kW on LP and 19.8 kW on natural gas; 60 Hz, single-phase, 120/240 V. Product is sold as a system with a 200 A aXis automatic transfer switch.",
+    "productUrl": "https://www.championpowerequipment.com/product/201222-22-kw-whole-house-home-standby-generator-and-200a-switch-with-axis-technology/",
+    "ratingsKw": {
+      "LP": 22,
+      "Natural gas": 19.8
+    },
+    "engine": {
+      "maker": "Champion",
+      "displacementCc": 999
+    },
+    "sound": [
+      {
+        "decibelsA": 67,
+        "condition": "manufacturer says the measurement is approximate; load is not stated and installation-site sound is not represented",
+        "distanceFt": 23
+      }
+    ],
+    "fuelConsumption": [
+      {
+        "fuel": "LP",
+        "loadPercent": 50,
+        "amount": 2,
+        "unit": "gal/hr"
+      },
+      {
+        "fuel": "LP",
+        "loadPercent": 100,
+        "amount": 3.6,
+        "unit": "gal/hr"
+      },
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 50,
+        "amount": 173.4,
+        "unit": "ft³/hr"
+      },
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 100,
+        "amount": 270.2,
+        "unit": "ft³/hr"
+      }
+    ],
+    "transferSwitch": "The 201222 system includes a 200 A aXis automatic transfer switch; load-management modules are listed as sold separately.",
+    "warranty": "Manufacturer states a 10-year limited warranty on the generator and a separate 2-year limited warranty on the ATS. Read the current warranty document for year-by-year labor, travel, parts and maintenance terms.",
+    "sources": [
+      {
+        "label": "Champion model 201222 product page and specifications",
+        "url": "https://www.championpowerequipment.com/product/201222-22-kw-whole-house-home-standby-generator-and-200a-switch-with-axis-technology/",
+        "checkedOn": "2026-10-04"
+      },
+      {
+        "label": "Champion home standby generator warranty summary (family context)",
+        "url": "https://help.championpowerequipment.com/article/e9pbt6pk36-home-standby-generator-warranty",
+        "checkedOn": "2026-10-05"
+      }
+    ],
+    "slug": "champion-201222",
+    "fieldSources": {
+      "ratingsKw": "https://www.championpowerequipment.com/product/201222-22-kw-whole-house-home-standby-generator-and-200a-switch-with-axis-technology/",
+      "engine": "https://www.championpowerequipment.com/product/201222-22-kw-whole-house-home-standby-generator-and-200a-switch-with-axis-technology/",
+      "fuelConsumption": "https://www.championpowerequipment.com/product/201222-22-kw-whole-house-home-standby-generator-and-200a-switch-with-axis-technology/",
+      "sound": "https://www.championpowerequipment.com/product/201222-22-kw-whole-house-home-standby-generator-and-200a-switch-with-axis-technology/",
+      "warranty": "https://www.championpowerequipment.com/product/201222-22-kw-whole-house-home-standby-generator-and-200a-switch-with-axis-technology/",
+      "transferSwitch": "https://www.championpowerequipment.com/product/201222-22-kw-whole-house-home-standby-generator-and-200a-switch-with-axis-technology/"
+    },
+    "missingFields": [
+      "electrical",
+      "enclosure",
+      "dimensionsIn",
+      "weightLb",
+      "ats",
+      "loadManagement",
+      "coldWeather",
+      "monitoring",
+      "startingMsrpUsd",
+      "warrantyHourLimit",
+      "fullWarrantyExclusions",
+      "certificationsNotIndependentlyVerified"
+    ],
+    "evidenceNotes": []
+  },
+  {
+    "brand": "Briggs & Stratton",
+    "modelId": "040786",
+    "displayName": "PowerProtect 22 kW Standby Generator",
+    "configuration": "22 kW on LP and natural gas; 120/240 V.",
+    "productUrl": "https://energy.briggsandstratton.com/en-us/products/powerprotect-22kw-standby-generator",
+    "ratingsKw": {
+      "LP": 22,
+      "Natural gas": 22
+    },
+    "engine": {
+      "maker": "Briggs & Stratton Vanguard",
+      "displacementCc": 993
+    },
+    "sound": [
+      {
+        "decibelsA": 68,
+        "condition": "manufacturer-listed normal operating sound; measurement distance and test load are not stated on the cited page"
+      }
+    ],
+    "dimensionsIn": {
+      "length": 46.5,
+      "width": 26.8,
+      "height": 28.4
+    },
+    "weightLb": 465,
+    "fuelConsumption": [
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 50,
+        "amount": 194000,
+        "unit": "BTU/hr"
+      },
+      {
+        "fuel": "LP",
+        "loadPercent": 50,
+        "amount": 217000,
+        "unit": "BTU/hr"
+      }
+    ],
+    "startingMsrpUsd": 6037,
+    "startingMsrpNote": "Manufacturer-listed starting MSRP; not an installed quote. The product page does not establish an included transfer-switch bundle.",
+    "transferSwitch": "The cited generator product page does not state that a transfer switch is included; confirm the exact package in any dealer quote.",
+    "warranty": "Manufacturer lists a 7-year comprehensive limited warranty and says labor, parts, and service are included; check the warranty document for conditions and exclusions.",
+    "sources": [
+      {
+        "label": "Briggs & Stratton PowerProtect model 040786 product page and specifications",
+        "url": "https://energy.briggsandstratton.com/en-us/products/powerprotect-22kw-standby-generator",
+        "checkedOn": "2026-10-04"
+      },
+      {
+        "label": "Briggs & Stratton model 040786 specification sheet",
+        "url": "https://briggs.widen.net/s/vxr2wjzrkp/16395_pp22_spec-sheet_10",
+        "checkedOn": "2026-10-04"
+      }
+    ],
+    "slug": "briggs-stratton-040786",
+    "fieldSources": {
+      "ratingsKw": "https://energy.briggsandstratton.com/en-us/products/powerprotect-22kw-standby-generator",
+      "engine": "https://energy.briggsandstratton.com/en-us/products/powerprotect-22kw-standby-generator",
+      "dimensionsIn": "https://energy.briggsandstratton.com/en-us/products/powerprotect-22kw-standby-generator",
+      "weightLb": "https://energy.briggsandstratton.com/en-us/products/powerprotect-22kw-standby-generator",
+      "fuelConsumption": "https://energy.briggsandstratton.com/en-us/products/powerprotect-22kw-standby-generator",
+      "sound": "https://energy.briggsandstratton.com/en-us/products/powerprotect-22kw-standby-generator",
+      "warranty": "https://energy.briggsandstratton.com/en-us/products/powerprotect-22kw-standby-generator",
+      "startingMsrpUsd": "https://energy.briggsandstratton.com/en-us/products/powerprotect-22kw-standby-generator",
+      "transferSwitch": "https://energy.briggsandstratton.com/en-us/products/powerprotect-22kw-standby-generator"
+    },
+    "missingFields": [
+      "electrical",
+      "enclosure",
+      "ats",
+      "loadManagement",
+      "coldWeather",
+      "monitoring",
+      "warrantyHourLimit",
+      "fullWarrantyExclusions",
+      "certificationsNotIndependentlyVerified"
+    ],
+    "evidenceNotes": []
+  },
+  {
+    "brand": "Cummins",
+    "modelId": "RS13A",
+    "displayName": "QuietConnect RS13A",
+    "configuration": "Cummins lists this 13 kW standby rating on its model page. The accessible summary does not show separate LP/NG output or complete model specifications; verify the model sheet for the exact configuration.",
+    "productUrl": "https://www.cummins.com/en-na/generators/products/rs13a",
+    "ratingsKw": {},
+    "standbyRatingKw": 13,
+    "standbyRatingKva": 13,
+    "warranty": "Cummins’ home-generator FAQ lists 13, 17, and 20 kW models with a 5-year/2,000-hour limited warranty. Confirm the exact warranty terms and exclusions for the purchased unit.",
+    "sources": [
+      {
+        "label": "Cummins RS13A model page",
+        "url": "https://www.cummins.com/en-na/generators/products/rs13a",
+        "checkedOn": "2026-10-04"
+      },
+      {
+        "label": "Cummins specification-sheet viewer (NAS-6254; interactive consent required)",
+        "url": "https://liveshareeast3.seismic.com/i/QkthrmWPLUSSIGNCiBD658___O4ux6BrNhRNEI2IUHkO0gghv9myOO9SM8mhHOJtTeV3D3rhT7h44z7YwRvuIzvFUnPg4ifI6GoJlFiMNExZlVQoTwFNaj2QM8fSe6k5Ht9F3Fens",
+        "checkedOn": "2026-10-04"
+      },
+      {
+        "label": "Cummins home generator FAQ and warranty summary",
+        "url": "https://www.cummins.com/en-na/na/generators/home-standby/home-generator-faq",
+        "checkedOn": "2026-10-04"
+      }
+    ],
+    "slug": "cummins-rs13a",
+    "fieldSources": {
+      "warranty": "https://www.cummins.com/en-na/na/generators/home-standby/home-generator-faq",
+      "standbyRatingKw": "https://www.cummins.com/en-na/generators/products/rs13a"
+    },
+    "missingFields": [
+      "engine",
+      "electrical",
+      "enclosure",
+      "dimensionsIn",
+      "weightLb",
+      "sound",
+      "fuelConsumption",
+      "ats",
+      "loadManagement",
+      "coldWeather",
+      "monitoring",
+      "startingMsrpUsd",
+      "naturalGasRatedOutput",
+      "propaneRatedOutput",
+      "fullWarrantyExclusions",
+      "certificationsNotIndependentlyVerified"
+    ],
+    "evidenceNotes": [
+      "Accessible product page confirms generic standby kW/kVA only. Do not use the page’s related-model cards as specifications for this model.",
+      "Fuel-specific ratings, fuel rates, sound, ATS, accessories and full model warranty remain to be verified."
+    ],
+    "lastSourceCheck": "2026-10-05",
+    "publishedOn": "2026-10-05"
+  },
+  {
+    "brand": "Cummins",
+    "modelId": "RS17A",
+    "displayName": "QuietConnect RS17A",
+    "configuration": "Cummins lists this 17 kW standby rating on its model page. The accessible summary does not show separate LP/NG output or complete model specifications; verify the model sheet for the exact configuration.",
+    "productUrl": "https://www.cummins.com/en-na/generators/products/rs17a",
+    "ratingsKw": {},
+    "standbyRatingKw": 17,
+    "standbyRatingKva": 17,
+    "warranty": "Cummins’ home-generator FAQ lists 13, 17, and 20 kW models with a 5-year/2,000-hour limited warranty. Confirm the exact warranty terms and exclusions for the purchased unit.",
+    "sources": [
+      {
+        "label": "Cummins RS17A model page",
+        "url": "https://www.cummins.com/en-na/generators/products/rs17a",
+        "checkedOn": "2026-10-04"
+      },
+      {
+        "label": "Cummins specification-sheet viewer (NAS-6254; interactive consent required)",
+        "url": "https://liveshareeast3.seismic.com/i/QkthrmWPLUSSIGNCiBD658___O4ux6BrNhRNEI2IUHkO0gghv9myOO9SM8mhHOJtTeV3D3rhT7h44z7YwRvuIzvFUnPg4ifI6GoJlFiMNExZlVQoTwFNaj2QM8fSe6k5Ht9F3Fens",
+        "checkedOn": "2026-10-04"
+      },
+      {
+        "label": "Cummins home generator FAQ and warranty summary",
+        "url": "https://www.cummins.com/en-na/na/generators/home-standby/home-generator-faq",
+        "checkedOn": "2026-10-04"
+      }
+    ],
+    "slug": "cummins-rs17a",
+    "fieldSources": {
+      "warranty": "https://www.cummins.com/en-na/na/generators/home-standby/home-generator-faq",
+      "standbyRatingKw": "https://www.cummins.com/en-na/generators/products/rs17a"
+    },
+    "missingFields": [
+      "engine",
+      "electrical",
+      "enclosure",
+      "dimensionsIn",
+      "weightLb",
+      "sound",
+      "fuelConsumption",
+      "ats",
+      "loadManagement",
+      "coldWeather",
+      "monitoring",
+      "startingMsrpUsd",
+      "naturalGasRatedOutput",
+      "propaneRatedOutput",
+      "fullWarrantyExclusions",
+      "certificationsNotIndependentlyVerified"
+    ],
+    "evidenceNotes": [
+      "Accessible product page confirms generic standby kW/kVA only. Do not use the page’s related-model cards as specifications for this model.",
+      "Fuel-specific ratings, fuel rates, sound, ATS, accessories and full model warranty remain to be verified."
+    ],
+    "lastSourceCheck": "2026-10-05",
+    "publishedOn": "2026-10-05"
+  },
+  {
+    "brand": "Cummins",
+    "modelId": "RS20A",
+    "displayName": "QuietConnect RS20A",
+    "configuration": "Cummins lists this 20 kW standby rating on its model page. The accessible summary does not show separate LP/NG output or complete model specifications; verify the model sheet for the exact configuration.",
+    "productUrl": "https://www.cummins.com/en-na/generators/products/rs20a",
+    "ratingsKw": {},
+    "standbyRatingKw": 20,
+    "standbyRatingKva": 18,
+    "warranty": "Cummins’ home-generator FAQ lists 13, 17, and 20 kW models with a 5-year/2,000-hour limited warranty. Confirm the exact warranty terms and exclusions for the purchased unit.",
+    "sources": [
+      {
+        "label": "Cummins RS20A model page",
+        "url": "https://www.cummins.com/en-na/generators/products/rs20a",
+        "checkedOn": "2026-10-04"
+      },
+      {
+        "label": "Cummins specification-sheet viewer (NAS-6254; interactive consent required)",
+        "url": "https://eng2e.seismic.com/i/QkthrmWPLUSSIGNCiBD658___O4ux6BrNhRNEI2IUHkO0gghv9myO7SDb1DlKFUTwfiOR1FyPLUSSIGNlLRcbyrRtD8gMUsaCB8Wv2hjof2AqOY___eReSe36508aZXodVtPLUSSIGNqK5E78dKWk8qZ3",
+        "checkedOn": "2026-10-04"
+      },
+      {
+        "label": "Cummins home generator FAQ and warranty summary",
+        "url": "https://www.cummins.com/en-na/na/generators/home-standby/home-generator-faq",
+        "checkedOn": "2026-10-04"
+      }
+    ],
+    "slug": "cummins-rs20a",
+    "fieldSources": {
+      "warranty": "https://www.cummins.com/en-na/na/generators/home-standby/home-generator-faq",
+      "standbyRatingKw": "https://www.cummins.com/en-na/generators/products/rs20a"
+    },
+    "missingFields": [
+      "engine",
+      "electrical",
+      "enclosure",
+      "dimensionsIn",
+      "weightLb",
+      "sound",
+      "fuelConsumption",
+      "ats",
+      "loadManagement",
+      "coldWeather",
+      "monitoring",
+      "startingMsrpUsd",
+      "naturalGasRatedOutput",
+      "propaneRatedOutput",
+      "fullWarrantyExclusions",
+      "certificationsNotIndependentlyVerified"
+    ],
+    "evidenceNotes": [
+      "Accessible product page confirms generic standby kW/kVA only. Do not use the page’s related-model cards as specifications for this model.",
+      "Fuel-specific ratings, fuel rates, sound, ATS, accessories and full model warranty remain to be verified."
+    ],
+    "lastSourceCheck": "2026-10-05"
+  },
+  {
+    "brand": "Generac",
+    "modelId": "G0072570",
+    "ratingsKw": {
+      "LP": 10.0
+    },
+    "sources": [
+      {
+        "label": "Generac G0072570 product specifications",
+        "url": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-10kw-7257/",
+        "checkedOn": "2026-10-05"
+      },
+      {
+        "label": "10/14/18 kW specification sheet — conflicting 10 kW fields, Rev. D 08/13/2026 pp. 4–6",
+        "url": "https://productmanuals.generac.com/api/manualfiles/G0072590/A0005151081/0",
+        "checkedOn": "2026-10-05"
+      }
+    ],
+    "productUrl": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-10kw-7257/",
+    "evidenceNotes": [
+      "Unresolved source conflict: product page says 10 kW NG and 334 lb; specification sheet A0005151081 Rev. D (08/13/2026), page 4, says 9 kW NG and 344 lb. Engine naming also differs on the bundled page. These disputed fields are withheld pending manufacturer clarification."
+    ],
+    "fieldSources": {
+      "displayName": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-10kw-7257/",
+      "family": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-10kw-7257/",
+      "ratingsKw": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-10kw-7257/",
+      "startingMsrpUsd": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-10kw-7257/",
+      "dimensionsIn": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-10kw-7257/",
+      "enclosure": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-10kw-7257/",
+      "fuelConsumption": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-10kw-7257/",
+      "warranty": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-10kw-7257/",
+      "monitoring": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-10kw-7257/",
+      "transferSwitch": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-10kw-7257/",
+      "electrical": "https://productmanuals.generac.com/api/manualfiles/G0072590/A0005151081/0",
+      "sound": "https://productmanuals.generac.com/api/manualfiles/G0072590/A0005151081/0",
+      "coldWeather": "https://productmanuals.generac.com/api/manualfiles/G0072590/A0005151081/0"
+    },
+    "lastSourceCheck": "2026-10-05",
+    "displayName": "Standby Generator, 10kW | Generac",
+    "family": "Cellular standby",
+    "startingMsrpUsd": 3769.0,
+    "startingMsrpNote": "Published equipment/package starting MSRP; installation, taxes and local project scope are not included by this record.",
+    "dimensionsIn": {
+      "length": 46.4,
+      "width": 26.3,
+      "height": 30.7
+    },
+    "enclosure": "Aluminum",
+    "fuelConsumption": [
+      {
+        "fuel": "LP",
+        "loadPercent": 50,
+        "amount": 0.94,
+        "unit": "gal/hr"
+      },
+      {
+        "fuel": "LP",
+        "loadPercent": 100,
+        "amount": 1.6,
+        "unit": "gal/hr"
+      },
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 50,
+        "amount": 98.0,
+        "unit": "ft³/hr"
+      },
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 100,
+        "amount": 132.0,
+        "unit": "ft³/hr"
+      }
+    ],
+    "warranty": "Product page states a 5-year limited warranty. Full contract, hour limits, labor, travel and exclusions require confirmation.",
+    "monitoring": "Built-in cellular Mobile Link; product page notes that some alerts/functions require a premium subscription.",
+    "documents": {
+      "specification": "https://manfilemode-generacsoa.generac.com/api/manualfiles/G0073230/A0005151081/0",
+      "ownerManual": "https://manfilemode-generacsoa.generac.com/api/manualfiles/G0072580/A0004332577/0"
+    },
+    "transferSwitch": "Included transfer equipment is not established by the captured exact-model page. Require the complete generator and ATS package in writing.",
+    "electrical": {
+      "voltage": "240 V rated (manufacturer specification)",
+      "phase": "Single phase",
+      "frequencyHz": 60
+    },
+    "sound": [
+      {
+        "decibelsA": 61,
+        "condition": "normal load",
+        "distanceFt": 23,
+        "direction": "measured from the front; other sides may be higher"
+      },
+      {
+        "decibelsA": 49,
+        "condition": "Quiet-Test low-speed exercise",
+        "distanceFt": 23,
+        "direction": "measured from the front; other sides may be higher"
+      }
+    ],
+    "slug": "generac-g0072570",
+    "missingFields": [
+      "engine",
+      "weightLb",
+      "ats",
+      "loadManagement",
+      "naturalGasRatedOutput",
+      "warrantyHourLimit",
+      "fullWarrantyExclusions",
+      "certificationsNotIndependentlyVerified"
+    ],
+    "coldWeather": "Listed accessories: G007211-0 battery heater and G007102-1 oil heater when temperatures regularly fall below 32°F; G007103-2 breather heater below 0°F. Confirm applicability to the purchased serial number.",
+    "publishedOn": "2026-10-05"
+  },
+  {
+    "brand": "Generac",
+    "modelId": "G0073210",
+    "ratingsKw": {
+      "LP": 10.0
+    },
+    "sources": [
+      {
+        "label": "Generac G0073210 product specifications",
+        "url": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-10kw/",
+        "checkedOn": "2026-10-05"
+      },
+      {
+        "label": "Exact package table in A0005151081, page 6",
+        "url": "https://productmanuals.generac.com/api/manualfiles/G0072590/A0005151081/0",
+        "checkedOn": "2026-10-05"
+      }
+    ],
+    "productUrl": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-10kw/",
+    "evidenceNotes": [
+      "Unresolved source conflict: product page says 10 kW NG and 334 lb; specification sheet A0005151081 Rev. D (08/13/2026), page 4, says 9 kW NG and 344 lb. Engine naming also differs on the bundled page. These disputed fields are withheld pending manufacturer clarification.",
+      "The specification sheet describes the 10 kW included switch as limited-circuit and also uses service-rated wording in a note. Service-entrance suitability remains unconfirmed here."
+    ],
+    "fieldSources": {
+      "displayName": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-10kw/",
+      "family": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-10kw/",
+      "ratingsKw": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-10kw/",
+      "startingMsrpUsd": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-10kw/",
+      "dimensionsIn": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-10kw/",
+      "enclosure": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-10kw/",
+      "fuelConsumption": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-10kw/",
+      "warranty": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-10kw/",
+      "monitoring": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-10kw/",
+      "transferSwitch": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-10kw/",
+      "ats": "https://productmanuals.generac.com/api/manualfiles/G0072590/A0005151081/0",
+      "electrical": "https://productmanuals.generac.com/api/manualfiles/G0072590/A0005151081/0",
+      "sound": "https://productmanuals.generac.com/api/manualfiles/G0072590/A0005151081/0",
+      "coldWeather": "https://productmanuals.generac.com/api/manualfiles/G0072590/A0005151081/0"
+    },
+    "lastSourceCheck": "2026-10-05",
+    "displayName": "Standby Generator, 10kW | Transfer Switch Bundle | Generac",
+    "family": "Cellular standby",
+    "startingMsrpUsd": 4619.0,
+    "startingMsrpNote": "Published equipment/package starting MSRP; installation, taxes and local project scope are not included by this record.",
+    "dimensionsIn": {
+      "length": 46.4,
+      "width": 26.3,
+      "height": 30.7
+    },
+    "enclosure": "Aluminum",
+    "fuelConsumption": [
+      {
+        "fuel": "LP",
+        "loadPercent": 50,
+        "amount": 0.94,
+        "unit": "gal/hr"
+      },
+      {
+        "fuel": "LP",
+        "loadPercent": 100,
+        "amount": 1.6,
+        "unit": "gal/hr"
+      },
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 50,
+        "amount": 98.0,
+        "unit": "ft³/hr"
+      },
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 100,
+        "amount": 132.0,
+        "unit": "ft³/hr"
+      }
+    ],
+    "warranty": "Product page states a 5-year limited warranty. Full contract, hour limits, labor, travel and exclusions require confirmation.",
+    "monitoring": "Built-in cellular Mobile Link; product page notes that some alerts/functions require a premium subscription.",
+    "documents": {
+      "specification": "https://manfilemode-generacsoa.generac.com/api/manualfiles/G0073230/A0005151081/0",
+      "ownerManual": "https://manfilemode-generacsoa.generac.com/api/manualfiles/G0072580/A0004332577/0"
+    },
+    "ats": {
+      "included": true,
+      "amps": 100,
+      "model": "A0009102580"
+    },
+    "transferSwitch": "Manufacturer identifies an included transfer-switch bundle; exact switch details are listed below where verified.",
+    "electrical": {
+      "voltage": "240 V rated (manufacturer specification)",
+      "phase": "Single phase",
+      "frequencyHz": 60
+    },
+    "sound": [
+      {
+        "decibelsA": 61,
+        "condition": "normal load",
+        "distanceFt": 23,
+        "direction": "measured from the front; other sides may be higher"
+      },
+      {
+        "decibelsA": 49,
+        "condition": "Quiet-Test low-speed exercise",
+        "distanceFt": 23,
+        "direction": "measured from the front; other sides may be higher"
+      }
+    ],
+    "slug": "generac-g0073210",
+    "missingFields": [
+      "engine",
+      "weightLb",
+      "loadManagement",
+      "naturalGasRatedOutput",
+      "warrantyHourLimit",
+      "fullWarrantyExclusions",
+      "certificationsNotIndependentlyVerified"
+    ],
+    "coldWeather": "Listed accessories: G007211-0 battery heater and G007102-1 oil heater when temperatures regularly fall below 32°F; G007103-2 breather heater below 0°F. Confirm applicability to the purchased serial number.",
+    "publishedOn": "2026-10-05"
+  },
+  {
+    "brand": "Generac",
+    "modelId": "G0072580",
+    "ratingsKw": {
+      "LP": 14.0,
+      "Natural gas": 14.0
+    },
+    "sources": [
+      {
+        "label": "Generac G0072580 product specifications",
+        "url": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-14kw-7258/",
+        "checkedOn": "2026-10-05"
+      },
+      {
+        "label": "Exact 10/14/18 kW specification table, p. 4",
+        "url": "https://productmanuals.generac.com/api/manualfiles/G0072590/A0005151081/0",
+        "checkedOn": "2026-10-05"
+      }
+    ],
+    "productUrl": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-14kw-7258/",
+    "evidenceNotes": [],
+    "fieldSources": {
+      "displayName": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-14kw-7258/",
+      "family": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-14kw-7258/",
+      "ratingsKw": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-14kw-7258/",
+      "startingMsrpUsd": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-14kw-7258/",
+      "dimensionsIn": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-14kw-7258/",
+      "weightLb": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-14kw-7258/",
+      "engine": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-14kw-7258/",
+      "enclosure": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-14kw-7258/",
+      "fuelConsumption": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-14kw-7258/",
+      "warranty": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-14kw-7258/",
+      "monitoring": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-14kw-7258/",
+      "transferSwitch": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-14kw-7258/",
+      "electrical": "https://productmanuals.generac.com/api/manualfiles/G0072590/A0005151081/0",
+      "sound": "https://productmanuals.generac.com/api/manualfiles/G0072590/A0005151081/0",
+      "coldWeather": "https://productmanuals.generac.com/api/manualfiles/G0072590/A0005151081/0"
+    },
+    "lastSourceCheck": "2026-10-05",
+    "displayName": "Standby Generator, 14kW | Generac",
+    "family": "Cellular standby",
+    "startingMsrpUsd": 4889.0,
+    "startingMsrpNote": "Published equipment/package starting MSRP; installation, taxes and local project scope are not included by this record.",
+    "dimensionsIn": {
+      "length": 46.4,
+      "width": 26.3,
+      "height": 30.7
+    },
+    "weightLb": 391.0,
+    "engine": {
+      "maker": "Generac",
+      "model": "G-Force 800"
+    },
+    "enclosure": "Aluminum",
+    "fuelConsumption": [
+      {
+        "fuel": "LP",
+        "loadPercent": 50,
+        "amount": 1.76,
+        "unit": "gal/hr"
+      },
+      {
+        "fuel": "LP",
+        "loadPercent": 100,
+        "amount": 2.92,
+        "unit": "gal/hr"
+      },
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 50,
+        "amount": 189.0,
+        "unit": "ft³/hr"
+      },
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 100,
+        "amount": 243.0,
+        "unit": "ft³/hr"
+      }
+    ],
+    "warranty": "Product page states a 5-year limited warranty. Full contract, hour limits, labor, travel and exclusions require confirmation.",
+    "monitoring": "Built-in cellular Mobile Link; product page notes that some alerts/functions require a premium subscription.",
+    "documents": {
+      "specification": "https://manfilemode-generacsoa.generac.com/api/manualfiles/G0073230/A0005151081/0",
+      "ownerManual": "https://manfilemode-generacsoa.generac.com/api/manualfiles/G0072580/A0004332577/0"
+    },
+    "transferSwitch": "Included transfer equipment is not established by the captured exact-model page. Require the complete generator and ATS package in writing.",
+    "electrical": {
+      "voltage": "240 V rated (manufacturer specification)",
+      "phase": "Single phase",
+      "frequencyHz": 60
+    },
+    "sound": [
+      {
+        "decibelsA": 65,
+        "condition": "normal load",
+        "distanceFt": 23,
+        "direction": "measured from the front; other sides may be higher"
+      },
+      {
+        "decibelsA": 55,
+        "condition": "Quiet-Test low-speed exercise",
+        "distanceFt": 23,
+        "direction": "measured from the front; other sides may be higher"
+      }
+    ],
+    "slug": "generac-g0072580",
+    "missingFields": [
+      "ats",
+      "loadManagement",
+      "warrantyHourLimit",
+      "fullWarrantyExclusions",
+      "certificationsNotIndependentlyVerified"
+    ],
+    "coldWeather": "Listed accessories: G007211-0 battery heater and G007102-1 oil heater when temperatures regularly fall below 32°F; G007103-2 breather heater below 0°F. Confirm applicability to the purchased serial number.",
+    "publishedOn": "2026-10-05"
+  },
+  {
+    "brand": "Generac",
+    "modelId": "G0073230",
+    "ratingsKw": {
+      "LP": 14.0,
+      "Natural gas": 14.0
+    },
+    "sources": [
+      {
+        "label": "Generac G0073230 product specifications",
+        "url": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-14kw-7323/",
+        "checkedOn": "2026-10-05"
+      },
+      {
+        "label": "Exact package table in A0005151081, page 6",
+        "url": "https://productmanuals.generac.com/api/manualfiles/G0072590/A0005151081/0",
+        "checkedOn": "2026-10-05"
+      }
+    ],
+    "productUrl": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-14kw-7323/",
+    "evidenceNotes": [],
+    "fieldSources": {
+      "displayName": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-14kw-7323/",
+      "family": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-14kw-7323/",
+      "ratingsKw": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-14kw-7323/",
+      "startingMsrpUsd": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-14kw-7323/",
+      "dimensionsIn": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-14kw-7323/",
+      "weightLb": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-14kw-7323/",
+      "engine": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-14kw-7323/",
+      "enclosure": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-14kw-7323/",
+      "fuelConsumption": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-14kw-7323/",
+      "warranty": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-14kw-7323/",
+      "monitoring": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-14kw-7323/",
+      "transferSwitch": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-14kw-7323/",
+      "ats": "https://productmanuals.generac.com/api/manualfiles/G0072590/A0005151081/0",
+      "electrical": "https://productmanuals.generac.com/api/manualfiles/G0072590/A0005151081/0",
+      "sound": "https://productmanuals.generac.com/api/manualfiles/G0072590/A0005151081/0",
+      "coldWeather": "https://productmanuals.generac.com/api/manualfiles/G0072590/A0005151081/0"
+    },
+    "lastSourceCheck": "2026-10-05",
+    "displayName": "Standby Generator, 14kW | Transfer Switch Bundle | Generac",
+    "family": "Cellular standby",
+    "startingMsrpUsd": 5949.0,
+    "startingMsrpNote": "Published equipment/package starting MSRP; installation, taxes and local project scope are not included by this record.",
+    "dimensionsIn": {
+      "length": 46.4,
+      "width": 26.3,
+      "height": 30.7
+    },
+    "weightLb": 391.0,
+    "engine": {
+      "maker": "Generac",
+      "model": "G-Force 800"
+    },
+    "enclosure": "Aluminum",
+    "fuelConsumption": [
+      {
+        "fuel": "LP",
+        "loadPercent": 50,
+        "amount": 1.76,
+        "unit": "gal/hr"
+      },
+      {
+        "fuel": "LP",
+        "loadPercent": 100,
+        "amount": 2.92,
+        "unit": "gal/hr"
+      },
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 50,
+        "amount": 189.0,
+        "unit": "ft³/hr"
+      },
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 100,
+        "amount": 243.0,
+        "unit": "ft³/hr"
+      }
+    ],
+    "warranty": "Product page states a 5-year limited warranty. Full contract, hour limits, labor, travel and exclusions require confirmation.",
+    "monitoring": "Built-in cellular Mobile Link; product page notes that some alerts/functions require a premium subscription.",
+    "documents": {
+      "specification": "https://manfilemode-generacsoa.generac.com/api/manualfiles/G0073230/A0005151081/0",
+      "ownerManual": "https://manfilemode-generacsoa.generac.com/api/manualfiles/G0072580/A0004332577/0"
+    },
+    "ats": {
+      "included": true,
+      "amps": 200,
+      "model": "A0005902810",
+      "serviceEntranceRated": true
+    },
+    "transferSwitch": "Manufacturer identifies an included transfer-switch bundle; exact switch details are listed below where verified.",
+    "electrical": {
+      "voltage": "240 V rated (manufacturer specification)",
+      "phase": "Single phase",
+      "frequencyHz": 60
+    },
+    "sound": [
+      {
+        "decibelsA": 65,
+        "condition": "normal load",
+        "distanceFt": 23,
+        "direction": "measured from the front; other sides may be higher"
+      },
+      {
+        "decibelsA": 55,
+        "condition": "Quiet-Test low-speed exercise",
+        "distanceFt": 23,
+        "direction": "measured from the front; other sides may be higher"
+      }
+    ],
+    "slug": "generac-g0073230",
+    "missingFields": [
+      "loadManagement",
+      "warrantyHourLimit",
+      "fullWarrantyExclusions",
+      "certificationsNotIndependentlyVerified"
+    ],
+    "coldWeather": "Listed accessories: G007211-0 battery heater and G007102-1 oil heater when temperatures regularly fall below 32°F; G007103-2 breather heater below 0°F. Confirm applicability to the purchased serial number.",
+    "publishedOn": "2026-10-05"
+  },
+  {
+    "brand": "Generac",
+    "modelId": "G0072590",
+    "ratingsKw": {
+      "LP": 18.0,
+      "Natural gas": 17.0
+    },
+    "sources": [
+      {
+        "label": "Generac G0072590 product specifications",
+        "url": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-18kw-7259/",
+        "checkedOn": "2026-10-05"
+      },
+      {
+        "label": "Exact 10/14/18 kW specification table, p. 4",
+        "url": "https://productmanuals.generac.com/api/manualfiles/G0072590/A0005151081/0",
+        "checkedOn": "2026-10-05"
+      }
+    ],
+    "productUrl": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-18kw-7259/",
+    "evidenceNotes": [],
+    "fieldSources": {
+      "displayName": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-18kw-7259/",
+      "family": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-18kw-7259/",
+      "ratingsKw": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-18kw-7259/",
+      "startingMsrpUsd": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-18kw-7259/",
+      "dimensionsIn": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-18kw-7259/",
+      "weightLb": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-18kw-7259/",
+      "engine": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-18kw-7259/",
+      "enclosure": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-18kw-7259/",
+      "fuelConsumption": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-18kw-7259/",
+      "warranty": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-18kw-7259/",
+      "monitoring": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-18kw-7259/",
+      "transferSwitch": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-18kw-7259/",
+      "electrical": "https://productmanuals.generac.com/api/manualfiles/G0072590/A0005151081/0",
+      "sound": "https://productmanuals.generac.com/api/manualfiles/G0072590/A0005151081/0",
+      "coldWeather": "https://productmanuals.generac.com/api/manualfiles/G0072590/A0005151081/0"
+    },
+    "lastSourceCheck": "2026-10-05",
+    "displayName": "Standby Generator, 18kW | Generac",
+    "family": "Cellular standby",
+    "startingMsrpUsd": 5709.0,
+    "startingMsrpNote": "Published equipment/package starting MSRP; installation, taxes and local project scope are not included by this record.",
+    "dimensionsIn": {
+      "length": 46.42,
+      "width": 26.3,
+      "height": 30.7
+    },
+    "weightLb": 426.0,
+    "engine": {
+      "maker": "Generac",
+      "model": "G-Force 800"
+    },
+    "enclosure": "Aluminum",
+    "fuelConsumption": [
+      {
+        "fuel": "LP",
+        "loadPercent": 50,
+        "amount": 1.65,
+        "unit": "gal/hr"
+      },
+      {
+        "fuel": "LP",
+        "loadPercent": 100,
+        "amount": 2.87,
+        "unit": "gal/hr"
+      },
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 50,
+        "amount": 164.0,
+        "unit": "ft³/hr"
+      },
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 100,
+        "amount": 235.0,
+        "unit": "ft³/hr"
+      }
+    ],
+    "warranty": "Product page states a 5-year limited warranty. Full contract, hour limits, labor, travel and exclusions require confirmation.",
+    "monitoring": "Built-in cellular Mobile Link; product page notes that some alerts/functions require a premium subscription.",
+    "documents": {
+      "specification": "https://manfilemode-generacsoa.generac.com/api/manualfiles/G0073240/A0005151081/0",
+      "ownerManual": "https://manfilemode-generacsoa.generac.com/api/manualfiles/G0072580/A0004332577/0"
+    },
+    "transferSwitch": "Included transfer equipment is not established by the captured exact-model page. Require the complete generator and ATS package in writing.",
+    "electrical": {
+      "voltage": "240 V rated (manufacturer specification)",
+      "phase": "Single phase",
+      "frequencyHz": 60
+    },
+    "sound": [
+      {
+        "decibelsA": 65,
+        "condition": "normal load",
+        "distanceFt": 23,
+        "direction": "measured from the front; other sides may be higher"
+      },
+      {
+        "decibelsA": 55,
+        "condition": "Quiet-Test low-speed exercise",
+        "distanceFt": 23,
+        "direction": "measured from the front; other sides may be higher"
+      }
+    ],
+    "slug": "generac-g0072590",
+    "missingFields": [
+      "ats",
+      "loadManagement",
+      "warrantyHourLimit",
+      "fullWarrantyExclusions",
+      "certificationsNotIndependentlyVerified"
+    ],
+    "coldWeather": "Listed accessories: G007211-0 battery heater and G007102-1 oil heater when temperatures regularly fall below 32°F; G007103-2 breather heater below 0°F. Confirm applicability to the purchased serial number.",
+    "publishedOn": "2026-10-05"
+  },
+  {
+    "brand": "Generac",
+    "modelId": "G0073240",
+    "ratingsKw": {
+      "LP": 18.0,
+      "Natural gas": 17.0
+    },
+    "sources": [
+      {
+        "label": "Generac G0073240 product specifications",
+        "url": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-18kw-7324/",
+        "checkedOn": "2026-10-05"
+      },
+      {
+        "label": "Exact package table in A0005151081, page 6",
+        "url": "https://productmanuals.generac.com/api/manualfiles/G0072590/A0005151081/0",
+        "checkedOn": "2026-10-05"
+      }
+    ],
+    "productUrl": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-18kw-7324/",
+    "evidenceNotes": [],
+    "fieldSources": {
+      "displayName": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-18kw-7324/",
+      "family": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-18kw-7324/",
+      "ratingsKw": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-18kw-7324/",
+      "startingMsrpUsd": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-18kw-7324/",
+      "dimensionsIn": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-18kw-7324/",
+      "weightLb": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-18kw-7324/",
+      "engine": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-18kw-7324/",
+      "enclosure": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-18kw-7324/",
+      "fuelConsumption": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-18kw-7324/",
+      "warranty": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-18kw-7324/",
+      "monitoring": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-18kw-7324/",
+      "transferSwitch": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-18kw-7324/",
+      "ats": "https://productmanuals.generac.com/api/manualfiles/G0072590/A0005151081/0",
+      "electrical": "https://productmanuals.generac.com/api/manualfiles/G0072590/A0005151081/0",
+      "sound": "https://productmanuals.generac.com/api/manualfiles/G0072590/A0005151081/0",
+      "coldWeather": "https://productmanuals.generac.com/api/manualfiles/G0072590/A0005151081/0"
+    },
+    "lastSourceCheck": "2026-10-05",
+    "displayName": "Standby Generator, 18kW | Transfer Switch Bundle | Generac",
+    "family": "Cellular standby",
+    "startingMsrpUsd": 6769.0,
+    "startingMsrpNote": "Published equipment/package starting MSRP; installation, taxes and local project scope are not included by this record.",
+    "dimensionsIn": {
+      "length": 46.4,
+      "width": 26.3,
+      "height": 30.7
+    },
+    "weightLb": 426.0,
+    "engine": {
+      "maker": "Generac",
+      "model": "G-Force 800"
+    },
+    "enclosure": "Aluminum",
+    "fuelConsumption": [
+      {
+        "fuel": "LP",
+        "loadPercent": 50,
+        "amount": 1.65,
+        "unit": "gal/hr"
+      },
+      {
+        "fuel": "LP",
+        "loadPercent": 100,
+        "amount": 2.87,
+        "unit": "gal/hr"
+      },
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 50,
+        "amount": 164.0,
+        "unit": "ft³/hr"
+      },
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 100,
+        "amount": 235.0,
+        "unit": "ft³/hr"
+      }
+    ],
+    "warranty": "Product page states a 5-year limited warranty. Full contract, hour limits, labor, travel and exclusions require confirmation.",
+    "monitoring": "Built-in cellular Mobile Link; product page notes that some alerts/functions require a premium subscription.",
+    "documents": {
+      "specification": "https://manfilemode-generacsoa.generac.com/api/manualfiles/G0073230/A0005151081",
+      "ownerManual": "https://manfilemode-generacsoa.generac.com/api/manualfiles/G0072580/A0004332577/0"
+    },
+    "ats": {
+      "included": true,
+      "amps": 200,
+      "model": "A0005902810",
+      "serviceEntranceRated": true
+    },
+    "transferSwitch": "Manufacturer identifies an included transfer-switch bundle; exact switch details are listed below where verified.",
+    "electrical": {
+      "voltage": "240 V rated (manufacturer specification)",
+      "phase": "Single phase",
+      "frequencyHz": 60
+    },
+    "sound": [
+      {
+        "decibelsA": 65,
+        "condition": "normal load",
+        "distanceFt": 23,
+        "direction": "measured from the front; other sides may be higher"
+      },
+      {
+        "decibelsA": 55,
+        "condition": "Quiet-Test low-speed exercise",
+        "distanceFt": 23,
+        "direction": "measured from the front; other sides may be higher"
+      }
+    ],
+    "slug": "generac-g0073240",
+    "missingFields": [
+      "loadManagement",
+      "warrantyHourLimit",
+      "fullWarrantyExclusions",
+      "certificationsNotIndependentlyVerified"
+    ],
+    "coldWeather": "Listed accessories: G007211-0 battery heater and G007102-1 oil heater when temperatures regularly fall below 32°F; G007103-2 breather heater below 0°F. Confirm applicability to the purchased serial number.",
+    "publishedOn": "2026-10-05"
+  },
+  {
+    "brand": "Generac",
+    "modelId": "G0073250",
+    "ratingsKw": {
+      "LP": 22.0,
+      "Natural gas": 21.0
+    },
+    "sources": [
+      {
+        "label": "Generac G0073250 product specifications",
+        "url": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-22kw-7325/",
+        "checkedOn": "2026-10-05"
+      },
+      {
+        "label": "22–28 kW official specification sheet; exact configurations listed, pp. 1, 4, 6–7",
+        "url": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+        "checkedOn": "2026-10-05"
+      }
+    ],
+    "productUrl": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-22kw-7325/",
+    "evidenceNotes": [],
+    "fieldSources": {
+      "displayName": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-22kw-7325/",
+      "family": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-22kw-7325/",
+      "ratingsKw": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-22kw-7325/",
+      "startingMsrpUsd": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-22kw-7325/",
+      "dimensionsIn": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-22kw-7325/",
+      "weightLb": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-22kw-7325/",
+      "engine": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "enclosure": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-22kw-7325/",
+      "fuelConsumption": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "warranty": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-22kw-7325/",
+      "monitoring": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-22kw-7325/",
+      "transferSwitch": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-22kw-7325/",
+      "ats": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "electrical": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "sound": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "coldWeather": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "loadManagement": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0"
+    },
+    "lastSourceCheck": "2026-10-05",
+    "displayName": "Standby Generator, 22kW | Transfer Switch Bundle | Generac",
+    "family": "Cellular standby",
+    "startingMsrpUsd": 7369.0,
+    "startingMsrpNote": "Published equipment/package starting MSRP; installation, taxes and local project scope are not included by this record.",
+    "dimensionsIn": {
+      "length": 46.4,
+      "width": 26.3,
+      "height": 30.7
+    },
+    "weightLb": 451.0,
+    "engine": {
+      "maker": "Generac",
+      "model": "G-Force 1000 Series",
+      "displacementCc": 997
+    },
+    "enclosure": "Aluminum",
+    "fuelConsumption": [
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 50,
+        "amount": 221,
+        "unit": "ft³/hr"
+      },
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 100,
+        "amount": 311,
+        "unit": "ft³/hr"
+      },
+      {
+        "fuel": "LP",
+        "loadPercent": 50,
+        "amount": 2.45,
+        "unit": "gal/hr"
+      },
+      {
+        "fuel": "LP",
+        "loadPercent": 100,
+        "amount": 3.71,
+        "unit": "gal/hr"
+      }
+    ],
+    "warranty": "Product page states a 5-year limited warranty. Full contract, hour limits, labor, travel and exclusions require confirmation.",
+    "monitoring": "Built-in cellular Mobile Link; product page notes that some alerts/functions require a premium subscription.",
+    "documents": {
+      "specification": "https://manfilemode-generacsoa.generac.com/api/manualfiles/G0073250/A0005151077/0",
+      "ownerManual": "https://manfilemode-generacsoa.generac.com/api/manualfiles/G0072580/A0004332577/0"
+    },
+    "ats": {
+      "included": true,
+      "amps": 200,
+      "model": "A0005902810",
+      "serviceEntranceRated": true
+    },
+    "transferSwitch": "Manufacturer identifies an included transfer-switch bundle; exact switch details are listed below where verified.",
+    "sound": [
+      {
+        "decibelsA": 67,
+        "condition": "normal load",
+        "distanceFt": 23,
+        "direction": "measured from the front; other sides may be higher"
+      },
+      {
+        "decibelsA": 55,
+        "condition": "Quiet-Test low-speed exercise",
+        "distanceFt": 23,
+        "direction": "measured from the front; other sides may be higher"
+      }
+    ],
+    "slug": "generac-g0073250",
+    "missingFields": [
+      "warrantyHourLimit",
+      "fullWarrantyExclusions",
+      "certificationsNotIndependentlyVerified"
+    ],
+    "electrical": {
+      "voltage": "240 V rated (manufacturer specification)",
+      "phase": "Single phase",
+      "frequencyHz": 60
+    },
+    "coldWeather": "Listed accessories: G007211-0 battery heater and G007102-1 oil heater when temperatures regularly fall below 32°F; G007103-2 breather heater below 0°F. Confirm applicability to the purchased serial number.",
+    "loadManagement": "Specification lists optional G007000-1 (50 A) and G007006-1 (100 A) Load Managers. Module selection and control compatibility require installer confirmation.",
+    "publishedOn": "2026-10-05"
+  },
+  {
+    "brand": "Generac",
+    "modelId": "G0073260",
+    "ratingsKw": {
+      "LP": 24.0,
+      "Natural gas": 22.5
+    },
+    "sources": [
+      {
+        "label": "Generac G0073260 product specifications",
+        "url": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-24kw-7326/",
+        "checkedOn": "2026-10-05"
+      },
+      {
+        "label": "22–28 kW official specification sheet; exact configurations listed, pp. 1, 4, 6–7",
+        "url": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+        "checkedOn": "2026-10-05"
+      }
+    ],
+    "productUrl": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-24kw-7326/",
+    "evidenceNotes": [],
+    "fieldSources": {
+      "displayName": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-24kw-7326/",
+      "family": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-24kw-7326/",
+      "ratingsKw": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-24kw-7326/",
+      "startingMsrpUsd": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-24kw-7326/",
+      "dimensionsIn": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-24kw-7326/",
+      "weightLb": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-24kw-7326/",
+      "engine": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "enclosure": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-24kw-7326/",
+      "fuelConsumption": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "warranty": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-24kw-7326/",
+      "monitoring": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-24kw-7326/",
+      "transferSwitch": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-24kw-7326/",
+      "ats": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "electrical": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "sound": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "coldWeather": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "loadManagement": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0"
+    },
+    "lastSourceCheck": "2026-10-05",
+    "displayName": "Standby Generator, 24kW | Transfer Switch Bundle | Generac",
+    "family": "Cellular standby",
+    "startingMsrpUsd": 7789.0,
+    "startingMsrpNote": "Published equipment/package starting MSRP; installation, taxes and local project scope are not included by this record.",
+    "dimensionsIn": {
+      "length": 46.42,
+      "width": 26.3,
+      "height": 30.7
+    },
+    "weightLb": 461.0,
+    "engine": {
+      "maker": "Generac",
+      "model": "G-Force 1000 Series",
+      "displacementCc": 997
+    },
+    "enclosure": "Aluminum",
+    "fuelConsumption": [
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 50,
+        "amount": 197,
+        "unit": "ft³/hr"
+      },
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 100,
+        "amount": 291,
+        "unit": "ft³/hr"
+      },
+      {
+        "fuel": "LP",
+        "loadPercent": 50,
+        "amount": 2.45,
+        "unit": "gal/hr"
+      },
+      {
+        "fuel": "LP",
+        "loadPercent": 100,
+        "amount": 3.71,
+        "unit": "gal/hr"
+      }
+    ],
+    "warranty": "Product page states a 5-year limited warranty. Full contract, hour limits, labor, travel and exclusions require confirmation.",
+    "monitoring": "Built-in cellular Mobile Link; product page notes that some alerts/functions require a premium subscription.",
+    "documents": {
+      "specification": "https://manfilemode-generacsoa.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "ownerManual": "https://manfilemode-generacsoa.generac.com/api/manualfiles/G0072600/A0004332577/0"
+    },
+    "ats": {
+      "included": true,
+      "amps": 200,
+      "model": "A0005902810",
+      "serviceEntranceRated": true
+    },
+    "transferSwitch": "Manufacturer identifies an included transfer-switch bundle; exact switch details are listed below where verified.",
+    "sound": [
+      {
+        "decibelsA": 67,
+        "condition": "normal load",
+        "distanceFt": 23,
+        "direction": "measured from the front; other sides may be higher"
+      },
+      {
+        "decibelsA": 55,
+        "condition": "Quiet-Test low-speed exercise",
+        "distanceFt": 23,
+        "direction": "measured from the front; other sides may be higher"
+      }
+    ],
+    "slug": "generac-g0073260",
+    "missingFields": [
+      "warrantyHourLimit",
+      "fullWarrantyExclusions",
+      "certificationsNotIndependentlyVerified"
+    ],
+    "electrical": {
+      "voltage": "240 V rated (manufacturer specification)",
+      "phase": "Single phase",
+      "frequencyHz": 60
+    },
+    "coldWeather": "Listed accessories: G007211-0 battery heater and G007102-1 oil heater when temperatures regularly fall below 32°F; G007103-2 breather heater below 0°F. Confirm applicability to the purchased serial number.",
+    "loadManagement": "Specification lists optional G007000-1 (50 A) and G007006-1 (100 A) Load Managers. Module selection and control compatibility require installer confirmation.",
+    "publishedOn": "2026-10-05"
+  },
+  {
+    "brand": "Generac",
+    "modelId": "G0072610",
+    "ratingsKw": {
+      "LP": 24.0,
+      "Natural gas": 22.5
+    },
+    "sources": [
+      {
+        "label": "Generac G0072610 product specifications",
+        "url": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-24kw-72610/",
+        "checkedOn": "2026-10-05"
+      },
+      {
+        "label": "22–28 kW official specification sheet; exact configurations listed, pp. 1, 4, 6–7",
+        "url": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+        "checkedOn": "2026-10-05"
+      }
+    ],
+    "productUrl": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-24kw-72610/",
+    "evidenceNotes": [],
+    "fieldSources": {
+      "displayName": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-24kw-72610/",
+      "family": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-24kw-72610/",
+      "ratingsKw": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-24kw-72610/",
+      "startingMsrpUsd": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-24kw-72610/",
+      "dimensionsIn": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-24kw-72610/",
+      "weightLb": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-24kw-72610/",
+      "engine": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "enclosure": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-24kw-72610/",
+      "fuelConsumption": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "warranty": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-24kw-72610/",
+      "monitoring": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-24kw-72610/",
+      "transferSwitch": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-24kw-72610/",
+      "electrical": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "sound": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "coldWeather": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "loadManagement": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0"
+    },
+    "lastSourceCheck": "2026-10-05",
+    "displayName": "Standby Generator, 24kW | Generac",
+    "family": "Cellular standby",
+    "startingMsrpUsd": 6729.0,
+    "startingMsrpNote": "Published equipment/package starting MSRP; installation, taxes and local project scope are not included by this record.",
+    "dimensionsIn": {
+      "length": 46.4,
+      "width": 26.3,
+      "height": 30.7
+    },
+    "weightLb": 461.0,
+    "engine": {
+      "maker": "Generac",
+      "model": "G-Force 1000 Series",
+      "displacementCc": 997
+    },
+    "enclosure": "Aluminum",
+    "fuelConsumption": [
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 50,
+        "amount": 197,
+        "unit": "ft³/hr"
+      },
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 100,
+        "amount": 291,
+        "unit": "ft³/hr"
+      },
+      {
+        "fuel": "LP",
+        "loadPercent": 50,
+        "amount": 2.45,
+        "unit": "gal/hr"
+      },
+      {
+        "fuel": "LP",
+        "loadPercent": 100,
+        "amount": 3.71,
+        "unit": "gal/hr"
+      }
+    ],
+    "warranty": "Product page states a 5-year limited warranty. Full contract, hour limits, labor, travel and exclusions require confirmation.",
+    "monitoring": "Built-in cellular Mobile Link; product page notes that some alerts/functions require a premium subscription.",
+    "documents": {
+      "specification": "https://manfilemode-generacsoa.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "ownerManual": "https://manfilemode-generacsoa.generac.com/api/manualfiles/G0072600/A0004332577/0"
+    },
+    "transferSwitch": "Included transfer equipment is not established by the captured exact-model page. Require the complete generator and ATS package in writing.",
+    "sound": [
+      {
+        "decibelsA": 67,
+        "condition": "normal load",
+        "distanceFt": 23,
+        "direction": "measured from the front; other sides may be higher"
+      },
+      {
+        "decibelsA": 55,
+        "condition": "Quiet-Test low-speed exercise",
+        "distanceFt": 23,
+        "direction": "measured from the front; other sides may be higher"
+      }
+    ],
+    "slug": "generac-g0072610",
+    "missingFields": [
+      "ats",
+      "warrantyHourLimit",
+      "fullWarrantyExclusions",
+      "certificationsNotIndependentlyVerified"
+    ],
+    "electrical": {
+      "voltage": "240 V rated (manufacturer specification)",
+      "phase": "Single phase",
+      "frequencyHz": 60
+    },
+    "coldWeather": "Listed accessories: G007211-0 battery heater and G007102-1 oil heater when temperatures regularly fall below 32°F; G007103-2 breather heater below 0°F. Confirm applicability to the purchased serial number.",
+    "loadManagement": "Specification lists optional G007000-1 (50 A) and G007006-1 (100 A) Load Managers. Module selection and control compatibility require installer confirmation.",
+    "publishedOn": "2026-10-05"
+  },
+  {
+    "brand": "Generac",
+    "modelId": "G0073280",
+    "ratingsKw": {
+      "LP": 26.0,
+      "Natural gas": 24.0
+    },
+    "sources": [
+      {
+        "label": "Generac G0073280 product specifications",
+        "url": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-26kw-7328-transfer-switch/",
+        "checkedOn": "2026-10-05"
+      },
+      {
+        "label": "22–28 kW official specification sheet; exact configurations listed, pp. 1, 4, 6–7",
+        "url": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+        "checkedOn": "2026-10-05"
+      }
+    ],
+    "productUrl": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-26kw-7328-transfer-switch/",
+    "evidenceNotes": [],
+    "fieldSources": {
+      "displayName": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-26kw-7328-transfer-switch/",
+      "family": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-26kw-7328-transfer-switch/",
+      "ratingsKw": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-26kw-7328-transfer-switch/",
+      "startingMsrpUsd": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-26kw-7328-transfer-switch/",
+      "dimensionsIn": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-26kw-7328-transfer-switch/",
+      "weightLb": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-26kw-7328-transfer-switch/",
+      "engine": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "enclosure": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-26kw-7328-transfer-switch/",
+      "fuelConsumption": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "warranty": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-26kw-7328-transfer-switch/",
+      "monitoring": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-26kw-7328-transfer-switch/",
+      "transferSwitch": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-26kw-7328-transfer-switch/",
+      "ats": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "electrical": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "sound": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "coldWeather": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "loadManagement": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0"
+    },
+    "lastSourceCheck": "2026-10-05",
+    "displayName": "Standby Generator, 26kW | Transfer Switch Bundle | Generac",
+    "family": "Cellular standby",
+    "startingMsrpUsd": 8219.0,
+    "startingMsrpNote": "Published equipment/package starting MSRP; installation, taxes and local project scope are not included by this record.",
+    "dimensionsIn": {
+      "length": 46.4,
+      "width": 26.3,
+      "height": 30.7
+    },
+    "weightLb": 524.0,
+    "engine": {
+      "maker": "Generac",
+      "model": "G-Force 1000 Series",
+      "displacementCc": 997
+    },
+    "enclosure": "Aluminum",
+    "fuelConsumption": [
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 50,
+        "amount": 182,
+        "unit": "ft³/hr"
+      },
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 100,
+        "amount": 316,
+        "unit": "ft³/hr"
+      },
+      {
+        "fuel": "LP",
+        "loadPercent": 50,
+        "amount": 2.05,
+        "unit": "gal/hr"
+      },
+      {
+        "fuel": "LP",
+        "loadPercent": 100,
+        "amount": 3.95,
+        "unit": "gal/hr"
+      }
+    ],
+    "warranty": "Product page states a 5-year limited warranty. Full contract, hour limits, labor, travel and exclusions require confirmation.",
+    "monitoring": "Built-in cellular Mobile Link; product page notes that some alerts/functions require a premium subscription.",
+    "documents": {
+      "specification": "https://manfilemode-generacsoa.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "ownerManual": "https://manfilemode-generacsoa.generac.com/api/manualfiles/G0072600/A0004332577/0"
+    },
+    "ats": {
+      "included": true,
+      "amps": 200,
+      "model": "A0005902810",
+      "serviceEntranceRated": true
+    },
+    "transferSwitch": "Manufacturer identifies an included transfer-switch bundle; exact switch details are listed below where verified.",
+    "sound": [
+      {
+        "decibelsA": 67,
+        "condition": "normal load",
+        "distanceFt": 23,
+        "direction": "measured from the front; other sides may be higher"
+      },
+      {
+        "decibelsA": 55,
+        "condition": "Quiet-Test low-speed exercise",
+        "distanceFt": 23,
+        "direction": "measured from the front; other sides may be higher"
+      }
+    ],
+    "slug": "generac-g0073280",
+    "missingFields": [
+      "warrantyHourLimit",
+      "fullWarrantyExclusions",
+      "certificationsNotIndependentlyVerified"
+    ],
+    "electrical": {
+      "voltage": "240 V rated (manufacturer specification)",
+      "phase": "Single phase",
+      "frequencyHz": 60
+    },
+    "coldWeather": "Listed accessories: G007211-0 battery heater and G007102-1 oil heater when temperatures regularly fall below 32°F; G007103-2 breather heater below 0°F. Confirm applicability to the purchased serial number.",
+    "loadManagement": "Specification lists optional G007000-1 (50 A) and G007006-1 (100 A) Load Managers. Module selection and control compatibility require installer confirmation.",
+    "publishedOn": "2026-10-05"
+  },
+  {
+    "brand": "Generac",
+    "modelId": "G0072820",
+    "ratingsKw": {
+      "LP": 28.0,
+      "Natural gas": 25.0
+    },
+    "sources": [
+      {
+        "label": "Generac G0072820 product specifications",
+        "url": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-28kw-7282/",
+        "checkedOn": "2026-10-05"
+      },
+      {
+        "label": "22–28 kW official specification sheet; exact configurations listed, pp. 1, 4, 6–7",
+        "url": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+        "checkedOn": "2026-10-05"
+      }
+    ],
+    "productUrl": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-28kw-7282/",
+    "evidenceNotes": [],
+    "fieldSources": {
+      "displayName": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-28kw-7282/",
+      "family": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-28kw-7282/",
+      "ratingsKw": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-28kw-7282/",
+      "startingMsrpUsd": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-28kw-7282/",
+      "dimensionsIn": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-28kw-7282/",
+      "weightLb": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-28kw-7282/",
+      "engine": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "enclosure": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-28kw-7282/",
+      "fuelConsumption": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "warranty": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-28kw-7282/",
+      "monitoring": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-28kw-7282/",
+      "transferSwitch": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-28kw-7282/",
+      "electrical": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "sound": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "coldWeather": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "loadManagement": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0"
+    },
+    "lastSourceCheck": "2026-10-05",
+    "displayName": "Standby Generator, 28kW | Generac",
+    "family": "Cellular standby",
+    "startingMsrpUsd": 8159.0,
+    "startingMsrpNote": "Published equipment/package starting MSRP; installation, taxes and local project scope are not included by this record.",
+    "dimensionsIn": {
+      "length": 46.4,
+      "width": 26.3,
+      "height": 30.7
+    },
+    "weightLb": 524.0,
+    "engine": {
+      "maker": "Generac",
+      "model": "G-Force 1000 Series",
+      "displacementCc": 997
+    },
+    "enclosure": "Aluminum",
+    "fuelConsumption": [
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 50,
+        "amount": 182,
+        "unit": "ft³/hr"
+      },
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 100,
+        "amount": 297,
+        "unit": "ft³/hr"
+      },
+      {
+        "fuel": "LP",
+        "loadPercent": 50,
+        "amount": 2.23,
+        "unit": "gal/hr"
+      },
+      {
+        "fuel": "LP",
+        "loadPercent": 100,
+        "amount": 3.97,
+        "unit": "gal/hr"
+      }
+    ],
+    "warranty": "Product page states a 5-year limited warranty. Full contract, hour limits, labor, travel and exclusions require confirmation.",
+    "monitoring": "Built-in cellular Mobile Link; product page notes that some alerts/functions require a premium subscription.",
+    "documents": {
+      "specification": "https://manfilemode-generacsoa.generac.com/api/manualfiles/G0072600/A0005151077/0",
+      "ownerManual": "https://manfilemode-generacsoa.generac.com/api/manualfiles/G0072600/A0004332577/0"
+    },
+    "transferSwitch": "Included transfer equipment is not established by the captured exact-model page. Require the complete generator and ATS package in writing.",
+    "sound": [
+      {
+        "decibelsA": 67,
+        "condition": "normal load",
+        "distanceFt": 23,
+        "direction": "measured from the front; other sides may be higher"
+      },
+      {
+        "decibelsA": 55,
+        "condition": "Quiet-Test low-speed exercise",
+        "distanceFt": 23,
+        "direction": "measured from the front; other sides may be higher"
+      }
+    ],
+    "slug": "generac-g0072820",
+    "missingFields": [
+      "ats",
+      "warrantyHourLimit",
+      "fullWarrantyExclusions",
+      "certificationsNotIndependentlyVerified"
+    ],
+    "electrical": {
+      "voltage": "240 V rated (manufacturer specification)",
+      "phase": "Single phase",
+      "frequencyHz": 60
+    },
+    "coldWeather": "Listed accessories: G007211-0 battery heater and G007102-1 oil heater when temperatures regularly fall below 32°F; G007103-2 breather heater below 0°F. Confirm applicability to the purchased serial number.",
+    "loadManagement": "Specification lists optional G007000-1 (50 A) and G007006-1 (100 A) Load Managers. Module selection and control compatibility require installer confirmation.",
+    "publishedOn": "2026-10-05"
+  },
+  {
+    "brand": "Generac",
+    "modelId": "G0073290",
+    "ratingsKw": {
+      "LP": 28.0,
+      "Natural gas": 25.0
+    },
+    "sources": [
+      {
+        "label": "Generac G0073290 product specifications",
+        "url": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-28kw-7329/",
+        "checkedOn": "2026-10-05"
+      },
+      {
+        "label": "22–28 kW official specification sheet; exact configurations listed, pp. 1, 4, 6–7",
+        "url": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+        "checkedOn": "2026-10-05"
+      }
+    ],
+    "productUrl": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-28kw-7329/",
+    "evidenceNotes": [],
+    "fieldSources": {
+      "displayName": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-28kw-7329/",
+      "family": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-28kw-7329/",
+      "ratingsKw": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-28kw-7329/",
+      "startingMsrpUsd": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-28kw-7329/",
+      "dimensionsIn": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-28kw-7329/",
+      "weightLb": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-28kw-7329/",
+      "engine": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "enclosure": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-28kw-7329/",
+      "fuelConsumption": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "warranty": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-28kw-7329/",
+      "monitoring": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-28kw-7329/",
+      "transferSwitch": "https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-28kw-7329/",
+      "ats": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "electrical": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "sound": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "coldWeather": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0",
+      "loadManagement": "https://productmanuals.generac.com/api/manualfiles/G0073270/A0005151077/0"
+    },
+    "lastSourceCheck": "2026-10-05",
+    "displayName": "Standby Generator, 28kW with Transfer Switch and ecobee by Generac Smart Thermostat Bundle | Generac",
+    "family": "Cellular standby",
+    "startingMsrpUsd": 9509.0,
+    "startingMsrpNote": "Published equipment/package starting MSRP; installation, taxes and local project scope are not included by this record.",
+    "dimensionsIn": {
+      "length": 46.4,
+      "width": 26.3,
+      "height": 30.7
+    },
+    "weightLb": 524.0,
+    "engine": {
+      "maker": "Generac",
+      "model": "G-Force 1000 Series",
+      "displacementCc": 997
+    },
+    "enclosure": "Aluminum",
+    "fuelConsumption": [
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 50,
+        "amount": 182,
+        "unit": "ft³/hr"
+      },
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 100,
+        "amount": 297,
+        "unit": "ft³/hr"
+      },
+      {
+        "fuel": "LP",
+        "loadPercent": 50,
+        "amount": 2.23,
+        "unit": "gal/hr"
+      },
+      {
+        "fuel": "LP",
+        "loadPercent": 100,
+        "amount": 3.97,
+        "unit": "gal/hr"
+      }
+    ],
+    "warranty": "Product page states a 5-year limited warranty. Full contract, hour limits, labor, travel and exclusions require confirmation.",
+    "monitoring": "Built-in cellular Mobile Link; product page notes that some alerts/functions require a premium subscription.",
+    "documents": {
+      "specification": "https://manfilemode-generacsoa.generac.com/api/manualfiles/G0072600/A0005151077/0",
+      "ownerManual": "https://manfilemode-generacsoa.generac.com/api/manualfiles/G0072600/A0004332577/0"
+    },
+    "ats": {
+      "included": true,
+      "amps": 200,
+      "model": "A0005902810",
+      "serviceEntranceRated": true
+    },
+    "transferSwitch": "Manufacturer identifies an included transfer-switch bundle; exact switch details are listed below where verified.",
+    "sound": [
+      {
+        "decibelsA": 67,
+        "condition": "normal load",
+        "distanceFt": 23,
+        "direction": "measured from the front; other sides may be higher"
+      },
+      {
+        "decibelsA": 55,
+        "condition": "Quiet-Test low-speed exercise",
+        "distanceFt": 23,
+        "direction": "measured from the front; other sides may be higher"
+      }
+    ],
+    "slug": "generac-g0073290",
+    "missingFields": [
+      "warrantyHourLimit",
+      "fullWarrantyExclusions",
+      "certificationsNotIndependentlyVerified"
+    ],
+    "electrical": {
+      "voltage": "240 V rated (manufacturer specification)",
+      "phase": "Single phase",
+      "frequencyHz": 60
+    },
+    "coldWeather": "Listed accessories: G007211-0 battery heater and G007102-1 oil heater when temperatures regularly fall below 32°F; G007103-2 breather heater below 0°F. Confirm applicability to the purchased serial number.",
+    "loadManagement": "Specification lists optional G007000-1 (50 A) and G007006-1 (100 A) Load Managers. Module selection and control compatibility require installer confirmation.",
+    "publishedOn": "2026-10-05"
+  },
+  {
+    "brand": "KOHLER / Rehlko",
+    "modelId": "14RCA",
+    "ratingsKw": {
+      "LP": 14.0,
+      "Natural gas": 12.0
+    },
+    "sources": [
+      {
+        "label": "KOHLER / Rehlko 14RCA product specifications",
+        "url": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/14rca",
+        "checkedOn": "2026-10-05"
+      }
+    ],
+    "productUrl": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/14rca",
+    "evidenceNotes": [],
+    "fieldSources": {
+      "displayName": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/14rca",
+      "family": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/14rca",
+      "ratingsKw": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/14rca",
+      "startingMsrpUsd": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/14rca",
+      "enclosure": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/14rca",
+      "weightLb": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/14rca",
+      "engine": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/14rca",
+      "dimensionsIn": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/14rca",
+      "electrical": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/14rca",
+      "fuelConsumption": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/14rca",
+      "warranty": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/14rca",
+      "monitoring": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/14rca",
+      "transferSwitch": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/14rca",
+      "ats": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/14rca",
+      "sound": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/14rca"
+    },
+    "lastSourceCheck": "2026-10-05",
+    "displayName": "14RCA residential standby generator",
+    "family": "RCA",
+    "startingMsrpUsd": 5098.0,
+    "enclosure": "Aluminum",
+    "weightLb": 440.0,
+    "engine": {
+      "maker": "KOHLER",
+      "model": "CH740",
+      "displacementCc": 725.0
+    },
+    "dimensionsIn": {
+      "length": 47.0,
+      "width": 26.2,
+      "height": 32.2
+    },
+    "electrical": {
+      "voltage": "120/240 V selected residential configuration",
+      "frequencyHz": 60,
+      "phase": "Single-phase; other configurations may also appear on manufacturer page"
+    },
+    "configuration": "Selected 60 Hz single-phase residential ratings; manufacturer pages may also list other electrical configurations. Confirm exact ordering code.",
+    "startingMsrpNote": "Manufacturer starting MSRP for the identified configuration; dealer customization and installation determine the final quote.",
+    "fuelConsumption": [
+      {
+        "fuel": "LP",
+        "loadPercent": 50,
+        "amount": 60.0,
+        "unit": "ft³/hr"
+      },
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 50,
+        "amount": 124.0,
+        "unit": "ft³/hr"
+      }
+    ],
+    "sound": [
+      {
+        "decibelsA": 63.0,
+        "condition": "Weekly exercise; distance and complete protocol not established by this captured page"
+      },
+      {
+        "decibelsA": 67.0,
+        "condition": "Full-speed operation; distance and complete protocol not established by this captured page"
+      }
+    ],
+    "warranty": "Manufacturer product page: Premium five-year limited warranty. Full contract and hour limits need verification.",
+    "monitoring": "Manufacturer lists remote monitoring as Included. Confirm connection and subscription requirements.",
+    "ats": {
+      "included": false
+    },
+    "transferSwitch": "Manufacturer page lists ATS as Sold Separately. Specify the switch separately in the written quote.",
+    "documents": {
+      "ownerManual": "https://techcomm.rehlko.com/techcomm/pdf/tp7092.pdf",
+      "specification": "https://techcomm.rehlko.com/techcomm/pdf/g4270.pdf",
+      "installationManual": "https://techcomm.rehlko.com/techcomm/pdf/tp7091.pdf"
+    },
+    "slug": "kohler-14rca",
+    "missingFields": [
+      "loadManagement",
+      "coldWeather",
+      "warrantyHourLimit",
+      "fullWarrantyExclusions",
+      "certificationsNotIndependentlyVerified"
+    ],
+    "publishedOn": "2026-10-05"
+  },
+  {
+    "brand": "KOHLER / Rehlko",
+    "modelId": "20RCA",
+    "ratingsKw": {
+      "LP": 20.0,
+      "Natural gas": 18.0
+    },
+    "sources": [
+      {
+        "label": "KOHLER / Rehlko 20RCA product specifications",
+        "url": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/20rca",
+        "checkedOn": "2026-10-05"
+      }
+    ],
+    "productUrl": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/20rca",
+    "evidenceNotes": [],
+    "fieldSources": {
+      "displayName": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/20rca",
+      "family": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/20rca",
+      "ratingsKw": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/20rca",
+      "startingMsrpUsd": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/20rca",
+      "enclosure": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/20rca",
+      "weightLb": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/20rca",
+      "engine": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/20rca",
+      "dimensionsIn": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/20rca",
+      "electrical": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/20rca",
+      "fuelConsumption": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/20rca",
+      "warranty": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/20rca",
+      "monitoring": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/20rca",
+      "transferSwitch": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/20rca",
+      "ats": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/20rca",
+      "sound": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/20rca"
+    },
+    "lastSourceCheck": "2026-10-05",
+    "displayName": "20RCA residential standby generator",
+    "family": "RCA",
+    "startingMsrpUsd": 6016.0,
+    "enclosure": "Aluminum",
+    "weightLb": 555.0,
+    "engine": {
+      "maker": "KOHLER",
+      "model": "CH1000",
+      "displacementCc": 999.0
+    },
+    "dimensionsIn": {
+      "length": 47.0,
+      "width": 26.2,
+      "height": 32.2
+    },
+    "electrical": {
+      "voltage": "120/240 V selected residential configuration",
+      "frequencyHz": 60,
+      "phase": "Single-phase; other configurations may also appear on manufacturer page"
+    },
+    "configuration": "Selected 60 Hz single-phase residential ratings; manufacturer pages may also list other electrical configurations. Confirm exact ordering code.",
+    "startingMsrpNote": "Manufacturer starting MSRP for the identified configuration; dealer customization and installation determine the final quote.",
+    "fuelConsumption": [
+      {
+        "fuel": "LP",
+        "loadPercent": 50,
+        "amount": 82.0,
+        "unit": "ft³/hr"
+      },
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 50,
+        "amount": 161.0,
+        "unit": "ft³/hr"
+      }
+    ],
+    "sound": [
+      {
+        "decibelsA": 64.0,
+        "condition": "Weekly exercise; distance and complete protocol not established by this captured page"
+      },
+      {
+        "decibelsA": 69.0,
+        "condition": "Full-speed operation; distance and complete protocol not established by this captured page"
+      }
+    ],
+    "warranty": "Manufacturer product page: Premium five-year limited warranty. Full contract and hour limits need verification.",
+    "monitoring": "Manufacturer lists remote monitoring as Included. Confirm connection and subscription requirements.",
+    "ats": {
+      "included": false
+    },
+    "transferSwitch": "Manufacturer page lists ATS as Sold Separately. Specify the switch separately in the written quote.",
+    "documents": {
+      "ownerManual": "https://techcomm.rehlko.com/techcomm/pdf/tp7092.pdf",
+      "specification": "https://techcomm.rehlko.com/techcomm/pdf/g4272.pdf",
+      "installationManual": "https://techcomm.rehlko.com/techcomm/pdf/tp7091.pdf"
+    },
+    "slug": "kohler-20rca",
+    "missingFields": [
+      "loadManagement",
+      "coldWeather",
+      "warrantyHourLimit",
+      "fullWarrantyExclusions",
+      "certificationsNotIndependentlyVerified"
+    ],
+    "publishedOn": "2026-10-05"
+  },
+  {
+    "brand": "KOHLER / Rehlko",
+    "modelId": "12RESV",
+    "ratingsKw": {
+      "LP": 12.0,
+      "Natural gas": 11.0
+    },
+    "sources": [
+      {
+        "label": "KOHLER / Rehlko 12RESV product specifications",
+        "url": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/12resv",
+        "checkedOn": "2026-10-05"
+      }
+    ],
+    "productUrl": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/12resv",
+    "evidenceNotes": [],
+    "fieldSources": {
+      "displayName": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/12resv",
+      "family": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/12resv",
+      "ratingsKw": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/12resv",
+      "startingMsrpUsd": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/12resv",
+      "enclosure": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/12resv",
+      "weightLb": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/12resv",
+      "engine": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/12resv",
+      "dimensionsIn": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/12resv",
+      "electrical": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/12resv",
+      "fuelConsumption": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/12resv",
+      "warranty": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/12resv",
+      "monitoring": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/12resv",
+      "transferSwitch": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/12resv",
+      "ats": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/12resv",
+      "sound": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/12resv"
+    },
+    "lastSourceCheck": "2026-10-05",
+    "displayName": "12RESV residential standby generator",
+    "family": "RESV",
+    "startingMsrpUsd": 4384.0,
+    "enclosure": "Steel",
+    "weightLb": 433.0,
+    "engine": {
+      "maker": "KOHLER",
+      "model": "KT725 1.9L, 4-Cycle",
+      "displacementCc": 725.0
+    },
+    "dimensionsIn": {
+      "length": 30.6,
+      "width": 28.0,
+      "height": 32.4
+    },
+    "electrical": {
+      "voltage": "120/240 V selected residential configuration",
+      "frequencyHz": 60,
+      "phase": "Single-phase; other configurations may also appear on manufacturer page"
+    },
+    "configuration": "Selected 60 Hz single-phase residential ratings; manufacturer pages may also list other electrical configurations. Confirm exact ordering code.",
+    "startingMsrpNote": "Manufacturer starting MSRP for the identified configuration; dealer customization and installation determine the final quote.",
+    "fuelConsumption": [
+      {
+        "fuel": "LP",
+        "loadPercent": 50,
+        "amount": 57.0,
+        "unit": "ft³/hr"
+      },
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 50,
+        "amount": 128.0,
+        "unit": "ft³/hr"
+      }
+    ],
+    "sound": [
+      {
+        "decibelsA": 67.0,
+        "condition": "Weekly exercise; distance and complete protocol not established by this captured page"
+      },
+      {
+        "decibelsA": 71.0,
+        "condition": "Full-speed operation; distance and complete protocol not established by this captured page"
+      }
+    ],
+    "warranty": "Manufacturer product page: Premium five-year limited warranty. Full contract and hour limits need verification.",
+    "monitoring": "Manufacturer lists remote monitoring as Included. Confirm connection and subscription requirements.",
+    "ats": {
+      "included": true
+    },
+    "transferSwitch": "Manufacturer page lists ATS as Included. Specify the switch separately in the written quote.",
+    "documents": {
+      "ownerManual": "https://techcomm.rehlko.com/techcomm/pdf/tp6880.pdf",
+      "specification": "https://techcomm.rehlko.com/techcomm/pdf/g4254.pdf",
+      "installationManual": "https://techcomm.rehlko.com/techcomm/pdf/tp6984.pdf"
+    },
+    "slug": "kohler-12resv",
+    "missingFields": [
+      "loadManagement",
+      "coldWeather",
+      "warrantyHourLimit",
+      "fullWarrantyExclusions",
+      "certificationsNotIndependentlyVerified"
+    ],
+    "publishedOn": "2026-10-05"
+  },
+  {
+    "brand": "KOHLER / Rehlko",
+    "modelId": "10RESV",
+    "ratingsKw": {
+      "LP": 10.0,
+      "Natural gas": 9.0
+    },
+    "sources": [
+      {
+        "label": "KOHLER / Rehlko 10RESV product specifications",
+        "url": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/10resv",
+        "checkedOn": "2026-10-05"
+      }
+    ],
+    "productUrl": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/10resv",
+    "evidenceNotes": [],
+    "fieldSources": {
+      "displayName": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/10resv",
+      "family": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/10resv",
+      "ratingsKw": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/10resv",
+      "startingMsrpUsd": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/10resv",
+      "enclosure": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/10resv",
+      "weightLb": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/10resv",
+      "engine": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/10resv",
+      "dimensionsIn": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/10resv",
+      "electrical": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/10resv",
+      "fuelConsumption": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/10resv",
+      "warranty": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/10resv",
+      "monitoring": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/10resv",
+      "transferSwitch": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/10resv",
+      "ats": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/10resv",
+      "sound": "https://www.kohlerhomeenergy.rehlko.com/products/home-generators/10resv"
+    },
+    "lastSourceCheck": "2026-10-05",
+    "displayName": "10RESV residential standby generator",
+    "family": "RESV",
+    "startingMsrpUsd": 3946.0,
+    "enclosure": "Steel",
+    "weightLb": 428.0,
+    "engine": {
+      "maker": "KOHLER",
+      "model": "KT725 1.9L, 4-Cycle",
+      "displacementCc": 725.0
+    },
+    "dimensionsIn": {
+      "length": 30.6,
+      "width": 28.0,
+      "height": 32.4
+    },
+    "electrical": {
+      "voltage": "120/240 V selected residential configuration",
+      "frequencyHz": 60,
+      "phase": "Single-phase; other configurations may also appear on manufacturer page"
+    },
+    "configuration": "Selected 60 Hz single-phase residential ratings; manufacturer pages may also list other electrical configurations. Confirm exact ordering code.",
+    "startingMsrpNote": "Manufacturer starting MSRP for the identified configuration; dealer customization and installation determine the final quote.",
+    "fuelConsumption": [
+      {
+        "fuel": "LP",
+        "loadPercent": 50,
+        "amount": 52.0,
+        "unit": "ft³/hr"
+      },
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 50,
+        "amount": 120.0,
+        "unit": "ft³/hr"
+      }
+    ],
+    "sound": [
+      {
+        "decibelsA": 67.0,
+        "condition": "Weekly exercise; distance and complete protocol not established by this captured page"
+      },
+      {
+        "decibelsA": 71.0,
+        "condition": "Full-speed operation; distance and complete protocol not established by this captured page"
+      }
+    ],
+    "warranty": "Manufacturer product page: Premium five-year limited warranty. Full contract and hour limits need verification.",
+    "monitoring": "Manufacturer lists remote monitoring as Included. Confirm connection and subscription requirements.",
+    "ats": {
+      "included": false
+    },
+    "transferSwitch": "Manufacturer page lists ATS as Sold Separately. Specify the switch separately in the written quote.",
+    "documents": {
+      "ownerManual": "https://techcomm.rehlko.com/techcomm/pdf/tp6880.pdf",
+      "specification": "https://techcomm.rehlko.com/techcomm/pdf/g4254.pdf",
+      "installationManual": "https://techcomm.rehlko.com/techcomm/pdf/tp6984.pdf"
+    },
+    "slug": "kohler-10resv",
+    "missingFields": [
+      "loadManagement",
+      "coldWeather",
+      "warrantyHourLimit",
+      "fullWarrantyExclusions",
+      "certificationsNotIndependentlyVerified"
+    ],
+    "publishedOn": "2026-10-05"
+  },
+  {
+    "brand": "Briggs & Stratton",
+    "modelId": "040807",
+    "ratingsKw": {
+      "LP": 26.0,
+      "Natural gas": 24.0
+    },
+    "sources": [
+      {
+        "label": "Briggs & Stratton 040807 product specifications",
+        "url": "https://energy.briggsandstratton.com/en-us/products/powerprotectplus-26kw-home-standby-generator",
+        "checkedOn": "2026-10-05"
+      }
+    ],
+    "productUrl": "https://energy.briggsandstratton.com/en-us/products/powerprotectplus-26kw-home-standby-generator",
+    "evidenceNotes": [],
+    "fieldSources": {
+      "displayName": "https://energy.briggsandstratton.com/en-us/products/powerprotectplus-26kw-home-standby-generator",
+      "family": "https://energy.briggsandstratton.com/en-us/products/powerprotectplus-26kw-home-standby-generator",
+      "ratingsKw": "https://energy.briggsandstratton.com/en-us/products/powerprotectplus-26kw-home-standby-generator",
+      "startingMsrpUsd": "https://energy.briggsandstratton.com/en-us/products/powerprotectplus-26kw-home-standby-generator",
+      "weightLb": "https://energy.briggsandstratton.com/en-us/products/powerprotectplus-26kw-home-standby-generator",
+      "dimensionsIn": "https://energy.briggsandstratton.com/en-us/products/powerprotectplus-26kw-home-standby-generator",
+      "engine": "https://energy.briggsandstratton.com/en-us/products/powerprotectplus-26kw-home-standby-generator",
+      "electrical": "https://energy.briggsandstratton.com/en-us/products/powerprotectplus-26kw-home-standby-generator",
+      "fuelConsumption": "https://energy.briggsandstratton.com/en-us/products/powerprotectplus-26kw-home-standby-generator",
+      "warranty": "https://energy.briggsandstratton.com/en-us/products/powerprotectplus-26kw-home-standby-generator",
+      "monitoring": "https://energy.briggsandstratton.com/en-us/products/powerprotectplus-26kw-home-standby-generator",
+      "sound": "https://energy.briggsandstratton.com/en-us/products/powerprotectplus-26kw-home-standby-generator"
+    },
+    "lastSourceCheck": "2026-10-05",
+    "displayName": "PowerProtect+ 26kW Home Standby Generator",
+    "family": "PowerProtect+",
+    "startingMsrpUsd": 7336.0,
+    "startingMsrpNote": "Manufacturer equipment starting MSRP, not an installed quote; ATS inclusion is not established.",
+    "weightLb": 545.0,
+    "dimensionsIn": {
+      "length": 46.0,
+      "width": 27.0,
+      "height": 28.0
+    },
+    "engine": {
+      "maker": "Briggs & Stratton® Vanguard® Commercial-Grade",
+      "displacementCc": 993.0
+    },
+    "electrical": {
+      "voltage": "120 / 240"
+    },
+    "sound": [
+      {
+        "decibelsA": 67.0,
+        "condition": "Normal operating sound; distance and test load not established on captured product page."
+      }
+    ],
+    "fuelConsumption": [
+      {
+        "fuel": "LP",
+        "loadPercent": 50,
+        "amount": 235000.0,
+        "unit": "BTU/hr"
+      },
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 50,
+        "amount": 206000.0,
+        "unit": "BTU/hr"
+      }
+    ],
+    "warranty": "Manufacturer product page lists 7 year limited warranty. Full contract, registration, hour limits and exclusions must be checked.",
+    "monitoring": "Product page states integrated EnergyTrak remote monitoring; confirm connectivity and current service terms.",
+    "documents": {
+      "spec sheet": "https://briggs.widen.net/s/nq5k56ljzx/bas_es_bs1536_pp26_spec-sheet_final"
+    },
+    "slug": "briggs-stratton-040807",
+    "missingFields": [
+      "enclosure",
+      "ats",
+      "loadManagement",
+      "coldWeather",
+      "warrantyHourLimit",
+      "fullWarrantyExclusions",
+      "certificationsNotIndependentlyVerified"
+    ],
+    "publishedOn": "2026-10-05"
+  },
+  {
+    "brand": "Briggs & Stratton",
+    "modelId": "040757",
+    "ratingsKw": {
+      "LP": 18.0,
+      "Natural gas": 18.0
+    },
+    "sources": [
+      {
+        "label": "Briggs & Stratton 040757 product specifications",
+        "url": "https://energy.briggsandstratton.com/en-us/products/powerprotectplus-18kw-home-standby-generator",
+        "checkedOn": "2026-10-05"
+      }
+    ],
+    "productUrl": "https://energy.briggsandstratton.com/en-us/products/powerprotectplus-18kw-home-standby-generator",
+    "evidenceNotes": [],
+    "fieldSources": {
+      "displayName": "https://energy.briggsandstratton.com/en-us/products/powerprotectplus-18kw-home-standby-generator",
+      "family": "https://energy.briggsandstratton.com/en-us/products/powerprotectplus-18kw-home-standby-generator",
+      "ratingsKw": "https://energy.briggsandstratton.com/en-us/products/powerprotectplus-18kw-home-standby-generator",
+      "startingMsrpUsd": "https://energy.briggsandstratton.com/en-us/products/powerprotectplus-18kw-home-standby-generator",
+      "weightLb": "https://energy.briggsandstratton.com/en-us/products/powerprotectplus-18kw-home-standby-generator",
+      "dimensionsIn": "https://energy.briggsandstratton.com/en-us/products/powerprotectplus-18kw-home-standby-generator",
+      "engine": "https://energy.briggsandstratton.com/en-us/products/powerprotectplus-18kw-home-standby-generator",
+      "electrical": "https://energy.briggsandstratton.com/en-us/products/powerprotectplus-18kw-home-standby-generator",
+      "fuelConsumption": "https://energy.briggsandstratton.com/en-us/products/powerprotectplus-18kw-home-standby-generator",
+      "warranty": "https://energy.briggsandstratton.com/en-us/products/powerprotectplus-18kw-home-standby-generator",
+      "monitoring": "https://energy.briggsandstratton.com/en-us/products/powerprotectplus-18kw-home-standby-generator",
+      "sound": "https://energy.briggsandstratton.com/en-us/products/powerprotectplus-18kw-home-standby-generator"
+    },
+    "lastSourceCheck": "2026-10-05",
+    "displayName": "PowerProtect+ 18kW Home Standby Generator",
+    "family": "PowerProtect+",
+    "startingMsrpUsd": 6135.0,
+    "startingMsrpNote": "Manufacturer equipment starting MSRP, not an installed quote; ATS inclusion is not established.",
+    "weightLb": 490.0,
+    "dimensionsIn": {
+      "length": 46.0,
+      "width": 27.0,
+      "height": 28.0
+    },
+    "engine": {
+      "maker": "Briggs & Stratton® Vanguard® Commercial-Grade",
+      "displacementCc": 993.0
+    },
+    "electrical": {
+      "voltage": "120 / 240"
+    },
+    "sound": [
+      {
+        "decibelsA": 66.0,
+        "condition": "Normal operating sound; distance and test load not established on captured product page."
+      }
+    ],
+    "fuelConsumption": [
+      {
+        "fuel": "LP",
+        "loadPercent": 50,
+        "amount": 193000.0,
+        "unit": "BTU/hr"
+      },
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 50,
+        "amount": 176000.0,
+        "unit": "BTU/hr"
+      }
+    ],
+    "warranty": "Manufacturer product page lists 7 year limited warranty. Full contract, registration, hour limits and exclusions must be checked.",
+    "monitoring": "Product page states integrated EnergyTrak remote monitoring; confirm connectivity and current service terms.",
+    "documents": {
+      "spec sheet": "https://briggs.widen.net/s/jvqtxzljvk/bas_es_bs1534_pp18_spec-sheet_final"
+    },
+    "slug": "briggs-stratton-040757",
+    "missingFields": [
+      "enclosure",
+      "ats",
+      "loadManagement",
+      "coldWeather",
+      "warrantyHourLimit",
+      "fullWarrantyExclusions",
+      "certificationsNotIndependentlyVerified"
+    ],
+    "publishedOn": "2026-10-05"
+  },
+  {
+    "brand": "Briggs & Stratton",
+    "modelId": "040790",
+    "ratingsKw": {
+      "LP": 22.0,
+      "Natural gas": 22.0
+    },
+    "sources": [
+      {
+        "label": "Briggs & Stratton 040790 product specifications",
+        "url": "https://energy.briggsandstratton.com/en-us/products/powerprotectplus-dx-22kw-home-standby-generator",
+        "checkedOn": "2026-10-05"
+      }
+    ],
+    "productUrl": "https://energy.briggsandstratton.com/en-us/products/powerprotectplus-dx-22kw-home-standby-generator",
+    "evidenceNotes": [],
+    "fieldSources": {
+      "displayName": "https://energy.briggsandstratton.com/en-us/products/powerprotectplus-dx-22kw-home-standby-generator",
+      "family": "https://energy.briggsandstratton.com/en-us/products/powerprotectplus-dx-22kw-home-standby-generator",
+      "ratingsKw": "https://energy.briggsandstratton.com/en-us/products/powerprotectplus-dx-22kw-home-standby-generator",
+      "weightLb": "https://energy.briggsandstratton.com/en-us/products/powerprotectplus-dx-22kw-home-standby-generator",
+      "dimensionsIn": "https://energy.briggsandstratton.com/en-us/products/powerprotectplus-dx-22kw-home-standby-generator",
+      "engine": "https://energy.briggsandstratton.com/en-us/products/powerprotectplus-dx-22kw-home-standby-generator",
+      "electrical": "https://energy.briggsandstratton.com/en-us/products/powerprotectplus-dx-22kw-home-standby-generator",
+      "fuelConsumption": "https://energy.briggsandstratton.com/en-us/products/powerprotectplus-dx-22kw-home-standby-generator",
+      "warranty": "https://energy.briggsandstratton.com/en-us/products/powerprotectplus-dx-22kw-home-standby-generator",
+      "monitoring": "https://energy.briggsandstratton.com/en-us/products/powerprotectplus-dx-22kw-home-standby-generator",
+      "sound": "https://energy.briggsandstratton.com/en-us/products/powerprotectplus-dx-22kw-home-standby-generator"
+    },
+    "lastSourceCheck": "2026-10-05",
+    "displayName": "PowerProtect+ DX 22kW Home Standby Generator",
+    "family": "PowerProtect+",
+    "startingMsrpNote": "Manufacturer equipment starting MSRP, not an installed quote; ATS inclusion is not established.",
+    "weightLb": 490.0,
+    "dimensionsIn": {
+      "length": 46.0,
+      "width": 27.0,
+      "height": 28.0
+    },
+    "engine": {
+      "maker": "Briggs & Stratton® Vanguard® Commercial-Grade",
+      "displacementCc": 993.0
+    },
+    "electrical": {
+      "voltage": "120 / 240"
+    },
+    "sound": [
+      {
+        "decibelsA": 66.0,
+        "condition": "Normal operating sound; distance and test load not established on captured product page."
+      }
+    ],
+    "fuelConsumption": [
+      {
+        "fuel": "LP",
+        "loadPercent": 50,
+        "amount": 217000.0,
+        "unit": "BTU/hr"
+      },
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 50,
+        "amount": 194000.0,
+        "unit": "BTU/hr"
+      }
+    ],
+    "warranty": "Manufacturer product page lists 10 year limited warranty. Full contract, registration, hour limits and exclusions must be checked.",
+    "monitoring": "Product page states integrated EnergyTrak remote monitoring; confirm connectivity and current service terms.",
+    "documents": {
+      "spec sheet": "https://briggs.widen.net/s/9ztpdscszj/bas_es_bs1542_ppdx22_spec-sheet_final"
+    },
+    "slug": "briggs-stratton-040790",
+    "missingFields": [
+      "enclosure",
+      "ats",
+      "loadManagement",
+      "coldWeather",
+      "startingMsrpUsd",
+      "warrantyHourLimit",
+      "fullWarrantyExclusions",
+      "certificationsNotIndependentlyVerified"
+    ],
+    "publishedOn": "2026-10-05"
+  },
+  {
+    "brand": "Champion",
+    "modelId": "201612",
+    "family": "fleX",
+    "displayName": "26 kW fleX system with 100 A ATS",
+    "productUrl": "https://www.championpowerequipment.com/product/201612-26-kw-whole-house-home-standby-generator-and-100a-switch-with-flex-technology/",
+    "ratingsKw": {
+      "LP": 26,
+      "Natural gas": 23.4
+    },
+    "electrical": {
+      "voltage": "120/240 V",
+      "frequencyHz": 60,
+      "phase": "Single"
+    },
+    "engine": {
+      "maker": "Champion",
+      "displacementCc": 999
+    },
+    "enclosure": "Aluminum",
+    "dimensionsIn": {
+      "length": 57.4,
+      "width": 29.5,
+      "height": 43.9
+    },
+    "weightLb": 644.7,
+    "ats": {
+      "included": true,
+      "amps": 100,
+      "serviceEntranceRated": true,
+      "model": "201020"
+    },
+    "transferSwitch": "100 A service-entrance ATS; manufacturer lists switch model 201020 in package parts documentation. Confirm exact listing and compatibility.",
+    "loadManagement": "fleX supports priorities 1–4 using compatible load-management modules; confirm included modules.",
+    "warranty": "Product page states 10-year limited generator warranty and separate 2-year limited ATS warranty. Hour limits and full exclusions not established here.",
+    "fuelConsumption": [
+      {
+        "fuel": "LP",
+        "loadPercent": 50,
+        "amount": 2.39,
+        "unit": "gal/hr"
+      },
+      {
+        "fuel": "LP",
+        "loadPercent": 100,
+        "amount": 3.95,
+        "unit": "gal/hr"
+      },
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 50,
+        "amount": 197.8,
+        "unit": "ft³/hr"
+      },
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 100,
+        "amount": 321.1,
+        "unit": "ft³/hr"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Champion 201612 exact package page, specifications and parts index",
+        "url": "https://www.championpowerequipment.com/product/201612-26-kw-whole-house-home-standby-generator-and-100a-switch-with-flex-technology/",
+        "checkedOn": "2026-10-05"
+      }
+    ],
+    "lastSourceCheck": "2026-10-05",
+    "evidenceNotes": [
+      "Unresolved sound conflict on the same product page: description says 67 dB(A) at 23 ft; specification table says 68 dB(A). No single noise value is asserted.",
+      "Dimensions and weight are published under Measurements for the packaged system; generator-only/shipping scope is not expressly resolved."
+    ],
+    "fieldSources": {
+      "ratingsKw": "https://www.championpowerequipment.com/product/201612-26-kw-whole-house-home-standby-generator-and-100a-switch-with-flex-technology/",
+      "electrical": "https://www.championpowerequipment.com/product/201612-26-kw-whole-house-home-standby-generator-and-100a-switch-with-flex-technology/",
+      "engine": "https://www.championpowerequipment.com/product/201612-26-kw-whole-house-home-standby-generator-and-100a-switch-with-flex-technology/",
+      "enclosure": "https://www.championpowerequipment.com/product/201612-26-kw-whole-house-home-standby-generator-and-100a-switch-with-flex-technology/",
+      "dimensionsIn": "https://www.championpowerequipment.com/product/201612-26-kw-whole-house-home-standby-generator-and-100a-switch-with-flex-technology/",
+      "weightLb": "https://www.championpowerequipment.com/product/201612-26-kw-whole-house-home-standby-generator-and-100a-switch-with-flex-technology/",
+      "ats": "https://www.championpowerequipment.com/product/201612-26-kw-whole-house-home-standby-generator-and-100a-switch-with-flex-technology/",
+      "fuelConsumption": "https://www.championpowerequipment.com/product/201612-26-kw-whole-house-home-standby-generator-and-100a-switch-with-flex-technology/",
+      "warranty": "https://www.championpowerequipment.com/product/201612-26-kw-whole-house-home-standby-generator-and-100a-switch-with-flex-technology/",
+      "loadManagement": "https://www.championpowerequipment.com/product/201612-26-kw-whole-house-home-standby-generator-and-100a-switch-with-flex-technology/",
+      "transferSwitch": "https://www.championpowerequipment.com/product/201612-26-kw-whole-house-home-standby-generator-and-100a-switch-with-flex-technology/"
+    },
+    "slug": "champion-201612",
+    "missingFields": [
+      "sound",
+      "coldWeather",
+      "monitoring",
+      "startingMsrpUsd",
+      "warrantyHourLimit",
+      "fullWarrantyExclusions",
+      "certificationsNotIndependentlyVerified"
+    ],
+    "publishedOn": "2026-10-05"
+  },
+  {
+    "brand": "Champion",
+    "modelId": "201613",
+    "family": "fleX",
+    "displayName": "26 kW fleX system with 150 A ATS",
+    "productUrl": "https://www.championpowerequipment.com/product/201613-26-kw-whole-house-home-standby-generator-and-150a-switch-with-flex-technology/",
+    "ratingsKw": {
+      "LP": 26,
+      "Natural gas": 23.4
+    },
+    "electrical": {
+      "voltage": "120/240 V",
+      "frequencyHz": 60,
+      "phase": "Single"
+    },
+    "engine": {
+      "maker": "Champion",
+      "displacementCc": 999
+    },
+    "enclosure": "Aluminum",
+    "dimensionsIn": {
+      "length": 57.4,
+      "width": 29.5,
+      "height": 43.9
+    },
+    "weightLb": 642.7,
+    "ats": {
+      "included": true,
+      "amps": 150,
+      "serviceEntranceRated": true,
+      "model": "201355"
+    },
+    "transferSwitch": "150 A service-entrance ATS; manufacturer lists switch model 201355 in package parts documentation. Confirm exact listing and compatibility.",
+    "loadManagement": "fleX supports priorities 1–4 using compatible load-management modules; confirm included modules.",
+    "warranty": "Product page states 10-year limited generator warranty and separate 2-year limited ATS warranty. Hour limits and full exclusions not established here.",
+    "fuelConsumption": [
+      {
+        "fuel": "LP",
+        "loadPercent": 50,
+        "amount": 2.39,
+        "unit": "gal/hr"
+      },
+      {
+        "fuel": "LP",
+        "loadPercent": 100,
+        "amount": 3.95,
+        "unit": "gal/hr"
+      },
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 50,
+        "amount": 197.8,
+        "unit": "ft³/hr"
+      },
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 100,
+        "amount": 321.1,
+        "unit": "ft³/hr"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Champion 201613 exact package page, specifications and parts index",
+        "url": "https://www.championpowerequipment.com/product/201613-26-kw-whole-house-home-standby-generator-and-150a-switch-with-flex-technology/",
+        "checkedOn": "2026-10-05"
+      }
+    ],
+    "lastSourceCheck": "2026-10-05",
+    "evidenceNotes": [
+      "Unresolved sound conflict on the same product page: description says 67 dB(A) at 23 ft; specification table says 68 dB(A). No single noise value is asserted.",
+      "Dimensions and weight are published under Measurements for the packaged system; generator-only/shipping scope is not expressly resolved."
+    ],
+    "fieldSources": {
+      "ratingsKw": "https://www.championpowerequipment.com/product/201613-26-kw-whole-house-home-standby-generator-and-150a-switch-with-flex-technology/",
+      "electrical": "https://www.championpowerequipment.com/product/201613-26-kw-whole-house-home-standby-generator-and-150a-switch-with-flex-technology/",
+      "engine": "https://www.championpowerequipment.com/product/201613-26-kw-whole-house-home-standby-generator-and-150a-switch-with-flex-technology/",
+      "enclosure": "https://www.championpowerequipment.com/product/201613-26-kw-whole-house-home-standby-generator-and-150a-switch-with-flex-technology/",
+      "dimensionsIn": "https://www.championpowerequipment.com/product/201613-26-kw-whole-house-home-standby-generator-and-150a-switch-with-flex-technology/",
+      "weightLb": "https://www.championpowerequipment.com/product/201613-26-kw-whole-house-home-standby-generator-and-150a-switch-with-flex-technology/",
+      "ats": "https://www.championpowerequipment.com/product/201613-26-kw-whole-house-home-standby-generator-and-150a-switch-with-flex-technology/",
+      "fuelConsumption": "https://www.championpowerequipment.com/product/201613-26-kw-whole-house-home-standby-generator-and-150a-switch-with-flex-technology/",
+      "warranty": "https://www.championpowerequipment.com/product/201613-26-kw-whole-house-home-standby-generator-and-150a-switch-with-flex-technology/",
+      "loadManagement": "https://www.championpowerequipment.com/product/201613-26-kw-whole-house-home-standby-generator-and-150a-switch-with-flex-technology/",
+      "transferSwitch": "https://www.championpowerequipment.com/product/201613-26-kw-whole-house-home-standby-generator-and-150a-switch-with-flex-technology/"
+    },
+    "slug": "champion-201613",
+    "missingFields": [
+      "sound",
+      "coldWeather",
+      "monitoring",
+      "startingMsrpUsd",
+      "warrantyHourLimit",
+      "fullWarrantyExclusions",
+      "certificationsNotIndependentlyVerified"
+    ],
+    "publishedOn": "2026-10-05"
+  },
+  {
+    "brand": "Champion",
+    "modelId": "201614",
+    "family": "fleX",
+    "displayName": "26 kW fleX system with 200 A ATS",
+    "productUrl": "https://www.championpowerequipment.com/product/201614-26-kw-whole-house-home-standby-generator-and-200a-switch-with-flex-technology/",
+    "ratingsKw": {
+      "LP": 26,
+      "Natural gas": 23.4
+    },
+    "electrical": {
+      "voltage": "120/240 V",
+      "frequencyHz": 60,
+      "phase": "Single"
+    },
+    "engine": {
+      "maker": "Champion",
+      "displacementCc": 999
+    },
+    "enclosure": "Aluminum",
+    "dimensionsIn": {
+      "length": 57.4,
+      "width": 29.5,
+      "height": 43.9
+    },
+    "weightLb": 642.7,
+    "ats": {
+      "included": true,
+      "amps": 200,
+      "serviceEntranceRated": true,
+      "model": "201039"
+    },
+    "transferSwitch": "200 A service-entrance ATS; manufacturer lists switch model 201039 in package parts documentation. Confirm exact listing and compatibility.",
+    "loadManagement": "fleX supports priorities 1–4 using compatible load-management modules; confirm included modules.",
+    "warranty": "Product page states 10-year limited generator warranty and separate 2-year limited ATS warranty. Hour limits and full exclusions not established here.",
+    "fuelConsumption": [
+      {
+        "fuel": "LP",
+        "loadPercent": 50,
+        "amount": 2.39,
+        "unit": "gal/hr"
+      },
+      {
+        "fuel": "LP",
+        "loadPercent": 100,
+        "amount": 3.95,
+        "unit": "gal/hr"
+      },
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 50,
+        "amount": 197.8,
+        "unit": "ft³/hr"
+      },
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 100,
+        "amount": 321.1,
+        "unit": "ft³/hr"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Champion 201614 exact package page, specifications and parts index",
+        "url": "https://www.championpowerequipment.com/product/201614-26-kw-whole-house-home-standby-generator-and-200a-switch-with-flex-technology/",
+        "checkedOn": "2026-10-05"
+      },
+      {
+        "label": "Champion air-cooled warranty context in model 201202 manual; exact 201614 applicability not established",
+        "url": "https://www.championpowerequipment.com/wp-content/uploads/2025/09/201202-OM-english.pdf",
+        "checkedOn": "2026-10-05"
+      }
+    ],
+    "lastSourceCheck": "2026-10-05",
+    "evidenceNotes": [
+      "Unresolved sound conflict on the same product page: description says 67 dB(A) at 23 ft; specification table says 68 dB(A). No single noise value is asserted.",
+      "Dimensions and weight are published under Measurements for the packaged system; generator-only/shipping scope is not expressly resolved.",
+      "Additional Champion air-cooled warranty material describes different coverage by year. The linked 201202 manual is family context, not proof of applicability to this exact 201614 package; obtain its current contract before purchase."
+    ],
+    "fieldSources": {
+      "ratingsKw": "https://www.championpowerequipment.com/product/201614-26-kw-whole-house-home-standby-generator-and-200a-switch-with-flex-technology/",
+      "electrical": "https://www.championpowerequipment.com/product/201614-26-kw-whole-house-home-standby-generator-and-200a-switch-with-flex-technology/",
+      "engine": "https://www.championpowerequipment.com/product/201614-26-kw-whole-house-home-standby-generator-and-200a-switch-with-flex-technology/",
+      "enclosure": "https://www.championpowerequipment.com/product/201614-26-kw-whole-house-home-standby-generator-and-200a-switch-with-flex-technology/",
+      "dimensionsIn": "https://www.championpowerequipment.com/product/201614-26-kw-whole-house-home-standby-generator-and-200a-switch-with-flex-technology/",
+      "weightLb": "https://www.championpowerequipment.com/product/201614-26-kw-whole-house-home-standby-generator-and-200a-switch-with-flex-technology/",
+      "ats": "https://www.championpowerequipment.com/product/201614-26-kw-whole-house-home-standby-generator-and-200a-switch-with-flex-technology/",
+      "fuelConsumption": "https://www.championpowerequipment.com/product/201614-26-kw-whole-house-home-standby-generator-and-200a-switch-with-flex-technology/",
+      "warranty": "https://www.championpowerequipment.com/product/201614-26-kw-whole-house-home-standby-generator-and-200a-switch-with-flex-technology/",
+      "loadManagement": "https://www.championpowerequipment.com/product/201614-26-kw-whole-house-home-standby-generator-and-200a-switch-with-flex-technology/",
+      "transferSwitch": "https://www.championpowerequipment.com/product/201614-26-kw-whole-house-home-standby-generator-and-200a-switch-with-flex-technology/"
+    },
+    "slug": "champion-201614",
+    "missingFields": [
+      "sound",
+      "coldWeather",
+      "monitoring",
+      "startingMsrpUsd",
+      "warrantyHourLimit",
+      "fullWarrantyExclusions",
+      "certificationsNotIndependentlyVerified"
+    ]
+  }
+]

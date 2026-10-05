@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/layout/Breadcrumbs.astro';
+import TechnicalReviewPanel from '../../components/trust/TechnicalReviewPanel.astro';
+import FactTypeBadge from '../../components/trust/FactTypeBadge.astro';
+import LoadPlanner from '../../components/planners/LoadPlanner.astro';
+import QuotePlanner from '../../components/planners/QuotePlanner.astro';
+import FuelPlanner from '../../components/planners/FuelPlanner.astro';
+import OwnershipPlanner from '../../components/planners/OwnershipPlanner.astro';
+import {SITE_URL,AUTHOR} from '../../config/site';
+export function getStaticPaths(){return [
+ ['sizing','Generator Load Planning','List your backup loads and compare essential, unmanaged and managed scenarios before an installer assessment.'],
+ ['quotes','Compare Three Installer Quotes','Put three generator proposals on the same scope, identify missing work and prepare written follow-up questions.'],
+ ['fuel','Natural Gas vs. Propane Planner','Compare documented consumption, local fuel prices, outage scenarios and stored-propane inventory.'],
+ ['ownership','Generator Ownership Cost Planner','Build an itemized 5-, 10- and 15-year budget with your own quote, fuel and maintenance assumptions.'],
+].map(([tool,title,description])=>({params:{tool},props:{tool,title,description}}));}
+const {tool,title,description}=Astro.props;
+const path='/planning/'+tool+'/';
+const schema=[{'@context':'https://schema.org','@type':'WebPage',name:title,description,url:SITE_URL+path,author:{'@type':'Organization',name:AUTHOR.name,url:AUTHOR.url}}, {'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:[{ '@type':'ListItem',position:1,name:'Home',item:SITE_URL+'/'},{'@type':'ListItem',position:2,name:'Planning tools',item:SITE_URL+'/planning/'},{'@type':'ListItem',position:3,name:title,item:SITE_URL+path}]}];
+---
+<BaseLayout title={title} description={description} schema={schema}>
+<div class="editorial-container planner-page"><Breadcrumbs items={[{href:'/',label:'Home'},{href:'/planning/',label:'Planning tools'},{label:title}]}/>
+<header class="planner-heading"><p class="eyebrow">THE HOMEOWNER’S PLANNING DESK</p><h1>{title}</h1><p class="lede">{description}</p><FactTypeBadge type="estimate"/><p class="help">By <a href="/editorial-team/">HomeGeneratorGuide Editorial Team</a> · Published / updated October 5, 2026 · Method and source checks October 5, 2026</p></header>
+<p class="planning-notice"><strong>{tool==='sizing'?'Planning estimate — confirm final sizing with a qualified installer using equipment nameplates and manufacturer requirements.':'Planning estimate — confirm scope, prices and operating assumptions with qualified installers and fuel suppliers.'}</strong> Tools prepare questions and scenarios; they do not approve an electrical or fuel-system design.</p>
+<TechnicalReviewPanel/>
+<noscript><p class="planning-notice">These tools need JavaScript for calculations. The <a href="/sizing/what-size-generator-do-i-need/">sizing worksheet</a> and <a href="/cost/standby-generator-quote-checklist/">quote checklist</a> remain available without it.</p></noscript>
+{tool==='sizing'&&<LoadPlanner/>}{tool==='quotes'&&<QuotePlanner/>}{tool==='fuel'&&<FuelPlanner/>}{tool==='ownership'&&<OwnershipPlanner/>}
+<div class="planner-actions no-print"><button type="button" id="save-plan" class="secondary">Save in this browser</button><button type="button" id="load-plan" class="secondary">Load saved plan</button><button type="button" id="clear-plan" class="secondary">Delete saved plan</button><button type="button" id="print-plan" class="secondary">Print / Save as PDF</button><button type="button" id="reset-plan" class="secondary">Reset fields</button></div>
+<p id="save-status" role="status" class="help"></p><p class="help no-print">Save is optional. Saved plans stay in this browser’s local storage and are not sent to us. Shared devices can expose saved entries. Avoid names, addresses, medical details and other personal information. Clearing saved data does not delete an exported PDF.</p>
+<nav class="planning-nav" aria-label="Other planning tools"><a href="/planning/sizing/">Load planning</a><a href="/planning/fuel/">Fuel choice</a><a href="/planning/quotes/">Quote comparison</a><a href="/planning/ownership/">Ownership budget</a></nav></div>
+</BaseLayout>
+<script>import '../../lib/planners-client';</script>

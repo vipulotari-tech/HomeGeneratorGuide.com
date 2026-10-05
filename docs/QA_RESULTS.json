@@ -1,0 +1,145 @@
+{
+  "productionHtml": {
+    "pages": 104,
+    "internalLinksChecked": 6642,
+    "imagesChecked": 210,
+    "schemaBlocks": 92,
+    "canonicalOrigin": "https://homegeneratorguide.com",
+    "result": "PASS"
+  },
+  "accessibility": [
+    {
+      "route": "/",
+      "violations": []
+    },
+    {
+      "route": "/planning/sizing/",
+      "violations": []
+    },
+    {
+      "route": "/planning/quotes/",
+      "violations": []
+    },
+    {
+      "route": "/planning/fuel/",
+      "violations": []
+    },
+    {
+      "route": "/planning/ownership/",
+      "violations": []
+    },
+    {
+      "route": "/models/kohler-26rca/",
+      "violations": []
+    },
+    {
+      "route": "/installation/automatic-transfer-switch-guide/",
+      "violations": []
+    }
+  ],
+  "performance": {
+    "note": "Local unthrottled lab observations, not field Core Web Vitals or a Lighthouse score.",
+    "assets": [
+      {
+        "name": "BaseLayout.Cj4Cw43w.css",
+        "bytes": 44136,
+        "gzipBytes": 9736
+      },
+      {
+        "name": "_tool_.astro_astro_type_script_index_0_lang.Ck7wypae.js",
+        "bytes": 16287,
+        "gzipBytes": 6159
+      }
+    ],
+    "measurements": [
+      {
+        "route": "/",
+        "cls": 0,
+        "lcp": 48,
+        "scriptCount": 3,
+        "resources": [
+          {
+            "name": "http://127.0.0.1:8321/_astro/BaseLayout.Cj4Cw43w.css",
+            "bytes": 44436
+          },
+          {
+            "name": "http://127.0.0.1:8321/brand-mark.svg",
+            "bytes": 615
+          }
+        ]
+      },
+      {
+        "route": "/planning/quotes/",
+        "cls": 0,
+        "lcp": 64,
+        "scriptCount": 4,
+        "resources": [
+          {
+            "name": "http://127.0.0.1:8321/_astro/BaseLayout.Cj4Cw43w.css",
+            "bytes": 300
+          },
+          {
+            "name": "http://127.0.0.1:8321/brand-mark.svg",
+            "bytes": 300
+          },
+          {
+            "name": "http://127.0.0.1:8321/_astro/_tool_.astro_astro_type_script_index_0_lang.Ck7wypae.js",
+            "bytes": 16587
+          }
+        ]
+      },
+      {
+        "route": "/planning/fuel/",
+        "cls": 0,
+        "lcp": 52,
+        "scriptCount": 5,
+        "resources": [
+          {
+            "name": "http://127.0.0.1:8321/_astro/BaseLayout.Cj4Cw43w.css",
+            "bytes": 0
+          },
+          {
+            "name": "http://127.0.0.1:8321/brand-mark.svg",
+            "bytes": 0
+          },
+          {
+            "name": "http://127.0.0.1:8321/_astro/_tool_.astro_astro_type_script_index_0_lang.Ck7wypae.js",
+            "bytes": 0
+          }
+        ]
+      },
+      {
+        "route": "/models/kohler-26rca/",
+        "cls": 0,
+        "lcp": 60,
+        "scriptCount": 3,
+        "resources": [
+          {
+            "name": "http://127.0.0.1:8321/_astro/BaseLayout.Cj4Cw43w.css",
+            "bytes": 0
+          },
+          {
+            "name": "http://127.0.0.1:8321/brand-mark.svg",
+            "bytes": 0
+          }
+        ]
+      }
+    ]
+  },
+  "responsiveWidths": [
+    320,
+    360,
+    390,
+    430,
+    768,
+    1024,
+    1440
+  ],
+  "plannerRouteViewportChecks": 84,
+  "limitations": [
+    "Not licensed professional review",
+    "Not full WCAG certification",
+    "Local lab performance only",
+    "Source structure checks are not independent specification certification"
+  ]
+}

@@ -1,0 +1,6 @@
+---
+import { FACT_LABELS, type FactType } from '../../data/editorial';
+interface Props { type: FactType; }
+const { type } = Astro.props;
+---
+<span class="evidence-tag" data-fact-type={type}>{FACT_LABELS[type]}</span>

@@ -1,0 +1,5 @@
+---
+interface Props { date?: string; label?: string; }
+const {date,label='Source-check date'}=Astro.props;
+---
+<span>{label}: {date ? <time datetime={date}>{date}</time> : 'Not recorded'}</span>

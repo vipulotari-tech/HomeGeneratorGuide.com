@@ -1,6 +1,6 @@
 # HomeGeneratorGuide.com
 
-An independent, source-linked informational site for US homeowners researching standby generators. The site is built with Astro as static HTML; it does not provide an interactive sizing or cost estimator, product testing, or licensed electrical advice.
+An independent, source-linked informational site for US homeowners researching standby generators. The site is built with Astro as static HTML; four optional browser tools support planning scenarios. It does not provide final engineering sizing, product testing, or licensed electrical advice.
 
 ## Local development and checks
 
@@ -64,4 +64,16 @@ For browser checks, install the Playwright Chromium binary once with `npx playwr
 - `LAUNCH_AUDIT.md` records the audit, checks, and unresolved launch conditions.
 - `EDITORIAL.md` and `/editorial-policy/` describe source, independence, and correction standards.
 - No independent licensed professional review has been completed; the site does not claim professional signoff or hands-on testing.
-- Generator-brand, dealer, and installer advertising, sponsorships, payments, and referral fees are prohibited. No calculator or automated sizing recommendation is provided.
+- Generator-brand, dealer, and installer advertising, sponsorships, payments, and referral fees are prohibited. Planning tools use explicit assumptions and never automatically recommend a model.
+
+## Evidence and planning platform
+
+- `src/data/models.json`: exact configurations and field-level source references. Shared views must consume this registry.
+- `src/data/editorial.ts`: reviewer and page-review records. Both registries remain empty until an evidenced professional review occurs.
+- `src/data/maintenance.json`: selected manual-scoped intervals, not universal maintenance instructions.
+- `src/data/quote-submissions.schema.json`: inactive future intake contract. Server must own verification status and private evidence.
+- `src/lib/planning.ts`: pure, validated calculations; client files only handle forms and browser storage.
+
+Run `npm run test:planning`, `npm run validate:evidence`, `npm run qa:planners`, and `npm run qa:seo` (last command requires a production build). Evidence validation runs before every build. Browser suites require a running preview; `node tools/run-local-qa.mjs tools/qa-browser.mjs tools/qa-planners.mjs` can start a temporary Python static server for local output checks. Cloudflare headers/redirects need the Wrangler preview or deployed staging site.
+
+Source validation catches malformed/duplicate records and missing provenance; it cannot independently establish that a manufacturer document is true. The publication launch remains separate from the noindex staging deployment.

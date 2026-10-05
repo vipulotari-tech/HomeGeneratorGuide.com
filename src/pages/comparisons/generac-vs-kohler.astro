@@ -22,11 +22,11 @@ const toc = [
 <ArticleLayout
   title="Generac vs. KOHLER Standby Generators: Exact 26 kW Model Comparison"
   description="A fact-checked comparison of Generac G0073270 and KOHLER 26RCA residential standby generators, including fuel-specific output, noise-test conditions, fuel use, bundle scope, MSRP, and warranty wording."
-  category="Comparisons" categoryHref="/comparisons/" updated="2026-10-04" verified="2026-10-04" image="/images/two-standby-units.webp" readingTime="7 min read" toc={toc}
+  category="Comparisons" categoryHref="/comparisons/" updated="2026-10-05" verified="2026-10-04" image="/images/two-standby-units.webp" readingTime="7 min read" toc={toc}
   takeaways={[
     'Both selected single-phase models are rated 26 kW on LP and 24 kW on natural gas; those fuel-specific figures do not size a home by themselves.',
     'Both manufacturer sheets list 67 dB(A) around 23 feet in normal operation, but their measurement directions differ, so the matching number is not a controlled head-to-head test.',
-    'Starting prices are package-specific: $7,159 for G0073270 (ATS inclusion not established), $7,546 for 26RCA without ATS, and $8,515 for ATS-inclusive 26RCAL. Do not compare them as equal-scope system prices.',
+    'Starting prices are equipment/package figures, not equal-scope installed prices. The KOHLER 26RCA page contains conflicting ATS-inclusion statements; confirm the package.',
   ]}
   sources={[
     { label: 'Generac G0073270 official product page', href: 'https://www.generac.com/residential-products/standby-generators/gaseous/standby-generator-26kw-7327/', type: 'Manufacturer', verified: '2026-10-04' },
@@ -64,7 +64,7 @@ const toc = [
           <tr><th scope="row" class="p-3 font-semibold">LP consumption at 50% load</th><td class="p-3">{genFuel('LP', 50)?.amount} {genFuel('LP', 50)?.unit}</td><td class="p-3">{kohlerFuel('LP', 50)?.amount} {kohlerFuel('LP', 50)?.unit}</td></tr>
           <tr><th scope="row" class="p-3 font-semibold">Engine</th><td class="p-3">Generac G-Force 1000; 997 cc</td><td class="p-3">KOHLER CH1006; 999 cc</td></tr>
           <tr><th scope="row" class="p-3 font-semibold">Published dimensions (L × W × H)</th><td class="p-3">46.4 × 26.3 × 30.7 in</td><td class="p-3">47 × 26 × 32.3 in</td></tr>
-          <tr><th scope="row" class="p-3 font-semibold">Starting MSRP on product page</th><td class="p-3">${generac.startingMsrpUsd?.toLocaleString('en-US')}</td><td class="p-3">${kohler.startingMsrpUsd?.toLocaleString('en-US')} (26RCA, no ATS)</td></tr>
+          <tr><th scope="row" class="p-3 font-semibold">Starting MSRP on product page</th><td class="p-3">${generac.startingMsrpUsd?.toLocaleString('en-US')}</td><td class="p-3">${kohler.startingMsrpUsd?.toLocaleString('en-US')} (26RCA, ATS scope unresolved)</td></tr>
           <tr><th scope="row" class="p-3 font-semibold">Transfer-switch scope</th><td class="p-3">200 A service-rated switch is specified for bundled models; G0073270 product page does not establish an included switch.</td><td class="p-3">The 26RCAL package includes a 200 A service-entrance-rated RXT ATS; 26RCA is also listed separately.</td></tr>
           <tr><th scope="row" class="p-3 font-semibold">Published warranty summary</th><td class="p-3">5-year limited warranty (Generac product page)</td><td class="p-3">5-year/2,000-hour limited; official spec sheet says parts, labor, and travel</td></tr>
         </tbody>
@@ -84,7 +84,7 @@ const toc = [
 
   <section id="price-warranty">
     <h2>Starting MSRP and warranty are not equal-scope shorthand</h2>
-    <p>The pages displayed starting MSRPs of <strong>$7,159 for Generac G0073270</strong>, <strong>$7,546 for the KOHLER 26RCA configuration without an ATS</strong>, and <strong>$8,515 for the ATS-inclusive KOHLER 26RCAL package</strong> on the date checked. The Generac product page does not establish an included switch for G0073270. KOHLER says final pricing depends on dealer customization and installation. These page prices are not a like-for-like project comparison or installed quotes.</p>
+    <p>Current stored starting MSRP: <strong>${generac.startingMsrpUsd?.toLocaleString('en-US')} for {generac.modelId}</strong> and <strong>${kohler.startingMsrpUsd?.toLocaleString('en-US')} for {kohler.modelId}</strong>. These are not installed prices. {generac.transferSwitch} {kohler.transferSwitch} Check the <a href="/models/kohler-26rcal/">26RCAL record</a> separately for its bundle.</p>
     <p>Generac states a 5-year limited warranty for the generator. The 2026 KOHLER/Rehlko spec sheet states a 5-year/2,000-hour limited warranty covering parts, labor, and travel. Those descriptions differ in detail; confirm the current full warranty terms, exclusions, registration rules, coverage start, and servicing dealer for the exact equipment being quoted.</p>
   </section>
 

@@ -1,0 +1,42 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import FactTypeBadge from '../../components/trust/FactTypeBadge.astro';
+import SystemDiagram from '../../components/diagrams/SystemDiagram.astro';
+const sources=[{"label": "Generac 300/400 A transfer-switch specification", "href": "https://www.generac.com/globalassets/products/residential/standby-generator-transfer-switches/automatic-transfer-switches/spec-sheets/rtsw300a3-rtcw400a3-rtsw400a3-auto-transfer-switch-specsheet.pdf", "type": "Manufacturer" as const}, {"label": "Champion 100868 load management module", "href": "https://www.championpowerequipment.com/product/100868-50a-axis-load-management-module/", "type": "Manufacturer" as const}, {"label": "Generac Load Manager explanation", "href": "https://support.generac.com/s/article/What-Is-a-Smart-Management-Module-SMM", "type": "Manufacturer" as const}, {"label": "Champion 201614 package", "href": "https://www.championpowerequipment.com/product/201614-26-kw-whole-house-home-standby-generator-and-200a-switch-with-flex-technology/", "type": "Manufacturer" as const}];
+---
+<ArticleLayout title="Automatic Transfer Switches & Managed Loads" description="Understand transfer-switch ratings, whole-panel and selective coverage, and the questions that make an installer\u2019s load plan testable." category="Installation" categoryHref="/installation/" published="2026-10-05" updated="2026-10-05" verified="2026-10-05" readingTime="8 min read" toc={[]} sources={sources}>
+
+<FactTypeBadge type="interpretation"/>
+<h2>Start with the backed-up loads, not the service amperage</h2>
+<p>The ATS selects between utility and generator sources for the circuits in the designed arrangement. A 200 A switch does not make a generator capable of delivering 200 A. Ask for the generator’s fuel-specific rating, the backed-up circuits and the operating limits separately. This guide describes planning concepts; it is not a wiring or equipment-selection instruction.</p>
+<SystemDiagram/>
+<h2>100 A, 150 A, 200 A and larger services</h2>
+<table class="mobile-card-table"><thead><tr><th>Arrangement discussed in quotes</th><th>What the homeowner should verify</th></tr></thead><tbody>
+<tr><th>100 A or 150 A</th><td>Exact switch model and listing, upstream protection, service rating and which circuits it transfers. Neither number identifies the generator’s output.</td></tr>
+<tr><th>200 A</th><td>Whether the proposal transfers the entire panel or selected circuits; whether load management is included; whether the ATS is service-entrance rated.</td></tr>
+<tr><th>400 A</th><td>The actual service layout, disconnect arrangement and compatible switch model. A “400 A service” description alone is insufficient.</td></tr>
+<tr><th>Two 200 A sections</th><td>Ask the designer whether one or both sections are backed up, which approved transfer architecture is proposed, and how controls and load management coordinate. Two switches must not be assumed interchangeable with one 400 A device.</td></tr>
+</tbody></table>
+<p><FactTypeBadge type="manufacturer"/> Manufacturer examples establish that these are distinct products: Champion’s 201612, 201613 and 201614 generator packages identify 100 A, 150 A and 200 A switches respectively. Generac separately publishes 400 A service and non-service-rated switch configurations. These examples do not establish suitability for your service.</p>
+<h2>Service-entrance rated is a separate decision</h2>
+<p><FactTypeBadge type="interpretation"/> A switch intended to function as service equipment has different requirements from a downstream transfer device. Have the installer identify the service disconnect, overcurrent protection and equipment listing in the proposal. “200 A ATS included” is not a complete specification. Grounding, bonding, available fault current and local approvals require the qualified designer’s assessment.</p>
+<h2>Whole-panel transfer versus selective circuits</h2>
+<p>Whole-panel transfer makes the connected panel available to generator power; it does not promise simultaneous operation of all connected loads. A selective arrangement confines backup to a designated panel or circuit group. Ask what remains unavailable and how future additions will be handled.</p>
+<SystemDiagram mode="selective"/>
+<h2>What happens when managed loads call together?</h2>
+<p><FactTypeBadge type="manufacturer"/> Champion describes priority levels 1–4 for its aXis module. Generac describes its Load Manager as a device for controlling large loads. The exact controller and module documentation determine sensing, delay, priority and restoration behavior; priority numbers alone do not guarantee operation.</p>
+<ol><li><strong>Demand arrives:</strong> for example, cooling and water heating both request power.</li><li><strong>The compatible control system evaluates conditions:</strong> configured priorities and available capacity may hold a load off or disconnect it.</li><li><strong>Loads return under the controller’s rules:</strong> sequencing and restart delays matter. Lower-priority equipment may wait repeatedly during a sustained high load.</li><li><strong>Commissioning must demonstrate the plan:</strong> ask the installer to test credible simultaneous calls and explain overload and communication-failure behavior.</li></ol>
+<p>Our <a href="/planning/sizing/">load planner</a> illustrates one managed load row at a time. That is an explicit budgeting assumption, not a simulation of any manufacturer’s controller.</p>
+<h2>A useful priority discussion</h2>
+<table class="mobile-card-table"><thead><tr><th>Load</th><th>Question for the design review</th></tr></thead><tbody>
+<tr><th>Central AC, heat pumps, multiple systems</th><td>What are compressor starting requirements, winter resistance-heat stages and defrost loads? Which systems may operate together?</td></tr>
+<tr><th>Soft starter</th><td>Is the accessory approved for this equipment and warranty, and what measured or documented starting performance will the generator design use? Do not assume a universal reduction percentage.</td></tr>
+<tr><th>Water heater, range, dryer</th><td>Which high-demand heating loads can wait, and what inconvenience will that create during an extended outage?</td></tr>
+<tr><th>EV charging and pool equipment</th><td>Can these be disabled during backup? Is automatic enforcement included or is the proposal relying on household behavior?</td></tr>
+<tr><th>Well and sump pumps</th><td>What startup and simultaneous demand must be protected? Would shedding create a water or flood problem?</td></tr>
+<tr><th>Medical equipment</th><td>What independent continuity plan addresses the transfer interruption and a generator fault? Consult the equipment provider.</td></tr>
+</tbody></table>
+<h2>What belongs in the written quote</h2>
+<p>Require exact ATS and module numbers, rated amperage, service-entrance status, a circuit list, priority order, controlled appliances, commissioning scope and an explanation of what happens if capacity is exceeded. Record these in the <a href="/planning/quotes/">three-quote comparison</a>. Do not open energized transfer equipment or attempt these changes yourself.</p>
+
+</ArticleLayout>

@@ -1,0 +1,13 @@
+[
+  {
+    "id": "fairfax-va-electrical",
+    "state": "VA",
+    "jurisdiction": "Fairfax County",
+    "topic": "Residential electrical permits",
+    "url": "https://www.fairfaxcounty.gov/landdevelopment/permit-library/electrical-residential",
+    "checkedOn": "2026-10-05",
+    "scope": "Electrical permit starting point only; not comprehensive generator permitting or site-specific placement guidance.",
+    "codeEdition": null,
+    "generatorSetbacks": null
+  }
+]

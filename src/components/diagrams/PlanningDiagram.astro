@@ -1,0 +1,12 @@
+---
+interface Props {kind:'sizing'|'fuel'|'ownership'}
+const {kind}=Astro.props;
+const diagrams={
+ sizing:{title:'How the load-planning scenarios differ',rows:[['All loads','Sum running watts × quantity','Add largest extra starting contribution'],['Essential only','Remove optional loads','Recalculate the largest extra start'],['Managed illustration','Keep unmanaged loads','Allow one managed row at a time']],note:'Editorial model. Different motors starting together, starting kVA, voltage dip and site derating still require a qualified assessment.'},
+ fuel:{title:'Two fuel paths, different outage constraints',rows:[['Natural gas','Utility network → meter / regulator','Sized fuel piping → generator'],['Propane','Stored liquid → available vapor','Regulation / fuel piping → generator']],note:'Conceptual fuel paths only. Installer and supplier must verify pressure, capacity, piping, vaporization and applicable requirements. No installation dimensions are prescribed.'},
+ ownership:{title:'Three layers of the ownership budget',rows:[['Up front','Equipment + transfer + installation','Fuel work + permits + warranty'],['Each year','Maintenance + fuel + monitoring','Consumables + repair reserve'],['At intervals','Battery replacement cost','Count events through each horizon']],note:'Nominal planning costs at constant input prices. Avoid counting bundled scope twice. A repair reserve is not a prediction of failures.'}
+};
+const d=diagrams[kind];
+---
+<figure class="planning-diagram" aria-label={d.title}><figcaption><strong>{d.title}</strong></figcaption><div class="diagram-rows">{d.rows.map(([name,a,b])=><div class="diagram-row"><h3>{name}</h3><p>{a}</p><p>{b}</p></div>)}</div><p class="diagram-note">{d.note}</p></figure>
+<style>.planning-diagram{padding:1.25rem;border:1px solid #c6cec7;background:#fafbf8;margin:2rem 0}.planning-diagram figcaption{font-size:1rem;color:#203b34}.diagram-rows{margin:1rem 0}.diagram-row{display:grid;grid-template-columns:.65fr 1fr 1fr;gap:1rem;padding:1rem 0;border-top:1px solid #c6cec7;align-items:start}.diagram-row h3{font-size:.9rem;margin:0;font-weight:700}.diagram-row p{font-size:.9rem;margin:0;line-height:1.5}.diagram-note{font-size:.8rem;line-height:1.5;color:#515c56}@media(max-width:640px){.diagram-row{grid-template-columns:1fr;gap:.5rem}.diagram-row h3{font-size:1rem}}@media print{.planning-diagram{break-inside:avoid}}</style>

@@ -1,0 +1,12 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import schedules from '../../data/maintenance.json';
+const sources=schedules.map(s=>({label:s.family+' · printed pages '+s.pages,href:s.source,type:'Technical manual' as const,verified:s.checkedOn}));
+---
+<ArticleLayout title="Model-Specific Generator Maintenance Schedules" description="Selected official manual intervals for Generac and KOHLER families, with document scope and a printable service log." category="Maintenance" categoryHref="/maintenance/" published="2026-10-05" updated="2026-10-05" verified="2026-10-05" readingTime="6 min read" toc={schedules.map(s=>({id:s.id,label:s.family}))} sources={sources}>
+<p>These are selected manufacturer-published intervals, not a complete service procedure. Match the model, serial number and manual revision first. Time or operating-hour limits mean the earlier interval. Work requiring electrical, fuel, hot-engine or automatic-start isolation belongs with qualified personnel following the manual.</p>
+<p><a href="/maintenance/maintenance-log/">Open the printable maintenance log →</a></p>
+{schedules.map(s=><section id={s.id}><h2>{s.family}</h2><p>{s.scope}</p><table class="mobile-card-table"><thead><tr><th>Task</th><th>Published interval / evidence gap</th></tr></thead><tbody>{s.rows.map(([task,interval])=><tr><th>{task}</th><td>{interval}<br/><a href={s.source}>Manual, printed pages {s.pages}</a></td></tr>)}</tbody></table></section>)}
+<h2>Coverage gaps remain visible</h2><p>Champion, Briggs &amp; Stratton and Cummins service matrices are not published here yet. We have not transcribed and verified their applicable maintenance schedules. Air-filter, spark-plug, valve, battery-replacement and accessory details not shown above remain manual-specific; absence from this table is not permission to skip them.</p>
+<h2>During a long outage</h2><p>Record running hours, service due points, alarms and technician contact details before the next outage. Follow the exact manual’s stopping, cooling, checking and restarting procedure. Arrange service before a due interval rather than assuming a weekly exercise schedule covers continuous operation. Monitoring alerts support attention; they do not replace inspection.</p>
+</ArticleLayout>

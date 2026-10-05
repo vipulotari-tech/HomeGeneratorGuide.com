@@ -1,0 +1,25 @@
+---
+import PlanningDiagram from "../diagrams/PlanningDiagram.astro";
+const loads=['Refrigerator','Freezer','Lighting','Outlets','Gas furnace blower','Central AC','Heat pump (include auxiliary heat separately)','Mini split','Electric water heater','Gas water heater controls','Well pump','Sump pump','Septic pump','Microwave','Electric range','Clothes dryer','Dishwasher','Garage door opener','Pool pump','EV charger','Medical equipment','Home office','Custom load'];
+---
+<form id="load-form" class="planner-form" data-save="hgg-load-v1">
+  <div class="field-grid"><label>Load type<select id="load-type">{loads.map(name=><option>{name}</option>)}</select></label><div class="flex items-end"><button type="button" id="add-load">Add load</button></div></div>
+  <p class="help">Enter equipment/nameplate data or values confirmed by your installer. No invented appliance defaults. “Total starting watts” includes that load’s running watts; for no extra starting demand, enter the same value in both fields. Do not convert motor LRA directly to watts.</p>
+  <div id="load-rows"></div>
+  <label class="narrow-field">Illustrative planning margin (%)<input name="margin" type="number" min="0" max="50" step="1" value="20" required/></label>
+  <p class="help">The default 20% is an adjustable editorial scenario, not a code requirement or a validated sizing factor.</p>
+  <button type="submit">Compare load scenarios</button>
+  <div class="form-error" role="alert"></div><div class="planner-results" aria-live="polite" id="load-results"></div>
+</form>
+<PlanningDiagram kind="sizing"/>
+
+<template id="load-template"><fieldset class="load-row"><legend></legend><div class="field-grid">
+<label>Load name<input data-key="name" type="text" maxlength="100" required/></label>
+<label>Running watts per unit<input data-key="running" type="number" min="0" max="100000" step="any" required/></label>
+<label>Total starting watts per unit<input data-key="starting" type="number" min="0" max="500000" step="any" required/></label>
+<label>Quantity<input data-key="quantity" type="number" min="1" max="100" step="1" value="1" required/></label>
+<label>Priority (1 first)<input data-key="priority" type="number" min="1" max="10" step="1" value="1" required/></label>
+<label>Backup need<select data-key="essential"><option value="true">Essential</option><option value="false">Optional</option></select></label>
+<label>Management scenario<select data-key="managed"><option value="false">Unmanaged</option><option value="true">Managed — installer must verify</option></select></label>
+<button type="button" class="secondary remove-load">Remove load</button></div></fieldset></template>
+<section class="prose-hgg"><h2>Read the result as a discussion range</h2><p>Running load sums every selected unit. Starting contribution is the largest extra starting demand of one load row, with all units in that row assumed to start together. Planning load = running load + that contribution. Several different motors starting together can need more. Power factor, starting kVA, voltage dip, phase balance, altitude and temperature are not modeled.</p><p>The essential-only scenario excludes optional loads. The managed scenario keeps all unmanaged loads running and allows only one managed row at a time. Priority labels help document your preferences; they do not simulate an installed controller. A checkbox cannot make an unmanaged appliance controllable.</p><p>Medical equipment may require uninterrupted power and a separate continuity plan. A standby generator has a transfer interruption. Discuss the equipment requirements with its provider. <a href="/sizing/appliance-wattage-chart/">View the separate sourced appliance reference chart</a> or <a href="/installation/automatic-transfer-switch-guide/">understand ATS and load management</a>.</p></section>

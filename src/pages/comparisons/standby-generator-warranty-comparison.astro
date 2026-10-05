@@ -46,7 +46,7 @@ const toc = [
               <th scope="row" class="p-3 align-top"><a href={model.productUrl} rel="external noopener noreferrer" class="font-semibold text-primary underline decoration-accent underline-offset-4">{model.brand} {model.modelId}</a><span class="mt-1 block font-normal text-gray-600">{model.displayName}</span></th>
               <td class="p-3 align-top">{model.warranty ?? 'No model-specific warranty summary captured in the current source set.'}</td>
               <td class="p-3 align-top">
-                {model.modelId === '201614' ? 'Champion’s sources distinguish the generator and ATS warranties and describe materially different coverage after year 2; do not read the 10-year headline as identical labor/travel/parts coverage for all 10 years.' :
+                {model.modelId === '201614' ? 'Champion distinguishes generator and ATS coverage. Additional warranty material describes changing coverage by year, but exact-package applicability must be confirmed. Do not read the 10-year headline as identical labor/travel/parts coverage.' :
                  model.modelId === '26RCA' ? 'The cited 2026 specification sheet states a 5-year/2,000-hour limited warranty with parts, labor, and travel; read the complete terms.' :
                  model.modelId === '040786' ? 'The product/spec source describes comprehensive coverage; confirm exclusions, hour limits, and whether the quoted model/package is the same.' :
                  model.modelId === 'RS20A' ? 'Cummins’ family FAQ gives the 13/17/20 kW air-cooled term; confirm the exact current warranty document for the purchased unit.' :
