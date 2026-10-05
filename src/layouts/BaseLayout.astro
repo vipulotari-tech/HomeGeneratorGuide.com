@@ -66,6 +66,22 @@ const absoluteOgImage = ogImage.startsWith('http') ? ogImage : `${site}${ogImage
     document.documentElement.addEventListener('mousedown', () => document.documentElement.classList.add('mouse-nav'), { passive: true });
     document.documentElement.addEventListener('touchstart', () => document.documentElement.classList.add('mouse-nav'), { passive: true });
     document.documentElement.addEventListener('keydown', (e) => { if (e.key === 'Tab') document.documentElement.classList.remove('mouse-nav'); });
+
+    // On small screens, wide comparison tables become readable labeled cards.
+    // The original semantic table remains the source of truth; labels come from
+    // its column headers so future copy changes do not require duplicate markup.
+    document.querySelectorAll('table.mobile-card-table').forEach((table) => {
+      const headers = Array.from(table.querySelectorAll('thead th')).map((header) =>
+        header.textContent?.trim() ?? ''
+      );
+      table.querySelectorAll('tbody tr').forEach((row) => {
+        Array.from(row.children).forEach((cell, index) => {
+          if (cell instanceof HTMLElement && headers[index] && !cell.dataset.label) {
+            cell.dataset.label = headers[index];
+          }
+        });
+      });
+    });
   </script>
 </body>
 </html>
