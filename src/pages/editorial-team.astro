@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/layout/Breadcrumbs.astro';
+import ArticleCard from '../components/article/ArticleCard.astro';
+import { SITE_URL } from '../config/site';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'HomeGeneratorGuide Editorial Team',
+  url: `${SITE_URL}/editorial-team/`,
+  parentOrganization: {
+    '@type': 'Organization',
+    name: 'HomeGeneratorGuide',
+    url: SITE_URL,
+  },
+};
+---
+<BaseLayout
+  title="HomeGeneratorGuide Editorial Team"
+  description="How HomeGeneratorGuide organizes independent desk research across sizing, cost, models, comparisons, installation, maintenance, and buyer education."
+  schema={schema}
+>
+  <div class="mx-auto max-w-3xl px-4 py-10 sm:px-6">
+    <Breadcrumbs items={[{ href: '/', label: 'Home' }, { href: '/about/', label: 'About' }, { label: 'Editorial Team' }]} />
+    <h1 class="mt-4 text-4xl font-bold text-primary">HomeGeneratorGuide Editorial Team</h1>
+    <p class="mt-4 text-lg leading-relaxed text-ink">Our articles are produced through desk research using manufacturer documentation, government and safety sources, and clearly labeled third-party estimates. We use topic-specific research-desk bylines so readers can see the focus of an article without inventing individual experts or credentials.</p>
+
+    <div class="prose-hgg mt-6">
+      <h2>Research desks used on this site</h2>
+      <ul>
+        <li><strong>Sizing Research Desk:</strong> load-planning, ratings, HVAC, pumps, and load-management topics.</li>
+        <li><strong>Cost &amp; Ownership Research Desk:</strong> equipment pricing, installation scope, quote comparison, and ownership-cost planning.</li>
+        <li><strong>Model Research Desk:</strong> exact-model specifications, manuals, warranty terms, and package details.</li>
+        <li><strong>Comparison Research Desk:</strong> side-by-side brand, model, warranty, sound, and transfer-equipment comparisons.</li>
+        <li><strong>Installation Research Desk:</strong> project stages, site planning, placement, handoff, and contractor-scope questions.</li>
+        <li><strong>Maintenance Research Desk:</strong> manual-first maintenance planning and owner-versus-technician boundaries.</li>
+        <li><strong>Buyer Education Desk:</strong> first-time buyer guidance, fuel choices, safety, and ownership decision-making.</li>
+      </ul>
+
+      <h2>What these bylines mean</h2>
+      <p>These are editorial desk labels, not individual people. They do not imply a professional license, field installation experience, hands-on testing, or independent laboratory testing.</p>
+      <p><strong>No independent licensed professional review has been completed unless a specific article explicitly says otherwise.</strong> See our <a href="/review-process/">professional review status</a> and <a href="/editorial-policy/">editorial policy</a>.</p>
+
+      <h2>How we handle expertise</h2>
+      <p>Manufacturer specifications are attributed to the manufacturer. Safety guidance is linked to the relevant authority. Estimates are labeled as estimates. Unknown values remain unknown rather than being copied from a different model or filled with an unsupported assumption.</p>
+      <p>If future articles receive documented professional review, we will identify the real reviewer, credential or licensing jurisdiction where applicable, review date, article-specific scope, and any relevant affiliation or compensation.</p>
+
+      <h2>Start with our core research</h2>
+    </div>
+
+    <div class="mt-4 grid gap-5 sm:grid-cols-2">
+      <ArticleCard href="/sizing/what-size-generator-do-i-need/" title="Generator sizing guide" description="Load-first planning and a static worksheet." category="Sizing" />
+      <ArticleCard href="/cost/standby-generator-quote-checklist/" title="Quote comparison checklist" description="Sixteen scope lines to compare before choosing an installer." category="Cost" />
+    </div>
+  </div>
+</BaseLayout>
