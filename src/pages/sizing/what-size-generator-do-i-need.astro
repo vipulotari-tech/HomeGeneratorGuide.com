@@ -130,12 +130,46 @@ const faqs = [
   <section id="planning-sheet">
     <h2>Information to gather before a professional assessment</h2>
     <p>This is a blank static planning sheet. It records information; it does not add watts or produce a size.</p>
-    <div class="not-prose mt-4 overflow-x-auto rounded-xl border border-[#d9e0ea]">
-      <table class="min-w-[700px] w-full border-collapse text-left text-sm">
-        <caption class="sr-only">Blank, static generator-load planning worksheet</caption>
-        <thead class="bg-[#edf3fb] text-primary"><tr><th scope="col" class="p-3">Appliance / circuit</th><th scope="col" class="p-3">Manufacturer / model</th><th scope="col" class="p-3">Nameplate or manual data</th><th scope="col" class="p-3">Must run together?</th><th scope="col" class="p-3">Can it be shed/delayed?</th></tr></thead>
-        <tbody class="divide-y divide-gray-200">{Array.from({ length: 7 }).map(() => <tr><td class="h-12 p-3">&nbsp;</td><td class="p-3">&nbsp;</td><td class="p-3">&nbsp;</td><td class="p-3">&nbsp;</td><td class="p-3">&nbsp;</td></tr>)}</tbody>
-      </table>
+    <div class="not-prose mt-4">
+      <!-- Mobile: stacked worksheet cards avoid a sideways-scroll table. -->
+      <div class="space-y-3 sm:hidden print:hidden">
+        {Array.from({ length: 7 }).map((_, index) => (
+          <div class="overflow-hidden rounded-xl border border-[#d9e0ea] bg-white">
+            <div class="bg-[#edf3fb] px-4 py-2.5 text-sm font-semibold text-primary">Load {index + 1}</div>
+            <dl class="divide-y divide-gray-200 text-sm">
+              <div class="grid grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] gap-3 px-4 py-3">
+                <dt class="font-semibold text-gray-700">Appliance / circuit</dt>
+                <dd class="min-h-7 border-b border-dashed border-gray-300">&nbsp;</dd>
+              </div>
+              <div class="grid grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] gap-3 px-4 py-3">
+                <dt class="font-semibold text-gray-700">Manufacturer / model</dt>
+                <dd class="min-h-7 border-b border-dashed border-gray-300">&nbsp;</dd>
+              </div>
+              <div class="grid grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] gap-3 px-4 py-3">
+                <dt class="font-semibold text-gray-700">Nameplate / manual data</dt>
+                <dd class="min-h-7 border-b border-dashed border-gray-300">&nbsp;</dd>
+              </div>
+              <div class="grid grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] gap-3 px-4 py-3">
+                <dt class="font-semibold text-gray-700">Must run together?</dt>
+                <dd class="min-h-7 border-b border-dashed border-gray-300">&nbsp;</dd>
+              </div>
+              <div class="grid grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] gap-3 px-4 py-3">
+                <dt class="font-semibold text-gray-700">Can be shed / delayed?</dt>
+                <dd class="min-h-7 border-b border-dashed border-gray-300">&nbsp;</dd>
+              </div>
+            </dl>
+          </div>
+        ))}
+      </div>
+
+      <!-- Tablet/desktop/print: full worksheet table. -->
+      <div class="hidden overflow-x-auto rounded-xl border border-[#d9e0ea] sm:block print:block">
+        <table class="min-w-[700px] w-full border-collapse text-left text-sm">
+          <caption class="sr-only">Blank, static generator-load planning worksheet</caption>
+          <thead class="bg-[#edf3fb] text-primary"><tr><th scope="col" class="p-3">Appliance / circuit</th><th scope="col" class="p-3">Manufacturer / model</th><th scope="col" class="p-3">Nameplate or manual data</th><th scope="col" class="p-3">Must run together?</th><th scope="col" class="p-3">Can it be shed/delayed?</th></tr></thead>
+          <tbody class="divide-y divide-gray-200">{Array.from({ length: 7 }).map(() => <tr><td class="h-12 p-3">&nbsp;</td><td class="p-3">&nbsp;</td><td class="p-3">&nbsp;</td><td class="p-3">&nbsp;</td><td class="p-3">&nbsp;</td></tr>)}</tbody>
+        </table>
+      </div>
     </div>
     <p class="mt-4">Also note the fuel at the site, service/panel configuration, any medical-device requirements to discuss with a clinician or device supplier, and relevant property or permit constraints.</p>
   </section>
