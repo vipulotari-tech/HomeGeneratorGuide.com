@@ -19,9 +19,10 @@ export const REVIEW_NOTE = 'Our guides are editorial research, not hands-on prod
 // and payments are prohibited by the editorial independence policy.
 export const ADS_ENABLED = false;
 
-// Publisher identity; no credentials or professional qualifications are implied.
+// Editorial identity. We intentionally use an organization-level research desk
+// rather than inventing individual people or credentials.
 export const AUTHOR = {
-  name: 'Vipul Otari',
-  role: 'Publisher & Research Editor',
-  url: `${SITE_URL}/author/vipul-otari/`,
+  name: 'HomeGeneratorGuide Editorial Team',
+  role: 'Independent Research Desk',
+  url: `${SITE_URL}/editorial-team/`,
 };
