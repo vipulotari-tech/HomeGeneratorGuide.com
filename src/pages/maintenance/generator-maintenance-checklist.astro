@@ -69,7 +69,7 @@ const toc = [
     <h2>Keep a maintenance record</h2>
     <p>Store the model/serial details, manuals, receipts, service reports, controller alerts, and hour readings together. A blank log is provided below; it is a template, not a record of work performed by HomeGeneratorGuide or by a named service company.</p>
     <div class="not-prose mt-4 overflow-x-auto rounded-xl border border-[#d9e0ea]">
-      <table class="min-w-[640px] w-full border-collapse text-left text-sm">
+      <table class="mobile-card-table min-w-[640px] w-full border-collapse text-left text-sm">
         <caption class="sr-only">Blank standby generator maintenance record template</caption>
         <thead class="bg-[#edf3fb] text-primary"><tr><th scope="col" class="p-3">Date</th><th scope="col" class="p-3">Hour reading</th><th scope="col" class="p-3">Observation or task per manual</th><th scope="col" class="p-3">Person / service provider</th><th scope="col" class="p-3">Next due per manual</th></tr></thead>
         <tbody class="divide-y divide-gray-200">{Array.from({ length: 5 }).map(() => <tr><td class="h-12 p-3">&nbsp;</td><td class="p-3">&nbsp;</td><td class="p-3">&nbsp;</td><td class="p-3">&nbsp;</td><td class="p-3">&nbsp;</td></tr>)}</tbody>
