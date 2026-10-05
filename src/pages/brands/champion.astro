@@ -5,56 +5,162 @@ import { getModelSpecs } from '../../data/model-specs';
 
 const models = getModelSpecs('Champion');
 const toc = [
-  { id: 'scope', label: 'Scope of this guide' },
-  { id: 'model-data', label: '201222 model data' },
-  { id: 'system-bundle', label: 'Included system equipment' },
-  { id: 'quote-checklist', label: 'Quote checklist' },
+  { id: 'scope', label: 'What this guide covers' },
+  { id: 'current-models', label: 'Current Champion model families' },
+  { id: 'exact-model-data', label: 'Exact-model data' },
+  { id: 'axis-vs-flex', label: 'aXis vs fleX' },
+  { id: 'sizing', label: 'Sizing & load management' },
+  { id: 'installation', label: 'Installation & placement' },
+  { id: 'warranty', label: 'Warranty & service' },
+  { id: 'manuals', label: 'Manuals & documentation' },
+  { id: 'quote-checklist', label: 'Champion quote checklist' },
+  { id: 'limits', label: 'What manufacturer data cannot prove' },
 ];
 ---
 <ArticleLayout
-  title="Champion 201222 Standby Generator: Verified Model Data"
-  description="Source-linked information for Champion’s 201222 aXis standby system: fuel-specific output, published fuel use, sound caveat, included transfer switch, and separate warranty terms."
-  category="Brands" categoryHref="/brands/" updated="2026-10-04" verified="2026-10-04" readingTime="6 min read" toc={toc}
+  title="Champion Home Standby Generators: 26 kW fleX, 22 kW aXis & Buyer Guide"
+  description="Source-linked Champion standby-generator research for US homeowners: current 26 kW fleX and 22 kW aXis systems, fuel-specific output, ATS scope, load management, installation, warranty, manuals, and quote questions."
+  category="Brands"
+  categoryHref="/brands/"
+  updated="2026-10-05"
+  verified="2026-10-05"
+  readingTime="11 min read"
+  toc={toc}
   takeaways={[
-    'The Champion 201222 system is rated 22 kW on LP and 19.8 kW on natural gas.',
-    'The manufacturer describes the 201222 as including a 200 A aXis ATS; load-management modules are sold separately.',
-    'The manufacturer states different warranty durations for the generator and ATS; verify current terms for the exact purchase.',
+    'Champion currently lists multiple home-standby packages rather than one universal system; exact generator and transfer-switch model numbers matter.',
+    'The current 26 kW fleX 201614 package publishes 26 kW on propane and 23.4 kW on natural gas and includes a 200 A service-entrance automatic transfer switch.',
+    'Champion’s 10-year generator warranty headline does not mean identical coverage for all 10 years; the cited warranty terms distinguish years 1–2 from years 3–10.',
+    'Champion manufacturer pages are primary sources for Champion specifications, but they do not provide an independent reliability ranking or prove that Champion is the best fit for a particular home.',
   ]}
   sources={[
-    { label: 'Champion 201222 product page and specifications', href: 'https://www.championpowerequipment.com/product/201222-22-kw-whole-house-home-standby-generator-and-200a-switch-with-axis-technology/', type: 'Manufacturer', verified: '2026-10-04' },
+    { label: 'Champion home standby generator catalog', href: 'https://www.championpowerequipment.com/products/generators/home-standby-generators/', type: 'Manufacturer', verified: '2026-10-05' },
+    { label: 'Champion 201614 26 kW fleX + 200 A ATS product page', href: 'https://www.championpowerequipment.com/product/201614-26-kw-whole-house-home-standby-generator-and-200a-switch-with-flex-technology/', type: 'Manufacturer', verified: '2026-10-05' },
+    { label: 'Champion 201222 22 kW aXis + 200 A ATS product page', href: 'https://www.championpowerequipment.com/product/201222-22-kw-whole-house-home-standby-generator-and-200a-switch-with-axis-technology/', type: 'Manufacturer', verified: '2026-10-05' },
+    { label: 'Champion home standby generator warranty summary', href: 'https://help.championpowerequipment.com/article/e9pbt6pk36-home-standby-generator-warranty', type: 'Manufacturer', verified: '2026-10-05' },
+    { label: 'Champion air-cooled home standby 10-year limited warranty (official manual)', href: 'https://www.championpowerequipment.com/wp-content/uploads/2025/09/201202-OM-english.pdf', type: 'Manufacturer', verified: '2026-10-05' },
+    { label: 'Champion site-survey and installation-scope guide', href: 'https://www.championpowerequipment.com/news-updates/what-a-site-survey-is-and-why-it-is-important-when-purchasing-a-home-standby-generator/', type: 'Manufacturer', verified: '2026-10-05' },
+    { label: 'Champion product manuals and diagrams', href: 'https://www.championpowerequipment.com/product-manuals-diagrams/?model=generator', type: 'Manufacturer', verified: '2026-10-05' },
+    { label: 'Champion home standby generator selector', href: 'https://www.championpowerequipment.com/home-standby-generator-selector/', type: 'Manufacturer', verified: '2026-10-05' },
   ]}
   related={[
-    { href: '/brands/generac/', title: 'Generac model data', description: 'Exact model sources for 22 kW and 26 kW cellular standby units.', category: 'Brands' },
-    { href: '/brands/briggs-stratton/', title: 'Briggs & Stratton model data', description: 'Published output, warranty, sound, and MSRP for model 040786.', category: 'Brands' },
-    { href: '/comparisons/standby-vs-portable/', title: 'Standby vs. portable', description: 'Compare operating and installation tradeoffs.', category: 'Comparisons' },
+    { href: '/models/champion-201614/', title: 'Champion 201614 exact-model guide', description: '26 kW fleX system with 200 A ATS, fuel-use data, sound caveats, and warranty scope.', category: 'Models' },
+    { href: '/models/champion-201222/', title: 'Champion 201222 exact-model guide', description: '22 kW aXis system with a 200 A ATS and source-linked manufacturer specifications.', category: 'Models' },
+    { href: '/comparisons/five-brand-standby-generator-comparison/', title: 'Five-brand standby comparison', description: 'Compare selected exact models from Generac, KOHLER/Rehlko, Champion, Briggs & Stratton, and Cummins.', category: 'Comparisons' },
+    { href: '/cost/standby-generator-quote-checklist/', title: '16-line quote checklist', description: 'Normalize equipment and installation scope before comparing total price.', category: 'Cost' },
   ]}
 >
   <section id="scope">
-    <h2>Scope of this guide</h2>
-    <p>This page covers the exact Champion model <strong>201222</strong>, not every Champion standby product or a brand-wide price range. Manufacturer specifications and product descriptions were checked October 4, 2026. Published data is not an independent test or a site-specific recommendation.</p>
+    <h2>What this Champion guide covers</h2>
+    <p>This is an independent buyer-research page about Champion residential standby systems. It is not a Champion sales page, dealer page, field-reliability study, or hands-on product test. We use Champion’s own current product pages, manuals, warranty material, and installation guidance for Champion-specific facts, then separate those facts from buyer questions and unknowns.</p>
+    <p>Champion’s current home-standby catalog contains multiple generator/ATS packages. The important unit of comparison is therefore the <strong>exact package model</strong>, selected fuel, transfer-switch rating, load-management plan, and site-specific installation scope—not simply the Champion brand name or a headline kW number.</p>
   </section>
 
-  <section id="model-data">
-    <h2>201222 model data</h2>
-    <ModelSpecs models={models} label="Champion 201222 manufacturer specifications checked October 4, 2026" />
-    <p class="mt-4">Champion describes its 67 dB(A) sound figure as approximate and says it is measured at 23 feet (7 m); the product page does not state the test load and cautions that the figure does not account for the installation site. Do not rank it directly against figures with different or undisclosed conditions.</p>
+  <section id="current-models">
+    <h2>Current Champion model families a homeowner is likely to encounter</h2>
+    <p>Champion’s current catalog includes 26 kW fleX systems, 22 kW fleX systems, 22 kW aXis systems, and additional lower-output/select-circuit products. The catalog also varies the included transfer-switch amperage across packages. That means two “Champion 22 kW” or “Champion 26 kW” quotes may not contain the same switch or control architecture.</p>
+    <div class="not-prose mt-5 overflow-x-auto rounded-xl border border-[#d9e0ea]">
+      <table class="mobile-card-table sm:min-w-[860px] w-full border-collapse text-left text-sm">
+        <caption class="sr-only">Examples of current Champion home standby package families</caption>
+        <thead class="bg-[#edf3fb] text-primary">
+          <tr><th class="p-3">Example package</th><th class="p-3">Published output</th><th class="p-3">Included transfer equipment</th><th class="p-3">Buyer note</th></tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200 text-gray-800">
+          <tr>
+            <th scope="row" class="p-3">201614 · 26 kW fleX</th>
+            <td class="p-3">26 kW LP · 23.4 kW NG</td>
+            <td class="p-3">200 A service-entrance fleX ATS</td>
+            <td class="p-3">Current high-output example; exact load modules and managed appliances should be stated in the quote.</td>
+          </tr>
+          <tr>
+            <th scope="row" class="p-3">201613 · 26 kW fleX</th>
+            <td class="p-3">26 kW LP · 23.4 kW NG</td>
+            <td class="p-3">150 A service-entrance fleX ATS</td>
+            <td class="p-3">Same published generator output as 201614, but a different included switch rating.</td>
+          </tr>
+          <tr>
+            <th scope="row" class="p-3">201612 · 26 kW fleX</th>
+            <td class="p-3">26 kW LP · 23.4 kW NG</td>
+            <td class="p-3">100 A service-entrance fleX ATS</td>
+            <td class="p-3">Do not compare package price with a 200 A system without accounting for switch/service scope.</td>
+          </tr>
+          <tr>
+            <th scope="row" class="p-3">201222 · 22 kW aXis</th>
+            <td class="p-3">22 kW LP · 19.8 kW NG</td>
+            <td class="p-3">200 A aXis ATS</td>
+            <td class="p-3">Different controller/load-management architecture from fleX; accessory scope still needs to be documented.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="mt-4">This table is a buyer-orientation snapshot, not a promise that every model remains available in every region or dealer channel. Confirm the exact model numbers on the current manufacturer page and the written proposal.</p>
   </section>
 
-  <section id="system-bundle">
-    <h2>Included system equipment and warranty scope</h2>
-    <p>The Champion product page identifies 201222 as a system including the 22 kW generator and a 200 A aXis automatic transfer switch. It says aXis load-management modules are sold separately. The product page also lists a <strong>10-year limited warranty for the generator</strong> and a separate <strong>2-year limited warranty for the ATS</strong>. Confirm the current warranty terms, conditions, exclusions, registration, and local servicing arrangement in the actual purchase documents.</p>
-    <p>The manufacturer describes this system as “whole house,” but that label does not mean every large home appliance can run simultaneously. Capacity depends on fuel, selected loads, starts, transfer equipment, and the home-specific design. Start with a <a href="/sizing/what-size-generator-do-i-need/">load-based assessment</a>.</p>
+  <section id="exact-model-data">
+    <h2>Exact-model Champion data in our registry</h2>
+    <ModelSpecs models={models} label="Champion manufacturer specifications checked October 5, 2026" />
+    <p class="mt-4">The 201614 and 201222 records should not be treated as interchangeable. They differ in published output, controller family, enclosure details, fuel-use figures, sound figure, and package context. A salesperson saying “Champion whole-house generator” is not enough detail for a serious comparison.</p>
+  </section>
+
+  <section id="axis-vs-flex">
+    <h2>aXis vs fleX: what a buyer should verify</h2>
+    <p>Champion markets both aXis and fleX whole-house control/load-management systems. For the current 26 kW fleX package, Champion says the programmable controller can assign appliance priorities and use power-line-carrier communication to reduce separate control wiring. The 22 kW aXis product pages likewise describe managed-load operation, but the equipment and package architecture are not identical.</p>
+    <p>Do not choose between aXis and fleX from a marketing label alone. Ask the dealer to show, in writing, the exact controller/ATS model, which loads are always available, which loads can be delayed or shed, the number and model of any load-management modules, and what happens when several high-demand appliances call at once.</p>
+  </section>
+
+  <section id="sizing">
+    <h2>Sizing: Champion’s selector is useful, but square footage is not the final answer</h2>
+    <p>Champion provides a home-standby selector and dealer workflow, which can be useful for narrowing the product family. But a final system design still needs a load-based assessment tied to the appliances and motors the homeowner expects to run, the actual fuel, the electrical service, and the planned load-management strategy.</p>
+    <p>The same nominal generator can publish different output on propane and natural gas. For example, Champion publishes 26 kW on propane and 23.4 kW on natural gas for 201614. A quote should therefore show the fuel-specific rating used in the load analysis rather than only the larger marketing number.</p>
+    <p>Use our <a href="/sizing/what-size-generator-do-i-need/">load-based sizing guide</a> to prepare the appliance list and starting-load questions before speaking with an installer.</p>
+  </section>
+
+  <section id="installation">
+    <h2>Champion installation guidance: useful manufacturer context, not a universal code rule</h2>
+    <p>Champion’s site-survey guide says a complete project can include the generator, automatic transfer switch, any power-management modules, site placement, electrical connections, gas or propane work, fittings/connections, batteries, permits/code considerations, and ongoing maintenance. That is exactly why an installed quote should be normalized line by line instead of compared only by total price.</p>
+    <p>Champion’s own site-survey article also discusses placement near a wall where permitted, separation from building openings, avoiding installation under decking, pad/site preparation, gas-pipe length, and possible gas-meter upgrades. Treat those statements as <strong>Champion-specific planning guidance</strong>, not universal clearance rules. The exact installation manual for the quoted model, adopted local code, gas utility requirements, and the authority having jurisdiction control the real installation.</p>
+    <p>See our <a href="/installation/generator-pad-and-placement/">pad and placement guide</a> and <a href="/installation/what-to-expect/">installation process guide</a> for the questions to ask without turning web content into DIY instructions.</p>
+  </section>
+
+  <section id="warranty">
+    <h2>Champion warranty: the headline term needs year-by-year context</h2>
+    <p>Champion currently advertises a <strong>10-year limited warranty</strong> on the cited home-standby generator packages, while the cited 201614 and 201222 product pages identify a separate <strong>2-year limited warranty</strong> for the transfer switch.</p>
+    <p>The official air-cooled home-standby warranty language adds important detail: the generator term is 10 years or 2,000 hours, whichever occurs first; years 1–2 are described as limited comprehensive coverage on mileage, labor, and parts, while years 3–10 are described as limited comprehensive coverage on parts only. The document also ties coverage to successful activation, proof of purchase and maintenance, and authorized/certified service conditions.</p>
+    <p>That does not make Champion “better” or “worse” by itself. It means a buyer should compare the actual labor, travel, parts, ATS, maintenance, transferability, and claim-path language rather than ranking brands by the largest warranty-year number.</p>
+    <p>Use the <a href="/comparisons/standby-generator-warranty-comparison/">warranty comparison</a> to put those terms beside other brands.</p>
+  </section>
+
+  <section id="manuals">
+    <h2>Manuals, parts information, and documentation are a Champion strength</h2>
+    <p>Champion exposes product manuals and diagrams by exact model number and its current product pages include download sections for operator manuals, installation manuals, parts information, and related fact sheets where available. That is useful primary-source material for verifying dimensions, fuel figures, switch details, maintenance instructions, and installation requirements before purchase.</p>
+    <p>For any proposal, save the exact generator manual, transfer-switch manual, warranty document, and parts/service information that apply to the quoted model. Do not rely on a dealer brochure alone, and do not assume a manual for one 22 kW or 26 kW Champion package applies unchanged to another.</p>
   </section>
 
   <section id="quote-checklist">
-    <h2>Questions for a written proposal</h2>
+    <h2>Champion-specific questions to put in a written proposal</h2>
+    <ol>
+      <li>What are the exact Champion generator package and transfer-switch model numbers?</li>
+      <li>Is the system aXis or fleX, and what practical difference does that make for this house?</li>
+      <li>What is the published output on the fuel that will actually be used?</li>
+      <li>Which load-management modules are included, and which appliances or circuits will they control?</li>
+      <li>Which high-demand loads can operate simultaneously, and which may be delayed or shed?</li>
+      <li>Who verifies natural-gas pressure/flow or propane storage/regulator capacity for this exact model?</li>
+      <li>What site work, pad/base, trenching, electrical work, fuel work, permits, inspections, startup, and owner orientation are included?</li>
+      <li>Which exact generator and ATS warranty documents apply, and who handles local warranty service?</li>
+      <li>Who is responsible for activation/registration and for documenting required maintenance?</li>
+      <li>Which items are allowances, exclusions, or possible change orders?</li>
+    </ol>
+    <p>Then use the <a href="/cost/standby-generator-quote-checklist/">16-line quote checklist</a> to compare the Champion proposal with Generac, KOHLER/Rehlko, Briggs & Stratton, Cummins, or another qualified quote on the same scope.</p>
+  </section>
+
+  <section id="limits">
+    <h2>What Champion’s own website cannot prove for an independent buyer</h2>
     <ul>
-      <li>Is the exact generator model 201222, and is the included switch model/rating shown?</li>
-      <li>Which aXis load-management devices are included, if any, and which high-demand circuits are excluded?</li>
-      <li>Are fuel supply, electrical wiring, site preparation, permits, inspections, startup, and commissioning included?</li>
-      <li>Does the local installer service Champion standby systems and handle warranty calls in this area?</li>
-      <li>Which warranty applies to the generator versus the ATS, and what terms/exclusions appear in the contract?</li>
+      <li>It cannot independently prove Champion has a lower field failure rate than Generac, KOHLER/Rehlko, Briggs & Stratton, or Cummins.</li>
+      <li>It cannot prove that the nearest dealer will provide fast or high-quality service in your ZIP code.</li>
+      <li>It cannot turn a manufacturer sound figure into a standardized independent acoustic comparison across brands.</li>
+      <li>It cannot convert a product specification into a site-specific installed cost.</li>
+      <li>It cannot decide whether the Champion control/ATS architecture is the best fit for your particular electrical service and priority loads.</li>
     </ul>
-    <p>Do not infer comparative “value” from a brand or model label. Compare complete quotes with matching fuel, switch, load-management, and installation scope.</p>
+    <p>That is the role HomeGeneratorGuide should fill: use Champion as the primary source for Champion facts, then compare those facts with other manufacturers, normalize the installer quotes, and leave unknowns clearly marked instead of inventing a universal winner.</p>
   </section>
 </ArticleLayout>
