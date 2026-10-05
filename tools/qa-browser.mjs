@@ -73,6 +73,25 @@ try {
       false,
       `horizontal overflow at generated route ${path}`,
     );
+    const scrollingContainers = await page.evaluate(() =>
+      Array.from(document.querySelectorAll('#main .overflow-x-auto'))
+        .filter((element) => {
+          const node = element;
+          const style = window.getComputedStyle(node);
+          return style.display !== 'none' && node.getBoundingClientRect().height > 0 && node.scrollWidth > node.clientWidth + 2;
+        })
+        .map((element) => ({
+          tag: element.tagName,
+          text: (element.textContent ?? '').trim().slice(0, 90),
+          scrollWidth: element.scrollWidth,
+          clientWidth: element.clientWidth,
+        }))
+    );
+    assert.equal(
+      scrollingContainers.length,
+      0,
+      `scrolling content container on mobile at ${path}: ${JSON.stringify(scrollingContainers)}`,
+    );
     const links = await page.locator('#main a[href^="/"]').evaluateAll((anchors) =>
       anchors.map((anchor) => anchor.getAttribute('href')).filter(Boolean)
     );
