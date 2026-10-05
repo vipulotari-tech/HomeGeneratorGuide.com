@@ -128,7 +128,7 @@ const toc = [
     <h2>Exact-model snapshot</h2>
     <p><strong>{model.brand} {model.modelId}</strong> — {model.displayName}. {model.configuration}</p>
     <div class="not-prose mt-5 overflow-x-auto rounded-xl border border-[#d9e0ea]">
-      <table class="min-w-[700px] w-full border-collapse text-left text-sm">
+      <table class="mobile-kv-table min-w-[700px] w-full border-collapse text-left text-sm">
         <caption class="sr-only">Manufacturer-published model snapshot for {model.brand} {model.modelId}</caption>
         <tbody class="divide-y divide-gray-200 text-gray-800">
           <tr><th scope="row" class="w-56 bg-[#edf3fb] p-3 text-primary">Published standby output</th><td class="p-3">{ratingSummary}</td></tr>
@@ -154,7 +154,7 @@ const toc = [
       <>
         <p>The current source registry contains the following manufacturer-published test points. These are not a household fuel forecast; actual consumption changes with electrical load, fuel conditions, setup and runtime.</p>
         <div class="not-prose mt-4 overflow-x-auto rounded-xl border border-[#d9e0ea]">
-          <table class="min-w-[620px] w-full border-collapse text-left text-sm">
+          <table class="mobile-card-table min-w-[620px] w-full border-collapse text-left text-sm">
             <caption class="sr-only">Published fuel-consumption points for {model.brand} {model.modelId}</caption>
             <thead class="bg-[#edf3fb] text-primary"><tr><th class="p-3">Fuel</th><th class="p-3">Load</th><th class="p-3">Published consumption</th></tr></thead>
             <tbody class="divide-y divide-gray-200">
