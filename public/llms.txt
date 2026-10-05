@@ -8,7 +8,7 @@ HomeGeneratorGuide is an independent informational publication helping US homeow
 ## Editorial method and current limits
 We distinguish manufacturer specifications from manufacturer claims, estimates, and editorial interpretation. We link to source material where practical, do not claim hands-on testing or licensed review we have not performed, and update or correct material errors transparently.
 
-No independent licensed professional has reviewed our articles. Research authorship and source citations are not professional signoff. The publisher and research editor is not presented as an electrician, engineer, installer, or product tester. Content is educational, not a substitute for exact-model manuals, qualified local professionals, permitting authorities, or a property-specific assessment.
+No independent licensed professional has reviewed our articles. Research authorship and source citations are not professional signoff. Topic-specific editorial desk bylines are organizational labels, not individual people, electricians, engineers, installers, or product testers. Content is educational, not a substitute for exact-model manuals, qualified local professionals, permitting authorities, or a property-specific assessment.
 
 The site does not provide a calculator, interactive estimator, automated sizing recommendation, or home-specific cost quote. Appliance wattage chart values are generic ranges published by Champion Power Equipment; they are planning references, not measurements of a particular appliance or a recommendation for a particular home.
 
@@ -29,7 +29,7 @@ The site does not provide a calculator, interactive estimator, automated sizing 
 - [About](https://homegeneratorguide.com/about/): Mission, reader focus, and independence.
 - [Editorial Policy](https://homegeneratorguide.com/editorial-policy/): Source, independence, and corrections standards.
 - [Professional Review Status](https://homegeneratorguide.com/review-process/): Current absence of independent licensed review and disclosure expectations.
-- [Publisher and Research Editor](https://homegeneratorguide.com/author/vipul-otari/): Editorial role and limits; no trade credentials are claimed.
+- [Editorial Team](https://homegeneratorguide.com/editorial-team/): Topic-specific research desks, attribution rules, and clear limits; no individual credentials are implied.
 - [Funding Disclosure](https://homegeneratorguide.com/affiliate-disclosure/): No live advertising, affiliate links, or generator-industry payments.
 - [Disclaimer](https://homegeneratorguide.com/disclaimer/): Educational-use limits, estimates, and professional safety boundaries.
 
