@@ -1,4 +1,5 @@
 ---
+import {BRAND_COMPARISONS} from '../../data/brand-comparisons';
 import CategoryLayout from '../../layouts/CategoryLayout.astro';
 ---
 <CategoryLayout
@@ -6,6 +7,7 @@ import CategoryLayout from '../../layouts/CategoryLayout.astro';
   description="Neutral side-by-side generator comparisons with fixed criteria and situation-based conclusions — never a preordained winner."
   intro="Comparisons use the same criteria every time: range, warranty, noise, fuel, monitoring, dealers, and ownership. Conclusions are situational — the right pick depends on your loads, budget, and local service."
   cards={[
+ ...BRAND_COMPARISONS.map(p=>({href:"/comparisons/"+p.slug+"/",title:p.title,description:p.focus})),
     { href: '/comparisons/generac-vs-kohler/', title: 'Generac vs Kohler', description: 'The classic matchup: value and ubiquity vs premium build and diagnostics.', category: 'Comparisons', readingTime: '11 min read' },
     { href: '/comparisons/five-brand-standby-generator-comparison/', title: 'Five-Brand Standby Comparison', description: 'Exact selected models from Generac, KOHLER, Champion, Briggs & Stratton, and Cummins with package and source caveats.', category: 'Comparisons', readingTime: '9 min read' },
     { href: '/comparisons/standby-generator-warranty-comparison/', title: 'Standby Generator Warranty Comparison', description: 'Exact-model warranty summaries for Generac, KOHLER, Champion, Briggs & Stratton, and Cummins.', category: 'Comparisons', readingTime: '7 min read' },

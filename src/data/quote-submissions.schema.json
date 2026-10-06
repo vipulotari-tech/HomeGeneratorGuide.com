@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Private homeowner quote intake \u2014 not an active endpoint",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "state",
+    "quoteDate",
+    "generatorModel",
+    "fuel",
+    "projectTotal",
+    "consent"
+  ],
+  "properties": {
+    "metro": {
+      "type": "string",
+      "maxLength": 100
+    },
+    "zipPrefix": {
+      "type": "string",
+      "pattern": "^[0-9]{3}$"
+    },
+    "state": {
+      "type": "string",
+      "pattern": "^[A-Z]{2}$"
+    },
+    "quoteDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "generatorModel": {
+      "type": "string",
+      "maxLength": 100
+    },
+    "fuel": {
+      "enum": [
+        "natural-gas",
+        "propane"
+      ]
+    },
+    "ats": {
+      "type": "string",
+      "maxLength": 150
+    },
+    "serviceSizeA": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1000
+    },
+    "gasRunFt": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 10000
+    },
+    "trenching": {
+      "type": "string",
+      "maxLength": 500
+    },
+    "pad": {
+      "type": "string",
+      "maxLength": 500
+    },
+    "loadManagement": {
+      "type": "string",
+      "maxLength": 1000
+    },
+    "permits": {
+      "type": "string",
+      "maxLength": 1000
+    },
+    "utilityWork": {
+      "type": "string",
+      "maxLength": 1000
+    },
+    "electricalUpgrades": {
+      "type": "string",
+      "maxLength": 1000
+    },
+    "accessories": {
+      "type": "string",
+      "maxLength": 1000
+    },
+    "projectTotal": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "maximum": 1000000
+    },
+    "currency": {
+      "const": "USD",
+      "default": "USD"
+    },
+    "consent": {
+      "const": true
+    },
+    "verificationStatus": {
+      "const": "pending",
+      "description": "Public intake may only create pending records. Verified/rejected state must be server-owned after review."
+    }
+  }
+}

@@ -32,7 +32,7 @@ const faqs = [
   { q: 'Can I just add the starting watts printed in a chart?', a: 'No. Starting demand is momentary, and the result depends on which loads are already running, which motors start together, and the actual equipment. A generic chart is a rough reference only; use manufacturer nameplates/manuals and a professional load analysis.' },
   { q: 'Should I add a fixed percentage for headroom?', a: 'There is no single percentage that replaces an equipment-specific load analysis. Do not add an arbitrary margin to an uncertain chart total and treat it as a final generator size. Ask the designer to explain the running load, motor-start assumptions, fuel-specific capacity, site conditions, and any load management.' },
   { q: 'Do standby generators have the same output on propane and natural gas?', a: 'Not necessarily. Many dual-fuel models have different published ratings by fuel. Check the exact model and fuel in the manufacturer specification sheet and the planned site supply.' },
-  { q: 'Is there a calculator on this site?', a: 'No. We intentionally do not provide an interactive estimator or automated generator recommendation. Use the static worksheet below to prepare for a qualified local assessment.' },
+  { q: 'Is there a calculator on this site?', a: 'Yes. Our separate load-planning tool calculates illustrative scenarios from your equipment inputs. It is not a final sizing calculation or an automatic model recommendation. This page also retains a static worksheet.' },
 ];
 ---
 <ArticleLayout
@@ -59,6 +59,8 @@ const faqs = [
   prev={{ href: '/guides/first-time-buyer-guide/', label: 'First-time buyer guide' }}
   next={{ href: '/sizing/appliance-wattage-chart/', label: 'Appliance wattage chart' }}
 >
+  <aside class="planning-notice"><strong>Build an interactive load plan.</strong> <a href="/planning/sizing/">Open the planning tool →</a> Use documented inputs and take the assumptions to your installer.</aside>
+
   <section id="start-with-purpose">
     <h2>Start with the backup goal—not the house size</h2>
     <p>Before comparing generator kilowatts, decide which circuits and equipment should work during an outage. An essentials plan might prioritize refrigeration, lights, communications, a sump or well pump, and a heating-system blower. A broader plan may include air conditioning, cooking, laundry, or more than one large motor. The home's square footage does not identify those loads or their startup requirements.</p>

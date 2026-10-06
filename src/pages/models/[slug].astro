@@ -3,22 +3,7 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import { MODEL_SPECS, type ModelSpec } from '../../data/model-specs';
 
 export function getStaticPaths() {
-  const routeSlugs: Record<string, string> = {
-    G0072600: 'generac-g0072600',
-    G0073270: 'generac-g0073270',
-    '26RCA': 'kohler-26rca',
-    '26RCAL': 'kohler-26rcal',
-    '201614': 'champion-201614',
-    '201222': 'champion-201222',
-    '040786': 'briggs-stratton-040786',
-    'RS20A': 'cummins-rs20a',
-  };
-  return MODEL_SPECS
-    .filter((model) => Boolean(routeSlugs[model.modelId]))
-    .map((model) => ({
-      params: { slug: routeSlugs[model.modelId] },
-      props: { model },
-    }));
+  return MODEL_SPECS.map(model => ({params:{slug:model.slug},props:{model}}));
 }
 
 interface Props { model: ModelSpec; }
@@ -59,9 +44,9 @@ const modelDecisionNotes: Record<string, { heading: string; points: string[] }> 
   '26RCA': {
     heading: 'Why 26RCA and 26RCAL should not be treated as the same package',
     points: [
-      'The 26RCA record is the generator-set configuration, while the manufacturer separately identifies 26RCAL as the ATS-inclusive package.',
+      'The manufacturer identifies 26RCAL as an ATS package, but the 26RCA page contradicts itself about switch inclusion. Confirm the purchased configuration.',
       'The cited single-phase rating is 26 kW LP and 24 kW natural gas; the family sheet also covers other electrical configurations that should not be mixed into a residential single-phase comparison.',
-      'Price comparisons should keep the no-ATS 26RCA starting MSRP separate from the 26RCAL package price and from any installed project quote.',
+      'Price comparisons should keep the unresolved-scope 26RCA starting MSRP separate from the 26RCAL package price and from any installed project quote.',
     ],
   },
   '26RCAL': {
@@ -70,15 +55,6 @@ const modelDecisionNotes: Record<string, { heading: string; points: string[] }> 
       'The manufacturer identifies 26RCAL as the package that includes a 200 A service-entrance-rated RXT automatic transfer switch.',
       'Its published generator output matches the selected 26RCA single-phase record, so the important comparison is package scope rather than pretending the extra price buys more kW.',
       'The cited sound figures include manufacturer measurement caveats; they are not an independent acoustic test against other brands.',
-    ],
-  },
-  '201614': {
-    heading: 'What stands out about the Champion 26 kW fleX system',
-    points: [
-      'The cited 201614 package is a current 26 kW-on-LP / 23.4 kW-on-natural-gas system with an included 200 A service-entrance fleX automatic transfer switch.',
-      'Champion publishes 50% and full-load fuel-use figures, a 23 ft operational sound figure with site-condition caveats, and the exact enclosure dimensions and weight for this package.',
-      'The fleX controller supports prioritized load management, but a dealer proposal still needs to identify any load-management modules, controlled appliances, and the exact commissioning setup in writing.',
-      'The headline 10-year generator warranty should not be read as 10 years of identical labor/travel coverage; the cited warranty terms describe broader coverage in years 1–2 and parts-only coverage in years 3–10, subject to the full conditions.',
     ],
   },
   '201222': {
@@ -107,10 +83,11 @@ const modelDecisionNotes: Record<string, { heading: string; points: string[] }> 
   },
 };
 const decisionNotes = modelDecisionNotes[model.modelId];
+const checkDate=model.lastSourceCheck ?? model.sources[0].checkedOn;
 
 const toc = [
   { id: 'snapshot', label: 'Model snapshot' },
-  { id: 'decision-notes', label: 'What stands out' },
+  ...(decisionNotes ? [{ id: 'decision-notes', label: 'What stands out' }] : []),
   { id: 'fuel', label: 'Fuel-use data' },
   { id: 'sound', label: 'Sound data' },
   { id: 'package', label: 'Price, ATS & warranty' },
@@ -121,7 +98,7 @@ const toc = [
 <ArticleLayout
   title={model.brand + ' ' + model.modelId + ': Exact-Model Standby Generator Guide'}
   description={'Manufacturer-linked guide to ' + model.brand + ' ' + model.modelId + ' covering ' + ratingSummary + ', fuel-use test points where published, sound conditions, price/package scope, warranty and source limitations.'}
-  category="Models" categoryHref="/models/" updated="2026-10-04" verified="2026-10-04" image="/images/standby-front-neutral.webp" readingTime="7 min read" toc={toc}
+  category="Models" categoryHref="/models/" published={model.publishedOn} updated={checkDate} verified={checkDate} image="/images/standby-front-neutral.webp" readingTime="7 min read" toc={toc}
   takeaways={[
     'This page is tied to exact model ' + model.modelId + '; values are not silently borrowed from another model in the same brand family.',
     ratingSummary + '. Fuel-specific ratings and test conditions still do not size a home by themselves.',
@@ -134,6 +111,7 @@ const toc = [
     { href: '/cost/standby-generator-quote-checklist/', title: 'Quote checklist', description: 'Require the exact generator, ATS, fuel rating and inclusions in writing.', category: 'Cost' },
   ]}
 >
+  {model.evidenceNotes?.length && <section class="source-panel" aria-label="Evidence conflicts and scope notes"><h2>Evidence notes before you compare</h2><ul>{model.evidenceNotes.map(note=><li>{note}</li>)}</ul></section>}
   <section id="snapshot">
     <h2>Exact-model snapshot</h2>
     <p><strong>{model.brand} {model.modelId}</strong> — {model.displayName}. {model.configuration}</p>
@@ -141,10 +119,13 @@ const toc = [
       <table class="mobile-kv-table min-w-[700px] w-full border-collapse text-left text-sm">
         <caption class="sr-only">Manufacturer-published model snapshot for {model.brand} {model.modelId}</caption>
         <tbody class="divide-y divide-gray-200 text-gray-800">
+          {model.family && <tr><th scope="row" class="bg-[#edf3fb] p-3">Product family</th><td class="p-3">{model.family}</td></tr>}
           <tr><th scope="row" class="w-56 bg-[#edf3fb] p-3 text-primary">Published standby output</th><td class="p-3">{ratingSummary}</td></tr>
           {model.engine && <tr><th scope="row" class="bg-[#edf3fb] p-3 text-primary">Engine</th><td class="p-3">{[model.engine.maker, model.engine.model, model.engine.displacementCc ? model.engine.displacementCc + ' cc' : null].filter(Boolean).join(' · ')}</td></tr>}
           {model.dimensionsIn && <tr><th scope="row" class="bg-[#edf3fb] p-3 text-primary">Dimensions</th><td class="p-3">{model.dimensionsIn.length} × {model.dimensionsIn.width} × {model.dimensionsIn.height} in (L × W × H)</td></tr>}
           {model.weightLb && <tr><th scope="row" class="bg-[#edf3fb] p-3 text-primary">Published weight</th><td class="p-3">{model.weightLb} lb</td></tr>}
+          <tr><th scope="row" class="bg-[#edf3fb] p-3">Electrical configuration</th><td class="p-3">{model.electrical ? [model.electrical.voltage,model.electrical.phase,model.electrical.frequencyHz ? model.electrical.frequencyHz+' Hz':null].filter(Boolean).join(' · ') : 'Not established in current record'}</td></tr>
+          <tr><th scope="row" class="bg-[#edf3fb] p-3">Enclosure</th><td class="p-3">{model.enclosure ?? 'Not established in current record'}</td></tr>
           <tr><th scope="row" class="bg-[#edf3fb] p-3 text-primary">Manufacturer page</th><td class="p-3"><a href={model.productUrl} rel="external noopener noreferrer" class="text-primary underline decoration-accent underline-offset-4">Open exact product page</a></td></tr>
         </tbody>
       </table>
@@ -190,9 +171,15 @@ const toc = [
     {model.startingMsrpNote && <p>{model.startingMsrpNote}</p>}
     <p><strong>Transfer equipment:</strong> {model.transferSwitch ?? 'The current exact-model source record does not establish an included transfer switch. Confirm the package in the written quote.'}</p>
     <p><strong>Warranty summary:</strong> {model.warranty ?? 'No model-specific warranty summary is stored in the current source record; use the exact current warranty document.'}</p>
+    {model.ats && <p><strong>Structured ATS record:</strong> Included: {model.ats.included===undefined?'Unknown':model.ats.included?'Yes':'No in this catalog configuration'} · Model: {model.ats.model??'Not verified'} · Amperage: {model.ats.amps??'Not verified'} · Service entrance: {model.ats.serviceEntranceRated===undefined?'Not verified':model.ats.serviceEntranceRated?'Yes':'No'}.</p>}
+    <p><strong>Load management:</strong> {model.loadManagement??'Exact module compatibility and included accessories not verified.'}</p>
+    <p><strong>Monitoring:</strong> {model.monitoring??'Exact monitoring hardware, connectivity and subscription terms not verified.'}</p>
+    <p><strong>Cold-weather accessories:</strong> {model.coldWeather??'Exact accessory part numbers and operating conditions require manual verification.'}</p>
+    <p><strong>Warranty hour limit:</strong> Only established where expressly included in the cited summary above; otherwise unknown.</p>
     <p>A product-page MSRP is not an installed-project price. Site work, ATS/service equipment, fuel work, electrical work, permits, load management, accessories, commissioning and local labor can materially change the total.</p>
   </section>
 
+  <section id="field-evidence"><h2>Field-level source map</h2><p>Published facts below are attributed to the cited manufacturer source. A product document is not independent performance evidence. Missing fields remain unknown.</p><ul>{Object.entries(model.fieldSources??{}).filter(([key])=>Boolean(model[key as keyof ModelSpec])).map(([key,url])=><li><a href={url}>{key.replace(/([A-Z])/g,' $1')} — manufacturer source</a></li>)}</ul>{model.missingFields?.length && <p><strong>Current evidence gaps:</strong> {model.missingFields.map(key=>key.replace(/([a-z])([A-Z])/g,'$1 $2').toLowerCase()).join(', ')}.</p>}{model.documents&&<ul>{Object.entries(model.documents).map(([key,url])=><li><a href={url}>{key.replace(/([A-Z])/g,' $1')}</a> — linked manufacturer document; applicability and revision must be checked for the purchased unit.</li>)}</ul>}</section>
   <section id="limits">
     <h2>What the manufacturer sources do not prove</h2>
     <ul>

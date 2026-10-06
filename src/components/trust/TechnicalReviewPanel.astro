@@ -1,0 +1,10 @@
+---
+import ExpertReviewBadge from './ExpertReviewBadge.astro';
+import {reviewForPage,REVIEWERS} from '../../data/editorial';
+const review=reviewForPage(Astro.url.pathname);
+const reviewer=review && REVIEWERS.find(r=>r.id===review.reviewerId);
+---
+<details class="review-panel">
+  <summary><ExpertReviewBadge /><span>How this guide is reviewed</span></summary>
+  {reviewer && review ? <p>Reviewed by <a href={reviewer.credentialVerificationUrl}>{reviewer.fullName}, {reviewer.credential} ({reviewer.state})</a>. Scope: {review.reviewScope}. Review date: {review.reviewDate}. <a href={review.evidenceUrl}>Review record</a>.</p> : <p>Prepared by our editorial research desk using linked sources. No licensed professional signoff or hands-on testing is claimed. <a href="/review-process/">See the review process and what remains to be reviewed.</a></p>}
+</details>

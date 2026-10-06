@@ -17,7 +17,11 @@
     "deploy": "npm run build:staging && wrangler deploy",
     "deploy:staging": "npm run build:staging && wrangler deploy --config wrangler.staging.jsonc",
     "deploy:production": "npm run build:production && wrangler deploy --config wrangler.production.jsonc",
-    "cf-typegen": "wrangler types"
+    "cf-typegen": "wrangler types",
+    "test:planning": "node --experimental-strip-types tools/test-planning.mjs",
+    "validate:evidence": "node tools/validate-evidence.mjs",
+    "qa:planners": "node tools/qa-planners.mjs",
+    "qa:seo": "node tools/qa-seo.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^8.0.2",
@@ -26,6 +30,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
+    "@axe-core/playwright": "^4.13.0",
     "@tailwindcss/vite": "^4.1.0",
     "playwright": "^1.63.0",
     "tailwindcss": "^4.1.0",

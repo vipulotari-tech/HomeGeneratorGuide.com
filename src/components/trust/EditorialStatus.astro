@@ -1,0 +1,6 @@
+---
+import { EDITORIAL_STATUSES } from '../../data/editorial';
+interface Props { status: typeof EDITORIAL_STATUSES[number]; }
+const {status}=Astro.props;
+---
+<span class="evidence-tag">{status}</span>

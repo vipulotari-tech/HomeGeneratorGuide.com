@@ -1,0 +1,14 @@
+import fs from 'node:fs';import assert from 'node:assert/strict';import path from 'node:path';
+const files=fs.readdirSync('dist',{recursive:true}).filter(f=>f.endsWith('index.html'));const titles=new Set(),descs=new Set(),routes=new Map();let schemaCount=0,links=0,images=0;
+for(const f of files){const route='/'+f.replaceAll('\\','/').replace(/index\.html$/,'');const html=fs.readFileSync(path.join('dist',f),'utf8');routes.set(route,{html,ids:new Set([...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]))});}
+for(const [route,{html,ids}] of routes){
+ const title=html.match(/<title>(.*?)<\/title>/s)?.[1],desc=html.match(/<meta name="description" content="([^"]*)"/)?.[1];assert(title&&desc,'Missing metadata '+route);assert(!titles.has(title),'Duplicate title '+route);titles.add(title);assert(!descs.has(desc),'Duplicate description '+route);descs.add(desc);
+ assert.equal((html.match(/<h1\b/g)??[]).length,1,'H1 '+route);assert(html.includes('lang="en-US"'),'Language '+route);
+ const canonical=html.match(/<link rel="canonical" href="([^"]*)"/)?.[1];assert.equal(canonical,'https://homegeneratorguide.com'+route,'Canonical '+route);assert(html.includes('content="index, follow"'),'Indexability '+route);
+ for(const tag of html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)){const s=JSON.parse(tag[1]);assert(!/"(?:Review|AggregateRating)"/.test(tag[1]),'Unsupported review schema');schemaCount++;}
+ for(const img of html.matchAll(/<img\b[^>]*>/g)){images++;assert(/\balt="[^"]*"/.test(img[0]),'Missing image alt '+route);}
+ for(const m of html.matchAll(/<a\b[^>]*href="([^"]+)"/g)){const href=m[1];if(!href.startsWith('/')&&!href.startsWith('#'))continue;links++;const u=new URL(href,'https://homegeneratorguide.com'+route);let target=routes.get(u.pathname);if(!target){assert(fs.existsSync('dist'+u.pathname),'Broken route '+route+' -> '+href);continue;}if(u.hash){assert(target.ids.has(decodeURIComponent(u.hash.slice(1))),'Broken anchor '+route+' -> '+href);}}
+}
+const robots=fs.readFileSync('dist/robots.txt','utf8');assert(robots.includes('Allow: /')&&robots.includes('https://homegeneratorguide.com/sitemap-index.xml'));
+const sitemap=fs.readdirSync('dist').filter(f=>/^sitemap.*\.xml$/.test(f)).map(f=>fs.readFileSync('dist/'+f,'utf8')).join('');for(const route of routes.keys())assert(sitemap.includes('https://homegeneratorguide.com'+route+'</loc>'),'Missing sitemap '+route);assert(!sitemap.includes('/404/'));
+fs.mkdirSync('.qa',{recursive:true});const report={pages:routes.size,internalLinksChecked:links,imagesChecked:images,schemaBlocks:schemaCount,canonicalOrigin:'https://homegeneratorguide.com',result:'PASS'};fs.writeFileSync('.qa/seo.json',JSON.stringify(report,null,2));console.log('Production SEO PASS',report);

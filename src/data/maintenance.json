@@ -1,0 +1,112 @@
+[
+  {
+    "id": "generac-current-10-28",
+    "family": "Generac 10\u201328 kW, manual A0004332577",
+    "scope": "Apply only after matching the manual to the serial number; do not apply to all legacy Generac models.",
+    "source": "https://manfilemode-generacsoa.generac.com/api/manualfiles/G0072600/A0004332577/0",
+    "pages": "26\u201327",
+    "checkedOn": "2026-10-05",
+    "rows": [
+      [
+        "Oil and oil filter",
+        "First 25 hours; then 2 years / 200 hours, whichever occurs first."
+      ],
+      [
+        "Severe-temperature oil service",
+        "Below 40\u00b0F, or continuous use above 85\u00b0F: annually / 100 hours."
+      ],
+      [
+        "Air filter and spark plugs",
+        "4 years / 400 hours."
+      ],
+      [
+        "Battery condition",
+        "2 years / 200 hours."
+      ],
+      [
+        "Oil level, leaks and enclosure louvers",
+        "Daily during continuous operation or before use."
+      ],
+      [
+        "Fuel leak test and water intrusion",
+        "Annually."
+      ],
+      [
+        "Valve service / exercise / monitoring",
+        "No interval transcribed here; use applicable instructions."
+      ]
+    ]
+  },
+  {
+    "id": "kohler-14rca",
+    "family": "KOHLER 14RCA(L), TP-7092 4/26",
+    "scope": "RDC2 family manual; match exact unit and revision. More frequent service may be needed in harsh conditions.",
+    "source": "https://techcomm.rehlko.com/techcomm/pdf/tp7092.pdf",
+    "pages": "67\u201368",
+    "checkedOn": "2026-10-05",
+    "rows": [
+      [
+        "Engine oil",
+        "Yearly / 100 hours."
+      ],
+      [
+        "Oil filter",
+        "Yearly / 200 hours."
+      ],
+      [
+        "Oil level during extended operation",
+        "Every 24 operating hours."
+      ],
+      [
+        "Exercise",
+        "Weekly."
+      ],
+      [
+        "Battery charger operation",
+        "Monthly."
+      ],
+      [
+        "Enclosure interior",
+        "Inspect / clean quarterly."
+      ],
+      [
+        "Valve service / cold-weather parts",
+        "No interval or accessory selection transcribed; verify exact instructions."
+      ]
+    ]
+  },
+  {
+    "id": "kohler-20-26rca",
+    "family": "KOHLER 20/26RCA(L), TP-7092 4/26",
+    "scope": "Standard oil interval differs from the 26RCA(L) premium-oil schedule. Earlier interval applies where time and hours are listed.",
+    "source": "https://techcomm.rehlko.com/techcomm/pdf/tp7092.pdf",
+    "pages": "67, 69",
+    "checkedOn": "2026-10-05",
+    "rows": [
+      [
+        "Standard oil, 20/26RCA(L)",
+        "Yearly / 150 hours."
+      ],
+      [
+        "Premium oil, 26RCA(L) only",
+        "2 years / 300 hours; verify specified oil requirements."
+      ],
+      [
+        "Oil filter",
+        "With every oil change."
+      ],
+      [
+        "Oil level",
+        "Every 24 operating hours."
+      ],
+      [
+        "Exercise / battery charger",
+        "Weekly exercise; monthly charger check."
+      ],
+      [
+        "Enclosure interior",
+        "Inspect / clean quarterly."
+      ]
+    ]
+  }
+]

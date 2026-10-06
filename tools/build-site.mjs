@@ -8,6 +8,9 @@ if (!['production', 'staging'].includes(environment)) {
   process.exit(2);
 }
 
+const evidence = spawnSync(process.execPath, ['tools/validate-evidence.mjs'], {stdio:'inherit'});
+if(evidence.status!==0) process.exit(evidence.status??1);
+
 const astroCli = resolve('node_modules/astro/bin/astro.mjs');
 const result = spawnSync(process.execPath, [astroCli, 'build'], {
   stdio: 'inherit',

@@ -1,0 +1,6 @@
+---
+import LastReviewed from './LastReviewed.astro';
+interface Props { date?: string; count: number; notes?: string[]; }
+const {date,count,notes=[]}=Astro.props;
+---
+<div class="source-panel"><strong>Evidence record</strong><p>{count} linked sources · <LastReviewed date={date}/></p><p>Source checks establish what a document states. They do not establish independent performance or site suitability.</p>{notes.length>0 && <ul>{notes.map(note=><li>{note}</li>)}</ul>}</div>
