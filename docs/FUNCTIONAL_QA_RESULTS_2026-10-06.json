@@ -1,0 +1,35 @@
+{
+  "routes": 104,
+  "buttons": 131,
+  "disclosures": 172,
+  "images": 210,
+  "cases": [
+    "Mobile menu open/Escape/focus at six widths and 320px height",
+    "hgg-load-v1 save/reload/load/delete",
+    "sizing print button and PDF",
+    "Load add/remove focus, quantities, managed scenarios and atomic corrupt-save recovery",
+    "40-load limit and reset",
+    "All 36 manufacturer fuel presets",
+    "hgg-fuel-v1 save/reload/load/delete",
+    "hgg-fuel-v1 save/reload/load/delete",
+    "fuel print button and PDF",
+    "Fuel custom attribution, exact save restoration, invalid tank and reset",
+    "hgg-ownership-v1 save/reload/load/delete",
+    "ownership print button and PDF",
+    "Ownership unit changes, invalid interval and reset",
+    "hgg-quotes-v1 save/reload/load/delete",
+    "quotes print button and PDF",
+    "Three quotes: all scope states, incomplete warnings, top-ups, and hidden invalid field recovery",
+    "Quote reset",
+    "Blocked browser storage gracefully reported",
+    "Maintenance log print action",
+    "Contact email composition target and required fields inspected; no message sent",
+    "JavaScript-disabled planners cannot submit entered data to URL/server"
+  ],
+  "accessibility": [
+    {
+      "page": "expanded populated quotes",
+      "violations": 0
+    }
+  ]
+}

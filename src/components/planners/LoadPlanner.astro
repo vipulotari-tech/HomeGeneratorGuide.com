@@ -3,12 +3,12 @@ import PlanningDiagram from "../diagrams/PlanningDiagram.astro";
 const loads=['Refrigerator','Freezer','Lighting','Outlets','Gas furnace blower','Central AC','Heat pump (include auxiliary heat separately)','Mini split','Electric water heater','Gas water heater controls','Well pump','Sump pump','Septic pump','Microwave','Electric range','Clothes dryer','Dishwasher','Garage door opener','Pool pump','EV charger','Medical equipment','Home office','Custom load'];
 ---
 <form id="load-form" class="planner-form" data-save="hgg-load-v1">
-  <div class="field-grid"><label>Load type<select id="load-type">{loads.map(name=><option>{name}</option>)}</select></label><div class="flex items-end"><button type="button" id="add-load">Add load</button></div></div>
+  <div class="field-grid"><label>Load type<select id="load-type">{loads.map(name=><option>{name}</option>)}</select></label><div class="flex items-end"><button type="button" id="add-load" disabled>Add load</button></div></div>
   <p class="help">Enter equipment/nameplate data or values confirmed by your installer. No invented appliance defaults. “Total starting watts” includes that load’s running watts; for no extra starting demand, enter the same value in both fields. Do not convert motor LRA directly to watts.</p>
   <div id="load-rows"></div>
   <label class="narrow-field">Illustrative planning margin (%)<input name="margin" type="number" min="0" max="50" step="1" value="20" required/></label>
   <p class="help">The default 20% is an adjustable editorial scenario, not a code requirement or a validated sizing factor.</p>
-  <button type="submit">Compare load scenarios</button>
+  <button type="submit" disabled>Compare load scenarios</button>
   <div class="form-error" role="alert"></div><div class="planner-results" aria-live="polite" id="load-results"></div>
 </form>
 <PlanningDiagram kind="sizing"/>

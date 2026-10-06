@@ -4,17 +4,17 @@ import {MODEL_SPECS} from '../../data/model-specs';
 const presets=MODEL_SPECS.flatMap(m=>[50,100].flatMap(load=>{
  const ng=m.fuelConsumption?.find(f=>f.fuel==='Natural gas'&&f.unit==='ft³/hr'&&f.loadPercent===load);
  const lp=m.fuelConsumption?.find(f=>f.fuel==='LP'&&f.unit==='gal/hr'&&f.loadPercent===load);
- return ng&&lp&&!m.evidenceNotes?.some((n:string)=>/fuel.*conflict|consumption.*conflict/i.test(n)) ? [{model:m.modelId,brand:m.brand,load,ng:ng.amount,lp:lp.amount,kw:m.ratingsKw,source:m.fieldSources?.fuelConsumption??m.productUrl,date:m.lastSourceCheck??m.sources[0].checkedOn}]:[];
+ return ng&&lp&&!m.evidenceNotes?.some((n:string)=>/fuel.*conflict|consumption.*conflict/i.test(n)) ? [{key:`${m.slug}:${load}`,model:m.modelId,brand:m.brand,load,ng:ng.amount,lp:lp.amount,kw:m.ratingsKw,source:m.fieldSources?.fuelConsumption??m.productUrl,date:m.lastSourceCheck??m.sources[0].checkedOn}]:[];
 }));
 const fields=[['size','Generator planning size (kW)',0.1,200,0.1,''],['eventHours','One outage scenario (hours)',0,8760,1,72],['annualHours','Total outage hours per year',0,8760,1,100],['ngRate','NG use at selected load (ft³/hour)',0.01,100000,0.01,''],['lpRate','LP use at selected load (US gallons/hour)',0.01,1000,0.01,''],['ngPrice','Local NG variable price ($/therm)',0,100,0.01,''],['lpPrice','Local propane price ($/US gallon)',0,100,0.01,''],['btuPerCf','NG heat content (BTU/ft³)',500,2000,1,1000],['tank','Propane tank nominal capacity (US gallons)',1,10000,1,500],['fillPercent','Starting liquid fill (% of nominal)',1,80,1,80],['reservePercent','Reserve liquid level (% of nominal)',0,79,1,20],['maintenance','Annual maintenance budget (USD)',0,100000,1,'']];
 ---
 <form id="fuel-form" class="planner-form" data-save="hgg-fuel-v1">
-<label>Manufacturer test point or your documented rate<select id="fuel-preset" name="preset"><option value="">Custom — enter documented rates below</option>{presets.map((p,i)=><option value={i}>{p.brand} {p.model} · {p.load}% rated load</option>)}</select></label>
+<label>Manufacturer test point or your documented rate<select id="fuel-preset" name="preset"><option value="">Custom — enter documented rates below</option>{presets.map(p=><option value={p.key}>{p.brand} {p.model} · {p.load}% rated load</option>)}</select></label>
 <p id="fuel-source" class="help">Custom rates require a model-specific source. Enter the source and conditions below. Selecting a model does not confirm that it can support your home.</p>
 <label>Custom source / load and test conditions<textarea name="customSource" rows="2" maxlength="2000"/></label>
 <div class="field-grid">{fields.map(([key,label,min,max,step,value])=><label>{label}<input name={String(key)} type="number" min={min} max={max} step={step} value={value} required/></label>)}</div>
 <p class="help">Prefilled hours, tank levels and heat content are editable scenario assumptions. Use your utility’s billed heat content and delivered marginal fuel rates. Tank runtime is an inventory calculation only; your supplier must confirm usable capacity, safe fill, vaporization and refill reserve.</p>
-<button type="submit">Compare fuel scenarios</button><div class="form-error" role="alert"></div><div id="fuel-results" class="planner-results" aria-live="polite"></div>
+<button type="submit" disabled>Compare fuel scenarios</button><div class="form-error" role="alert"></div><div id="fuel-results" class="planner-results" aria-live="polite"></div>
 <script type="application/json" id="fuel-data" set:html={JSON.stringify(presets).replace(/</g,'\\u003c')} />
 </form>
 <PlanningDiagram kind="fuel"/>

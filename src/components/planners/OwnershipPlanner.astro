@@ -6,7 +6,7 @@ const fields=[['equipment','Generator equipment (USD)',0],['installation','Insta
 <p class="help">Enter your own quote and budget. Use 0 for an item included elsewhere or deliberately excluded; the result is only as complete as these entries. Separate installation labor from equipment and ATS so bundled prices are counted once. Consumables should exclude anything already in your maintenance contract. The initial battery belongs in the initial quote.</p>
 <label>Fuel cost unit<select name="fuelUnit"><option value="gallon">US gallon — propane</option><option value="therm">Therm — natural gas</option><option value="ccf">100 ft³ (CCF) — natural gas</option></select></label>
 <div class="field-grid">{fields.map(([key,label,min])=><label>{label}<input name={String(key)} type="number" min={min} max={key==='annualHours'?8760:key==='batteryInterval'?30:1000000} step={key==='batteryInterval'?1:'any'} required/></label>)}</div>
-<button type="submit">Plan 5, 10 & 15 years</button><div class="form-error" role="alert"></div><div id="ownership-results" class="planner-results" aria-live="polite"></div>
+<button type="submit" disabled>Plan 5, 10 & 15 years</button><div class="form-error" role="alert"></div><div id="ownership-results" class="planner-results" aria-live="polite"></div>
 </form>
 <PlanningDiagram kind="ownership"/>
 

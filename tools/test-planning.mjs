@@ -1,5 +1,13 @@
 import assert from 'node:assert/strict';
 import {numberIn,sizeScenario,fuelScenario,ownershipScenario,normalizeQuote} from '../src/lib/planning.ts';
+import {parseSavedPlan} from '../src/lib/planner-storage.ts';
+const draft={version:2,controls:{margin:'20'},rows:[{name:'Pump',running:'100',starting:'300',quantity:'1',priority:'1',essential:'true',managed:'false'}]};
+assert.deepEqual(parseSavedPlan(JSON.stringify(draft),['margin'],true),draft);
+for(const rows of [[null],[{...draft.rows[0],unexpected:'value'}],[{...draft.rows[0],managed:'yes'}],Array(41).fill(draft.rows[0])])assert.throws(()=>parseSavedPlan(JSON.stringify({...draft,rows}),['margin'],true));
+assert.throws(()=>parseSavedPlan(JSON.stringify({...draft,controls:null}),['margin'],true));
+assert.throws(()=>parseSavedPlan(JSON.stringify({...draft,controls:{margin:20}}),['margin'],true));
+assert.throws(()=>parseSavedPlan(JSON.stringify({...draft,controls:{wrong:'20'}}),['margin'],true));
+assert.throws(()=>parseSavedPlan(JSON.stringify(draft),['margin'],false));
 for(const bad of ['',null,undefined,NaN,Infinity,-1]) assert.throws(()=>numberIn(bad,'value'));
 const base={name:'Fridge',running:500,starting:1500,quantity:1,essential:true,managed:false,priority:1};
 let r=sizeScenario([base,{...base,name:'Heater',running:4500,starting:4500,essential:false,managed:true}],20);
