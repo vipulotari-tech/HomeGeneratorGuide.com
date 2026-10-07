@@ -1,5 +1,6 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import TopicClusterLinks from '../../components/seo/TopicClusterLinks.astro';
 import { MODEL_SPECS } from '../../data/model-specs';
 
 const pricedModels = MODEL_SPECS.filter((model) => model.startingMsrpUsd !== undefined);
@@ -154,4 +155,9 @@ const toc = [
     <p>Fuel use depends on exact model, fuel, load, fuel composition/pressure, and run time. Use the manufacturer’s fuel-consumption table for the actual model and current local utility or propane pricing; a half-load test value is not an hourly household bill. Our <a href="/brands/generac/">model data pages</a> show cited test points and conditions.</p>
     <p>Service schedules also differ. Follow the exact generator owner/maintenance manual and service provider’s instructions. HomeGuide lists annual maintenance estimates of $200–$650 in its 2025 guide, but local service plans, included labor, parts, operating hours, and battery replacement can change actual costs. Get a current written service quote rather than treating a national estimate as a required fee.</p>
   </section>
+  <TopicClusterLinks
+    heading="Connect cost to sizing, installation and equipment"
+    intro="A useful budget starts with the loads, then the exact equipment and installation scope. Use these pages together before comparing contractor totals."
+    links={[{"href":"/sizing/what-size-generator-do-i-need/","title":"Whole house generator sizing guide","description":"Build the load list before comparing generator capacity.","eyebrow":"Sizing"},{"href":"/planning/sizing/","title":"Whole house generator sizing calculator","description":"Model essential, unmanaged and managed-load planning scenarios.","eyebrow":"Planning tool"},{"href":"/installation/what-to-expect/","title":"Whole house generator installation guide","description":"Understand assessment, permits, fuel/electrical work and commissioning.","eyebrow":"Installation"},{"href":"/comparisons/generac-vs-kohler/","title":"Generac vs Kohler whole house generators","description":"Compare exact 26 kW-class configurations and package caveats.","eyebrow":"Comparison"}]}
+  />
 </ArticleLayout>
