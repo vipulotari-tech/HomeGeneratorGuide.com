@@ -58,6 +58,8 @@ jobs:
         run: npm run build:production
       - name: Production indexing assertions
         run: node tools/qa-indexing.mjs production
+      - name: AdSense disclosure readiness
+        run: node tools/qa-adsense-readiness.mjs
       - name: Full production HTML audit
         run: npm run qa:seo
       - name: Production SEO assertions
