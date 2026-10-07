@@ -2,7 +2,8 @@ import assert from 'node:assert/strict';
 import {chromium} from 'playwright';
 import AxeBuilder from '@axe-core/playwright';
 const browser=await chromium.launch({headless:true});
-const page=await browser.newPage({viewport:{width:390,height:844}});
+const context=await browser.newContext({viewport:{width:390,height:844}});
+const page=await context.newPage();
 const base=process.env.BASE_URL??'http://127.0.0.1:8321';
 try {
  await page.goto(base+'/planning/sizing/');
