@@ -4,7 +4,7 @@ import path from 'node:path';
 
 const requiredPages = {
   '/privacy-policy/': ['Google AdSense', 'policies.google.com/technologies/partner-sites', 'consent-management platform'],
-  '/affiliate-disclosure/': ['Programmatic advertising', 'cannot pay to become our recommended option'],
+  '/affiliate-disclosure/': ['Programmatic advertising', 'No company can pay to become our recommended option'],
   '/about/': ['HomeGeneratorGuide', 'Whose side we\'re on'],
   '/contact/': ['hello@homegeneratorguide.com'],
   '/terms-of-service/': ['Terms of Service'],
