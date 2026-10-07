@@ -1,5 +1,6 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import TopicClusterLinks from '../../components/seo/TopicClusterLinks.astro';
 import { MODEL_SPECS } from '../../data/model-specs';
 
 const pick = (id: string) => {
@@ -150,4 +151,9 @@ const toc = [
     </ul>
     <p>Use the <a href="/cost/standby-generator-quote-checklist/">16-line quote checklist</a> to compare the answers side by side.</p>
   </section>
+  <TopicClusterLinks
+    heading="Research the system behind the brand choice"
+    intro="The best whole house generator decision depends on loads, fuel, installation scope and the written proposal—not a brand name alone."
+    links={[{"href":"/sizing/what-size-generator-do-i-need/","title":"Whole house generator sizing guide","description":"Build the load list before comparing generator capacity.","eyebrow":"Sizing"},{"href":"/planning/sizing/","title":"Whole house generator sizing calculator","description":"Model essential, unmanaged and managed-load planning scenarios.","eyebrow":"Planning tool"},{"href":"/cost/standby-generator-cost/","title":"Whole house generator cost guide","description":"Separate equipment pricing from installation and quote scope.","eyebrow":"Cost"},{"href":"/installation/what-to-expect/","title":"Whole house generator installation guide","description":"Understand assessment, permits, fuel/electrical work and commissioning.","eyebrow":"Installation"},{"href":"/comparisons/generac-vs-kohler/","title":"Generac vs Kohler whole house generators","description":"Compare exact 26 kW-class configurations and package caveats.","eyebrow":"Comparison"}]}
+  />
 </ArticleLayout>
