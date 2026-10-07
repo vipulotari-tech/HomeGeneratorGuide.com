@@ -9,7 +9,9 @@
     "generatorModel",
     "fuel",
     "projectTotal",
-    "consent"
+    "consent",
+    "recordKind",
+    "projectType"
   ],
   "properties": {
     "metro": {
@@ -95,6 +97,600 @@
     "verificationStatus": {
       "const": "pending",
       "description": "Public intake may only create pending records. Verified/rejected state must be server-owned after review."
+    },
+    "recordKind": {
+      "enum": [
+        "quote",
+        "invoice"
+      ]
+    },
+    "projectType": {
+      "enum": [
+        "new-install",
+        "replacement",
+        "upgrade"
+      ]
+    },
+    "brand": {
+      "type": "string",
+      "maxLength": 100
+    },
+    "ratedKw": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "exclusiveMinimum": 0,
+      "maximum": 1000
+    },
+    "backupScope": {
+      "enum": [
+        "essential",
+        "broad",
+        "unknown"
+      ]
+    },
+    "invoiceTotal": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "exclusiveMinimum": 0,
+      "maximum": 1000000
+    },
+    "exclusions": {
+      "type": "array",
+      "maxItems": 40,
+      "items": {
+        "type": "string",
+        "maxLength": 500
+      }
+    },
+    "lineItems": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "generator": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "amountUsd",
+            "status",
+            "recurring"
+          ],
+          "properties": {
+            "amountUsd": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "maximum": 1000000
+            },
+            "status": {
+              "enum": [
+                "included",
+                "excluded",
+                "allowance",
+                "unknown"
+              ]
+            },
+            "recurring": {
+              "type": "boolean"
+            }
+          }
+        },
+        "ats": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "amountUsd",
+            "status",
+            "recurring"
+          ],
+          "properties": {
+            "amountUsd": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "maximum": 1000000
+            },
+            "status": {
+              "enum": [
+                "included",
+                "excluded",
+                "allowance",
+                "unknown"
+              ]
+            },
+            "recurring": {
+              "type": "boolean"
+            }
+          }
+        },
+        "electricalLabor": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "amountUsd",
+            "status",
+            "recurring"
+          ],
+          "properties": {
+            "amountUsd": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "maximum": 1000000
+            },
+            "status": {
+              "enum": [
+                "included",
+                "excluded",
+                "allowance",
+                "unknown"
+              ]
+            },
+            "recurring": {
+              "type": "boolean"
+            }
+          }
+        },
+        "fuelLine": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "amountUsd",
+            "status",
+            "recurring"
+          ],
+          "properties": {
+            "amountUsd": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "maximum": 1000000
+            },
+            "status": {
+              "enum": [
+                "included",
+                "excluded",
+                "allowance",
+                "unknown"
+              ]
+            },
+            "recurring": {
+              "type": "boolean"
+            }
+          }
+        },
+        "gasMeter": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "amountUsd",
+            "status",
+            "recurring"
+          ],
+          "properties": {
+            "amountUsd": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "maximum": 1000000
+            },
+            "status": {
+              "enum": [
+                "included",
+                "excluded",
+                "allowance",
+                "unknown"
+              ]
+            },
+            "recurring": {
+              "type": "boolean"
+            }
+          }
+        },
+        "propaneTank": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "amountUsd",
+            "status",
+            "recurring"
+          ],
+          "properties": {
+            "amountUsd": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "maximum": 1000000
+            },
+            "status": {
+              "enum": [
+                "included",
+                "excluded",
+                "allowance",
+                "unknown"
+              ]
+            },
+            "recurring": {
+              "type": "boolean"
+            }
+          }
+        },
+        "trenching": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "amountUsd",
+            "status",
+            "recurring"
+          ],
+          "properties": {
+            "amountUsd": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "maximum": 1000000
+            },
+            "status": {
+              "enum": [
+                "included",
+                "excluded",
+                "allowance",
+                "unknown"
+              ]
+            },
+            "recurring": {
+              "type": "boolean"
+            }
+          }
+        },
+        "pad": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "amountUsd",
+            "status",
+            "recurring"
+          ],
+          "properties": {
+            "amountUsd": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "maximum": 1000000
+            },
+            "status": {
+              "enum": [
+                "included",
+                "excluded",
+                "allowance",
+                "unknown"
+              ]
+            },
+            "recurring": {
+              "type": "boolean"
+            }
+          }
+        },
+        "permits": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "amountUsd",
+            "status",
+            "recurring"
+          ],
+          "properties": {
+            "amountUsd": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "maximum": 1000000
+            },
+            "status": {
+              "enum": [
+                "included",
+                "excluded",
+                "allowance",
+                "unknown"
+              ]
+            },
+            "recurring": {
+              "type": "boolean"
+            }
+          }
+        },
+        "inspection": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "amountUsd",
+            "status",
+            "recurring"
+          ],
+          "properties": {
+            "amountUsd": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "maximum": 1000000
+            },
+            "status": {
+              "enum": [
+                "included",
+                "excluded",
+                "allowance",
+                "unknown"
+              ]
+            },
+            "recurring": {
+              "type": "boolean"
+            }
+          }
+        },
+        "utilityCoordination": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "amountUsd",
+            "status",
+            "recurring"
+          ],
+          "properties": {
+            "amountUsd": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "maximum": 1000000
+            },
+            "status": {
+              "enum": [
+                "included",
+                "excluded",
+                "allowance",
+                "unknown"
+              ]
+            },
+            "recurring": {
+              "type": "boolean"
+            }
+          }
+        },
+        "coldWeather": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "amountUsd",
+            "status",
+            "recurring"
+          ],
+          "properties": {
+            "amountUsd": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "maximum": 1000000
+            },
+            "status": {
+              "enum": [
+                "included",
+                "excluded",
+                "allowance",
+                "unknown"
+              ]
+            },
+            "recurring": {
+              "type": "boolean"
+            }
+          }
+        },
+        "monitoring": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "amountUsd",
+            "status",
+            "recurring"
+          ],
+          "properties": {
+            "amountUsd": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "maximum": 1000000
+            },
+            "status": {
+              "enum": [
+                "included",
+                "excluded",
+                "allowance",
+                "unknown"
+              ]
+            },
+            "recurring": {
+              "type": "boolean"
+            }
+          }
+        },
+        "commissioning": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "amountUsd",
+            "status",
+            "recurring"
+          ],
+          "properties": {
+            "amountUsd": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "maximum": 1000000
+            },
+            "status": {
+              "enum": [
+                "included",
+                "excluded",
+                "allowance",
+                "unknown"
+              ]
+            },
+            "recurring": {
+              "type": "boolean"
+            }
+          }
+        },
+        "maintenancePlan": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "amountUsd",
+            "status",
+            "recurring"
+          ],
+          "properties": {
+            "amountUsd": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "maximum": 1000000
+            },
+            "status": {
+              "enum": [
+                "included",
+                "excluded",
+                "allowance",
+                "unknown"
+              ]
+            },
+            "recurring": {
+              "type": "boolean"
+            }
+          }
+        },
+        "travel": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "amountUsd",
+            "status",
+            "recurring"
+          ],
+          "properties": {
+            "amountUsd": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "maximum": 1000000
+            },
+            "status": {
+              "enum": [
+                "included",
+                "excluded",
+                "allowance",
+                "unknown"
+              ]
+            },
+            "recurring": {
+              "type": "boolean"
+            }
+          }
+        },
+        "taxes": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "amountUsd",
+            "status",
+            "recurring"
+          ],
+          "properties": {
+            "amountUsd": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "maximum": 1000000
+            },
+            "status": {
+              "enum": [
+                "included",
+                "excluded",
+                "allowance",
+                "unknown"
+              ]
+            },
+            "recurring": {
+              "type": "boolean"
+            }
+          }
+        },
+        "miscellaneous": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "amountUsd",
+            "status",
+            "recurring"
+          ],
+          "properties": {
+            "amountUsd": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "maximum": 1000000
+            },
+            "status": {
+              "enum": [
+                "included",
+                "excluded",
+                "allowance",
+                "unknown"
+              ]
+            },
+            "recurring": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
     }
   }
 }

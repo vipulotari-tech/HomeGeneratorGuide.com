@@ -21,7 +21,8 @@
     "test:planning": "node --experimental-strip-types tools/test-planning.mjs",
     "validate:evidence": "node tools/validate-evidence.mjs",
     "qa:planners": "node tools/qa-planners.mjs",
-    "qa:seo": "node tools/qa-seo.mjs"
+    "qa:seo": "node tools/qa-seo.mjs",
+    "test:research": "node --experimental-strip-types tools/test-research.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^8.0.2",

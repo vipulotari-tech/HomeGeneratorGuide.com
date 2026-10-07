@@ -1,6 +1,6 @@
 import {numberIn,sizeScenario,fuelScenario,ownershipScenario,normalizeQuote,type Load,type FuelInput,type OwnershipInput} from './planning';
 import {QUOTE_IDENTITY,QUOTE_SCOPE} from '../data/quote-fields';
-import {LOAD_KEYS,parseSavedPlan} from './planner-storage';
+import {LOAD_KEYS,LOAD_OPTIONAL_KEYS,parseSavedPlan} from './planner-storage';
 const form=document.querySelector<HTMLFormElement>('.planner-form');
 const money=(n:number)=>n.toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0});
 const kw=(n:number)=>(n/1000).toLocaleString('en-US',{maximumFractionDigits:1})+' kW';
@@ -31,7 +31,7 @@ function addLoad(name:string,data?:Record<string,string>,focus=false){
  const rows=document.getElementById('load-rows')!; if(rows.children.length>=40) throw new Error('Limit 40 load rows. Group identical units with quantity.');
  const template=document.getElementById('load-template') as HTMLTemplateElement;const row=template.content.firstElementChild!.cloneNode(true) as HTMLElement;
  row.querySelector('legend')!.textContent='Backup load';(row.querySelector('[data-key="name"]') as HTMLInputElement).value=name;
- if(data)LOAD_KEYS.forEach(k=>{(row.querySelector(`[data-key="${k}"]`) as HTMLInputElement).value=data[k];});
+ if(data){LOAD_KEYS.forEach(k=>{(row.querySelector(`[data-key="${k}"]`) as HTMLInputElement).value=data[k];});LOAD_OPTIONAL_KEYS.forEach(k=>{if(data[k]!==undefined)(row.querySelector(`[data-key="${k}"]`) as HTMLInputElement).value=data[k];});}
  row.querySelector('[data-key="name"]')!.addEventListener('input',labelLoads);
  row.querySelector('button')!.addEventListener('click',()=>{const next=(row.nextElementSibling??row.previousElementSibling)?.querySelector<HTMLInputElement>('[data-key="name"]');row.remove();labelLoads();invalidate();(next??document.getElementById('add-load'))?.focus();});rows.append(row);labelLoads();if(focus)row.querySelector<HTMLInputElement>('[data-key="name"]')!.focus();
 }
@@ -52,6 +52,10 @@ function calculate(){if(!form)return false;const error=form.querySelector('.form
   const ls=loads();if(!ls.length)throw new Error('Add at least one load and its equipment values.');
   const r=sizeScenario(ls,num('margin',0,50));if(r.running===0)throw new Error('Enter a positive running load.');const out=result('load-results');
   out.append(el('h2','Your load-planning scenarios'));
+  const evidenceRows=[...document.querySelectorAll<HTMLElement>('.load-row')].map(row=>{const v=(k:string)=>(row.querySelector(`[data-key="${k}"]`) as HTMLInputElement).value;return [v('name'),v('basis'),v('volts')||'Not supplied',v('amps')||'Not supplied',v('notes')||'Not supplied'];});
+  const missing=evidenceRows.filter(row=>row[1]!=='manufacturer').length;
+  message(out,`${missing} load rows lack a declared manufacturer running-and-startup source. User-selected evidence labels are not independently verified by HGG.`);
+  table(out,['Load','Input basis','Volts (not calculated)','Amps (not calculated)','Equipment / source notes'],evidenceRows,'Input evidence and missing nameplate data');
   table(out,['Scenario','Planning demand'],[['All loads — running',kw(r.running)],['Largest extra starting contribution',kw(r.surge)],['All loads + largest extra start',kw(r.planning)],['Essential loads + largest extra start',kw(r.essentialPeak)],['One managed row at a time',kw(r.managedPeak)]],'Demand under the stated assumptions');
   message(out,`Illustrative all-load discussion range: ${r.low}–${r.high} kW, rounded up to whole kW using your ${val('margin')}% margin. This is not a generator recommendation or a motor-start capability check.`);
   message(out,'Fuel warning: compare the selected fuel’s rated output, not the model’s headline kW. Starting capability and site derating still require manufacturer and installer assessment.');
@@ -106,6 +110,22 @@ if(form){
  form.addEventListener('invalid',e=>{const control=e.target as HTMLInputElement;let details=control.closest('details');while(details){details.open=true;details=details.parentElement?.closest('details')??null;}error.textContent='Check the highlighted field: '+control.validationMessage;},true);
  form.addEventListener('submit',e=>{e.preventDefault();calculate();});form.addEventListener('input',invalidate);
  document.getElementById('add-load')?.addEventListener('click',()=>{try{addLoad((document.getElementById('load-type') as HTMLSelectElement).value,undefined,true);invalidate();}catch(e){error.textContent=e instanceof Error?e.message:String(e);error.focus();}});
+ document.getElementById('guided-create')?.addEventListener('click',()=>{
+  if(document.getElementById('load-rows')!.children.length){error.textContent='Your current load rows have been kept. Save your work and Reset fields before creating a guided worksheet.';error.focus();return;}
+  const refs=JSON.parse(document.getElementById('guided-reference-data')!.textContent!) as {name:string;runningWatts:{maximum:number};startingWatts:{maximum:number}|null}[];
+  const selected=[...document.querySelectorAll<HTMLInputElement>('[data-guided-reference]:checked')].map(e=>e.dataset.guidedReference!);
+  const unknown=[...document.querySelectorAll<HTMLInputElement>('[data-guided-unknown]:checked')].map(e=>e.dataset.guidedUnknown!);
+  const pick=(id:string)=>(document.getElementById(id) as HTMLSelectElement).value;
+  const ac=pick('guided-ac');if(['2','3','4'].includes(ac))selected.push(`Central air conditioner, ${ac} ton`);else if(ac==='unknown')unknown.push('Central AC — exact equipment required');
+  if(pick('guided-heat')==='electric'&&!unknown.includes('Electric resistance / auxiliary heat'))unknown.push('Electric heating — include auxiliary heat');
+  if(pick('guided-heat')==='gas'&&!selected.includes('Furnace fan, 1/2 HP'))unknown.push('Heating blower and controls — exact equipment required');
+  if(!selected.length&&!unknown.length){error.textContent='Choose at least one load to create a worksheet.';error.focus();return;}
+  const notes=`${pick('guided-comfort')}; fuel: ${pick('guided-fuel')}; management: ${pick('guided-management')}. Verify this row’s essential/optional preference. `;
+  selected.forEach(name=>{const ref=refs.find(r=>r.name===name)!;addLoad(name,{name,running:String(ref.runningWatts.maximum),starting:String(ref.startingWatts?.maximum??ref.runningWatts.maximum),quantity:'1',priority:'1',essential:'true',managed:'false',basis:'reference',volts:'',amps:'',notes:notes+'Champion chart upper-range reference; actual equipment not measured.'});});
+  unknown.forEach(name=>addLoad(name,{name,running:'',starting:'',quantity:'1',priority:'1',essential:'true',managed:'false',basis:'unverified',volts:'',amps:'',notes:notes+'No supported default. Obtain running and total startup data.'}));
+  error.textContent='';invalidate();document.getElementById('guided-status')!.textContent=`${selected.length+unknown.length} rows created; ${unknown.length} require watts before calculation. Review priorities, quantities and management in Mode B. Heating type alone never supplies a measured load.`;
+  document.querySelector<HTMLInputElement>('.load-row input')?.focus();
+ });
  document.getElementById('fuel-preset')?.addEventListener('change',()=>{applyPreset();invalidate();});
  // Edited manufacturer rates must not retain the manufacturer-preset attribution.
  ['ngRate','lpRate','size'].forEach(key=>(form.elements.namedItem(key) as HTMLInputElement|null)?.addEventListener('input',()=>{(document.getElementById('fuel-preset') as HTMLSelectElement).value='';applyPreset();}));
@@ -128,7 +148,7 @@ if(form){
   try{
    example.rows.forEach(row=>{
     const data=Object.fromEntries(LOAD_KEYS.map(k=>[k,String(row[k]??'')]));
-    addLoad(String(row.name??'Load'),data);
+    addLoad(String(row.name??'Load'),{...data,basis:'reference',notes:'Illustrative example; replace with actual equipment data.'});
    });
    error.textContent='';
    document.querySelectorAll('.planner-results').forEach(r=>r.replaceChildren());

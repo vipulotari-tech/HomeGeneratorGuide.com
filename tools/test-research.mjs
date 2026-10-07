@@ -1,0 +1,23 @@
+import assert from 'node:assert/strict';
+import {quoteSummary} from '../src/lib/research.ts';
+import {QUOTE_RECORDS,EVIDENCE_CLAIMS,SERVICE_OBSERVATIONS} from '../src/data/research.ts';
+import {parseSavedPlan} from '../src/lib/planner-storage.ts';
+const filter={kind:'quote',state:'TX',fuel:'LP',from:'2026-01-01',to:'2026-12-31'};
+// Synthetic fixtures are test-only and never imported by a public page.
+const fixture=i=>({id:`test-${i}`,projectId:`project-${i}`,kind:'quote',date:'2026-10-01',state:'TX',metro:null,zipPrefix:null,projectType:'new-install',brand:'Test',modelId:'TEST',ratedKw:20,fuel:'LP',atsModel:null,serviceAmps:200,scope:'essential',loadManagement:null,costs:{},exclusions:[],quotedTotalUsd:10000+i*100,invoiceTotalUsd:null,missingScope:[],verification:'verified',verifiedOn:'2026-10-02',privacy:{publicationConsent:true,redacted:true,duplicateChecked:true,documentFingerprint:`private-test-${i}`,retentionUntil:'2027-01-01',sourceType:'document'}});
+assert.equal(quoteSummary([],filter).status,'suppressed');
+const rows=Array.from({length:20},(_,i)=>fixture(i));
+assert.equal(quoteSummary(rows.slice(1),filter).status,'suppressed');
+const result=quoteSummary(rows,filter);
+assert.equal(result.median,10950);assert.equal(result.q1,10475);assert.equal(result.q3,11425);
+assert(!JSON.stringify(result).includes('private-test'));
+assert.equal(quoteSummary([...rows,rows[0]],filter).n,20);
+assert.equal(quoteSummary([...rows,{...rows[0],projectId:'another-project'}],filter).n,20);
+for(const key of ['publicationConsent','redacted','duplicateChecked'])assert.equal(quoteSummary(rows.map(r=>({...r,privacy:{...r.privacy,[key]:false}})),filter).n,0);
+for(const change of [{verification:'pending'},{kind:'invoice'},{state:'FL'},{fuel:'Natural gas'},{missingScope:['gas work']},{quotedTotalUsd:NaN}])assert.equal(quoteSummary(rows.map(r=>({...r,...change})),filter).n,0);
+assert.equal(QUOTE_RECORDS.length,0);assert.equal(EVIDENCE_CLAIMS.length,0);assert.equal(SERVICE_OBSERVATIONS.length,0);
+const row={name:'Legacy',running:'100',starting:'200',quantity:'1',priority:'1',essential:'true',managed:'false'};
+assert.equal(parseSavedPlan(JSON.stringify({version:2,controls:{margin:'20'},rows:[row]}),['margin'],true).rows[0].name,'Legacy');
+assert.equal(parseSavedPlan(JSON.stringify({version:2,controls:{margin:'20'},rows:[{...row,basis:'reference',notes:'source',volts:'120',amps:'2'}]}),['margin'],true).rows[0].notes,'source');
+assert.throws(()=>parseSavedPlan(JSON.stringify({version:2,controls:{margin:'20'},rows:[{...row,basis:'verified-by-HGG'}]}),['margin'],true));
+console.log('Research privacy, suppression, cohort isolation, deduplication, quartiles and legacy load migration PASS');

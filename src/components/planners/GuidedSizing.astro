@@ -1,0 +1,29 @@
+---
+import {appliances,APPLIANCE_WATTAGE_SOURCE} from '../../data/appliance-wattage';
+const unknown=['Heat pump','Electric resistance / auxiliary heat','Septic pump','EV charging','Pool equipment','Medical equipment','Home office equipment'];
+---
+<section class="planning-notice no-print" aria-labelledby="guided-title">
+<h2 id="guided-title">Mode A — Quick guided planning</h2>
+<p>Choose the loads you want backed up. Nothing is selected for you. This creates an editable worksheet, not an approved generator size.</p>
+<details><summary>Choose your home’s equipment</summary>
+<div class="field-grid">
+<label>Heating fuel<select id="guided-heat"><option value="unknown">Not sure</option><option value="gas">Gas or oil — check blower and controls</option><option value="electric">Electric — nameplate data needed</option><option value="none">No heating backup planned</option></select></label>
+<label>Central AC size<select id="guided-ac"><option value="none">Not selected</option><option value="2">2 ton</option><option value="3">3 ton</option><option value="4">4 ton</option><option value="unknown">Other / not sure — data needed</option></select></label>
+<label>Desired comfort<select id="guided-comfort"><option>Essential circuits</option><option>Broader home comfort</option></select></label>
+<label>Intended fuel<select id="guided-fuel"><option>Not confirmed</option><option>Natural gas</option><option>Propane</option></select></label>
+<label>Load-management willingness<select id="guided-management"><option>Not decided</option><option>Willing to discuss</option><option>Prefer simultaneous use</option></select></label>
+</div>
+<h3>Which equipment belongs in your plan?</h3>
+<p>Check only the specific equipment you want backed up. Well and sump references apply only to the displayed horsepower. The range entry covers one burner, not a complete cooking appliance.</p>
+<div class="field-grid">{appliances.filter(a=>['Refrigerator','Freezer','Furnace fan, 1/2 HP','Well pump, 1/2 HP','Sump pump, 1/3 HP','Electric water heater','Electric range, one burner','Electric dryer','Microwave','Internet router and modem'].includes(a.name)).map(a=><label><input type="checkbox" data-guided-reference={a.name}/>{a.name} — reference {a.runningWatts.minimum}–{a.runningWatts.maximum} W running</label>)}
+{unknown.map(name=><label><input type="checkbox" data-guided-unknown={name}/>{name} — exact data required</label>)}</div>
+<p>References use the upper end of <a href={APPLIANCE_WATTAGE_SOURCE.url}>{APPLIANCE_WATTAGE_SOURCE.label}</a>, checked {APPLIANCE_WATTAGE_SOURCE.checkedOn}. They are published planning references, not measurements of your household. Unlisted equipment receives blank watts, never zero. Medical loads need a separate continuity plan; generator startup does not provide uninterrupted power.</p>
+<div class="planner-actions"><button type="button" id="guided-create" class="secondary" disabled>Create my editable load worksheet</button></div>
+<p id="guided-status" role="status"></p>
+</details>
+</section>
+<script id="guided-reference-data" type="application/json" set:html={JSON.stringify(appliances)}></script>
+
+<style>
+section label{display:flex;flex-direction:column;gap:.5rem;min-width:0;font-size:.9rem;margin:.5rem 0}section select{min-height:46px;max-width:100%;width:100%;padding:.6rem;border:1px solid #a9b5bd;background:white;color:#172d40}section label:has(input[type=checkbox]){flex-direction:row;align-items:center;min-height:44px}section input[type=checkbox]{width:20px;height:20px;flex-shrink:0}summary{cursor:pointer;min-height:44px;font-weight:700}h3{margin:1.3rem 0 .5rem}
+</style>
