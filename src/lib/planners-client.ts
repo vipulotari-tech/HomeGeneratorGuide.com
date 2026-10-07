@@ -37,6 +37,7 @@ function addLoad(name:string,data?:Record<string,string>,focus=false){
 }
 function invalidate(){document.querySelectorAll('.planner-results').forEach(e=>{e.replaceChildren();const p=el('p','Inputs changed. Recalculate to update the result.');p.className='help';e.append(p);});}
 const presets=JSON.parse(document.getElementById('fuel-data')?.textContent??'[]');
+const loadExamples=JSON.parse(document.getElementById('load-example-data')?.textContent??'{}') as Record<string,{label:string,rows:Array<Record<string,string|number|boolean>>}>;
 function applyPreset(setValues=true){const key=(document.getElementById('fuel-preset') as HTMLSelectElement)?.value;
  const p=presets.find((p:{key:string})=>p.key===key);const source=document.getElementById('fuel-source');if(!source)return;
  source.replaceChildren();if(!p){source.textContent='Custom rates require a source and test conditions below.';return;}
@@ -109,6 +110,36 @@ if(form){
  // Edited manufacturer rates must not retain the manufacturer-preset attribution.
  ['ngRate','lpRate','size'].forEach(key=>(form.elements.namedItem(key) as HTMLInputElement|null)?.addEventListener('input',()=>{(document.getElementById('fuel-preset') as HTMLSelectElement).value='';applyPreset();}));
  const status=document.getElementById('save-status')!;
+ document.querySelectorAll<HTMLButtonElement>('.load-example-button').forEach(button=>button.addEventListener('click',()=>{
+  if(form.id!=='load-form')return;
+  const rows=document.getElementById('load-rows')!;
+  if(rows.children.length){
+   error.textContent='Example not loaded because your current load rows are not empty. Save your work if needed, then use Reset fields before loading an example.';
+   error.focus();
+   return;
+  }
+  const key=button.dataset.loadExample??'';
+  const example=loadExamples[key];
+  if(!example?.rows?.length){
+   error.textContent='That example could not be loaded.';
+   error.focus();
+   return;
+  }
+  try{
+   example.rows.forEach(row=>{
+    const data=Object.fromEntries(LOAD_KEYS.map(k=>[k,String(row[k]??'')]));
+    addLoad(String(row.name??'Load'),data);
+   });
+   error.textContent='';
+   document.querySelectorAll('.planner-results').forEach(r=>r.replaceChildren());
+   status.textContent=`${example.label} loaded. Replace every illustrative value with the actual equipment data for your home before using the result in an installer discussion.`;
+   rows.querySelector<HTMLInputElement>('[data-key="name"]')?.focus();
+  }catch(e){
+   rows.replaceChildren();
+   error.textContent=e instanceof Error?e.message:'The example could not be loaded.';
+   error.focus();
+  }
+ }));
  (form.elements.namedItem('fuelUnit') as HTMLSelectElement|null)?.addEventListener('change',()=>{
   for(const name of ['fuelRate','fuelPrice'])(form.elements.namedItem(name) as HTMLInputElement).value='';
   status.textContent='Fuel unit changed. Enter consumption and price in the new unit; values are not automatically converted.';invalidate();
