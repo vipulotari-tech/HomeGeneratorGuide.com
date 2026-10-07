@@ -1,5 +1,141 @@
 ---
-import BrandLogo from './BrandLogo.astro';
-const groups=[['Plan',[['Planning tools','/planning/'],['Generator sizing','/sizing/'],['Installed costs','/cost/'],['Compare quotes','/planning/quotes/'],['Ownership costs','/planning/ownership/']]],['Research',[['Brands','/brands/'],['Exact models','/models/'],['Comparisons','/comparisons/'],['Buying guides','/guides/'],['Verified quote project','/cost/homeowner-quote-database/']]],['Install & own',[['Installation','/installation/'],['ATS & load management','/installation/automatic-transfer-switch-guide/'],['Permits & placement','/installation/permits-and-local-requirements/'],['Maintenance','/maintenance/'],['Safety','/guides/generator-safety-overview/']]],['Our standards',[['About','/about/'],['Editorial team','/editorial-team/'],['Editorial policy','/editorial-policy/'],['Source policy','/source-policy/'],['Review process','/review-process/'],['Corrections','/corrections-policy/'],['Research updates','/research-updates/'],['Contact','/contact/']]]];
+const groups = [
+  { title: 'Plan your system', label: 'Plan', links: [
+    ['Planning tools', '/planning/'], ['Generator sizing', '/sizing/'],
+    ['Installed costs', '/cost/'], ['Compare quotes', '/planning/quotes/'],
+    ['Ownership costs', '/planning/ownership/'],
+  ] },
+  { title: 'Explore the research', label: 'Research', links: [
+    ['Brands', '/brands/'], ['Exact models', '/models/'],
+    ['Comparisons', '/comparisons/'], ['Buying guides', '/guides/'],
+    ['Verified quote project', '/cost/homeowner-quote-database/'],
+  ] },
+  { title: 'Install & own', label: 'Install & own', links: [
+    ['Installation', '/installation/'], ['ATS & load management', '/installation/automatic-transfer-switch-guide/'],
+    ['Permits & placement', '/installation/permits-and-local-requirements/'],
+    ['Maintenance', '/maintenance/'], ['Safety', '/guides/generator-safety-overview/'],
+  ] },
+  { title: 'Our standards', label: 'Our standards', links: [
+    ['About', '/about/'], ['Editorial team', '/editorial-team/'],
+    ['Editorial policy', '/editorial-policy/'], ['Source policy', '/source-policy/'],
+    ['Review process', '/review-process/'], ['Corrections', '/corrections-policy/'],
+    ['Research updates', '/research-updates/'], ['Contact', '/contact/'],
+  ] },
+];
 ---
-<footer class="publication-footer"><div class="editorial-container"><div class="footer-intro"><a href="/" aria-label="HomeGeneratorGuide home"><BrandLogo inverse/></a><p>Clearer decisions for a major home investment. Manufacturer evidence, explicit assumptions, and uncertainty you can see.</p></div><div class="footer-groups">{groups.map(([label,links])=><nav aria-label={label as string}><h2>{label}</h2><ul>{(links as string[][]).map(([text,url])=><li><a href={url}>{text}</a></li>)}</ul></nav>)}</div><div class="footer-bottom"><p>© {new Date().getFullYear()} HomeGeneratorGuide · Technical professional review pending.</p><nav aria-label="Legal"><a href="/privacy-policy/">Privacy</a><a href="/terms-of-service/">Terms</a><a href="/affiliate-disclosure/">Funding & disclosure</a><a href="/disclaimer/">Disclaimer</a></nav></div></div></footer>
+<footer class="publication-footer">
+  <div class="editorial-container">
+    <div class="footer-intro">
+      <div class="footer-identity">
+        <a class="footer-brand" href="/" aria-label="HomeGeneratorGuide home">
+          <span class="footer-mark"><img src="/brand-mark.svg" width="36" height="36" alt="" aria-hidden="true" /></span>
+          <span><span class="footer-name">HomeGeneratorGuide</span><span class="footer-kicker">Independent homeowner research</span></span>
+        </a>
+        <h2 class="footer-title">Confidence before<br />the quote.</h2>
+        <p class="footer-description">Understand the system. Know the scope.<br class="footer-desktop-break" /> Make a more informed investment in backup power.</p>
+      </div>
+      <div class="footer-next">
+        <p class="footer-eyebrow">Your next step</p>
+        <a class="footer-action footer-action-primary" href="/planning/sizing/">Plan your backup needs <span aria-hidden="true">↗</span></a>
+        <a class="footer-action" href="/planning/quotes/">Compare installer quotes <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+
+    <div class="footer-groups">
+      {groups.map(({ title, label, links }) => (
+        <nav aria-label={label}>
+          <h2>{title}</h2>
+          <ul>{links.map(([text, url]) => <li><a href={url}>{text}</a></li>)}</ul>
+        </nav>
+      ))}
+    </div>
+
+    <div class="footer-trust">
+      <p><span class="footer-eyebrow">Evidence, clearly stated</span>Manufacturer sources. Explicit assumptions. Transparent limitations.</p>
+      <a href="/review-process/" class="footer-review">Technical professional review pending.<span>Our review process <span aria-hidden="true">↗</span></span></a>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© {new Date().getFullYear()} HomeGeneratorGuide</p>
+      <nav aria-label="Legal">
+        <a href="/privacy-policy/">Privacy</a>
+        <a href="/terms-of-service/">Terms</a>
+        <a href="/affiliate-disclosure/">Funding & disclosure</a>
+        <a href="/disclaimer/">Disclaimer</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .publication-footer {
+    --footer-gold: #d8bc82;
+    --footer-text: #c4cdd5;
+    --footer-rule: #34424e;
+    background: #101d29;
+    color: #f6f3eb;
+    border-top: 3px solid var(--footer-gold);
+    padding: 3.5rem 0 1rem;
+  }
+  .publication-footer > .editorial-container { padding-top: 0; padding-bottom: 0; }
+  .publication-footer a { text-decoration: none; }
+  .publication-footer a:hover { color: #fff; }
+  .publication-footer a:focus-visible { outline: 2px solid var(--footer-gold); outline-offset: 4px; border-radius: 2px; }
+  .footer-intro { display: grid; grid-template-columns: minmax(0, 1fr) minmax(17rem, 20rem); align-items: center; gap: 3rem; padding-bottom: 2.75rem; }
+  .footer-brand { display: inline-flex; align-items: center; gap: .8rem; min-height: 48px; }
+  .footer-mark { display: grid; place-items: center; width: 44px; height: 44px; flex-shrink: 0; background: #f6f3eb; border: 1px solid var(--footer-gold); border-radius: 2px; }
+  .footer-name { display: block; font-size: 1.125rem; font-weight: 650; letter-spacing: -.025em; line-height: 1.4; }
+  .footer-kicker { display: block; margin-top: .15rem; color: var(--footer-gold); font-size: .625rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; line-height: 1.5; }
+  .footer-title { margin: 1.6rem 0 .9rem; font: 400 clamp(2rem, 3.4vw, 2.75rem)/1.12 Georgia, 'Times New Roman', serif; letter-spacing: -.025em; text-wrap: initial; }
+  .footer-description { max-width: 28rem; color: var(--footer-text); font-size: .9375rem; line-height: 1.7; }
+  .footer-eyebrow { display: block; color: var(--footer-gold); font-size: .6875rem; line-height: 1.6; font-weight: 600; text-transform: uppercase; letter-spacing: .13em; }
+  .footer-next > p { margin-bottom: .8rem; }
+  .footer-action { display: flex; justify-content: space-between; align-items: center; gap: 1rem; min-height: 52px; padding: .85rem 1rem; border: 1px solid #66737c; font-size: .875rem; line-height: 1.4; font-weight: 550; }
+  .footer-action + .footer-action { margin-top: .75rem; }
+  .footer-action span { font-size: 1.125rem; line-height: 1; }
+  .footer-action-primary { background: var(--footer-gold); border-color: var(--footer-gold); color: #101d29; }
+  .publication-footer .footer-action-primary:hover { background: #e7cea0; color: #101d29; }
+  .footer-action:not(.footer-action-primary):hover { border-color: var(--footer-gold); background: #1b2b38; }
+  .footer-groups { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem; padding: 2.2rem 0; border-top: 1px solid var(--footer-rule); }
+  .footer-groups h2 { margin-bottom: .65rem; color: var(--footer-gold); font-size: .6875rem; font-weight: 600; letter-spacing: .1em; line-height: 1.6; text-transform: uppercase; text-wrap: initial; }
+  .footer-groups ul { margin: 0; padding: 0; list-style: none; }
+  .footer-groups a { display: flex; align-items: center; min-height: 44px; padding: .45rem 0; color: var(--footer-text); font-size: .875rem; line-height: 1.5; overflow-wrap: anywhere; }
+  .footer-groups a:hover, .footer-bottom a:hover { text-decoration: underline; text-decoration-color: var(--footer-gold); text-underline-offset: 5px; }
+  .footer-trust { display: flex; align-items: center; justify-content: space-between; gap: 2rem; padding: 1.5rem 0; border-top: 1px solid var(--footer-rule); border-bottom: 1px solid var(--footer-rule); font-size: .8125rem; line-height: 1.6; color: var(--footer-text); }
+  .footer-trust .footer-eyebrow { margin-bottom: .4rem; }
+  .footer-review { flex-shrink: 0; min-height: 44px; padding-left: 1rem; border-left: 2px solid var(--footer-gold); }
+  .footer-review > span { display: block; color: var(--footer-gold); margin-top: .25rem; }
+  .footer-review:hover > span { text-decoration: underline; text-underline-offset: 4px; }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; gap: 1rem 2rem; padding-top: .8rem; color: var(--footer-text); font-size: .75rem; line-height: 1.6; }
+  .footer-bottom p { margin: 0; }
+  .footer-bottom nav { display: flex; flex-wrap: wrap; gap: 0 1.5rem; }
+  .footer-bottom a { display: inline-flex; align-items: center; min-height: 44px; }
+  @media (min-width: 1024px) {
+    .footer-groups { grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 1.5fr); }
+    .footer-groups nav:last-child ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 1rem; }
+  }
+  @media (max-width: 1023px) {
+    .footer-bottom { flex-direction: column; align-items: flex-start; gap: .25rem; }
+    .footer-groups { gap: 1.5rem; }
+  }
+  @media (max-width: 767px) {
+    .publication-footer { padding-top: 2rem; padding-bottom: .75rem; }
+    .footer-intro { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; padding-bottom: 2rem; }
+    .footer-title { margin-top: 1.35rem; }
+    .footer-description { font-size: .875rem; max-width: 34rem; }
+    .footer-desktop-break { display: none; }
+    .footer-next { max-width: 30rem; }
+    .footer-next > p { margin-bottom: .6rem; }
+    .footer-action { min-height: 48px; }
+    .footer-groups { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.6rem 1.25rem; padding: 1.75rem 0; }
+    .footer-groups h2 { font-size: .6875rem; letter-spacing: .075em; min-height: 2rem; margin-bottom: .25rem; }
+    .footer-groups a { font-size: .8125rem; }
+    .footer-trust { flex-direction: column; align-items: flex-start; gap: 1rem; padding: 1.25rem 0; }
+    .footer-review { flex-shrink: 1; }
+    .footer-bottom { padding-top: 1rem; gap: .4rem; }
+    .footer-bottom nav { display: grid; grid-template-columns: auto auto; gap: 0 1.5rem; }
+    .footer-name { font-size: 1rem; }
+    .footer-kicker { font-size: .625rem; letter-spacing: .045em; }
+  }
+  @media print { .publication-footer { display: none; } }
+</style>
