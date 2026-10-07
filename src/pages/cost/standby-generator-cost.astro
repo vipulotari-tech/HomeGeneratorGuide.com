@@ -4,19 +4,21 @@ import { MODEL_SPECS } from '../../data/model-specs';
 
 const pricedModels = MODEL_SPECS.filter((model) => model.startingMsrpUsd !== undefined);
 const toc = [
+  { id: 'quick-answer', label: 'Quick cost answer' },
   { id: 'price-scope', label: 'Separate equipment from installation' },
   { id: 'current-msrp', label: 'Selected current model MSRPs' },
   { id: 'installed-ranges', label: 'Published installed ranges' },
   { id: 'what-changes', label: 'What changes a quote' },
   { id: 'line-items', label: 'Planning references by line item' },
   { id: 'quote-checklist', label: 'Quote comparison checklist' },
+  { id: 'cost-faq', label: 'Common cost questions' },
   { id: 'ownership', label: 'Fuel and maintenance' },
 ];
 ---
 <ArticleLayout
   title="Whole House Generator Cost: Equipment & Installation"
   description="See whole house generator cost ranges, current model pricing, installation expenses, and the scope items that can change a final contractor quote."
-  category="Cost" categoryHref="/cost/" updated="2026-10-04" verified="2026-10-04" image="/images/cost-install-quote.webp" readingTime="8 min read" toc={toc}
+  category="Cost" categoryHref="/cost/" updated="2026-10-04" verified="2026-10-04" image="/images/cost-install-quote.webp" readingTime="10 min read" toc={toc}
   takeaways={[
     'A manufacturer-listed generator MSRP is equipment pricing—not a complete installed-system price.',
     'Published installed ranges vary materially by source and scope; a site-specific, itemized local quote is the useful comparison.',
@@ -35,6 +37,12 @@ const toc = [
   prev={{ href: '/sizing/what-size-generator-do-i-need/', label: 'Sizing method' }}
   next={{ href: '/cost/installation-cost-breakdown/', label: 'Installation scope' }}
 >
+  <section id="quick-answer">
+    <h2>Quick answer: how much does a whole house generator cost?</h2>
+    <p><strong>Published whole house generator cost estimates vary because the sources do not measure identical project scope.</strong> Generac currently publishes a broad <strong>$8,000–$16,000</strong> range including its generator, system equipment/materials, and installation. HomeGuide, in a guide published December 30, 2025, lists an average <strong>$6,000–$11,000</strong> total for a whole-house generator and installation, and <strong>$9,500–$24,000</strong> for longer distances or systems above 20 kW.</p>
+    <p>Those figures are planning references from different sources—not a HomeGeneratorGuide national average and not a quote for your property. The actual installed price depends on the exact generator and transfer equipment, fuel work, electrical work, site preparation, permits, inspections, local labor, and any service-panel or utility upgrades.</p>
+  </section>
+
   <section id="price-scope">
     <h2>Whole house generator cost: separate equipment from installation</h2>
     <p><strong>Whole house generator cost depends on much more than the generator itself.</strong> A product page may show a starting MSRP, but a completed project can also involve a transfer switch, wiring/conduit, fuel connection or tank, site/pad preparation, permits, inspections, startup, and related labor. Which items are included depends on the model/package, property, jurisdiction, and installer. A headline unit price cannot establish the full installed cost.</p>
@@ -121,6 +129,24 @@ const toc = [
       <li>Are allowances, exclusions, taxes, payment schedule, warranty responsibilities, and change-order terms stated?</li>
     </ul>
     <p>Compare at least two written proposals on the same equipment and scope. Ask each contractor to identify assumptions, exclusions, and any work that depends on a utility or permit authority. For a printable-style side-by-side worksheet, use the dedicated <a href="/cost/standby-generator-quote-checklist/">16-line standby generator quote checklist</a>.</p>
+  </section>
+
+  <section id="cost-faq">
+    <h2>Common whole house generator cost questions</h2>
+    <h3>How much does a whole house generator cost installed?</h3>
+    <p>An installed price can include the generator, transfer switch, electrical work, fuel connection, pad or site preparation, permits, inspections, startup, and related labor. Published ranges above provide context, but a site-specific written proposal is the only useful way to price the actual property.</p>
+
+    <h3>What is the average cost of a whole house generator?</h3>
+    <p>HomeGuide publishes a $6,000–$11,000 average total in its December 2025 guide, while Generac publishes a different $8,000–$16,000 planning range for its generator, system equipment/materials, and installation. Because the sources use different scope and methodology, we do not blend them into a new average.</p>
+
+    <h3>How much does whole house generator installation add?</h3>
+    <p>There is no fixed installation add-on. Fuel-line distance and capacity, electrical routing, transfer equipment, panel work, trenching, pad/site work, permits, and local labor can materially change the project. See the <a href="/cost/installation-cost-breakdown/">whole house generator installation cost breakdown</a> for the separate work categories.</p>
+
+    <h3>Why can two generator quotes be thousands of dollars apart?</h3>
+    <p>Two totals may cover different equipment and work. Compare the exact generator and ATS model numbers, backed-up loads, fuel and electrical scope, permits, site work, commissioning, warranty responsibilities, allowances, and exclusions before treating the lower number as the lower-cost project.</p>
+
+    <h3>How much do 22 kW and 26 kW whole house generators cost?</h3>
+    <p>Equipment prices depend on the exact model and whether the published price includes transfer equipment or another bundle. The current model-price table above keeps each manufacturer-listed starting MSRP attached to its exact configuration; use that rather than assuming one universal price by kilowatt rating.</p>
   </section>
 
   <section id="ownership">

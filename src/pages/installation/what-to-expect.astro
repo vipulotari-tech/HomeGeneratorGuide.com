@@ -2,6 +2,7 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 
 const toc = [
+  { id: 'at-a-glance', label: 'Installation at a glance' },
   { id: 'assessment', label: 'Site and load assessment' },
   { id: 'proposal', label: 'Written proposal' },
   { id: 'approvals', label: 'Permits and approvals' },
@@ -14,7 +15,7 @@ const toc = [
 <ArticleLayout
   title="Whole House Generator Installation: What to Expect"
   description="Learn how whole house generator installation works, from load and site assessment through permits, fuel and electrical work, commissioning and homeowner handoff."
-  category="Installation" categoryHref="/installation/" updated="2026-10-04" verified="2026-10-04" image="/images/install-crew-setting-unit.webp" readingTime="7 min read" toc={toc}
+  category="Installation" categoryHref="/installation/" updated="2026-10-04" verified="2026-10-04" image="/images/install-crew-setting-unit.webp" readingTime="9 min read" toc={toc}
   takeaways={[
     'A site-specific load assessment, exact model/manual review, and written installation scope should come before purchase.',
     'Permits, utilities, clearances, and local approvals vary; do not assume one national schedule or checklist applies everywhere.',
@@ -28,10 +29,32 @@ const toc = [
   ]}
   related={[
     { href: '/installation/generator-pad-and-placement/', title: 'Generator placement and pad', description: 'Model-specific site requirements and local approval.', category: 'Installation' },
-    { href: '/cost/installation-cost-breakdown/', title: 'Installation cost breakdown', description: 'Compare site and trade scope in written proposals.', category: 'Cost' },
+    { href: '/cost/installation-cost-breakdown/', title: 'Whole house generator installation cost', description: 'Compare site and trade scope in written proposals.', category: 'Cost' },
     { href: '/maintenance/generator-maintenance-checklist/', title: 'Maintenance checklist', description: 'Follow the equipment’s required service schedule.', category: 'Maintenance' },
   ]}
 >
+  <section id="at-a-glance">
+    <h2>Whole house generator installation at a glance</h2>
+    <p>The exact sequence and responsible trade vary by jurisdiction, contractor and equipment. Use this table to make sure the written proposal identifies who owns each step rather than assuming it is included.</p>
+    <div class="not-prose mt-5 overflow-x-auto rounded-xl border border-[#d9e0ea]">
+      <table class="mobile-card-table sm:min-w-[820px] w-full border-collapse text-left text-sm">
+        <caption class="sr-only">Typical whole house generator installation stages, responsible parties, and homeowner verification questions</caption>
+        <thead class="bg-[#edf3fb] text-primary"><tr><th scope="col" class="p-3">Stage</th><th scope="col" class="p-3">Typical lead</th><th scope="col" class="p-3">What the homeowner should verify</th></tr></thead>
+        <tbody class="divide-y divide-gray-200 text-gray-800">
+          <tr><th scope="row" class="p-3 font-semibold">Load & site assessment</th><td class="p-3">Qualified installer / electrical professional</td><td class="p-3">Backed-up loads, motor starts, exact model/fuel, panel, fuel capacity, proposed location and site constraints.</td></tr>
+          <tr><th scope="row" class="p-3 font-semibold">Design & written scope</th><td class="p-3">Installer with required licensed trades</td><td class="p-3">Generator and ATS model numbers, load-management plan, electrical/fuel routes, exclusions, allowances and service responsibilities.</td></tr>
+          <tr><th scope="row" class="p-3 font-semibold">Permits & approvals</th><td class="p-3">Contractor and/or homeowner, depending on local rules</td><td class="p-3">Who applies, required inspections, utility coordination, HOA/property approvals and any conditions before work starts.</td></tr>
+          <tr><th scope="row" class="p-3 font-semibold">Pad / site preparation</th><td class="p-3">Installer or site contractor</td><td class="p-3">Manufacturer-approved base, drainage, access, clearances, exhaust direction, service space and restoration scope.</td></tr>
+          <tr><th scope="row" class="p-3 font-semibold">Fuel work</th><td class="p-3">Qualified gas / propane professional as required</td><td class="p-3">Fuel type, capacity, pressure/flow, pipe route and size, meter/regulator or tank work, testing and permit scope.</td></tr>
+          <tr><th scope="row" class="p-3 font-semibold">Electrical & transfer equipment</th><td class="p-3">Qualified electrical professional</td><td class="p-3">ATS/service arrangement, backed-up circuits, load management, wiring/conduit route, panel work and required shutdowns.</td></tr>
+          <tr><th scope="row" class="p-3 font-semibold">Inspection & commissioning</th><td class="p-3">Authority having jurisdiction + installer</td><td class="p-3">Required inspection status, startup/transfer test, alarms, operating limits, final configuration and unresolved punch-list items.</td></tr>
+          <tr><th scope="row" class="p-3 font-semibold">Owner handoff</th><td class="p-3">Installer and homeowner</td><td class="p-3">Manuals, model/serial records, warranty registration, maintenance schedule, service contact and safe operating instructions.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>For the related budget and equipment decisions, see the <a href="/cost/installation-cost-breakdown/">whole house generator installation cost breakdown</a>, <a href="/installation/generator-pad-and-placement/">pad and placement guide</a>, <a href="/installation/automatic-transfer-switch-guide/">automatic transfer switch guide</a>, <a href="/installation/permits-and-local-requirements/">permit and local-requirements guide</a>, and <a href="/planning/quotes/">three-quote comparison tool</a>.</p>
+  </section>
+
   <section id="assessment">
     <h2>1. Whole house generator site and load assessment</h2>
     <p><strong>Whole house generator installation should start with a site-specific load and property assessment.</strong> A qualified local professional should review which loads the homeowner expects to back up, the exact generator/fuel options, the electrical service and panel, available fuel, potential equipment locations, and applicable local requirements. Bring photographs and model numbers for HVAC, pumps, and other large loads. Square footage alone is not enough information for a project design.</p>

@@ -1,7 +1,65 @@
 ---
 import PlanningDiagram from "../diagrams/PlanningDiagram.astro";
+import { APPLIANCE_WATTAGE_SOURCE, appliances } from '../../data/appliance-wattage';
 const loads=['Refrigerator','Freezer','Lighting','Outlets','Gas furnace blower','Central AC','Heat pump (include auxiliary heat separately)','Mini split','Electric water heater','Gas water heater controls','Well pump','Sump pump','Septic pump','Microwave','Electric range','Clothes dryer','Dishwasher','Garage door opener','Pool pump','EV charger','Medical equipment','Home office','Custom load'];
+const reference = (name:string) => {
+  const item=appliances.find((entry)=>entry.name===name);
+  if(!item) throw new Error('Missing appliance reference: '+name);
+  return item;
+};
+const exampleRow=(name:string,quantity=1,essential=true,managed=false,priority=1)=>{
+  const item=reference(name);
+  const running=item.runningWatts.maximum;
+  const starting=item.startingWatts?.maximum ?? running;
+  return {name,running,starting,quantity,priority,essential,managed};
+};
+const examples={
+  essentials:{
+    label:'Essential outage example',
+    rows:[
+      exampleRow('Refrigerator',1,true,false,1),
+      exampleRow('Furnace fan, 1/2 HP',1,true,false,1),
+      exampleRow('Sump pump, 1/3 HP',1,true,false,1),
+      exampleRow('Internet router and modem',1,true,false,2),
+      exampleRow('LED light bulb (each)',8,true,false,2),
+    ],
+  },
+  comfort:{
+    label:'Comfort example',
+    rows:[
+      exampleRow('Refrigerator',1,true,false,1),
+      exampleRow('Furnace fan, 1/2 HP',1,true,false,1),
+      exampleRow('Central air conditioner, 3 ton',1,false,true,2),
+      exampleRow('Well pump, 1/2 HP',1,true,false,1),
+      exampleRow('Internet router and modem',1,true,false,2),
+      exampleRow('LED light bulb (each)',10,true,false,2),
+    ],
+  },
+  broader:{
+    label:'Broader-home example',
+    rows:[
+      exampleRow('Refrigerator',1,true,false,1),
+      exampleRow('Central air conditioner, 3 ton',1,false,true,2),
+      exampleRow('Well pump, 1/2 HP',1,true,false,1),
+      exampleRow('Electric water heater',1,false,true,3),
+      exampleRow('Microwave',1,false,true,3),
+      exampleRow('Washing machine',1,false,true,4),
+      exampleRow('Internet router and modem',1,true,false,2),
+      exampleRow('LED light bulb (each)',12,true,false,2),
+    ],
+  },
+};
 ---
+<section class="planning-notice no-print" aria-labelledby="load-examples-heading">
+  <strong id="load-examples-heading">Want to see how the planner works?</strong>
+  <p>Load an illustrative example, then replace every value with the actual nameplate or manufacturer data for your home. Examples use the upper end of ranges from <a href={APPLIANCE_WATTAGE_SOURCE.url} rel="external noopener noreferrer">{APPLIANCE_WATTAGE_SOURCE.label}</a>; they are not household defaults or generator recommendations.</p>
+  <div class="planner-actions">
+    <button type="button" class="secondary load-example-button" disabled data-load-example="essentials" aria-controls="load-rows">Load essential example</button>
+    <button type="button" class="secondary load-example-button" disabled data-load-example="comfort" aria-controls="load-rows">Load comfort example</button>
+    <button type="button" class="secondary load-example-button" disabled data-load-example="broader" aria-controls="load-rows">Load broader-home example</button>
+  </div>
+</section>
+<script id="load-example-data" type="application/json" set:html={JSON.stringify(examples)}></script>
 <form id="load-form" class="planner-form" data-save="hgg-load-v1">
   <div class="field-grid"><label>Load type<select id="load-type">{loads.map(name=><option>{name}</option>)}</select></label><div class="flex items-end"><button type="button" id="add-load" disabled>Add load</button></div></div>
   <p class="help">Enter equipment/nameplate data or values confirmed by your installer. No invented appliance defaults. “Total starting watts” includes that load’s running watts; for no extra starting demand, enter the same value in both fields. Do not convert motor LRA directly to watts.</p>
