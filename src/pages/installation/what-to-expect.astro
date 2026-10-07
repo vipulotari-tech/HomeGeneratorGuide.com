@@ -1,5 +1,6 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import TopicClusterLinks from '../../components/seo/TopicClusterLinks.astro';
 
 const toc = [
   { id: 'at-a-glance', label: 'Installation at a glance' },
@@ -123,4 +124,9 @@ const toc = [
       <li>Save the final documents and set reminders based on the exact manufacturer maintenance schedule.</li>
     </ul>
   </section>
+  <TopicClusterLinks
+    heading="Connect installation to sizing, cost and equipment"
+    intro="Installation scope only makes sense when the backed-up loads, generator configuration and quote assumptions are explicit."
+    links={[{"href":"/sizing/what-size-generator-do-i-need/","title":"Whole house generator sizing guide","description":"Build the load list before comparing generator capacity.","eyebrow":"Sizing"},{"href":"/planning/sizing/","title":"Whole house generator sizing calculator","description":"Model essential, unmanaged and managed-load planning scenarios.","eyebrow":"Planning tool"},{"href":"/cost/standby-generator-cost/","title":"Whole house generator cost guide","description":"Separate equipment pricing from installation and quote scope.","eyebrow":"Cost"},{"href":"/comparisons/generac-vs-kohler/","title":"Generac vs Kohler whole house generators","description":"Compare exact 26 kW-class configurations and package caveats.","eyebrow":"Comparison"}]}
+  />
 </ArticleLayout>
