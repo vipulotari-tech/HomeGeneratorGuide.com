@@ -65,6 +65,7 @@ for (const [route, html] of pages) {
   assert(html.includes('content="index, follow"'), 'Production page is not index/follow: ' + route);
   assert(!html.includes('content="noindex, nofollow"'), 'Production noindex leaked into: ' + route);
   assert(!canonical.includes(stagingOrigin), 'Staging canonical leaked into: ' + route);
+  assert(!html.includes(stagingOrigin), 'Staging origin leaked into production HTML: ' + route);
 
   for (const match of html.matchAll(/<a\b[^>]*href="([^"]+)"/g)) {
     const href = match[1];
