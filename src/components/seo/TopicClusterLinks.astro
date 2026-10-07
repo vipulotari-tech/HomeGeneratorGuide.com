@@ -1,0 +1,34 @@
+---
+interface LinkItem {
+  href: string;
+  title: string;
+  description: string;
+  eyebrow?: string;
+}
+interface Props {
+  heading?: string;
+  intro?: string;
+  links: LinkItem[];
+}
+const {
+  heading = 'Continue the whole-house generator research path',
+  intro = 'Move between sizing, cost, installation, exact-model research and quote comparison without losing the project context.',
+  links,
+} = Astro.props;
+---
+<section class="not-prose mt-10 rounded-2xl border border-[#d9e0ea] bg-[#f7f9fc] p-5 sm:p-6" aria-labelledby="topic-cluster-heading">
+  <div class="max-w-3xl">
+    <p class="text-xs font-semibold uppercase tracking-[0.12em] text-primary">Related decision path</p>
+    <h2 id="topic-cluster-heading" class="mt-2 text-2xl font-semibold text-primary">{heading}</h2>
+    <p class="mt-2 text-[15px] leading-relaxed text-gray-600">{intro}</p>
+  </div>
+  <div class="mt-5 grid gap-3 sm:grid-cols-2">
+    {links.map((link) => (
+      <a href={link.href} class="group rounded-xl border border-[#d9e0ea] bg-white p-4 transition hover:border-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
+        {link.eyebrow && <span class="text-xs font-semibold uppercase tracking-wider text-gray-500">{link.eyebrow}</span>}
+        <span class="mt-1 block font-semibold text-primary underline decoration-accent/70 underline-offset-4 group-hover:decoration-accent">{link.title} →</span>
+        <span class="mt-1 block text-sm leading-relaxed text-gray-600">{link.description}</span>
+      </a>
+    ))}
+  </div>
+</section>
