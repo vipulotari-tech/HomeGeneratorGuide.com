@@ -46,6 +46,10 @@ try{
  }
  check('Mobile menu open/Escape/focus at six widths and 320px height');
  await page.setViewportSize({width:390,height:844});await go('/planning/sizing/');
+ assert.equal(await page.locator('.load-example-button').count(),3);
+ await page.locator('[data-load-example=essentials]').click();assert.equal(await page.locator('.load-row').count(),5);assert.match(await page.locator('#save-status').innerText(),/illustrative value/);
+ await page.locator('[data-load-example=comfort]').click();assert.equal(await page.locator('.load-row').count(),5);assert.match(await page.locator('.form-error').innerText(),/not empty/);
+ await page.locator('#reset-plan').click();assert.equal(await page.locator('.load-row').count(),0);check('Sizing quick-start examples are sourced, load correctly and never overwrite existing rows');
  await page.locator('#load-type').selectOption({label:'Well pump'});await page.locator('#add-load').click();assert.equal(await page.evaluate(()=>document.activeElement.dataset.key),'name');
  let row=page.locator('.load-row').first();await row.locator('[data-key=running]').fill('1000');await row.locator('[data-key=starting]').fill('3000');await row.locator('[data-key=quantity]').fill('2');
  await page.locator('#load-type').selectOption({label:'Electric water heater'});await page.locator('#add-load').click();row=page.locator('.load-row').last();await row.locator('[data-key=running]').fill('4500');await row.locator('[data-key=starting]').fill('4500');await row.locator('[data-key=essential]').selectOption('false');await row.locator('[data-key=managed]').selectOption('true');await row.locator('[data-key=priority]').fill('2');
