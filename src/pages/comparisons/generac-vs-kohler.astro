@@ -1,5 +1,6 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import TopicClusterLinks from '../../components/seo/TopicClusterLinks.astro';
 import { getModelSpecs } from '../../data/model-specs';
 
 const generac = getModelSpecs('Generac').find((model) => model.modelId === 'G0073270');
@@ -120,4 +121,9 @@ const toc = [
     </ol>
     <p>For background, see our separate <a href="/brands/generac/">Generac model guide</a>, <a href="/brands/kohler/">KOHLER model guide</a>, and <a href="/sizing/what-size-generator-do-i-need/">sizing guide</a>.</p>
   </section>
+  <TopicClusterLinks
+    heading="Turn the brand comparison into a project decision"
+    intro="Use the same load plan, cost scope and installation assumptions when comparing Generac and Kohler proposals."
+    links={[{"href":"/sizing/what-size-generator-do-i-need/","title":"Whole house generator sizing guide","description":"Build the load list before comparing generator capacity.","eyebrow":"Sizing"},{"href":"/planning/sizing/","title":"Whole house generator sizing calculator","description":"Model essential, unmanaged and managed-load planning scenarios.","eyebrow":"Planning tool"},{"href":"/cost/standby-generator-cost/","title":"Whole house generator cost guide","description":"Separate equipment pricing from installation and quote scope.","eyebrow":"Cost"},{"href":"/installation/what-to-expect/","title":"Whole house generator installation guide","description":"Understand assessment, permits, fuel/electrical work and commissioning.","eyebrow":"Installation"}]}
+  />
 </ArticleLayout>
