@@ -13,6 +13,7 @@ const kohlerNormalNoise = kohler.sound?.find((sound) => sound.condition.includes
 const kohlerExerciseNoise = kohler.sound?.find((sound) => sound.condition === 'engine exercise');
 const toc = [
   { id: 'scope', label: 'Models and scope' },
+  { id: 'decision-summary', label: 'Quick decision summary' },
   { id: 'spec-comparison', label: 'Side-by-side specifications' },
   { id: 'sound-comparison', label: 'Sound ratings' },
   { id: 'price-warranty', label: 'Price and warranty' },
@@ -22,7 +23,7 @@ const toc = [
 <ArticleLayout
   title="Generac vs Kohler Whole House Generators: 26 kW Comparison"
   description="Compare Generac vs Kohler whole house generators using exact 26 kW models, including natural-gas and LP output, fuel use, noise, MSRP, ATS scope and warranty."
-  category="Comparisons" categoryHref="/comparisons/" updated="2026-10-05" verified="2026-10-04" image="/images/two-standby-units.webp" readingTime="7 min read" toc={toc}
+  category="Comparisons" categoryHref="/comparisons/" updated="2026-10-05" verified="2026-10-04" image="/images/two-standby-units.webp" readingTime="9 min read" toc={toc}
   takeaways={[
     'Both selected single-phase models are rated 26 kW on LP and 24 kW on natural gas; those fuel-specific figures do not size a home by themselves.',
     'Both manufacturer sheets list 67 dB(A) around 23 feet in normal operation, but their measurement directions differ, so the matching number is not a controlled head-to-head test.',
@@ -48,6 +49,25 @@ const toc = [
     <h2>Generac vs Kohler whole house generator models and scope</h2>
     <p>This <strong>Generac vs Kohler whole house generator</strong> comparison uses the <strong>Generac G0073270 26 kW</strong> and the <strong>single-phase 120/240 V KOHLER 26RCA</strong>. Each is listed at 26 kW on LP and 24 kW on natural gas in its cited configuration. “26 kW” is the LP rating here; an NG installation has a lower nameplate rating.</p>
     <p>The manufacturer documents were checked on October 4, 2026. This is a comparison of published data, not an independent test, reliability study, or recommendation for a specific home. Rehlko’s sheet also lists three-phase configurations within the broader 26RCA family; those are not the single-phase residential configuration used below.</p>
+  </section>
+
+  <section id="decision-summary">
+    <h2>Quick decision summary: Generac vs Kohler</h2>
+    <p><strong>Neither brand wins from the logo alone.</strong> For the exact models reviewed here, both selected single-phase units publish 26 kW on LP and 24 kW on natural gas. The more useful decision is which written proposal gives you the correct fuel-specific capacity, clearly identified transfer equipment, stronger local service path, and fully documented warranty and installation scope.</p>
+    <div class="not-prose mt-5 overflow-x-auto rounded-xl border border-[#d9e0ea]">
+      <table class="mobile-card-table sm:min-w-[760px] w-full border-collapse text-left text-sm">
+        <caption class="sr-only">Quick decision factors for the selected Generac and Kohler whole house generator configurations</caption>
+        <thead class="bg-[#edf3fb] text-primary"><tr><th scope="col" class="p-3">Decision factor</th><th scope="col" class="p-3">Generac G0073270</th><th scope="col" class="p-3">KOHLER 26RCA / 26RCAL context</th></tr></thead>
+        <tbody class="divide-y divide-gray-200 text-gray-800">
+          <tr><th scope="row" class="p-3 font-semibold">Fuel-specific output</th><td class="p-3">26 kW LP · 24 kW natural gas</td><td class="p-3">26 kW LP · 24 kW natural gas for the selected single-phase residential configuration</td></tr>
+          <tr><th scope="row" class="p-3 font-semibold">Transfer equipment</th><td class="p-3">The exact G0073270 product page does not establish an included ATS; bundled family configurations exist and must be identified in the quote.</td><td class="p-3">26RCAL is the ATS-inclusive package with a 200 A service-entrance-rated RXT switch; the 26RCA page has conflicting ATS-inclusion wording.</td></tr>
+          <tr><th scope="row" class="p-3 font-semibold">Published warranty summary</th><td class="p-3">5-year limited warranty on the product page; confirm the current full contract and local service responsibilities.</td><td class="p-3">Current spec sheet states 5 years / 2,000 hours and describes parts, labor and travel; confirm the applicable contract for the quoted unit.</td></tr>
+          <tr><th scope="row" class="p-3 font-semibold">Published sound context</th><td class="p-3">67 dB(A) at 23 ft in normal-load conditions measured from the front; other sides may differ.</td><td class="p-3">67 dB(A) at 23 ft during full-speed diagnostics / normal operation; document notes the listed value is the lowest of eight points.</td></tr>
+          <tr><th scope="row" class="p-3 font-semibold">Local service path</th><td class="p-3">Not established by the model spec sheet. Verify who commissions, services and performs warranty work in your area.</td><td class="p-3">Not established by the model spec sheet. Verify who commissions, services and performs warranty work in your area.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Use the table as a quote-screening framework, not a brand score. If two proposals look similar on price, compare the complete equipment package, fuel design, service responsibility, exclusions, and warranty support before deciding.</p>
   </section>
 
   <section id="spec-comparison">
