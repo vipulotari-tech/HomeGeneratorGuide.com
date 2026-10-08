@@ -36,6 +36,17 @@ try{
   const details=await page.locator('details').all();
   for(const d of details){const before=await d.getAttribute('open');await d.locator('summary').first().click();assert.notEqual(await d.getAttribute('open'),before,'Disclosure '+route);await d.locator('summary').first().click();report.disclosures++;}
   await fits(route+' expanded/collapsed');
+  // Below-the-fold lazy images are not requested until they approach the viewport.
+  // Exercise native loading and require successful decoding before checking dimensions.
+  for(const image of await page.locator('img').all()){
+   await image.scrollIntoViewIfNeeded();
+   await image.evaluate(async img=>{
+    await Promise.race([
+     img.decode(),
+     new Promise((_,reject)=>setTimeout(()=>reject(new Error('Image load timed out: '+img.getAttribute('src'))),15000))
+    ]);
+   });
+  }
   const images=await page.locator('img').evaluateAll(imgs=>imgs.map(i=>({src:i.getAttribute('src'),complete:i.complete,width:i.naturalWidth})));
   for(const image of images)assert(image.complete&&image.width>0,'Image failed '+route+' '+image.src);report.images+=images.length;
  }
