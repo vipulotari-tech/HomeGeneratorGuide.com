@@ -1,0 +1,66 @@
+[
+  {
+    "name": "Florida",
+    "code": "FL",
+    "finding": "DBPR verifies electrical contractors and the business they qualify. Match both names to the proposal.",
+    "source": "https://www2.myfloridalicense.com/electrical-contractors/electrical-contractors-business-information/",
+    "question": "Ask the local permit office which site plan, wind anchorage and flood-elevation documents it needs. Do not assume a neighbor\u2019s approved pad is suitable for your property.",
+    "checkedOn": "2026-10-07"
+  },
+  {
+    "name": "Texas",
+    "code": "TX",
+    "finding": "TDLR states that non-exempt electrical work must be performed by licensed individuals through a licensed electrical contractor.",
+    "source": "https://www.tdlr.texas.gov/electricians/",
+    "question": "Ask your serving utility about meter capacity and coordination. Record electrical and fuel-provider responsibilities separately; generator fuel availability is a property-specific question.",
+    "checkedOn": "2026-10-07"
+  },
+  {
+    "name": "Louisiana",
+    "code": "LA",
+    "finding": "The state contractor search lists currently licensed or registered contractors and offers classification and parish searches. Confirm classification and local requirements rather than inferring permission from a search match.",
+    "source": "https://www.lslbc.louisiana.gov/contractor-search/",
+    "question": "Ask the parish or municipal authority about floodplain review, siting and inspection sequence. Get restoration and trenching exclusions in writing.",
+    "checkedOn": "2026-10-07"
+  },
+  {
+    "name": "North Carolina",
+    "code": "NC",
+    "finding": "NCBEEC provides an active electrical-contractor lookup. Verify the firm and applicable classification.",
+    "source": "https://www.ncbeec.org/home/",
+    "question": "Identify the actual city or county permit authority for the property. Ask which fuel-trade credentials, terrain access and site conditions need separate review.",
+    "checkedOn": "2026-10-07"
+  },
+  {
+    "name": "South Carolina",
+    "code": "SC",
+    "finding": "The Residential Builders Commission describes residential electrical and plumbing licensing categories. Check the category applicable to the proposed work.",
+    "source": "https://www.llr.sc.gov/res/licensure.aspx",
+    "question": "Ask the local authority to identify the correct residential trade approvals, site documentation and final inspections before accepting a single bundled permit allowance.",
+    "checkedOn": "2026-10-07"
+  },
+  {
+    "name": "Georgia",
+    "code": "GA",
+    "finding": "The state board licenses electrical contractors, rather than electricians as a general category. Verify the contractor credential behind the bid.",
+    "source": "https://sos.ga.gov/page/board-electrical-contractors-faq",
+    "question": "Ask which local department handles electrical, fuel and site approvals. Separate tree/access work and utility coordination from generator equipment pricing.",
+    "checkedOn": "2026-10-07"
+  },
+  {
+    "name": "New York",
+    "code": "NY",
+    "finding": "The Department of State directs local licensing, zoning and project code questions to the local building department; its code division does not handle electrician licensing.",
+    "source": "https://dos.ny.gov/division-building-standards-and-codes-frequently-asked-questions",
+    "question": "Identify the city, town or village responsible for the property. Do not extrapolate NYC or one Long Island jurisdiction\u2019s process to the rest of the state.",
+    "checkedOn": "2026-10-07"
+  },
+  {
+    "name": "New Jersey",
+    "code": "NJ",
+    "finding": "Consumer Affairs provides professional and business license verification; electrical contractor businesses use the business search.",
+    "source": "https://www.njconsumeraffairs.gov/Pages/verification.aspx",
+    "question": "Ask the local construction office which subcode applications and fuel-trade credentials apply, and who coordinates utility work and final approval.",
+    "checkedOn": "2026-10-07"
+  }
+]

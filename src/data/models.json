@@ -3205,5 +3205,91 @@
       "fullWarrantyExclusions",
       "certificationsNotIndependentlyVerified"
     ]
+  },
+  {
+    "slug": "champion-201016",
+    "publishedOn": "2026-10-07",
+    "lastSourceCheck": "2026-10-07",
+    "brand": "Champion",
+    "modelId": "201016",
+    "displayName": "Champion 22 kW fleX with 200 A ATS",
+    "configuration": "120/240 V single-phase fleX package; distinct from aXis 201222",
+    "productUrl": "https://www.championpowerequipment.com/product/201016-22-kw-whole-house-home-standby-generator-and-200a-switch-with-flex-technology/",
+    "ratingsKw": {
+      "LP": 22,
+      "Natural gas": 19.8
+    },
+    "electrical": {
+      "voltage": "120/240 V",
+      "frequencyHz": 60,
+      "phase": "Single"
+    },
+    "ats": {
+      "included": true,
+      "amps": 200,
+      "serviceEntranceRated": true
+    },
+    "transferSwitch": "200 A fleX automatic transfer switch included; exact switch model not established in this record.",
+    "enclosure": "Aluminum",
+    "engine": {
+      "maker": "Champion",
+      "displacementCc": 999
+    },
+    "fuelConsumption": [
+      {
+        "fuel": "LP",
+        "loadPercent": 50,
+        "amount": 2.3,
+        "unit": "gal/hr"
+      },
+      {
+        "fuel": "LP",
+        "loadPercent": 100,
+        "amount": 3.8,
+        "unit": "gal/hr"
+      },
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 50,
+        "amount": 207.7,
+        "unit": "ft³/hr"
+      },
+      {
+        "fuel": "Natural gas",
+        "loadPercent": 100,
+        "amount": 292.6,
+        "unit": "ft³/hr"
+      }
+    ],
+    "warranty": "Product page advertises 10-year limited generator warranty; full labor, travel and ATS terms require the applicable contract.",
+    "sources": [
+      {
+        "label": "Champion 201016 official specifications",
+        "url": "https://www.championpowerequipment.com/product/201016-22-kw-whole-house-home-standby-generator-and-200a-switch-with-flex-technology/",
+        "checkedOn": "2026-10-07"
+      }
+    ],
+    "missingFields": [
+      "Exact ATS model",
+      "Warranty labor/travel schedule",
+      "Current MSRP and price date",
+      "Dimensions and weight",
+      "Sound test conditions",
+      "Monitoring subscription terms"
+    ],
+    "evidenceNotes": [
+      "Do not substitute aXis 201222 fuel-consumption values or enclosure details. This is a different fleX package.",
+      "Product listing observed; current/legacy production status not independently established."
+    ],
+    "fieldSources": {
+      "ratingsKw": "https://www.championpowerequipment.com/product/201016-22-kw-whole-house-home-standby-generator-and-200a-switch-with-flex-technology/",
+      "electrical": "https://www.championpowerequipment.com/product/201016-22-kw-whole-house-home-standby-generator-and-200a-switch-with-flex-technology/",
+      "ats": "https://www.championpowerequipment.com/product/201016-22-kw-whole-house-home-standby-generator-and-200a-switch-with-flex-technology/",
+      "transferSwitch": "https://www.championpowerequipment.com/product/201016-22-kw-whole-house-home-standby-generator-and-200a-switch-with-flex-technology/",
+      "enclosure": "https://www.championpowerequipment.com/product/201016-22-kw-whole-house-home-standby-generator-and-200a-switch-with-flex-technology/",
+      "engine": "https://www.championpowerequipment.com/product/201016-22-kw-whole-house-home-standby-generator-and-200a-switch-with-flex-technology/",
+      "fuelConsumption": "https://www.championpowerequipment.com/product/201016-22-kw-whole-house-home-standby-generator-and-200a-switch-with-flex-technology/",
+      "warranty": "https://www.championpowerequipment.com/product/201016-22-kw-whole-house-home-standby-generator-and-200a-switch-with-flex-technology/"
+    }
   }
 ]

@@ -1,0 +1,13 @@
+---
+interface Props {a:string;b:string;fitA:string;fitB:string;skip:string;change:string;gaps:string;}
+const {a,b,fitA,fitB,skip,change,gaps}=Astro.props;
+---
+<section class="planning-notice" aria-label="Conditional buyer verdict">
+<h2>Buyer verdict for these exact configurations</h2>
+<p><strong>Best fit if — {a}:</strong> {fitA}</p>
+<p><strong>Choose the other option if — {b}:</strong> {fitB}</p>
+<details><summary>Skip conditions, confidence and evidence gaps</summary>
+<p><strong>Skip if:</strong> {skip}</p><p><strong>What would change our verdict:</strong> {change}</p>
+<p><strong>Confidence:</strong> Conditional editorial interpretation of published specifications. No comparative reliability verdict or property-specific sizing approval.</p><p><strong>Evidence gaps:</strong> {gaps}</p>
+<p>Next: obtain matching scopes in the <a href="/planning/quotes/">three-quote planner</a> and <a href="/research/local-service/">confirm local service</a>.</p>
+</details></section>

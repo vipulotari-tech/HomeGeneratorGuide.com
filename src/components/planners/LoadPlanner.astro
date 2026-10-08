@@ -1,4 +1,5 @@
 ---
+import GuidedSizing from "./GuidedSizing.astro";
 import PlanningDiagram from "../diagrams/PlanningDiagram.astro";
 import { APPLIANCE_WATTAGE_SOURCE, appliances } from '../../data/appliance-wattage';
 const loads=['Refrigerator','Freezer','Lighting','Outlets','Gas furnace blower','Central AC','Heat pump (include auxiliary heat separately)','Mini split','Electric water heater','Gas water heater controls','Well pump','Sump pump','Septic pump','Microwave','Electric range','Clothes dryer','Dishwasher','Garage door opener','Pool pump','EV charger','Medical equipment','Home office','Custom load'];
@@ -50,6 +51,8 @@ const examples={
   },
 };
 ---
+<GuidedSizing/>
+<h2>Mode B — Advanced / verified inputs</h2>
 <section class="planning-notice no-print" aria-labelledby="load-examples-heading">
   <strong id="load-examples-heading">Want to see how the planner works?</strong>
   <p>Load an illustrative example, then replace every value with the actual nameplate or manufacturer data for your home. Examples use the upper end of ranges from <a href={APPLIANCE_WATTAGE_SOURCE.url} rel="external noopener noreferrer">{APPLIANCE_WATTAGE_SOURCE.label}</a>; they are not household defaults or generator recommendations.</p>
@@ -62,7 +65,7 @@ const examples={
 <script id="load-example-data" type="application/json" set:html={JSON.stringify(examples)}></script>
 <form id="load-form" class="planner-form" data-save="hgg-load-v1">
   <div class="field-grid"><label>Load type<select id="load-type">{loads.map(name=><option>{name}</option>)}</select></label><div class="flex items-end"><button type="button" id="add-load" disabled>Add load</button></div></div>
-  <p class="help">Enter equipment/nameplate data or values confirmed by your installer. No invented appliance defaults. “Total starting watts” includes that load’s running watts; for no extra starting demand, enter the same value in both fields. Do not convert motor LRA directly to watts.</p>
+  <p class="help">Enter equipment/nameplate data or values confirmed by your installer. No invented appliance defaults. “Total starting watts” includes that load’s running watts; for no extra starting demand, enter the same value in both fields. Do not convert motor LRA directly to watts. Volts and amps are documentation fields and do not automatically calculate watts; power factor and motor-start behavior must be verified.</p>
   <div id="load-rows"></div>
   <label class="narrow-field">Illustrative planning margin (%)<input name="margin" type="number" min="0" max="50" step="1" value="20" required/></label>
   <p class="help">The default 20% is an adjustable editorial scenario, not a code requirement or a validated sizing factor.</p>
@@ -79,5 +82,9 @@ const examples={
 <label>Priority (1 first)<input data-key="priority" type="number" min="1" max="10" step="1" value="1" required/></label>
 <label>Backup need<select data-key="essential"><option value="true">Essential</option><option value="false">Optional</option></select></label>
 <label>Management scenario<select data-key="managed"><option value="false">Unmanaged</option><option value="true">Managed — installer must verify</option></select></label>
+<label>Input evidence<select data-key="basis"><option value="unverified">Not yet verified</option><option value="reference">Published planning reference</option><option value="nameplate">Nameplate running watts</option><option value="manufacturer">Manufacturer running and startup data</option></select></label>
+<label>Voltage (documentation only)<input data-key="volts" type="number" min="0" max="1000" step="any"/></label>
+<label>Amps (documentation only)<input data-key="amps" type="number" min="0" max="1000" step="any"/></label>
+<label>Equipment / motor / source notes<input data-key="notes" type="text" maxlength="500"/></label>
 <button type="button" class="secondary remove-load">Remove load</button></div></fieldset></template>
 <section class="prose-hgg"><h2>Read the result as a discussion range</h2><p>Running load sums every selected unit. Starting contribution is the largest extra starting demand of one load row, with all units in that row assumed to start together. Planning load = running load + that contribution. Several different motors starting together can need more. Power factor, starting kVA, voltage dip, phase balance, altitude and temperature are not modeled.</p><p>The essential-only scenario excludes optional loads. The managed scenario keeps all unmanaged loads running and allows only one managed row at a time. Priority labels help document your preferences; they do not simulate an installed controller. A checkbox cannot make an unmanaged appliance controllable.</p><p>Medical equipment may require uninterrupted power and a separate continuity plan. A standby generator has a transfer interruption. Discuss the equipment requirements with its provider. <a href="/sizing/appliance-wattage-chart/">View the separate sourced appliance reference chart</a> or <a href="/installation/automatic-transfer-switch-guide/">understand ATS and load management</a>.</p></section>

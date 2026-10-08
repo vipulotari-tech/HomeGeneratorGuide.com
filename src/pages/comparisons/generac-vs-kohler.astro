@@ -1,4 +1,5 @@
 ---
+import BuyerVerdict from '../../components/brands/BuyerVerdict.astro';
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import TopicClusterLinks from '../../components/seo/TopicClusterLinks.astro';
 import { getModelSpecs } from '../../data/model-specs';
@@ -24,7 +25,7 @@ const toc = [
 <ArticleLayout
   title="Generac vs Kohler Whole House Generators: 26 kW Comparison"
   description="Compare Generac vs Kohler whole house generators using exact 26 kW models, including natural-gas and LP output, fuel use, noise, MSRP, ATS scope and warranty."
-  category="Comparisons" categoryHref="/comparisons/" updated="2026-10-05" verified="2026-10-04" image="/images/two-standby-units.webp" readingTime="9 min read" toc={toc}
+  category="Comparisons" categoryHref="/comparisons/" updated="2026-10-07" verified="2026-10-04" image="/images/two-standby-units.webp" readingTime="9 min read" toc={toc}
   takeaways={[
     'Both selected single-phase models are rated 26 kW on LP and 24 kW on natural gas; those fuel-specific figures do not size a home by themselves.',
     'Both manufacturer sheets list 67 dB(A) around 23 feet in normal operation, but their measurement directions differ, so the matching number is not a controlled head-to-head test.',
@@ -46,6 +47,7 @@ const toc = [
   ]}
   showMethod={true}
 >
+  <BuyerVerdict a="Generac G0073270" b="KOHLER 26RCA" fitA="Choose the G0073270 proposal when the installer identifies the separate ATS, confirms your fuel-specific load plan, and provides the stronger written local service and installation scope." fitB="Choose the 26RCA proposal when its documented warranty terms better fit your ownership priorities and the installer resolves the conflicting ATS-inclusion wording in writing. Confirm whether the quote actually specifies the separate 26RCAL package." skip="Neither proposal is ready if transfer scope or the provider responsible for warranty work is unresolved." change="A different exact SKU, an applicable warranty contract, resolved package evidence or a materially different local service commitment." gaps="No controlled head-to-head noise test, independent failure-rate dataset or verified local price comparison."/>
   <section id="scope">
     <h2>Generac vs Kohler whole house generator models and scope</h2>
     <p>This <strong>Generac vs Kohler whole house generator</strong> comparison uses the <strong>Generac G0073270 26 kW</strong> and the <strong>single-phase 120/240 V KOHLER 26RCA</strong>. Each is listed at 26 kW on LP and 24 kW on natural gas in its cited configuration. “26 kW” is the LP rating here; an NG installation has a lower nameplate rating.</p>
