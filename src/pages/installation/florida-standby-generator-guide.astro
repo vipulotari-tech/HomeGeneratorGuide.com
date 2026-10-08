@@ -1,0 +1,76 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+const toc=[
+ {id:'verdict',label:'Florida homeowner verdict'},
+ {id:'before-quotes',label:'Before requesting quotes'},
+ {id:'permit-license',label:'Permits and licensing'},
+ {id:'wind-flood',label:'Wind and flood siting'},
+ {id:'utility',label:'Utility coordination'},
+ {id:'quote',label:'Florida quote checklist'},
+ {id:'unknowns',label:'What is not established'},
+];
+const sources=[
+ {label:'Florida DBPR — Electrical Contractors',href:'https://www.myfloridalicense.com/intentions2.asp?boardid=08&chBoard=true',type:'State licensing authority',verified:'2026-10-08'},
+ {label:'Florida DBPR — What Requires a License',href:'https://ula.myfloridalicense.com/what-requires-a-license/',type:'State licensing authority',verified:'2026-10-08'},
+ {label:'Florida Building Commission — Florida Building Code',href:'https://www.floridabuilding.org/c/default.aspx?menu=Building_Codes',type:'State code authority',verified:'2026-10-08'},
+ {label:'Florida Division of Emergency Management — Floods',href:'https://www.floridadisaster.org/weather/hazards/floods/',type:'State emergency management',verified:'2026-10-08'},
+ {label:'Florida Division of Emergency Management — Elevation Certificates',href:'https://www.floridadisaster.org/elevation-certificates/',type:'State emergency management',verified:'2026-10-08'},
+ {label:'Florida Department of Health — Carbon Monoxide',href:'https://www.floridahealth.gov/community-environmental-public-health/environmental-public-health/air-quality/carbon-monoxide/',type:'State health authority',verified:'2026-10-08'},
+ {label:'Florida Power & Light — Standby construction requests',href:'https://partner.fpl.com/construction/project-types.html',type:'Utility example',verified:'2026-10-08'},
+];
+---
+<ArticleLayout
+ title="Whole House Generator Installation in Florida: Permit, Flood, Wind & Quote Guide"
+ description="Florida standby-generator planning guide covering electrical licensing, local permits, flood and wind siting, utility coordination, quote scope and what homeowners must verify locally."
+ category="Installation" categoryHref="/installation/" published="2026-10-08" updated="2026-10-08" readingTime="10 min read" toc={toc} sources={sources} showMethod={true}
+ takeaways={[
+  'Florida is not one statewide permit checklist: identify the city or county AHJ for the property before treating any setback, permit fee or inspection sequence as final.',
+  'Verify the electrical contractor and the business behind the proposal. DBPR distinguishes certified statewide licenses from registered licenses limited to specified local jurisdictions.',
+  'Flood exposure, wind anchorage, fuel capacity, utility work and exact transfer-equipment scope can change the installation. Put each responsibility in writing before comparing totals.'
+ ]}>
+<section id="verdict">
+<h2>Florida homeowner verdict</h2>
+<div class="planning-notice">
+<p><strong>Best fit for a standby generator:</strong> a home where automatic outage coverage is valuable and a qualified local team can document the backed-up loads, fuel supply, transfer equipment, site conditions, permits and service path.</p>
+<p><strong>Pause the purchase if:</strong> the proposal assumes a pad location without checking flood/wind constraints, leaves gas or propane capacity unresolved, omits the exact generator or ATS model, or cannot identify the contractor responsible for electrical work and commissioning.</p>
+<p><strong>Choose a different backup strategy if:</strong> your actual outage needs, evacuation plan, fuel constraints, property conditions or budget make a permanently installed standby system a poor fit. A generator is not a reason to ignore an evacuation order.</p>
+<details><summary>Confidence and evidence gaps</summary><p><strong>Confidence:</strong> High for the state-level licensing, code-version and flood-preparedness starting points cited here; property-specific requirements remain local.</p><p><strong>What would change this verdict:</strong> the serving utility, AHJ, floodplain official, manufacturer instructions or qualified installer may identify site-specific constraints that materially change the project.</p><p><strong>Not established:</strong> a statewide installed-price average, one statewide generator setback, a universal permit fee, property-specific fuel capacity, or a brand reliability ranking.</p></details>
+</div>
+</section>
+<section id="before-quotes"><h2>Before requesting Florida generator quotes</h2>
+<ol>
+<li><strong>Write the outage goal.</strong> Decide whether you need essentials, broad household coverage or a managed-load plan. Do not start with a kW number.</li>
+<li><strong>Build the load worksheet.</strong> Record motor-starting loads and large electric heating, water-heating, EV, pool and well equipment separately.</li>
+<li><strong>Identify the property authority.</strong> Ask the city or county which AHJ will issue permits and inspections for this address.</li>
+<li><strong>Check flood and evacuation context.</strong> Florida emergency-management guidance tells residents to review local flood risk and official evacuation information. These are different questions from generator sizing.</li>
+<li><strong>Document fuel feasibility.</strong> Require written confirmation of natural-gas pressure/capacity or propane storage/refill assumptions for the exact generator and expected load.</li>
+</ol>
+<p>Use the <a href="/planning/sizing/">guided sizing worksheet</a> to prepare the load discussion; it is a planning tool, not an electrical design approval.</p></section>
+<section id="permit-license"><h2>Florida permits and electrical licensing</h2>
+<p>Florida DBPR says compensated electrical work requires a licensee. Its electrical-contractor portal distinguishes <strong>certified</strong> licenses, which are statewide, from <strong>registered</strong> licenses, which are limited to the local jurisdictions where the contractor holds the required competency authorization.</p>
+<p><strong>Homeowner action:</strong> verify the person/business named on the proposal, then ask the actual AHJ which electrical, building, mechanical or fuel-gas permits and inspections apply. Do not treat a state license lookup as proof that the proposed site plan is approved.</p>
+<p>The Florida Building Commission currently identifies the <strong>8th Edition (2023) Florida Building Code</strong> as effective December 31, 2023 while the 2026 update process is underway. Ask the AHJ which code edition, supplements and local amendments govern the permit when you apply.</p></section>
+<section id="wind-flood"><h2>Wind, flood and generator siting in Florida</h2>
+<p>Florida Division of Emergency Management describes flooding as a statewide hazard and directs homeowners to review the official flood map and property elevation information. Its floodplain program works with local communities that administer local flood-damage-reduction regulations.</p>
+<p><strong>Do not copy a neighbor's installation.</strong> Ask the AHJ or floodplain official whether the proposed equipment elevation, pad, anchorage and location need additional documentation for the parcel. FDEM also provides a public route for checking available elevation certificates, while warning that local government may hold records not present in the state system.</p>
+<p>Wind design and manufacturer anchoring requirements are also installation questions. Require the proposal to state who supplies the pad/stand, anchoring hardware and any engineering or site documentation the AHJ requires.</p>
+<p><strong>Safety boundary:</strong> Florida Department of Health says portable generators should be used outdoors more than 20 feet from the home, doors and windows because of carbon-monoxide risk. That portable-generator safety rule is not a substitute for the manufacturer clearances and code review for a permanently installed standby generator.</p></section>
+<section id="utility"><h2>Utility coordination can change the scope</h2>
+<p>Utility procedures are service-territory specific. For example, Florida Power & Light's construction guidance says some standby-related meter-enclosure work requires an electrical inspection from the governing AHJ before the utility appointment and may require coordination by an FPL project manager.</p>
+<p>That FPL process should <strong>not</strong> be generalized to every Florida utility. Ask the serving electric utility and gas utility exactly what work, inspections, meter changes, shutdowns or approvals they require for your property.</p></section>
+<section id="quote"><h2>Florida quote checklist: make these lines explicit</h2>
+<table class="mobile-card-table"><caption>Florida standby-generator quote scope to document</caption><thead><tr><th>Scope</th><th>What the proposal should identify</th></tr></thead><tbody>
+<tr><th>Generator</th><td>Exact model/SKU, fuel-specific rating and included accessories</td></tr>
+<tr><th>Transfer equipment</th><td>Exact ATS model, amp rating, service-entrance status and load-management hardware</td></tr>
+<tr><th>Electrical</th><td>Panel/service work, wiring, disconnects, inspections and utility coordination</td></tr>
+<tr><th>Fuel</th><td>NG pipe/meter assumptions or propane tank/regulator scope, pressure/capacity verification and provider responsibility</td></tr>
+<tr><th>Site</th><td>Pad or stand, anchoring, trenching, restoration, drainage and access</td></tr>
+<tr><th>Flood/wind</th><td>Who verifies required elevation, floodplain review, wind anchorage and any engineering documents</td></tr>
+<tr><th>Permits</th><td>Which permits are included, allowance vs fixed amount, and who closes inspections</td></tr>
+<tr><th>Startup/service</th><td>Commissioning, warranty registration, first maintenance and the local warranty-service provider</td></tr>
+</tbody></table>
+<p>Put competing proposals into the <a href="/planning/quotes/">three-quote planner</a> so missing scope stays visible instead of being silently treated as included.</p></section>
+<section id="unknowns"><h2>What this Florida guide intentionally does not claim</h2>
+<ul><li>No statewide “typical installed cost” is presented as original HGG data; the verified homeowner quote registry currently has no publishable Florida cohort.</li><li>No statewide setback or permit fee is asserted. Those must be checked for the property and current jurisdiction.</li><li>No generator brand is labeled most reliable. HGG does not have a comparative failure-rate dataset.</li><li>No licensed professional has reviewed this article yet. See the <a href="/review-process/">professional review status and methodology</a>.</li></ul>
+<p><strong>Next decision:</strong> <a href="/comparisons/generac-vs-kohler/">compare exact Generac and KOHLER configurations</a>, <a href="/research/local-service/">verify local service</a>, then use the <a href="/cost/standby-generator-quote-checklist/">full quote checklist</a>.</p></section>
+</ArticleLayout>
