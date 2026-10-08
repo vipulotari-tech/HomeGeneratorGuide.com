@@ -36,15 +36,32 @@ try{
   const details=await page.locator('details').all();
   for(const d of details){const before=await d.getAttribute('open');await d.locator('summary').first().click();assert.notEqual(await d.getAttribute('open'),before,'Disclosure '+route);await d.locator('summary').first().click();report.disclosures++;}
   await fits(route+' expanded/collapsed');
+  // Below-the-fold lazy images are not requested until they approach the viewport.
+  // Exercise native loading and require successful decoding before checking dimensions.
+  for(const image of await page.locator('img').all()){
+   await image.scrollIntoViewIfNeeded();
+   await image.evaluate(async img=>{
+    await Promise.race([
+     img.decode(),
+     new Promise((_,reject)=>setTimeout(()=>reject(new Error('Image load timed out: '+img.getAttribute('src'))),15000))
+    ]);
+   });
+  }
   const images=await page.locator('img').evaluateAll(imgs=>imgs.map(i=>({src:i.getAttribute('src'),complete:i.complete,width:i.naturalWidth})));
   for(const image of images)assert(image.complete&&image.width>0,'Image failed '+route+' '+image.src);report.images+=images.length;
  }
  for(const width of [320,360,390,430,768,1024]){
-  await page.setViewportSize({width,height:320});await go('/');await page.locator('#menu-btn').click();assert.equal(await page.locator('#menu-btn').getAttribute('aria-expanded'),'true');
+  await page.setViewportSize({width,height:320});await go('/');
+  if(width>=1024){
+   assert.equal(await page.locator('#menu-btn').isVisible(),false,'Desktop menu toggle stays hidden');
+   assert.equal(await page.locator('nav[aria-label="Primary"]').isVisible(),true,'Desktop navigation is visible');
+   await fits('Desktop navigation');continue;
+  }
+  await page.locator('#menu-btn').click();assert.equal(await page.locator('#menu-btn').getAttribute('aria-expanded'),'true');
   assert(await page.locator('#mobile-nav').evaluate(e=>e.getBoundingClientRect().bottom<=innerHeight+1));
   await page.keyboard.press('Escape');assert.equal(await page.locator('#menu-btn').getAttribute('aria-expanded'),'false');assert.equal(await page.evaluate(()=>document.activeElement.id),'menu-btn');
  }
- check('Mobile menu open/Escape/focus at six widths and 320px height');
+ check('Mobile menu open/Escape/focus at five widths and 320px height; desktop navigation at 1024px');
  await page.setViewportSize({width:390,height:844});await go('/planning/sizing/');
  assert.equal(await page.locator('.load-example-button').count(),3);
  await page.locator('[data-load-example=essentials]').click();assert.equal(await page.locator('.load-row').count(),5);assert.match(await page.locator('#save-status').innerText(),/illustrative value/);
