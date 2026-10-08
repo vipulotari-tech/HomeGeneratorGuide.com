@@ -1,10 +1,11 @@
 # User-supplied editorial imagery integration
 
-The user supplied ten JPEG images for HomeGeneratorGuide. A previously prepared ZIP
-contains ten optimized WebP files (approximately 2 MB combined). The source was
-checked against its SHA-256 digest before integration. The build downloads this
-immutable archive, verifies the entire ZIP and each WebP, then copies **only the
-listed assets** into the static site. It **does not run code inside the ZIP**.
+The user supplied ten JPEG images for HomeGeneratorGuide. Ten optimized WebP files
+(approximately 2 MB combined) are now **committed to this Git repository** under
+`public/images/user-editorial/`. During every build the local files are verified
+against their pinned SHA-256 values. There are **no build-time image downloads**. The
+rural-context photo is retained in the repo for reference but is not published as
+an actual generator installation.
 
 Image placements are intentionally visual-only. Existing title/meta description,
 canonical, sitemap, robots, JSON-LD, headings, source dates, article prose and URLs
@@ -15,14 +16,11 @@ The rural utility enclosure image remains in the approved asset inventory but is
 not inserted in an article: visually it is not reliable evidence of a standby
 generator or propane installation.
 
-## Important availability note
+## Offline build integrity
 
-The ZIP is referenced by an external, pinned URL because this GitHub integration
-cannot transmit binary blobs directly. The build FAILS CLOSED if the source is
-unavailable or does not match the digest. For permanent reproducibility the ten
-WebP files should eventually be committed directly to
-`public/images/user-editorial/` in a follow-up authorized binary-upload workflow.
-A local developer can extract the previously supplied ZIP into the same folder;
-the synchronizer detects and verifies all ten files and then works offline.
+All ten binary files are vendored and verified against their SHA-256 digests by
+`tools/sync-user-editorial-images.mjs` on **staging and production** builds.
+Missing, modified or excessively large images fail the build. The previous
+external cloud archive is not used and can expire without breaking deployments.
 
-The staging build continues to output noindex/no sitemap as before.
+The staging build still emits `noindex, nofollow` and does not publish a sitemap.

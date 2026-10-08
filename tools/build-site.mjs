@@ -8,8 +8,7 @@ if (!['production', 'staging'].includes(environment)) {
   process.exit(2);
 }
 
-// Image pack is pinned by SHA-256 and each extracted WebP has its own digest.
-// Fetch only the published user-supplied images; do not run scripts from the ZIP.
+// Verify user-supplied WebP bytes checked into Git, without external network calls.
 const imageSync = spawnSync(process.execPath, ['tools/sync-user-editorial-images.mjs'], { stdio: 'inherit' });
 if (imageSync.status !== 0) process.exit(imageSync.status ?? 1);
 
