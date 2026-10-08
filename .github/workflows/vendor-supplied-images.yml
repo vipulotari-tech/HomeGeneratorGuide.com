@@ -1,0 +1,33 @@
+name: Vendor supplied editorial WebP assets
+on:
+  push:
+    branches:
+      - upgrade/hgg-quality-95-20261008
+    paths:
+      - .github/workflows/vendor-supplied-images.yml
+permissions:
+  contents: write
+jobs:
+  vendor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Fetch all ten SHA-256 verified user images
+        run: |
+          node tools/sync-user-editorial-images.mjs
+          test "$(find public/images/user-editorial -name '*.webp' -type f | wc -l)" -eq 10
+          git add public/images/user-editorial
+          test "$(git diff --cached --name-only | wc -l)" -eq 10
+      - name: Save verified image files in feature branch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Vendor ten checked, user-supplied editorial WebP files'
+          git push origin HEAD:upgrade/hgg-quality-95-20261008
