@@ -51,11 +51,17 @@ try{
   for(const image of images)assert(image.complete&&image.width>0,'Image failed '+route+' '+image.src);report.images+=images.length;
  }
  for(const width of [320,360,390,430,768,1024]){
-  await page.setViewportSize({width,height:320});await go('/');await page.locator('#menu-btn').click();assert.equal(await page.locator('#menu-btn').getAttribute('aria-expanded'),'true');
+  await page.setViewportSize({width,height:320});await go('/');
+  if(width>=1024){
+   assert.equal(await page.locator('#menu-btn').isVisible(),false,'Desktop menu toggle stays hidden');
+   assert.equal(await page.locator('nav[aria-label="Primary"]').isVisible(),true,'Desktop navigation is visible');
+   await fits('Desktop navigation');continue;
+  }
+  await page.locator('#menu-btn').click();assert.equal(await page.locator('#menu-btn').getAttribute('aria-expanded'),'true');
   assert(await page.locator('#mobile-nav').evaluate(e=>e.getBoundingClientRect().bottom<=innerHeight+1));
   await page.keyboard.press('Escape');assert.equal(await page.locator('#menu-btn').getAttribute('aria-expanded'),'false');assert.equal(await page.evaluate(()=>document.activeElement.id),'menu-btn');
  }
- check('Mobile menu open/Escape/focus at six widths and 320px height');
+ check('Mobile menu open/Escape/focus at five widths and 320px height; desktop navigation at 1024px');
  await page.setViewportSize({width:390,height:844});await go('/planning/sizing/');
  assert.equal(await page.locator('.load-example-button').count(),3);
  await page.locator('[data-load-example=essentials]').click();assert.equal(await page.locator('.load-row').count(),5);assert.match(await page.locator('#save-status').innerText(),/illustrative value/);
