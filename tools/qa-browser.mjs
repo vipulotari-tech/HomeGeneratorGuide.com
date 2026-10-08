@@ -105,7 +105,7 @@ try {
     // Internal downloadable files are static resources rather than HTML routes.
     // Validate their physical presence AND that the preview server serves them;
     // do not skip link QA for missing or malformed assets.
-    const relativeFile = decodeURIComponent(pathname).replace(/^\\/+/, '');
+    const relativeFile = decodeURIComponent(pathname).slice(1);
     assert(relativeFile && !relativeFile.split('/').includes('..'), `Unsafe internal asset href: ${href}`);
     const assetPath = 'dist/' + relativeFile;
     assert(fs.existsSync(assetPath) && fs.statSync(assetPath).isFile(), `internal link points to a non-generated route or file: ${href}`);
