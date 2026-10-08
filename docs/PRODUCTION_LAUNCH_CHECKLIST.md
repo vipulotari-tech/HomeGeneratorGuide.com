@@ -13,8 +13,8 @@
   Lighthouse lab scores do not equal field user experience; no made-up CWV.
 - Verify Google Search Console property, upload sitemap and review URL
   inspections. Evaluate query-page mapping and CTR after data accumulates.
-- Vendor the ten pinned WebP assets directly into Git (technical debt). Build
-  currently verifies each asset digest but requires an external ZIP URL on
-  clean CI/CD machines. Do not claim fully self-contained builds until solved.
+- All ten pinned WebP assets are vendored under `public/images/user-editorial/`
+  and verified offline against SHA-256 digests during the build. Maintain
+  provenance and retest asset budgets whenever replacing images.
 - Review the external-authority and research data limits: no independent
   technical reviews or original homeowner sample exists yet.

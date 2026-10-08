@@ -29,6 +29,8 @@ jobs:
         run: npm run test:planning && npm run test:research && npm run validate:evidence
       - name: Build staging
         run: npm run build:staging
+      - name: Vendored image integrity and payload budgets
+        run: npm run qa:assets
       - name: Staging indexing assertions
         run: node tools/qa-indexing.mjs staging
       - name: Install browser
@@ -50,6 +52,10 @@ jobs:
         env:
           BASE_URL: http://127.0.0.1:8321
         run: npm run qa:planners
+      - name: Local laboratory performance and layout stability
+        env:
+          BASE_URL: http://127.0.0.1:8321
+        run: npm run qa:performance
       - name: Guided workflow and research QA
         env:
           BASE_URL: http://127.0.0.1:8321
