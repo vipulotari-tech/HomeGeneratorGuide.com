@@ -1,10 +1,12 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import BrandDecision from '../../components/brands/BrandDecision.astro';
 import ModelSpecs from '../../components/brands/ModelSpecs.astro';
 import { getModelSpecs } from '../../data/model-specs';
 
 const models = getModelSpecs('Generac');
 const toc = [
+  { id: 'buyer-verdict', label: 'Should you shortlist it?' },
   { id: 'what-the-page-covers', label: 'What this guide covers' },
   { id: 'verified-models', label: 'Verified model data' },
   { id: 'fuel-and-sizing', label: 'Fuel ratings and sizing' },
@@ -36,6 +38,7 @@ const toc = [
   ]}
   showMethod={true}
 >
+  <BrandDecision brand="Generac" />
   <section id="what-the-page-covers">
     <h2>Generac whole house generator models covered</h2>
     <p><strong>Generac whole house generators are sold in multiple residential sizes, configurations and transfer-switch bundles.</strong> Generac sells multiple standby-generator families and bundles. This page does not treat a brand-wide “typical” rating, warranty, noise level, or price as if it applied to every unit. It compares two exact residential model numbers—the 22 kW G0072600 and 26 kW G0073270—using the manufacturer product pages and their linked specification sheets.</p>

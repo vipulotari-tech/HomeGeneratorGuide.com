@@ -101,10 +101,16 @@ try {
   for (const href of internalLinks) {
     const pathname = new URL(href, baseUrl).pathname;
     const normalized = pathname.endsWith('/') ? pathname : pathname + '/';
-    assert(
-      knownRoutes.has(pathname) || knownRoutes.has(normalized),
-      `internal link points to a non-generated route: ${href}`,
-    );
+    if (knownRoutes.has(pathname) || knownRoutes.has(normalized)) continue;
+    // Internal downloadable files are static resources rather than HTML routes.
+    // Validate their physical presence AND that the preview server serves them;
+    // do not skip link QA for missing or malformed assets.
+    const relativeFile = decodeURIComponent(pathname).slice(1);
+    assert(relativeFile && !relativeFile.split('/').includes('..'), `Unsafe internal asset href: ${href}`);
+    const assetPath = 'dist/' + relativeFile;
+    assert(fs.existsSync(assetPath) && fs.statSync(assetPath).isFile(), `internal link points to a non-generated route or file: ${href}`);
+    const assetResponse = await page.request.get(baseUrl + pathname);
+    assert(assetResponse.ok(), `internal asset is not served by preview: ${href} (${assetResponse.status()})`);
   }
 
   await page.setViewportSize({ width: 1280, height: 900 });

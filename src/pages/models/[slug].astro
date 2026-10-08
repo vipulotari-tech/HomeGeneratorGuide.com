@@ -86,6 +86,7 @@ const decisionNotes = modelDecisionNotes[model.modelId];
 const checkDate=model.lastSourceCheck ?? model.sources[0].checkedOn;
 
 const toc = [
+  { id: 'purchase-checks', label: 'Is this model a fit?' },
   { id: 'snapshot', label: 'Model snapshot' },
   ...(decisionNotes ? [{ id: 'decision-notes', label: 'What stands out' }] : []),
   { id: 'fuel', label: 'Fuel-use data' },
@@ -112,6 +113,15 @@ const toc = [
   ]}
 >
   {model.evidenceNotes?.length && <section class="source-panel" aria-label="Evidence conflicts and scope notes"><h2>Evidence notes before you compare</h2><ul>{model.evidenceNotes.map(note=><li>{note}</li>)}</ul></section>}
+  <section id="purchase-checks" class="not-prose my-8 rounded-xl border border-[#c7d7cd] bg-[#f3f8f4] p-5 sm:p-6" aria-labelledby="purchase-check-heading">
+    <p class="text-xs font-bold uppercase tracking-wider text-[#38614d]">THE BUYER DECISION</p>
+    <h2 id="purchase-check-heading" class="mt-2 text-xl font-bold text-primary">Could {model.brand} {model.modelId} work for your home?</h2>
+    <p class="mt-3 text-sm leading-relaxed text-gray-800"><strong>Documented output:</strong> {ratingSummary}. The final choice depends on actual loads, starting demand and your chosen fuel.</p>
+    <p class="mt-3 text-sm leading-relaxed text-gray-800"><strong>Transfer equipment:</strong> {model.ats?.included === true ? 'An ATS is listed for this exact configuration; verify the switch model, current rating and service-entry suitability in writing.' : 'Do not assume the price includes a compatible ATS. Require the exact switch and accessories on the proposal.'}</p>
+    <p class="mt-3 text-sm leading-relaxed text-gray-800"><strong>Do not buy yet if:</strong> the local installer cannot verify load fit, fuel delivery, commissioning, current warranty and service coverage for the exact model.</p>
+    <div class="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm font-semibold"><a class="text-primary underline decoration-accent underline-offset-4" href="/planning/quotes/">Compare complete quotes →</a><a class="text-primary underline decoration-accent underline-offset-4" href="/research/local-service/">Find manufacturer service resources →</a></div>
+    <p class="mt-3 text-xs text-gray-600">Not a recommendation to purchase or a tested field-reliability assessment. Missing manufacturer data remains unknown.</p>
+  </section>
   <section id="snapshot">
     <h2>Exact-model snapshot</h2>
     <p><strong>{model.brand} {model.modelId}</strong> — {model.displayName}. {model.configuration}</p>

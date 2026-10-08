@@ -1,10 +1,12 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import BrandDecision from '../../components/brands/BrandDecision.astro';
 import ModelSpecs from '../../components/brands/ModelSpecs.astro';
 import { getModelSpecs } from '../../data/model-specs';
 
 const models = getModelSpecs('Champion');
 const toc = [
+  { id: 'buyer-verdict', label: 'Should you shortlist it?' },
   { id: 'scope', label: 'What this guide covers' },
   { id: 'current-models', label: 'Current Champion model families' },
   { id: 'exact-model-data', label: 'Exact-model data' },
@@ -49,6 +51,7 @@ const toc = [
     { href: '/cost/standby-generator-quote-checklist/', title: '16-line quote checklist', description: 'Normalize equipment and installation scope before comparing total price.', category: 'Cost' },
   ]}
 >
+  <BrandDecision brand="Champion" />
   <section id="scope">
     <h2>What this Champion guide covers</h2>
     <p>This is an independent buyer-research page about Champion residential standby systems. It is not a Champion sales page, dealer page, field-reliability study, or hands-on product test. We use Champion’s own current product pages, manuals, warranty material, and installation guidance for Champion-specific facts, then separate those facts from buyer questions and unknowns.</p>

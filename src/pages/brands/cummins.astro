@@ -1,10 +1,12 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import BrandDecision from '../../components/brands/BrandDecision.astro';
 import ModelSpecs from '../../components/brands/ModelSpecs.astro';
 import { getModelSpecs } from '../../data/model-specs';
 
 const models = getModelSpecs('Cummins');
 const toc = [
+  { id: 'buyer-verdict', label: 'Should you shortlist it?' },
   { id: 'series-scope', label: 'What the series page supports' },
   { id: 'accessible-model-data', label: 'Accessible model-page ratings' },
   { id: 'spec-sheet-limitation', label: 'Fuel-specific spec limitation' },
@@ -34,6 +36,7 @@ const toc = [
     { href: '/comparisons/standby-vs-portable/', title: 'Standby vs. portable', description: 'Compare operation, safety, and installation scope.', category: 'Comparisons' },
   ]}
 >
+  <BrandDecision brand="Cummins" />
   <section id="series-scope">
     <h2>What the series page supports</h2>
     <p>Cummins describes QuietConnect as a home standby-generator series with sound-insulated, weather-protective enclosures, remote diagnostics, and load-management options. Its series page makes a “65 dB or lower” noise claim, but does not specify one test condition for every model. We do not present a current series-wide starting price because the accessible current manufacturer page does not establish one.</p>
