@@ -22,6 +22,7 @@
     "validate:evidence": "node tools/validate-evidence.mjs",
     "qa:planners": "node tools/qa-planners.mjs",
     "qa:seo": "node tools/qa-seo.mjs",
+    "qa:keywords": "node tools/qa-keyword-clusters.mjs",
     "test:research": "node --experimental-strip-types tools/test-research.mjs"
   },
   "dependencies": {

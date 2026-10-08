@@ -66,6 +66,8 @@ jobs:
         run: node tools/qa-adsense-readiness.mjs
       - name: Full production HTML audit
         run: npm run qa:seo
+      - name: Ahrefs topic-cluster and internal-link QA
+        run: npm run qa:keywords
       - name: Production SEO assertions
         run: |
           test -f dist/robots.txt
