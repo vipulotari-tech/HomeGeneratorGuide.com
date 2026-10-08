@@ -1,10 +1,12 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import BrandDecision from '../../components/brands/BrandDecision.astro';
 import ModelSpecs from '../../components/brands/ModelSpecs.astro';
 import { getModelSpecs } from '../../data/model-specs';
 
 const models = getModelSpecs('KOHLER / Rehlko');
 const toc = [
+  { id: 'buyer-verdict', label: 'Should you shortlist it?' },
   { id: 'model-identity', label: 'Model and configuration' },
   { id: 'model-facts', label: 'Verified 26RCA data' },
   { id: 'noise-and-exercise', label: 'Sound and exercise modes' },
@@ -35,6 +37,7 @@ const toc = [
   ]}
   showMethod={true}
 >
+  <BrandDecision brand="Kohler" />
   <section id="model-identity">
     <h2>Kohler whole house generator models and configurations</h2>
     <p><strong>Kohler whole house generators span multiple residential sizes and configurations, so the exact model number matters.</strong> The product page presents the KOHLER 26RCA as a 26 kW residential generator. The official G4-315 sheet describes a multi-fuel 26RCA(L) family and separately lists single- and three-phase ratings. The figures below cover the <strong>single-phase 120/240 V configuration</strong> sold on the residential 26RCA product page. A three-phase model in the same document is not interchangeable with it.</p>

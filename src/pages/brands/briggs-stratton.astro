@@ -1,10 +1,12 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import BrandDecision from '../../components/brands/BrandDecision.astro';
 import ModelSpecs from '../../components/brands/ModelSpecs.astro';
 import { getModelSpecs } from '../../data/model-specs';
 
 const models = getModelSpecs('Briggs & Stratton');
 const toc = [
+  { id: 'buyer-verdict', label: 'Should you shortlist it?' },
   { id: 'scope', label: 'Scope of this guide' },
   { id: 'model-data', label: 'PowerProtect 040786 data' },
   { id: 'warranty', label: 'Warranty and claims' },
@@ -30,6 +32,7 @@ const toc = [
     { href: '/cost/standby-generator-cost/', title: 'Standby-generator cost guide', description: 'Compare manufacturer equipment prices with installed estimates.', category: 'Cost' },
   ]}
 >
+  <BrandDecision brand="Briggs & Stratton" />
   <section id="scope">
     <h2>Scope of this guide</h2>
     <p>This page addresses exact Briggs & Stratton standby model <strong>040786</strong>, called PowerProtect 22 kW on the current product page. It does not summarize every PowerProtect capacity or imply independent reliability testing. Source data was checked October 4, 2026.</p>

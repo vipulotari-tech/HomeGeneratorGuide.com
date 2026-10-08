@@ -1,0 +1,48 @@
+---
+interface Props { brand: 'Generac' | 'Kohler' | 'Champion' | 'Briggs & Stratton' | 'Cummins'; }
+const { brand } = Astro.props;
+const guidance = {
+  Generac: {
+    fit: 'Keep an exact Generac model on your shortlist when its verified natural-gas or LP output covers your professionally reviewed loads and an authorized local provider can commission and service the exact system.',
+    pause: 'Pause if an installer quotes only “22 kW” or “26 kW” without the actual model number, selected-fuel rating, ATS package and local warranty-service arrangement.',
+    next: '/comparisons/generac-vs-kohler/',
+    label: 'Compare Generac and Kohler models',
+  },
+  Kohler: {
+    fit: 'Keep the KOHLER 26RCA family under consideration if your load plan fits the selected fuel rating and your installer can identify whether the quote is generator-only 26RCA or ATS-inclusive 26RCAL.',
+    pause: 'Pause if the proposal treats 26RCA and 26RCAL as identical packages, or a local commissioning and warranty provider has not been confirmed.',
+    next: '/comparisons/generac-vs-kohler/',
+    label: 'Compare Kohler against Generac',
+  },
+  Champion: {
+    fit: 'Shortlist the exact Champion package when its published LP/NG output and included fleX or aXis transfer equipment match the electrical design and local service scope.',
+    pause: 'Pause if a quoted 22/26 kW family name hides the switch amperage, controller type, optional modules or who performs warranty work.',
+    next: '/comparisons/five-brand-standby-generator-comparison/',
+    label: 'Compare Champion with the other brands',
+  },
+  'Briggs & Stratton': {
+    fit: 'Shortlist the documented PowerProtect configuration if its verified fuel-specific capacity meets your load analysis and the installer supplies a matching ATS and service plan.',
+    pause: 'Pause if the proposal assumes an ATS is included without a documented package, or converts incompatible fuel-consumption units without stating the assumptions.',
+    next: '/comparisons/five-brand-standby-generator-comparison/',
+    label: 'See the five-brand comparison',
+  },
+  Cummins: {
+    fit: 'Consider a Cummins quote when an authorized local provider supplies the exact model manual, fuel-specific output, switch configuration and warranty obligations in writing.',
+    pause: 'Pause when missing RS20A fields are treated as confirmed facts, or the only evidence is a different model or a generic family brochure.',
+    next: '/models/',
+    label: 'Review exact-model documentation',
+  },
+} as const;
+const choice = guidance[brand];
+---
+<section id="buyer-verdict" class="not-prose my-8 rounded-xl border border-[#c7d7cd] bg-[#f3f8f4] px-5 py-5 sm:px-6" aria-labelledby="brand-verdict-heading">
+  <p class="text-xs font-bold uppercase tracking-[.12em] text-[#38614d]">BEFORE YOU REQUEST A QUOTE</p>
+  <h2 id="brand-verdict-heading" class="mt-2 text-xl font-bold leading-tight text-primary">Should you shortlist {brand}?</h2>
+  <p class="mt-3 text-sm leading-relaxed text-gray-800"><strong>Consider it when:</strong> {choice.fit}</p>
+  <p class="mt-3 text-sm leading-relaxed text-gray-800"><strong>Hold off when:</strong> {choice.pause}</p>
+  <p class="mt-3 text-xs leading-relaxed text-gray-700">Conditional editorial interpretation of the cited manufacturer sources. Not a tested reliability ranking, individual-home sizing approval or claim of local dealer availability.</p>
+  <div class="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold">
+    <a class="text-primary underline decoration-accent underline-offset-4" href={choice.next}>{choice.label} →</a>
+    <a class="text-primary underline decoration-accent underline-offset-4" href="/research/local-service/">Check official service locators →</a>
+  </div>
+</section>

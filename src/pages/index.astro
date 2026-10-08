@@ -39,6 +39,36 @@ const trust=[
   </div>
 </section>
 
+
+<section class="editorial-container py-9 sm:py-14" aria-labelledby="quick-start-heading">
+  <div class="mb-6">
+    <p class="eyebrow">THE 60-SECOND START</p>
+    <h2 id="quick-start-heading" class="mt-2 text-2xl font-bold text-primary sm:text-3xl">Three questions before you choose a generator</h2>
+    <p class="mt-2 max-w-3xl text-gray-700">You do not need to understand every generator specification today. Start with the answer you need; move into exact-model evidence only when you are ready.</p>
+  </div>
+  <div class="grid gap-4 md:grid-cols-3">
+    <article class="rounded-xl border border-[#cbd5cf] bg-[#f4f8f5] p-5 sm:p-6">
+      <p class="text-xs font-bold uppercase tracking-wider text-[#315647]">01 · SIZE</p>
+      <h3 class="mt-2 text-xl font-bold leading-snug text-primary">What size do I need?</h3>
+      <p class="mt-2 text-sm leading-relaxed text-gray-700">Plan the circuits that matter and record real equipment loads. Square footage alone is not a sizing method.</p>
+      <a class="mt-4 inline-flex min-h-[44px] items-center font-bold text-primary underline decoration-accent underline-offset-4" href="/sizing/what-size-generator-do-i-need/">Start with sizing →</a>
+    </article>
+    <article class="rounded-xl border border-[#cbd5cf] bg-[#f4f8f5] p-5 sm:p-6">
+      <p class="text-xs font-bold uppercase tracking-wider text-[#315647]">02 · COST</p>
+      <h3 class="mt-2 text-xl font-bold leading-snug text-primary">How much will it cost?</h3>
+      <p class="mt-2 text-sm leading-relaxed text-gray-700">Understand equipment versus installed price, site work, gas and electrical scope before comparing bids.</p>
+      <a class="mt-4 inline-flex min-h-[44px] items-center font-bold text-primary underline decoration-accent underline-offset-4" href="/cost/standby-generator-cost/">See installed cost factors →</a>
+    </article>
+    <article class="rounded-xl border border-[#cbd5cf] bg-[#f4f8f5] p-5 sm:p-6">
+      <p class="text-xs font-bold uppercase tracking-wider text-[#315647]">03 · CHOOSE</p>
+      <h3 class="mt-2 text-xl font-bold leading-snug text-primary">Which model fits my home?</h3>
+      <p class="mt-2 text-sm leading-relaxed text-gray-700">Compare exact fuel ratings, switch packages, warranty documents and who will service it locally.</p>
+      <a class="mt-4 inline-flex min-h-[44px] items-center font-bold text-primary underline decoration-accent underline-offset-4" href="/comparisons/five-brand-standby-generator-comparison/">Compare five brands →</a>
+    </article>
+  </div>
+  <p class="mt-4 text-sm text-gray-600">Already have competing bids? <a class="font-semibold text-primary underline decoration-accent underline-offset-4" href="/planning/quotes/">Compare three installer quotes side by side →</a></p>
+</section>
+
 <section class="editorial-container py-10 sm:py-14" aria-labelledby="research-topics-heading">
   <p class="eyebrow">START WITH YOUR QUESTION</p>
   <h2 id="research-topics-heading" class="mt-2 text-2xl font-bold text-primary sm:text-3xl">Whole house generator research, in decision order</h2>
@@ -56,7 +86,7 @@ const trust=[
 <section class="premium-trust-strip" aria-labelledby="trust-title"><div class="editorial-container"><div class="premium-section-heading"><p class="eyebrow">WHY TRUST THE RESEARCH</p><h2 id="trust-title">Evidence first. Confidence second.</h2><p>We distinguish manufacturer facts, planning assumptions, editorial interpretation and unresolved evidence.</p></div><div class="premium-trust-grid">{trust.map(([title,body])=><article><h3>{title}</h3><p>{body}</p></article>)}</div><p class="premium-method-note"><strong>{MODEL_SPECS.length} exact configurations</strong> currently tracked, including package variants. Research-based guidance; no hands-on generator testing. Technical professional review remains pending. <a href="/review-process/">Read the review process →</a></p></div></section>
 
 <section class="editorial-container premium-journey" aria-labelledby="journey-title">
-  <div class="premium-section-heading"><p class="eyebrow">THE HOMEOWNER DECISION PATH</p><h2 id="journey-title">Ten decisions. One defensible purchase plan.</h2><p>Do not start with a logo or a headline kW rating. Move through the project in the order that reduces expensive surprises.</p></div>
+  <div class="premium-section-heading"><p class="eyebrow">THE HOMEOWNER DECISION PATH</p><h2 id="journey-title">Ready to go deeper? The full 10-step checklist.</h2><p>Do not start with a logo or a headline kW rating. Move through the project in the order that reduces expensive surprises.</p></div>
   <ol class="premium-journey-list">{steps.map(([n,title,description,href])=><li><a href={href}><span class="premium-step-number" aria-hidden="true">{n}</span><span><strong>{title}</strong><small>{description}</small></span><span class="premium-step-arrow" aria-hidden="true">→</span></a></li>)}</ol>
 </section>
 

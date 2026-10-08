@@ -68,6 +68,8 @@ jobs:
         run: npm run qa:seo
       - name: Ahrefs topic-cluster and internal-link QA
         run: npm run qa:keywords
+      - name: Homeowner decision, professional review and pilot QA
+        run: npm run qa:buyer-journey
       - name: Production SEO assertions
         run: |
           test -f dist/robots.txt
