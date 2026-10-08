@@ -1,4 +1,5 @@
 ---
+import type { ComponentProps } from 'astro/types';
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 const toc=[
  {id:'verdict',label:'Florida homeowner verdict'},
@@ -9,14 +10,14 @@ const toc=[
  {id:'quote',label:'Florida quote checklist'},
  {id:'unknowns',label:'What is not established'},
 ];
-const sources=[
- {label:'Florida DBPR — Electrical Contractors',href:'https://www.myfloridalicense.com/intentions2.asp?boardid=08&chBoard=true',type:'State licensing authority',verified:'2026-10-08'},
- {label:'Florida DBPR — What Requires a License',href:'https://ula.myfloridalicense.com/what-requires-a-license/',type:'State licensing authority',verified:'2026-10-08'},
- {label:'Florida Building Commission — Florida Building Code',href:'https://www.floridabuilding.org/c/default.aspx?menu=Building_Codes',type:'State code authority',verified:'2026-10-08'},
- {label:'Florida Division of Emergency Management — Floods',href:'https://www.floridadisaster.org/weather/hazards/floods/',type:'State emergency management',verified:'2026-10-08'},
- {label:'Florida Division of Emergency Management — Elevation Certificates',href:'https://www.floridadisaster.org/elevation-certificates/',type:'State emergency management',verified:'2026-10-08'},
- {label:'Florida Department of Health — Carbon Monoxide',href:'https://www.floridahealth.gov/community-environmental-public-health/environmental-public-health/air-quality/carbon-monoxide/',type:'State health authority',verified:'2026-10-08'},
- {label:'Florida Power & Light — Standby construction requests',href:'https://partner.fpl.com/construction/project-types.html',type:'Utility example',verified:'2026-10-08'},
+const sources: NonNullable<ComponentProps<typeof ArticleLayout>['sources']> = [
+ {label:'Florida DBPR — Electrical Contractors',href:'https://www.myfloridalicense.com/intentions2.asp?boardid=08&chBoard=true',type:'Government',verified:'2026-10-08'},
+ {label:'Florida DBPR — What Requires a License',href:'https://ula.myfloridalicense.com/what-requires-a-license/',type:'Government',verified:'2026-10-08'},
+ {label:'Florida Building Commission — Florida Building Code',href:'https://www.floridabuilding.org/c/default.aspx?menu=Building_Codes',type:'Government',verified:'2026-10-08'},
+ {label:'Florida Division of Emergency Management — Floods',href:'https://www.floridadisaster.org/weather/hazards/floods/',type:'Government',verified:'2026-10-08'},
+ {label:'Florida Division of Emergency Management — Elevation Certificates',href:'https://www.floridadisaster.org/elevation-certificates/',type:'Government',verified:'2026-10-08'},
+ {label:'Florida Department of Health — Carbon Monoxide',href:'https://www.floridahealth.gov/community-environmental-public-health/environmental-public-health/air-quality/carbon-monoxide/',type:'Government',verified:'2026-10-08'},
+ {label:'Florida Power & Light — Standby construction requests',href:'https://partner.fpl.com/construction/project-types.html',type:'Industry',verified:'2026-10-08'},
 ];
 ---
 <ArticleLayout
