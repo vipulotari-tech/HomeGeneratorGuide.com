@@ -138,11 +138,78 @@ const trust=[
   </div>
 </section>
 
-<section class="premium-trust-strip" aria-labelledby="trust-title"><div class="editorial-container"><div class="premium-section-heading"><p class="eyebrow">WHY TRUST THE RESEARCH</p><h2 id="trust-title">Evidence first. Confidence second.</h2><p>We distinguish manufacturer facts, planning assumptions, editorial interpretation and unresolved evidence.</p></div><div class="premium-trust-grid">{trust.map(([title,body])=><article><h3>{title}</h3><p>{body}</p></article>)}</div><p class="premium-method-note"><strong>{MODEL_SPECS.length} exact configurations</strong> currently tracked, including package variants. Research-based guidance; no hands-on generator testing. Technical professional review remains pending. <a href="/review-process/">Read the review process →</a></p></div></section>
+<section class="premium-trust-strip" aria-labelledby="trust-title">
+  <div class="editorial-container">
+    <div class="premium-trust-layout">
+      <figure class="premium-trust-visual">
+        <img src="/images/user-editorial/generator-pad-site-assessment.webp" width="1536" height="1024" loading="lazy" decoding="async" alt="Illustrative generator-site assessment beside an American house with plans and prepared pad" />
+        <figcaption class="premium-trust-photo-credit">A SYSTEM-WIDE VIEW <span aria-hidden="true">/</span> INSTALLATION CONTEXT</figcaption>
+        <div class="premium-trust-visual-caption">
+          <span>01 / RESEARCH PRINCIPLES</span>
+          <strong>Look beyond the brochure.</strong>
+          <small>Real decisions require traceable information and clear limits.</small>
+        </div>
+      </figure>
+      <div class="premium-trust-content">
+        <div class="premium-section-heading">
+          <p class="eyebrow">WHY TRUST THE RESEARCH</p>
+          <h2 id="trust-title">Evidence first.<br /><em>Confidence second.</em></h2>
+          <p>We separate manufacturer facts, homeowner planning assumptions, editorial interpretation and evidence we still need to verify.</p>
+        </div>
+        <div class="premium-trust-grid">
+          {trust.map(([title,body], index) => (
+            <article class="premium-trust-card">
+              <span class="premium-trust-index" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+              <h3>{title}</h3>
+              <p>{body}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+    <div class="premium-method-note">
+      <div class="premium-method-stat"><span>{MODEL_SPECS.length}</span><div><strong>Tracked configurations</strong><small>Including documented package variants</small></div></div>
+      <p>Research-based guidance only. No hands-on generator testing claimed; technical professional review remains pending.</p>
+      <a href="/review-process/">How we verify information <span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+</section>
 
 <section class="editorial-container premium-journey" aria-labelledby="journey-title">
-  <div class="premium-section-heading"><p class="eyebrow">THE HOMEOWNER DECISION PATH</p><h2 id="journey-title">Ready to go deeper? The full 10-step checklist.</h2><p>Do not start with a logo or a headline kW rating. Move through the project in the order that reduces expensive surprises.</p></div>
-  <ol class="premium-journey-list">{steps.map(([n,title,description,href])=><li><a href={href}><span class="premium-step-number" aria-hidden="true">{n}</span><span><strong>{title}</strong><small>{description}</small></span><span class="premium-step-arrow" aria-hidden="true">→</span></a></li>)}</ol>
+  <div class="premium-journey-intro">
+    <div class="premium-journey-copy">
+      <p class="eyebrow">THE HOMEOWNER DECISION PATH</p>
+      <h2 id="journey-title">Ten clear steps.<br /><em>One confident decision.</em></h2>
+      <p>A premium standby-power system starts with the right questions, not a brand logo or headline kW number. Follow the whole project, from your home's loads to the installer who will support it.</p>
+      <a class="premium-journey-start" href="#journey-steps">Explore the 10-step plan <span aria-hidden="true">↓</span></a>
+    </div>
+    <figure class="premium-journey-visual">
+      <img src="/images/user-editorial/selective-power-during-outage.webp" alt="Illustrative home with essential circuits illuminated during an outage" width="1536" height="1024" loading="lazy" decoding="async" />
+      <figcaption>ILLUSTRATIVE BACKUP SCENARIO <span aria-hidden="true">↗</span></figcaption>
+    </figure>
+  </div>
+  <div id="journey-steps" class="premium-journey-board">
+    <div class="premium-journey-board-heading">
+      <span>THE FIELD GUIDE <span aria-hidden="true">/</span> ALL TEN DECISIONS</span>
+      <span>05 PHASES · 10 STEPS</span>
+    </div>
+    <ol class="premium-journey-list">
+      {steps.map(([n,title,description,href], index) => (
+        <li class="premium-journey-item">
+          <a href={href}>
+            <span class="premium-step-number" aria-hidden="true">{n}</span>
+            <span class="premium-step-main">
+              <span class="premium-step-phase">{['DEFINE YOUR NEEDS','DEFINE YOUR NEEDS','PLAN THE SYSTEM','PLAN THE SYSTEM','COMPARE THE OPTIONS','COMPARE THE OPTIONS','PREPARE THE PROJECT','PREPARE THE PROJECT','VERIFY THE PROPOSAL','VERIFY THE PROPOSAL'][index]}</span>
+              <strong>{title}</strong>
+              <small>{description}</small>
+            </span>
+            <span class="premium-step-arrow" aria-hidden="true">↗</span>
+          </a>
+        </li>
+      ))}
+    </ol>
+    <p class="premium-journey-footnote">A planning sequence, not a substitute for a qualified site assessment, electrical design or permit review.</p>
+  </div>
 </section>
 
 <section class="premium-system-band" aria-labelledby="power-architecture-title"><div class="editorial-container premium-system-grid"><div><p class="eyebrow">THE POWER ARCHITECTURE / EXPLAINED</p><h2 id="power-architecture-title">Not just a generator. <em>An entire home power system.</em></h2><p>Two power sources, one transfer decision, and carefully planned circuits. Explore how the equipment works together—and why a successful backup-power project starts with the whole system.</p><ul class="premium-link-list"><li><a href="/installation/automatic-transfer-switch-guide/">How the automatic transfer switch works →</a></li><li><a href="/sizing/generator-load-management/">How load management changes sizing →</a></li><li><a href="/sizing/whole-home-vs-essential-loads/">Whole-home vs essential-load backup →</a></li></ul></div><div class="premium-diagram-shell"><SystemDiagram/></div></div></section>
