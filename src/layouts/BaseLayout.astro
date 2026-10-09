@@ -35,6 +35,7 @@ const absoluteOgImage = ogImage.startsWith('http') ? ogImage : `${site}${ogImage
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="light" />
   <meta name="theme-color" content="#203b34" />
+  <noscript><style>@media (max-width: 1023px) { #menu-btn { display: none !important; } #mobile-nav { display: block !important; } }</style></noscript>
   <title>{fullTitle}</title>
   <meta name="description" content={description} />
   {indexable && <link rel="canonical" href={url} />}
