@@ -480,9 +480,10 @@ h1,h2,h3,legend{overflow-wrap:anywhere} main{min-width:0} .prose-hgg a{overflow-
 .article-takeaways{padding:clamp(1.3rem,2.9vw,2.3rem);background:#f5f4ed;border:1px solid #e0e3d8;border-top:3px solid #42644f;border-radius:4px}
 .article-takeaways h2{margin:.65rem 0 1rem;font:500 clamp(1.85rem,3vw,2.3rem)/1.16 Georgia,'Times New Roman',serif;letter-spacing:-.02em;color:#213d33}
 .article-takeaways ul{margin:0;list-style:none;padding:0;counter-reset:takeaway}
-.article-takeaways li{counter-increment:takeaway;display:grid;grid-template-columns:30px 1fr;gap:1.1rem;border-top:1px solid #dce0d7;padding:.9rem 0;line-height:1.62;font-size:1rem;color:#334a40}
+.article-takeaways li{counter-increment:takeaway;display:grid;grid-template-columns:30px minmax(0,1fr);align-items:start;column-gap:1.1rem;row-gap:0;border-top:1px solid #dce0d7;padding:.9rem 0;line-height:1.62;font-size:1rem;color:#334a40}
 .article-takeaways li:first-child{border-top:0}
-.article-takeaways li:before{content:counter(takeaway,decimal-leading-zero);font-size:.76rem;font-weight:750;color:#6b7956}
+.article-takeaway-copy{grid-column:2;display:block;min-width:0;max-width:100%;overflow-wrap:break-word;word-break:normal;hyphens:none}
+.article-takeaways li:before{content:counter(takeaway,decimal-leading-zero);grid-column:1;font-size:.76rem;font-weight:750;color:#6b7956;line-height:2.14}
 .article-evidence{margin-top:2rem;padding:1.6rem 1.6rem 1.4rem;border:1px solid #dbe4dd;border-radius:4px;background:#fff}
 .article-evidence-topline{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:.75rem}
 .article-evidence h2{margin:.42rem 0 0;font:500 1.65rem/1.2 Georgia,'Times New Roman',serif;color:#1e3f33}
@@ -564,7 +565,7 @@ h1,h2,h3,legend{overflow-wrap:anywhere} main{min-width:0} .prose-hgg a{overflow-
  .article-editorial-grid{padding-top:1.2rem;padding-bottom:3rem}
  .article-takeaways{padding:1.25rem 1.05rem}
  .article-takeaways h2{font-size:1.9rem}
- .article-takeaways li{font-size:.96rem;gap:.55rem;grid-template-columns:23px}
+ .article-takeaways li{font-size:.96rem;column-gap:.75rem;grid-template-columns:26px minmax(0,1fr)}
  .article-evidence{margin-top:1.25rem;padding:1.25rem 1rem}
  .article-evidence h2{font-size:1.5rem}
  .article-evidence-links{grid-template-columns:minmax(0,1fr)}
