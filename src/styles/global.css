@@ -511,7 +511,7 @@ h1,h2,h3,legend{overflow-wrap:anywhere} main{min-width:0} .prose-hgg a{overflow-
 .article-toc li+li{border-top:1px solid #e2e8e2}
 .article-toc li a{display:grid;grid-template-columns:24px minmax(0,1fr);align-items:center;gap:.6rem;min-height:46px;padding:.45rem .1rem;color:#304b40;font-size:.84rem;line-height:1.45;text-decoration:none}
 .article-toc li a:hover,.article-toc li a:focus-visible{color:#0c3526;text-decoration:underline;text-underline-offset:3px}
-.article-toc-number{font-size:.67rem;font-weight:750;color:#84948a}
+.article-toc-number{font-size:.72rem;font-weight:750;color:#52665a}
 .article-toc-return{display:inline-flex;align-items:center;min-height:44px;margin-top:.7rem;font-size:.8rem;font-weight:750;color:#285242;text-decoration:underline;text-underline-offset:4px}
 .article-prose{max-width:none;margin-top:2.4rem;color:#26342d;font-size:1.075rem;line-height:1.86}
 .article-prose>section{scroll-margin-top:7.5rem;margin-top:2.75rem}
@@ -535,9 +535,9 @@ h1,h2,h3,legend{overflow-wrap:anywhere} main{min-width:0} .prose-hgg a{overflow-
 .article-source-library .source-panel{border-left:3px solid #9f7e4b;border-radius:2px;padding:1rem 1.2rem}
 .article-source-library ol{list-style:none;margin:0;padding:0}
 .article-source-library li{display:grid;grid-template-columns:32px minmax(0,1fr);gap:.9rem;padding:1rem 0;border-bottom:1px solid #e0e6e0}
-.article-source-number{font-size:.75rem;color:#6d806f;font-weight:750}
+.article-source-number{font-size:.75rem;color:#4e6354;font-weight:750}
 .article-source-library li a{font-size:1rem;color:#214b39;font-weight:650;line-height:1.52;overflow-wrap:anywhere;text-underline-offset:4px}
-.article-source-library li p{font-size:.75rem;line-height:1.6;color:#68786d;margin:.3rem 0 0}
+.article-source-library li p{font-size:.75rem;line-height:1.6;color:#53685a;margin:.3rem 0 0}
 .article-source-note{font-size:.83rem;color:#526459;margin-top:1rem;line-height:1.7}
 .article-author-note{margin-top:2.5rem}
 .article-prev-next{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.9rem;margin-top:1.6rem}
