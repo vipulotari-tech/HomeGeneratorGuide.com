@@ -135,10 +135,13 @@ const faqs = [
     <h2>Information to gather before a professional assessment</h2>
     <p>This is a blank static planning sheet. It records information; it does not add watts or produce a size.</p>
     <div class="not-prose mt-4">
-      <!-- Mobile: stacked worksheet cards avoid a sideways-scroll table. -->
-      <div class="space-y-3 sm:hidden print:hidden">
+      <!-- A compact disclosure keeps a seven-row blank worksheet from overwhelming phone/tablet reading. -->
+      <details class="static-load-mobile">
+        <summary class="static-load-summary">View the blank 7-load worksheet</summary>
+        <p class="static-load-note">Use these fields as a reference while taking notes. This is not a form and does not store information. You can print the page for a paper worksheet.</p>
+        <div class="static-load-card-list">
         {Array.from({ length: 7 }).map((_, index) => (
-          <div class="overflow-hidden rounded-xl border border-[#d9e0ea] bg-white">
+          <div class="static-load-card overflow-hidden rounded-xl border border-[#d9e0ea] bg-white">
             <div class="bg-[#edf3fb] px-4 py-2.5 text-sm font-semibold text-primary">Load {index + 1}</div>
             <dl class="divide-y divide-gray-200 text-sm">
               <div class="grid grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] gap-3 px-4 py-3">
@@ -164,10 +167,11 @@ const faqs = [
             </dl>
           </div>
         ))}
-      </div>
+        </div>
+      </details>
 
-      <!-- Tablet/desktop/print: full worksheet table. -->
-      <div class="hidden overflow-x-auto rounded-xl border border-[#d9e0ea] sm:block print:block">
+      <!-- Only wide desktop/print shows the full five-column blank table. -->
+      <div class="static-load-table overflow-x-auto rounded-xl border border-[#d9e0ea]">
         <table class="min-w-[700px] w-full border-collapse text-left text-sm">
           <caption class="sr-only">Blank, static generator-load planning worksheet</caption>
           <thead class="bg-[#edf3fb] text-primary"><tr><th scope="col" class="p-3">Appliance / circuit</th><th scope="col" class="p-3">Manufacturer / model</th><th scope="col" class="p-3">Nameplate or manual data</th><th scope="col" class="p-3">Must run together?</th><th scope="col" class="p-3">Can it be shed/delayed?</th></tr></thead>
