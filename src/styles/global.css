@@ -865,7 +865,7 @@ h1,h2,h3,legend{overflow-wrap:anywhere} main{min-width:0} .prose-hgg a{overflow-
 .premium-trust-grid .premium-trust-index{
   display:block;
   margin-bottom:1.05rem;
-  color:#a07d4b;
+  color:#735123;
   font-size:.74rem;
   font-weight:850;
   letter-spacing:.14em;
@@ -1042,12 +1042,12 @@ h1,h2,h3,legend{overflow-wrap:anywhere} main{min-width:0} .prose-hgg a{overflow-
   display:block;
   font:500 2.1rem/1 Georgia,'Times New Roman',serif;
   letter-spacing:-.04em;
-  color:#b39463;
+  color:#735123;
 }
 .premium-step-main{display:block;min-width:0}
 .premium-step-phase{
   display:block;
-  color:#748575;
+  color:#4c624f;
   margin:0 0 .45rem;
   font-size:.64rem;
   font-weight:800;
