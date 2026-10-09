@@ -80,6 +80,39 @@ try {
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, `library overflow at ${path}`);
   }
 
+
+  // A narrow grid-template-columns override previously forced each takeaway into a ~23px column.
+  // Check actual text geometry so a page can never pass while showing one-word lines.
+  for (const width of [320, 360, 390, 430, 768, 1280]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto(`${baseUrl}/installation/generator-pad-and-placement/`, { waitUntil: 'networkidle' });
+    const takeaways = await page.locator('.article-takeaways li').evaluateAll((items) =>
+      items.map((item) => {
+        const copy = item.querySelector('.article-takeaway-copy');
+        const row = item.getBoundingClientRect();
+        const text = copy?.getBoundingClientRect();
+        return {
+          hasCopy: Boolean(copy),
+          rowWidth: row.width,
+          copyWidth: text?.width ?? 0,
+          gridColumns: getComputedStyle(item).gridTemplateColumns.split(' ').filter(Boolean).length,
+          copyLeft: text?.left ?? 0,
+          rowLeft: row.left,
+        };
+      })
+    );
+    assert(takeaways.length >= 2, `placement article missing takeaways at ${width}px`);
+    for (const t of takeaways) {
+      assert(t.hasCopy, `missing semantic takeaway text wrapper at ${width}px`);
+      assert.equal(t.gridColumns, 2, `takeaway must use two grid columns at ${width}px`);
+      assert(t.copyWidth >= t.rowWidth * .70,
+        `takeaway text shrunk into a narrow column at ${width}px: ${JSON.stringify(t)}`);
+      assert(t.copyLeft > t.rowLeft + 18, `takeaway number and copy not side-by-side at ${width}px`);
+    }
+    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth),
+      false, `takeaway overflow at ${width}px`);
+  }
+
   // Full generated-route crawl: every static index page gets a mobile load,
   // one-H1, and horizontal-overflow check. This catches new content routes,
   // not just the hand-picked smoke cases above.

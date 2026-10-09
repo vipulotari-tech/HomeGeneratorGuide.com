@@ -112,7 +112,7 @@ if (image) articleSchema.image = `${site}${image}`;
             <div class="article-section-eyebrow"><span aria-hidden="true" class="article-eyebrow-mark">✦</span> The essential briefing</div>
             <h2 id="article-takeaways-heading">Key takeaways</h2>
             <ul>
-              {takeaways.map((takeaway) => <li>{takeaway}</li>)}
+              {takeaways.map((takeaway) => <li><span class="article-takeaway-copy">{takeaway}</span></li>)}
             </ul>
           </section>
         )}
