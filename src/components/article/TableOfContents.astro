@@ -3,11 +3,17 @@ interface Item { id: string; label: string; }
 interface Props { items: Item[]; }
 const { items } = Astro.props;
 ---
-<nav aria-label="Table of contents" class="rounded-xl border border-[#e5e7eb] bg-surface p-5">
-  <p class="text-sm font-semibold uppercase tracking-wider text-primary">On this page</p>
-  <ol class="mt-3 space-y-1 text-sm">
-    {items.map((t) => (
-      <li><a href={`#${t.id}`} class="block min-h-[44px] rounded px-2 py-1.5 leading-snug text-slate-600 underline-offset-4 hover:bg-white hover:text-primary hover:underline">{t.label}</a></li>
+<nav aria-label="Table of contents" class="article-toc">
+  <p class="article-toc-heading">In this guide</p>
+  <ol>
+    {items.map((item, index) => (
+      <li>
+        <a href={`#${item.id}`}>
+          <span aria-hidden="true" class="article-toc-number">{String(index + 1).padStart(2, '0')}</span>
+          <span>{item.label}</span>
+        </a>
+      </li>
     ))}
   </ol>
+  <a class="article-toc-return" href="#article-content">Start reading <span aria-hidden="true">↗</span></a>
 </nav>

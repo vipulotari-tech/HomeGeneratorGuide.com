@@ -80,70 +80,117 @@ if (image) articleSchema.image = `${site}${image}`;
 // HowTo has strict eligibility — plain Article + Breadcrumb only.
 ---
 <BaseLayout title={title} description={description} ogImage={image} ogType="article" schema={[articleSchema, breadcrumbSchema]}>
-  <div class="mx-auto max-w-6xl px-4 py-8 sm:px-6">
-    <Breadcrumbs items={[{ href: '/', label: 'Home' }, { href: categoryHref, label: category }, { label: title }]} />
-    <div class="mt-6 grid gap-10 lg:grid-cols-[minmax(0,1fr)_300px]">
-      <article class="min-w-0">
-        <p class="text-xs font-semibold uppercase tracking-[0.12em] text-primary">{category}</p>
-        <h1 class="mt-2 text-3xl font-bold leading-tight text-primary sm:text-4xl">{title}</h1>
-        <p class="mt-3 text-lg leading-relaxed text-gray-600">{description}</p>
-        <p class="mt-3 text-sm leading-relaxed text-gray-500">
-          Researched by <a href={AUTHOR.url} class="font-medium text-primary underline decoration-accent underline-offset-4">{researchByline}</a>
-          {!published && <><span aria-hidden="true"> · </span>Publication date not recorded</>}
-          {published && <><span aria-hidden="true"> · </span>Published <time datetime={published}>{fmtDate(published)}</time></>}
-          {updated && <><span aria-hidden="true"> · </span>Updated <time datetime={updated}>{fmtDate(updated)}</time></>}
-          {verified && <><span aria-hidden="true"> · </span>Source links checked <time datetime={verified}>{fmtDate(verified)}</time></>}
-          {sources.length > 0 && (<><span aria-hidden="true"> · </span>{sources.length} linked sources</>)}
-          <span aria-hidden="true"> · </span>{readingTime}
-        </p>
-        <TechnicalReviewPanel />
-        {showMethod && (<MethodBox verified={verified ? fmtDate(verified) : undefined} />)}
+  <div class="article-publication">
+    <header class="article-masthead">
+      <div class="article-shell">
+        <Breadcrumbs items={[{ href: '/', label: 'Home' }, { href: categoryHref, label: category }, { label: title }]} />
+        <div class="article-masthead-copy">
+          <a class="article-category" href={categoryHref}>{category}<span aria-hidden="true"> / Research guide</span></a>
+          <h1>{title}</h1>
+          <p class="article-deck">{description}</p>
+          <div class="article-meta" aria-label="Article information">
+            <span>By <a href={AUTHOR.url}>{researchByline}</a></span>
+            {published ? <span>Published <time datetime={published}>{fmtDate(published)}</time></span> : <span>Publication date not recorded</span>}
+            {updated && <span>Updated <time datetime={updated}>{fmtDate(updated)}</time></span>}
+            <span>{readingTime}</span>
+            {sources.length > 0 && <a href="#sources-heading">{sources.length} linked sources ↗</a>}
+          </div>
+        </div>
+        {image && (
+          <figure class="article-cover">
+            <img src={image} alt="" width="1440" height="810" loading="eager" decoding="async" fetchpriority="high" />
+            <figcaption>Illustrative editorial image. Product and installation details must be verified for your specific project.</figcaption>
+          </figure>
+        )}
+      </div>
+    </header>
+
+    <div class="article-shell article-editorial-grid">
+      <article class="article-main min-w-0">
         {takeaways.length > 0 && (
-          <section aria-label="Key takeaways" class="mt-6 rounded-xl border border-orange-200 bg-orange-50/60 p-5">
-            <p class="text-sm font-semibold uppercase tracking-wider text-primary">Key takeaways</p>
-            <ul class="mt-2 list-disc space-y-1 pl-5 text-[15px] leading-relaxed text-gray-700">
-              {takeaways.map((t) => (<li>{t}</li>))}
+          <section class="article-takeaways" aria-labelledby="article-takeaways-heading">
+            <div class="article-section-eyebrow"><span aria-hidden="true" class="article-eyebrow-mark">✦</span> The essential briefing</div>
+            <h2 id="article-takeaways-heading">Key takeaways</h2>
+            <ul>
+              {takeaways.map((takeaway) => <li>{takeaway}</li>)}
             </ul>
           </section>
         )}
-        <div class="mt-6 lg:hidden">
-          <TableOfContents items={toc} />
-        </div>
-        <div class="mt-6"><AdUnit placement="article-after-intro" minHeight={200} /></div>
-        <div class="prose-hgg mt-6">
+
+        <section class="article-evidence" aria-labelledby="article-evidence-title">
+          <div class="article-evidence-topline">
+            <div>
+              <p class="article-section-eyebrow">Evidence &amp; review transparency</p>
+              <h2 id="article-evidence-title">What informs this guide</h2>
+            </div>
+            {sources.length > 0 && <a class="article-view-sources" href="#sources-heading">View all sources <span aria-hidden="true">↗</span></a>}
+          </div>
+          <p class="article-evidence-intro">Research is based on linked manufacturer documents and public authorities where available. Source checks do not establish independent testing, licensed professional review, or suitability for your home.</p>
+          {sources.length > 0 && (
+            <div class="article-evidence-links">
+              {sources.slice(0, 2).map((source) => (
+                <a href={source.href} rel="external noopener noreferrer" class="article-evidence-source">
+                  <span class="article-evidence-source-type">{source.type ?? 'Published source'}</span>
+                  <strong>{source.label}</strong>
+                  <span class="article-evidence-source-arrow" aria-hidden="true">↗</span>
+                </a>
+              ))}
+            </div>
+          )}
+          <TechnicalReviewPanel />
+          {showMethod && <MethodBox verified={verified ? fmtDate(verified) : undefined} />}
+        </section>
+
+        {toc.length > 0 && (
+          <div class="article-mobile-navigation lg:hidden">
+            <details>
+              <summary>Explore sections <span aria-hidden="true">↓</span></summary>
+              <TableOfContents items={toc} />
+            </details>
+          </div>
+        )}
+
+        <AdUnit placement="article-after-intro" minHeight={200} />
+        <div id="article-content" class="prose-hgg article-prose">
           <slot />
         </div>
         <DataDisclaimer />
-        <div class="mt-8"><AdUnit placement="article-mid" minHeight={280} /></div>
+        <div class="article-ad-space"><AdUnit placement="article-mid" minHeight={280} /></div>
+
         {sources.length > 0 && (
-          <section aria-labelledby="sources-heading" class="mt-10">
+          <section class="article-source-library" aria-labelledby="sources-heading">
+            <div class="article-section-eyebrow">Trace the evidence</div>
+            <h2 id="sources-heading">Sources &amp; further reading</h2>
             <SourceVerificationPanel date={verified} count={sources.length} />
-            <h2 id="sources-heading" class="text-2xl font-semibold text-primary">Sources & further reading</h2>
-            <ul class="mt-3 space-y-2 text-[15px] text-gray-700">
-              {sources.map((s) => (
-                <li class="flex flex-wrap items-baseline gap-x-2">
-                  <a href={s.href} rel="external noopener noreferrer" class="underline decoration-accent underline-offset-4">{s.label}</a>
-                  {s.type && <span class="rounded-full bg-primary/5 px-2 py-0.5 text-xs font-medium text-primary">{s.type}</span>}
-                  {s.verified && <span class="text-xs text-gray-500">accessed {s.verified}</span>}
+            <ol>
+              {sources.map((source, index) => (
+                <li>
+                  <span class="article-source-number">{String(index + 1).padStart(2, '0')}</span>
+                  <div>
+                    <a href={source.href} rel="external noopener noreferrer">{source.label} <span aria-hidden="true">↗</span></a>
+                    <p>{source.type ?? 'Published source'}{source.verified ? ' · Link checked ' + source.verified : ''}</p>
+                  </div>
                 </li>
               ))}
-            </ul>
-            <p class="mt-2 text-sm text-gray-500">Source pages and product details can change; check the linked manufacturer or authority material before making a decision.</p>
+            </ol>
+            <p class="article-source-note">Manufacturer specifications and regulatory requirements may change. Check the current official documents and consult qualified local professionals before committing to a system.</p>
           </section>
         )}
-        <AuthorBox />
+
+        <div class="article-author-note"><AuthorBox /></div>
         {(prev || next) && (
-          <nav aria-label="Previous and next guides" class="mt-8 grid gap-3 sm:grid-cols-2">
-            {prev && <a href={prev.href} class="rounded-lg border border-[#e5e7eb] p-4 text-sm hover:border-accent"><span class="block text-xs uppercase tracking-wider text-gray-500">Previous</span><span class="font-semibold text-primary">← {prev.label}</span></a>}
-            {next && <a href={next.href} class="rounded-lg border border-[#e5e7eb] p-4 text-sm text-right hover:border-accent"><span class="block text-xs uppercase tracking-wider text-gray-500">Next</span><span class="font-semibold text-primary">{next.label} →</span></a>}
+          <nav aria-label="Previous and next guides" class="article-prev-next">
+            {prev && <a href={prev.href}><span>Previous guide</span><strong>← {prev.label}</strong></a>}
+            {next && <a href={next.href}><span>Next guide</span><strong>{next.label} →</strong></a>}
           </nav>
         )}
         <RelatedArticles articles={related} />
-        <div class="mt-8"><AdUnit placement="article-end" minHeight={250} /></div>
+        <div class="article-ad-space"><AdUnit placement="article-end" minHeight={250} /></div>
       </article>
-      <aside class="hidden lg:block">
-        <div class="sticky top-24 space-y-6">
-          <TableOfContents items={toc} />
+
+      <aside class="article-sidebar hidden lg:block" aria-label="Article navigation and editorial notes">
+        <div class="article-sidebar-inner">
+          {toc.length > 0 && <TableOfContents items={toc} />}
           <AdUnit placement="sidebar" minHeight={300} />
           <AuthorBox />
         </div>
