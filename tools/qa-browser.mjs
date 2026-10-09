@@ -63,6 +63,10 @@ try {
     assert.equal(await page.locator('.showcase-model-grid a[href^="/models/"]').count(), 6, 'model links must be functional');
     assert.equal(await page.locator('.cinematic-hero-actions a').count(), 3, 'existing primary research CTAs were lost');
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, `showcase overflows at ${width}px`);
+    for (const editorialImage of await page.locator('.showcase-story-image img').all()) {
+      await editorialImage.scrollIntoViewIfNeeded();
+      await editorialImage.evaluate(async (image) => { await image.decode(); });
+    }
     const missingImages = await page.locator('.showcase-story-image img').evaluateAll((images) =>
       images.filter((image) => !image.complete || image.naturalWidth === 0).map((image) => image.getAttribute('src'))
     );
