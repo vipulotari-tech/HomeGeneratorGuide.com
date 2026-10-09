@@ -113,6 +113,39 @@ try {
       false, `takeaway overflow at ${width}px`);
   }
 
+
+  // Luxury power-pathway regression: semantic stages, safety copy and actual mobile geometry.
+  for (const width of [320, 360, 390, 430, 768, 1024, 1440]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto(`${baseUrl}/`, { waitUntil: 'networkidle' });
+    const diagram = page.locator('.premium-system-band .system-diagram');
+    assert.equal(await diagram.count(), 1, `expected one editorial power pathway at ${width}px`);
+    assert.equal(await diagram.locator('.system-flow-source').count(), 2, `missing alternate power sources at ${width}px`);
+    assert.equal(await diagram.locator('.system-flow-switch').count(), 1, `transfer switch missing at ${width}px`);
+    assert.equal(await diagram.locator('.system-flow-panel').count(), 1, `distribution panel missing at ${width}px`);
+    assert.equal(await diagram.locator('.system-flow-load').count(), 2, `priority/managed loads missing at ${width}px`);
+    assert.match(await diagram.locator('figcaption').innerText(), /not an installation drawing/i);
+    const geometry = await diagram.evaluate((figure) => {
+      const root = figure.getBoundingClientRect();
+      const cards = [...figure.querySelectorAll('.system-flow-node')].map((e) => e.getBoundingClientRect());
+      const captions = [...figure.querySelectorAll('.system-flow-node strong')].map((e) => e.getBoundingClientRect());
+      return {
+        left: root.left, right: root.right, width: root.width,
+        cardsInside: cards.every((box) => box.left >= root.left - 2 && box.right <= root.right + 2 && box.width >= 95),
+        readable: captions.every((box) => box.width > 55 && box.height >= 17),
+        diagramHeight: root.height,
+      };
+    });
+    assert(geometry.cardsInside, `diagram cards are clipped or too narrow at ${width}px: ${JSON.stringify(geometry)}`);
+    assert(geometry.readable, `diagram text collapsed at ${width}px: ${JSON.stringify(geometry)}`);
+    assert(geometry.left >= -1 && geometry.right <= width + 1,
+      `diagram extends beyond viewport at ${width}px: ${JSON.stringify(geometry)}`);
+    assert(geometry.diagramHeight < 1200,
+      `diagram too tall at ${width}px: ${JSON.stringify(geometry)}`);
+    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth),
+      false, `horizontal overflow from power pathway at ${width}px`);
+  }
+
   // Full generated-route crawl: every static index page gets a mobile load,
   // one-H1, and horizontal-overflow check. This catches new content routes,
   // not just the hand-picked smoke cases above.
