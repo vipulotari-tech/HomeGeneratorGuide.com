@@ -52,6 +52,30 @@ try {
     assert.equal(await page.locator('#main h1').count(), 1, `expected one content H1 at ${path}`);
   }
 
+
+  // Product-showcase editorial design must retain real sources, responsive layout and working links.
+  for (const width of [320, 390, 768, 1024, 1440]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto(`${baseUrl}/`, { waitUntil: 'networkidle' });
+    assert.equal(await page.locator('.showcase-model-card').count(), 3, `three model cards required at ${width}px`);
+    assert.equal(await page.locator('.showcase-story').count(), 2, `two photographic story cards required at ${width}px`);
+    assert.equal(await page.locator('.showcase-model-ratings dd').count(), 6, 'fuel ratings missing from source records');
+    assert.equal(await page.locator('.showcase-model-grid a[href^="/models/"]').count(), 6, 'model links must be functional');
+    assert.equal(await page.locator('.cinematic-hero-actions a').count(), 3, 'existing primary research CTAs were lost');
+    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, `showcase overflows at ${width}px`);
+    const missingImages = await page.locator('.showcase-story-image img').evaluateAll((images) =>
+      images.filter((image) => !image.complete || image.naturalWidth === 0).map((image) => image.getAttribute('src'))
+    );
+    assert.deepEqual(missingImages, [], `editorial showcase images did not load at ${width}px`);
+  }
+  for (const path of ['/brands/', '/models/', '/comparisons/', '/cost/']) {
+    await page.setViewportSize({ width: 390, height: 900 });
+    await page.goto(`${baseUrl}${path}`, { waitUntil: 'networkidle' });
+    assert.equal(await page.locator('.library-hero h1').count(), 1, `research library H1 missing at ${path}`);
+    assert((await page.locator('.library-card a[href^="/"]').count()) > 0, `library cards absent at ${path}`);
+    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, `library overflow at ${path}`);
+  }
+
   // Full generated-route crawl: every static index page gets a mobile load,
   // one-H1, and horizontal-overflow check. This catches new content routes,
   // not just the hand-picked smoke cases above.
