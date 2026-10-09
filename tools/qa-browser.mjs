@@ -200,6 +200,63 @@ try {
       `power-pathway overflow at ${width}px`);
   }
 
+
+  // Research trust + 10-step journey: photography must decode and content must never squash or overlap.
+  for (const width of [320, 390, 540, 768, 1024, 1440]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto(`${baseUrl}/`, { waitUntil: 'networkidle' });
+    const trustSection = page.locator('.premium-trust-strip');
+    const journeySection = page.locator('.premium-journey');
+    assert.equal(await trustSection.locator('.premium-trust-card').count(), 4,
+      `four transparent evidence principles required at ${width}px`);
+    assert.equal(await journeySection.locator('.premium-journey-item').count(), 10,
+      `all ten homeowner decisions required at ${width}px`);
+    assert.equal(await journeySection.locator('.premium-journey-item a[href^="/"]').count(), 10,
+      `journey links missing at ${width}px`);
+
+    for (const img of [
+      trustSection.locator('.premium-trust-visual img'),
+      journeySection.locator('.premium-journey-visual img'),
+    ]) {
+      await img.scrollIntoViewIfNeeded();
+      await img.evaluate(async (element) => { await element.decode(); });
+      assert.equal(await img.evaluate((element) => element.complete && element.naturalWidth > 0), true,
+        `editorial photograph failed to load at ${width}px`);
+      assert((await img.getAttribute('alt'))?.length > 25,
+        `meaningful photograph alt text missing at ${width}px`);
+    }
+
+    const sizes = await page.evaluate(() => {
+      const withinX = (a, b) => {
+        const aRect = a.getBoundingClientRect();
+        const bRect = b.getBoundingClientRect();
+        return aRect.left >= bRect.left - 2 && aRect.right <= bRect.right + 2;
+      };
+      const cards = [...document.querySelectorAll('.premium-trust-card')];
+      const items = [...document.querySelectorAll('.premium-journey-item')];
+      return {
+        trustCards: cards.every((card) =>
+          card.getBoundingClientRect().width >= 170 &&
+          withinX(card.querySelector('h3'), card) &&
+          withinX(card.querySelector('p'), card)),
+        journeyCards: items.every((item) => {
+          const link = item.querySelector('a');
+          const content = item.querySelector('.premium-step-main');
+          const title = content?.querySelector('strong');
+          const rect = content?.getBoundingClientRect();
+          return Boolean(link && content && title && rect &&
+            rect.width >= 115 && withinX(content, item) && withinX(title, content));
+        }),
+        viewportWidth: window.innerWidth,
+        scrollWidth: document.documentElement.scrollWidth,
+      };
+    });
+    assert(sizes.trustCards, `trust cards are too narrow/clipped at ${width}px: ${JSON.stringify(sizes)}`);
+    assert(sizes.journeyCards, `journey cards or titles squeezed at ${width}px: ${JSON.stringify(sizes)}`);
+    assert.equal(sizes.scrollWidth > sizes.viewportWidth, false,
+      `luxury homeowner sections introduce sideways scroll at ${width}px`);
+  }
+
   // Full generated-route crawl: every static index page gets a mobile load,
   // one-H1, and horizontal-overflow check. This catches new content routes,
   // not just the hand-picked smoke cases above.
