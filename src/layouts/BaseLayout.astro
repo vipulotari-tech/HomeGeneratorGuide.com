@@ -3,10 +3,13 @@ import '../styles/global.css';
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
 import { IS_INDEXABLE, SITE_URL, SITE_NAME } from '../config/site';
+import { SEARCH_METADATA } from '../config/search-metadata';
 
 interface Props {
   title: string;
   description: string;
+  seoTitle?: string;
+  seoDescription?: string;
   canonical?: string;
   ogImage?: string;
   ogType?: 'website' | 'article';
@@ -16,6 +19,8 @@ interface Props {
 const {
   title,
   description,
+  seoTitle,
+  seoDescription,
   canonical,
   ogImage = '/og-image.png',
   ogType = 'website',
@@ -25,8 +30,18 @@ const {
 const site = SITE_URL;
 const url = canonical ?? `${site}${Astro.url.pathname}`;
 const indexable = IS_INDEXABLE && !noindex;
-const fullTitle = title.includes('HomeGeneratorGuide') ? title : `${title} | HomeGeneratorGuide`;
+const searchMetadata = SEARCH_METADATA[Astro.url.pathname];
+const fullTitle = seoTitle ?? searchMetadata?.title ?? (title.includes(SITE_NAME) ? title : `${title} | ${SITE_NAME}`);
+const searchDescription = seoDescription ?? searchMetadata?.description ?? description;
 const absoluteOgImage = ogImage.startsWith('http') ? ogImage : `${site}${ogImage}`;
+const pageSchema = schema ?? (noindex ? undefined : {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: title,
+  description,
+  url,
+  publisher: { '@type': 'Organization', name: SITE_NAME, url: `${site}/` },
+});
 ---
 <!doctype html>
 <html lang="en-US">
@@ -37,22 +52,22 @@ const absoluteOgImage = ogImage.startsWith('http') ? ogImage : `${site}${ogImage
   <meta name="theme-color" content="#203b34" />
   <noscript><style>@media (max-width: 1023px) { #menu-btn { display: none !important; } #mobile-nav { display: block !important; } }</style></noscript>
   <title>{fullTitle}</title>
-  <meta name="description" content={description} />
+  <meta name="description" content={searchDescription} />
   {indexable && <link rel="canonical" href={url} />}
   <meta name="robots" content={indexable ? 'index, follow' : 'noindex, nofollow'} />
   <meta property="og:type" content={ogType} />
   <meta property="og:site_name" content={SITE_NAME} />
   <meta property="og:title" content={fullTitle} />
-  <meta property="og:description" content={description} />
+  <meta property="og:description" content={searchDescription} />
   <meta property="og:url" content={url} />
   <meta property="og:image" content={absoluteOgImage} />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={fullTitle} />
-  <meta name="twitter:description" content={description} />
+  <meta name="twitter:description" content={searchDescription} />
   <meta name="twitter:image" content={absoluteOgImage} />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   {indexable && <link rel="sitemap" href="/sitemap-index.xml" />}
-  {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
+  {pageSchema && <script type="application/ld+json" set:html={JSON.stringify(pageSchema)} />}
 </head>
 <body class="flex min-h-screen flex-col bg-white text-ink">
   <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded focus:bg-white focus:px-4 focus:py-2 focus:text-primary">Skip to content</a>

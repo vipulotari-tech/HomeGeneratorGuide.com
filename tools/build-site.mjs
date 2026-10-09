@@ -16,7 +16,12 @@ const evidence = spawnSync(process.execPath, ['tools/validate-evidence.mjs'], {s
 if(evidence.status!==0) process.exit(evidence.status??1);
 
 const astroCli = resolve('node_modules/astro/bin/astro.mjs');
-const result = spawnSync(process.execPath, [astroCli, 'build'], {
+// Start with an empty generated output directory. A previous target's HTML must
+// not survive or be served while Astro prerenders the next target.
+rmSync(resolve('dist'), { recursive: true, force: true });
+// Environment-specific metadata must never reuse pages from the other target.
+// Force a full build when switching between staging and production in one checkout.
+const result = spawnSync(process.execPath, [astroCli, 'build', '--force'], {
   stdio: 'inherit',
   env: { ...process.env, PUBLIC_SITE_ENV: environment },
 });
@@ -49,4 +54,8 @@ if (environment === 'staging') {
   outputHeaders = baseHeaders.replace(globalRule, '/*\n  X-Robots-Tag: noindex, nofollow');
 }
 writeFileSync(headersPath, `${outputHeaders.trimEnd()}\n`, 'utf8');
+// Cloudflare's Git build runs this command without the full GitHub QA workflow.
+// Refuse deployment output whose indexing state disagrees with its target.
+const indexing = spawnSync(process.execPath, ['tools/qa-indexing.mjs', environment], { stdio: 'inherit' });
+if (indexing.status !== 0) process.exit(indexing.status ?? 1);
 console.log(`Built ${environment} output; robots metadata and canonical origin are environment-specific.`);
