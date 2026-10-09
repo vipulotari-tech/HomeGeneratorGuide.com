@@ -44,6 +44,7 @@ const researchDeskByCategory: Record<string, string> = {
   'Maintenance': 'Maintenance Research Desk',
   'Guides': 'Buyer Education Desk',
   'Buying Guides': 'Buyer Education Desk',
+  'Research': 'Research Desk',
 };
 const researchByline = researchDeskByCategory[category] ?? AUTHOR.name;
 const site = SITE_URL;
@@ -90,7 +91,7 @@ if (image) articleSchema.image = `${site}${image}`;
           <p class="article-deck">{description}</p>
           <div class="article-meta" aria-label="Article information">
             <span>By <a href={AUTHOR.url}>{researchByline}</a></span>
-            {published ? <span>Published <time datetime={published}>{fmtDate(published)}</time></span> : <span>Publication date not recorded</span>}
+            {published && <span>Published <time datetime={published}>{fmtDate(published)}</time></span>}
             {updated && <span>Updated <time datetime={updated}>{fmtDate(updated)}</time></span>}
             <span>{readingTime}</span>
             {sources.length > 0 && <a href="#sources-heading">{sources.length} linked sources ↗</a>}
@@ -125,7 +126,7 @@ if (image) articleSchema.image = `${site}${image}`;
             </div>
             {sources.length > 0 && <a class="article-view-sources" href="#sources-heading">View all sources <span aria-hidden="true">↗</span></a>}
           </div>
-          <p class="article-evidence-intro">Research is based on linked manufacturer documents and public authorities where available. Source checks do not establish independent testing, licensed professional review, or suitability for your home.</p>
+          <p class="article-evidence-intro">{sources.length > 0 ? "Research draws on the linked documents below. Source checks do not establish independent testing, licensed professional review, or suitability for your home." : "This guide has no linked source list. Treat its planning framework as editorial guidance and confirm technical details with current official documents and qualified local professionals."}</p>
           {sources.length > 0 && (
             <div class="article-evidence-links">
               {sources.slice(0, 2).map((source) => (
