@@ -130,6 +130,33 @@ try {
     'static worksheet disclosure is missing',
   );
 
+
+  // Regression for the five-column blank worksheet that previously squeezed into mobile/tablet.
+  for (const width of [320, 390, 768, 1024, 1199]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto(`${baseUrl}/sizing/what-size-generator-do-i-need/`, { waitUntil: 'networkidle' });
+    assert.equal(await page.locator('.static-load-table').isVisible(), false, `desktop worksheet visible at ${width}px`);
+    const mobileNotes = page.locator('.static-load-mobile');
+    assert.equal(await mobileNotes.isVisible(), true, `compact worksheet missing at ${width}px`);
+    assert.equal(await mobileNotes.getAttribute('open'), null, `worksheet should start collapsed at ${width}px`);
+    await mobileNotes.locator('summary').click();
+    assert.equal(await mobileNotes.locator('.static-load-card').count(), 7, `expected seven worksheet note cards at ${width}px`);
+    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, `worksheet overflows at ${width}px`);
+  }
+  for (const width of [1200, 1440]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto(`${baseUrl}/sizing/what-size-generator-do-i-need/`, { waitUntil: 'networkidle' });
+    assert.equal(await page.locator('.static-load-mobile').isVisible(), false, `compact worksheet visible on desktop at ${width}px`);
+    assert.equal(await page.locator('.static-load-table').isVisible(), true, `printable desktop table missing at ${width}px`);
+    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, `desktop worksheet overflows at ${width}px`);
+  }
+  await page.setViewportSize({ width: 390, height: 900 });
+  await page.goto(`${baseUrl}/sizing/what-size-generator-do-i-need/`, { waitUntil: 'networkidle' });
+  await page.emulateMedia({ media: 'print' });
+  assert.equal(await page.locator('.static-load-table').isVisible(), true, 'printable worksheet table missing on print');
+  assert.equal(await page.locator('.static-load-mobile').isVisible(), false, 'mobile notes should be hidden on print');
+  await page.emulateMedia({ media: 'screen' });
+
   await page.setViewportSize({ width: 320, height: 640 });
   await page.goto(`${baseUrl}/`, { waitUntil: 'networkidle' });
   await page.click('#menu-btn');
