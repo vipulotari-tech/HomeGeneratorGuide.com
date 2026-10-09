@@ -17,6 +17,8 @@ interface Source { label: string; href: string; type?: 'Manufacturer' | 'Governm
 interface Props {
   title: string;
   description: string;
+  seoTitle?: string;
+  seoDescription?: string;
   category: string;
   categoryHref: string;
   updated?: string;
@@ -32,7 +34,7 @@ interface Props {
   verified?: string;
   showMethod?: boolean;
 }
-const { title, description, category, categoryHref, updated, readingTime, toc, related = [], prev, next, takeaways = [], sources = [], image, published, verified, showMethod = true } = Astro.props;
+const { title, description, seoTitle, seoDescription, category, categoryHref, updated, readingTime, toc, related = [], prev, next, takeaways = [], sources = [], image, published, verified, showMethod = true } = Astro.props;
 
 const researchDeskByCategory: Record<string, string> = {
   'Sizing': 'Sizing Research Desk',
@@ -80,7 +82,7 @@ if (image) articleSchema.image = `${site}${image}`;
 // Deliberately no FAQPage/HowTo schema: FAQ rich results are restricted and
 // HowTo has strict eligibility — plain Article + Breadcrumb only.
 ---
-<BaseLayout title={title} description={description} ogImage={image} ogType="article" schema={[articleSchema, breadcrumbSchema]}>
+<BaseLayout title={title} description={description} seoTitle={seoTitle} seoDescription={seoDescription} ogImage={image} ogType="article" schema={[articleSchema, breadcrumbSchema]}>
   <div class="article-publication">
     <header class="article-masthead">
       <div class="article-shell">
