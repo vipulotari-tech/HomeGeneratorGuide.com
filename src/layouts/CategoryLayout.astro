@@ -42,13 +42,31 @@ const schema = [
 ];
 ---
 <BaseLayout title={title} description={description} schema={schema}>
-  <div class="mx-auto max-w-6xl px-4 py-8 sm:px-6">
-    <Breadcrumbs items={[{ href: '/', label: 'Home' }, { label: title }]} />
-    <h1 class="mt-4 text-3xl font-bold text-primary sm:text-4xl">{title}</h1>
-    <p class="mt-3 max-w-3xl text-lg leading-relaxed text-gray-600">{intro}</p>
-    <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-      {cards.map((c) => (<ArticleCard href={c.href} title={c.title} description={c.description} category={c.category} readingTime={c.readingTime} />))}
+  <div class="library-publication">
+    <header class="library-hero">
+      <div class="editorial-container">
+        <Breadcrumbs items={[{ href: '/', label: 'Home' }, { label: title }]} />
+        <div class="library-hero-inner">
+          <div>
+            <p class="library-eyebrow">HomeGeneratorGuide / Research library</p>
+            <h1>{title}</h1>
+          </div>
+          <div class="library-hero-summary">
+            <p>{intro}</p>
+            <p class="library-record-count">{cards.length} research guides <span aria-hidden="true">/</span> Independently edited</p>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="editorial-container library-body">
+      <div class="library-section-lead">
+        <div><p class="library-eyebrow">Browse the collection</p><h2>Find the details that matter.</h2></div>
+        <p>Open a guide to see its source links, documented assumptions and limitations before making decisions.</p>
+      </div>
+      <div class="library-card-grid">
+        {cards.map((c) => (<ArticleCard href={c.href} title={c.title} description={c.description} category={c.category} readingTime={c.readingTime} />))}
+      </div>
+      <div class="library-continuation"><slot /></div>
     </div>
-    <slot />
   </div>
 </BaseLayout>
