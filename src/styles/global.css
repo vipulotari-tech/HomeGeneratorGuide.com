@@ -700,7 +700,7 @@ h1,h2,h3,legend{overflow-wrap:anywhere} main{min-width:0} .prose-hgg a{overflow-
  .showcase-section-intro{max-width:700px}
  .showcase-model-grid,.library-card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
  .library-section-lead{grid-template-columns:minmax(0,1fr)}
- .showcase-model-card:last-child{grid-column:1/-1;max-width:calc(50% - .5rem)}
+ .showcase-model-card:last-child{grid-column:1/-1;max-width:none}
 }
 @media(max-width:639px){
  .showcase-section-heading{margin-bottom:1.5rem;gap:1.15rem}
