@@ -1,0 +1,53 @@
+---
+import { MODEL_SPECS } from '../../data/model-specs';
+
+const showcaseSlugs = ['generac-g0073270', 'kohler-26rca', 'champion-201222'];
+const featured = showcaseSlugs.map((slug) => {
+  const model = MODEL_SPECS.find((record) => record.slug === slug);
+  if (!model) throw new Error(`Featured manufacturer record not found: ${slug}`);
+  return model;
+});
+const rating = (model: typeof featured[number], fuel: 'LP' | 'Natural gas') => {
+  const value = model.ratingsKw[fuel];
+  return value === undefined ? 'Not in source record' : `${value} kW`;
+};
+---
+<section class="showcase-models" aria-labelledby="showcase-models-heading">
+  <div class="editorial-container showcase-models-inner">
+    <div class="showcase-section-heading">
+      <div>
+        <p class="showcase-eyebrow">01 / Explore the equipment</p>
+        <h2 id="showcase-models-heading">Real model numbers.<br /><em>Useful comparisons.</em></h2>
+      </div>
+      <div class="showcase-section-intro">
+        <p>Start with manufacturer-documented configurations, not popularity rankings. Compare fuel-specific standby output, source records and package details before requesting a quote.</p>
+        <a href="/models/" class="showcase-text-link">Explore all {MODEL_SPECS.length} configurations <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+
+    <div class="showcase-model-grid">
+      {featured.map((model, index) => (
+        <article class="showcase-model-card">
+          <div class="showcase-model-overline">
+            <span>MODEL / {String(index + 1).padStart(2, '0')}</span>
+            <span>Manufacturer source</span>
+          </div>
+          <div class="showcase-model-signature" aria-hidden="true">
+            <span>{model.ratingsKw.LP ?? model.standbyRatingKw ?? '—'}</span><small>kW</small>
+          </div>
+          <div class="showcase-model-details">
+            <p class="showcase-model-brand">{model.brand}</p>
+            <h3><a href={`/models/${model.slug}/`}>{model.modelId} <span aria-hidden="true">↗</span></a></h3>
+            <p class="showcase-model-description">{model.displayName}</p>
+            <dl class="showcase-model-ratings">
+              <div><dt>Propane / LP</dt><dd>{rating(model, 'LP')}</dd></div>
+              <div><dt>Natural gas</dt><dd>{rating(model, 'Natural gas')}</dd></div>
+            </dl>
+            <a class="showcase-model-action" href={`/models/${model.slug}/`}>View source-backed model details <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+      ))}
+    </div>
+    <p class="showcase-disclosure">Selected to illustrate different documented configurations, not ranked as “best” or recommended for any home. Displayed LP/NG ratings are manufacturer-published values for these exact model records; they are not an independent performance test. Verify the current specification, fuel, ATS scope and local service availability.</p>
+  </div>
+</section>
