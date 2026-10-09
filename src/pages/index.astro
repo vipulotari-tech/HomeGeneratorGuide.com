@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SystemDiagram from '../components/diagrams/SystemDiagram.astro';
+import ModelShowcase from '../components/home/ModelShowcase.astro';
 import {MODEL_SPECS} from '../data/model-specs';
 import {SITE_URL} from '../config/site';
 const steps=[
@@ -82,6 +83,45 @@ const trust=[
     </article>
   </div>
   <p class="mt-4 text-sm text-gray-600">Already have competing bids? <a class="font-semibold text-primary underline decoration-accent underline-offset-4" href="/planning/quotes/">Compare three installer quotes side by side →</a></p>
+</section>
+
+
+<ModelShowcase />
+
+<section class="showcase-editorials" aria-label="Homeowner research highlights">
+  <div class="editorial-container">
+    <div class="showcase-section-heading showcase-editorials-intro">
+      <div><p class="showcase-eyebrow">02 / Understand the project</p><h2>Beautiful equipment.<br /><em>Thoughtful planning.</em></h2></div>
+      <p>A generator is only one part of backup power. Learn the home-specific decisions that matter before comparing installation proposals.</p>
+    </div>
+    <div class="showcase-editorial-grid">
+      <article class="showcase-story showcase-story-primary">
+        <a href="/installation/generator-pad-and-placement/" class="showcase-story-image" aria-label="Read the generator placement and pad guide">
+          <img src="/images/user-editorial/landscaped-generator-placement.webp" width="1536" height="1024" loading="lazy" decoding="async" alt="Landscaped area beside a house showing the setting for a residential standby generator" />
+          <span class="showcase-story-image-label">THE INSTALLATION / 01 <span aria-hidden="true">↗</span></span>
+        </a>
+        <div class="showcase-story-copy">
+          <p class="showcase-eyebrow">Site, placement &amp; safety</p>
+          <h3>Where it goes matters as much as what it does.</h3>
+          <p>Explore clearances, site preparation, drainage, exhaust direction and the questions a qualified installer must answer.</p>
+          <a href="/installation/generator-pad-and-placement/" class="showcase-text-link">Explore placement research <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+      <article class="showcase-story">
+        <a href="/cost/standby-generator-quote-checklist/" class="showcase-story-image" aria-label="Read the installation quote checklist">
+          <img src="/images/user-editorial/generator-quote-review-at-home.webp" width="1536" height="1024" loading="lazy" decoding="async" alt="Homeowner at a table reviewing a written standby-generator quote and project notes" />
+          <span class="showcase-story-image-label">THE INVESTMENT / 02 <span aria-hidden="true">↗</span></span>
+        </a>
+        <div class="showcase-story-copy">
+          <p class="showcase-eyebrow">Cost, scope &amp; ownership</p>
+          <h3>Know what you're buying before you sign.</h3>
+          <p>Check equipment, transfer switches, fuel work, permits and commissioning against the same line-item scope.</p>
+          <a href="/cost/standby-generator-quote-checklist/" class="showcase-text-link">Open the quote checklist <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+    </div>
+    <p class="showcase-disclosure">Photographs are illustrative editorial visuals, not verified photographs of the model configurations shown above or evidence of field testing.</p>
+  </div>
 </section>
 
 <section class="editorial-container py-10 sm:py-14" aria-labelledby="research-topics-heading">
