@@ -2,146 +2,174 @@
 interface Props { mode?: 'whole' | 'selective'; }
 const { mode = 'whole' } = Astro.props;
 const selective = mode === 'selective';
-const scope = selective ? 'Selective-load' : 'Whole-panel';
 ---
-<figure class="system-diagram" aria-labelledby="system-diagram-title">
-  <div class="system-diagram-heading">
+<figure class="system-diagram" aria-labelledby="power-flow-title">
+  <header class="system-diagram-heading">
     <div>
-      <p class="system-diagram-kicker"><span class="system-diagram-sparkle" aria-hidden="true">✦</span> THE POWER PATHWAY <span class="system-diagram-divider">/</span> CONCEPTUAL SYSTEM</p>
-      <h3 id="system-diagram-title">From power source <em>to protected circuits.</em></h3>
+      <p class="system-diagram-kicker">✦ &nbsp; THE POWER PATHWAY <span aria-hidden="true">/</span> HOME BACKUP SYSTEM</p>
+      <h3 id="power-flow-title">How backup power <em>reaches your home.</em></h3>
     </div>
-    <div class="system-diagram-context"><span class="system-diagram-context-dot" aria-hidden="true"></span> {scope} arrangement</div>
-  </div>
+    <span class="system-diagram-context">{selective ? 'Selected circuits' : 'Whole-panel concept'}</span>
+  </header>
 
-  <div class="system-flow" role="group" aria-label={selective ? 'Utility and standby generator feed approved transfer equipment, then a dedicated backed-up-load panel serving selected circuits.' : 'Utility and standby generator are alternate sources to an automatic transfer switch, then a service panel supplying priority and managed loads.'}>
-    <div class="system-flow-sources">
+  <div class="system-flow" role="group" aria-label={selective ? 'Utility supply or generator connects through transfer equipment to a dedicated backup-load panel.' : 'Utility or generator power is selected at a transfer switch and distributed to priority and managed circuits.'}>
+    <div class="system-flow-sources" aria-label="Two alternate power sources">
       <div class="system-flow-node system-flow-source">
-        <div class="system-flow-node-top"><span class="system-flow-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M6 21V8h12v13M9 8V4h6v4M10 12h4M10 16h4"/></svg>
-        </span><span class="system-flow-number">01A</span></div>
-        <div><span class="system-flow-label">PRIMARY SUPPLY</span><strong>Utility power</strong><small>Normal grid supply</small></div>
+        <div class="system-flow-photo">
+          <img src="/images/user-editorial/premium-home-at-dusk.webp" alt="Illustrative home at dusk, representing normal utility service" width="1536" height="1037" loading="lazy" decoding="async" />
+          <span class="system-flow-photo-number">01A</span>
+        </div>
+        <div class="system-flow-source-copy">
+          <span class="system-flow-label">NORMAL POWER</span>
+          <strong>Utility supply</strong>
+          <small>Electricity from the grid</small>
+        </div>
       </div>
+
       <div class="system-flow-node system-flow-source">
-        <div class="system-flow-node-top"><span class="system-flow-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 10h4M7 13h4M15 9l-2 4h3l-1 3M6 18v2M18 18v2"/></svg>
-        </span><span class="system-flow-number">01B</span></div>
-        <div><span class="system-flow-label">ALTERNATE SUPPLY</span><strong>Standby generator</strong><small>Backup supply when utility fails</small></div>
+        <div class="system-flow-photo">
+          <img src="/images/user-editorial/landscaped-generator-placement.webp" alt="Illustrative standby generator beside a landscaped home" width="1536" height="1024" loading="lazy" decoding="async" />
+          <span class="system-flow-photo-number">01B</span>
+        </div>
+        <div class="system-flow-source-copy">
+          <span class="system-flow-label">BACKUP POWER</span>
+          <strong>Standby generator</strong>
+          <small>Alternate source during an outage</small>
+        </div>
       </div>
     </div>
 
-    <div class="system-flow-join" aria-hidden="true"><span></span></div>
-    <p class="system-flow-transition"><span>ONE SOURCE SELECTED</span></p>
+    <div class="system-flow-join" aria-hidden="true"></div>
+    <div class="system-flow-transition"><span>ONE SOURCE SUPPLIES THE CIRCUITS AT A TIME</span></div>
 
     <div class="system-flow-node system-flow-switch">
-      <div class="system-flow-node-top"><span class="system-flow-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="12" cy="19" r="2"/><path d="M5 7v4l7 6M19 7v4l-4 4"/></svg>
-      </span><span class="system-flow-number">02</span></div>
-      <div><span class="system-flow-label">CONTROL &amp; ISOLATION</span><strong>Automatic transfer switch</strong><small>Selects one source; isolates utility from generator power</small></div>
+      <img class="system-flow-stage-image" src="/images/diagrams/transfer-switch-mark.svg" alt="" width="72" height="72" loading="lazy" decoding="async" />
+      <div class="system-flow-stage-copy">
+        <span class="system-flow-label">CONTROL &amp; ISOLATION <span class="system-flow-step-inline">02</span></span>
+        <strong>Automatic transfer switch</strong>
+        <small>Selects utility or generator power and isolates the other source when correctly installed.</small>
+      </div>
     </div>
 
     <div class="system-flow-connector" aria-hidden="true"></div>
+
     <div class="system-flow-node system-flow-panel">
-      <div class="system-flow-node-top"><span class="system-flow-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2.5" width="14" height="19" rx="2"/><path d="M9 7h6M9 11h6M9 15h6M12 19h.01"/></svg>
-      </span><span class="system-flow-number">03</span></div>
-      <div><span class="system-flow-label">DISTRIBUTION</span><strong>{selective ? 'Dedicated backup-load panel' : 'Service panel & circuits'}</strong><small>{selective ? 'Selected backed-up circuits only' : 'Distributes power to circuits within available capacity'}</small></div>
+      <img class="system-flow-stage-image" src="/images/diagrams/panel-mark.svg" alt="" width="72" height="72" loading="lazy" decoding="async" />
+      <div class="system-flow-stage-copy">
+        <span class="system-flow-label">DISTRIBUTION <span class="system-flow-step-inline">03</span></span>
+        <strong>{selective ? 'Dedicated backup-load panel' : 'Panel & backed-up circuits'}</strong>
+        <small>{selective ? 'Only circuits chosen for backup are supplied.' : 'Available capacity limits which loads can run together.'}</small>
+      </div>
     </div>
 
     <div class="system-flow-connector" aria-hidden="true"></div>
+
     <div class="system-flow-loads">
       <div class="system-flow-node system-flow-load">
-        <span class="system-flow-number">04A <span class="system-flow-load-dot" aria-hidden="true"></span></span>
-        <div><span class="system-flow-label">POWER FIRST</span><strong>Priority loads</strong><small>Essential home circuits</small></div>
+        <div class="system-flow-load-top"><span class="system-flow-load-number">04A</span><span class="system-flow-load-marker" aria-hidden="true"></span></div>
+        <span class="system-flow-label">RUN FIRST</span>
+        <strong>Priority loads</strong>
+        <small>Essential home circuits</small>
       </div>
       <div class="system-flow-node system-flow-load">
-        <span class="system-flow-number">04B <span class="system-flow-load-dot" aria-hidden="true"></span></span>
-        <div><span class="system-flow-label">CAPACITY CONTROL</span><strong>Managed loads</strong><small>Delayed or shed when needed</small></div>
+        <div class="system-flow-load-top"><span class="system-flow-load-number">04B</span><span class="system-flow-load-marker" aria-hidden="true"></span></div>
+        <span class="system-flow-label">CAPACITY CONTROL</span>
+        <strong>Managed loads</strong>
+        <small>Delayed or shed when needed</small>
       </div>
     </div>
   </div>
 
   <figcaption class="system-diagram-caption">
     <span class="system-diagram-caption-icon" aria-hidden="true">i</span>
-    <span><strong>Conceptual {selective ? 'selective-load' : 'whole-panel'} arrangement—not an installation drawing.</strong> {selective ? 'Other circuits stay outside the backup panel.' : 'Not every appliance can necessarily run together.'} Grounding, disconnects, protection, fuel and wiring details are omitted. Follow exact manufacturer instructions and local code with a qualified professional.</span>
+    <span><strong>Concept only — not an installation drawing.</strong> {selective ? 'Other circuits remain outside the backed-up panel.' : 'A whole-panel transfer does not mean all appliances can run simultaneously.'} Photos are illustrative, not product-specific testing. Grounding, disconnects, overcurrent protection, fuel and wiring are omitted. Follow the exact equipment manuals, local code and qualified professionals.</span>
   </figcaption>
 </figure>
 
 <style>
-.system-diagram { --diagram-forest:#15392f;--diagram-ink:#1e392f;--diagram-line:#d8e0d8;--diagram-gold:#ab8252;--diagram-mist:#f3f5ef;margin:0;min-width:0;color:var(--diagram-ink);font-family:var(--font-sans); }
-.system-diagram-heading {display:flex;justify-content:space-between;gap:1.25rem;align-items:end;padding-bottom:1.25rem;border-bottom:1px solid var(--diagram-line);}
-.system-diagram-kicker {margin:0 0 .55rem;font-size:.67rem;font-weight:800;letter-spacing:.155em;color:#716347;}
-.system-diagram-sparkle{font-size:1.05rem;color:var(--diagram-gold);vertical-align:middle;margin-right:.3rem}
-.system-diagram-divider{margin-inline:.25rem;color:#bba889}
-.system-diagram-heading h3 {max-width:25ch;margin:0;font:500 clamp(1.45rem,2.1vw,2.05rem)/1.16 Georgia,'Times New Roman',serif;letter-spacing:-.025em;color:#173b2e;text-wrap:balance}
-.system-diagram-heading h3 em{display:block;font-style:italic;color:#667b69}
-.system-diagram-context{flex-shrink:0;border:1px solid #cbd8c9;padding:.55rem .75rem;font-size:.67rem;font-weight:750;letter-spacing:.08em;text-transform:uppercase;color:#335747}
-.system-diagram-context-dot{display:inline-block;width:6px;height:6px;margin-right:.4rem;border-radius:50%;background:#568361;vertical-align:middle}
-.system-flow{margin-top:1.35rem;padding:1.25rem;background:linear-gradient(155deg,#f9faf6 10%,#edf2e9 100%);border:1px solid #d8e3d6;border-radius:3px}
-.system-flow-sources,.system-flow-loads{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.85rem}
-.system-flow-node{min-width:0;padding:1.15rem;background:#fff;border:1px solid #d9e2d8;border-radius:2px;box-shadow:0 7px 19px -22px rgba(17,48,32,.45)}
-.system-flow-node-top{display:flex;align-items:start;justify-content:space-between;gap:.5rem;margin-bottom:1rem}
-.system-flow-icon{display:grid;place-items:center;width:43px;height:43px;flex-shrink:0;background:#e9eee6;border:1px solid #d7e2d6;color:#365747}
-.system-flow-icon svg{width:25px;height:25px;display:block}
-.system-flow-number{display:flex;gap:.5rem;align-items:center;font-size:.69rem;font-weight:800;letter-spacing:.09em;color:#637367}
-.system-flow-label{display:block;margin-bottom:.28rem;font-size:.63rem;font-weight:800;letter-spacing:.135em;color:#716344;line-height:1.45}
-.system-flow-node strong{display:block;color:#1c4032;font:500 clamp(1.07rem,1.6vw,1.32rem)/1.2 Georgia,serif;letter-spacing:-.008em;overflow-wrap:break-word}
-.system-flow-node small{display:block;margin-top:.35rem;font-size:.75rem;line-height:1.55;color:#53695c}
-.system-flow-join{position:relative;height:31px;margin:0 24.5%}
-.system-flow-join:before{content:"";position:absolute;inset:0 0 auto;height:17px;border-left:1px solid #7f9989;border-right:1px solid #7f9989;border-bottom:1px solid #7f9989}
-.system-flow-join:after{content:"";position:absolute;left:50%;top:17px;height:14px;border-left:1px solid #7f9989}
-.system-flow-transition{display:flex;align-items:center;justify-content:center;height:20px;margin:0 0 .35rem;font-size:.63rem;font-weight:800;letter-spacing:.14em;color:#547363}
-.system-flow-transition span{padding:.25rem .65rem;background:#edf3ea}
-.system-flow-switch{display:flex;gap:1.15rem;align-items:center;padding:1.35rem;background:#173d31;border-color:#173d31;color:#fff}
-.system-flow-switch .system-flow-node-top{flex:0 0 45px;display:block;margin:0}
-.system-flow-switch .system-flow-icon{color:#f0d7a7;background:#31594a;border-color:#496c57}
-.system-flow-switch .system-flow-number{margin-top:.45rem;color:#e3d4aa}
-.system-flow-switch .system-flow-label{color:#e5cea1}
-.system-flow-switch strong{color:#fff;font-size:clamp(1.3rem,2.1vw,1.7rem)}
-.system-flow-switch small{color:#dfebe4;font-size:.79rem}
-.system-flow-connector{position:relative;height:21px;margin:0 auto;width:1px;background:#829c8b}
-.system-flow-connector:after{content:"";position:absolute;bottom:-1px;left:-3px;width:7px;height:7px;border-right:1px solid #829c8b;border-bottom:1px solid #829c8b;transform:rotate(45deg)}
-.system-flow-panel{display:flex;align-items:center;gap:1.15rem;padding:1.2rem 1.35rem}
-.system-flow-panel .system-flow-node-top{flex:0 0 45px;display:block;margin:0}
-.system-flow-panel .system-flow-number{margin-top:.3rem}
-.system-flow-load{display:flex;gap:.7rem;align-items:center;padding:1rem 1.05rem;min-height:85px}
-.system-flow-load>.system-flow-number{flex:0 0 37px;align-self:start;margin-top:.1rem;color:#567461}
-.system-flow-load-dot{display:inline-block;width:5px;height:5px;background:#ad8655;border-radius:50%}
-.system-flow-load strong{font-size:1.11rem}
-.system-flow-load small{font-size:.7rem}
-.system-diagram-caption{display:flex;align-items:flex-start;gap:.8rem;margin:1.25rem 0 0;color:#53675b;font-size:.77rem;line-height:1.7}
-.system-diagram-caption strong{font-weight:750;color:#294b3a}
-.system-diagram-caption-icon{flex:0 0 20px;display:grid;place-items:center;width:20px;height:20px;margin-top:.15rem;border:1px solid #c2d0c5;border-radius:50%;font:700 .75rem Georgia,serif;color:#45664e}
+.system-diagram{--pf-ink:#183c30;--pf-dark:#16392d;--pf-muted:#536b5d;--pf-rule:#d5dfd3;--pf-gold:#9c7b4a;min-width:0;margin:0;color:var(--pf-ink);font-family:var(--font-sans)}
+.system-diagram *{box-sizing:border-box}
+.system-diagram-heading{display:flex;align-items:end;justify-content:space-between;gap:1.1rem;padding-bottom:1.35rem;border-bottom:1px solid #d5dfd3}
+.system-diagram-kicker{margin:0 0 .65rem;color:#766143;letter-spacing:.11em;font-size:.66rem;line-height:1.5;font-weight:800}
+.system-diagram-kicker span{color:#b59f80;padding-inline:.25rem}
+.system-diagram-heading h3{margin:0;font:500 clamp(1.58rem,2.6vw,2.2rem)/1.16 Georgia,'Times New Roman',serif;letter-spacing:-.03em;max-width:26ch;color:var(--pf-ink);text-wrap:balance}
+.system-diagram-heading h3 em{display:block;color:#607864;font-style:italic}
+.system-diagram-context{flex-shrink:0;padding:.55rem .65rem;border:1px solid #d2dfd2;background:#f9fbf8;color:#3b624a;letter-spacing:.055em;font-size:.67rem;font-weight:750}
+.system-flow{margin-top:1.2rem;padding:clamp(.75rem,1.9vw,1.25rem);border:1px solid #dae5d9;border-radius:5px;background:linear-gradient(145deg,#f8faf6,#edf3eb)}
+.system-flow-sources,.system-flow-loads{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(.55rem,1.35vw,.95rem)}
+.system-flow-node{min-width:0;overflow:hidden;background:#fff;border:1px solid #d6e0d5;border-radius:5px}
+.system-flow-source{display:flex;flex-direction:column}
+.system-flow-photo{height:clamp(92px,13vw,148px);position:relative;overflow:hidden;background:#e1e8e2}
+.system-flow-photo img{display:block;width:100%;height:100%;object-fit:cover;max-width:none}
+.system-flow-source:nth-child(1) img{object-position:50% 48%}
+.system-flow-source:nth-child(2) img{object-position:54% 50%}
+.system-flow-photo-number{position:absolute;right:.6rem;top:.6rem;padding:.28rem .48rem;background:#153b30;color:#fff;font-size:.68rem;letter-spacing:.09em;font-weight:800}
+.system-flow-source-copy{min-width:0;flex:1;padding:clamp(.75rem,1.6vw,1.2rem)}
+.system-flow-label{display:block;margin:0 0 .35rem;color:#7a6747;font-size:.66rem;line-height:1.4;letter-spacing:.1em;font-weight:800}
+.system-flow-node strong{display:block;max-width:100%;color:#1c4333;font:500 clamp(1rem,1.7vw,1.36rem)/1.22 Georgia,'Times New Roman',serif;letter-spacing:-.01em;overflow-wrap:normal;word-break:normal;hyphens:none}
+.system-flow-node small{display:block;margin:.4rem 0 0;max-width:100%;font-size:.76rem;line-height:1.52;color:#4c6255;overflow-wrap:break-word}
+.system-flow-join{position:relative;height:27px;margin:0 24.5%}
+.system-flow-join:before{content:"";position:absolute;top:0;left:0;right:0;height:13px;border-left:1px solid #86a390;border-right:1px solid #86a390;border-bottom:1px solid #86a390}
+.system-flow-join:after{content:"";position:absolute;left:50%;top:13px;height:14px;border-left:1px solid #86a390}
+.system-flow-transition{text-align:center;margin:0 0 .6rem;font-size:.63rem;font-weight:800;letter-spacing:.09em;line-height:1.5;color:#426c51}
+.system-flow-transition span{display:inline-block;padding:.2rem .6rem;background:#ecf3eb}
+.system-flow-switch,.system-flow-panel{display:grid;grid-template-columns:54px minmax(0,1fr);gap:1.05rem;align-items:center;padding:1.2rem 1.3rem}
+.system-flow-switch{background:#173f31;border-color:#173f31}
+.system-flow-stage-image{display:block;width:54px;height:54px;max-width:100%;object-fit:contain;flex:none;border-radius:8px}
+.system-flow-stage-copy{min-width:0}
+.system-flow-step-inline{float:right;font-size:.67rem;letter-spacing:.06em}
+.system-flow-switch .system-flow-label{color:#e7ca99}
+.system-flow-switch strong{color:#fff;font-size:clamp(1.12rem,1.9vw,1.55rem)}
+.system-flow-switch small{color:#e2eee5;font-size:.76rem}
+.system-flow-panel{background:#fff}
+.system-flow-connector{position:relative;width:1px;height:26px;background:#88a393;margin:0 auto}
+.system-flow-connector:after{content:"";position:absolute;bottom:0;left:-3px;width:7px;height:7px;transform:rotate(45deg);border-right:1px solid #88a393;border-bottom:1px solid #88a393}
+.system-flow-load{min-height:122px;padding:1rem 1.1rem}
+.system-flow-load-top{display:flex;gap:.5rem;align-items:center;margin-bottom:.65rem;color:#536c5a;font-size:.7rem;font-weight:800;letter-spacing:.08em}
+.system-flow-load-marker{width:5px;height:5px;background:#ad8957;border-radius:50%}
+.system-flow-load strong{font-size:clamp(1.01rem,1.65vw,1.23rem)}
+.system-flow-load small{font-size:.72rem}
+.system-diagram figcaption.system-diagram-caption{display:flex;align-items:flex-start;gap:.65rem;margin:1rem 0 0;color:#53665a;font-size:.75rem;line-height:1.6}
+.system-diagram-caption strong{color:#244c36;font-weight:800}
+.system-diagram-caption-icon{display:grid;place-items:center;width:20px;height:20px;flex:0 0 20px;margin-top:.12rem;border-radius:50%;border:1px solid #bdd0bf;color:#365b3d;font:700 .75rem Georgia,serif}
 @media(max-width:700px){
- .system-diagram-heading{display:block;padding-bottom:1rem}
- .system-diagram-heading h3{font-size:clamp(1.45rem,5vw,1.85rem)}
- .system-diagram-context{display:inline-block;margin-top:1rem}
- .system-flow{padding:.7rem; margin-top:.8rem}
+ .system-diagram-heading{display:block;padding-bottom:.9rem}
+ .system-diagram-heading h3{font-size:clamp(1.6rem,6vw,1.92rem)}
+ .system-diagram-context{display:inline-block;margin-top:.85rem}
+ .system-flow{padding:.55rem;margin-top:.95rem}
  .system-flow-sources,.system-flow-loads{gap:.55rem}
- .system-flow-node{padding:.7rem}
- .system-flow-source .system-flow-node-top{margin-bottom:.4rem}
- .system-flow-icon{width:32px;height:32px}
- .system-flow-icon svg{width:20px;height:20px}
- .system-flow-number{font-size:.63rem}
- .system-flow-node strong{font-size:1.04rem}
- .system-flow-node small{font-size:.69rem;line-height:1.4}
- .system-flow-label{font-size:.59rem;letter-spacing:.07em}
- .system-flow-switch,.system-flow-panel{gap:.75rem;padding:.85rem}
- .system-flow-switch .system-flow-node-top,.system-flow-panel .system-flow-node-top{flex-basis:32px}
- .system-flow-switch strong{font-size:1.25rem}
- .system-flow-load{display:block;padding:.75rem;min-height:88px}
- .system-flow-load .system-flow-number{margin-bottom:.3rem}
- .system-flow-load strong{font-size:1rem}
- .system-diagram-caption{font-size:.72rem;line-height:1.55;margin-top:.85rem}
+ .system-flow-photo{height:clamp(80px,22vw,105px)}
+ .system-flow-source-copy{padding:.7rem}
+ .system-flow-label{font-size:.59rem;letter-spacing:.045em}
+ .system-flow-node strong{font-size:1.01rem;line-height:1.23}
+ .system-flow-node small{font-size:.69rem;line-height:1.42}
+ .system-flow-switch,.system-flow-panel{grid-template-columns:43px minmax(0,1fr);gap:.72rem;padding:.85rem}
+ .system-flow-stage-image{width:43px;height:43px}
+ .system-flow-switch strong{font-size:1.18rem}
+ .system-flow-switch small{font-size:.72rem}
+ .system-flow-load{min-height:100px;padding:.75rem}
+ .system-flow-load-top{margin-bottom:.42rem}
+ .system-flow-load strong{font-size:.99rem}
+ .system-flow-transition{font-size:.57rem;letter-spacing:.055em}
+ .system-diagram figcaption.system-diagram-caption{font-size:.72rem;line-height:1.55}
 }
 @media(max-width:360px){
- .system-diagram-kicker{font-size:.58rem;letter-spacing:.08em}
- .system-flow{padding:.6rem}
- .system-flow-sources,.system-flow-loads{gap:.42rem}
- .system-flow-source{padding:.68rem}
- .system-flow-node strong{font-size:.98rem}
+ .system-diagram-kicker{font-size:.59rem}
+ .system-flow-sources,.system-flow-loads{gap:.4rem}
+ .system-flow-source-copy{padding:.58rem}
+ .system-flow-node strong{font-size:.97rem}
  .system-flow-node small{font-size:.66rem}
- .system-flow-join{margin-inline:24%;height:22px}.system-flow-join:before{height:13px}.system-flow-join:after{top:13px;height:9px}
+ .system-flow-photo{height:77px}
+ .system-flow-photo-number{top:.35rem;right:.35rem;font-size:.61rem}
+ .system-flow-switch,.system-flow-panel{grid-template-columns:40px minmax(0,1fr);padding:.75rem;gap:.6rem}
+ .system-flow-stage-image{width:40px;height:40px}
+ .system-flow-join{height:21px}.system-flow-join:before{height:10px}.system-flow-join:after{top:10px;height:11px}
+ .system-flow-connector{height:19px}
 }
-@media(prefers-reduced-motion:reduce){.system-diagram *, .system-diagram *:before,.system-diagram *:after{transition:none!important}}
-@media print{.system-flow{background:#fff}.system-flow-switch{background:#173d31!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.system-flow-node{break-inside:avoid}.system-diagram-caption{break-inside:avoid}}
+@media print{
+ .system-flow{background:#fff}
+ .system-flow-switch{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+ .system-flow-node{break-inside:avoid}
+ .system-diagram-caption{break-inside:avoid}
+}
 </style>

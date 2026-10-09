@@ -146,6 +146,60 @@ try {
       false, `horizontal overflow from power pathway at ${width}px`);
   }
 
+
+  // Screenshot regression: power-stage pictures and icon art cannot spill into text.
+  for (const width of [320, 360, 390, 430, 768, 1024, 1440]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto(`${baseUrl}/`, { waitUntil: 'networkidle' });
+    const figure = page.locator('.premium-system-band .system-diagram');
+    assert.equal(await figure.locator('.system-flow-photo img').count(), 2, `source photos missing at ${width}px`);
+    assert.equal(await figure.locator('.system-flow-stage-image').count(), 2, `stage artwork missing at ${width}px`);
+    assert.equal(await figure.locator('svg').count(), 0, 'inline SVG regression could reintroduce global sizing collision');
+    for (const image of await figure.locator('img').all()) {
+      await image.scrollIntoViewIfNeeded();
+      await image.evaluate(async (img) => { await img.decode(); });
+    }
+    const layout = await figure.evaluate((root) => {
+      const within = (child, parent) => {
+        const c=child.getBoundingClientRect(), p=parent.getBoundingClientRect();
+        return c.left >= p.left - 1 && c.right <= p.right + 1 && c.top >= p.top - 1 && c.bottom <= p.bottom + 1;
+      };
+      const sources=[...root.querySelectorAll('.system-flow-source')];
+      const stages=[...root.querySelectorAll('.system-flow-switch,.system-flow-panel')];
+      const photos=[...root.querySelectorAll('img')];
+      const overlap = (a,b) => {
+        const x=a.getBoundingClientRect(), y=b.getBoundingClientRect();
+        return Math.min(x.right,y.right)>Math.max(x.left,y.left)+1 &&
+          Math.min(x.bottom,y.bottom)>Math.max(x.top,y.top)+1;
+      };
+      return {
+        imagesLoaded: photos.every((img) => img.complete && img.naturalWidth > 0),
+        sourcesSeparate: sources.every((source) => {
+          const image=source.querySelector('.system-flow-photo'), copy=source.querySelector('.system-flow-source-copy');
+          const heading=copy?.querySelector('strong');
+          return Boolean(image && copy && heading && !overlap(image,copy) &&
+            within(copy,source) && within(heading,copy) && heading.getBoundingClientRect().width>=75);
+        }),
+        stageImagesInside: stages.every((stage) => {
+          const img=stage.querySelector('.system-flow-stage-image');
+          const copy=stage.querySelector('.system-flow-stage-copy');
+          return Boolean(img && copy && within(img,stage) && within(copy,stage) && !overlap(img,copy));
+        }),
+        stageImageSizes: [...root.querySelectorAll('.system-flow-stage-image')].map((img) =>
+          ({width:img.getBoundingClientRect().width,height:img.getBoundingClientRect().height})),
+        height:root.getBoundingClientRect().height,
+      };
+    });
+    assert(layout.imagesLoaded, `power-pathway images not loaded at ${width}px: ${JSON.stringify(layout)}`);
+    assert(layout.sourcesSeparate, `photos or headings overlap in source cards at ${width}px: ${JSON.stringify(layout)}`);
+    assert(layout.stageImagesInside, `stage icon artwork overlaps text at ${width}px: ${JSON.stringify(layout)}`);
+    assert(layout.stageImageSizes.every(({width:w,height:h}) => w >= 35 && w <= 56 && h >= 35 && h <= 56),
+      `stage icons are oversized at ${width}px: ${JSON.stringify(layout)}`);
+    assert(layout.height < 1200, `power pathway is excessively long at ${width}px: ${JSON.stringify(layout)}`);
+    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false,
+      `power-pathway overflow at ${width}px`);
+  }
+
   // Full generated-route crawl: every static index page gets a mobile load,
   // one-H1, and horizontal-overflow check. This catches new content routes,
   // not just the hand-picked smoke cases above.
