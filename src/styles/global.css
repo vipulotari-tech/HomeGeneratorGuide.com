@@ -585,3 +585,32 @@ h1,h2,h3,legend{overflow-wrap:anywhere} main{min-width:0} .prose-hgg a{overflow-
  .article-evidence,.article-takeaways{break-inside:avoid;background:#fff;border-color:#bbb}
  .article-prose{font-size:11pt}
 }
+
+
+/* Sizing worksheet: a wide printable grid must never be compressed into a phone/tablet article. */
+.static-load-mobile{display:block}
+.static-load-table{display:none}
+.static-load-summary{
+ display:flex;justify-content:space-between;align-items:center;gap:1rem;
+ min-height:56px;padding:1rem 1.1rem;cursor:pointer;list-style:none;
+ border:1px solid #cbd9cf;border-radius:5px;background:#f1f6f1;
+ color:#204636;font-size:1rem;font-weight:750;line-height:1.5;
+}
+.static-load-summary::-webkit-details-marker{display:none}
+.static-load-summary:after{content:"+";font-size:1.5rem;font-weight:400;line-height:1;flex:none}
+.static-load-mobile[open] .static-load-summary:after{content:"−"}
+.static-load-note{font-size:.87rem;line-height:1.65;color:#54665b;margin:.9rem 0 1rem}
+.static-load-card-list{display:grid;gap:.75rem;margin-top:1rem}
+.static-load-card{min-width:0}
+.static-load-card dl>div{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}
+.static-load-card dt{overflow-wrap:anywhere}
+@media(min-width:1200px){
+ .static-load-mobile{display:none}
+ .static-load-table{display:block}
+}
+@media print{
+ .static-load-mobile{display:none!important}
+ .static-load-table{display:block!important;overflow:visible!important;border:1px solid #777}
+ .static-load-table table{min-width:0!important;font-size:9pt}
+ .static-load-table th,.static-load-table td{padding:.4rem!important}
+}
