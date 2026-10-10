@@ -319,28 +319,56 @@ h1,h2,h3,legend{overflow-wrap:anywhere} main{min-width:0} .prose-hgg a{overflow-
 }
 .cinematic-hero-copy { max-width: 850px; }
 .cinematic-hero-eyebrow {
-  display: flex;
+  display: inline-flex;
   flex-wrap: wrap;
   gap: .65rem;
   align-items: center;
-  margin-bottom: 1.4rem;
-  color: #f5ce9b;
-  font-size: .74rem;
+  margin-bottom: 1.5rem;
+  padding: .55rem .95rem .55rem .8rem;
+  border: 1px solid rgba(244, 199, 140, .38);
+  border-radius: 100px;
+  background: rgba(9, 24, 22, .48);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #f7d8a8;
+  font-size: .72rem;
   font-weight: 780;
   line-height: 1.5;
-  letter-spacing: .15em;
+  letter-spacing: .18em;
+  box-shadow: 0 8px 28px -12px rgba(0, 0, 0, .6), inset 0 1px 0 rgba(255, 240, 213, .18);
 }
-.cinematic-hero-eyebrow span { color: #fff; opacity: .5; }
+.cinematic-hero-eyebrow .eyebrow-line {
+  width: 32px;
+  height: 1px;
+  background: linear-gradient(90deg, #fff3d9, #e0a458);
+  box-shadow: 0 0 12px rgba(244, 199, 140, .8);
+}
+.cinematic-hero-eyebrow span { color: #fff; opacity: .55; }
 .cinematic-hero-copy h1 {
   max-width: 830px;
   margin: 0;
   font-family: var(--font-sans);
   font-size: clamp(3.4rem, 6.2vw, 6.8rem);
-  font-weight: 800;
-  line-height: 1.005;
-  letter-spacing: -.068em;
+  font-weight: 850;
+  line-height: 1.01;
+  letter-spacing: -.06em;
   text-wrap: balance;
   color: #fff;
+  text-shadow: 0 3px 34px rgba(0, 0, 0, .55);
+}
+.cinematic-hero-copy h1 .hero-white {
+  color: #ffffff;
+  text-shadow: 0 2px 26px rgba(0, 0, 0, .6), 0 1px 2px rgba(0, 0, 0, .65);
+}
+.cinematic-hero-copy h1 .hero-gold {
+  background: linear-gradient(100deg, #fff8e7 0%, #f9ddac 20%, #eeb46e 38%, #fff0cd 55%, #df9f4e 74%, #f8dcab 92%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 18px rgba(0, 0, 0, .55));
+  padding-bottom: .09em;
+  margin-bottom: -.09em;
 }
 .cinematic-hero-copy h1 span { color: #fff; }
 .cinematic-hero-copy h1 em {
