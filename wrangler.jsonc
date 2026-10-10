@@ -1,8 +1,12 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "homegeneratorguide",
+  // DISABLED permanently: the staging Worker "homegeneratorguide"
+  // (homegeneratorguide.tender-telescope.workers.dev) was deleted and must not
+  // be recreated. Production is Cloudflare Pages only. This config is kept for
+  // local `wrangler dev` preview only; do not run `wrangler deploy` with it.
+  "name": "homegeneratorguide-disabled",
   "compatibility_date": "2026-09-18",
-  "workers_dev": true,
+  "workers_dev": false,
   "preview_urls": false,
   "previews": {},
   "assets": {

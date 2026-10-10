@@ -32,13 +32,11 @@ Production is a **Cloudflare Pages project**, not a Worker.
 - Astro `output: 'static'` writes fully static HTML plus `public/_headers` and `public/_redirects` (both supported by Pages).
 - Custom domains: `standbygeneratorguide.com` (apex) and `www.standbygeneratorguide.com`, attached to the Pages project. `www` -> apex (301, path/query preserved) is a zone Single Redirect Rule, not a Worker and not a Pages `_redirects` hostname rule (Pages `_redirects` is path-only).
 - Automatic deployments: pushes to `main` deploy via `.github/workflows/pages-deploy.yml` (requires `CLOUDFLARE_API_TOKEN` with Pages write and `CLOUDFLARE_ACCOUNT_ID` secrets). Native Pages Git integration (Dashboard > Pages > standbygeneratorguide > Settings > Builds & deployments > Connect to Git, repo `vipulotari-tech/StandbyGeneratorGuide.com`, production branch `main`, build command `npm run build:production`, output `dist`) may be enabled as well; both target the same project/branch.
-- Staging/preview remains Workers static assets for local QA: `wrangler.jsonc` / `wrangler.staging.jsonc` (`homegeneratorguide.tender-telescope.workers.dev`, noindex). `wrangler.production.jsonc` and `wrangler.www.jsonc` are retired (empty routes) so no Worker can claim the production apex/www and conflict with Pages.
+- Staging Worker permanently deleted: `homegeneratorguide.tender-telescope.workers.dev` returns 404. `wrangler.jsonc` / `wrangler.staging.jsonc` are disabled (`homegeneratorguide-disabled`, `workers_dev: false`) for local `wrangler dev` preview only — `npm run deploy` / `deploy:staging` refuse to run so the deleted Worker can never be recreated. `wrangler.production.jsonc` and `wrangler.www.jsonc` are retired (empty routes) so no Worker can claim the production apex/www and conflict with Pages.
 
 ```sh
 npm run preview
-npm run preview:staging
-npm run deploy
-npm run deploy:staging
+npm run preview:staging   # local only, never deploys
 
 # Production (Pages). Only when the production domain is intentionally ready:
 npm run preview:production   # local Pages dev of dist/

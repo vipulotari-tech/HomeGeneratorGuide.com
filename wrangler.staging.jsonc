@@ -1,8 +1,10 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "homegeneratorguide",
+  // DISABLED permanently: staging Worker deleted (see wrangler.jsonc). Local
+  // `wrangler dev` preview only; never `wrangler deploy` with this config.
+  "name": "homegeneratorguide-disabled",
   "compatibility_date": "2026-09-18",
-  "workers_dev": true,
+  "workers_dev": false,
   "preview_urls": false,
   "assets": {
     "directory": "./dist",
