@@ -11,14 +11,14 @@
 ## Brand colors
 | Token | Name | Hex | Role |
 | --- | --- | --- | --- |
-| primary | Navy Blue | #1B3A6B | Headings, navigation, links, trust |
+| primary | Deep Green | #203b34 | Current editorial headings, links and UI; the logo retains navy #1B3A6B |
 | accent | Power Orange | #F5821F | Actions and decorative highlights |
 | success | Generator Green | #2D7D46 | Approval, safety, confirmed states |
 | danger | Safety Red | #C0392B | Warnings and safety notices |
 | surface | Slate Gray | #F8F9FA | Backgrounds |
 | ink | Near-Black | #1A1A2E | Body text and orange-button text |
 
-Theme tokens live in src/styles/global.css. primary-dark #12284C and accent-dark #E87517 are supporting hover/dark-surface shades.
+Theme tokens live in src/styles/global.css. primary-dark #142b25 and accent-dark #E87517 are supporting hover/dark-surface shades. The October product-showcase redesign changed the UI primary; exported navy logo assets are intentionally retained.
 
 ## Accessibility
 - Orange buttons use ink text: 6.58:1 contrast. White text on brand orange is insufficient for ordinary text.

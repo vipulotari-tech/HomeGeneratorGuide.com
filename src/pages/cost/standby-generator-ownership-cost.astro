@@ -11,8 +11,6 @@ if (!ng50 || !lp50) throw new Error('Fuel test points missing for ownership-cost
 const hours = 100;
 const ngAnnual = ng50.amount * hours;
 const lpAnnual = lp50.amount * hours;
-const maintenanceLow = 200;
-const maintenanceHigh = 650;
 const toc = [
   { id: 'framework', label: 'What ownership cost includes' },
   { id: 'fuel', label: 'Fuel-use worked example' },

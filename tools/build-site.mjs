@@ -1,6 +1,7 @@
 import { spawnSync } from 'node:child_process';
-import { readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { securityPolicy } from './security-policy.mjs';
 
 const environment = process.argv[2] ?? 'production';
 if (!['production', 'staging'].includes(environment)) {
@@ -18,7 +19,12 @@ if(evidence.status!==0) process.exit(evidence.status??1);
 const astroCli = resolve('node_modules/astro/bin/astro.mjs');
 // Start with an empty generated output directory. A previous target's HTML must
 // not survive or be served while Astro prerenders the next target.
-rmSync(resolve('dist'), { recursive: true, force: true });
+const outputDirectory = resolve('dist');
+mkdirSync(outputDirectory, { recursive: true });
+// Keep the directory itself: Windows preview watchers can hold its handle open.
+for (const entry of readdirSync(outputDirectory)) {
+  rmSync(resolve(outputDirectory, entry), { recursive: true, force: true, maxRetries: 3 });
+}
 // Environment-specific metadata must never reuse pages from the other target.
 // Force a full build when switching between staging and production in one checkout.
 const result = spawnSync(process.execPath, [astroCli, 'build', '--force'], {
@@ -45,15 +51,29 @@ if (environment === 'staging') {
 // second wildcard rule that some static hosts may parse inconsistently.
 const headersPath = resolve('dist/_headers');
 const baseHeaders = readFileSync(resolve('public/_headers'), 'utf8').trimEnd();
-let outputHeaders = baseHeaders;
+const htmlPages = readdirSync(resolve('dist'), { recursive: true })
+  .filter((file) => file.endsWith('.html'))
+  .map((file) => readFileSync(resolve('dist', file), 'utf8'));
+const cspLine = `  Content-Security-Policy: ${securityPolicy(htmlPages)}`;
+if (cspLine.length > 2000) throw new Error('CSP exceeds Cloudflare header line limit. Externalize inline scripts.');
+let outputHeaders = baseHeaders.replace(/^  Content-Security-Policy:.*$/m, cspLine);
 if (environment === 'staging') {
   const globalRule = /^\/\*$/m;
   if (!globalRule.test(baseHeaders)) {
     throw new Error('Expected a global /* rule in public/_headers for the staging noindex header.');
   }
-  outputHeaders = baseHeaders.replace(globalRule, '/*\n  X-Robots-Tag: noindex, nofollow');
+  outputHeaders = outputHeaders.replace(globalRule, '/*\n  X-Robots-Tag: noindex, nofollow');
 }
 writeFileSync(headersPath, `${outputHeaders.trimEnd()}\n`, 'utf8');
+if (environment === 'production') {
+  const redirectsPath = resolve('dist/_redirects');
+  writeFileSync(redirectsPath, `${readFileSync(redirectsPath, 'utf8').trimEnd()}\n/sitemap.xml /sitemap-index.xml 301\n`);
+}
+const gitCommit = spawnSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' });
+writeFileSync(resolve('dist/deployment.json'), JSON.stringify({
+  environment,
+  commit: process.env.CF_PAGES_COMMIT_SHA ?? process.env.GITHUB_SHA ?? gitCommit.stdout?.trim() ?? 'unknown',
+}) + '\n');
 // Cloudflare's Git build runs this command without the full GitHub QA workflow.
 // Refuse deployment output whose indexing state disagrees with its target.
 const indexing = spawnSync(process.execPath, ['tools/qa-indexing.mjs', environment], { stdio: 'inherit' });

@@ -34,14 +34,14 @@ const searchMetadata = SEARCH_METADATA[Astro.url.pathname];
 const fullTitle = seoTitle ?? searchMetadata?.title ?? (title.includes(SITE_NAME) ? title : `${title} | ${SITE_NAME}`);
 const searchDescription = seoDescription ?? searchMetadata?.description ?? description;
 const absoluteOgImage = ogImage.startsWith('http') ? ogImage : `${site}${ogImage}`;
-const pageSchema = schema ?? (noindex ? undefined : {
+const pageSchema = indexable ? (schema ?? {
   '@context': 'https://schema.org',
   '@type': 'WebPage',
   name: title,
   description,
   url,
   publisher: { '@type': 'Organization', name: SITE_NAME, url: `${site}/` },
-});
+}) : undefined;
 ---
 <!doctype html>
 <html lang="en-US">
@@ -67,7 +67,7 @@ const pageSchema = schema ?? (noindex ? undefined : {
   <meta name="twitter:image" content={absoluteOgImage} />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   {indexable && <link rel="sitemap" href="/sitemap-index.xml" />}
-  {pageSchema && <script type="application/ld+json" set:html={JSON.stringify(pageSchema)} />}
+  {pageSchema && <script type="application/ld+json" set:html={JSON.stringify(pageSchema).replace(/</g, '\\u003c')} />}
 </head>
 <body class="flex min-h-screen flex-col bg-white text-ink">
   <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded focus:bg-white focus:px-4 focus:py-2 focus:text-primary">Skip to content</a>

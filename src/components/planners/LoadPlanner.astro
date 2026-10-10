@@ -62,7 +62,7 @@ const examples={
     <button type="button" class="secondary load-example-button" disabled data-load-example="broader" aria-controls="load-rows">Load broader-home example</button>
   </div>
 </section>
-<script id="load-example-data" type="application/json" set:html={JSON.stringify(examples)}></script>
+<script id="load-example-data" type="application/json" set:html={JSON.stringify(examples).replace(/</g, '\\u003c')}></script>
 <form id="load-form" class="planner-form" data-save="hgg-load-v1">
   <div class="field-grid"><label>Load type<select id="load-type">{loads.map(name=><option>{name}</option>)}</select></label><div class="flex items-end"><button type="button" id="add-load" disabled>Add load</button></div></div>
   <p class="help">Enter equipment/nameplate data or values confirmed by your installer. No invented appliance defaults. “Total starting watts” includes that load’s running watts; for no extra starting demand, enter the same value in both fields. Do not convert motor LRA directly to watts. Volts and amps are documentation fields and do not automatically calculate watts; power factor and motor-start behavior must be verified.</p>

@@ -40,6 +40,7 @@ if (environment === 'staging') {
   for (const [route, html] of pages) {
     assert(html.includes('content="noindex, nofollow"'), 'Staging robots meta missing: ' + route);
     assert(!/<link rel="canonical"/.test(html), 'Staging must not emit a canonical: ' + route);
+    assert(!/<script type="application\/ld\+json">/.test(html), 'Staging must not emit structured data: ' + route);
   }
 
   console.log('Staging indexing guard PASS', { pages: pages.size, sitemapFiles: 0, robots: 'blocked' });

@@ -1,4 +1,5 @@
 ---
+import { MISSION, EDITORIAL_PROMISE, REVIEW_NOTE } from '../../config/site';
 const groups = [
   { title: 'Plan your system', label: 'Plan', links: [
     ['Planning tools', '/planning/'], ['Generator sizing', '/sizing/'],
@@ -64,6 +65,12 @@ const groups = [
         <a href="/disclaimer/">Disclaimer</a>
       </nav>
     </div>
+    <details class="footer-disclosures">
+      <summary>Our editorial commitments and review limits</summary>
+      <p>{MISSION}</p>
+      <p>{EDITORIAL_PROMISE}</p>
+      <p>{REVIEW_NOTE}</p>
+    </details>
   </div>
 </footer>
 
@@ -110,6 +117,9 @@ const groups = [
   .footer-bottom p { margin: 0; }
   .footer-bottom nav { display: flex; flex-wrap: wrap; gap: 0 1.5rem; }
   .footer-bottom a { display: inline-flex; align-items: center; min-height: 44px; }
+  .footer-disclosures { margin-top: .75rem; border-top: 1px solid var(--footer-rule); color: var(--footer-text); font-size: .8125rem; line-height: 1.7; }
+  .footer-disclosures summary { min-height: 44px; padding: .75rem 0; cursor: pointer; color: var(--footer-gold); }
+  .footer-disclosures p { max-width: 80ch; margin: 0 0 .75rem; }
   @media (min-width: 1024px) {
     .footer-groups { grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 1.5fr); }
     .footer-groups nav:last-child ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 1rem; }

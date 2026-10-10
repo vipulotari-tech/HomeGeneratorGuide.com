@@ -1,6 +1,7 @@
 name: Validate Astro Build
 
 on:
+  workflow_dispatch:
   push:
     branches: [main]
   pull_request:
@@ -21,6 +22,12 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci
+      - name: Dependency security audit
+        run: npm audit --audit-level=high
+      - name: JavaScript lint
+        run: npm run lint
+      - name: Deployment and security-policy tests
+        run: npm run test:deployment
       - name: Astro checks
         run: npm run check
       - name: TypeScript checks
@@ -33,6 +40,10 @@ jobs:
         run: npm run qa:assets
       - name: Staging indexing assertions
         run: node tools/qa-indexing.mjs staging
+      - name: Security headers and published artifact scan
+        run: npm run qa:security
+      - name: Editorial disclosures, schema and staging coverage
+        run: python tools/qa-brand.py && python tools/qa-schema.py && python tools/qa-coverage.py
       - name: Install browser
         run: npx playwright install --with-deps chromium
       - name: Start staging preview
@@ -44,6 +55,11 @@ jobs:
           done
           cat /tmp/hgg-wrangler.log
           exit 1
+      - name: Staging HTTP headers, redirects, errors and indexing
+        env:
+          BASE_URL: http://127.0.0.1:8321
+          EXPECTED_COMMIT: ${{ github.sha }}
+        run: npm run qa:http:staging
       - name: Browser QA
         env:
           BASE_URL: http://127.0.0.1:8321
@@ -52,6 +68,10 @@ jobs:
         env:
           BASE_URL: http://127.0.0.1:8321
         run: npm run qa:planners
+      - name: All-route WCAG automated accessibility checks
+        env:
+          BASE_URL: http://127.0.0.1:8321
+        run: npm run qa:accessibility
       - name: Local laboratory performance and layout stability
         env:
           BASE_URL: http://127.0.0.1:8321
@@ -66,6 +86,8 @@ jobs:
         run: node tools/qa-functional.mjs
       - name: Build production
         run: npm run build:production
+      - name: Production security assertions
+        run: npm run qa:security
       - name: Production indexing assertions
         run: node tools/qa-indexing.mjs production
       - name: AdSense disclosure readiness
@@ -84,6 +106,25 @@ jobs:
           test -f dist/sitemap-index.xml
           ! grep -R -q "homegeneratorguide.com/404/" dist/sitemap*.xml
           ! grep -q "X-Robots-Tag: noindex" dist/_headers
+
+      - name: Start production preview
+        run: |
+          npx wrangler dev --config wrangler.production.jsonc --ip 127.0.0.1 --port 8322 > /tmp/hgg-production.log 2>&1 &
+          for i in {1..30}; do
+            if curl -fsS http://127.0.0.1:8322/ >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/hgg-production.log
+          exit 1
+      - name: Production HTTP and browser validation
+        env:
+          BASE_URL: http://127.0.0.1:8322
+          EXPECTED_COMMIT: ${{ github.sha }}
+        run: npm run qa:http:production && npm run qa:browser
+      - name: Validate production and www deployment configuration
+        run: |
+          npx wrangler deploy --config wrangler.production.jsonc --dry-run
+          npx wrangler deploy --config wrangler.www.jsonc --dry-run
 
       - name: Upload QA evidence
         if: always()

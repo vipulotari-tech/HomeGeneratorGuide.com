@@ -6,5 +6,5 @@
 /sizing/calculator/ /sizing/what-size-generator-do-i-need/ 301
 /sizing/calculator /sizing/what-size-generator-do-i-need/ 301
 
-# www -> apex canonical redirect is configured as a Cloudflare dashboard
-# Redirect Rule for Workers; Netlify and Vercel redirects are also configured.
+# Cloudflare www -> apex is handled by workers/www-redirect.mjs and
+# wrangler.www.jsonc. Source hosts are not supported in Workers _redirects.

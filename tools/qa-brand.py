@@ -76,7 +76,8 @@ assert "/sizing/calculator/ /sizing/what-size-generator-do-i-need/ 301" in redir
 
 css = (ROOT / "src/styles/global.css").read_text(encoding="utf-8")
 for token, value in {
-    "primary": "#1B3A6B", "accent": "#F5821F", "success": "#2D7D46",
+    # The October product-showcase design uses green UI tokens; the logo stays navy.
+    "primary": "#203b34", "accent": "#F5821F", "success": "#2D7D46",
     "danger": "#C0392B", "surface": "#F8F9FA", "ink": "#1A1A2E",
 }.items():
     assert f"--color-{token}: {value};" in css, token
