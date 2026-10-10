@@ -1,4 +1,4 @@
-# Feature Specification: Standby Generator Guide.com Production Build
+# Feature Specification: StandbyGeneratorGuide.com Production Build
 
 **Created**: 2026-10-03
 **Status**: Active
