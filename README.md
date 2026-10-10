@@ -1,4 +1,4 @@
-# Standby Generator Guide.com
+# StandbyGeneratorGuide.com
 
 An independent, source-linked informational site for US homeowners researching standby generators. The site is built with Astro as static HTML; four optional browser tools support planning scenarios. It does not provide final engineering sizing, product testing, or licensed electrical advice.
 

@@ -1,4 +1,4 @@
-# Implementation Plan: Standby Generator Guide.com
+# Implementation Plan: StandbyGeneratorGuide.com
 
 **Date**: 2026-10-03 | **Spec**: `.specify/specs/homegeneratorguide/spec.md`
 **Stack**: Astro 5.x, @tailwindcss/vite 4.x, @astrojs/sitemap, @astrojs/mdx, TypeScript strict, static output.
