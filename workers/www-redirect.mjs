@@ -12,7 +12,10 @@ export default {
         'Cache-Control': 'public, max-age=3600',
         'Strict-Transport-Security': 'max-age=31536000',
         'X-Content-Type-Options': 'nosniff',
-        'Content-Security-Policy': "default-src 'none'; frame-ancestors 'none'",
+        'X-Frame-Options': 'DENY',
+        'Referrer-Policy': 'strict-origin-when-cross-origin',
+        'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
+        'Content-Security-Policy': "default-src 'none'; base-uri 'none'; object-src 'none'; frame-src 'none'; frame-ancestors 'none'; form-action 'none'",
       },
     });
   },

@@ -8,6 +8,10 @@ test('www redirects HTTP and HTTPS to fixed HTTPS apex preserving path and query
     const response = redirect.fetch(new Request(origin + '/cost/standby-generator-cost/?utm_source=mail&x=%2F'));
     assert.equal(response.status, 301);
     assert.equal(response.headers.get('location'), 'https://homegeneratorguide.com/cost/standby-generator-cost/?utm_source=mail&x=%2F');
+    assert.equal(response.headers.get('strict-transport-security'), 'max-age=31536000');
+    assert.equal(response.headers.get('x-frame-options'), 'DENY');
+    assert.equal(response.headers.get('referrer-policy'), 'strict-origin-when-cross-origin');
+    assert.equal(response.headers.get('permissions-policy'), 'camera=(), microphone=(), geolocation=()');
   }
 });
 test('redirect cannot use a user-controlled destination', () => {

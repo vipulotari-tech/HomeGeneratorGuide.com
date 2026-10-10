@@ -54,6 +54,14 @@ assert(!robots.includes(stagingOrigin), 'Production robots.txt must not referenc
 assert(!/X-Robots-Tag:\s*noindex/i.test(headers), 'Production headers must not contain a global noindex');
 assert(sitemapFiles.length > 0, 'Production must publish sitemap files');
 
+// Check every published text file, including error documents and JS bundles.
+for (const entry of fs.readdirSync(dist, { recursive: true, withFileTypes: true })) {
+  if (!entry.isFile()) continue;
+  const file = path.join(entry.parentPath, entry.name);
+  const content = fs.readFileSync(file);
+  assert(!content.includes(Buffer.from(stagingOrigin)), 'Staging origin leaked into production artifact: ' + path.relative(dist, file));
+}
+
 const sitemap = sitemapFiles.map((file) => fs.readFileSync(path.join(dist, file), 'utf8')).join('\n');
 assert(!sitemap.includes(stagingOrigin), 'Production sitemap must not reference staging');
 assert(!sitemap.includes('/404/'), '404 must not be in the production sitemap');

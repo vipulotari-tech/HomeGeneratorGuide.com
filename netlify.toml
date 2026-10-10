@@ -5,14 +5,32 @@
   status = 301
   force = true
 
+[[redirects]]
+  from = "/author/vipul-otari"
+  to = "/editorial-team/"
+  status = 301
+  force = true
+
 # Netlify deploy configuration for HomeGeneratorGuide.com (static Astro output)
 [build]
   command = "npm run build:production"
   publish = "dist"
 
+[context.deploy-preview]
+  command = "npm run build:staging"
+
+[context.branch-deploy]
+  command = "npm run build:staging"
+
 # Retire the prohibited estimator URL without reintroducing an interactive tool.
 [[redirects]]
   from = "/sizing/calculator/"
+  to = "/sizing/what-size-generator-do-i-need/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/sizing/calculator"
   to = "/sizing/what-size-generator-do-i-need/"
   status = 301
   force = true
@@ -28,9 +46,10 @@
   for = "/*"
   [headers.values]
     X-Content-Type-Options = "nosniff"
-    X-Frame-Options = "SAMEORIGIN"
+    X-Frame-Options = "DENY"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Strict-Transport-Security = "max-age=31536000"
 
 [[headers]]
   for = "/_astro/*"

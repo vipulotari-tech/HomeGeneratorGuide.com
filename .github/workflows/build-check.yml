@@ -42,8 +42,8 @@ jobs:
         run: node tools/qa-indexing.mjs staging
       - name: Security headers and published artifact scan
         run: npm run qa:security
-      - name: Editorial disclosures, schema and staging coverage
-        run: python tools/qa-brand.py && python tools/qa-schema.py && python tools/qa-coverage.py
+      - name: Editorial disclosure and staging coverage
+        run: python tools/qa-coverage.py
       - name: Install browser
         run: npx playwright install --with-deps chromium
       - name: Start staging preview
@@ -94,6 +94,8 @@ jobs:
         run: node tools/qa-adsense-readiness.mjs
       - name: Full production HTML audit
         run: npm run qa:seo
+      - name: Editorial disclosures, schema and production coverage
+        run: python tools/qa-brand.py && python tools/qa-schema.py && python tools/qa-coverage.py
       - name: Ahrefs topic-cluster and internal-link QA
         run: npm run qa:keywords
       - name: Homeowner decision, professional review and pilot QA
@@ -121,10 +123,12 @@ jobs:
           BASE_URL: http://127.0.0.1:8322
           EXPECTED_COMMIT: ${{ github.sha }}
         run: npm run qa:http:production && npm run qa:browser
-      - name: Validate production and www deployment configuration
+      - name: Validate staging, production and www deployment configuration
         run: |
-          npx wrangler deploy --config wrangler.production.jsonc --dry-run
-          npx wrangler deploy --config wrangler.www.jsonc --dry-run
+          npx wrangler deploy --config wrangler.jsonc --dry-run
+          npx wrangler deploy --config wrangler.staging.jsonc --dry-run
+          npx wrangler deploy --config wrangler.production.jsonc --env="" --dry-run
+          npx wrangler deploy --config wrangler.www.jsonc --env="" --dry-run
 
       - name: Upload QA evidence
         if: always()

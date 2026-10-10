@@ -75,8 +75,10 @@ const formatFuelUse = (entry: NonNullable<ModelSpec['fuelConsumption']>[number])
         {model.startingMsrpUsd !== undefined && (
           <div>
             <dt class="font-semibold text-gray-900">Starting MSRP shown on manufacturer page</dt>
-            <dd class="mt-1 text-gray-700">${formatNumber(model.startingMsrpUsd)} USD</dd>
-            {model.startingMsrpNote && <p class="mt-1 text-xs leading-relaxed text-gray-600">{model.startingMsrpNote}</p>}
+            <dd class="mt-1 text-gray-700">
+              ${formatNumber(model.startingMsrpUsd)} USD
+              {model.startingMsrpNote && <p class="mt-1 text-xs leading-relaxed text-gray-600">{model.startingMsrpNote}</p>}
+            </dd>
           </div>
         )}
         {model.transferSwitch && (

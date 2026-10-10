@@ -10,6 +10,7 @@ assert.equal(home.status, 200);
 for (const [header, value] of Object.entries({
   'x-content-type-options': 'nosniff', 'x-frame-options': 'DENY',
   'referrer-policy': 'strict-origin-when-cross-origin', 'strict-transport-security': 'max-age=31536000',
+  'permissions-policy': 'camera=(), microphone=(), geolocation=()',
 })) assert.equal(home.headers.get(header), value, header);
 assert.match(home.headers.get('content-security-policy') ?? '', /script-src 'self' 'sha256-/);
 const html = await home.text();
@@ -49,6 +50,7 @@ for (const [legacy, target] of [
   const response = await request(legacy + '?ref=launch-audit');
   assert.equal(response.status, 301, legacy);
   const destination = new URL(response.headers.get('location'), base);
+  assert.equal(destination.origin, new URL(base).origin, 'Legacy redirects must remain same-origin');
   assert.equal(destination.pathname, target, legacy);
   assert.equal(destination.search, '?ref=launch-audit', 'Preserve legacy query');
   assert.equal((await request(destination.pathname)).status, 200);
