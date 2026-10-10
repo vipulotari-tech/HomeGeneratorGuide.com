@@ -1,4 +1,4 @@
-# HomeGeneratorGuide.com
+# Standby Generator Guide.com
 
 An independent, source-linked informational site for US homeowners researching standby generators. The site is built with Astro as static HTML; four optional browser tools support planning scenarios. It does not provide final engineering sizing, product testing, or licensed electrical advice.
 
@@ -29,7 +29,7 @@ The Worker configs deliberately separate the pre-launch and production targets. 
 
 - `wrangler.jsonc` is the pre-launch default and deploys to the Worker named `homegeneratorguide` (`homegeneratorguide.tender-telescope.workers.dev`).
 - `wrangler.staging.jsonc` is the explicit staging config for the same Worker.
-- `wrangler.production.jsonc` deploys to `homegeneratorguide-production` and routes `homegeneratorguide.com/*` through the configured Cloudflare zone.
+- `wrangler.production.jsonc` deploys to `homegeneratorguide-production` and routes `standbygeneratorguide.com/*` through the configured Cloudflare zone.
 
 ```sh
 npm run preview

@@ -17,8 +17,8 @@ built_paths = {
     for page in html_pages
 }
 
-if "Sitemap: https://homegeneratorguide.com/sitemap-index.xml" in robots:
-    base_url = "https://homegeneratorguide.com"
+if "Sitemap: https://standbygeneratorguide.com/sitemap-index.xml" in robots:
+    base_url = "https://standbygeneratorguide.com"
     assert "Disallow: /" not in robots, "production robots.txt blocks the whole site"
     headers = (DIST / "_headers").read_text(encoding="utf-8")
     assert "X-Robots-Tag: noindex" not in headers, "staging noindex header leaked into production"
@@ -28,12 +28,12 @@ if "Sitemap: https://homegeneratorguide.com/sitemap-index.xml" in robots:
     sitemap_index = index_path.read_text(encoding="utf-8")
     index_urls = re.findall(r"<loc>(.*?)</loc>", sitemap_index)
     assert index_urls and all(
-        urlparse(url).scheme == "https" and urlparse(url).netloc == "homegeneratorguide.com"
+        urlparse(url).scheme == "https" and urlparse(url).netloc == "standbygeneratorguide.com"
         for url in index_urls
     ), "non-production origin leaked into production sitemap index"
     sitemap = sitemap_path.read_text(encoding="utf-8")
     urls = re.findall(r"<loc>(.*?)</loc>", sitemap)
-    assert all(urlparse(url).netloc == "homegeneratorguide.com" for url in urls), (
+    assert all(urlparse(url).netloc == "standbygeneratorguide.com" for url in urls), (
         "non-production host leaked into production sitemap"
     )
     expected = {base_url + path for path in built_paths}
@@ -45,7 +45,7 @@ if "Sitemap: https://homegeneratorguide.com/sitemap-index.xml" in robots:
         html = page.read_text(encoding="utf-8")
         if page in html_pages:
             assert re.search(
-                r'<link rel="canonical" href="https://homegeneratorguide\.com/', html
+                r'<link rel="canonical" href="https://standbygeneratorguide\.com/', html
             ), page
             assert 'name="robots" content="noindex' not in html, page
         else:
@@ -59,7 +59,7 @@ else:
         html = page.read_text(encoding="utf-8")
         assert 'name="robots" content="noindex, nofollow"' in html, page
         assert 'rel="canonical"' not in html, page
-        assert "https://homegeneratorguide.com/" not in html, page
+        assert "https://standbygeneratorguide.com/" not in html, page
     headers = (DIST / "_headers").read_text(encoding="utf-8")
     assert "X-Robots-Tag: noindex, nofollow" in headers
     print(f"Staging SEO isolation OK: {len(all_html)} HTML pages noindex/nofollow; no sitemap.")

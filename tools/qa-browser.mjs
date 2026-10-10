@@ -414,15 +414,15 @@ try {
   const vercel = JSON.parse(fs.readFileSync(new URL('../vercel.json', import.meta.url), 'utf8'));
   assert(
     vercel.redirects.some((rule) =>
-      rule.has?.[0]?.value === 'www.homegeneratorguide.com' &&
-      rule.destination?.startsWith('https://homegeneratorguide.com/') &&
+      rule.has?.[0]?.value === 'www.standbygeneratorguide.com' &&
+      rule.destination?.startsWith('https://standbygeneratorguide.com/') &&
       rule.permanent === true,
     ),
     'Vercel www-to-apex redirect is missing',
   );
   const netlify = fs.readFileSync(new URL('../netlify.toml', import.meta.url), 'utf8');
-  assert(netlify.includes('from = "https://www.homegeneratorguide.com/*"'), 'Netlify www redirect is missing');
-  assert(netlify.includes('to = "https://homegeneratorguide.com/:splat"'), 'Netlify apex destination is missing');
+  assert(netlify.includes('from = "https://www.standbygeneratorguide.com/*"'), 'Netlify www redirect is missing');
+  assert(netlify.includes('to = "https://standbygeneratorguide.com/:splat"'), 'Netlify apex destination is missing');
 
   assert.deepEqual(errors, [], `browser console/page errors: ${JSON.stringify(errors)}`);
   console.log(

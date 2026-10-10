@@ -3,7 +3,7 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
-const productionUrl = 'https://homegeneratorguide.com';
+const productionUrl = 'https://standbygeneratorguide.com';
 const stagingUrl = 'https://homegeneratorguide.tender-telescope.workers.dev';
 const requestedEnvironment = process.env.PUBLIC_SITE_ENV;
 const isDevCommand = process.argv.some((argument) => argument === 'dev');

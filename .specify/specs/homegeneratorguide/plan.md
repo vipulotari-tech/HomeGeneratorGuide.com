@@ -1,11 +1,11 @@
-# Implementation Plan: HomeGeneratorGuide.com
+# Implementation Plan: Standby Generator Guide.com
 
 **Date**: 2026-10-03 | **Spec**: `.specify/specs/homegeneratorguide/spec.md`
 **Stack**: Astro 5.x, @tailwindcss/vite 4.x, @astrojs/sitemap, @astrojs/mdx, TypeScript strict, static output.
 
 ## Technical Context (verified 2026-10-03 via Astro Docs MCP)
 - Tailwind v4: `npm i tailwindcss @tailwindcss/vite`, vite plugin `tailwindcss()`, CSS `@import "tailwindcss"`, tokens via `@theme`. No `tailwind.config.js`, no `@astrojs/tailwind`.
-- Sitemap: `@astrojs/sitemap`, requires `site: https://homegeneratorguide.com/` in astro.config.
+- Sitemap: `@astrojs/sitemap`, requires `site: https://standbygeneratorguide.com/` in astro.config.
 - MDX: `@astrojs/mdx` integration for content flexibility (articles as .astro for full component control in MVP).
 - Static: `output: 'static'`, no adapter (Netlify/Vercel static compatible).
 - Fonts: system stack (no render-blocking Google Fonts) for performance.
@@ -21,7 +21,7 @@
 ## SEO decisions (BeyondSEO + Claude SEO applied)
 - Intent: sizing=cost=commercial-investigation+informational; comparison=neutral decision; brand=overview; maintenance=procedural (no HowTo schema — safety/eligibility risk, plain Article only).
 - Schema: WebSite on home, Article+Breadcrumb on articles, no FAQPage/HowTo (Google restricts FAQ rich results; HowTo requires strict eligibility — omit).
-- Canonical: `https://homegeneratorguide.com` non-www consistent; sitemap-index linked in head + robots.txt.
+- Canonical: `https://standbygeneratorguide.com` non-www consistent; sitemap-index linked in head + robots.txt.
 - Internal linking: contextual links per article (3-8), hubs interlink clusters.
 - Titles/descriptions unique, ~50-60 / 150-160 chars, year only where verified-2026 (sizing/cost updated 2026 methodology — use "2026" in title only for cost page which states estimates methodology; others avoid year to prevent stale-year risk).
 

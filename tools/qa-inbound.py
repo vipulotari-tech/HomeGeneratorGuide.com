@@ -12,8 +12,8 @@ for p in glob.glob('dist/**/*.html', recursive=True):
 
 inbound = defaultdict(list)
 for rel, (url, html) in pages.items():
-    for m in set(re.findall(r'href="((?:https://homegeneratorguide\.com)?/[^"#?]*)"', html)):
-        m = re.sub(r'^https://homegeneratorguide\.com', '', m)
+    for m in set(re.findall(r'href="((?:https://standbygeneratorguide\.com)?/[^"#?]*)"', html)):
+        m = re.sub(r'^https://standbygeneratorguide\.com', '', m)
         target = m if m == '/' else m.rstrip('/') + '/'
         inbound[target].append(url)
 

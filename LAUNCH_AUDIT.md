@@ -1,7 +1,7 @@
-# HomeGeneratorGuide launch audit
+# Standby Generator Guide launch audit
 
 **Audit date:** 2026-10-04 (Asia/Calcutta)  
-**Production target:** https://homegeneratorguide.com/  
+**Production target:** https://standbygeneratorguide.com/  
 **Pre-launch staging target:** https://homegeneratorguide.tender-telescope.workers.dev/  
 **Verdict:** **NOT READY for production launch yet.** Code and generated builds pass the checks below, but no remote deployment was performed; the supplied staging hostname, production route/DNS, and external `www` redirect have not been verified live. Independent licensed review also remains incomplete and is disclosed on-site.
 
@@ -59,7 +59,7 @@ Competitor pages were used to understand homeowner questions and content pattern
 - Removed the homepage explainer video and its poster/captions because it claimed a universal ~10-second transfer, uninterrupted loads, weekly/yearly service intervals, and unsupported failure causes. Replaced it with a static, qualified power-path explanation.
 - Replaced misleading future-facing expert-review copy with an accurate current status: no independent licensed professional review is complete. Updated About, author, policy, footer, error page, `llms.txt`, README, and editorial specifications accordingly.
 - Added target-specific builds: staging has page-level `noindex,nofollow`, a disallow-all `robots.txt`, `X-Robots-Tag`, no canonical, and no sitemap files; production has self-canonicals, indexable robots, and a production sitemap. `public/500.html` and generated 404 output are also non-indexable and lack canonicals.
-- Split Cloudflare Worker configs: staging Worker name `homegeneratorguide`; production Worker name `homegeneratorguide-production` with the `homegeneratorguide.com/*` route. Added a documented Playwright browser QA command and corrected a forced-redirect suffix incompatibility caught by Wrangler.
+- Split Cloudflare Worker configs: staging Worker name `homegeneratorguide`; production Worker name `homegeneratorguide-production` with the `standbygeneratorguide.com/*` route. Added a documented Playwright browser QA command and corrected a forced-redirect suffix incompatibility caught by Wrangler.
 
 ## Second-audit checks and results
 
@@ -96,7 +96,7 @@ The browser check used local Chromium and the Astro dev server; it is not a remo
 2. On the remote staging hostname, verify page meta robots and `X-Robots-Tag: noindex, nofollow`, `robots.txt` disallow, absence of canonicals/sitemaps, 301s for both old calculator paths, 404/500 behavior, source links, and mobile interactions.
 3. Confirm the Cloudflare zone, DNS, certificate, custom-domain route, and any existing Worker serving production can be migrated safely to `homegeneratorguide-production`. The exact account/zone ownership was not available in this audit.
 4. Verify the Cloudflare dashboard `www`-to-apex Redirect Rule. Netlify and Vercel configs include their own host redirects; Cloudflare’s host-level rule is external to this repository.
-5. After the production route is confirmed, test live canonical and robots metadata, `robots.txt`, the 48-URL sitemap, headers, old-route redirects, `www` consolidation, and representative 404/500 responses on `https://homegeneratorguide.com/`.
+5. After the production route is confirmed, test live canonical and robots metadata, `robots.txt`, the 48-URL sitemap, headers, old-route redirects, `www` consolidation, and representative 404/500 responses on `https://standbygeneratorguide.com/`.
 6. Decide whether to commission independent licensed review before launch. None has been completed; site copy explicitly discloses that fact. If review is commissioned, publish only article-specific, verifiable reviewer/scope/date details.
 7. Run a manual screen-reader/keyboard pass on representative templates and a field or lab performance audit; no Core Web Vitals or real-user analytics data is available here.
 8. Recheck current manufacturer specs, local installation pricing, permits, and utility requirements at quote time. The published MSRPs and third-party cost examples are not installed offers or local bids.

@@ -167,7 +167,7 @@ if(form){
  document.getElementById('save-plan')?.addEventListener('click',()=>{try{
   const controls=Object.fromEntries([...form.querySelectorAll<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>('[name]')].map(e=>[e.name,e.value]));
   const rows=[...document.querySelectorAll('.load-row')].map(row=>Object.fromEntries([...row.querySelectorAll<HTMLInputElement>('[data-key]')].map(e=>[e.dataset.key,e.value])));
-  localStorage.setItem(form.dataset.save!,JSON.stringify({version:2,controls,rows}));status.textContent='Saved in this browser. No data sent to HomeGeneratorGuide.';
+  localStorage.setItem(form.dataset.save!,JSON.stringify({version:2,controls,rows}));status.textContent='Saved in this browser. No data sent to Standby Generator Guide.';
  }catch{status.textContent='Browser storage is unavailable or full. Use Print / Save as PDF instead.';}});
  document.getElementById('load-plan')?.addEventListener('click',()=>{try{
   const raw=localStorage.getItem(form.dataset.save!);if(!raw){status.textContent='No saved plan in this browser.';return;}

@@ -17,7 +17,7 @@ Source: 10 user-supplied Ahrefs Free Keyword Generator screenshots. Volumes are 
 ## Editorial and technical guardrails
 
 - One canonical landing URL per primary user intent. Do not create duplicate articles for spelling, question phrasing, or word order.
-- Installation/dealer/repair **near me** queries have local-service intent. HomeGeneratorGuide does not install, sell or service equipment; avoid false local landing pages, location doorway pages, fake locations or LocalBusiness markup.
+- Installation/dealer/repair **near me** queries have local-service intent. Standby Generator Guide does not install, sell or service equipment; avoid false local landing pages, location doorway pages, fake locations or LocalBusiness markup.
 - **Best** means conditional fit by supported loads, fuel, transfer equipment, local servicing and quote scope. Do not invent hands-on tests, professional certifications, user reviews, rankings, reliability rates or prices.
 - Price data and official specs remain tied to citations/verification timestamps. Do not publish fabricated 2026 averages or update dates without rechecking sources.
 - Sitemap, canonical, and robots differ deliberately: Cloudflare staging must remain noindex/disallow; production build alone is indexable once the real domain is launched.

@@ -14,7 +14,7 @@ const active = (href: string) => path === href || path.startsWith(href);
 ---
 <header class="sticky top-0 z-50 border-b border-white/10 bg-primary text-white shadow-sm">
   <div class="mx-auto flex min-h-16 max-w-6xl items-center justify-between gap-2 px-4 py-2 sm:gap-4 sm:px-6">
-    <a href="/" class="flex min-h-[44px] items-center gap-2.5" aria-label="HomeGeneratorGuide home"><BrandLogo inverse /></a>
+    <a href="/" class="flex min-h-[44px] items-center gap-2.5" aria-label="Standby Generator Guide home"><BrandLogo inverse /></a>
     <nav class="hidden items-center gap-0.5 lg:flex" aria-label="Primary">
       {nav.map((n) => <a href={n.href} aria-current={active(n.href) ? 'page' : undefined} class={`border-b-2 border-transparent px-2.5 py-2.5 text-[13px] font-semibold text-slate-200 transition-colors hover:border-white/30 hover:text-white ${active(n.href) ? 'border-accent text-white' : ''}`}>{n.label}</a>)}
     </nav>

@@ -1,7 +1,7 @@
-# HomeGeneratorGuide design system
+# Standby Generator Guide design system
 
 ## Identity
-- Name: HomeGeneratorGuide
+- Name: Standby Generator Guide
 - Tagline: Power When It Matters Most
 - Voice: knowledgeable neighbor; direct, honest, reassuring, never salesy.
 - Reader: US homeowner researching standby backup power; age, purchase history, and budget are not assumed.

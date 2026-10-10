@@ -3,7 +3,7 @@ export default {
   fetch(request) {
     const url = new URL(request.url);
     url.protocol = 'https:';
-    url.hostname = 'homegeneratorguide.com';
+    url.hostname = 'standbygeneratorguide.com';
     url.port = '';
     return new Response(null, {
       status: 301,

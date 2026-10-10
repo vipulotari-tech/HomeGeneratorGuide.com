@@ -4,7 +4,7 @@ All values are source constants; there is no persistence service.
 
 | Field | Constraint | Consumer |
 | --- | --- | --- |
-| SITE_NAME | Exactly HomeGeneratorGuide | Logo and metadata |
+| SITE_NAME | Exactly Standby Generator Guide | Logo and metadata |
 | TAGLINE | Exactly Power When It Matters Most | Logo, header, footer |
 | MISSION | Exact wording in `src/config/site.ts`, punctuation preserved | Homepage, About, all-page footer |
 | EDITORIAL_PROMISE | Current transparent editorial approach in `src/config/site.ts` | Every HTML page |

@@ -3,7 +3,7 @@
 **Status**: Active | **Date**: 2026-10-03
 
 ## Goal
-Lift HomeGeneratorGuide from ~9.0 to genuine 9.5/10 via trust/transparency/accuracy work. No mass pages, no fake authority, no redesign without evidence.
+Lift Standby Generator Guide from ~9.0 to genuine 9.5/10 via trust/transparency/accuracy work. No mass pages, no fake authority, no redesign without evidence.
 
 ## In scope (P1)
 1. Real author system (Vipul Otari, Publisher & Research Editor; no invented credentials) + profile page + article bylines + Person schema.

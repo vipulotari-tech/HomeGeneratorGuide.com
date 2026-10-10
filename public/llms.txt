@@ -1,9 +1,9 @@
-# HomeGeneratorGuide.com
+# Standby Generator Guide.com
 > Power When It Matters Most
 > Independent, source-linked information for US homeowners researching standby generators. We are not affiliated with generator brands, dealers, or installers and do not accept their advertising, sponsorships, payments, or referral fees.
 
 ## Mission
-HomeGeneratorGuide is an independent informational publication helping US homeowners understand standby generator sizing, equipment, installation scope, costs, and maintenance before speaking with qualified local professionals.
+Standby Generator Guide is an independent informational publication helping US homeowners understand standby generator sizing, equipment, installation scope, costs, and maintenance before speaking with qualified local professionals.
 
 ## Editorial method and current limits
 We distinguish manufacturer specifications from manufacturer claims, estimates, and editorial interpretation. We link to source material where practical, do not claim hands-on testing or licensed review we have not performed, and update or correct material errors transparently.
@@ -13,25 +13,25 @@ No independent licensed professional has reviewed our articles. Research authors
 The site provides four browser-local planning worksheets (load planning, fuel comparison, quote comparison, ownership budgeting) that calculate illustrative scenarios from user-entered or documented inputs. They do not provide an automatic sizing recommendation, installed quote, or home-specific engineering determination. Appliance wattage chart values are generic ranges published by Champion Power Equipment; they are planning references, not measurements of a particular appliance or a recommendation for a particular home.
 
 ## Core guides
-- [First-Time Buyer Guide](https://homegeneratorguide.com/guides/first-time-buyer-guide/): Questions to resolve about loads, fuel, installation scope, proposals, and ownership.
-- [Generator Sizing Guide](https://homegeneratorguide.com/sizing/what-size-generator-do-i-need/): Load-based concepts, sourced generic ranges, an illustrative example, and a static worksheet.
-- [Appliance Wattage Chart](https://homegeneratorguide.com/sizing/appliance-wattage-chart/): Generic manufacturer-published ranges; confirm the exact appliance nameplate and manual.
-- [Standby Generator Cost](https://homegeneratorguide.com/cost/standby-generator-cost/): Source-scoped equipment prices and installation estimates; not local quotes.
-- [Generator Brands](https://homegeneratorguide.com/brands/): Selected model-specific research with source dates and explicit data gaps.
-- [Exact Model Library](https://homegeneratorguide.com/models/): 32 exact standby-generator configurations with manufacturer-linked fuel ratings; missing manufacturer data stays explicitly missing.
-- [Standby Generator Quote Checklist](https://homegeneratorguide.com/cost/standby-generator-quote-checklist/): A 16-line proposal-scope checklist and side-by-side worksheet.
-- [5- and 10-Year Ownership Cost](https://homegeneratorguide.com/cost/standby-generator-ownership-cost/): Transparent long-term planning worksheet using exact-model fuel data and user-supplied local costs.
-- [Installation Guide](https://homegeneratorguide.com/installation/what-to-expect/): Project scope and questions for qualified local professionals.
-- [Maintenance Checklist](https://homegeneratorguide.com/maintenance/generator-maintenance-checklist/): Manual-first guidance separating owner checks from technician work.
-- [Generator Safety](https://homegeneratorguide.com/guides/generator-safety-overview/): Carbon-monoxide, electrical, fuel, and storm hazards with government/safety sources.
+- [First-Time Buyer Guide](https://standbygeneratorguide.com/guides/first-time-buyer-guide/): Questions to resolve about loads, fuel, installation scope, proposals, and ownership.
+- [Generator Sizing Guide](https://standbygeneratorguide.com/sizing/what-size-generator-do-i-need/): Load-based concepts, sourced generic ranges, an illustrative example, and a static worksheet.
+- [Appliance Wattage Chart](https://standbygeneratorguide.com/sizing/appliance-wattage-chart/): Generic manufacturer-published ranges; confirm the exact appliance nameplate and manual.
+- [Standby Generator Cost](https://standbygeneratorguide.com/cost/standby-generator-cost/): Source-scoped equipment prices and installation estimates; not local quotes.
+- [Generator Brands](https://standbygeneratorguide.com/brands/): Selected model-specific research with source dates and explicit data gaps.
+- [Exact Model Library](https://standbygeneratorguide.com/models/): 32 exact standby-generator configurations with manufacturer-linked fuel ratings; missing manufacturer data stays explicitly missing.
+- [Standby Generator Quote Checklist](https://standbygeneratorguide.com/cost/standby-generator-quote-checklist/): A 16-line proposal-scope checklist and side-by-side worksheet.
+- [5- and 10-Year Ownership Cost](https://standbygeneratorguide.com/cost/standby-generator-ownership-cost/): Transparent long-term planning worksheet using exact-model fuel data and user-supplied local costs.
+- [Installation Guide](https://standbygeneratorguide.com/installation/what-to-expect/): Project scope and questions for qualified local professionals.
+- [Maintenance Checklist](https://standbygeneratorguide.com/maintenance/generator-maintenance-checklist/): Manual-first guidance separating owner checks from technician work.
+- [Generator Safety](https://standbygeneratorguide.com/guides/generator-safety-overview/): Carbon-monoxide, electrical, fuel, and storm hazards with government/safety sources.
 
 ## Trust and method
-- [About](https://homegeneratorguide.com/about/): Mission, reader focus, and independence.
-- [Editorial Policy](https://homegeneratorguide.com/editorial-policy/): Source, independence, and corrections standards.
-- [Professional Review Status](https://homegeneratorguide.com/review-process/): Current absence of independent licensed review and disclosure expectations.
-- [Editorial Team](https://homegeneratorguide.com/editorial-team/): Topic-specific research desks, attribution rules, and clear limits; no individual credentials are implied.
-- [Funding Disclosure](https://homegeneratorguide.com/affiliate-disclosure/): No live advertising, affiliate links, or generator-industry payments.
-- [Disclaimer](https://homegeneratorguide.com/disclaimer/): Educational-use limits, estimates, and professional safety boundaries.
+- [About](https://standbygeneratorguide.com/about/): Mission, reader focus, and independence.
+- [Editorial Policy](https://standbygeneratorguide.com/editorial-policy/): Source, independence, and corrections standards.
+- [Professional Review Status](https://standbygeneratorguide.com/review-process/): Current absence of independent licensed review and disclosure expectations.
+- [Editorial Team](https://standbygeneratorguide.com/editorial-team/): Topic-specific research desks, attribution rules, and clear limits; no individual credentials are implied.
+- [Funding Disclosure](https://standbygeneratorguide.com/affiliate-disclosure/): No live advertising, affiliate links, or generator-industry payments.
+- [Disclaimer](https://standbygeneratorguide.com/disclaimer/): Educational-use limits, estimates, and professional safety boundaries.
 
 ## Interpretation
 Trace technical and price claims to each article's cited, dated sources. Confirm exact equipment, manufacturer instructions, local requirements, and current regulations with qualified professionals before purchase or installation. A general guide cannot determine whether a generator or installation is suitable for an individual property.

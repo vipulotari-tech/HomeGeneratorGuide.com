@@ -6,7 +6,7 @@ for (const file of fs.readdirSync('dist', { recursive: true }).filter(f => f.end
   const html = fs.readFileSync('dist/' + file, 'utf8');
   for (const [, href] of html.matchAll(/<a\b[^>]*href="(https?:\/\/[^\"]+)"/g)) {
     const url = href.replaceAll('&amp;', '&').split('#')[0];
-    if (/^https:\/\/(?:www\.)?homegeneratorguide\.com(?:\/|$)/.test(url)) continue;
+    if (/^https:\/\/(?:www\.)?(?:standbygeneratorguide|homegeneratorguide)\.com(?:\/|$)/.test(url)) continue;
     if (!links.has(url)) links.set(url, []);
     links.get(url).push(file.replaceAll('\\', '/'));
   }
@@ -16,7 +16,7 @@ const results = [];
 let next = 0;
 async function check(url) {
   try {
-    const response = await fetch(url, { signal: AbortSignal.timeout(20000), headers: { 'User-Agent': 'HomeGeneratorGuide-LinkAudit/1.0' } });
+    const response = await fetch(url, { signal: AbortSignal.timeout(20000), headers: { 'User-Agent': 'StandbyGeneratorGuide-LinkAudit/1.0' } });
     await response.body?.cancel();
     return { status: response.status, finalUrl: response.url, classification: response.ok ? 'available' : [404, 410].includes(response.status) ? 'broken' : 'unverified' };
   } catch (error) { return { status: null, classification: 'unverified', error: error.cause?.code ?? error.name }; }

@@ -20,10 +20,32 @@
       "has": [
         {
           "type": "host",
+          "value": "www.standbygeneratorguide.com"
+        }
+      ],
+      "destination": "https://standbygeneratorguide.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "homegeneratorguide.com"
+        }
+      ],
+      "destination": "https://standbygeneratorguide.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
           "value": "www.homegeneratorguide.com"
         }
       ],
-      "destination": "https://homegeneratorguide.com/:path*",
+      "destination": "https://standbygeneratorguide.com/:path*",
       "permanent": true
     },
     {
