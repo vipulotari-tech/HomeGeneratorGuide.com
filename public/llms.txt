@@ -10,7 +10,7 @@ We distinguish manufacturer specifications from manufacturer claims, estimates, 
 
 No independent licensed professional has reviewed our articles. Research authorship and source citations are not professional signoff. Topic-specific editorial desk bylines are organizational labels, not individual people, electricians, engineers, installers, or product testers. Content is educational, not a substitute for exact-model manuals, qualified local professionals, permitting authorities, or a property-specific assessment.
 
-The site does not provide a calculator, interactive estimator, automated sizing recommendation, or home-specific cost quote. Appliance wattage chart values are generic ranges published by Champion Power Equipment; they are planning references, not measurements of a particular appliance or a recommendation for a particular home.
+The site provides four browser-local planning worksheets (load planning, fuel comparison, quote comparison, ownership budgeting) that calculate illustrative scenarios from user-entered or documented inputs. They do not provide an automatic sizing recommendation, installed quote, or home-specific engineering determination. Appliance wattage chart values are generic ranges published by Champion Power Equipment; they are planning references, not measurements of a particular appliance or a recommendation for a particular home.
 
 ## Core guides
 - [First-Time Buyer Guide](https://homegeneratorguide.com/guides/first-time-buyer-guide/): Questions to resolve about loads, fuel, installation scope, proposals, and ownership.
@@ -18,7 +18,7 @@ The site does not provide a calculator, interactive estimator, automated sizing 
 - [Appliance Wattage Chart](https://homegeneratorguide.com/sizing/appliance-wattage-chart/): Generic manufacturer-published ranges; confirm the exact appliance nameplate and manual.
 - [Standby Generator Cost](https://homegeneratorguide.com/cost/standby-generator-cost/): Source-scoped equipment prices and installation estimates; not local quotes.
 - [Generator Brands](https://homegeneratorguide.com/brands/): Selected model-specific research with source dates and explicit data gaps.
-- [Exact Model Library](https://homegeneratorguide.com/models/): Seven exact residential standby model guides; missing manufacturer data stays explicitly missing.
+- [Exact Model Library](https://homegeneratorguide.com/models/): 32 exact standby-generator configurations with manufacturer-linked fuel ratings; missing manufacturer data stays explicitly missing.
 - [Standby Generator Quote Checklist](https://homegeneratorguide.com/cost/standby-generator-quote-checklist/): A 16-line proposal-scope checklist and side-by-side worksheet.
 - [5- and 10-Year Ownership Cost](https://homegeneratorguide.com/cost/standby-generator-ownership-cost/): Transparent long-term planning worksheet using exact-model fuel data and user-supplied local costs.
 - [Installation Guide](https://homegeneratorguide.com/installation/what-to-expect/): Project scope and questions for qualified local professionals.
