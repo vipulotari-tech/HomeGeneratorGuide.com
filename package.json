@@ -27,6 +27,7 @@
     "qa:security": "node tools/qa-security.mjs",
     "qa:http:staging": "node tools/qa-http.mjs staging",
     "qa:http:production": "node tools/qa-http.mjs production",
+    "qa:pages-domain": "node tools/qa-pages-domain.mjs",
     "validate:evidence": "node tools/validate-evidence.mjs",
     "qa:planners": "node tools/qa-planners.mjs",
     "qa:seo": "node tools/qa-seo.mjs",
