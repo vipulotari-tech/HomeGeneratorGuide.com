@@ -7,7 +7,7 @@ from xml.etree import ElementTree
 
 ROOT = Path(__file__).resolve().parents[1]
 MISSION = (
-    "HomeGeneratorGuide is an independent informational publication helping US homeowners "
+    "Standby Generator Guide is an independent informational publication helping US homeowners "
     "understand standby generator sizing, equipment, installation scope, costs, and maintenance "
     "before speaking with qualified local professionals."
 )
@@ -90,7 +90,7 @@ for asset in ("brand-mark.svg", "logo.svg", "favicon.svg"):
     if asset == "favicon.svg":
         assert root.attrib["viewBox"] == "0 0 16 16", path
     if asset == "logo.svg":
-        assert "HomeGeneratorGuide" in "".join(root.itertext()), path
+        assert "Standby Generator Guide" in "".join(root.itertext()), path
         assert "Power When It Matters Most" in "".join(root.itertext()), path
 
 

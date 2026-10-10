@@ -1,8 +1,8 @@
-# HomeGeneratorGuide editorial foundation
+# Standby Generator Guide editorial foundation
 
 ## Mission — use verbatim
 
-HomeGeneratorGuide is an independent informational publication helping US homeowners understand standby generator sizing, equipment, installation scope, costs, and maintenance before speaking with qualified local professionals.
+Standby Generator Guide is an independent informational publication helping US homeowners understand standby generator sizing, equipment, installation scope, costs, and maintenance before speaking with qualified local professionals.
 
 ## Editorial promise — use verbatim
 
@@ -25,7 +25,7 @@ Authority is earned through accurate sourcing and clear limits; do not claim a r
 
 ## Independence
 
-HomeGeneratorGuide is independent of generator brands, dealers, and installers. Do not accept their advertising, sponsorships, payments, paid placement, rankings payments, or referral fees. Do not sell homeowner information or installer leads. No live ads or affiliate links currently ship. Any future funding must preserve this prohibition and be disclosed where relevant.
+Standby Generator Guide is independent of generator brands, dealers, and installers. Do not accept their advertising, sponsorships, payments, paid placement, rankings payments, or referral fees. Do not sell homeowner information or installer leads. No live ads or affiliate links currently ship. Any future funding must preserve this prohibition and be disclosed where relevant.
 
 ## Sources and technical scope
 

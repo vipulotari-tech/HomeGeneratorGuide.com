@@ -1,4 +1,4 @@
-# HomeGeneratorGuide implementation and launch review
+# Standby Generator Guide implementation and launch review
 
 Implementation: October 5, 2026. This is an editorial and engineering report, not licensed professional approval. See the repository history for the exact tested and merged revision.
 

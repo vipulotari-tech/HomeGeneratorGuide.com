@@ -5,7 +5,11 @@
   "compatibility_date": "2026-10-10",
   "workers_dev": false,
   "preview_urls": false,
-  "routes": [{ "pattern": "www.homegeneratorguide.com/*", "zone_name": "homegeneratorguide.com" }],
+  "routes": [
+    { "pattern": "www.standbygeneratorguide.com/*", "zone_name": "standbygeneratorguide.com" },
+    { "pattern": "www.homegeneratorguide.com/*", "zone_name": "homegeneratorguide.com" },
+    { "pattern": "homegeneratorguide.com/*", "zone_name": "homegeneratorguide.com" }
+  ],
   "observability": { "enabled": true },
   "env": {
     "prelaunch": {

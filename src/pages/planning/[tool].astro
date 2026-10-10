@@ -20,7 +20,7 @@ const schema=[{'@context':'https://schema.org','@type':'WebPage',name:title,desc
 ---
 <BaseLayout title={title} description={description} schema={schema}>
 <div class="editorial-container planner-page"><Breadcrumbs items={[{href:'/',label:'Home'},{href:'/planning/',label:'Planning tools'},{label:title}]}/>
-<header class="planner-heading"><p class="eyebrow">THE HOMEOWNER’S PLANNING DESK</p><h1>{title}</h1><p class="lede">{description}</p><FactTypeBadge type="estimate"/><p class="help">By <a href="/editorial-team/">HomeGeneratorGuide Editorial Team</a> · Published October 5, 2026 · Updated October 6, 2026 · Method and source checks October 5, 2026</p></header>
+<header class="planner-heading"><p class="eyebrow">THE HOMEOWNER’S PLANNING DESK</p><h1>{title}</h1><p class="lede">{description}</p><FactTypeBadge type="estimate"/><p class="help">By <a href="/editorial-team/">Standby Generator Guide Editorial Team</a> · Published October 5, 2026 · Updated October 6, 2026 · Method and source checks October 5, 2026</p></header>
 <p class="planning-notice"><strong>{tool==='sizing'?'Planning estimate — confirm final sizing with a qualified installer using equipment nameplates and manufacturer requirements.':'Planning estimate — confirm scope, prices and operating assumptions with qualified installers and fuel suppliers.'}</strong> Tools prepare questions and scenarios; they do not approve an electrical or fuel-system design.</p>
 <TechnicalReviewPanel/>
 <noscript><p class="planning-notice">These tools need JavaScript for calculations. The <a href="/sizing/what-size-generator-do-i-need/">sizing worksheet</a> and <a href="/cost/standby-generator-quote-checklist/">quote checklist</a> remain available without it.</p></noscript>

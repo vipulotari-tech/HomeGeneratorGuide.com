@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="460" height="88" viewBox="0 0 460 88" role="img" aria-labelledby="title description">
-  <title id="title">HomeGeneratorGuide</title>
+  <title id="title">Standby Generator Guide</title>
   <desc id="description">Navy house with lightning integrated into the roofline. Power When It Matters Most.</desc>
   <g transform="translate(0 10)">
     <path fill="#1B3A6B" d="M5 29 31 7l28 22v28H5Z"/>
     <path fill="#F5821F" d="m35 4-17 29h13l-6 24 22-34H34l6-19Z"/>
   </g>
-  <text x="78" y="43" fill="#1B3A6B" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="600">HomeGeneratorGuide</text>
+  <text x="78" y="43" fill="#1B3A6B" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="600">Standby Generator Guide</text>
   <text x="79" y="65" fill="#1A1A2E" font-family="Arial, Helvetica, sans-serif" font-size="15">Power When It Matters Most</text>
 </svg>

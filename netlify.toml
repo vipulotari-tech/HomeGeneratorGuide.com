@@ -11,7 +11,7 @@
   status = 301
   force = true
 
-# Netlify deploy configuration for HomeGeneratorGuide.com (static Astro output)
+# Netlify deploy configuration for Standby Generator Guide (static Astro output)
 [build]
   command = "npm run build:production"
   publish = "dist"
@@ -37,8 +37,21 @@
 
 # Canonical host: apex. Redirect www -> apex for SEO consolidation.
 [[redirects]]
+  from = "https://www.standbygeneratorguide.com/*"
+  to = "https://standbygeneratorguide.com/:splat"
+  status = 301
+  force = true
+
+# Legacy domain migration: preserve SEO value from the previous apex and www host.
+[[redirects]]
+  from = "https://homegeneratorguide.com/*"
+  to = "https://standbygeneratorguide.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "https://www.homegeneratorguide.com/*"
-  to = "https://homegeneratorguide.com/:splat"
+  to = "https://standbygeneratorguide.com/:splat"
   status = 301
   force = true
 

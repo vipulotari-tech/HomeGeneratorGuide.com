@@ -2,14 +2,14 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from '../components/layout/Breadcrumbs.astro';
 ---
-<BaseLayout title="Contact" description="Contact HomeGeneratorGuide with corrections, source updates, or content requests. No sales or installation services.">
+<BaseLayout title="Contact" description="Contact Standby Generator Guide with corrections, source updates, or content requests. No sales or installation services.">
   <div class="mx-auto max-w-3xl px-4 py-10 sm:px-6">
     <Breadcrumbs items={[{ href: '/', label: 'Home' }, { label: 'Contact' }]} />
     <h1 class="mt-4 text-4xl font-bold text-primary">Contact</h1>
     <div class="prose-hgg mt-6">
-      <p>We welcome corrections, manufacturer-spec updates, and topic requests. Your contact is the <a href="/editorial-team/">HomeGeneratorGuide Editorial Team</a>. We do <strong>not</strong> sell, install, or service generators — for quotes, contact licensed local installers.</p>
+      <p>We welcome corrections, manufacturer-spec updates, and topic requests. Your contact is the <a href="/editorial-team/">Standby Generator Guide Editorial Team</a>. We do <strong>not</strong> sell, install, or service generators — for quotes, contact licensed local installers.</p>
       <h2>Email</h2>
-      <p><a href="mailto:hello@homegeneratorguide.com">hello@homegeneratorguide.com</a> — we aim to respond within 3 business days. For factual corrections, see our <a href="/corrections-policy/">48-hour corrections commitment</a>.</p>
+      <p><a href="mailto:hello@standbygeneratorguide.com">hello@standbygeneratorguide.com</a> — we aim to respond within 3 business days. For factual corrections, see our <a href="/corrections-policy/">48-hour corrections commitment</a>.</p>
       <h2>What you can write about</h2>
       <ul>
         <li><strong>Corrections:</strong> wrong spec, price, interval, or code reference — include page URL plus your source.</li>
@@ -19,7 +19,7 @@ import Breadcrumbs from '../components/layout/Breadcrumbs.astro';
       </ul>
       <h2>Send a note</h2>
       <p class="text-sm text-gray-600">This form composes an email in your mail app — no data is stored on our servers (static site, no backend).</p>
-      <form action="mailto:hello@homegeneratorguide.com" method="get" enctype="text/plain" class="mt-4 space-y-4 rounded-xl border border-[#e5e7eb] bg-surface p-5">
+      <form action="mailto:hello@standbygeneratorguide.com" method="get" enctype="text/plain" class="mt-4 space-y-4 rounded-xl border border-[#e5e7eb] bg-surface p-5">
         <div>
           <label for="c-subject" class="block text-sm font-semibold text-primary">Subject</label>
           <input id="c-subject" name="subject" type="text" required autocomplete="off" placeholder="Correction: sizing guide wattage…" class="mt-1 min-h-[44px] w-full rounded-lg border border-[#e5e7eb] bg-white px-3 py-2 text-[15px]" />

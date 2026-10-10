@@ -1,4 +1,4 @@
-# Tasks: HomeGeneratorGuide.com
+# Tasks: Standby Generator Guide.com
 
 - [x] T1 Foundation: package.json, astro.config.mjs, tsconfig, global.css, DESIGN.md, README
 - [x] T2 Components: AdUnit, AlertBox, Header, Footer, Breadcrumbs, ComparisonTable, FAQSection, ArticleCard, TOC, AuthorBox, RelatedArticles, ProConBox, StatBox

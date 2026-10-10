@@ -99,7 +99,7 @@ try{
  await page.evaluate(()=>{Storage.prototype.setItem=()=>{throw new DOMException('Blocked','SecurityError')};Storage.prototype.getItem=()=>{throw new DOMException('Blocked','SecurityError')};Storage.prototype.removeItem=()=>{throw new DOMException('Blocked','SecurityError')};});
  for(const id of ['save-plan','load-plan','clear-plan']){await page.locator('#'+id).click();assert((await page.locator('#save-status').innerText()).length>0);}check('Blocked browser storage gracefully reported');
  await go('/maintenance/maintenance-log/');await page.evaluate(()=>{window.__prints=0;window.print=()=>window.__prints++});await page.locator('#print-log').click();assert.equal(await page.evaluate(()=>window.__prints),1);check('Maintenance log print action');
- await go('/contact/');assert.equal(await page.locator('form').getAttribute('action'),'mailto:hello@homegeneratorguide.com');assert.equal(await page.locator('#c-subject').getAttribute('required'),'');assert.equal(await page.locator('#c-body').getAttribute('required'),'');check('Contact email composition target and required fields inspected; no message sent');
+ await go('/contact/');assert.equal(await page.locator('form').getAttribute('action'),'mailto:hello@standbygeneratorguide.com');assert.equal(await page.locator('#c-subject').getAttribute('required'),'');assert.equal(await page.locator('#c-body').getAttribute('required'),'');check('Contact email composition target and required fields inspected; no message sent');
  assert.deepEqual(errors,[]);
 }finally{await browser.close();}
 // Separate browser avoids single-process Chromium cross-context limitations in the local runtime.

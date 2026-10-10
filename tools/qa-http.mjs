@@ -20,7 +20,7 @@ if (environment === 'staging') {
   assert(!html.includes('rel="canonical"'));
 } else {
   assert(!/noindex/i.test(home.headers.get('x-robots-tag') ?? ''));
-  assert(html.includes('rel="canonical" href="https://homegeneratorguide.com/"'));
+  assert(html.includes('rel="canonical" href="https://standbygeneratorguide.com/"'));
   assert(!html.includes('tender-telescope.workers.dev'));
 }
 const robots = await request('/robots.txt');
@@ -30,7 +30,7 @@ assert.match(robotsText, environment === 'staging' ? /Disallow: \// : /Allow: \/
 const sitemap = await request('/sitemap-index.xml');
 assert.equal(sitemap.status, environment === 'staging' ? 404 : 200);
 if (environment === 'production') {
-  assert((await sitemap.text()).includes('https://homegeneratorguide.com/sitemap-0.xml'));
+  assert((await sitemap.text()).includes('https://standbygeneratorguide.com/sitemap-0.xml'));
   const alias = await request('/sitemap.xml');
   assert.equal(alias.status, 301);
   assert.equal(new URL(alias.headers.get('location'), base).pathname, '/sitemap-index.xml');

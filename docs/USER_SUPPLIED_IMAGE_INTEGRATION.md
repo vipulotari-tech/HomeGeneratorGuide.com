@@ -1,6 +1,6 @@
 # User-supplied editorial imagery integration
 
-The user supplied ten JPEG images for HomeGeneratorGuide. Ten optimized WebP files
+The user supplied ten JPEG images for Standby Generator Guide. Ten optimized WebP files
 (approximately 2 MB combined) are now **committed to this Git repository** under
 `public/images/user-editorial/`. During every build the local files are verified
 against their pinned SHA-256 values. There are **no build-time image downloads**. The

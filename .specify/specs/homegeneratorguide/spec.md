@@ -1,4 +1,4 @@
-# Feature Specification: HomeGeneratorGuide.com Production Build
+# Feature Specification: Standby Generator Guide.com Production Build
 
 **Created**: 2026-10-03
 **Status**: Active
@@ -32,7 +32,7 @@ Mobile user on 360px navigates all hubs with keyboard/touch.
 **Acceptance**: Touch targets >=44px, semantic landmarks, 90+ Lighthouse target architecture (static, minimal JS).
 
 ## Functional Requirements
-- FR1: Astro static output, sitemap, canonical https://homegeneratorguide.com/, robots.txt with sitemap ref.
+- FR1: Astro static output, sitemap, canonical https://standbygeneratorguide.com/, robots.txt with sitemap ref.
 - FR2: Header/Footer/Breadcrumbs/ArticleCard/TOC/AuthorBox/RelatedArticles/ComparisonTable/FAQSection/AlertBox/ProConBox/StatBox/AdUnit components.
 - FR3: BaseLayout (SEO meta, OG/Twitter, WebSite schema), ArticleLayout (Article+Breadcrumb schema, dates, TOC, related), CategoryLayout.
 - FR4: Homepage hero + value bar + popular guides + why + categories + latest guides.

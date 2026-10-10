@@ -50,14 +50,14 @@ Readers see the same navy house-and-lightning identity, wordmark, tagline, and c
 
 ### Functional Requirements
 
-- **FR-001**: Publish the current mission verbatim: "HomeGeneratorGuide is an independent informational publication helping US homeowners understand standby generator sizing, equipment, installation scope, costs, and maintenance before speaking with qualified local professionals."
+- **FR-001**: Publish the current mission verbatim: "Standby Generator Guide is an independent informational publication helping US homeowners understand standby generator sizing, equipment, installation scope, costs, and maintenance before speaking with qualified local professionals."
 - **FR-002**: Publish the current editorial promise verbatim: "We distinguish manufacturer specifications from manufacturer claims, estimates, and editorial interpretation. We link to source material where practical, do not claim hands-on testing or licensed review we have not performed, and update or correct material errors transparently."
 - **FR-003**: State that no independent licensed professional has reviewed the current articles; distinguish source checking and research authorship from professional review.
 - **FR-004**: State independence from generator brands, dealers, and installers, and prohibit their advertising, sponsorships, payments, paid placement, and referral fees.
 - **FR-005**: Use a plain, direct, helpful voice without sales pressure, unsupported superlatives, or implied expertise.
 - **FR-006**: Address US homeowners researching backup power without assuming a reader's age, budget, or product choice.
 - **FR-007**: Use navy #1B3A6B, orange #F5821F, green #2D7D46, safety red #C0392B, slate background #F8F9FA, and near-black text #1A1A2E consistently.
-- **FR-008**: Provide a house silhouette with a lightning bolt integrated into the roofline, HomeGeneratorGuide wordmark, and exact tagline "Power When It Matters Most".
+- **FR-008**: Provide a house silhouette with a lightning bolt integrated into the roofline, Standby Generator Guide wordmark, and exact tagline "Power When It Matters Most".
 - **FR-009**: Provide a square navy-on-white house-outline and lightning favicon readable at 16px.
 - **FR-010**: Preserve article sources, author attribution, responsive navigation, keyboard access, reduced-motion support, and readable contrast.
 - **FR-011**: Document editorial sourcing, review-status disclosure, independence, corrections, and technical limits for future editors.

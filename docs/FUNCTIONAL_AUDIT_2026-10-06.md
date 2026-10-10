@@ -1,4 +1,4 @@
-# HomeGeneratorGuide functional audit — October 6, 2026
+# Standby Generator Guide functional audit — October 6, 2026
 
 Baseline: `86e9f7eb70d6c65c046031b6f654cf11689d11ba`, deployed to the existing Workers staging URL. This audit covers functional behavior and presentation; it is not a fresh professional review of generator engineering or every external manufacturer document.
 

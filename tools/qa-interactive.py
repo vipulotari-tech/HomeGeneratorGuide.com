@@ -75,14 +75,14 @@ with sync_playwright() as p:
     ), "Vercel legacy calculator redirect is missing"
     assert any(
         entry.get("has", [{}])[0].get("type") == "host"
-        and entry["has"][0].get("value") == "www.homegeneratorguide.com"
-        and entry.get("destination", "").startswith("https://homegeneratorguide.com/")
+        and entry["has"][0].get("value") == "www.standbygeneratorguide.com"
+        and entry.get("destination", "").startswith("https://standbygeneratorguide.com/")
         and entry.get("permanent") is True
         for entry in vercel_redirects
     ), "Vercel www-to-apex redirect is missing"
     netlify = (ROOT / "netlify.toml").read_text(encoding="utf-8")
-    assert 'from = "https://www.homegeneratorguide.com/*"' in netlify
-    assert 'to = "https://homegeneratorguide.com/:splat"' in netlify
+    assert 'from = "https://www.standbygeneratorguide.com/*"' in netlify
+    assert 'to = "https://standbygeneratorguide.com/:splat"' in netlify
 
     # Verify the mobile navigation opens and closes accessibly.
     mobile = browser.new_page(viewport={"width": 390, "height": 844})

@@ -6,7 +6,7 @@ const environment = process.argv[2];
 assert(['production', 'staging'].includes(environment), 'Usage: node tools/qa-indexing.mjs <production|staging>');
 
 const dist = path.resolve('dist');
-const productionOrigin = 'https://homegeneratorguide.com';
+const productionOrigin = 'https://standbygeneratorguide.com';
 const stagingOrigin = 'https://homegeneratorguide.tender-telescope.workers.dev';
 const criticalRoutes = [
   '/cost/standby-generator-cost/',
