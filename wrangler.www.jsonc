@@ -1,19 +1,19 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "homegeneratorguide-www",
+  // RETIRED for production: www -> apex is a Cloudflare zone Redirect Rule for the
+  // Pages project "standbygeneratorguide". Do not deploy this Worker; it would claim
+  // www.standbygeneratorguide.com and conflict with the Pages custom domain.
+  // workers/www-redirect.mjs is retained for reference only.
+  "name": "homegeneratorguide-www-retired",
   "main": "workers/www-redirect.mjs",
   "compatibility_date": "2026-10-10",
   "workers_dev": false,
   "preview_urls": false,
-  "routes": [
-    { "pattern": "www.standbygeneratorguide.com/*", "zone_name": "standbygeneratorguide.com" },
-    { "pattern": "www.homegeneratorguide.com/*", "zone_name": "homegeneratorguide.com" },
-    { "pattern": "homegeneratorguide.com/*", "zone_name": "homegeneratorguide.com" }
-  ],
+  "routes": [],
   "observability": { "enabled": true },
   "env": {
     "prelaunch": {
-      "name": "homegeneratorguide-www",
+      "name": "homegeneratorguide-www-retired",
       "workers_dev": false,
       "preview_urls": false,
       "routes": []

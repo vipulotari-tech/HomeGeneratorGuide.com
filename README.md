@@ -23,13 +23,16 @@ npm run build:production   # indexable; production origin and sitemap
 
 Both targets write to `dist/`, so build them sequentially. Staging pages include `noindex,nofollow`, staging `robots.txt` disallows crawling, and the response header adds `X-Robots-Tag: noindex, nofollow`. Production pages use self-canonicals and an indexable `robots.txt` with the production sitemap.
 
-## Cloudflare Workers
+## Cloudflare Pages (production) and Workers (staging preview)
 
-The Worker configs deliberately separate the pre-launch and production targets. While the real domain is not launched, the repository defaults to the staging Worker so generic Cloudflare/Git deploy commands cannot accidentally publish the production route.
+Production is a **Cloudflare Pages project**, not a Worker.
 
-- `wrangler.jsonc` is the pre-launch default and deploys to the Worker named `homegeneratorguide` (`homegeneratorguide.tender-telescope.workers.dev`).
-- `wrangler.staging.jsonc` is the explicit staging config for the same Worker.
-- `wrangler.production.jsonc` deploys to `homegeneratorguide-production` and routes `standbygeneratorguide.com/*` through the configured Cloudflare zone.
+- Pages project: `standbygeneratorguide` (`standbygeneratorguide.pages.dev`, production branch `main`)
+- Build command: `npm run build:production`; output directory: `dist/`
+- Astro `output: 'static'` writes fully static HTML plus `public/_headers` and `public/_redirects` (both supported by Pages).
+- Custom domains: `standbygeneratorguide.com` (apex) and `www.standbygeneratorguide.com`, attached to the Pages project. `www` -> apex (301, path/query preserved) is a zone Single Redirect Rule, not a Worker and not a Pages `_redirects` hostname rule (Pages `_redirects` is path-only).
+- Automatic deployments: pushes to `main` deploy via `.github/workflows/pages-deploy.yml` (requires `CLOUDFLARE_API_TOKEN` with Pages write and `CLOUDFLARE_ACCOUNT_ID` secrets). Native Pages Git integration (Dashboard > Pages > standbygeneratorguide > Settings > Builds & deployments > Connect to Git, repo `vipulotari-tech/StandbyGeneratorGuide.com`, production branch `main`, build command `npm run build:production`, output `dist`) may be enabled as well; both target the same project/branch.
+- Staging/preview remains Workers static assets for local QA: `wrangler.jsonc` / `wrangler.staging.jsonc` (`homegeneratorguide.tender-telescope.workers.dev`, noindex). `wrangler.production.jsonc` and `wrangler.www.jsonc` are retired (empty routes) so no Worker can claim the production apex/www and conflict with Pages.
 
 ```sh
 npm run preview
@@ -37,14 +40,12 @@ npm run preview:staging
 npm run deploy
 npm run deploy:staging
 
-# Only when the production domain is intentionally ready to launch:
-npm run preview:production
-npm run deploy:production
+# Production (Pages). Only when the production domain is intentionally ready:
+npm run preview:production   # local Pages dev of dist/
+npm run deploy:production    # build + SEO/security QA + wrangler pages deploy --force
 ```
 
-Before production deployment, confirm the Cloudflare zone and custom-domain route are available and that any existing Worker serving the production hostname has been safely migrated. The `www`-to-apex redirect remains a Cloudflare dashboard rule for the Workers deployment; Netlify and Vercel redirects are defined in their config files.
-
-Netlify and Vercel configs publish the production static build from `dist/`; the pre-launch default described above is specifically for Cloudflare Worker/Git deployment safety.
+Before production deployment, confirm the Pages custom domains are Active (SSL) and the www Redirect Rule exists. Netlify and Vercel configs publish the same production static build from `dist/`; the pre-launch default described above is specifically for staging Worker safety.
 
 ## Quality assurance
 

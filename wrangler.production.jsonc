@@ -1,15 +1,14 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "homegeneratorguide-production",
+  // RETIRED for production: StandbyGeneratorGuide.com production is served by
+  // Cloudflare Pages project "standbygeneratorguide" (standbygeneratorguide.pages.dev
+  // + custom domains). This Worker config must not claim the apex route or it
+  // conflicts with the Pages custom domain. Kept for reference only; do not deploy.
+  "name": "homegeneratorguide-production-retired",
   "compatibility_date": "2026-09-18",
   "workers_dev": false,
   "preview_urls": false,
-  "routes": [
-    {
-      "pattern": "standbygeneratorguide.com/*",
-      "zone_name": "standbygeneratorguide.com"
-    }
-  ],
+  "routes": [],
   "assets": {
     "directory": "./dist",
     "not_found_handling": "404-page",
@@ -20,7 +19,7 @@
   },
   "env": {
     "prelaunch": {
-      "name": "homegeneratorguide-production",
+      "name": "homegeneratorguide-production-retired",
       "workers_dev": false,
       "preview_urls": false,
       "routes": []

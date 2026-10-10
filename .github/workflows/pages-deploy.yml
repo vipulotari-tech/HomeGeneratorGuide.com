@@ -1,0 +1,52 @@
+name: Deploy to Cloudflare Pages (production)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy-production:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: JavaScript lint
+        run: npm run lint
+
+      - name: Deployment and security-policy tests
+        run: npm run test:deployment
+
+      - name: Astro checks
+        run: npm run check
+
+      - name: TypeScript checks
+        run: npm run typecheck
+
+      - name: Build production (Cloudflare Pages output)
+        run: npm run build:production
+
+      - name: Production SEO and security assertions
+        run: npm run qa:seo && npm run qa:security
+
+      - name: Production indexing assertions
+        run: node tools/qa-indexing.mjs production
+
+      - name: Deploy to Cloudflare Pages (project standbygeneratorguide, branch main)
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=standbygeneratorguide --branch=main --commit-hash=${{ github.sha }} --commit-message=${{ github.event.head_commit.message }} --force
